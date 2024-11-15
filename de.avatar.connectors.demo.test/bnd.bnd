@@ -1,0 +1,16 @@
+Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.annotation.Testable;CONCRETE}
+
+-library: enableOSGi-Test
+
+# sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
+-buildpath: \
+	org.osgi.framework;version=latest,\
+	org.osgi.test.junit5.cm;version=latest,\
+	de.avatar.connectors.demo;version=snapshot
+	
+Private-Package: de.avatar.connectors.demo.test
+
+Bundle-Version: 1.0.0.SNAPSHOT
+
+# Sometimes without DynamicImport Mockito will not find certain classes
+#DynamicImport-Package: *

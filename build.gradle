@@ -1,0 +1,15 @@
+// Available to customize the build
+plugins {
+  id 'java'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+tasks.named('wrapper') {
+  jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')
+}
+
+

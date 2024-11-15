@@ -1,0 +1,8 @@
+org.geckoprojects.search:org.gecko.emf.search.bnd.project.library:1.1.0-SNAPSHOT
+org.geckoprojects.search:org.gecko.search.bnd.library:1.1.0-SNAPSHOT
+
+org.gecko.runtime:org.gecko.templates:1.0.31
+org.geckoprojects.emf:org.gecko.emf.pushstreams:1.0.15
+org.gecko.addons:org.gecko.util.pushstream:6.0.0
+org.gecko.addons:org.gecko.util.common:2.0.0-SNAPSHOT
+

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012 - 2024 Data In Motion and others.&#xA;All rights reserved. &#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;    Data In Motion - initial API and implementation"
+    modelDirectory="/de.avatar.connector.model/src" modelPluginID="de.avatar.connector.model"
+    modelName="avatar-connector" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" suppressGenModelAnnotations="false"
+    copyrightFields="false" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    operationReflection="true" importOrganizing="true" oSGiCompatible="true">
+  <foreignModel>avatar-connector.ecore</foreignModel>
+  <genPackages prefix="AConnector" basePackage="de.avatar.model" resource="XMI" disposableProviderFactory="true"
+      contentTypeIdentifier="connector#1.0" ecorePackage="avatar-connector.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="avatar-connector.ecore#//ProtocolType">
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ProtocolType/OTHER"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ProtocolType/HTTP"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ProtocolType/HTTP_REST"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ProtocolType/HTTP_SOAP"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ProtocolType/HTTP_WS"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ProtocolType/MQTT"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ProtocolType/AMQP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="avatar-connector.ecore#//StatusType">
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//StatusType/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//StatusType/RUNNING"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//StatusType/ERROR"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//StatusType/INACTIVE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="avatar-connector.ecore#//ResponseCode">
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/OK"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/ERROR"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/NO_CONTENT"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/TIMEOUT"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/OTHER"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="avatar-connector.ecore#//JavaThrowable"/>
+    <genClasses ecoreClass="avatar-connector.ecore#//ConnectorInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorInfo/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorInfo/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorInfo/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorInfo/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//ConnectorInfo/endpoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//ConnectorInfo/metric"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//ConnectorInfo/connectorModel"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//ConnectorMetric">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorMetric/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorMetric/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorMetric/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorMetric/uptime"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference avatar-connector.ecore#//ConnectorMetric/connector"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//ConnectorEndpoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorEndpoint/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorEndpoint/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorEndpoint/uri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorEndpoint/method"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorEndpoint/protocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorEndpoint/mediaType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//ConnectorEndpoint/connector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//ConnectorEndpoint/modelPackage"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//EndpointRequest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//EndpointRequest/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//EndpointRequest/timestamp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//EndpointRequest/endpoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//EndpointRequest/parameter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//EndpointRequest/sourceId"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//EndpointResponse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//EndpointResponse/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//EndpointResponse/request"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//EndpointResponse/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//EndpointResponse/code"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//EndpointResponse/result"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//EndpointResponse/sourceId"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//Parameter/number"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//JavaParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//JavaParameter/typeString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//JavaParameter/value"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//EcoreParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//EcoreParameter/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="avatar-connector.ecore#//ResponseResult">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//ResponseResult/metaData"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//ResponseMetaData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ResponseMetaData/hash"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//DryRunResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//DryRunResult/resultCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//DryRunResult/estRuntime"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//ErrorResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ErrorResult/error"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ErrorResult/errorText"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ErrorResult/throwable"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//EcoreResult">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//EcoreResult/value"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//JavaResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//JavaResult/typeString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//JavaResult/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

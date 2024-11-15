@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="api" nsURI="https://www.avatar-projekt.de/connector/api" nsPrefix="aca">
+  <eAnnotations source="Version">
+    <details key="value" value="1.0"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="copyrightText" value="Copyright (c) 2012 - 2024 Data In Motion and others.&#xA;All rights reserved. &#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;    Data In Motion - initial API and implementation"/>
+    <details key="oSGiCompatible" value="false"/>
+    <details key="modelName" value="ConnectorAPI"/>
+    <details key="rootExtendsInterface" value=""/>
+    <details key="basePackage" value="de.avatar.connector"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="AvatarConnector" abstract="true" interface="true"
+      eSuperTypes="#//AvatarConnectorInfo">
+    <eOperations name="dryRequest" ordered="false" lowerBound="1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//EndpointResponse">
+      <eParameters name="request" lowerBound="1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//EndpointRequest"/>
+    </eOperations>
+    <eOperations name="executeRequest" ordered="false" lowerBound="1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//EndpointResponse">
+      <eParameters name="request" lowerBound="1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//EndpointRequest"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AvatarConnectorInfo" abstract="true"
+      interface="true">
+    <eOperations name="getEndpoints" upperBound="-1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//ConnectorEndpoint"/>
+    <eOperations name="getInfo" lowerBound="1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//ConnectorInfo"/>
+  </eClassifiers>
+</ecore:EPackage>

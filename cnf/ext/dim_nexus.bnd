@@ -1,0 +1,8 @@
+-plugin.dim.nexus: \
+	aQute.bnd.repository.maven.provider.MavenBndRepository;\
+		snapshotUrl			=https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/;\
+		releaseUrl			=https://devel.data-in-motion.biz/nexus/repository/dim-release/;\
+		index				=${.}/dim_nexus.maven;\
+		readOnly 			= true;\
+		poll.time           = -1;\
+		name		        = "DIM Nexus"

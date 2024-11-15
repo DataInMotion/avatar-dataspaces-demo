@@ -1,0 +1,18 @@
+-buildpath: \
+	org.osgi.annotation.bundle;version=latest,\
+	org.osgi.annotation.versioning;version=latest,\
+	org.osgi.service.component.annotations;version=latest,\
+	org.osgi.service.cm;version=latest,\
+	org.osgi.service.event;version=latest,\
+	de.avatar.connector.api.model;version=project,\
+	de.avatar.connector.model;version=project,\
+	org.osgi.service.remoteserviceadmin
+
+Bundle-Version: 0.0.0.${tstamp}
+-library: enable-emf
+
+
+Private-Package: de.avatar.connectors.demo.rsa.consumer
+
+javac.source: 1.8
+javac.target: 1.8
