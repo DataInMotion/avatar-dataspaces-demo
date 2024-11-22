@@ -15,7 +15,6 @@ package de.avatar.connectors.demo.rsa.test;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.service.component.annotations.Activate;
@@ -29,7 +28,7 @@ import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
-import de.avatar.model.connector.JavaParameter;
+import de.avatar.model.connector.Parameter;
 
 @Component(immediate = true, property = {"service.exported.configs=com.paremus.dosgi.net", "service.exported.interfaces=*", "com.paremus.dosgi.scope=global", "com.paremus.dosgi.target.clusters=DIMC", "com.paremus.dosgi.net.serialization=ecore"})
 //@Component(service = HelloWorld.class ,immediate = true, property = {"service.exported.configs=com.paremus.dosgi.net", "service.exported.interfaces=*", "com.paremus.dosgi.scope=universal"})
@@ -94,8 +93,8 @@ public class ExampleConnector implements AvatarConnector {
 		response.setSourceId(request.getSourceId());
 		response.setTimestamp(Instant.now().toEpochMilli());
 		System.out.println(String.format("Dry-Test  request %s to endpoint '%s'", request.getId(), request.getEndpoint().getUri()));
-		for (JavaParameter p : request.getParameter()) {
-			System.out.println(String.format("  - Parameters %s with name '%s' and type '%s' - value = '%s'", p.getNumber(), p.getName(), p.getTypeString(), Objects.isNull(p.getValue()) ? "<null>" : p.getValue().toString()));
+		for (Parameter p : request.getParameter()) {
+			System.out.println(String.format("  - Parameters %s with name '%s'", p.getNumber(), p.getName()));
 		}
 		return response;
 	}
@@ -112,8 +111,8 @@ public class ExampleConnector implements AvatarConnector {
 		response.setSourceId(request.getSourceId());
 		response.setTimestamp(Instant.now().toEpochMilli());
 		System.out.println(String.format("Execute request %s to endpoint '%s'", request.getId(), request.getEndpoint().getUri()));
-		for (JavaParameter p : request.getParameter()) {
-			System.out.println(String.format("  - Parameters %s with name '%s' and type '%s' - value = '%s'", p.getNumber(), p.getName(), p.getTypeString(), Objects.isNull(p.getValue()) ? "<null>" : p.getValue().toString()));
+		for (Parameter p : request.getParameter()) {
+			System.out.println(String.format("  - Parameters %s with name '%s'", p.getNumber(), p.getName()));
 		}
 		return response;
 	}
