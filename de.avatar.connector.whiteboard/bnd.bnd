@@ -1,0 +1,15 @@
+-library: enable-emf
+
+-includeresource: OSGI-INF/configurator/=configs/consumer-config.json
+
+-buildpath: \
+	org.osgi.annotation.bundle;version=latest,\
+	org.osgi.annotation.versioning;version=latest,\
+	org.osgi.service.component.annotations;version=latest,\
+	org.osgi.service.cm;version=latest,\
+	org.osgi.service.event;version=latest,\
+	org.osgi.service.remoteserviceadmin;version=latest,\
+	de.avatar.connector.api.model;version=project,\
+	de.avatar.connector.model;version=project
+	
+Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'

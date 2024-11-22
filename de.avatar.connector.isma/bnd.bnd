@@ -1,0 +1,10 @@
+-library: enable-emf
+
+-includeresource: OSGI-INF/configurator/=configs/provider-config.json
+
+-buildpath: \
+	org.osgi.service.cm;version=latest,\
+	de.avatar.connector.api.model;version=snapshot,\
+	de.avatar.connector.model;version=snapshot
+	
+Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'
