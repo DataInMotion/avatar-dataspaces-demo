@@ -109,7 +109,7 @@ public interface EndpointRequest extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Parameter</b></em>' containment reference list.
-	 * The list contents are of type {@link de.avatar.model.connector.JavaParameter}.
+	 * The list contents are of type {@link de.avatar.model.connector.Parameter}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter</em>' containment reference list.
@@ -117,7 +117,7 @@ public interface EndpointRequest extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<JavaParameter> getParameter();
+	EList<Parameter> getParameter();
 
 	/**
 	 * Returns the value of the '<em><b>Source Id</b></em>' attribute.

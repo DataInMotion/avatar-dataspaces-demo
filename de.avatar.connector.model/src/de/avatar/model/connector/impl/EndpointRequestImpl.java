@@ -16,7 +16,7 @@ package de.avatar.model.connector.impl;
 import de.avatar.model.connector.AConnectorPackage;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.EndpointRequest;
-import de.avatar.model.connector.JavaParameter;
+import de.avatar.model.connector.Parameter;
 
 import java.util.Collection;
 
@@ -110,7 +110,7 @@ public class EndpointRequestImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<JavaParameter> parameter;
+	protected EList<Parameter> parameter;
 
 	/**
 	 * The default value of the '{@link #getSourceId() <em>Source Id</em>}' attribute.
@@ -248,9 +248,9 @@ public class EndpointRequestImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
-	public EList<JavaParameter> getParameter() {
+	public EList<Parameter> getParameter() {
 		if (parameter == null) {
-			parameter = new EObjectContainmentEList<JavaParameter>(JavaParameter.class, this, AConnectorPackage.ENDPOINT_REQUEST__PARAMETER);
+			parameter = new EObjectContainmentEList<Parameter>(Parameter.class, this, AConnectorPackage.ENDPOINT_REQUEST__PARAMETER);
 		}
 		return parameter;
 	}
@@ -336,7 +336,7 @@ public class EndpointRequestImpl extends MinimalEObjectImpl.Container implements
 				return;
 			case AConnectorPackage.ENDPOINT_REQUEST__PARAMETER:
 				getParameter().clear();
-				getParameter().addAll((Collection<? extends JavaParameter>)newValue);
+				getParameter().addAll((Collection<? extends Parameter>)newValue);
 				return;
 			case AConnectorPackage.ENDPOINT_REQUEST__SOURCE_ID:
 				setSourceId((String)newValue);
