@@ -1,7 +1,6 @@
 -library: enableOSGi-Test
 
 -runrequires: \
-	bnd.identity;id='de.avatar.connector.api.tck',\
 	bnd.identity;id='de.avatar.connector.isma.test',\
 	bnd.identity;id='de.avatar.connector.isma'
 	
@@ -14,7 +13,6 @@
 
 -runbundles: \
 	de.avatar.connector.api;version=snapshot,\
-	de.avatar.connector.api.tck;version=snapshot,\
 	de.avatar.connector.isma;version=snapshot,\
 	de.avatar.connector.model;version=snapshot,\
 	junit-jupiter-api;version='[5.10.3,5.10.4)',\
