@@ -12,12 +12,13 @@
  */
 package de.avatar.connector.other;
 
+import static java.util.Objects.nonNull;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
@@ -28,11 +29,14 @@ import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.ConnectorMetric;
+import de.avatar.model.connector.DryRunResult;
+import de.avatar.model.connector.EcoreResult;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.JavaParameter;
 import de.avatar.model.connector.Parameter;
 import de.avatar.model.connector.StatusType;
+import de.avatar.model.connector.helper.ConnectorHelper;
 
 @Component(immediate = true, property = {
 		"service.exported.configs=com.paremus.dosgi.net", 
@@ -103,20 +107,31 @@ public class OtherConnectorImpl implements AvatarConnector {
 	 */
 	@Override
 	public EndpointResponse dryRequest(EndpointRequest request) {
-		EndpointResponse response = connectorFactory.createEndpointResponse();
-		response.setId(request.getId());
-		response.setRequest(EcoreUtil.copy(request));
-		response.setSourceId(request.getSourceId());
-		response.setTimestamp(Instant.now().toEpochMilli());
-		System.out.println(String.format("Dry-Test  request %s to endpoint '%s'", request.getId(), request.getEndpoint().getUri()));
-		for (Parameter p : request.getParameter()) {
-			if (p instanceof JavaParameter jp) {
-				System.out.println(String.format("  - Java Parameter %s with name '%s' and type '%s' - value = '%s'", jp.getNumber(), jp.getName(), jp.getTypeString(), Objects.isNull(jp.getValue()) ? "<null>" : jp.getValue().toString()));
-			} else {
-				System.out.println(String.format("  - Parameter %s with name '%s'", p.getNumber(), p.getName()));
-			}
+		if (Objects.isNull(request)) {
+			throw new IllegalArgumentException("Request must not be null");
 		}
-		return response;
+		if (nonNull(request) && 
+				nonNull(request.getId()) && 
+				nonNull(request.getSourceId()) && 
+				nonNull(request.getEndpoint()) && 
+				nonNull(request.getEndpoint().getId())) {
+			EndpointResponse response = ConnectorHelper.createResponse(request);
+			DryRunResult result = AConnectorFactory.eINSTANCE.createDryRunResult();
+			result.setEstRuntime(12);
+			result.setResultCount(1);
+			response.setResult(result);
+			System.out.println(String.format("Dry-Test  request %s to endpoint '%s'", request.getId(), request.getEndpoint().getUri()));
+			for (Parameter p : request.getParameter()) {
+				if (p instanceof JavaParameter jp) {
+					System.out.println(String.format("  - Java Parameter %s with name '%s' and type '%s' - value = '%s'", jp.getNumber(), jp.getName(), jp.getTypeString(), Objects.isNull(jp.getValue()) ? "<null>" : jp.getValue().toString()));
+				} else {
+					System.out.println(String.format("  - Parameter %s with name '%s'", p.getNumber(), p.getName()));
+				}
+			}
+			return response;
+		} else {
+			return ConnectorHelper.validateResponse(request);
+		}
 	}
 
 	/* 
@@ -125,20 +140,29 @@ public class OtherConnectorImpl implements AvatarConnector {
 	 */
 	@Override
 	public EndpointResponse executeRequest(EndpointRequest request) {
-		EndpointResponse response = connectorFactory.createEndpointResponse();
-		response.setId(request.getId());
-		response.setRequest(EcoreUtil.copy(request));
-		response.setSourceId(request.getSourceId());
-		response.setTimestamp(Instant.now().toEpochMilli());
-		System.out.println(String.format("Execute request %s to endpoint '%s'", request.getId(), request.getEndpoint().getUri()));
-		for (Parameter p : request.getParameter()) {
-			if (p instanceof JavaParameter jp) {
-				System.out.println(String.format("  - Java Parameter %s with name '%s' and type '%s' - value = '%s'", jp.getNumber(), jp.getName(), jp.getTypeString(), Objects.isNull(jp.getValue()) ? "<null>" : jp.getValue().toString()));
-			} else {
-				System.out.println(String.format("  - Parameter %s with name '%s'", p.getNumber(), p.getName()));
-			}
+		if (Objects.isNull(request)) {
+			throw new IllegalArgumentException("Request must not be null");
 		}
-		return response;
+		if (nonNull(request) && 
+				nonNull(request.getId()) && 
+				nonNull(request.getSourceId()) && 
+				nonNull(request.getEndpoint()) && 
+				nonNull(request.getEndpoint().getId())) {
+			EndpointResponse response = ConnectorHelper.createResponse(request);
+			EcoreResult result = AConnectorFactory.eINSTANCE.createEcoreResult();
+			response.setResult(result);
+			System.out.println(String.format("Execute  request %s to endpoint '%s'", request.getId(), request.getEndpoint().getUri()));
+			for (Parameter p : request.getParameter()) {
+				if (p instanceof JavaParameter jp) {
+					System.out.println(String.format("  - Java Parameter %s with name '%s' and type '%s' - value = '%s'", jp.getNumber(), jp.getName(), jp.getTypeString(), Objects.isNull(jp.getValue()) ? "<null>" : jp.getValue().toString()));
+				} else {
+					System.out.println(String.format("  - Parameter %s with name '%s'", p.getNumber(), p.getName()));
+				}
+			}
+			return response;
+		} else {
+			return ConnectorHelper.validateResponse(request);
+		}
 	}
 
 

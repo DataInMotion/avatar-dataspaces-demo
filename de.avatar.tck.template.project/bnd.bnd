@@ -1,0 +1,28 @@
+-workingset: common
+-resourceonly: true
+-sources: false
+
+-includeresource: resources
+
+Provide-Capability: \
+	${project-template-osgi-tck}
+
+project-template-osgi-tck:\
+	org.bndtools.template;\
+		org.bndtools.template	= project;\
+		name					= OSGi-Test/JUnit5 Integration TCK Test Project;\
+		category				= ${osgi-test-category};\
+		ranking:Double			= 999;\
+		engine					= mustache;\
+		dir						= osgi-tck;\
+		icon					= "${junit-icon}";\
+		help					= osgi-tck-help.xml;\
+		metaType				= osgi-tck-metatype.xml
+
+       
+Bundle-Name: Bnd project/workspace library for OSGi-Test and JUnit5 support
+Bundle-Description: Gecko OSGi tests with AssertJ, Mockito and JUnit5 Jupiter support as bndtools library
+
+dataurl: data:image/gif;base64
+junit-icon: ${dataurl},${base64;icons/junit.gif}
+osgi-test-category: ccc/OSGi-Test & JUnit5 Jupiter
