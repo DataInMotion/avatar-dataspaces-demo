@@ -7,6 +7,9 @@ Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.
 -workingset: provider
 
 -dependson: de.avatar.connector.isma
+
+-includeresource: \
+	tck/de.avatar.connector.api.tck.jar=${repo;de.avatar.connector.api.tck}
 	
 # sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
 -buildpath: \
@@ -17,6 +20,7 @@ Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.
 	de.avatar.connector.isma;version=snapshot
 	
 Bundle-Version: 1.0.0.SNAPSHOT
+Bundle-ClassPath: tck/de.avatar.connector.api.tck.jar,.
 
 # Sometimes without DynamicImport Mockito will not find certain classes
 #DynamicImport-Package: *
