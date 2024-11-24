@@ -106,5 +106,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//JavaResult/typeString"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//JavaResult/value"/>
     </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//SimpleResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//SimpleResult/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

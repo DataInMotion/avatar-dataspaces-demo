@@ -964,6 +964,52 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	int JAVA_RESULT_OPERATION_COUNT = RESPONSE_RESULT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.model.connector.impl.SimpleResultImpl <em>Simple Result</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.model.connector.impl.SimpleResultImpl
+	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getSimpleResult()
+	 * @generated
+	 */
+	int SIMPLE_RESULT = 14;
+
+	/**
+	 * The feature id for the '<em><b>Meta Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_RESULT__META_DATA = RESPONSE_RESULT__META_DATA;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_RESULT__VALUE = RESPONSE_RESULT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Simple Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_RESULT_FEATURE_COUNT = RESPONSE_RESULT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Simple Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_RESULT_OPERATION_COUNT = RESPONSE_RESULT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -971,7 +1017,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getProtocolType()
 	 * @generated
 	 */
-	int PROTOCOL_TYPE = 14;
+	int PROTOCOL_TYPE = 15;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.StatusType <em>Status Type</em>}' enum.
@@ -981,7 +1027,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getStatusType()
 	 * @generated
 	 */
-	int STATUS_TYPE = 15;
+	int STATUS_TYPE = 16;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.ResponseCode <em>Response Code</em>}' enum.
@@ -991,7 +1037,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getResponseCode()
 	 * @generated
 	 */
-	int RESPONSE_CODE = 16;
+	int RESPONSE_CODE = 17;
 
 	/**
 	 * The meta object id for the '<em>Java Throwable</em>' data type.
@@ -1001,7 +1047,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getJavaThrowable()
 	 * @generated
 	 */
-	int JAVA_THROWABLE = 17;
+	int JAVA_THROWABLE = 18;
 
 
 	/**
@@ -1651,6 +1697,27 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getJavaResult_Value();
 
 	/**
+	 * Returns the meta object for class '{@link de.avatar.model.connector.SimpleResult <em>Simple Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Simple Result</em>'.
+	 * @see de.avatar.model.connector.SimpleResult
+	 * @generated
+	 */
+	EClass getSimpleResult();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.SimpleResult#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see de.avatar.model.connector.SimpleResult#getValue()
+	 * @see #getSimpleResult()
+	 * @generated
+	 */
+	EAttribute getSimpleResult_Value();
+
+	/**
 	 * Returns the meta object for enum '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2221,6 +2288,24 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute JAVA_RESULT__VALUE = eINSTANCE.getJavaResult_Value();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.model.connector.impl.SimpleResultImpl <em>Simple Result</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.model.connector.impl.SimpleResultImpl
+		 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getSimpleResult()
+		 * @generated
+		 */
+		EClass SIMPLE_RESULT = eINSTANCE.getSimpleResult();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_RESULT__VALUE = eINSTANCE.getSimpleResult_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}' enum.

@@ -153,6 +153,15 @@ public interface AConnectorFactory extends EFactory {
 	JavaResult createJavaResult();
 
 	/**
+	 * Returns a new object of class '<em>Simple Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Simple Result</em>'.
+	 * @generated
+	 */
+	SimpleResult createSimpleResult();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

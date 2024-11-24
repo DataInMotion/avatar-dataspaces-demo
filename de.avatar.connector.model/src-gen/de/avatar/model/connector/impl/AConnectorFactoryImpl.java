@@ -81,6 +81,7 @@ public class AConnectorFactoryImpl extends EFactoryImpl implements AConnectorFac
 			case AConnectorPackage.ERROR_RESULT: return createErrorResult();
 			case AConnectorPackage.ECORE_RESULT: return createEcoreResult();
 			case AConnectorPackage.JAVA_RESULT: return createJavaResult();
+			case AConnectorPackage.SIMPLE_RESULT: return createSimpleResult();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -269,6 +270,17 @@ public class AConnectorFactoryImpl extends EFactoryImpl implements AConnectorFac
 	public JavaResult createJavaResult() {
 		JavaResultImpl javaResult = new JavaResultImpl();
 		return javaResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SimpleResult createSimpleResult() {
+		SimpleResultImpl simpleResult = new SimpleResultImpl();
+		return simpleResult;
 	}
 
 	/**

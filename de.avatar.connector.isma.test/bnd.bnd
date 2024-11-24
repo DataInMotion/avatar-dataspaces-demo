@@ -1,0 +1,20 @@
+Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.annotation.Testable;CONCRETE}
+
+-library: \
+	enableOSGi-Test,\
+	enable-emf
+	
+-workingset: provider
+	
+# sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
+-buildpath: \
+	org.osgi.framework;version=latest,\
+	de.avatar.connector.api.tck;version=project,\
+	de.avatar.connector.api;version=project,\
+	de.avatar.connector.model;version=project,\
+	de.avatar.connector.isma;version=project
+	
+Bundle-Version: 1.0.0.SNAPSHOT
+
+# Sometimes without DynamicImport Mockito will not find certain classes
+#DynamicImport-Package: *

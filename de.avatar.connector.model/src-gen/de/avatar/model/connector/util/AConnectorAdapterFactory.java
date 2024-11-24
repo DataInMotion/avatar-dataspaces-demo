@@ -135,6 +135,10 @@ public class AConnectorAdapterFactory extends AdapterFactoryImpl {
 				return createJavaResultAdapter();
 			}
 			@Override
+			public Adapter caseSimpleResult(SimpleResult object) {
+				return createSimpleResultAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -347,6 +351,20 @@ public class AConnectorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJavaResultAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.model.connector.SimpleResult <em>Simple Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.model.connector.SimpleResult
+	 * @generated
+	 */
+	public Adapter createSimpleResultAdapter() {
 		return null;
 	}
 

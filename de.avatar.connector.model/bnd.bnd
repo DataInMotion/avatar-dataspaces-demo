@@ -1,3 +1,4 @@
+src=${^src},src-gen
 # sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
 -library: enable-emf
 
@@ -7,7 +8,7 @@
 	model/avatar-connector.genmodel;\
 		generate=geckoEMF;\
 		genmodel=model/avatar-connector.genmodel;\
-		output=src
+		output=src-gen
 # Add this attribute to find some logging information
 #		logfile=test.log;\
 

@@ -31,6 +31,7 @@ import de.avatar.model.connector.ProtocolType;
 import de.avatar.model.connector.ResponseCode;
 import de.avatar.model.connector.ResponseMetaData;
 import de.avatar.model.connector.ResponseResult;
+import de.avatar.model.connector.SimpleResult;
 import de.avatar.model.connector.StatusType;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -147,6 +148,13 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 	 * @generated
 	 */
 	private EClass javaResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass simpleResultEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -845,6 +853,26 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 	 * @generated
 	 */
 	@Override
+	public EClass getSimpleResult() {
+		return simpleResultEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSimpleResult_Value() {
+		return (EAttribute)simpleResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getProtocolType() {
 		return protocolTypeEEnum;
 	}
@@ -982,6 +1010,9 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		createEAttribute(javaResultEClass, JAVA_RESULT__TYPE_STRING);
 		createEAttribute(javaResultEClass, JAVA_RESULT__VALUE);
 
+		simpleResultEClass = createEClass(SIMPLE_RESULT);
+		createEAttribute(simpleResultEClass, SIMPLE_RESULT__VALUE);
+
 		// Create enums
 		protocolTypeEEnum = createEEnum(PROTOCOL_TYPE);
 		statusTypeEEnum = createEEnum(STATUS_TYPE);
@@ -1028,6 +1059,7 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		errorResultEClass.getESuperTypes().add(this.getResponseResult());
 		ecoreResultEClass.getESuperTypes().add(this.getResponseResult());
 		javaResultEClass.getESuperTypes().add(this.getResponseResult());
+		simpleResultEClass.getESuperTypes().add(this.getResponseResult());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(connectorInfoEClass, ConnectorInfo.class, "ConnectorInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1106,6 +1138,9 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		initEClass(javaResultEClass, JavaResult.class, "JavaResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJavaResult_TypeString(), ecorePackage.getEString(), "typeString", null, 0, 1, JavaResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJavaResult_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, JavaResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(simpleResultEClass, SimpleResult.class, "SimpleResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSimpleResult_Value(), theEcorePackage.getEString(), "value", null, 0, 1, SimpleResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(protocolTypeEEnum, ProtocolType.class, "ProtocolType");
