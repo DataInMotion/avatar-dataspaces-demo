@@ -45,17 +45,19 @@ pipeline  {
                 sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connector"
             }
         }
-        stage('Avatar connector provider export') {
+        stage('Avatar connector provider and consumer export') {
             when {
                 branch 'main'
             }
             steps {
-                echo "I am building app on branch: ${env.GIT_BRANCH}"
+                echo "I am building consumer and provider apps on branch: ${env.GIT_BRANCH}"
 
                 sh "./gradlew :de.avatar.connector.isma:resolve.isma_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "./gradlew :de.avatar.connector.other:resolve.other_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew :de.avatar.connector.whiteboard:resolve.consumer --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "./gradlew :de.avatar.connector.isma:export.isma_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
                 sh "./gradlew :de.avatar.connector.other:export.other_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
+                sh "./gradlew :de.avatar.connector.whiteboard:export.consumer --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
             }
         }
 
@@ -64,16 +66,17 @@ pipeline  {
                 branch 'main'
             }
             steps  {
-                echo "I am preparing docker: ${env.GIT_BRANCH}"
+                echo "I am preparing docker builds: ${env.GIT_BRANCH}"
 
                 sh "./gradlew prepareDockerISMA --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "./gradlew prepareDockerOther --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew prepareDockerWhiteboard --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
 
             }
 
         }
 
-        stage('Docker ISMA Avatar connector provider Image build'){
+        stage('Docker Avatar ISMA connector provider Image build'){
             when {
                 branch 'main'
             }
@@ -89,7 +92,7 @@ pipeline  {
                             pushCredentialsId: 'dim-nexus'])
             }
         }
-        stage('Docker Other Avatar connector provider Image build'){
+        stage('Docker Avatar Other connector provider Image build'){
             when {
                 branch 'main'
             }
@@ -101,6 +104,22 @@ pipeline  {
                             cloud: 'docker',
                             tagsString: """devel.data-in-motion.biz:6000/scj/avatar-other-provider:latest
                                         devel.data-in-motion.biz:6000/scj/avatar-other-provider:0.1.0.${VERSION}""",
+                            pushOnSuccess: true,
+                            pushCredentialsId: 'dim-nexus'])
+            }
+        }
+        stage('Docker Avatar whiteboard connector Image build'){
+            when {
+                branch 'main'
+            }
+            steps  {
+                echo "I am building and publishing a docker image on branch: ${env.GIT_BRANCH}"
+
+                step([$class: 'DockerBuilderPublisher',
+                      dockerFileDirectory: 'docker/whiteboard',
+                            cloud: 'docker',
+                            tagsString: """devel.data-in-motion.biz:6000/scj/avatar-whiteboard:latest
+                                        devel.data-in-motion.biz:6000/scj/avatar-whiteboard:0.1.0.${VERSION}""",
                             pushOnSuccess: true,
                             pushCredentialsId: 'dim-nexus'])
             }

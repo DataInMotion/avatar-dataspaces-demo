@@ -29,5 +29,5 @@ EXPOSE 8080 8081 8082 8083 8084 8085 8090
 WORKDIR ${OPT_DIR}
 USER ${USERNAME}
 
-CMD ["java", "-Dgosh.args=--nointeractive", "-Dgecko.data.dir=/opt/avatar/runtime/data", "-Dgecko.conf.dir=/opt/avatar/runtime/etc", "-Dgecko.base.dir=/opt/avatar", "-Dgecko.log.dir=/opt/avatar/runtime/log", "-Dlogback.configurationFile=file:/opt/avatar/runtime/etc/logback.xml",  "-jar", "de.avatar.connectors.provider.jar"]
+CMD ["java", "-Dgosh.args=--nointeractive", "-Dgecko.data.dir=/opt/avatar/runtime/data", "-Dgecko.conf.dir=/opt/avatar/runtime/etc", "-Dgecko.base.dir=/opt/avatar", "-Dgecko.log.dir=/opt/avatar/runtime/log", "-Dlogback.configurationFile=file:/opt/avatar/runtime/etc/logback.xml",  "-jar", "de.avatar.connector.consumer.jar"]
 

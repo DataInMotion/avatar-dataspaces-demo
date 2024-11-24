@@ -33,3 +33,21 @@ task prepareDockerOther(){
 	    }
     }
 }
+
+task prepareDockerWhiteboard(){
+	def stageDir = file('whiteboard/content')
+	def runtimeDir = new File(stageDir, 'runtime')
+	doFirst {
+		stageDir.deleteDir()
+    }
+    doLast {
+		println "Prepare Docker build"
+		stageDir.mkdirs()
+	     // copy all necessary files to  build/docker/ dir
+    	copy {
+	        from new File("../de.avatar.connector.whiteboard/generated/distributions/executable/consumer.jar")
+	        into stageDir
+            rename("consumer.jar", "de.avatar.connector.consumer.jar")
+	    }
+    }
+}
