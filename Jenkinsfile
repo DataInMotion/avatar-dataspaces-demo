@@ -43,6 +43,7 @@ pipeline  {
                 sh "mkdir -p $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connector"
                 sh "rm -rf $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connector/*"
                 sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connector"
+                junit '**/generated/test-reports/testOSGi/*.xml'
             }
         }
         stage('Avatar connector provider and consumer export') {
