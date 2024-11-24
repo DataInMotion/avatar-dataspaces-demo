@@ -30,7 +30,7 @@ pipeline  {
             }
             steps {
                 echo "I am building on ${env.BRANCH_NAME}"
-                sh "./gradlew clean build release -Drelease.dir=$JENKINS_HOME/repo.gecko/release/de.avatar.connectors --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew clean build release -Drelease.dir=$JENKINS_HOME/repo.gecko/release/de.avatar.connector --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
             }
         }
         stage('Snapshot branch release') {
@@ -40,7 +40,7 @@ pipeline  {
             steps  {
                 echo "I am building on ${env.JOB_NAME}"
                 sh "./gradlew clean release --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "mkdir -p $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connectors"
+                sh "mkdir -p $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connector"
                 sh "rm -rf $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connector/*"
                 sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connector"
             }
@@ -52,8 +52,10 @@ pipeline  {
             steps {
                 echo "I am building app on branch: ${env.GIT_BRANCH}"
 
-                sh "./gradlew :de.avatar.connectors.demo.rsa.provider:resolve.provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew :de.avatar.connectors.demo.rsa.provider:export.provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
+                sh "./gradlew :de.avatar.connector.isma:resolve.isma_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew :de.avatar.connector.other:resolve.other_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew :de.avatar.connector.isma:export.isma_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
+                sh "./gradlew :de.avatar.connector.other:export.other_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
             }
         }
 
@@ -70,7 +72,7 @@ pipeline  {
 
         }
 
-        stage('Docker Avatar connector provider Image build'){
+        stage('Docker ISMA Avatar connector provider Image build'){
             when {
                 branch 'main'
             }
@@ -78,10 +80,26 @@ pipeline  {
                 echo "I am building and publishing a docker image on branch: ${env.GIT_BRANCH}"
 
                 step([$class: 'DockerBuilderPublisher',
-                      dockerFileDirectory: 'docker',
+                      dockerFileDirectory: 'docker/isma',
                             cloud: 'docker',
-                            tagsString: """devel.data-in-motion.biz:6000/scj/avatar-provider:latest
-                                        devel.data-in-motion.biz:6000/scj/avatar-provider:0.1.0.${VERSION}""",
+                            tagsString: """devel.data-in-motion.biz:6000/scj/avatar-isma-provider:latest
+                                        devel.data-in-motion.biz:6000/scj/avatar-isma-provider:0.1.0.${VERSION}""",
+                            pushOnSuccess: true,
+                            pushCredentialsId: 'dim-nexus'])
+            }
+        }
+        stage('Docker Other Avatar connector provider Image build'){
+            when {
+                branch 'main'
+            }
+            steps  {
+                echo "I am building and publishing a docker image on branch: ${env.GIT_BRANCH}"
+
+                step([$class: 'DockerBuilderPublisher',
+                      dockerFileDirectory: 'docker/other',
+                            cloud: 'docker',
+                            tagsString: """devel.data-in-motion.biz:6000/scj/avatar-other-provider:latest
+                                        devel.data-in-motion.biz:6000/scj/avatar-other-provider:0.1.0.${VERSION}""",
                             pushOnSuccess: true,
                             pushCredentialsId: 'dim-nexus'])
             }
