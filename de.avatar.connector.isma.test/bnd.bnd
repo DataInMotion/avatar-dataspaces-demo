@@ -5,6 +5,8 @@ Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.
 	enable-emf
 	
 -workingset: provider
+
+-dependson: de.avatar.connector.isma
 	
 # sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
 -buildpath: \
