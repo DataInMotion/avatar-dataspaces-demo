@@ -31,6 +31,7 @@ import de.avatar.model.connector.ConnectorMetric;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.JavaParameter;
+import de.avatar.model.connector.Parameter;
 import de.avatar.model.connector.StatusType;
 
 @Component(immediate = true, property = {
@@ -39,19 +40,19 @@ import de.avatar.model.connector.StatusType;
 		"com.paremus.dosgi.scope=global", 
 		"com.paremus.dosgi.target.clusters=DIMC", 
 		"com.paremus.dosgi.net.serialization=ecore",
-		"connector=isma.himsa"})
+"connector=isma.himsa"})
 public class ISMAConnectorImpl implements AvatarConnector {
-	
+
 	@Reference
 	private AConnectorFactory connectorFactory;
 	private long startTimestamp;
-	
+
 	@Activate
 	public void activate() {
 		System.out.println("Activate ISMA-Connector-Implementation");
 		startTimestamp = Instant.now().getEpochSecond();
 	}
-	
+
 	@Deactivate
 	public void deactivate() {
 		System.out.println("De-activate ISMA-Connector-Implementation");
@@ -108,8 +109,12 @@ public class ISMAConnectorImpl implements AvatarConnector {
 		response.setSourceId(request.getSourceId());
 		response.setTimestamp(Instant.now().toEpochMilli());
 		System.out.println(String.format("Dry-Test  request %s to endpoint '%s'", request.getId(), request.getEndpoint().getUri()));
-		for (JavaParameter p : request.getParameter()) {
-			System.out.println(String.format("  - Parameters %s with name '%s' and type '%s' - value = '%s'", p.getNumber(), p.getName(), p.getTypeString(), Objects.isNull(p.getValue()) ? "<null>" : p.getValue().toString()));
+		for (Parameter p : request.getParameter()) {
+			if (p instanceof JavaParameter jp) {
+				System.out.println(String.format("  - Java Parameter %s with name '%s' and type '%s' - value = '%s'", jp.getNumber(), jp.getName(), jp.getTypeString(), Objects.isNull(jp.getValue()) ? "<null>" : jp.getValue().toString()));
+			} else {
+				System.out.println(String.format("  - Parameter %s with name '%s'", p.getNumber(), p.getName()));
+			}
 		}
 		return response;
 	}
@@ -126,8 +131,12 @@ public class ISMAConnectorImpl implements AvatarConnector {
 		response.setSourceId(request.getSourceId());
 		response.setTimestamp(Instant.now().toEpochMilli());
 		System.out.println(String.format("Execute request %s to endpoint '%s'", request.getId(), request.getEndpoint().getUri()));
-		for (JavaParameter p : request.getParameter()) {
-			System.out.println(String.format("  - Parameters %s with name '%s' and type '%s' - value = '%s'", p.getNumber(), p.getName(), p.getTypeString(), Objects.isNull(p.getValue()) ? "<null>" : p.getValue().toString()));
+		for (Parameter p : request.getParameter()) {
+			if (p instanceof JavaParameter jp) {
+				System.out.println(String.format("  - Java Parameter %s with name '%s' and type '%s' - value = '%s'", jp.getNumber(), jp.getName(), jp.getTypeString(), Objects.isNull(jp.getValue()) ? "<null>" : jp.getValue().toString()));
+			} else {
+				System.out.println(String.format("  - Parameter %s with name '%s'", p.getNumber(), p.getName()));
+			}
 		}
 		return response;
 	}
