@@ -11,10 +11,10 @@ Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.
 # sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
 -buildpath: \
 	org.osgi.framework;version=latest,\
-	de.avatar.connector.api.tck;version=project,\
-	de.avatar.connector.api;version=project,\
-	de.avatar.connector.model;version=project,\
-	de.avatar.connector.isma;version=project
+	de.avatar.connector.api.tck;version=snapshot,\
+	de.avatar.connector.api;version=snapshot,\
+	de.avatar.connector.model;version=snapshot,\
+	de.avatar.connector.isma;version=snapshot
 	
 Bundle-Version: 1.0.0.SNAPSHOT
 
