@@ -66,7 +66,8 @@ pipeline  {
             steps  {
                 echo "I am preparing docker: ${env.GIT_BRANCH}"
 
-                sh "./gradlew prepareDocker --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew prepareDockerISMA --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew prepareDockerOther --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
 
             }
 

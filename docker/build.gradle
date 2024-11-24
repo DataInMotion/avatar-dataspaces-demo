@@ -1,9 +1,5 @@
-/*
- * build Gradle build script
- */
-
-task prepareDocker(){
-	def stageDir = file('content')
+task prepareDockerISMA(){
+	def stageDir = file('isma/content')
 	def runtimeDir = new File(stageDir, 'runtime')
 	doFirst {
 		stageDir.deleteDir()
@@ -13,9 +9,27 @@ task prepareDocker(){
 		stageDir.mkdirs()
 	     // copy all necessary files to  build/docker/ dir
     	copy {
-	        from new File("../de.avatar.connectors.demo.rsa.provider/generated/distributions/executable/provider.jar")
+	        from new File("../de.avatar.connector.isma/generated/distributions/executable/isma_provider.jar")
 	        into stageDir
-            rename("provider.jar", "de.avatar.connectors.provider.jar")
+            rename("isma_provider.jar", "de.avatar.connector.isma.provider.jar")
+	    }
+    }
+}
+
+task prepareDockerOther(){
+	def stageDir = file('other/content')
+	def runtimeDir = new File(stageDir, 'runtime')
+	doFirst {
+		stageDir.deleteDir()
+    }
+    doLast {
+		println "Prepare Docker build"
+		stageDir.mkdirs()
+	     // copy all necessary files to  build/docker/ dir
+    	copy {
+	        from new File("../de.avatar.connector.other/generated/distributions/executable/other_provider.jar")
+	        into stageDir
+            rename("other_provider.jar", "de.avatar.connector.other.provider.jar")
 	    }
     }
 }
