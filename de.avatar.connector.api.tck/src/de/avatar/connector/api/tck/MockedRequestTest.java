@@ -89,7 +89,7 @@ public class MockedRequestTest {
 	 * @param connectorAware
 	 */
 	@Test
-	public void testNullDryRunRequest(@InjectService ServiceAware<AvatarConnector> connectorAware) {
+	public void testMockNullDryRunRequest(@InjectService ServiceAware<AvatarConnector> connectorAware) {
 		when(connectorMock.dryRequest(isNull(EndpointRequest.class))).thenThrow(IllegalArgumentException.class);
 		assertFalse(connectorAware.isEmpty());
 		AvatarConnector connector = connectorAware.getService();
@@ -101,7 +101,7 @@ public class MockedRequestTest {
 	 * @param connectorAware
 	 */
 	@Test
-	public void testNullExecuteRequest(@InjectService ServiceAware<AvatarConnector> connectorAware) {
+	public void testMockNullExecuteRequest(@InjectService ServiceAware<AvatarConnector> connectorAware) {
 		when(connectorMock.executeRequest(isNull(EndpointRequest.class))).thenThrow(IllegalArgumentException.class);
 		assertFalse(connectorAware.isEmpty());
 		AvatarConnector connector = connectorAware.getService();
@@ -113,7 +113,7 @@ public class MockedRequestTest {
 	 * @param connectorAware
 	 */
 	@Test
-	public void testInvalidDryRunRequest(@InjectService ServiceAware<AvatarConnector> connectorAware) {
+	public void testMockInvalidDryRunRequest(@InjectService ServiceAware<AvatarConnector> connectorAware) {
 		when(connectorMock.dryRequest(any(EndpointRequest.class))).then((im)-> {
 			EndpointRequest r = im.getArgument(0);
 			if (nonNull(r) && 
@@ -168,7 +168,7 @@ public class MockedRequestTest {
 	 * @param connectorAware
 	 */
 	@Test
-	public void testInvalidExecuteRequest(@InjectService ServiceAware<AvatarConnector> connectorAware) {
+	public void testMockInvalidExecuteRequest(@InjectService ServiceAware<AvatarConnector> connectorAware) {
 		when(connectorMock.executeRequest(any(EndpointRequest.class))).then((im)-> {
 			EndpointRequest r = im.getArgument(0);
 			if (nonNull(r) && 
@@ -223,7 +223,7 @@ public class MockedRequestTest {
 	 * @param connectorAware
 	 */
 	@Test
-	public void testValidDryRunResponse(@InjectService ServiceAware<AvatarConnector> connectorAware) {
+	public void testMockValidDryRunResponse(@InjectService ServiceAware<AvatarConnector> connectorAware) {
 		when(connectorMock.dryRequest(any(EndpointRequest.class))).then((im)-> {
 			EndpointRequest r = im.getArgument(0);
 			if (nonNull(r) && 
@@ -274,7 +274,7 @@ public class MockedRequestTest {
 	 * @param connectorAware
 	 */
 	@Test
-	public void testValidExecuteResponse(@InjectService ServiceAware<AvatarConnector> connectorAware) {
+	public void testMockValidExecuteResponse(@InjectService ServiceAware<AvatarConnector> connectorAware) {
 		when(connectorMock.executeRequest(any(EndpointRequest.class))).then((im)-> {
 			EndpointRequest r = im.getArgument(0);
 			if (nonNull(r) && 
@@ -323,7 +323,7 @@ public class MockedRequestTest {
 	 * @param connectorAware
 	 */
 	@Test
-	public void testConnectorInfo(@InjectService ServiceAware<AvatarConnector> connectorAware) {
+	public void testMockConnectorInfo(@InjectService ServiceAware<AvatarConnector> connectorAware) {
 		ConnectorInfo info = AConnectorFactory.eINSTANCE.createConnectorInfo();
 		info.setId("connector-id");
 		info.setVersion((short)2);
@@ -340,7 +340,7 @@ public class MockedRequestTest {
 	 * @param connectorAware
 	 */
 	@Test
-	public void testGetEndpoints(@InjectService ServiceAware<AvatarConnector> connectorAware) {
+	public void testMockGetEndpoints(@InjectService ServiceAware<AvatarConnector> connectorAware) {
 		ConnectorEndpoint ep = AConnectorFactory.eINSTANCE.createConnectorEndpoint();
 		ep.setId("test-endpoint");
 		when(connectorMock.getEndpoints()).thenReturn(Collections.singletonList(ep));
