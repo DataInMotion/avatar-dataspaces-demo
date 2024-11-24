@@ -15,3 +15,5 @@ src=${^src},src-gen
 	com.paremus.dosgi.net;version=latest,\
 	de.avatar.connector.model;version=snapshot,\
 	io.netty.buffer
+	
+-workingset: common

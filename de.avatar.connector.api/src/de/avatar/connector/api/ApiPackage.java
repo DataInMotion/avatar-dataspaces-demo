@@ -39,7 +39,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-@EPackage(uri = ApiPackage.eNS_URI, genModel = "/model/avatar-connector-api.genmodel", genModelSourceLocations = {"model/avatar-connector-api.genmodel","de.avatar.connector.api.model/model/avatar-connector-api.genmodel"}, ecore="/model/avatar-connector-api.ecore", ecoreSourceLocations="/model/avatar-connector-api.ecore")
+@EPackage(uri = ApiPackage.eNS_URI, genModel = "/model/avatar-connector-api.genmodel", genModelSourceLocations = {"model/avatar-connector-api.genmodel","de.avatar.connector.api/model/avatar-connector-api.genmodel"}, ecore="/model/avatar-connector-api.ecore", ecoreSourceLocations="/model/avatar-connector-api.ecore")
 public interface ApiPackage extends org.eclipse.emf.ecore.EPackage {
 	/**
 	 * The package name.

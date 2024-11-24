@@ -5,5 +5,7 @@ Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'
 
 -buildpath: \
 	org.osgi.service.cm;version=latest,\
-	de.avatar.connector.api.model;version=snapshot,\
+	de.avatar.connector.api;version=snapshot,\
 	de.avatar.connector.model;version=snapshot
+	
+-workingset: provider

@@ -16,12 +16,14 @@
 # Bundle Annotations		
 -includeresource.model: model=model
 
-Bundle-Version: 1.0.0.SNAPSHOT
+-workingset: connector
 
 -buildpath: \
 	de.avatar.connector.model;version=snapshot
 
-Export-Package: de.avatar.connector.api
 -privatepackage: \
 	de.avatar.connector.api.impl,\
 	de.avatar.connector.api.util
+
+Bundle-Version: 1.0.0.SNAPSHOT
+Export-Package: de.avatar.connector.api
