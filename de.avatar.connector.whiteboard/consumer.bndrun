@@ -48,11 +48,11 @@
 	org.eclipse.emf.ecore.xmi;version='[2.36.0,2.36.1)',\
 	org.gecko.emf.osgi.api;version='[6.2.0,6.2.1)',\
 	org.osgi.service.event;version='[1.4.1,1.4.2)',\
-	de.avatar.connector.api.model;version=snapshot,\
 	de.avatar.connector.model;version=snapshot,\
 	de.avatar.connector.whiteboard;version=snapshot,\
 	org.gecko.emf.osgi.component.minimal;version='[6.2.0,6.2.1)',\
-	org.osgi.service.cm;version='[1.6.1,1.6.2)'
+	org.osgi.service.cm;version='[1.6.1,1.6.2)',\
+	de.avatar.connector.api;version=snapshot
 
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
