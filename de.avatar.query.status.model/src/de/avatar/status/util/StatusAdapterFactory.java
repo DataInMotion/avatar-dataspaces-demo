@@ -1,8 +1,19 @@
 /**
+ * Copyright (c) 2012 - 2024 Data In Motion and others.
+ * All rights reserved. 
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Data In Motion - initial API and implementation
  */
-package de.avatar.query.status.model.status.util;
+package de.avatar.status.util;
 
-import de.avatar.query.status.model.status.*;
+import de.avatar.status.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -16,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see de.avatar.query.status.model.status.StatusPackage
+ * @see de.avatar.status.StatusPackage
  * @generated
  */
 public class StatusAdapterFactory extends AdapterFactoryImpl {
@@ -68,8 +79,12 @@ public class StatusAdapterFactory extends AdapterFactoryImpl {
 	protected StatusSwitch<Adapter> modelSwitch =
 		new StatusSwitch<Adapter>() {
 			@Override
-			public Adapter caseExample(Example object) {
-				return createExampleAdapter();
+			public Adapter caseQueryStatus(QueryStatus object) {
+				return createQueryStatusAdapter();
+			}
+			@Override
+			public Adapter caseStatus(Status object) {
+				return createStatusAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -92,16 +107,30 @@ public class StatusAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.status.model.status.Example <em>Example</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.QueryStatus <em>Query Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.status.model.status.Example
+	 * @see de.avatar.status.QueryStatus
 	 * @generated
 	 */
-	public Adapter createExampleAdapter() {
+	public Adapter createQueryStatusAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.Status <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.status.Status
+	 * @generated
+	 */
+	public Adapter createStatusAdapter() {
 		return null;
 	}
 

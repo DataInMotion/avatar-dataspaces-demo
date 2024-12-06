@@ -1,8 +1,19 @@
 /*
+ * Copyright (c) 2012 - 2024 Data In Motion and others.
+ * All rights reserved. 
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Data In Motion - initial API and implementation
  */
-package de.avatar.query.status.model.status.util;
+package de.avatar.status.util;
 
-import de.avatar.query.status.model.status.StatusPackage;
+import de.avatar.status.StatusPackage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +30,7 @@ import org.gecko.emf.osgi.constants.EMFNamespaces;
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see de.avatar.query.status.model.status.util.StatusResourceImpl
+ * @see de.avatar.status.util.StatusResourceImpl
  * @generated
  */
 public class StatusResourceFactoryImpl extends ResourceFactoryImpl {

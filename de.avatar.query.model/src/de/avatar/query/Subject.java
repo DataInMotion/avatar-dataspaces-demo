@@ -17,6 +17,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.gecko.emf.utilities.FeaturePath;
+
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
@@ -39,7 +41,7 @@ import org.osgi.annotation.versioning.ProviderType;
 public interface Subject extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Feature Path</b></em>' containment reference list.
-	 * The list contents are of type {@link de.avatar.query.FeaturePath}.
+	 * The list contents are of type {@link org.gecko.emf.utilities.FeaturePath}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Feature Path</em>' containment reference list.

@@ -1,13 +1,24 @@
 /*
+ * Copyright (c) 2012 - 2024 Data In Motion and others.
+ * All rights reserved. 
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Data In Motion - initial API and implementation
  */
-package de.avatar.query.status.model.status.configuration;
+package de.avatar.status.configuration;
 
-import de.avatar.query.status.model.status.StatusFactory;
-import de.avatar.query.status.model.status.StatusPackage;
+import de.avatar.status.StatusFactory;
+import de.avatar.status.StatusPackage;
 
-import de.avatar.query.status.model.status.impl.StatusPackageImpl;
+import de.avatar.status.impl.StatusPackageImpl;
 
-import de.avatar.query.status.model.status.util.StatusResourceFactoryImpl;
+import de.avatar.status.util.StatusResourceFactoryImpl;
 
 import java.util.Hashtable;
 
@@ -35,10 +46,10 @@ import org.osgi.service.condition.Condition;
  * @generated
  */
 @Component(name = "StatusConfigurator")
-@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.avatar.query.status.model.status.util.StatusResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource$Factory\"" , "uses:=\"org.eclipse.emf.ecore.resource,de.avatar.query.status.model.status.util\"" })
-@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.avatar.query.status.model.status.StatusFactory, org.eclipse.emf.ecore.EFactory\"" , "uses:=\"org.eclipse.emf.ecore,de.avatar.query.status.model.status\"" })
-@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.avatar.query.status.model.status.StatusPackage, org.eclipse.emf.ecore.EPackage\"" , "uses:=\"org.eclipse.emf.ecore,de.avatar.query.status.model.status\"" })
-@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"org.gecko.emf.osgi.configurator.EPackageConfigurator\"" , "uses:=\"org.eclipse.emf.ecore,de.avatar.query.status.model.status\"" })
+@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.avatar.status.util.StatusResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource$Factory\"" , "uses:=\"org.eclipse.emf.ecore.resource,de.avatar.status.util\"" })
+@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.avatar.status.StatusFactory, org.eclipse.emf.ecore.EFactory\"" , "uses:=\"org.eclipse.emf.ecore,de.avatar.status\"" })
+@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.avatar.status.StatusPackage, org.eclipse.emf.ecore.EPackage\"" , "uses:=\"org.eclipse.emf.ecore,de.avatar.status\"" })
+@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"org.gecko.emf.osgi.configurator.EPackageConfigurator\"" , "uses:=\"org.eclipse.emf.ecore,de.avatar.status\"" })
 @Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"org.osgi.service.condition.Condition\"" , "uses:=org.osgi.service.condition" })
 public class StatusConfigurationComponent {
 	

@@ -15,6 +15,8 @@ package de.avatar.query;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.gecko.emf.utilities.FeaturePath;
+
 import org.osgi.annotation.versioning.ProviderType;
 
 /**

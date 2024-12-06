@@ -91,7 +91,6 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 			case QueryPackage.BOOL_COMPERATOR: return createBoolComperator();
 			case QueryPackage.IS_BOOL: return createIsBool();
 			case QueryPackage.SORT_ENTITY: return createSortEntity();
-			case QueryPackage.FEATURE_PATH: return createFeaturePath();
 			case QueryPackage.IS_LITERAL: return createIsLiteral();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -379,17 +378,6 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	public SortEntity createSortEntity() {
 		SortEntityImpl sortEntity = new SortEntityImpl();
 		return sortEntity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public FeaturePath createFeaturePath() {
-		FeaturePathImpl featurePath = new FeaturePathImpl();
-		return featurePath;
 	}
 
 	/**

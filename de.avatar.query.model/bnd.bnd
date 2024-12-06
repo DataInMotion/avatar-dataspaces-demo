@@ -18,5 +18,8 @@
 # Bundle Annotations		
 -includeresource.model: model=model
 
+-buildpath: \
+	org.gecko.emf.util.model;version=latest
+
 Bundle-Version: 1.0.0.SNAPSHOT
 

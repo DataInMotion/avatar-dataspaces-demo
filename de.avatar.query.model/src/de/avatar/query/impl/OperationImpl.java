@@ -13,7 +13,6 @@
  */
 package de.avatar.query.impl;
 
-import de.avatar.query.FeaturePath;
 import de.avatar.query.Operation;
 import de.avatar.query.QueryPackage;
 
@@ -29,6 +28,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.gecko.emf.utilities.FeaturePath;
 
 /**
  * <!-- begin-user-doc -->

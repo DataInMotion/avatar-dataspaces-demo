@@ -243,15 +243,6 @@ public interface QueryFactory extends EFactory {
 	SortEntity createSortEntity();
 
 	/**
-	 * Returns a new object of class '<em>Feature Path</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Feature Path</em>'.
-	 * @generated
-	 */
-	FeaturePath createFeaturePath();
-
-	/**
 	 * Returns a new object of class '<em>Is Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

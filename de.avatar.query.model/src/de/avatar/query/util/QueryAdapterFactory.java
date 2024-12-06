@@ -203,10 +203,6 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 				return createSortEntityAdapter();
 			}
 			@Override
-			public Adapter caseFeaturePath(FeaturePath object) {
-				return createFeaturePathAdapter();
-			}
-			@Override
 			public Adapter caseOperation(Operation object) {
 				return createOperationAdapter();
 			}
@@ -669,20 +665,6 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSortEntityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.FeaturePath <em>Feature Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.avatar.query.FeaturePath
-	 * @generated
-	 */
-	public Adapter createFeaturePathAdapter() {
 		return null;
 	}
 

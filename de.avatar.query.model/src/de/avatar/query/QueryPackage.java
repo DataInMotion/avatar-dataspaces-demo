@@ -534,7 +534,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getOperation()
 	 * @generated
 	 */
-	int OPERATION = 32;
+	int OPERATION = 31;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' reference.
@@ -1936,70 +1936,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int SORT_ENTITY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.FeaturePathImpl <em>Feature Path</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.FeaturePathImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getFeaturePath()
-	 * @generated
-	 */
-	int FEATURE_PATH = 31;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE_PATH__NAME = 0;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE_PATH__FEATURE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Feature Path</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE_PATH_FEATURE_COUNT = 2;
-
-	/**
-	 * The operation id for the '<em>Get Value</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE_PATH___GET_VALUE__EOBJECT = 0;
-
-	/**
-	 * The operation id for the '<em>Is Valid</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE_PATH___IS_VALID__EOBJECT = 1;
-
-	/**
-	 * The number of operations of the '<em>Feature Path</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE_PATH_OPERATION_COUNT = 2;
-
-	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.EnumComperatorImpl <em>Enum Comperator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2007,7 +1943,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getEnumComperator()
 	 * @generated
 	 */
-	int ENUM_COMPERATOR = 33;
+	int ENUM_COMPERATOR = 32;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -2071,7 +2007,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsLiteral()
 	 * @generated
 	 */
-	int IS_LITERAL = 34;
+	int IS_LITERAL = 33;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -2135,7 +2071,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getSortOrder()
 	 * @generated
 	 */
-	int SORT_ORDER = 35;
+	int SORT_ORDER = 34;
 
 
 	/**
@@ -2676,58 +2612,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EReference getSortEntity_FeaturePath();
-
-	/**
-	 * Returns the meta object for class '{@link de.avatar.query.FeaturePath <em>Feature Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Feature Path</em>'.
-	 * @see de.avatar.query.FeaturePath
-	 * @generated
-	 */
-	EClass getFeaturePath();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.FeaturePath#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.avatar.query.FeaturePath#getName()
-	 * @see #getFeaturePath()
-	 * @generated
-	 */
-	EAttribute getFeaturePath_Name();
-
-	/**
-	 * Returns the meta object for the reference list '{@link de.avatar.query.FeaturePath#getFeature <em>Feature</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Feature</em>'.
-	 * @see de.avatar.query.FeaturePath#getFeature()
-	 * @see #getFeaturePath()
-	 * @generated
-	 */
-	EReference getFeaturePath_Feature();
-
-	/**
-	 * Returns the meta object for the '{@link de.avatar.query.FeaturePath#getValue(org.eclipse.emf.ecore.EObject) <em>Get Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Value</em>' operation.
-	 * @see de.avatar.query.FeaturePath#getValue(org.eclipse.emf.ecore.EObject)
-	 * @generated
-	 */
-	EOperation getFeaturePath__GetValue__EObject();
-
-	/**
-	 * Returns the meta object for the '{@link de.avatar.query.FeaturePath#isValid(org.eclipse.emf.ecore.EObject) <em>Is Valid</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Valid</em>' operation.
-	 * @see de.avatar.query.FeaturePath#isValid(org.eclipse.emf.ecore.EObject)
-	 * @generated
-	 */
-	EOperation getFeaturePath__IsValid__EObject();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.Operation <em>Operation</em>}'.
@@ -3312,48 +3196,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference SORT_ENTITY__FEATURE_PATH = eINSTANCE.getSortEntity_FeaturePath();
-
-		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.FeaturePathImpl <em>Feature Path</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.FeaturePathImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getFeaturePath()
-		 * @generated
-		 */
-		EClass FEATURE_PATH = eINSTANCE.getFeaturePath();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FEATURE_PATH__NAME = eINSTANCE.getFeaturePath_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Feature</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FEATURE_PATH__FEATURE = eINSTANCE.getFeaturePath_Feature();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Value</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation FEATURE_PATH___GET_VALUE__EOBJECT = eINSTANCE.getFeaturePath__GetValue__EObject();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Valid</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation FEATURE_PATH___IS_VALID__EOBJECT = eINSTANCE.getFeaturePath__IsValid__EObject();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.OperationImpl <em>Operation</em>}' class.

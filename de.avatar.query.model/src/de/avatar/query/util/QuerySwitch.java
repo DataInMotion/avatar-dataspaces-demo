@@ -307,12 +307,6 @@ public class QuerySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.FEATURE_PATH: {
-				FeaturePath featurePath = (FeaturePath)theEObject;
-				T result = caseFeaturePath(featurePath);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case QueryPackage.OPERATION: {
 				Operation operation = (Operation)theEObject;
 				T result = caseOperation(operation);
@@ -800,21 +794,6 @@ public class QuerySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSortEntity(SortEntity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Feature Path</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Feature Path</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFeaturePath(FeaturePath object) {
 		return null;
 	}
 
