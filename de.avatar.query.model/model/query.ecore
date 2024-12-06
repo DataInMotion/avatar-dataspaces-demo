@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="query" nsURI="http://avatar-project.de/query/1.0.0" nsPrefix="query">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="oSGiCompatible" value="true"/>
+    <details key="basePackage" value="de.avatar"/>
+    <details key="resource" value="XMI"/>
+    <details key="copyrightText" value="Copyright (c) 2012 - 2024 Data In Motion and others.&#xA;All rights reserved. &#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;    Data In Motion - initial API and implementation"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Query">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" upperBound="-1"
+        eType="#//Operator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subject" upperBound="-1"
+        eType="#//Subject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groupBy" eType="#//FeaturePath"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sortBy" upperBound="-1"
+        eType="#//SortEntity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distinct" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="limit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="skip" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Subject" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featurePath" upperBound="-1"
+        eType="#//FeaturePath" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WitheListedNoun" eSuperTypes="#//Subject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BlackListedNoun" eSuperTypes="#//Subject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operator" abstract="true">
+    <eOperations name="execute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comperator" lowerBound="1"
+        eType="#//Comperator" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Chaining" abstract="true" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//Chaining"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Not" eSuperTypes="#//Chaining"/>
+  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//Chaining"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringOperation" abstract="true" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ToLowerCase" eSuperTypes="#//StringOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ToUpperCase" eSuperTypes="#//StringOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Comperator" abstract="true">
+    <eOperations name="compare" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suitableForType" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featurePath" eType="#//FeaturePath"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringComperator" abstract="true" eSuperTypes="#//Comperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EndsWith" eSuperTypes="#//StringComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StartWith" eSuperTypes="#//StringComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="#//StringComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Like" eSuperTypes="#//StringComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DateComperator" abstract="true" eSuperTypes="#//Comperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IsBefore" eSuperTypes="#//DateComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IsAfter" eSuperTypes="#//DateComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IsInRange" eSuperTypes="#//DateComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NumberComperator" abstract="true" eSuperTypes="#//Comperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Lt" eSuperTypes="#//NumberComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Lte" eSuperTypes="#//NumberComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Gte" eSuperTypes="#//NumberComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Gt" eSuperTypes="#//NumberComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Eq" eSuperTypes="#//NumberComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BoolComperator" eSuperTypes="#//Comperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IsBool" eSuperTypes="#//BoolComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SortEntity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sortOrder" lowerBound="1"
+        eType="#//SortOrder" defaultValueLiteral="DESC"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featurePath" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SortOrder">
+    <eLiterals name="DESC"/>
+    <eLiterals name="ASC" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeaturePath">
+    <eOperations name="getValue" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%java.util.List%>&lt;Object> result = &lt;%org.gecko.emf.util.helper.UtilModelHelper%>.getFeaturePathValue(this, object);&#xA;if (result != null) {&#xA;&#x9;return &lt;%org.eclipse.emf.common.util.ECollections%>.asEList(result);&#xA;}&#xA;return &lt;%org.eclipse.emf.common.util.ECollections%>.emptyEList();"/>
+      </eAnnotations>
+      <eParameters name="object" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    </eOperations>
+    <eOperations name="isValid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if (object == null) {&#xA;&#x9;return false;&#xA;}&#xA;return &lt;%org.gecko.emf.util.helper.UtilModelHelper%>.validateFeaturePath(this, object.eClass());"/>
+      </eAnnotations>
+      <eParameters name="object" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation" abstract="true">
+    <eOperations name="execute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featurePath" eType="#//FeaturePath"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suitableForType" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumComperator" abstract="true" eSuperTypes="#//Comperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IsLiteral" eSuperTypes="#//EnumComperator"/>
+</ecore:EPackage>
