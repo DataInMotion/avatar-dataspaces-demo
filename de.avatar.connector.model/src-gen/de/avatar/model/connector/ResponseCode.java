@@ -73,6 +73,16 @@ public enum ResponseCode implements Enumerator {
 	TIMEOUT(3, "TIMEOUT", "TIMEOUT"),
 
 	/**
+	 * The '<em><b>PENDING</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PENDING_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PENDING(4, "PENDING", "PENDING"),
+
+	/**
 	 * The '<em><b>OTHER</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,6 +137,17 @@ public enum ResponseCode implements Enumerator {
 	public static final int TIMEOUT_VALUE = 3;
 
 	/**
+	 * The '<em><b>PENDING</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PENDING
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PENDING_VALUE = 4;
+
+	/**
 	 * The '<em><b>OTHER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,6 +170,7 @@ public enum ResponseCode implements Enumerator {
 			ERROR,
 			NO_CONTENT,
 			TIMEOUT,
+			PENDING,
 			OTHER,
 		};
 
@@ -210,6 +232,7 @@ public enum ResponseCode implements Enumerator {
 			case ERROR_VALUE: return ERROR;
 			case NO_CONTENT_VALUE: return NO_CONTENT;
 			case TIMEOUT_VALUE: return TIMEOUT;
+			case PENDING_VALUE: return PENDING;
 			case OTHER_VALUE: return OTHER;
 		}
 		return null;

@@ -127,6 +127,10 @@ public class AConnectorAdapterFactory extends AdapterFactoryImpl {
 				return createErrorResultAdapter();
 			}
 			@Override
+			public Adapter casePendingResult(PendingResult object) {
+				return createPendingResultAdapter();
+			}
+			@Override
 			public Adapter caseEcoreResult(EcoreResult object) {
 				return createEcoreResultAdapter();
 			}
@@ -137,6 +141,10 @@ public class AConnectorAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseSimpleResult(SimpleResult object) {
 				return createSimpleResultAdapter();
+			}
+			@Override
+			public Adapter caseConnectorPendingResult(ConnectorPendingResult object) {
+				return createConnectorPendingResultAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -327,6 +335,20 @@ public class AConnectorAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.model.connector.PendingResult <em>Pending Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.model.connector.PendingResult
+	 * @generated
+	 */
+	public Adapter createPendingResultAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.avatar.model.connector.EcoreResult <em>Ecore Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -365,6 +387,20 @@ public class AConnectorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSimpleResultAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.model.connector.ConnectorPendingResult <em>Connector Pending Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.model.connector.ConnectorPendingResult
+	 * @generated
+	 */
+	public Adapter createConnectorPendingResultAdapter() {
 		return null;
 	}
 

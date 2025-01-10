@@ -79,9 +79,11 @@ public class AConnectorFactoryImpl extends EFactoryImpl implements AConnectorFac
 			case AConnectorPackage.RESPONSE_META_DATA: return createResponseMetaData();
 			case AConnectorPackage.DRY_RUN_RESULT: return createDryRunResult();
 			case AConnectorPackage.ERROR_RESULT: return createErrorResult();
+			case AConnectorPackage.PENDING_RESULT: return createPendingResult();
 			case AConnectorPackage.ECORE_RESULT: return createEcoreResult();
 			case AConnectorPackage.JAVA_RESULT: return createJavaResult();
 			case AConnectorPackage.SIMPLE_RESULT: return createSimpleResult();
+			case AConnectorPackage.CONNECTOR_PENDING_RESULT: return createConnectorPendingResult();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -256,6 +258,17 @@ public class AConnectorFactoryImpl extends EFactoryImpl implements AConnectorFac
 	 * @generated
 	 */
 	@Override
+	public PendingResult createPendingResult() {
+		PendingResultImpl pendingResult = new PendingResultImpl();
+		return pendingResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EcoreResult createEcoreResult() {
 		EcoreResultImpl ecoreResult = new EcoreResultImpl();
 		return ecoreResult;
@@ -281,6 +294,17 @@ public class AConnectorFactoryImpl extends EFactoryImpl implements AConnectorFac
 	public SimpleResult createSimpleResult() {
 		SimpleResultImpl simpleResult = new SimpleResultImpl();
 		return simpleResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ConnectorPendingResult createConnectorPendingResult() {
+		ConnectorPendingResultImpl connectorPendingResult = new ConnectorPendingResultImpl();
+		return connectorPendingResult;
 	}
 
 	/**

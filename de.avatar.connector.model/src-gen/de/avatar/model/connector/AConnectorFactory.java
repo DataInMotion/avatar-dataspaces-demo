@@ -135,6 +135,15 @@ public interface AConnectorFactory extends EFactory {
 	ErrorResult createErrorResult();
 
 	/**
+	 * Returns a new object of class '<em>Pending Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pending Result</em>'.
+	 * @generated
+	 */
+	PendingResult createPendingResult();
+
+	/**
 	 * Returns a new object of class '<em>Ecore Result</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -160,6 +169,15 @@ public interface AConnectorFactory extends EFactory {
 	 * @generated
 	 */
 	SimpleResult createSimpleResult();
+
+	/**
+	 * Returns a new object of class '<em>Connector Pending Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Connector Pending Result</em>'.
+	 * @generated
+	 */
+	ConnectorPendingResult createConnectorPendingResult();
 
 	/**
 	 * Returns the package supported by this factory.

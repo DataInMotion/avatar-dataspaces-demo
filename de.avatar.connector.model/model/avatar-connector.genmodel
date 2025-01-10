@@ -29,6 +29,7 @@
       <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/ERROR"/>
       <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/NO_CONTENT"/>
       <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/TIMEOUT"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/PENDING"/>
       <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/OTHER"/>
     </genEnums>
     <genDataTypes ecoreDataType="avatar-connector.ecore#//JavaThrowable"/>
@@ -99,6 +100,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ErrorResult/errorText"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ErrorResult/throwable"/>
     </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//PendingResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//PendingResult/estRuntime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//PendingResult/connectorPendingResult"/>
+    </genClasses>
     <genClasses ecoreClass="avatar-connector.ecore#//EcoreResult">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//EcoreResult/value"/>
     </genClasses>
@@ -108,6 +113,11 @@
     </genClasses>
     <genClasses ecoreClass="avatar-connector.ecore#//SimpleResult">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//SimpleResult/value"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//ConnectorPendingResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorPendingResult/connectorId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorPendingResult/connectorProviderId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorPendingResult/responseCode"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -863,6 +863,61 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	int ERROR_RESULT_OPERATION_COUNT = RESPONSE_RESULT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.model.connector.impl.PendingResultImpl <em>Pending Result</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.model.connector.impl.PendingResultImpl
+	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getPendingResult()
+	 * @generated
+	 */
+	int PENDING_RESULT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Meta Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_RESULT__META_DATA = RESPONSE_RESULT__META_DATA;
+
+	/**
+	 * The feature id for the '<em><b>Est Runtime</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_RESULT__EST_RUNTIME = RESPONSE_RESULT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Connector Pending Result</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_RESULT__CONNECTOR_PENDING_RESULT = RESPONSE_RESULT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Pending Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_RESULT_FEATURE_COUNT = RESPONSE_RESULT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Pending Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_RESULT_OPERATION_COUNT = RESPONSE_RESULT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.impl.EcoreResultImpl <em>Ecore Result</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -870,7 +925,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getEcoreResult()
 	 * @generated
 	 */
-	int ECORE_RESULT = 12;
+	int ECORE_RESULT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Meta Data</b></em>' containment reference.
@@ -916,7 +971,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getJavaResult()
 	 * @generated
 	 */
-	int JAVA_RESULT = 13;
+	int JAVA_RESULT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Meta Data</b></em>' containment reference.
@@ -971,7 +1026,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getSimpleResult()
 	 * @generated
 	 */
-	int SIMPLE_RESULT = 14;
+	int SIMPLE_RESULT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Meta Data</b></em>' containment reference.
@@ -1010,6 +1065,61 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	int SIMPLE_RESULT_OPERATION_COUNT = RESPONSE_RESULT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.model.connector.impl.ConnectorPendingResultImpl <em>Connector Pending Result</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.model.connector.impl.ConnectorPendingResultImpl
+	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getConnectorPendingResult()
+	 * @generated
+	 */
+	int CONNECTOR_PENDING_RESULT = 16;
+
+	/**
+	 * The feature id for the '<em><b>Connector Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_PENDING_RESULT__CONNECTOR_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Connector Provider Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_PENDING_RESULT__CONNECTOR_PROVIDER_ID = 1;
+
+	/**
+	 * The feature id for the '<em><b>Response Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_PENDING_RESULT__RESPONSE_CODE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Connector Pending Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_PENDING_RESULT_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Connector Pending Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_PENDING_RESULT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1017,7 +1127,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getProtocolType()
 	 * @generated
 	 */
-	int PROTOCOL_TYPE = 15;
+	int PROTOCOL_TYPE = 17;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.StatusType <em>Status Type</em>}' enum.
@@ -1027,7 +1137,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getStatusType()
 	 * @generated
 	 */
-	int STATUS_TYPE = 16;
+	int STATUS_TYPE = 18;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.ResponseCode <em>Response Code</em>}' enum.
@@ -1037,7 +1147,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getResponseCode()
 	 * @generated
 	 */
-	int RESPONSE_CODE = 17;
+	int RESPONSE_CODE = 19;
 
 	/**
 	 * The meta object id for the '<em>Java Throwable</em>' data type.
@@ -1047,7 +1157,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getJavaThrowable()
 	 * @generated
 	 */
-	int JAVA_THROWABLE = 18;
+	int JAVA_THROWABLE = 20;
 
 
 	/**
@@ -1644,6 +1754,38 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getErrorResult_Throwable();
 
 	/**
+	 * Returns the meta object for class '{@link de.avatar.model.connector.PendingResult <em>Pending Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pending Result</em>'.
+	 * @see de.avatar.model.connector.PendingResult
+	 * @generated
+	 */
+	EClass getPendingResult();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.PendingResult#getEstRuntime <em>Est Runtime</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Est Runtime</em>'.
+	 * @see de.avatar.model.connector.PendingResult#getEstRuntime()
+	 * @see #getPendingResult()
+	 * @generated
+	 */
+	EAttribute getPendingResult_EstRuntime();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.avatar.model.connector.PendingResult#getConnectorPendingResult <em>Connector Pending Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Connector Pending Result</em>'.
+	 * @see de.avatar.model.connector.PendingResult#getConnectorPendingResult()
+	 * @see #getPendingResult()
+	 * @generated
+	 */
+	EReference getPendingResult_ConnectorPendingResult();
+
+	/**
 	 * Returns the meta object for class '{@link de.avatar.model.connector.EcoreResult <em>Ecore Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1716,6 +1858,49 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EAttribute getSimpleResult_Value();
+
+	/**
+	 * Returns the meta object for class '{@link de.avatar.model.connector.ConnectorPendingResult <em>Connector Pending Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Connector Pending Result</em>'.
+	 * @see de.avatar.model.connector.ConnectorPendingResult
+	 * @generated
+	 */
+	EClass getConnectorPendingResult();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.ConnectorPendingResult#getConnectorId <em>Connector Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Connector Id</em>'.
+	 * @see de.avatar.model.connector.ConnectorPendingResult#getConnectorId()
+	 * @see #getConnectorPendingResult()
+	 * @generated
+	 */
+	EAttribute getConnectorPendingResult_ConnectorId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.ConnectorPendingResult#getConnectorProviderId <em>Connector Provider Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Connector Provider Id</em>'.
+	 * @see de.avatar.model.connector.ConnectorPendingResult#getConnectorProviderId()
+	 * @see #getConnectorPendingResult()
+	 * @generated
+	 */
+	EAttribute getConnectorPendingResult_ConnectorProviderId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.ConnectorPendingResult#getResponseCode <em>Response Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Response Code</em>'.
+	 * @see de.avatar.model.connector.ConnectorPendingResult#getResponseCode()
+	 * @see #getConnectorPendingResult()
+	 * @generated
+	 */
+	EAttribute getConnectorPendingResult_ResponseCode();
 
 	/**
 	 * Returns the meta object for enum '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}'.
@@ -2246,6 +2431,32 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute ERROR_RESULT__THROWABLE = eINSTANCE.getErrorResult_Throwable();
 
 		/**
+		 * The meta object literal for the '{@link de.avatar.model.connector.impl.PendingResultImpl <em>Pending Result</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.model.connector.impl.PendingResultImpl
+		 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getPendingResult()
+		 * @generated
+		 */
+		EClass PENDING_RESULT = eINSTANCE.getPendingResult();
+
+		/**
+		 * The meta object literal for the '<em><b>Est Runtime</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PENDING_RESULT__EST_RUNTIME = eINSTANCE.getPendingResult_EstRuntime();
+
+		/**
+		 * The meta object literal for the '<em><b>Connector Pending Result</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PENDING_RESULT__CONNECTOR_PENDING_RESULT = eINSTANCE.getPendingResult_ConnectorPendingResult();
+
+		/**
 		 * The meta object literal for the '{@link de.avatar.model.connector.impl.EcoreResultImpl <em>Ecore Result</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2306,6 +2517,40 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute SIMPLE_RESULT__VALUE = eINSTANCE.getSimpleResult_Value();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.model.connector.impl.ConnectorPendingResultImpl <em>Connector Pending Result</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.model.connector.impl.ConnectorPendingResultImpl
+		 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getConnectorPendingResult()
+		 * @generated
+		 */
+		EClass CONNECTOR_PENDING_RESULT = eINSTANCE.getConnectorPendingResult();
+
+		/**
+		 * The meta object literal for the '<em><b>Connector Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONNECTOR_PENDING_RESULT__CONNECTOR_ID = eINSTANCE.getConnectorPendingResult_ConnectorId();
+
+		/**
+		 * The meta object literal for the '<em><b>Connector Provider Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONNECTOR_PENDING_RESULT__CONNECTOR_PROVIDER_ID = eINSTANCE.getConnectorPendingResult_ConnectorProviderId();
+
+		/**
+		 * The meta object literal for the '<em><b>Response Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONNECTOR_PENDING_RESULT__RESPONSE_CODE = eINSTANCE.getConnectorPendingResult_ResponseCode();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}' enum.

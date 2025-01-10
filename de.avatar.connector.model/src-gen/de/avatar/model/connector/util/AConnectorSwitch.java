@@ -153,6 +153,13 @@ public class AConnectorSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AConnectorPackage.PENDING_RESULT: {
+				PendingResult pendingResult = (PendingResult)theEObject;
+				T result = casePendingResult(pendingResult);
+				if (result == null) result = caseResponseResult(pendingResult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AConnectorPackage.ECORE_RESULT: {
 				EcoreResult ecoreResult = (EcoreResult)theEObject;
 				T result = caseEcoreResult(ecoreResult);
@@ -171,6 +178,12 @@ public class AConnectorSwitch<T> extends Switch<T> {
 				SimpleResult simpleResult = (SimpleResult)theEObject;
 				T result = caseSimpleResult(simpleResult);
 				if (result == null) result = caseResponseResult(simpleResult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AConnectorPackage.CONNECTOR_PENDING_RESULT: {
+				ConnectorPendingResult connectorPendingResult = (ConnectorPendingResult)theEObject;
+				T result = caseConnectorPendingResult(connectorPendingResult);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -359,6 +372,21 @@ public class AConnectorSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pending Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pending Result</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePendingResult(PendingResult object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Ecore Result</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -400,6 +428,21 @@ public class AConnectorSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSimpleResult(SimpleResult object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connector Pending Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connector Pending Result</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnectorPendingResult(ConnectorPendingResult object) {
 		return null;
 	}
 

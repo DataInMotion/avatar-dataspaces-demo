@@ -18,6 +18,7 @@ import de.avatar.model.connector.AConnectorPackage;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.ConnectorMetric;
+import de.avatar.model.connector.ConnectorPendingResult;
 import de.avatar.model.connector.DryRunResult;
 import de.avatar.model.connector.EcoreParameter;
 import de.avatar.model.connector.EcoreResult;
@@ -27,6 +28,7 @@ import de.avatar.model.connector.ErrorResult;
 import de.avatar.model.connector.JavaParameter;
 import de.avatar.model.connector.JavaResult;
 import de.avatar.model.connector.Parameter;
+import de.avatar.model.connector.PendingResult;
 import de.avatar.model.connector.ProtocolType;
 import de.avatar.model.connector.ResponseCode;
 import de.avatar.model.connector.ResponseMetaData;
@@ -140,6 +142,13 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass pendingResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass ecoreResultEClass = null;
 
 	/**
@@ -155,6 +164,13 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 	 * @generated
 	 */
 	private EClass simpleResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass connectorPendingResultEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -803,6 +819,36 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 	 * @generated
 	 */
 	@Override
+	public EClass getPendingResult() {
+		return pendingResultEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPendingResult_EstRuntime() {
+		return (EAttribute)pendingResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPendingResult_ConnectorPendingResult() {
+		return (EReference)pendingResultEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEcoreResult() {
 		return ecoreResultEClass;
 	}
@@ -865,6 +911,46 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 	@Override
 	public EAttribute getSimpleResult_Value() {
 		return (EAttribute)simpleResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConnectorPendingResult() {
+		return connectorPendingResultEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConnectorPendingResult_ConnectorId() {
+		return (EAttribute)connectorPendingResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConnectorPendingResult_ConnectorProviderId() {
+		return (EAttribute)connectorPendingResultEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConnectorPendingResult_ResponseCode() {
+		return (EAttribute)connectorPendingResultEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1003,6 +1089,10 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		createEAttribute(errorResultEClass, ERROR_RESULT__ERROR_TEXT);
 		createEAttribute(errorResultEClass, ERROR_RESULT__THROWABLE);
 
+		pendingResultEClass = createEClass(PENDING_RESULT);
+		createEAttribute(pendingResultEClass, PENDING_RESULT__EST_RUNTIME);
+		createEReference(pendingResultEClass, PENDING_RESULT__CONNECTOR_PENDING_RESULT);
+
 		ecoreResultEClass = createEClass(ECORE_RESULT);
 		createEReference(ecoreResultEClass, ECORE_RESULT__VALUE);
 
@@ -1012,6 +1102,11 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 
 		simpleResultEClass = createEClass(SIMPLE_RESULT);
 		createEAttribute(simpleResultEClass, SIMPLE_RESULT__VALUE);
+
+		connectorPendingResultEClass = createEClass(CONNECTOR_PENDING_RESULT);
+		createEAttribute(connectorPendingResultEClass, CONNECTOR_PENDING_RESULT__CONNECTOR_ID);
+		createEAttribute(connectorPendingResultEClass, CONNECTOR_PENDING_RESULT__CONNECTOR_PROVIDER_ID);
+		createEAttribute(connectorPendingResultEClass, CONNECTOR_PENDING_RESULT__RESPONSE_CODE);
 
 		// Create enums
 		protocolTypeEEnum = createEEnum(PROTOCOL_TYPE);
@@ -1057,6 +1152,7 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		ecoreParameterEClass.getESuperTypes().add(this.getParameter());
 		dryRunResultEClass.getESuperTypes().add(this.getResponseResult());
 		errorResultEClass.getESuperTypes().add(this.getResponseResult());
+		pendingResultEClass.getESuperTypes().add(this.getResponseResult());
 		ecoreResultEClass.getESuperTypes().add(this.getResponseResult());
 		javaResultEClass.getESuperTypes().add(this.getResponseResult());
 		simpleResultEClass.getESuperTypes().add(this.getResponseResult());
@@ -1132,6 +1228,10 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		initEAttribute(getErrorResult_ErrorText(), ecorePackage.getEString(), "errorText", null, 0, 1, ErrorResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getErrorResult_Throwable(), this.getJavaThrowable(), "throwable", null, 0, 1, ErrorResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(pendingResultEClass, PendingResult.class, "PendingResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPendingResult_EstRuntime(), ecorePackage.getELong(), "estRuntime", null, 0, 1, PendingResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPendingResult_ConnectorPendingResult(), this.getConnectorPendingResult(), null, "connectorPendingResult", null, 0, -1, PendingResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(ecoreResultEClass, EcoreResult.class, "EcoreResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEcoreResult_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, EcoreResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1141,6 +1241,11 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 
 		initEClass(simpleResultEClass, SimpleResult.class, "SimpleResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSimpleResult_Value(), theEcorePackage.getEString(), "value", null, 0, 1, SimpleResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(connectorPendingResultEClass, ConnectorPendingResult.class, "ConnectorPendingResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConnectorPendingResult_ConnectorId(), theEcorePackage.getEString(), "connectorId", null, 1, 1, ConnectorPendingResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnectorPendingResult_ConnectorProviderId(), theEcorePackage.getEString(), "connectorProviderId", null, 1, 1, ConnectorPendingResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnectorPendingResult_ResponseCode(), this.getResponseCode(), "responseCode", null, 1, 1, ConnectorPendingResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(protocolTypeEEnum, ProtocolType.class, "ProtocolType");
@@ -1163,6 +1268,7 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		addEEnumLiteral(responseCodeEEnum, ResponseCode.ERROR);
 		addEEnumLiteral(responseCodeEEnum, ResponseCode.NO_CONTENT);
 		addEEnumLiteral(responseCodeEEnum, ResponseCode.TIMEOUT);
+		addEEnumLiteral(responseCodeEEnum, ResponseCode.PENDING);
 		addEEnumLiteral(responseCodeEEnum, ResponseCode.OTHER);
 
 		// Initialize data types
@@ -1211,6 +1317,18 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 			   "resource", "XMI",
 			   "contentTypeIdentifier", "connector#1.0",
 			   "copyrightText", "Copyright (c) 2012 - 2024 Data In Motion and others.\nAll rights reserved. \n\nThis program and the accompanying materials are made\navailable under the terms of the Eclipse Public License 2.0\nwhich is available at https://www.eclipse.org/legal/epl-2.0/\n\nSPDX-License-Identifier: EPL-2.0\n\nContributors:\n    Data In Motion - initial API and implementation"
+		   });
+		addAnnotation
+		  (getPendingResult_EstRuntime(),
+		   source,
+		   new String[] {
+			   "documentation", "Estimating remaining time to complete the request"
+		   });
+		addAnnotation
+		  (getPendingResult_ConnectorPendingResult(),
+		   source,
+		   new String[] {
+			   "documentation", "Current status of each connector for this request (e.g. one of the connectors already completed the request, another one is still pending, another gave an error, and so on)"
 		   });
 	}
 
