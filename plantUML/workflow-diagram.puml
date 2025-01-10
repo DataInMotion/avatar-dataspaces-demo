@@ -1,0 +1,60 @@
+@startuml
+actor QueryUI as UI
+actor Whiteboard as WB
+actor RequestCacheService as RCS
+actor Connectors as Cs
+
+== Send a Dry Run Request: ==
+
+autonumber
+UI->WB: send a query dry run request
+activate UI
+activate WB
+WB->Cs: send dry run request to all connectors
+activate Cs
+Cs->WB: send dry run responses
+deactivate Cs
+note right of WB
+Aggregate responses
+end note
+WB->UI: send Dry Run Response
+deactivate WB
+deactivate UI
+
+== Send a Complete Request: ==
+
+autonumber
+UI->WB: send a query request
+activate UI
+activate WB
+WB->RCS: check whether the request is cached
+	activate RCS
+	RCS->WB: result
+	deactivate RCS
+	alt request is cached
+	WB->Cs: send status request to all connectors
+	activate Cs
+	Cs->WB: send status responses
+	deactivate Cs
+	note right of WB
+	Aggregate responses
+	end note
+	WB->UI: send status response
+	else else
+	WB->RCS: cache request
+	activate RCS
+	RCS->RCS: cache
+	deactivate RCS
+	WB->Cs: send complete request to all connectors
+	activate Cs
+	Cs->WB: send responses
+	deactivate Cs
+	note right of WB
+	Aggregate responses
+	end note
+	WB->UI: send response
+	end
+deactivate WB
+deactivate UI
+
+@enduml
