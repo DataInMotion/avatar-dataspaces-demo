@@ -6,10 +6,12 @@
 
 -library: \
 	geckoEMF,\
+	jakartaREST,\
 	geckoOSGi-Test,\
 	geckoDIMC,\
 	geckoEMFUtil,\
 	geckoSearch
+	
 	
 # Needed because we enabled library 'gecko-dimc' 	
 mavenCentral: false

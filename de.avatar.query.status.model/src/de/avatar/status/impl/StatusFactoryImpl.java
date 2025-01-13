@@ -68,6 +68,13 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case StatusPackage.QUERY_REQUEST: return createQueryRequest();
+			case StatusPackage.QUERY_RESPONSE: return createQueryResponse();
+			case StatusPackage.DETAILED_QUERY_STATUS: return createDetailedQueryStatus();
+			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS: return createSingleConnectorQueryStatus();
+			case StatusPackage.STATUS_RESULT: return createStatusResult();
+			case StatusPackage.PENDING_STATUS_RESULT: return createPendingStatusResult();
+			case StatusPackage.ERROR_STATUS_RESULT: return createErrorStatusResult();
 			case StatusPackage.QUERY_STATUS: return createQueryStatus();
 			case StatusPackage.STATUS: return createStatus();
 			default:
@@ -85,6 +92,8 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 		switch (eDataType.getClassifierID()) {
 			case StatusPackage.RESULT_FORMAT_TYPE:
 				return createResultFormatTypeFromString(eDataType, initialValue);
+			case StatusPackage.QUERY_STATUS_TYPE:
+				return createQueryStatusTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -100,9 +109,88 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 		switch (eDataType.getClassifierID()) {
 			case StatusPackage.RESULT_FORMAT_TYPE:
 				return convertResultFormatTypeToString(eDataType, instanceValue);
+			case StatusPackage.QUERY_STATUS_TYPE:
+				return convertQueryStatusTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public QueryRequest createQueryRequest() {
+		QueryRequestImpl queryRequest = new QueryRequestImpl();
+		return queryRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public QueryResponse createQueryResponse() {
+		QueryResponseImpl queryResponse = new QueryResponseImpl();
+		return queryResponse;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DetailedQueryStatus createDetailedQueryStatus() {
+		DetailedQueryStatusImpl detailedQueryStatus = new DetailedQueryStatusImpl();
+		return detailedQueryStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SingleConnectorQueryStatus createSingleConnectorQueryStatus() {
+		SingleConnectorQueryStatusImpl singleConnectorQueryStatus = new SingleConnectorQueryStatusImpl();
+		return singleConnectorQueryStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StatusResult createStatusResult() {
+		StatusResultImpl statusResult = new StatusResultImpl();
+		return statusResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public PendingStatusResult createPendingStatusResult() {
+		PendingStatusResultImpl pendingStatusResult = new PendingStatusResultImpl();
+		return pendingStatusResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ErrorStatusResult createErrorStatusResult() {
+		ErrorStatusResultImpl errorStatusResult = new ErrorStatusResultImpl();
+		return errorStatusResult;
 	}
 
 	/**
@@ -144,6 +232,26 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 	 * @generated
 	 */
 	public String convertResultFormatTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QueryStatusType createQueryStatusTypeFromString(EDataType eDataType, String initialValue) {
+		QueryStatusType result = QueryStatusType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertQueryStatusTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

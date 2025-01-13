@@ -36,6 +36,69 @@ public interface StatusFactory extends EFactory {
 	StatusFactory eINSTANCE = de.avatar.status.impl.StatusFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Query Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Query Request</em>'.
+	 * @generated
+	 */
+	QueryRequest createQueryRequest();
+
+	/**
+	 * Returns a new object of class '<em>Query Response</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Query Response</em>'.
+	 * @generated
+	 */
+	QueryResponse createQueryResponse();
+
+	/**
+	 * Returns a new object of class '<em>Detailed Query Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Detailed Query Status</em>'.
+	 * @generated
+	 */
+	DetailedQueryStatus createDetailedQueryStatus();
+
+	/**
+	 * Returns a new object of class '<em>Single Connector Query Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Single Connector Query Status</em>'.
+	 * @generated
+	 */
+	SingleConnectorQueryStatus createSingleConnectorQueryStatus();
+
+	/**
+	 * Returns a new object of class '<em>Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Result</em>'.
+	 * @generated
+	 */
+	StatusResult createStatusResult();
+
+	/**
+	 * Returns a new object of class '<em>Pending Status Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pending Status Result</em>'.
+	 * @generated
+	 */
+	PendingStatusResult createPendingStatusResult();
+
+	/**
+	 * Returns a new object of class '<em>Error Status Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Error Status Result</em>'.
+	 * @generated
+	 */
+	ErrorStatusResult createErrorStatusResult();
+
+	/**
 	 * Returns a new object of class '<em>Query Status</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

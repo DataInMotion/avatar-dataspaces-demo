@@ -77,6 +77,50 @@ public class StatusSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case StatusPackage.QUERY_REQUEST: {
+				QueryRequest queryRequest = (QueryRequest)theEObject;
+				T result = caseQueryRequest(queryRequest);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StatusPackage.QUERY_RESPONSE: {
+				QueryResponse queryResponse = (QueryResponse)theEObject;
+				T result = caseQueryResponse(queryResponse);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StatusPackage.DETAILED_QUERY_STATUS: {
+				DetailedQueryStatus detailedQueryStatus = (DetailedQueryStatus)theEObject;
+				T result = caseDetailedQueryStatus(detailedQueryStatus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS: {
+				SingleConnectorQueryStatus singleConnectorQueryStatus = (SingleConnectorQueryStatus)theEObject;
+				T result = caseSingleConnectorQueryStatus(singleConnectorQueryStatus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StatusPackage.STATUS_RESULT: {
+				StatusResult statusResult = (StatusResult)theEObject;
+				T result = caseStatusResult(statusResult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StatusPackage.PENDING_STATUS_RESULT: {
+				PendingStatusResult pendingStatusResult = (PendingStatusResult)theEObject;
+				T result = casePendingStatusResult(pendingStatusResult);
+				if (result == null) result = caseStatusResult(pendingStatusResult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StatusPackage.ERROR_STATUS_RESULT: {
+				ErrorStatusResult errorStatusResult = (ErrorStatusResult)theEObject;
+				T result = caseErrorStatusResult(errorStatusResult);
+				if (result == null) result = caseStatusResult(errorStatusResult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case StatusPackage.QUERY_STATUS: {
 				QueryStatus queryStatus = (QueryStatus)theEObject;
 				T result = caseQueryStatus(queryStatus);
@@ -92,6 +136,111 @@ public class StatusSwitch<T> extends Switch<T> {
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Query Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Query Request</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseQueryRequest(QueryRequest object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Query Response</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Query Response</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseQueryResponse(QueryResponse object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Detailed Query Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Detailed Query Status</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDetailedQueryStatus(DetailedQueryStatus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Single Connector Query Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Single Connector Query Status</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSingleConnectorQueryStatus(SingleConnectorQueryStatus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Result</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStatusResult(StatusResult object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pending Status Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pending Status Result</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePendingStatusResult(PendingStatusResult object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Error Status Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Error Status Result</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseErrorStatusResult(ErrorStatusResult object) {
+		return null;
 	}
 
 	/**

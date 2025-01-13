@@ -1,14 +1,18 @@
 @startuml
 actor QueryUI as UI
+actor RestResource as RR
 actor Whiteboard as WB
 actor RequestCacheService as RCS
 actor Connectors as Cs
+actor AvatarGeneraror as AG
 
 == Send a Dry Run Request: ==
 
 autonumber
-UI->WB: send a query dry run request
+UI->RR: send a dry run request
 activate UI
+activate RR
+RR->WB: send the dry run request
 activate WB
 WB->Cs: send dry run request to all connectors
 activate Cs
@@ -17,44 +21,68 @@ deactivate Cs
 note right of WB
 Aggregate responses
 end note
-WB->UI: send Dry Run Response
+WB->RR: send aggregated response
 deactivate WB
+RR->UI: send dry run response
+deactivate RR
 deactivate UI
 
 == Send a Complete Request: ==
 
 autonumber
-UI->WB: send a query request
+UI->RR: send a query request
 activate UI
+activate RR
+RR->WB: send a query request
 activate WB
-WB->RCS: check whether the request is cached
-	activate RCS
-	RCS->WB: result
-	deactivate RCS
-	alt request is cached
-	WB->Cs: send status request to all connectors
-	activate Cs
-	Cs->WB: send status responses
-	deactivate Cs
-	note right of WB
-	Aggregate responses
-	end note
-	WB->UI: send status response
-	else else
-	WB->RCS: cache request
-	activate RCS
-	RCS->RCS: cache
-	deactivate RCS
-	WB->Cs: send complete request to all connectors
-	activate Cs
-	Cs->WB: send responses
-	deactivate Cs
-	note right of WB
-	Aggregate responses
-	end note
-	WB->UI: send response
-	end
+WB->RCS: cache the request
+activate RCS
+RCS->RCS: do the cache
+deactivate RCS
+WB->Cs: send request to all connectors
+activate Cs
+Cs->WB: send status responses
+deactivate Cs
+note right of WB
+Aggregate responses
+end note
+WB->RR: send response (pending status)
 deactivate WB
+RR->UI: send response (pending status)
+deactivate RR
+deactivate UI
+
+== Send a Status Request: ==
+
+autonumber
+UI->RR: send a status request
+activate UI 
+activate RR
+RR->WB: send a status request
+activate WB
+WB->RCS: retrieve the request from cache
+activate RCS
+RCS->WB: return cached request
+deactivate RCS
+WB->Cs: send status request to pending connectors
+activate Cs
+Cs->WB: send status response
+deactivate Cs
+WB->RCS: update status in cache
+activate RCS
+RCS->RCS: do status update
+deactivate RCS
+WB->AG: send response for connector that are done
+activate AG
+AG->AG: aggregate response
+deactivate AG
+note right of WB
+Aggregate responses
+end note
+WB->RR: send status response 
+deactivate WB
+RR->UI: send status response
+deactivate RR
 deactivate UI
 
 @enduml

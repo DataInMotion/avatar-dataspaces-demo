@@ -23,8 +23,8 @@
         eType="#//ConnectorEndpoint" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metric" eType="#//ConnectorMetric"
         containment="true" eOpposite="#//ConnectorMetric/connector" eKeys="#//ConnectorMetric/id"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="connectorModel" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"
-        eKeys="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/nsURI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectorModel" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"
+        eKeys="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/nsURI"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectorMetric">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -46,8 +46,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mediaType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connector" lowerBound="1"
         eType="#//ConnectorInfo"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modelPackage" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"
-        eKeys="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/nsURI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelPackage" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"
+        eKeys="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/nsURI"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ProtocolType">
     <eLiterals name="OTHER" value="50"/>
@@ -97,7 +97,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EcoreParameter" eSuperTypes="#//Parameter">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResponseCode">
@@ -138,7 +138,7 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EcoreResult" eSuperTypes="#//ResponseResult">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JavaResult" eSuperTypes="#//ResponseResult">
@@ -147,13 +147,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaThrowable" instanceClassName="java.lang.Throwable"/>
   <eClassifiers xsi:type="ecore:EClass" name="SimpleResult" eSuperTypes="#//ResponseResult">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectorPendingResult">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectorId" lowerBound="1"
-        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectorProviderId" lowerBound="1"
-        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="responseCode" lowerBound="1"
         eType="#//ResponseCode"/>
   </eClassifiers>

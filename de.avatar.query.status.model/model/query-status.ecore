@@ -11,6 +11,59 @@
     <details key="basePackage" value="de.avatar"/>
     <details key="resource" value="XMI"/>
   </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="ResultFormatType">
+    <eLiterals name="JSON"/>
+    <eLiterals name="CSV" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QueryRequest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requestId" lowerBound="1"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="consumerId" lowerBound="1"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Identifier for whoever did the request"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query" lowerBound="1" eType="ecore:EClass ../../de.avatar.query.model/model/query.ecore#//Query"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="srcUri" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentType" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QueryResponse">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requestId" lowerBound="1"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//QueryStatusType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="detailedStatus" eType="#//DetailedQueryStatus"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="QueryStatusType">
+    <eLiterals name="SUCCESS"/>
+    <eLiterals name="ERROR" value="1"/>
+    <eLiterals name="NO_CONTENT" value="2"/>
+    <eLiterals name="TIMEOUT" value="3"/>
+    <eLiterals name="PENDING" value="4"/>
+    <eLiterals name="OTHER" value="50"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DetailedQueryStatus">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singleConnectorQueryStatus"
+        upperBound="-1" eType="#//SingleConnectorQueryStatus" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleConnectorQueryStatus">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectorId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectorName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statusResult" eType="#//StatusResult"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StatusResult">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//QueryStatusType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PendingStatusResult" eSuperTypes="#//StatusResult">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="estRuntime" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ErrorStatusResult" eSuperTypes="#//StatusResult">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="errorMessage" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QueryStatus" eSuperTypes="#//Status">
     <eStructuralFeatures xsi:type="ecore:EReference" name="query" lowerBound="1" eType="ecore:EClass ../../de.avatar.query.model/model/query.ecore#//Query"
         containment="true"/>
@@ -36,9 +89,5 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="changed" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="response" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//EndpointResponse"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ResultFormatType">
-    <eLiterals name="JSON"/>
-    <eLiterals name="CSV" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

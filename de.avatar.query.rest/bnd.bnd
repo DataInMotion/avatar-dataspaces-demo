@@ -1,0 +1,18 @@
+-library: \
+	enableJakartaREST,\
+	enable-emf
+
+buildpath:  \
+	org.osgi.service.component.annotations;version=latest,\
+	org.osgi.service.http.whiteboard;version=latest,\
+	org.gecko.emf.rest.jakartars;version=latest,\
+	org.gecko.emf.json;version=latest,\
+	org.gecko.emf.util.model
+
+
+Bundle-Version: 1.0.0.SNAPSHOT
+Private-Package: de.avatar.query.rest
+-buildpath: \
+	de.avatar.connector.model;version=snapshot,\
+	de.avatar.connector.whiteboard;version=snapshot,\
+	de.avatar.query.status.model;version=snapshot

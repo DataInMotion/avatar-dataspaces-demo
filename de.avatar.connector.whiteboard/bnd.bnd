@@ -10,7 +10,8 @@
 	org.osgi.service.event;version=latest,\
 	org.osgi.service.remoteserviceadmin;version=latest,\
 	de.avatar.connector.api;version=project,\
-	de.avatar.connector.model;version=project
+	de.avatar.connector.model;version=project,\
+	de.avatar.query.status.model
 	
 -workingset: connector
 	

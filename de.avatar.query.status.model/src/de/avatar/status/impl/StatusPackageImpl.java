@@ -17,11 +17,19 @@ import de.avatar.model.connector.AConnectorPackage;
 
 import de.avatar.query.QueryPackage;
 
+import de.avatar.status.DetailedQueryStatus;
+import de.avatar.status.ErrorStatusResult;
+import de.avatar.status.PendingStatusResult;
+import de.avatar.status.QueryRequest;
+import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatus;
+import de.avatar.status.QueryStatusType;
 import de.avatar.status.ResultFormatType;
+import de.avatar.status.SingleConnectorQueryStatus;
 import de.avatar.status.Status;
 import de.avatar.status.StatusFactory;
 import de.avatar.status.StatusPackage;
+import de.avatar.status.StatusResult;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -46,6 +54,55 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass queryRequestEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass queryResponseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass detailedQueryStatusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass singleConnectorQueryStatusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass statusResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pendingStatusResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass errorStatusResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass queryStatusEClass = null;
 
 	/**
@@ -61,6 +118,13 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 	 * @generated
 	 */
 	private EEnum resultFormatTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum queryStatusTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -126,6 +190,226 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(StatusPackage.eNS_URI, theStatusPackage);
 		return theStatusPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getQueryRequest() {
+		return queryRequestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getQueryRequest_RequestId() {
+		return (EAttribute)queryRequestEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getQueryRequest_ConsumerId() {
+		return (EAttribute)queryRequestEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getQueryRequest_Query() {
+		return (EReference)queryRequestEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getQueryRequest_SrcUri() {
+		return (EAttribute)queryRequestEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getQueryRequest_ContentType() {
+		return (EAttribute)queryRequestEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getQueryResponse() {
+		return queryResponseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getQueryResponse_RequestId() {
+		return (EAttribute)queryResponseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getQueryResponse_Status() {
+		return (EAttribute)queryResponseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getQueryResponse_DetailedStatus() {
+		return (EReference)queryResponseEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDetailedQueryStatus() {
+		return detailedQueryStatusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDetailedQueryStatus_SingleConnectorQueryStatus() {
+		return (EReference)detailedQueryStatusEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSingleConnectorQueryStatus() {
+		return singleConnectorQueryStatusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSingleConnectorQueryStatus_ConnectorId() {
+		return (EAttribute)singleConnectorQueryStatusEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSingleConnectorQueryStatus_ConnectorName() {
+		return (EAttribute)singleConnectorQueryStatusEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSingleConnectorQueryStatus_StatusResult() {
+		return (EReference)singleConnectorQueryStatusEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStatusResult() {
+		return statusResultEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStatusResult_Status() {
+		return (EAttribute)statusResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPendingStatusResult() {
+		return pendingStatusResultEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPendingStatusResult_EstRuntime() {
+		return (EAttribute)pendingStatusResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getErrorStatusResult() {
+		return errorStatusResultEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getErrorStatusResult_ErrorMessage() {
+		return (EAttribute)errorStatusResultEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -284,6 +568,16 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 	 * @generated
 	 */
 	@Override
+	public EEnum getQueryStatusType() {
+		return queryStatusTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public StatusFactory getStatusFactory() {
 		return (StatusFactory)getEFactoryInstance();
 	}
@@ -307,6 +601,35 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		isCreated = true;
 
 		// Create classes and their features
+		queryRequestEClass = createEClass(QUERY_REQUEST);
+		createEAttribute(queryRequestEClass, QUERY_REQUEST__REQUEST_ID);
+		createEAttribute(queryRequestEClass, QUERY_REQUEST__CONSUMER_ID);
+		createEReference(queryRequestEClass, QUERY_REQUEST__QUERY);
+		createEAttribute(queryRequestEClass, QUERY_REQUEST__SRC_URI);
+		createEAttribute(queryRequestEClass, QUERY_REQUEST__CONTENT_TYPE);
+
+		queryResponseEClass = createEClass(QUERY_RESPONSE);
+		createEAttribute(queryResponseEClass, QUERY_RESPONSE__REQUEST_ID);
+		createEAttribute(queryResponseEClass, QUERY_RESPONSE__STATUS);
+		createEReference(queryResponseEClass, QUERY_RESPONSE__DETAILED_STATUS);
+
+		detailedQueryStatusEClass = createEClass(DETAILED_QUERY_STATUS);
+		createEReference(detailedQueryStatusEClass, DETAILED_QUERY_STATUS__SINGLE_CONNECTOR_QUERY_STATUS);
+
+		singleConnectorQueryStatusEClass = createEClass(SINGLE_CONNECTOR_QUERY_STATUS);
+		createEAttribute(singleConnectorQueryStatusEClass, SINGLE_CONNECTOR_QUERY_STATUS__CONNECTOR_ID);
+		createEAttribute(singleConnectorQueryStatusEClass, SINGLE_CONNECTOR_QUERY_STATUS__CONNECTOR_NAME);
+		createEReference(singleConnectorQueryStatusEClass, SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT);
+
+		statusResultEClass = createEClass(STATUS_RESULT);
+		createEAttribute(statusResultEClass, STATUS_RESULT__STATUS);
+
+		pendingStatusResultEClass = createEClass(PENDING_STATUS_RESULT);
+		createEAttribute(pendingStatusResultEClass, PENDING_STATUS_RESULT__EST_RUNTIME);
+
+		errorStatusResultEClass = createEClass(ERROR_STATUS_RESULT);
+		createEAttribute(errorStatusResultEClass, ERROR_STATUS_RESULT__ERROR_MESSAGE);
+
 		queryStatusEClass = createEClass(QUERY_STATUS);
 		createEReference(queryStatusEClass, QUERY_STATUS__QUERY);
 		createEAttribute(queryStatusEClass, QUERY_STATUS__MIN_RESULT_COUNT);
@@ -325,6 +648,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 
 		// Create enums
 		resultFormatTypeEEnum = createEEnum(RESULT_FORMAT_TYPE);
+		queryStatusTypeEEnum = createEEnum(QUERY_STATUS_TYPE);
 	}
 
 	/**
@@ -351,8 +675,8 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QueryPackage theQueryPackage = (QueryPackage)EPackage.Registry.INSTANCE.getEPackage(QueryPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		QueryPackage theQueryPackage = (QueryPackage)EPackage.Registry.INSTANCE.getEPackage(QueryPackage.eNS_URI);
 		AConnectorPackage theAConnectorPackage = (AConnectorPackage)EPackage.Registry.INSTANCE.getEPackage(AConnectorPackage.eNS_URI);
 
 		// Create type parameters
@@ -360,9 +684,40 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		pendingStatusResultEClass.getESuperTypes().add(this.getStatusResult());
+		errorStatusResultEClass.getESuperTypes().add(this.getStatusResult());
 		queryStatusEClass.getESuperTypes().add(this.getStatus());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(queryRequestEClass, QueryRequest.class, "QueryRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getQueryRequest_RequestId(), theEcorePackage.getEString(), "requestId", null, 1, 1, QueryRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQueryRequest_ConsumerId(), theEcorePackage.getEString(), "consumerId", null, 1, 1, QueryRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQueryRequest_Query(), theQueryPackage.getQuery(), null, "query", null, 1, 1, QueryRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQueryRequest_SrcUri(), theEcorePackage.getEString(), "srcUri", null, 0, 1, QueryRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQueryRequest_ContentType(), theEcorePackage.getEString(), "contentType", null, 0, 1, QueryRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(queryResponseEClass, QueryResponse.class, "QueryResponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getQueryResponse_RequestId(), theEcorePackage.getEString(), "requestId", null, 1, 1, QueryResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQueryResponse_Status(), this.getQueryStatusType(), "status", null, 0, 1, QueryResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQueryResponse_DetailedStatus(), this.getDetailedQueryStatus(), null, "detailedStatus", null, 0, 1, QueryResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(detailedQueryStatusEClass, DetailedQueryStatus.class, "DetailedQueryStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDetailedQueryStatus_SingleConnectorQueryStatus(), this.getSingleConnectorQueryStatus(), null, "singleConnectorQueryStatus", null, 0, -1, DetailedQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(singleConnectorQueryStatusEClass, SingleConnectorQueryStatus.class, "SingleConnectorQueryStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSingleConnectorQueryStatus_ConnectorId(), theEcorePackage.getEString(), "connectorId", null, 0, 1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSingleConnectorQueryStatus_ConnectorName(), theEcorePackage.getEString(), "connectorName", null, 0, 1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleConnectorQueryStatus_StatusResult(), this.getStatusResult(), null, "statusResult", null, 0, 1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(statusResultEClass, StatusResult.class, "StatusResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStatusResult_Status(), this.getQueryStatusType(), "status", null, 0, 1, StatusResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pendingStatusResultEClass, PendingStatusResult.class, "PendingStatusResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPendingStatusResult_EstRuntime(), theEcorePackage.getELong(), "estRuntime", null, 0, 1, PendingStatusResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(errorStatusResultEClass, ErrorStatusResult.class, "ErrorStatusResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getErrorStatusResult_ErrorMessage(), theEcorePackage.getEString(), "errorMessage", null, 0, 1, ErrorStatusResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(queryStatusEClass, QueryStatus.class, "QueryStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getQueryStatus_Query(), theQueryPackage.getQuery(), null, "query", null, 1, 1, QueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQueryStatus_MinResultCount(), theEcorePackage.getELong(), "minResultCount", null, 0, 1, QueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -383,6 +738,14 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		initEEnum(resultFormatTypeEEnum, ResultFormatType.class, "ResultFormatType");
 		addEEnumLiteral(resultFormatTypeEEnum, ResultFormatType.JSON);
 		addEEnumLiteral(resultFormatTypeEEnum, ResultFormatType.CSV);
+
+		initEEnum(queryStatusTypeEEnum, QueryStatusType.class, "QueryStatusType");
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.SUCCESS);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.ERROR);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.NO_CONTENT);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.TIMEOUT);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PENDING);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.OTHER);
 
 		// Create resource
 		createResource(eNS_URI);

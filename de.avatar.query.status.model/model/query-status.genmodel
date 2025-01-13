@@ -13,6 +13,43 @@
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//ResultFormatType/JSON"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//ResultFormatType/CSV"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query-status.ecore#//QueryStatusType">
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/SUCCESS"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/ERROR"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/NO_CONTENT"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/TIMEOUT"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PENDING"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/OTHER"/>
+    </genEnums>
+    <genClasses ecoreClass="query-status.ecore#//QueryRequest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryRequest/requestId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryRequest/consumerId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//QueryRequest/query"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryRequest/srcUri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryRequest/contentType"/>
+    </genClasses>
+    <genClasses ecoreClass="query-status.ecore#//QueryResponse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/requestId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/status"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//QueryResponse/detailedStatus"/>
+    </genClasses>
+    <genClasses ecoreClass="query-status.ecore#//DetailedQueryStatus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//DetailedQueryStatus/singleConnectorQueryStatus"/>
+    </genClasses>
+    <genClasses ecoreClass="query-status.ecore#//SingleConnectorQueryStatus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//SingleConnectorQueryStatus/connectorId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//SingleConnectorQueryStatus/connectorName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query-status.ecore#//SingleConnectorQueryStatus/statusResult"/>
+    </genClasses>
+    <genClasses ecoreClass="query-status.ecore#//StatusResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//StatusResult/status"/>
+    </genClasses>
+    <genClasses ecoreClass="query-status.ecore#//PendingStatusResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//PendingStatusResult/estRuntime"/>
+    </genClasses>
+    <genClasses ecoreClass="query-status.ecore#//ErrorStatusResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//ErrorStatusResult/errorMessage"/>
+    </genClasses>
     <genClasses ecoreClass="query-status.ecore#//QueryStatus">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//QueryStatus/query"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryStatus/minResultCount"/>

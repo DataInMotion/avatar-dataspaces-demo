@@ -1,0 +1,18 @@
+{
+  ":configurator:resource-version": 1,
+  
+  "org.apache.felix.http~httpConnector":
+	{
+		"org.osgi.service.http.port": "8089",
+		"org.osgi.service.http.host": "localhost",
+		"org.apache.felix.http.context_path": "/connector",
+		"org.apache.felix.http.name": "ConnectorHTTP",
+		"org.apache.felix.http.runtime.init.id": "httpConnector"
+	},
+	"JakartarsServletWhiteboardRuntimeComponent~restConnector":
+	{
+		"jersey.jakartars.whiteboard.name" : "ConnectorREST",
+		"jersey.context.path" : "rest",
+		"osgi.http.whiteboard.target" : "(id=httpConnector)"
+	}
+}

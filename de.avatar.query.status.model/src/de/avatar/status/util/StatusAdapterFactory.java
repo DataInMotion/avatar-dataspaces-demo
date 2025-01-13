@@ -79,6 +79,34 @@ public class StatusAdapterFactory extends AdapterFactoryImpl {
 	protected StatusSwitch<Adapter> modelSwitch =
 		new StatusSwitch<Adapter>() {
 			@Override
+			public Adapter caseQueryRequest(QueryRequest object) {
+				return createQueryRequestAdapter();
+			}
+			@Override
+			public Adapter caseQueryResponse(QueryResponse object) {
+				return createQueryResponseAdapter();
+			}
+			@Override
+			public Adapter caseDetailedQueryStatus(DetailedQueryStatus object) {
+				return createDetailedQueryStatusAdapter();
+			}
+			@Override
+			public Adapter caseSingleConnectorQueryStatus(SingleConnectorQueryStatus object) {
+				return createSingleConnectorQueryStatusAdapter();
+			}
+			@Override
+			public Adapter caseStatusResult(StatusResult object) {
+				return createStatusResultAdapter();
+			}
+			@Override
+			public Adapter casePendingStatusResult(PendingStatusResult object) {
+				return createPendingStatusResultAdapter();
+			}
+			@Override
+			public Adapter caseErrorStatusResult(ErrorStatusResult object) {
+				return createErrorStatusResultAdapter();
+			}
+			@Override
 			public Adapter caseQueryStatus(QueryStatus object) {
 				return createQueryStatusAdapter();
 			}
@@ -105,6 +133,104 @@ public class StatusAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.QueryRequest <em>Query Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.status.QueryRequest
+	 * @generated
+	 */
+	public Adapter createQueryRequestAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.QueryResponse <em>Query Response</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.status.QueryResponse
+	 * @generated
+	 */
+	public Adapter createQueryResponseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.DetailedQueryStatus <em>Detailed Query Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.status.DetailedQueryStatus
+	 * @generated
+	 */
+	public Adapter createDetailedQueryStatusAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.SingleConnectorQueryStatus <em>Single Connector Query Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.status.SingleConnectorQueryStatus
+	 * @generated
+	 */
+	public Adapter createSingleConnectorQueryStatusAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.StatusResult <em>Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.status.StatusResult
+	 * @generated
+	 */
+	public Adapter createStatusResultAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.PendingStatusResult <em>Pending Status Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.status.PendingStatusResult
+	 * @generated
+	 */
+	public Adapter createPendingStatusResultAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.ErrorStatusResult <em>Error Status Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.status.ErrorStatusResult
+	 * @generated
+	 */
+	public Adapter createErrorStatusResultAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link de.avatar.status.QueryStatus <em>Query Status</em>}'.

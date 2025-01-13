@@ -11,21 +11,6 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.avatar.connector.whiteboard;
-
-import java.util.List;
-
-import de.avatar.model.connector.ConnectorInfo;
-
-/**
- * 
- * @author mark
- * @since 13.11.2024
- */
-public interface ConnectorWhiteboard {
-	
-	List<ConnectorInfo> getAllConnectors();
-	
-	List<ConnectorInfo> getExternalConnectors();
-
-}
+@org.osgi.annotation.bundle.Export
+@org.osgi.annotation.versioning.Version("1.0")
+package de.avatar.connector.whiteboard.api;

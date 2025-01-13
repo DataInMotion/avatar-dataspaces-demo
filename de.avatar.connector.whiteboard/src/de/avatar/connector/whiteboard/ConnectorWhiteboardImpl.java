@@ -12,6 +12,8 @@
  */
 package de.avatar.connector.whiteboard;
 
+import static org.mockito.ArgumentMatchers.endsWith;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -31,9 +34,15 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.remoteserviceadmin.RemoteConstants;
 
 import de.avatar.connector.api.AvatarConnector;
+import de.avatar.connector.whiteboard.api.ConnectorWhiteboard;
 import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
+import de.avatar.model.connector.EndpointRequest;
+import de.avatar.model.connector.EndpointResponse;
+import de.avatar.status.QueryRequest;
+import de.avatar.status.QueryResponse;
+import de.avatar.status.StatusFactory;
 
 @Component(immediate = true)
 public class ConnectorWhiteboardImpl implements ConnectorWhiteboard {
@@ -146,6 +155,42 @@ public class ConnectorWhiteboardImpl implements ConnectorWhiteboard {
 			}
 		}
 		
+	}
+
+//	TODO: here EndpointRequest and EndpointResponse should be substituted by the model which connects the ui to the whiteboard
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.ConnectorWhiteboard#dryRun(de.avatar.status.QueryRequest)
+	 */
+	@Override
+	public QueryResponse dryRun(QueryRequest request) {
+		// TODO Auto-generated method stub
+//		send the request to all connectors
+		connectors.forEach(c -> {
+			EndpointRequest endpointReq = convertQueryToEndpointRequest(request);
+			EndpointResponse enpointRes = c.dryRequest(endpointReq);
+		});
+		
+		return null;
+	}
+	
+	private QueryResponse convertEndpointToQueryResponse(EndpointResponse endpointResponse) {
+		QueryResponse queryResponse = StatusFactory.eINSTANCE.createQueryResponse();
+		queryResponse.setRequestId(endpointResponse.getSourceId());
+		endpointResponse.getCode();
+		return queryResponse;
+		
+	}
+	
+	private EndpointRequest convertQueryToEndpointRequest(QueryRequest queryRequest) {
+		EndpointRequest endpointRequest = AConnectorFactory.eINSTANCE.createEndpointRequest();
+		endpointRequest.setSourceId(queryRequest.getRequestId());
+		endpointRequest.setId(UUID.randomUUID().toString());
+		ConnectorEndpoint endpoint = AConnectorFactory.eINSTANCE.createConnectorEndpoint();
+		endpoint.setId(UUID.randomUUID().toString());
+		endpointRequest.setEndpoint(endpoint);
+		return endpointRequest;
 	}
 
 }
