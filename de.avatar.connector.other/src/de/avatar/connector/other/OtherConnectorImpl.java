@@ -35,10 +35,11 @@ import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.JavaParameter;
 import de.avatar.model.connector.Parameter;
+import de.avatar.model.connector.ResponseCode;
 import de.avatar.model.connector.StatusType;
 import de.avatar.model.connector.helper.ConnectorHelper;
 
-@Component(immediate = true, property = {
+@Component(immediate = true, name="OtherConnector", property = {
 		"service.exported.configs=com.paremus.dosgi.net", 
 		"service.exported.interfaces=*", 
 		"com.paremus.dosgi.scope=global", 
@@ -116,6 +117,7 @@ public class OtherConnectorImpl implements AvatarConnector {
 				nonNull(request.getEndpoint()) && 
 				nonNull(request.getEndpoint().getId())) {
 			EndpointResponse response = ConnectorHelper.createResponse(request);
+			response.setCode(ResponseCode.PENDING);
 			DryRunResult result = AConnectorFactory.eINSTANCE.createDryRunResult();
 			result.setEstRuntime(12);
 			result.setResultCount(1);
@@ -149,6 +151,7 @@ public class OtherConnectorImpl implements AvatarConnector {
 				nonNull(request.getEndpoint()) && 
 				nonNull(request.getEndpoint().getId())) {
 			EndpointResponse response = ConnectorHelper.createResponse(request);
+			response.setCode(ResponseCode.OK);
 			EcoreResult result = AConnectorFactory.eINSTANCE.createEcoreResult();
 			response.setResult(result);
 			System.out.println(String.format("Execute  request %s to endpoint '%s'", request.getId(), request.getEndpoint().getUri()));

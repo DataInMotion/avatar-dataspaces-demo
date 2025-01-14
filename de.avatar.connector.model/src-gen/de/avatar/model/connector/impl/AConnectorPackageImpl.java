@@ -1167,6 +1167,7 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		initEReference(getConnectorInfo_Metric(), this.getConnectorMetric(), this.getConnectorMetric_Connector(), "metric", null, 0, 1, ConnectorInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getConnectorInfo_Metric().getEKeys().add(this.getConnectorMetric_Id());
 		initEReference(getConnectorInfo_ConnectorModel(), theEcorePackage.getEPackage(), null, "connectorModel", null, 0, 1, ConnectorInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getConnectorInfo_ConnectorModel().getEKeys().add(theEcorePackage.getEPackage_NsURI());
 
 		initEClass(connectorMetricEClass, ConnectorMetric.class, "ConnectorMetric", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConnectorMetric_Id(), ecorePackage.getEString(), "id", null, 0, 1, ConnectorMetric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1184,6 +1185,7 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		initEAttribute(getConnectorEndpoint_MediaType(), ecorePackage.getEString(), "mediaType", null, 0, 1, ConnectorEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectorEndpoint_Connector(), this.getConnectorInfo(), null, "connector", null, 1, 1, ConnectorEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectorEndpoint_ModelPackage(), theEcorePackage.getEPackage(), null, "modelPackage", null, 0, 1, ConnectorEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getConnectorEndpoint_ModelPackage().getEKeys().add(theEcorePackage.getEPackage_NsURI());
 
 		initEClass(endpointRequestEClass, EndpointRequest.class, "EndpointRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEndpointRequest_Id(), ecorePackage.getEString(), "id", null, 1, 1, EndpointRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

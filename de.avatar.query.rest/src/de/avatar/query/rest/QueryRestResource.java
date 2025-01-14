@@ -19,6 +19,7 @@ import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsResource;
 
 import de.avatar.connector.whiteboard.api.ConnectorWhiteboard;
 import de.avatar.status.QueryRequest;
+import de.avatar.status.QueryResponse;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -52,10 +53,9 @@ public class QueryRestResource {
 	@Path("/dryrun")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response dryRun(QueryRequest request) {
-		
-		
-		return Response.ok().build();
+	public Response dryRun(QueryRequest request) {		
+		QueryResponse response = connectorWhiteboard.executeDryRun(request);
+		return Response.ok(response).build();
 	}
 	
 	
@@ -64,15 +64,24 @@ public class QueryRestResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response query(QueryRequest request) {
-		
-		return Response.ok().build();
+		try {
+			QueryResponse response = connectorWhiteboard.executeRequest(request);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {
+			return Response.status(500, e.getMessage()).build();
+		}
 	}
 	
 	@GET
 	@Path("/status/{requestId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response status(@PathParam("requestId") String requestId) {
+		try {
+			QueryResponse response = connectorWhiteboard.executeStatusRequest(requestId);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {
+			return Response.status(500, e.getMessage()).build();
+		}
 		
-		return Response.ok().build();
 	}
 }

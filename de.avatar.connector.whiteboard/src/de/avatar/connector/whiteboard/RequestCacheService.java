@@ -18,7 +18,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.osgi.service.component.annotations.Component;
 
-import de.avatar.model.connector.EndpointRequest;
+import de.avatar.status.QueryRequest;
+import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusType;
 
 /**
  * 
@@ -28,15 +30,29 @@ import de.avatar.model.connector.EndpointRequest;
 @Component(immediate = true, name = "RequestCacheService", service = RequestCacheService.class)
 public class RequestCacheService {
 	
-	Map<String, EndpointRequest> cachedRequests = new ConcurrentHashMap<>();
+	Map<String, QueryRequest> cachedRequests = new ConcurrentHashMap<>();
+	Map<String, QueryResponse> cachedStatuses = new ConcurrentHashMap<>();
 	
-	public boolean isRequestCached(EndpointRequest request) {
-		if(cachedRequests.containsKey(request.getId())) return true;
+	public boolean isRequestCached(QueryRequest request) {
+		if(cachedRequests.containsKey(request.getRequestId())) return true;
 		return false;
 	}
 	
-	public void cacheRequest(EndpointRequest request) {
-		cachedRequests.put(request.getId(), request);
+	public QueryRequest getCachedRequest(String requestId) {
+		return cachedRequests.getOrDefault(requestId, null);
+	}
+	
+	public void cacheRequest(QueryRequest request) {
+		cachedRequests.put(request.getRequestId(), request);
+	}
+	
+	public void updateStatus(QueryResponse response) {
+		if(QueryStatusType.SUCCESS.equals(response.getStatus())) {
+			cachedStatuses.remove(response.getRequestId());
+			cachedRequests.remove(response.getRequestId());
+		} else {
+			cachedStatuses.put(response.getRequestId(), response);
+		}
 	}
 
 }

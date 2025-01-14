@@ -30,6 +30,12 @@ public interface ConnectorWhiteboard {
 	
 	List<ConnectorInfo> getExternalConnectors();
 	
-	QueryResponse dryRun(QueryRequest request);
+	QueryResponse executeDryRun(QueryRequest request);
+	
+	QueryResponse executeRequest(QueryRequest request);
+	
+	QueryResponse executeStatusRequest(String requestId);
+	
+	
 
 }

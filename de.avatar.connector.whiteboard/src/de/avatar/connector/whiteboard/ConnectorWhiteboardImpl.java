@@ -12,8 +12,6 @@
  */
 package de.avatar.connector.whiteboard;
 
-import static org.mockito.ArgumentMatchers.endsWith;
-
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +21,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.osgi.service.component.annotations.Activate;
@@ -38,17 +37,33 @@ import de.avatar.connector.whiteboard.api.ConnectorWhiteboard;
 import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
+import de.avatar.model.connector.DryRunResult;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
+import de.avatar.model.connector.ErrorResult;
+import de.avatar.model.connector.PendingResult;
+import de.avatar.model.connector.ResponseCode;
+import de.avatar.model.connector.ResponseResult;
+import de.avatar.status.DetailedQueryStatus;
+import de.avatar.status.ErrorStatusResult;
+import de.avatar.status.PendingStatusResult;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusType;
+import de.avatar.status.SingleConnectorQueryStatus;
 import de.avatar.status.StatusFactory;
+import de.avatar.status.StatusResult;
 
-@Component(immediate = true)
+@Component(immediate = true, name = "ConnectorWhiteboard")
 public class ConnectorWhiteboardImpl implements ConnectorWhiteboard {
 	
 	@Reference
 	private AConnectorFactory connectorFactory;
+	
+	@Reference
+	RequestCacheService cacheService;
+	
+	private static final Logger LOGGER = Logger.getLogger(ConnectorWhiteboardImpl.class.getName());
 	
 	private List<AvatarConnector> connectors = new LinkedList<>();
 	private List<AvatarConnector> externalConnectors = new LinkedList<>();
@@ -138,6 +153,66 @@ public class ConnectorWhiteboardImpl implements ConnectorWhiteboard {
 		printConnectionInfo(connector, false);
 	}
 
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.ConnectorWhiteboard#dryRun(de.avatar.status.QueryRequest)
+	 */
+	@Override
+	public QueryResponse executeDryRun(QueryRequest request) {		
+		QueryResponse queryResponse = StatusFactory.eINSTANCE.createQueryResponse();
+		queryResponse.setRequestId(request.getRequestId());
+		connectors.forEach(c -> {
+			EndpointRequest endpointReq = convertQueryToEndpointRequest(request);
+			EndpointResponse enpointRes = c.dryRequest(endpointReq);
+			addSingleConnectorQueryStatus(queryResponse, enpointRes, c);
+		});	
+		return derermineGlobalResponseStatus(queryResponse, request);
+	}
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.ConnectorWhiteboard#executeRequest(de.avatar.status.QueryRequest)
+	 */
+	@Override
+	public QueryResponse executeRequest(QueryRequest request) {
+		if(cacheService.isRequestCached(request)) {
+			LOGGER.severe(String.format("QueryRequest with id %s is already cached. This should not be the case!", request.getRequestId()));
+			throw new IllegalArgumentException(String.format("QueryRequest with id %s is already cached. This should not be the case!", request.getRequestId()));
+		}
+		cacheService.cacheRequest(request);		
+		QueryResponse response = doExecuteRequest(request);
+		cacheService.updateStatus(response);
+		return response;
+	}
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.ConnectorWhiteboard#executeStatusRequest(java.lang.String)
+	 */
+	@Override
+	public QueryResponse executeStatusRequest(String requestId) {
+		
+		QueryRequest request = cacheService.getCachedRequest(requestId);
+		if(request == null) {
+			LOGGER.severe(String.format("QueryRequest with id %s is NOT already cached. This should not be the case!", requestId));
+			throw new IllegalArgumentException(String.format("QueryRequest with id %s is NOT already cached. This should not be the case!", requestId));
+		}
+		QueryResponse response = doExecuteRequest(request);
+		cacheService.updateStatus(response);
+		return response;
+	}
+	
+	private QueryResponse doExecuteRequest(QueryRequest request) {
+		QueryResponse queryResponse = StatusFactory.eINSTANCE.createQueryResponse();
+		queryResponse.setRequestId(request.getRequestId());
+		connectors.forEach(c -> {
+			EndpointRequest endpointReq = convertQueryToEndpointRequest(request);
+			EndpointResponse enpointRes = c.executeRequest(endpointReq);
+			addSingleConnectorQueryStatus(queryResponse, enpointRes, c);
+		});	
+		return derermineGlobalResponseStatus(queryResponse, request);
+	}
+
 	/**
 	 * @param add if a connector was added
 	 */
@@ -154,33 +229,80 @@ public class ConnectorWhiteboardImpl implements ConnectorWhiteboard {
 				System.out.println(String.format("  - Detected endpoint with name %s (%s) and method %s iwth media type %s", ep.getName(), ep.getId(), ep.getMethod(), ep.getMediaType()));
 			}
 		}
-		
 	}
 
-//	TODO: here EndpointRequest and EndpointResponse should be substituted by the model which connects the ui to the whiteboard
 	
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.connector.whiteboard.api.ConnectorWhiteboard#dryRun(de.avatar.status.QueryRequest)
-	 */
-	@Override
-	public QueryResponse dryRun(QueryRequest request) {
-		// TODO Auto-generated method stub
-//		send the request to all connectors
-		connectors.forEach(c -> {
-			EndpointRequest endpointReq = convertQueryToEndpointRequest(request);
-			EndpointResponse enpointRes = c.dryRequest(endpointReq);
-		});
+	private QueryResponse derermineGlobalResponseStatus(QueryResponse response, QueryRequest request) {
+		List<QueryStatusType> statuses = response.
+				getDetailedStatus().
+				getSingleConnectorQueryStatus().
+				stream().
+				map(r -> r.getStatusResult().getStatus()).
+				toList();
 		
-		return null;
+		if(statuses.contains(QueryStatusType.PENDING)) {
+			response.setStatus(QueryStatusType.PENDING);
+		} else if(!statuses.contains(QueryStatusType.PENDING) && !statuses.contains(QueryStatusType.SUCCESS)) {
+			response.setStatus(QueryStatusType.ERROR);
+		} else if(statuses.size() == statuses.stream().filter(s -> s.equals(QueryStatusType.SUCCESS)).count()) {
+			response.setStatus(QueryStatusType.SUCCESS);
+		} else {
+			response.setStatus(QueryStatusType.OTHER);
+		}
+		return response;
 	}
 	
-	private QueryResponse convertEndpointToQueryResponse(EndpointResponse endpointResponse) {
-		QueryResponse queryResponse = StatusFactory.eINSTANCE.createQueryResponse();
-		queryResponse.setRequestId(endpointResponse.getSourceId());
-		endpointResponse.getCode();
-		return queryResponse;
+	private void addSingleConnectorQueryStatus(QueryResponse queryResponse, EndpointResponse endpointResponse, AvatarConnector connector) {
+	
+		DetailedQueryStatus detailedStatus = queryResponse.getDetailedStatus();
+		if(detailedStatus == null) {
+			detailedStatus = StatusFactory.eINSTANCE.createDetailedQueryStatus();
+			queryResponse.setDetailedStatus(detailedStatus);
+		}
+		SingleConnectorQueryStatus sgConnQueryStatus = StatusFactory.eINSTANCE.createSingleConnectorQueryStatus();
+		sgConnQueryStatus.setConnectorId(connector.getInfo().getId());
+		sgConnQueryStatus.setConnectorName(connector.getInfo().getName());
+		sgConnQueryStatus.setStatusResult(getStatusResult(endpointResponse.getResult()));
+		sgConnQueryStatus.getStatusResult().setStatus(getQueryStatusType(endpointResponse.getCode()));
+		detailedStatus.getSingleConnectorQueryStatus().add(sgConnQueryStatus);		
 		
+	}
+	
+	private StatusResult getStatusResult(ResponseResult responseResult) {
+		if(responseResult instanceof PendingResult pendingRes) {
+			PendingStatusResult pendingStatusRes = StatusFactory.eINSTANCE.createPendingStatusResult();
+			pendingStatusRes.setEstRuntime(pendingRes.getEstRuntime());
+			
+			return pendingStatusRes;
+		}
+		if(responseResult instanceof DryRunResult pendingRes) {
+			PendingStatusResult pendingStatusRes = StatusFactory.eINSTANCE.createPendingStatusResult();
+			pendingStatusRes.setEstRuntime(pendingRes.getEstRuntime());
+			return pendingStatusRes;
+		}
+		else if(responseResult instanceof ErrorResult errResult) {
+			ErrorStatusResult errStatusRes = StatusFactory.eINSTANCE.createErrorStatusResult();
+			errStatusRes.setErrorMessage(errResult.getErrorText());
+			return errStatusRes;
+		}
+		return StatusFactory.eINSTANCE.createStatusResult();
+	}
+	
+	private QueryStatusType getQueryStatusType(ResponseCode code) {
+		switch(code) {
+		case ERROR:
+			return QueryStatusType.ERROR;
+		case NO_CONTENT:
+			return QueryStatusType.NO_CONTENT;
+		case OK:
+			return QueryStatusType.SUCCESS;
+		case PENDING:
+			return QueryStatusType.PENDING;
+		case TIMEOUT:
+			return QueryStatusType.TIMEOUT;
+		case OTHER: default:
+			return QueryStatusType.OTHER;
+		}
 	}
 	
 	private EndpointRequest convertQueryToEndpointRequest(QueryRequest queryRequest) {
@@ -193,4 +315,7 @@ public class ConnectorWhiteboardImpl implements ConnectorWhiteboard {
 		return endpointRequest;
 	}
 
+	
+
+	
 }
