@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class IsLiteralImpl extends EnumComperatorImpl implements IsLiteral {
+public class IsLiteralImpl extends EnumComparatorImpl implements IsLiteral {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

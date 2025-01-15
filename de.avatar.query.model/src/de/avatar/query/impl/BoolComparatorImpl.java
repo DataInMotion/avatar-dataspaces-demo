@@ -13,7 +13,7 @@
  */
 package de.avatar.query.impl;
 
-import de.avatar.query.NumberComperator;
+import de.avatar.query.BoolComparator;
 import de.avatar.query.QueryPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,44 +24,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Number Comperator</b></em>'.
+ * An implementation of the model object '<em><b>Bool Comparator</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.impl.NumberComperatorImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.avatar.query.impl.BoolComparatorImpl#isValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class NumberComperatorImpl extends ComperatorImpl implements NumberComperator {
+public class BoolComparatorImpl extends ComparatorImpl implements BoolComparator {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #isValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final float VALUE_EDEFAULT = 0.0F;
+	protected static final boolean VALUE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #isValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #isValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected float value = VALUE_EDEFAULT;
+	protected boolean value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected NumberComperatorImpl() {
+	protected BoolComparatorImpl() {
 		super();
 	}
 
@@ -72,7 +72,7 @@ public abstract class NumberComperatorImpl extends ComperatorImpl implements Num
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.NUMBER_COMPERATOR;
+		return QueryPackage.Literals.BOOL_COMPARATOR;
 	}
 
 	/**
@@ -81,7 +81,7 @@ public abstract class NumberComperatorImpl extends ComperatorImpl implements Num
 	 * @generated
 	 */
 	@Override
-	public float getValue() {
+	public boolean isValue() {
 		return value;
 	}
 
@@ -91,11 +91,11 @@ public abstract class NumberComperatorImpl extends ComperatorImpl implements Num
 	 * @generated
 	 */
 	@Override
-	public void setValue(float newValue) {
-		float oldValue = value;
+	public void setValue(boolean newValue) {
+		boolean oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.NUMBER_COMPERATOR__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.BOOL_COMPARATOR__VALUE, oldValue, value));
 	}
 
 	/**
@@ -106,8 +106,8 @@ public abstract class NumberComperatorImpl extends ComperatorImpl implements Num
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QueryPackage.NUMBER_COMPERATOR__VALUE:
-				return getValue();
+			case QueryPackage.BOOL_COMPARATOR__VALUE:
+				return isValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,8 +120,8 @@ public abstract class NumberComperatorImpl extends ComperatorImpl implements Num
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QueryPackage.NUMBER_COMPERATOR__VALUE:
-				setValue((Float)newValue);
+			case QueryPackage.BOOL_COMPARATOR__VALUE:
+				setValue((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,7 +135,7 @@ public abstract class NumberComperatorImpl extends ComperatorImpl implements Num
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QueryPackage.NUMBER_COMPERATOR__VALUE:
+			case QueryPackage.BOOL_COMPARATOR__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -150,7 +150,7 @@ public abstract class NumberComperatorImpl extends ComperatorImpl implements Num
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QueryPackage.NUMBER_COMPERATOR__VALUE:
+			case QueryPackage.BOOL_COMPARATOR__VALUE:
 				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -172,4 +172,4 @@ public abstract class NumberComperatorImpl extends ComperatorImpl implements Num
 		return result.toString();
 	}
 
-} //NumberComperatorImpl
+} //BoolComparatorImpl

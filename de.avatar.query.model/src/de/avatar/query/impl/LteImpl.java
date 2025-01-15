@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class LteImpl extends NumberComperatorImpl implements Lte {
+public class LteImpl extends NumberComparatorImpl implements Lte {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

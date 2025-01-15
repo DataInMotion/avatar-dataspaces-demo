@@ -13,8 +13,10 @@
  */
 package de.avatar.query.impl;
 
-import de.avatar.query.BoolComperator;
+import de.avatar.query.DateComparator;
 import de.avatar.query.QueryPackage;
+
+import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -24,44 +26,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Bool Comperator</b></em>'.
+ * An implementation of the model object '<em><b>Date Comparator</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.impl.BoolComperatorImpl#isValue <em>Value</em>}</li>
+ *   <li>{@link de.avatar.query.impl.DateComparatorImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class BoolComperatorImpl extends ComperatorImpl implements BoolComperator {
+public abstract class DateComparatorImpl extends ComparatorImpl implements DateComparator {
 	/**
-	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isValue()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean VALUE_EDEFAULT = false;
+	protected static final Date VALUE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isValue()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean value = VALUE_EDEFAULT;
+	protected Date value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BoolComperatorImpl() {
+	protected DateComparatorImpl() {
 		super();
 	}
 
@@ -72,7 +74,7 @@ public class BoolComperatorImpl extends ComperatorImpl implements BoolComperator
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.BOOL_COMPERATOR;
+		return QueryPackage.Literals.DATE_COMPARATOR;
 	}
 
 	/**
@@ -81,7 +83,7 @@ public class BoolComperatorImpl extends ComperatorImpl implements BoolComperator
 	 * @generated
 	 */
 	@Override
-	public boolean isValue() {
+	public Date getValue() {
 		return value;
 	}
 
@@ -91,11 +93,11 @@ public class BoolComperatorImpl extends ComperatorImpl implements BoolComperator
 	 * @generated
 	 */
 	@Override
-	public void setValue(boolean newValue) {
-		boolean oldValue = value;
+	public void setValue(Date newValue) {
+		Date oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.BOOL_COMPERATOR__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.DATE_COMPARATOR__VALUE, oldValue, value));
 	}
 
 	/**
@@ -106,8 +108,8 @@ public class BoolComperatorImpl extends ComperatorImpl implements BoolComperator
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QueryPackage.BOOL_COMPERATOR__VALUE:
-				return isValue();
+			case QueryPackage.DATE_COMPARATOR__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,8 +122,8 @@ public class BoolComperatorImpl extends ComperatorImpl implements BoolComperator
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QueryPackage.BOOL_COMPERATOR__VALUE:
-				setValue((Boolean)newValue);
+			case QueryPackage.DATE_COMPARATOR__VALUE:
+				setValue((Date)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,7 +137,7 @@ public class BoolComperatorImpl extends ComperatorImpl implements BoolComperator
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QueryPackage.BOOL_COMPERATOR__VALUE:
+			case QueryPackage.DATE_COMPARATOR__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -150,8 +152,8 @@ public class BoolComperatorImpl extends ComperatorImpl implements BoolComperator
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QueryPackage.BOOL_COMPERATOR__VALUE:
-				return value != VALUE_EDEFAULT;
+			case QueryPackage.DATE_COMPARATOR__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -172,4 +174,4 @@ public class BoolComperatorImpl extends ComperatorImpl implements BoolComperator
 		return result.toString();
 	}
 
-} //BoolComperatorImpl
+} //DateComparatorImpl

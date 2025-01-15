@@ -17,14 +17,14 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Withe Listed Noun</b></em>'.
+ * A representation of the model object '<em><b>White Listed Noun</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see de.avatar.query.QueryPackage#getWitheListedNoun()
+ * @see de.avatar.query.QueryPackage#getWhiteListedNoun()
  * @model
  * @generated
  */
 @ProviderType
-public interface WitheListedNoun extends Subject {
-} // WitheListedNoun
+public interface WhiteListedNoun extends Subject {
+} // WhiteListedNoun

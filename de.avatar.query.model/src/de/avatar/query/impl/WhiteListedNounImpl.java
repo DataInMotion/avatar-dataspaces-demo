@@ -14,24 +14,24 @@
 package de.avatar.query.impl;
 
 import de.avatar.query.QueryPackage;
-import de.avatar.query.WitheListedNoun;
+import de.avatar.query.WhiteListedNoun;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Withe Listed Noun</b></em>'.
+ * An implementation of the model object '<em><b>White Listed Noun</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class WitheListedNounImpl extends SubjectImpl implements WitheListedNoun {
+public class WhiteListedNounImpl extends SubjectImpl implements WhiteListedNoun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WitheListedNounImpl() {
+	protected WhiteListedNounImpl() {
 		super();
 	}
 
@@ -42,7 +42,7 @@ public class WitheListedNounImpl extends SubjectImpl implements WitheListedNoun 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.WITHE_LISTED_NOUN;
+		return QueryPackage.Literals.WHITE_LISTED_NOUN;
 	}
 
-} //WitheListedNounImpl
+} //WhiteListedNounImpl

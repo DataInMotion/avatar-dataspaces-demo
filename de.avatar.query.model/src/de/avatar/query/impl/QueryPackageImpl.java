@@ -15,13 +15,13 @@ package de.avatar.query.impl;
 
 import de.avatar.query.And;
 import de.avatar.query.BlackListedNoun;
-import de.avatar.query.BoolComperator;
+import de.avatar.query.BoolComparator;
 import de.avatar.query.Chaining;
-import de.avatar.query.Comperator;
+import de.avatar.query.Comparator;
 import de.avatar.query.Contains;
-import de.avatar.query.DateComperator;
+import de.avatar.query.DateComparator;
 import de.avatar.query.EndsWith;
-import de.avatar.query.EnumComperator;
+import de.avatar.query.EnumComparator;
 import de.avatar.query.Eq;
 import de.avatar.query.Gt;
 import de.avatar.query.Gte;
@@ -34,7 +34,7 @@ import de.avatar.query.Like;
 import de.avatar.query.Lt;
 import de.avatar.query.Lte;
 import de.avatar.query.Not;
-import de.avatar.query.NumberComperator;
+import de.avatar.query.NumberComparator;
 import de.avatar.query.Operation;
 import de.avatar.query.Operator;
 import de.avatar.query.Or;
@@ -44,12 +44,12 @@ import de.avatar.query.QueryPackage;
 import de.avatar.query.SortEntity;
 import de.avatar.query.SortOrder;
 import de.avatar.query.StartWith;
-import de.avatar.query.StringComperator;
+import de.avatar.query.StringComparator;
 import de.avatar.query.StringOperation;
 import de.avatar.query.Subject;
 import de.avatar.query.ToLowerCase;
 import de.avatar.query.ToUpperCase;
-import de.avatar.query.WitheListedNoun;
+import de.avatar.query.WhiteListedNoun;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -88,7 +88,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass witheListedNounEClass = null;
+	private EClass whiteListedNounEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -158,14 +158,14 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass comperatorEClass = null;
+	private EClass comparatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass stringComperatorEClass = null;
+	private EClass stringComparatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -200,7 +200,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dateComperatorEClass = null;
+	private EClass dateComparatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -228,7 +228,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass numberComperatorEClass = null;
+	private EClass numberComparatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -270,7 +270,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass boolComperatorEClass = null;
+	private EClass boolComparatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -298,7 +298,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass enumComperatorEClass = null;
+	private EClass enumComparatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -503,8 +503,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getWitheListedNoun() {
-		return witheListedNounEClass;
+	public EClass getWhiteListedNoun() {
+		return whiteListedNounEClass;
 	}
 
 	/**
@@ -533,7 +533,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getOperator_Comperator() {
+	public EReference getOperator_Comparator() {
 		return (EReference)operatorEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -623,8 +623,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getComperator() {
-		return comperatorEClass;
+	public EClass getComparator() {
+		return comparatorEClass;
 	}
 
 	/**
@@ -633,8 +633,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getComperator_SuitableForType() {
-		return (EAttribute)comperatorEClass.getEStructuralFeatures().get(0);
+	public EAttribute getComparator_SuitableForType() {
+		return (EAttribute)comparatorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -643,8 +643,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getComperator_FeaturePath() {
-		return (EReference)comperatorEClass.getEStructuralFeatures().get(1);
+	public EReference getComparator_FeaturePath() {
+		return (EReference)comparatorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -653,8 +653,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EOperation getComperator__Compare() {
-		return comperatorEClass.getEOperations().get(0);
+	public EOperation getComparator__Compare() {
+		return comparatorEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -663,8 +663,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getStringComperator() {
-		return stringComperatorEClass;
+	public EClass getStringComparator() {
+		return stringComparatorEClass;
 	}
 
 	/**
@@ -673,8 +673,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStringComperator_Value() {
-		return (EAttribute)stringComperatorEClass.getEStructuralFeatures().get(0);
+	public EAttribute getStringComparator_Value() {
+		return (EAttribute)stringComparatorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -723,8 +723,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getDateComperator() {
-		return dateComperatorEClass;
+	public EClass getDateComparator() {
+		return dateComparatorEClass;
 	}
 
 	/**
@@ -733,8 +733,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDateComperator_Value() {
-		return (EAttribute)dateComperatorEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDateComparator_Value() {
+		return (EAttribute)dateComparatorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -773,8 +773,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getNumberComperator() {
-		return numberComperatorEClass;
+	public EClass getNumberComparator() {
+		return numberComparatorEClass;
 	}
 
 	/**
@@ -783,8 +783,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getNumberComperator_Value() {
-		return (EAttribute)numberComperatorEClass.getEStructuralFeatures().get(0);
+	public EAttribute getNumberComparator_Value() {
+		return (EAttribute)numberComparatorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -843,8 +843,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getBoolComperator() {
-		return boolComperatorEClass;
+	public EClass getBoolComparator() {
+		return boolComparatorEClass;
 	}
 
 	/**
@@ -853,8 +853,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getBoolComperator_Value() {
-		return (EAttribute)boolComperatorEClass.getEStructuralFeatures().get(0);
+	public EAttribute getBoolComparator_Value() {
+		return (EAttribute)boolComparatorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -943,8 +943,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getEnumComperator() {
-		return enumComperatorEClass;
+	public EClass getEnumComparator() {
+		return enumComparatorEClass;
 	}
 
 	/**
@@ -953,8 +953,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEnumComperator_Value() {
-		return (EAttribute)enumComperatorEClass.getEStructuralFeatures().get(0);
+	public EAttribute getEnumComparator_Value() {
+		return (EAttribute)enumComparatorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1020,12 +1020,12 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		subjectEClass = createEClass(SUBJECT);
 		createEReference(subjectEClass, SUBJECT__FEATURE_PATH);
 
-		witheListedNounEClass = createEClass(WITHE_LISTED_NOUN);
+		whiteListedNounEClass = createEClass(WHITE_LISTED_NOUN);
 
 		blackListedNounEClass = createEClass(BLACK_LISTED_NOUN);
 
 		operatorEClass = createEClass(OPERATOR);
-		createEReference(operatorEClass, OPERATOR__COMPERATOR);
+		createEReference(operatorEClass, OPERATOR__COMPARATOR);
 		createEOperation(operatorEClass, OPERATOR___EXECUTE);
 
 		chainingEClass = createEClass(CHAINING);
@@ -1042,13 +1042,13 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		toUpperCaseEClass = createEClass(TO_UPPER_CASE);
 
-		comperatorEClass = createEClass(COMPERATOR);
-		createEAttribute(comperatorEClass, COMPERATOR__SUITABLE_FOR_TYPE);
-		createEReference(comperatorEClass, COMPERATOR__FEATURE_PATH);
-		createEOperation(comperatorEClass, COMPERATOR___COMPARE);
+		comparatorEClass = createEClass(COMPARATOR);
+		createEAttribute(comparatorEClass, COMPARATOR__SUITABLE_FOR_TYPE);
+		createEReference(comparatorEClass, COMPARATOR__FEATURE_PATH);
+		createEOperation(comparatorEClass, COMPARATOR___COMPARE);
 
-		stringComperatorEClass = createEClass(STRING_COMPERATOR);
-		createEAttribute(stringComperatorEClass, STRING_COMPERATOR__VALUE);
+		stringComparatorEClass = createEClass(STRING_COMPARATOR);
+		createEAttribute(stringComparatorEClass, STRING_COMPARATOR__VALUE);
 
 		endsWithEClass = createEClass(ENDS_WITH);
 
@@ -1058,8 +1058,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		likeEClass = createEClass(LIKE);
 
-		dateComperatorEClass = createEClass(DATE_COMPERATOR);
-		createEAttribute(dateComperatorEClass, DATE_COMPERATOR__VALUE);
+		dateComparatorEClass = createEClass(DATE_COMPARATOR);
+		createEAttribute(dateComparatorEClass, DATE_COMPARATOR__VALUE);
 
 		isBeforeEClass = createEClass(IS_BEFORE);
 
@@ -1067,8 +1067,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		isInRangeEClass = createEClass(IS_IN_RANGE);
 
-		numberComperatorEClass = createEClass(NUMBER_COMPERATOR);
-		createEAttribute(numberComperatorEClass, NUMBER_COMPERATOR__VALUE);
+		numberComparatorEClass = createEClass(NUMBER_COMPARATOR);
+		createEAttribute(numberComparatorEClass, NUMBER_COMPARATOR__VALUE);
 
 		ltEClass = createEClass(LT);
 
@@ -1080,8 +1080,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		eqEClass = createEClass(EQ);
 
-		boolComperatorEClass = createEClass(BOOL_COMPERATOR);
-		createEAttribute(boolComperatorEClass, BOOL_COMPERATOR__VALUE);
+		boolComparatorEClass = createEClass(BOOL_COMPARATOR);
+		createEAttribute(boolComparatorEClass, BOOL_COMPARATOR__VALUE);
 
 		isBoolEClass = createEClass(IS_BOOL);
 
@@ -1094,8 +1094,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		createEAttribute(operationEClass, OPERATION__SUITABLE_FOR_TYPE);
 		createEOperation(operationEClass, OPERATION___EXECUTE);
 
-		enumComperatorEClass = createEClass(ENUM_COMPERATOR);
-		createEAttribute(enumComperatorEClass, ENUM_COMPERATOR__VALUE);
+		enumComparatorEClass = createEClass(ENUM_COMPARATOR);
+		createEAttribute(enumComparatorEClass, ENUM_COMPARATOR__VALUE);
 
 		isLiteralEClass = createEClass(IS_LITERAL);
 
@@ -1134,7 +1134,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		witheListedNounEClass.getESuperTypes().add(this.getSubject());
+		whiteListedNounEClass.getESuperTypes().add(this.getSubject());
 		blackListedNounEClass.getESuperTypes().add(this.getSubject());
 		chainingEClass.getESuperTypes().add(this.getOperator());
 		orEClass.getESuperTypes().add(this.getChaining());
@@ -1143,25 +1143,25 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		stringOperationEClass.getESuperTypes().add(this.getOperation());
 		toLowerCaseEClass.getESuperTypes().add(this.getStringOperation());
 		toUpperCaseEClass.getESuperTypes().add(this.getStringOperation());
-		stringComperatorEClass.getESuperTypes().add(this.getComperator());
-		endsWithEClass.getESuperTypes().add(this.getStringComperator());
-		startWithEClass.getESuperTypes().add(this.getStringComperator());
-		containsEClass.getESuperTypes().add(this.getStringComperator());
-		likeEClass.getESuperTypes().add(this.getStringComperator());
-		dateComperatorEClass.getESuperTypes().add(this.getComperator());
-		isBeforeEClass.getESuperTypes().add(this.getDateComperator());
-		isAfterEClass.getESuperTypes().add(this.getDateComperator());
-		isInRangeEClass.getESuperTypes().add(this.getDateComperator());
-		numberComperatorEClass.getESuperTypes().add(this.getComperator());
-		ltEClass.getESuperTypes().add(this.getNumberComperator());
-		lteEClass.getESuperTypes().add(this.getNumberComperator());
-		gteEClass.getESuperTypes().add(this.getNumberComperator());
-		gtEClass.getESuperTypes().add(this.getNumberComperator());
-		eqEClass.getESuperTypes().add(this.getNumberComperator());
-		boolComperatorEClass.getESuperTypes().add(this.getComperator());
-		isBoolEClass.getESuperTypes().add(this.getBoolComperator());
-		enumComperatorEClass.getESuperTypes().add(this.getComperator());
-		isLiteralEClass.getESuperTypes().add(this.getEnumComperator());
+		stringComparatorEClass.getESuperTypes().add(this.getComparator());
+		endsWithEClass.getESuperTypes().add(this.getStringComparator());
+		startWithEClass.getESuperTypes().add(this.getStringComparator());
+		containsEClass.getESuperTypes().add(this.getStringComparator());
+		likeEClass.getESuperTypes().add(this.getStringComparator());
+		dateComparatorEClass.getESuperTypes().add(this.getComparator());
+		isBeforeEClass.getESuperTypes().add(this.getDateComparator());
+		isAfterEClass.getESuperTypes().add(this.getDateComparator());
+		isInRangeEClass.getESuperTypes().add(this.getDateComparator());
+		numberComparatorEClass.getESuperTypes().add(this.getComparator());
+		ltEClass.getESuperTypes().add(this.getNumberComparator());
+		lteEClass.getESuperTypes().add(this.getNumberComparator());
+		gteEClass.getESuperTypes().add(this.getNumberComparator());
+		gtEClass.getESuperTypes().add(this.getNumberComparator());
+		eqEClass.getESuperTypes().add(this.getNumberComparator());
+		boolComparatorEClass.getESuperTypes().add(this.getComparator());
+		isBoolEClass.getESuperTypes().add(this.getBoolComparator());
+		enumComparatorEClass.getESuperTypes().add(this.getComparator());
+		isLiteralEClass.getESuperTypes().add(this.getEnumComparator());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(queryEClass, Query.class, "Query", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1178,12 +1178,12 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEClass(subjectEClass, Subject.class, "Subject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSubject_FeaturePath(), theUtilitiesPackage.getFeaturePath(), null, "featurePath", null, 0, -1, Subject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(witheListedNounEClass, WitheListedNoun.class, "WitheListedNoun", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(whiteListedNounEClass, WhiteListedNoun.class, "WhiteListedNoun", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(blackListedNounEClass, BlackListedNoun.class, "BlackListedNoun", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(operatorEClass, Operator.class, "Operator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperator_Comperator(), this.getComperator(), null, "comperator", null, 1, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperator_Comparator(), this.getComparator(), null, "comparator", null, 1, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getOperator__Execute(), ecorePackage.getEBoolean(), "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1201,14 +1201,14 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		initEClass(toUpperCaseEClass, ToUpperCase.class, "ToUpperCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(comperatorEClass, Comperator.class, "Comperator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComperator_SuitableForType(), ecorePackage.getEString(), "suitableForType", null, 1, 1, Comperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComperator_FeaturePath(), theUtilitiesPackage.getFeaturePath(), null, "featurePath", null, 0, 1, Comperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(comparatorEClass, Comparator.class, "Comparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getComparator_SuitableForType(), ecorePackage.getEString(), "suitableForType", null, 1, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComparator_FeaturePath(), theUtilitiesPackage.getFeaturePath(), null, "featurePath", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getComperator__Compare(), ecorePackage.getEBoolean(), "compare", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getComparator__Compare(), ecorePackage.getEBoolean(), "compare", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(stringComperatorEClass, StringComperator.class, "StringComperator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringComperator_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringComperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(stringComparatorEClass, StringComparator.class, "StringComparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringComparator_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(endsWithEClass, EndsWith.class, "EndsWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1218,8 +1218,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		initEClass(likeEClass, Like.class, "Like", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(dateComperatorEClass, DateComperator.class, "DateComperator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDateComperator_Value(), ecorePackage.getEDate(), "value", null, 0, 1, DateComperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dateComparatorEClass, DateComparator.class, "DateComparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDateComparator_Value(), ecorePackage.getEDate(), "value", null, 0, 1, DateComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isBeforeEClass, IsBefore.class, "IsBefore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1227,8 +1227,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		initEClass(isInRangeEClass, IsInRange.class, "IsInRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(numberComperatorEClass, NumberComperator.class, "NumberComperator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNumberComperator_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, NumberComperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(numberComparatorEClass, NumberComparator.class, "NumberComparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNumberComparator_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, NumberComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ltEClass, Lt.class, "Lt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1240,8 +1240,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(boolComperatorEClass, BoolComperator.class, "BoolComperator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBoolComperator_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, BoolComperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(boolComparatorEClass, BoolComparator.class, "BoolComparator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBoolComparator_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, BoolComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isBoolEClass, IsBool.class, "IsBool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1255,8 +1255,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		initEOperation(getOperation__Execute(), ecorePackage.getEObject(), "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(enumComperatorEClass, EnumComperator.class, "EnumComperator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEnumComperator_Value(), ecorePackage.getEString(), "value", null, 0, 1, EnumComperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(enumComparatorEClass, EnumComparator.class, "EnumComparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEnumComparator_Value(), ecorePackage.getEString(), "value", null, 0, 1, EnumComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isLiteralEClass, IsLiteral.class, "IsLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

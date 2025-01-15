@@ -26,5 +26,5 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface IsBefore extends DateComperator {
+public interface IsBefore extends DateComparator {
 } // IsBefore

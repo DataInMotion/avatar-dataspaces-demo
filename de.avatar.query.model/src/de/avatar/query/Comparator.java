@@ -21,37 +21,37 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Comperator</b></em>'.
+ * A representation of the model object '<em><b>Comparator</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.Comperator#getSuitableForType <em>Suitable For Type</em>}</li>
- *   <li>{@link de.avatar.query.Comperator#getFeaturePath <em>Feature Path</em>}</li>
+ *   <li>{@link de.avatar.query.Comparator#getSuitableForType <em>Suitable For Type</em>}</li>
+ *   <li>{@link de.avatar.query.Comparator#getFeaturePath <em>Feature Path</em>}</li>
  * </ul>
  *
- * @see de.avatar.query.QueryPackage#getComperator()
+ * @see de.avatar.query.QueryPackage#getComparator()
  * @model abstract="true"
  * @generated
  */
 @ProviderType
-public interface Comperator extends EObject {
+public interface Comparator extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Suitable For Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Suitable For Type</em>' attribute.
 	 * @see #setSuitableForType(String)
-	 * @see de.avatar.query.QueryPackage#getComperator_SuitableForType()
+	 * @see de.avatar.query.QueryPackage#getComparator_SuitableForType()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getSuitableForType();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.query.Comperator#getSuitableForType <em>Suitable For Type</em>}' attribute.
+	 * Sets the value of the '{@link de.avatar.query.Comparator#getSuitableForType <em>Suitable For Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Suitable For Type</em>' attribute.
@@ -66,14 +66,14 @@ public interface Comperator extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Feature Path</em>' containment reference.
 	 * @see #setFeaturePath(FeaturePath)
-	 * @see de.avatar.query.QueryPackage#getComperator_FeaturePath()
+	 * @see de.avatar.query.QueryPackage#getComparator_FeaturePath()
 	 * @model containment="true"
 	 * @generated
 	 */
 	FeaturePath getFeaturePath();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.query.Comperator#getFeaturePath <em>Feature Path</em>}' containment reference.
+	 * Sets the value of the '{@link de.avatar.query.Comparator#getFeaturePath <em>Feature Path</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Feature Path</em>' containment reference.
@@ -90,4 +90,4 @@ public interface Comperator extends EObject {
 	 */
 	boolean compare();
 
-} // Comperator
+} // Comparator

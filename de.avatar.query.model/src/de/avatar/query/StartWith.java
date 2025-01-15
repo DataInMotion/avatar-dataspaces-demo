@@ -26,5 +26,5 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface StartWith extends StringComperator {
+public interface StartWith extends StringComparator {
 } // StartWith

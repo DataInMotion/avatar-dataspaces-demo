@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class IsInRangeImpl extends DateComperatorImpl implements IsInRange {
+public class IsInRangeImpl extends DateComparatorImpl implements IsInRange {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

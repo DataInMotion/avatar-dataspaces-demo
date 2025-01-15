@@ -17,42 +17,42 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Enum Comperator</b></em>'.
+ * A representation of the model object '<em><b>Bool Comparator</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.EnumComperator#getValue <em>Value</em>}</li>
+ *   <li>{@link de.avatar.query.BoolComparator#isValue <em>Value</em>}</li>
  * </ul>
  *
- * @see de.avatar.query.QueryPackage#getEnumComperator()
- * @model abstract="true"
+ * @see de.avatar.query.QueryPackage#getBoolComparator()
+ * @model
  * @generated
  */
 @ProviderType
-public interface EnumComperator extends Comperator {
+public interface BoolComparator extends Comparator {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
-	 * @see de.avatar.query.QueryPackage#getEnumComperator_Value()
+	 * @see #setValue(boolean)
+	 * @see de.avatar.query.QueryPackage#getBoolComparator_Value()
 	 * @model
 	 * @generated
 	 */
-	String getValue();
+	boolean isValue();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.query.EnumComperator#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link de.avatar.query.BoolComparator#isValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
+	 * @see #isValue()
 	 * @generated
 	 */
-	void setValue(String value);
+	void setValue(boolean value);
 
-} // EnumComperator
+} // BoolComparator

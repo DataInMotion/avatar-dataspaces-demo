@@ -26,5 +26,5 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface Like extends StringComperator {
+public interface Like extends StringComparator {
 } // Like

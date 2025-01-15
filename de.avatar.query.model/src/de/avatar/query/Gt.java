@@ -26,5 +26,5 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface Gt extends NumberComperator {
+public interface Gt extends NumberComparator {
 } // Gt

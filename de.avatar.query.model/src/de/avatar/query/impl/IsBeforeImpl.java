@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class IsBeforeImpl extends DateComperatorImpl implements IsBefore {
+public class IsBeforeImpl extends DateComparatorImpl implements IsBefore {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

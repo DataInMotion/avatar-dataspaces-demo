@@ -13,46 +13,48 @@
  */
 package de.avatar.query;
 
+import java.util.Date;
+
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Number Comperator</b></em>'.
+ * A representation of the model object '<em><b>Date Comparator</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.NumberComperator#getValue <em>Value</em>}</li>
+ *   <li>{@link de.avatar.query.DateComparator#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see de.avatar.query.QueryPackage#getNumberComperator()
+ * @see de.avatar.query.QueryPackage#getDateComparator()
  * @model abstract="true"
  * @generated
  */
 @ProviderType
-public interface NumberComperator extends Comperator {
+public interface DateComparator extends Comparator {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(float)
-	 * @see de.avatar.query.QueryPackage#getNumberComperator_Value()
+	 * @see #setValue(Date)
+	 * @see de.avatar.query.QueryPackage#getDateComparator_Value()
 	 * @model
 	 * @generated
 	 */
-	float getValue();
+	Date getValue();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.query.NumberComperator#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link de.avatar.query.DateComparator#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(float value);
+	void setValue(Date value);
 
-} // NumberComperator
+} // DateComparator

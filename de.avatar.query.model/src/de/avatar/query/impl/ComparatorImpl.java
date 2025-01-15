@@ -13,7 +13,7 @@
  */
 package de.avatar.query.impl;
 
-import de.avatar.query.Comperator;
+import de.avatar.query.Comparator;
 import de.avatar.query.QueryPackage;
 
 import java.lang.reflect.InvocationTargetException;
@@ -33,19 +33,19 @@ import org.gecko.emf.utilities.FeaturePath;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Comperator</b></em>'.
+ * An implementation of the model object '<em><b>Comparator</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.impl.ComperatorImpl#getSuitableForType <em>Suitable For Type</em>}</li>
- *   <li>{@link de.avatar.query.impl.ComperatorImpl#getFeaturePath <em>Feature Path</em>}</li>
+ *   <li>{@link de.avatar.query.impl.ComparatorImpl#getSuitableForType <em>Suitable For Type</em>}</li>
+ *   <li>{@link de.avatar.query.impl.ComparatorImpl#getFeaturePath <em>Feature Path</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implements Comperator {
+public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implements Comparator {
 	/**
 	 * The default value of the '{@link #getSuitableForType() <em>Suitable For Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -81,7 +81,7 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComperatorImpl() {
+	protected ComparatorImpl() {
 		super();
 	}
 
@@ -92,7 +92,7 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.COMPERATOR;
+		return QueryPackage.Literals.COMPARATOR;
 	}
 
 	/**
@@ -115,7 +115,7 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 		String oldSuitableForType = suitableForType;
 		suitableForType = newSuitableForType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.COMPERATOR__SUITABLE_FOR_TYPE, oldSuitableForType, suitableForType));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE, oldSuitableForType, suitableForType));
 	}
 
 	/**
@@ -137,7 +137,7 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 		FeaturePath oldFeaturePath = featurePath;
 		featurePath = newFeaturePath;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QueryPackage.COMPERATOR__FEATURE_PATH, oldFeaturePath, newFeaturePath);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QueryPackage.COMPARATOR__FEATURE_PATH, oldFeaturePath, newFeaturePath);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -153,14 +153,14 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 		if (newFeaturePath != featurePath) {
 			NotificationChain msgs = null;
 			if (featurePath != null)
-				msgs = ((InternalEObject)featurePath).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QueryPackage.COMPERATOR__FEATURE_PATH, null, msgs);
+				msgs = ((InternalEObject)featurePath).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QueryPackage.COMPARATOR__FEATURE_PATH, null, msgs);
 			if (newFeaturePath != null)
-				msgs = ((InternalEObject)newFeaturePath).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QueryPackage.COMPERATOR__FEATURE_PATH, null, msgs);
+				msgs = ((InternalEObject)newFeaturePath).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QueryPackage.COMPARATOR__FEATURE_PATH, null, msgs);
 			msgs = basicSetFeaturePath(newFeaturePath, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.COMPERATOR__FEATURE_PATH, newFeaturePath, newFeaturePath));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.COMPARATOR__FEATURE_PATH, newFeaturePath, newFeaturePath));
 	}
 
 	/**
@@ -183,7 +183,7 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QueryPackage.COMPERATOR__FEATURE_PATH:
+			case QueryPackage.COMPARATOR__FEATURE_PATH:
 				return basicSetFeaturePath(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -197,9 +197,9 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QueryPackage.COMPERATOR__SUITABLE_FOR_TYPE:
+			case QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE:
 				return getSuitableForType();
-			case QueryPackage.COMPERATOR__FEATURE_PATH:
+			case QueryPackage.COMPARATOR__FEATURE_PATH:
 				return getFeaturePath();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -213,10 +213,10 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QueryPackage.COMPERATOR__SUITABLE_FOR_TYPE:
+			case QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE:
 				setSuitableForType((String)newValue);
 				return;
-			case QueryPackage.COMPERATOR__FEATURE_PATH:
+			case QueryPackage.COMPARATOR__FEATURE_PATH:
 				setFeaturePath((FeaturePath)newValue);
 				return;
 		}
@@ -231,10 +231,10 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QueryPackage.COMPERATOR__SUITABLE_FOR_TYPE:
+			case QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE:
 				setSuitableForType(SUITABLE_FOR_TYPE_EDEFAULT);
 				return;
-			case QueryPackage.COMPERATOR__FEATURE_PATH:
+			case QueryPackage.COMPARATOR__FEATURE_PATH:
 				setFeaturePath((FeaturePath)null);
 				return;
 		}
@@ -249,9 +249,9 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QueryPackage.COMPERATOR__SUITABLE_FOR_TYPE:
+			case QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE:
 				return SUITABLE_FOR_TYPE_EDEFAULT == null ? suitableForType != null : !SUITABLE_FOR_TYPE_EDEFAULT.equals(suitableForType);
-			case QueryPackage.COMPERATOR__FEATURE_PATH:
+			case QueryPackage.COMPARATOR__FEATURE_PATH:
 				return featurePath != null;
 		}
 		return super.eIsSet(featureID);
@@ -265,7 +265,7 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case QueryPackage.COMPERATOR___COMPARE:
+			case QueryPackage.COMPARATOR___COMPARE:
 				return compare();
 		}
 		return super.eInvoke(operationID, arguments);
@@ -287,4 +287,4 @@ public abstract class ComperatorImpl extends MinimalEObjectImpl.Container implem
 		return result.toString();
 	}
 
-} //ComperatorImpl
+} //ComparatorImpl

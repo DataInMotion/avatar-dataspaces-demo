@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class EndsWithImpl extends StringComperatorImpl implements EndsWith {
+public class EndsWithImpl extends StringComparatorImpl implements EndsWith {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -26,5 +26,5 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface Lte extends NumberComperator {
+public interface Lte extends NumberComparator {
 } // Lte

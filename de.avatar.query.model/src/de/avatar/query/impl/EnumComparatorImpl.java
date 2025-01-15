@@ -13,10 +13,8 @@
  */
 package de.avatar.query.impl;
 
-import de.avatar.query.DateComperator;
+import de.avatar.query.EnumComparator;
 import de.avatar.query.QueryPackage;
-
-import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -26,18 +24,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Date Comperator</b></em>'.
+ * An implementation of the model object '<em><b>Enum Comparator</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.impl.DateComperatorImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.avatar.query.impl.EnumComparatorImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class DateComperatorImpl extends ComperatorImpl implements DateComperator {
+public abstract class EnumComparatorImpl extends ComparatorImpl implements EnumComparator {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -46,7 +44,7 @@ public abstract class DateComperatorImpl extends ComperatorImpl implements DateC
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Date VALUE_EDEFAULT = null;
+	protected static final String VALUE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -56,14 +54,14 @@ public abstract class DateComperatorImpl extends ComperatorImpl implements DateC
 	 * @generated
 	 * @ordered
 	 */
-	protected Date value = VALUE_EDEFAULT;
+	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DateComperatorImpl() {
+	protected EnumComparatorImpl() {
 		super();
 	}
 
@@ -74,7 +72,7 @@ public abstract class DateComperatorImpl extends ComperatorImpl implements DateC
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.DATE_COMPERATOR;
+		return QueryPackage.Literals.ENUM_COMPARATOR;
 	}
 
 	/**
@@ -83,7 +81,7 @@ public abstract class DateComperatorImpl extends ComperatorImpl implements DateC
 	 * @generated
 	 */
 	@Override
-	public Date getValue() {
+	public String getValue() {
 		return value;
 	}
 
@@ -93,11 +91,11 @@ public abstract class DateComperatorImpl extends ComperatorImpl implements DateC
 	 * @generated
 	 */
 	@Override
-	public void setValue(Date newValue) {
-		Date oldValue = value;
+	public void setValue(String newValue) {
+		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.DATE_COMPERATOR__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.ENUM_COMPARATOR__VALUE, oldValue, value));
 	}
 
 	/**
@@ -108,7 +106,7 @@ public abstract class DateComperatorImpl extends ComperatorImpl implements DateC
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QueryPackage.DATE_COMPERATOR__VALUE:
+			case QueryPackage.ENUM_COMPARATOR__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -122,8 +120,8 @@ public abstract class DateComperatorImpl extends ComperatorImpl implements DateC
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QueryPackage.DATE_COMPERATOR__VALUE:
-				setValue((Date)newValue);
+			case QueryPackage.ENUM_COMPARATOR__VALUE:
+				setValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -137,7 +135,7 @@ public abstract class DateComperatorImpl extends ComperatorImpl implements DateC
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QueryPackage.DATE_COMPERATOR__VALUE:
+			case QueryPackage.ENUM_COMPARATOR__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -152,7 +150,7 @@ public abstract class DateComperatorImpl extends ComperatorImpl implements DateC
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QueryPackage.DATE_COMPERATOR__VALUE:
+			case QueryPackage.ENUM_COMPARATOR__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
@@ -174,4 +172,4 @@ public abstract class DateComperatorImpl extends ComperatorImpl implements DateC
 		return result.toString();
 	}
 
-} //DateComperatorImpl
+} //EnumComparatorImpl

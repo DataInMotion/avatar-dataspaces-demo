@@ -89,10 +89,10 @@ public class QuerySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.WITHE_LISTED_NOUN: {
-				WitheListedNoun witheListedNoun = (WitheListedNoun)theEObject;
-				T result = caseWitheListedNoun(witheListedNoun);
-				if (result == null) result = caseSubject(witheListedNoun);
+			case QueryPackage.WHITE_LISTED_NOUN: {
+				WhiteListedNoun whiteListedNoun = (WhiteListedNoun)theEObject;
+				T result = caseWhiteListedNoun(whiteListedNoun);
+				if (result == null) result = caseSubject(whiteListedNoun);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -163,141 +163,141 @@ public class QuerySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.COMPERATOR: {
-				Comperator comperator = (Comperator)theEObject;
-				T result = caseComperator(comperator);
+			case QueryPackage.COMPARATOR: {
+				Comparator comparator = (Comparator)theEObject;
+				T result = caseComparator(comparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.STRING_COMPERATOR: {
-				StringComperator stringComperator = (StringComperator)theEObject;
-				T result = caseStringComperator(stringComperator);
-				if (result == null) result = caseComperator(stringComperator);
+			case QueryPackage.STRING_COMPARATOR: {
+				StringComparator stringComparator = (StringComparator)theEObject;
+				T result = caseStringComparator(stringComparator);
+				if (result == null) result = caseComparator(stringComparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.ENDS_WITH: {
 				EndsWith endsWith = (EndsWith)theEObject;
 				T result = caseEndsWith(endsWith);
-				if (result == null) result = caseStringComperator(endsWith);
-				if (result == null) result = caseComperator(endsWith);
+				if (result == null) result = caseStringComparator(endsWith);
+				if (result == null) result = caseComparator(endsWith);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.START_WITH: {
 				StartWith startWith = (StartWith)theEObject;
 				T result = caseStartWith(startWith);
-				if (result == null) result = caseStringComperator(startWith);
-				if (result == null) result = caseComperator(startWith);
+				if (result == null) result = caseStringComparator(startWith);
+				if (result == null) result = caseComparator(startWith);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.CONTAINS: {
 				Contains contains = (Contains)theEObject;
 				T result = caseContains(contains);
-				if (result == null) result = caseStringComperator(contains);
-				if (result == null) result = caseComperator(contains);
+				if (result == null) result = caseStringComparator(contains);
+				if (result == null) result = caseComparator(contains);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.LIKE: {
 				Like like = (Like)theEObject;
 				T result = caseLike(like);
-				if (result == null) result = caseStringComperator(like);
-				if (result == null) result = caseComperator(like);
+				if (result == null) result = caseStringComparator(like);
+				if (result == null) result = caseComparator(like);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.DATE_COMPERATOR: {
-				DateComperator dateComperator = (DateComperator)theEObject;
-				T result = caseDateComperator(dateComperator);
-				if (result == null) result = caseComperator(dateComperator);
+			case QueryPackage.DATE_COMPARATOR: {
+				DateComparator dateComparator = (DateComparator)theEObject;
+				T result = caseDateComparator(dateComparator);
+				if (result == null) result = caseComparator(dateComparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.IS_BEFORE: {
 				IsBefore isBefore = (IsBefore)theEObject;
 				T result = caseIsBefore(isBefore);
-				if (result == null) result = caseDateComperator(isBefore);
-				if (result == null) result = caseComperator(isBefore);
+				if (result == null) result = caseDateComparator(isBefore);
+				if (result == null) result = caseComparator(isBefore);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.IS_AFTER: {
 				IsAfter isAfter = (IsAfter)theEObject;
 				T result = caseIsAfter(isAfter);
-				if (result == null) result = caseDateComperator(isAfter);
-				if (result == null) result = caseComperator(isAfter);
+				if (result == null) result = caseDateComparator(isAfter);
+				if (result == null) result = caseComparator(isAfter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.IS_IN_RANGE: {
 				IsInRange isInRange = (IsInRange)theEObject;
 				T result = caseIsInRange(isInRange);
-				if (result == null) result = caseDateComperator(isInRange);
-				if (result == null) result = caseComperator(isInRange);
+				if (result == null) result = caseDateComparator(isInRange);
+				if (result == null) result = caseComparator(isInRange);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.NUMBER_COMPERATOR: {
-				NumberComperator numberComperator = (NumberComperator)theEObject;
-				T result = caseNumberComperator(numberComperator);
-				if (result == null) result = caseComperator(numberComperator);
+			case QueryPackage.NUMBER_COMPARATOR: {
+				NumberComparator numberComparator = (NumberComparator)theEObject;
+				T result = caseNumberComparator(numberComparator);
+				if (result == null) result = caseComparator(numberComparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.LT: {
 				Lt lt = (Lt)theEObject;
 				T result = caseLt(lt);
-				if (result == null) result = caseNumberComperator(lt);
-				if (result == null) result = caseComperator(lt);
+				if (result == null) result = caseNumberComparator(lt);
+				if (result == null) result = caseComparator(lt);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.LTE: {
 				Lte lte = (Lte)theEObject;
 				T result = caseLte(lte);
-				if (result == null) result = caseNumberComperator(lte);
-				if (result == null) result = caseComperator(lte);
+				if (result == null) result = caseNumberComparator(lte);
+				if (result == null) result = caseComparator(lte);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.GTE: {
 				Gte gte = (Gte)theEObject;
 				T result = caseGte(gte);
-				if (result == null) result = caseNumberComperator(gte);
-				if (result == null) result = caseComperator(gte);
+				if (result == null) result = caseNumberComparator(gte);
+				if (result == null) result = caseComparator(gte);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.GT: {
 				Gt gt = (Gt)theEObject;
 				T result = caseGt(gt);
-				if (result == null) result = caseNumberComperator(gt);
-				if (result == null) result = caseComperator(gt);
+				if (result == null) result = caseNumberComparator(gt);
+				if (result == null) result = caseComparator(gt);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.EQ: {
 				Eq eq = (Eq)theEObject;
 				T result = caseEq(eq);
-				if (result == null) result = caseNumberComperator(eq);
-				if (result == null) result = caseComperator(eq);
+				if (result == null) result = caseNumberComparator(eq);
+				if (result == null) result = caseComparator(eq);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.BOOL_COMPERATOR: {
-				BoolComperator boolComperator = (BoolComperator)theEObject;
-				T result = caseBoolComperator(boolComperator);
-				if (result == null) result = caseComperator(boolComperator);
+			case QueryPackage.BOOL_COMPARATOR: {
+				BoolComparator boolComparator = (BoolComparator)theEObject;
+				T result = caseBoolComparator(boolComparator);
+				if (result == null) result = caseComparator(boolComparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.IS_BOOL: {
 				IsBool isBool = (IsBool)theEObject;
 				T result = caseIsBool(isBool);
-				if (result == null) result = caseBoolComperator(isBool);
-				if (result == null) result = caseComperator(isBool);
+				if (result == null) result = caseBoolComparator(isBool);
+				if (result == null) result = caseComparator(isBool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -313,18 +313,18 @@ public class QuerySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.ENUM_COMPERATOR: {
-				EnumComperator enumComperator = (EnumComperator)theEObject;
-				T result = caseEnumComperator(enumComperator);
-				if (result == null) result = caseComperator(enumComperator);
+			case QueryPackage.ENUM_COMPARATOR: {
+				EnumComparator enumComparator = (EnumComparator)theEObject;
+				T result = caseEnumComparator(enumComparator);
+				if (result == null) result = caseComparator(enumComparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.IS_LITERAL: {
 				IsLiteral isLiteral = (IsLiteral)theEObject;
 				T result = caseIsLiteral(isLiteral);
-				if (result == null) result = caseEnumComperator(isLiteral);
-				if (result == null) result = caseComperator(isLiteral);
+				if (result == null) result = caseEnumComparator(isLiteral);
+				if (result == null) result = caseComparator(isLiteral);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -363,17 +363,17 @@ public class QuerySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Withe Listed Noun</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>White Listed Noun</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Withe Listed Noun</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>White Listed Noun</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWitheListedNoun(WitheListedNoun object) {
+	public T caseWhiteListedNoun(WhiteListedNoun object) {
 		return null;
 	}
 
@@ -513,32 +513,32 @@ public class QuerySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Comperator</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Comparator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Comperator</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Comparator</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseComperator(Comperator object) {
+	public T caseComparator(Comparator object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>String Comperator</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>String Comparator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>String Comperator</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>String Comparator</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStringComperator(StringComperator object) {
+	public T caseStringComparator(StringComparator object) {
 		return null;
 	}
 
@@ -603,17 +603,17 @@ public class QuerySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Date Comperator</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Date Comparator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Date Comperator</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Date Comparator</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDateComperator(DateComperator object) {
+	public T caseDateComparator(DateComparator object) {
 		return null;
 	}
 
@@ -663,17 +663,17 @@ public class QuerySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Number Comperator</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Number Comparator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Number Comperator</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Number Comparator</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseNumberComperator(NumberComperator object) {
+	public T caseNumberComparator(NumberComparator object) {
 		return null;
 	}
 
@@ -753,17 +753,17 @@ public class QuerySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Bool Comperator</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Bool Comparator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Bool Comperator</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Bool Comparator</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBoolComperator(BoolComperator object) {
+	public T caseBoolComparator(BoolComparator object) {
 		return null;
 	}
 
@@ -813,17 +813,17 @@ public class QuerySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Enum Comperator</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Enum Comparator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Enum Comperator</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Enum Comparator</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEnumComperator(EnumComperator object) {
+	public T caseEnumComparator(EnumComparator object) {
 		return null;
 	}
 

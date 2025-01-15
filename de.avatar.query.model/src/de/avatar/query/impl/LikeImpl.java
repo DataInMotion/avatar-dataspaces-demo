@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class LikeImpl extends StringComperatorImpl implements Like {
+public class LikeImpl extends StringComparatorImpl implements Like {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

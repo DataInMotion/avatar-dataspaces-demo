@@ -26,5 +26,5 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface IsLiteral extends EnumComperator {
+public interface IsLiteral extends EnumComparator {
 } // IsLiteral

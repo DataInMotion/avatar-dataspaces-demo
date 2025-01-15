@@ -17,36 +17,36 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>String Comperator</b></em>'.
+ * A representation of the model object '<em><b>Enum Comparator</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.StringComperator#getValue <em>Value</em>}</li>
+ *   <li>{@link de.avatar.query.EnumComparator#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see de.avatar.query.QueryPackage#getStringComperator()
+ * @see de.avatar.query.QueryPackage#getEnumComparator()
  * @model abstract="true"
  * @generated
  */
 @ProviderType
-public interface StringComperator extends Comperator {
+public interface EnumComparator extends Comparator {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
-	 * @see de.avatar.query.QueryPackage#getStringComperator_Value()
+	 * @see de.avatar.query.QueryPackage#getEnumComparator_Value()
 	 * @model
 	 * @generated
 	 */
 	String getValue();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.query.StringComperator#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link de.avatar.query.EnumComparator#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
@@ -55,4 +55,4 @@ public interface StringComperator extends Comperator {
 	 */
 	void setValue(String value);
 
-} // StringComperator
+} // EnumComparator

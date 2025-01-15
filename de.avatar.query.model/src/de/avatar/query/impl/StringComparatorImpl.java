@@ -14,7 +14,7 @@
 package de.avatar.query.impl;
 
 import de.avatar.query.QueryPackage;
-import de.avatar.query.StringComperator;
+import de.avatar.query.StringComparator;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -24,18 +24,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>String Comperator</b></em>'.
+ * An implementation of the model object '<em><b>String Comparator</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.impl.StringComperatorImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.avatar.query.impl.StringComparatorImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class StringComperatorImpl extends ComperatorImpl implements StringComperator {
+public abstract class StringComparatorImpl extends ComparatorImpl implements StringComparator {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -61,7 +61,7 @@ public abstract class StringComperatorImpl extends ComperatorImpl implements Str
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StringComperatorImpl() {
+	protected StringComparatorImpl() {
 		super();
 	}
 
@@ -72,7 +72,7 @@ public abstract class StringComperatorImpl extends ComperatorImpl implements Str
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.STRING_COMPERATOR;
+		return QueryPackage.Literals.STRING_COMPARATOR;
 	}
 
 	/**
@@ -95,7 +95,7 @@ public abstract class StringComperatorImpl extends ComperatorImpl implements Str
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.STRING_COMPERATOR__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.STRING_COMPARATOR__VALUE, oldValue, value));
 	}
 
 	/**
@@ -106,7 +106,7 @@ public abstract class StringComperatorImpl extends ComperatorImpl implements Str
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QueryPackage.STRING_COMPERATOR__VALUE:
+			case QueryPackage.STRING_COMPARATOR__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -120,7 +120,7 @@ public abstract class StringComperatorImpl extends ComperatorImpl implements Str
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QueryPackage.STRING_COMPERATOR__VALUE:
+			case QueryPackage.STRING_COMPARATOR__VALUE:
 				setValue((String)newValue);
 				return;
 		}
@@ -135,7 +135,7 @@ public abstract class StringComperatorImpl extends ComperatorImpl implements Str
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QueryPackage.STRING_COMPERATOR__VALUE:
+			case QueryPackage.STRING_COMPARATOR__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -150,7 +150,7 @@ public abstract class StringComperatorImpl extends ComperatorImpl implements Str
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QueryPackage.STRING_COMPERATOR__VALUE:
+			case QueryPackage.STRING_COMPARATOR__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
@@ -172,4 +172,4 @@ public abstract class StringComperatorImpl extends ComperatorImpl implements Str
 		return result.toString();
 	}
 
-} //StringComperatorImpl
+} //StringComparatorImpl

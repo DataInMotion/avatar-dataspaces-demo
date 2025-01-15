@@ -223,14 +223,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int SUBJECT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.WitheListedNounImpl <em>Withe Listed Noun</em>}' class.
+	 * The meta object id for the '{@link de.avatar.query.impl.WhiteListedNounImpl <em>White Listed Noun</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.WitheListedNounImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getWitheListedNoun()
+	 * @see de.avatar.query.impl.WhiteListedNounImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getWhiteListedNoun()
 	 * @generated
 	 */
-	int WITHE_LISTED_NOUN = 2;
+	int WHITE_LISTED_NOUN = 2;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference list.
@@ -239,25 +239,25 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WITHE_LISTED_NOUN__FEATURE_PATH = SUBJECT__FEATURE_PATH;
+	int WHITE_LISTED_NOUN__FEATURE_PATH = SUBJECT__FEATURE_PATH;
 
 	/**
-	 * The number of structural features of the '<em>Withe Listed Noun</em>' class.
+	 * The number of structural features of the '<em>White Listed Noun</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WITHE_LISTED_NOUN_FEATURE_COUNT = SUBJECT_FEATURE_COUNT + 0;
+	int WHITE_LISTED_NOUN_FEATURE_COUNT = SUBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Withe Listed Noun</em>' class.
+	 * The number of operations of the '<em>White Listed Noun</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WITHE_LISTED_NOUN_OPERATION_COUNT = SUBJECT_OPERATION_COUNT + 0;
+	int WHITE_LISTED_NOUN_OPERATION_COUNT = SUBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.BlackListedNounImpl <em>Black Listed Noun</em>}' class.
@@ -307,13 +307,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int OPERATOR = 4;
 
 	/**
-	 * The feature id for the '<em><b>Comperator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Comparator</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__COMPERATOR = 0;
+	int OPERATOR__COMPARATOR = 0;
 
 	/**
 	 * The number of structural features of the '<em>Operator</em>' class.
@@ -353,13 +353,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int CHAINING = 5;
 
 	/**
-	 * The feature id for the '<em><b>Comperator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Comparator</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHAINING__COMPERATOR = OPERATOR__COMPERATOR;
+	int CHAINING__COMPARATOR = OPERATOR__COMPARATOR;
 
 	/**
 	 * The number of structural features of the '<em>Chaining</em>' class.
@@ -399,13 +399,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int OR = 6;
 
 	/**
-	 * The feature id for the '<em><b>Comperator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Comparator</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OR__COMPERATOR = CHAINING__COMPERATOR;
+	int OR__COMPARATOR = CHAINING__COMPARATOR;
 
 	/**
 	 * The number of structural features of the '<em>Or</em>' class.
@@ -445,13 +445,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int NOT = 7;
 
 	/**
-	 * The feature id for the '<em><b>Comperator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Comparator</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NOT__COMPERATOR = CHAINING__COMPERATOR;
+	int NOT__COMPARATOR = CHAINING__COMPARATOR;
 
 	/**
 	 * The number of structural features of the '<em>Not</em>' class.
@@ -491,13 +491,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int AND = 8;
 
 	/**
-	 * The feature id for the '<em><b>Comperator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Comparator</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AND__COMPERATOR = CHAINING__COMPERATOR;
+	int AND__COMPARATOR = CHAINING__COMPARATOR;
 
 	/**
 	 * The number of structural features of the '<em>And</em>' class.
@@ -747,14 +747,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int TO_UPPER_CASE_OPERATION_COUNT = STRING_OPERATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.ComperatorImpl <em>Comperator</em>}' class.
+	 * The meta object id for the '{@link de.avatar.query.impl.ComparatorImpl <em>Comparator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.ComperatorImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getComperator()
+	 * @see de.avatar.query.impl.ComparatorImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getComparator()
 	 * @generated
 	 */
-	int COMPERATOR = 12;
+	int COMPARATOR = 12;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -763,7 +763,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPERATOR__SUITABLE_FOR_TYPE = 0;
+	int COMPARATOR__SUITABLE_FOR_TYPE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -772,16 +772,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPERATOR__FEATURE_PATH = 1;
+	int COMPARATOR__FEATURE_PATH = 1;
 
 	/**
-	 * The number of structural features of the '<em>Comperator</em>' class.
+	 * The number of structural features of the '<em>Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPERATOR_FEATURE_COUNT = 2;
+	int COMPARATOR_FEATURE_COUNT = 2;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -790,26 +790,26 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPERATOR___COMPARE = 0;
+	int COMPARATOR___COMPARE = 0;
 
 	/**
-	 * The number of operations of the '<em>Comperator</em>' class.
+	 * The number of operations of the '<em>Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPERATOR_OPERATION_COUNT = 1;
+	int COMPARATOR_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.StringComperatorImpl <em>String Comperator</em>}' class.
+	 * The meta object id for the '{@link de.avatar.query.impl.StringComparatorImpl <em>String Comparator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.StringComperatorImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getStringComperator()
+	 * @see de.avatar.query.impl.StringComparatorImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getStringComparator()
 	 * @generated
 	 */
-	int STRING_COMPERATOR = 13;
+	int STRING_COMPARATOR = 13;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -818,7 +818,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPERATOR__SUITABLE_FOR_TYPE = COMPERATOR__SUITABLE_FOR_TYPE;
+	int STRING_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -827,7 +827,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPERATOR__FEATURE_PATH = COMPERATOR__FEATURE_PATH;
+	int STRING_COMPARATOR__FEATURE_PATH = COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -836,16 +836,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPERATOR__VALUE = COMPERATOR_FEATURE_COUNT + 0;
+	int STRING_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>String Comperator</em>' class.
+	 * The number of structural features of the '<em>String Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPERATOR_FEATURE_COUNT = COMPERATOR_FEATURE_COUNT + 1;
+	int STRING_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -854,16 +854,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPERATOR___COMPARE = COMPERATOR___COMPARE;
+	int STRING_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
 
 	/**
-	 * The number of operations of the '<em>String Comperator</em>' class.
+	 * The number of operations of the '<em>String Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPERATOR_OPERATION_COUNT = COMPERATOR_OPERATION_COUNT + 0;
+	int STRING_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.EndsWithImpl <em>Ends With</em>}' class.
@@ -882,7 +882,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDS_WITH__SUITABLE_FOR_TYPE = STRING_COMPERATOR__SUITABLE_FOR_TYPE;
+	int ENDS_WITH__SUITABLE_FOR_TYPE = STRING_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -891,7 +891,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDS_WITH__FEATURE_PATH = STRING_COMPERATOR__FEATURE_PATH;
+	int ENDS_WITH__FEATURE_PATH = STRING_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -900,7 +900,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDS_WITH__VALUE = STRING_COMPERATOR__VALUE;
+	int ENDS_WITH__VALUE = STRING_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Ends With</em>' class.
@@ -909,7 +909,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDS_WITH_FEATURE_COUNT = STRING_COMPERATOR_FEATURE_COUNT + 0;
+	int ENDS_WITH_FEATURE_COUNT = STRING_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -918,7 +918,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDS_WITH___COMPARE = STRING_COMPERATOR___COMPARE;
+	int ENDS_WITH___COMPARE = STRING_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Ends With</em>' class.
@@ -927,7 +927,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDS_WITH_OPERATION_COUNT = STRING_COMPERATOR_OPERATION_COUNT + 0;
+	int ENDS_WITH_OPERATION_COUNT = STRING_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.StartWithImpl <em>Start With</em>}' class.
@@ -946,7 +946,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int START_WITH__SUITABLE_FOR_TYPE = STRING_COMPERATOR__SUITABLE_FOR_TYPE;
+	int START_WITH__SUITABLE_FOR_TYPE = STRING_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -955,7 +955,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int START_WITH__FEATURE_PATH = STRING_COMPERATOR__FEATURE_PATH;
+	int START_WITH__FEATURE_PATH = STRING_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -964,7 +964,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int START_WITH__VALUE = STRING_COMPERATOR__VALUE;
+	int START_WITH__VALUE = STRING_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Start With</em>' class.
@@ -973,7 +973,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int START_WITH_FEATURE_COUNT = STRING_COMPERATOR_FEATURE_COUNT + 0;
+	int START_WITH_FEATURE_COUNT = STRING_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -982,7 +982,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int START_WITH___COMPARE = STRING_COMPERATOR___COMPARE;
+	int START_WITH___COMPARE = STRING_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Start With</em>' class.
@@ -991,7 +991,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int START_WITH_OPERATION_COUNT = STRING_COMPERATOR_OPERATION_COUNT + 0;
+	int START_WITH_OPERATION_COUNT = STRING_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.ContainsImpl <em>Contains</em>}' class.
@@ -1010,7 +1010,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINS__SUITABLE_FOR_TYPE = STRING_COMPERATOR__SUITABLE_FOR_TYPE;
+	int CONTAINS__SUITABLE_FOR_TYPE = STRING_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1019,7 +1019,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINS__FEATURE_PATH = STRING_COMPERATOR__FEATURE_PATH;
+	int CONTAINS__FEATURE_PATH = STRING_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1028,7 +1028,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINS__VALUE = STRING_COMPERATOR__VALUE;
+	int CONTAINS__VALUE = STRING_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Contains</em>' class.
@@ -1037,7 +1037,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINS_FEATURE_COUNT = STRING_COMPERATOR_FEATURE_COUNT + 0;
+	int CONTAINS_FEATURE_COUNT = STRING_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1046,7 +1046,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINS___COMPARE = STRING_COMPERATOR___COMPARE;
+	int CONTAINS___COMPARE = STRING_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Contains</em>' class.
@@ -1055,7 +1055,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINS_OPERATION_COUNT = STRING_COMPERATOR_OPERATION_COUNT + 0;
+	int CONTAINS_OPERATION_COUNT = STRING_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.LikeImpl <em>Like</em>}' class.
@@ -1074,7 +1074,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIKE__SUITABLE_FOR_TYPE = STRING_COMPERATOR__SUITABLE_FOR_TYPE;
+	int LIKE__SUITABLE_FOR_TYPE = STRING_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1083,7 +1083,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIKE__FEATURE_PATH = STRING_COMPERATOR__FEATURE_PATH;
+	int LIKE__FEATURE_PATH = STRING_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1092,7 +1092,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIKE__VALUE = STRING_COMPERATOR__VALUE;
+	int LIKE__VALUE = STRING_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Like</em>' class.
@@ -1101,7 +1101,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIKE_FEATURE_COUNT = STRING_COMPERATOR_FEATURE_COUNT + 0;
+	int LIKE_FEATURE_COUNT = STRING_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1110,7 +1110,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIKE___COMPARE = STRING_COMPERATOR___COMPARE;
+	int LIKE___COMPARE = STRING_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Like</em>' class.
@@ -1119,17 +1119,17 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIKE_OPERATION_COUNT = STRING_COMPERATOR_OPERATION_COUNT + 0;
+	int LIKE_OPERATION_COUNT = STRING_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.DateComperatorImpl <em>Date Comperator</em>}' class.
+	 * The meta object id for the '{@link de.avatar.query.impl.DateComparatorImpl <em>Date Comparator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.DateComperatorImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getDateComperator()
+	 * @see de.avatar.query.impl.DateComparatorImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getDateComparator()
 	 * @generated
 	 */
-	int DATE_COMPERATOR = 18;
+	int DATE_COMPARATOR = 18;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1138,7 +1138,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPERATOR__SUITABLE_FOR_TYPE = COMPERATOR__SUITABLE_FOR_TYPE;
+	int DATE_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1147,7 +1147,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPERATOR__FEATURE_PATH = COMPERATOR__FEATURE_PATH;
+	int DATE_COMPARATOR__FEATURE_PATH = COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1156,16 +1156,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPERATOR__VALUE = COMPERATOR_FEATURE_COUNT + 0;
+	int DATE_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Date Comperator</em>' class.
+	 * The number of structural features of the '<em>Date Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPERATOR_FEATURE_COUNT = COMPERATOR_FEATURE_COUNT + 1;
+	int DATE_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1174,16 +1174,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPERATOR___COMPARE = COMPERATOR___COMPARE;
+	int DATE_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
 
 	/**
-	 * The number of operations of the '<em>Date Comperator</em>' class.
+	 * The number of operations of the '<em>Date Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPERATOR_OPERATION_COUNT = COMPERATOR_OPERATION_COUNT + 0;
+	int DATE_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.IsBeforeImpl <em>Is Before</em>}' class.
@@ -1202,7 +1202,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BEFORE__SUITABLE_FOR_TYPE = DATE_COMPERATOR__SUITABLE_FOR_TYPE;
+	int IS_BEFORE__SUITABLE_FOR_TYPE = DATE_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1211,7 +1211,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BEFORE__FEATURE_PATH = DATE_COMPERATOR__FEATURE_PATH;
+	int IS_BEFORE__FEATURE_PATH = DATE_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1220,7 +1220,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BEFORE__VALUE = DATE_COMPERATOR__VALUE;
+	int IS_BEFORE__VALUE = DATE_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Is Before</em>' class.
@@ -1229,7 +1229,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BEFORE_FEATURE_COUNT = DATE_COMPERATOR_FEATURE_COUNT + 0;
+	int IS_BEFORE_FEATURE_COUNT = DATE_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1238,7 +1238,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BEFORE___COMPARE = DATE_COMPERATOR___COMPARE;
+	int IS_BEFORE___COMPARE = DATE_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Is Before</em>' class.
@@ -1247,7 +1247,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BEFORE_OPERATION_COUNT = DATE_COMPERATOR_OPERATION_COUNT + 0;
+	int IS_BEFORE_OPERATION_COUNT = DATE_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.IsAfterImpl <em>Is After</em>}' class.
@@ -1266,7 +1266,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_AFTER__SUITABLE_FOR_TYPE = DATE_COMPERATOR__SUITABLE_FOR_TYPE;
+	int IS_AFTER__SUITABLE_FOR_TYPE = DATE_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1275,7 +1275,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_AFTER__FEATURE_PATH = DATE_COMPERATOR__FEATURE_PATH;
+	int IS_AFTER__FEATURE_PATH = DATE_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1284,7 +1284,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_AFTER__VALUE = DATE_COMPERATOR__VALUE;
+	int IS_AFTER__VALUE = DATE_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Is After</em>' class.
@@ -1293,7 +1293,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_AFTER_FEATURE_COUNT = DATE_COMPERATOR_FEATURE_COUNT + 0;
+	int IS_AFTER_FEATURE_COUNT = DATE_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1302,7 +1302,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_AFTER___COMPARE = DATE_COMPERATOR___COMPARE;
+	int IS_AFTER___COMPARE = DATE_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Is After</em>' class.
@@ -1311,7 +1311,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_AFTER_OPERATION_COUNT = DATE_COMPERATOR_OPERATION_COUNT + 0;
+	int IS_AFTER_OPERATION_COUNT = DATE_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.IsInRangeImpl <em>Is In Range</em>}' class.
@@ -1330,7 +1330,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE__SUITABLE_FOR_TYPE = DATE_COMPERATOR__SUITABLE_FOR_TYPE;
+	int IS_IN_RANGE__SUITABLE_FOR_TYPE = DATE_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1339,7 +1339,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE__FEATURE_PATH = DATE_COMPERATOR__FEATURE_PATH;
+	int IS_IN_RANGE__FEATURE_PATH = DATE_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1348,7 +1348,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE__VALUE = DATE_COMPERATOR__VALUE;
+	int IS_IN_RANGE__VALUE = DATE_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Is In Range</em>' class.
@@ -1357,7 +1357,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE_FEATURE_COUNT = DATE_COMPERATOR_FEATURE_COUNT + 0;
+	int IS_IN_RANGE_FEATURE_COUNT = DATE_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1366,7 +1366,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE___COMPARE = DATE_COMPERATOR___COMPARE;
+	int IS_IN_RANGE___COMPARE = DATE_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Is In Range</em>' class.
@@ -1375,17 +1375,17 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE_OPERATION_COUNT = DATE_COMPERATOR_OPERATION_COUNT + 0;
+	int IS_IN_RANGE_OPERATION_COUNT = DATE_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.NumberComperatorImpl <em>Number Comperator</em>}' class.
+	 * The meta object id for the '{@link de.avatar.query.impl.NumberComparatorImpl <em>Number Comparator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.NumberComperatorImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getNumberComperator()
+	 * @see de.avatar.query.impl.NumberComparatorImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getNumberComparator()
 	 * @generated
 	 */
-	int NUMBER_COMPERATOR = 22;
+	int NUMBER_COMPARATOR = 22;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1394,7 +1394,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPERATOR__SUITABLE_FOR_TYPE = COMPERATOR__SUITABLE_FOR_TYPE;
+	int NUMBER_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1403,7 +1403,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPERATOR__FEATURE_PATH = COMPERATOR__FEATURE_PATH;
+	int NUMBER_COMPARATOR__FEATURE_PATH = COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1412,16 +1412,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPERATOR__VALUE = COMPERATOR_FEATURE_COUNT + 0;
+	int NUMBER_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Number Comperator</em>' class.
+	 * The number of structural features of the '<em>Number Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPERATOR_FEATURE_COUNT = COMPERATOR_FEATURE_COUNT + 1;
+	int NUMBER_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1430,16 +1430,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPERATOR___COMPARE = COMPERATOR___COMPARE;
+	int NUMBER_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
 
 	/**
-	 * The number of operations of the '<em>Number Comperator</em>' class.
+	 * The number of operations of the '<em>Number Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPERATOR_OPERATION_COUNT = COMPERATOR_OPERATION_COUNT + 0;
+	int NUMBER_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.LtImpl <em>Lt</em>}' class.
@@ -1458,7 +1458,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LT__SUITABLE_FOR_TYPE = NUMBER_COMPERATOR__SUITABLE_FOR_TYPE;
+	int LT__SUITABLE_FOR_TYPE = NUMBER_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1467,7 +1467,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LT__FEATURE_PATH = NUMBER_COMPERATOR__FEATURE_PATH;
+	int LT__FEATURE_PATH = NUMBER_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1476,7 +1476,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LT__VALUE = NUMBER_COMPERATOR__VALUE;
+	int LT__VALUE = NUMBER_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Lt</em>' class.
@@ -1485,7 +1485,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LT_FEATURE_COUNT = NUMBER_COMPERATOR_FEATURE_COUNT + 0;
+	int LT_FEATURE_COUNT = NUMBER_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1494,7 +1494,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LT___COMPARE = NUMBER_COMPERATOR___COMPARE;
+	int LT___COMPARE = NUMBER_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Lt</em>' class.
@@ -1503,7 +1503,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LT_OPERATION_COUNT = NUMBER_COMPERATOR_OPERATION_COUNT + 0;
+	int LT_OPERATION_COUNT = NUMBER_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.LteImpl <em>Lte</em>}' class.
@@ -1522,7 +1522,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LTE__SUITABLE_FOR_TYPE = NUMBER_COMPERATOR__SUITABLE_FOR_TYPE;
+	int LTE__SUITABLE_FOR_TYPE = NUMBER_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1531,7 +1531,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LTE__FEATURE_PATH = NUMBER_COMPERATOR__FEATURE_PATH;
+	int LTE__FEATURE_PATH = NUMBER_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1540,7 +1540,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LTE__VALUE = NUMBER_COMPERATOR__VALUE;
+	int LTE__VALUE = NUMBER_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Lte</em>' class.
@@ -1549,7 +1549,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LTE_FEATURE_COUNT = NUMBER_COMPERATOR_FEATURE_COUNT + 0;
+	int LTE_FEATURE_COUNT = NUMBER_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1558,7 +1558,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LTE___COMPARE = NUMBER_COMPERATOR___COMPARE;
+	int LTE___COMPARE = NUMBER_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Lte</em>' class.
@@ -1567,7 +1567,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LTE_OPERATION_COUNT = NUMBER_COMPERATOR_OPERATION_COUNT + 0;
+	int LTE_OPERATION_COUNT = NUMBER_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.GteImpl <em>Gte</em>}' class.
@@ -1586,7 +1586,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTE__SUITABLE_FOR_TYPE = NUMBER_COMPERATOR__SUITABLE_FOR_TYPE;
+	int GTE__SUITABLE_FOR_TYPE = NUMBER_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1595,7 +1595,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTE__FEATURE_PATH = NUMBER_COMPERATOR__FEATURE_PATH;
+	int GTE__FEATURE_PATH = NUMBER_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1604,7 +1604,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTE__VALUE = NUMBER_COMPERATOR__VALUE;
+	int GTE__VALUE = NUMBER_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Gte</em>' class.
@@ -1613,7 +1613,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTE_FEATURE_COUNT = NUMBER_COMPERATOR_FEATURE_COUNT + 0;
+	int GTE_FEATURE_COUNT = NUMBER_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1622,7 +1622,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTE___COMPARE = NUMBER_COMPERATOR___COMPARE;
+	int GTE___COMPARE = NUMBER_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Gte</em>' class.
@@ -1631,7 +1631,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTE_OPERATION_COUNT = NUMBER_COMPERATOR_OPERATION_COUNT + 0;
+	int GTE_OPERATION_COUNT = NUMBER_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.GtImpl <em>Gt</em>}' class.
@@ -1650,7 +1650,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GT__SUITABLE_FOR_TYPE = NUMBER_COMPERATOR__SUITABLE_FOR_TYPE;
+	int GT__SUITABLE_FOR_TYPE = NUMBER_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1659,7 +1659,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GT__FEATURE_PATH = NUMBER_COMPERATOR__FEATURE_PATH;
+	int GT__FEATURE_PATH = NUMBER_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1668,7 +1668,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GT__VALUE = NUMBER_COMPERATOR__VALUE;
+	int GT__VALUE = NUMBER_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Gt</em>' class.
@@ -1677,7 +1677,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GT_FEATURE_COUNT = NUMBER_COMPERATOR_FEATURE_COUNT + 0;
+	int GT_FEATURE_COUNT = NUMBER_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1686,7 +1686,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GT___COMPARE = NUMBER_COMPERATOR___COMPARE;
+	int GT___COMPARE = NUMBER_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Gt</em>' class.
@@ -1695,7 +1695,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GT_OPERATION_COUNT = NUMBER_COMPERATOR_OPERATION_COUNT + 0;
+	int GT_OPERATION_COUNT = NUMBER_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.EqImpl <em>Eq</em>}' class.
@@ -1714,7 +1714,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQ__SUITABLE_FOR_TYPE = NUMBER_COMPERATOR__SUITABLE_FOR_TYPE;
+	int EQ__SUITABLE_FOR_TYPE = NUMBER_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1723,7 +1723,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQ__FEATURE_PATH = NUMBER_COMPERATOR__FEATURE_PATH;
+	int EQ__FEATURE_PATH = NUMBER_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1732,7 +1732,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQ__VALUE = NUMBER_COMPERATOR__VALUE;
+	int EQ__VALUE = NUMBER_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Eq</em>' class.
@@ -1741,7 +1741,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQ_FEATURE_COUNT = NUMBER_COMPERATOR_FEATURE_COUNT + 0;
+	int EQ_FEATURE_COUNT = NUMBER_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1750,7 +1750,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQ___COMPARE = NUMBER_COMPERATOR___COMPARE;
+	int EQ___COMPARE = NUMBER_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Eq</em>' class.
@@ -1759,17 +1759,17 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQ_OPERATION_COUNT = NUMBER_COMPERATOR_OPERATION_COUNT + 0;
+	int EQ_OPERATION_COUNT = NUMBER_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.BoolComperatorImpl <em>Bool Comperator</em>}' class.
+	 * The meta object id for the '{@link de.avatar.query.impl.BoolComparatorImpl <em>Bool Comparator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.BoolComperatorImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getBoolComperator()
+	 * @see de.avatar.query.impl.BoolComparatorImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getBoolComparator()
 	 * @generated
 	 */
-	int BOOL_COMPERATOR = 28;
+	int BOOL_COMPARATOR = 28;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1778,7 +1778,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPERATOR__SUITABLE_FOR_TYPE = COMPERATOR__SUITABLE_FOR_TYPE;
+	int BOOL_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1787,7 +1787,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPERATOR__FEATURE_PATH = COMPERATOR__FEATURE_PATH;
+	int BOOL_COMPARATOR__FEATURE_PATH = COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1796,16 +1796,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPERATOR__VALUE = COMPERATOR_FEATURE_COUNT + 0;
+	int BOOL_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Bool Comperator</em>' class.
+	 * The number of structural features of the '<em>Bool Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPERATOR_FEATURE_COUNT = COMPERATOR_FEATURE_COUNT + 1;
+	int BOOL_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1814,16 +1814,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPERATOR___COMPARE = COMPERATOR___COMPARE;
+	int BOOL_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
 
 	/**
-	 * The number of operations of the '<em>Bool Comperator</em>' class.
+	 * The number of operations of the '<em>Bool Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPERATOR_OPERATION_COUNT = COMPERATOR_OPERATION_COUNT + 0;
+	int BOOL_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.IsBoolImpl <em>Is Bool</em>}' class.
@@ -1842,7 +1842,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BOOL__SUITABLE_FOR_TYPE = BOOL_COMPERATOR__SUITABLE_FOR_TYPE;
+	int IS_BOOL__SUITABLE_FOR_TYPE = BOOL_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1851,7 +1851,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BOOL__FEATURE_PATH = BOOL_COMPERATOR__FEATURE_PATH;
+	int IS_BOOL__FEATURE_PATH = BOOL_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1860,7 +1860,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BOOL__VALUE = BOOL_COMPERATOR__VALUE;
+	int IS_BOOL__VALUE = BOOL_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Is Bool</em>' class.
@@ -1869,7 +1869,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BOOL_FEATURE_COUNT = BOOL_COMPERATOR_FEATURE_COUNT + 0;
+	int IS_BOOL_FEATURE_COUNT = BOOL_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1878,7 +1878,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BOOL___COMPARE = BOOL_COMPERATOR___COMPARE;
+	int IS_BOOL___COMPARE = BOOL_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Is Bool</em>' class.
@@ -1887,7 +1887,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BOOL_OPERATION_COUNT = BOOL_COMPERATOR_OPERATION_COUNT + 0;
+	int IS_BOOL_OPERATION_COUNT = BOOL_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.SortEntityImpl <em>Sort Entity</em>}' class.
@@ -1936,14 +1936,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int SORT_ENTITY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.EnumComperatorImpl <em>Enum Comperator</em>}' class.
+	 * The meta object id for the '{@link de.avatar.query.impl.EnumComparatorImpl <em>Enum Comparator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.EnumComperatorImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getEnumComperator()
+	 * @see de.avatar.query.impl.EnumComparatorImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getEnumComparator()
 	 * @generated
 	 */
-	int ENUM_COMPERATOR = 32;
+	int ENUM_COMPARATOR = 32;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1952,7 +1952,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPERATOR__SUITABLE_FOR_TYPE = COMPERATOR__SUITABLE_FOR_TYPE;
+	int ENUM_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -1961,7 +1961,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPERATOR__FEATURE_PATH = COMPERATOR__FEATURE_PATH;
+	int ENUM_COMPARATOR__FEATURE_PATH = COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1970,16 +1970,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPERATOR__VALUE = COMPERATOR_FEATURE_COUNT + 0;
+	int ENUM_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Enum Comperator</em>' class.
+	 * The number of structural features of the '<em>Enum Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPERATOR_FEATURE_COUNT = COMPERATOR_FEATURE_COUNT + 1;
+	int ENUM_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1988,16 +1988,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPERATOR___COMPARE = COMPERATOR___COMPARE;
+	int ENUM_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
 
 	/**
-	 * The number of operations of the '<em>Enum Comperator</em>' class.
+	 * The number of operations of the '<em>Enum Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPERATOR_OPERATION_COUNT = COMPERATOR_OPERATION_COUNT + 0;
+	int ENUM_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.IsLiteralImpl <em>Is Literal</em>}' class.
@@ -2016,7 +2016,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_LITERAL__SUITABLE_FOR_TYPE = ENUM_COMPERATOR__SUITABLE_FOR_TYPE;
+	int IS_LITERAL__SUITABLE_FOR_TYPE = ENUM_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
@@ -2025,7 +2025,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_LITERAL__FEATURE_PATH = ENUM_COMPERATOR__FEATURE_PATH;
+	int IS_LITERAL__FEATURE_PATH = ENUM_COMPARATOR__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2034,7 +2034,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_LITERAL__VALUE = ENUM_COMPERATOR__VALUE;
+	int IS_LITERAL__VALUE = ENUM_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Is Literal</em>' class.
@@ -2043,7 +2043,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_LITERAL_FEATURE_COUNT = ENUM_COMPERATOR_FEATURE_COUNT + 0;
+	int IS_LITERAL_FEATURE_COUNT = ENUM_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -2052,7 +2052,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_LITERAL___COMPARE = ENUM_COMPERATOR___COMPARE;
+	int IS_LITERAL___COMPARE = ENUM_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Is Literal</em>' class.
@@ -2061,7 +2061,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_LITERAL_OPERATION_COUNT = ENUM_COMPERATOR_OPERATION_COUNT + 0;
+	int IS_LITERAL_OPERATION_COUNT = ENUM_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.SortOrder <em>Sort Order</em>}' enum.
@@ -2205,14 +2205,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getSubject_FeaturePath();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.WitheListedNoun <em>Withe Listed Noun</em>}'.
+	 * Returns the meta object for class '{@link de.avatar.query.WhiteListedNoun <em>White Listed Noun</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Withe Listed Noun</em>'.
-	 * @see de.avatar.query.WitheListedNoun
+	 * @return the meta object for class '<em>White Listed Noun</em>'.
+	 * @see de.avatar.query.WhiteListedNoun
 	 * @generated
 	 */
-	EClass getWitheListedNoun();
+	EClass getWhiteListedNoun();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.BlackListedNoun <em>Black Listed Noun</em>}'.
@@ -2235,15 +2235,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getOperator();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.avatar.query.Operator#getComperator <em>Comperator</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.avatar.query.Operator#getComparator <em>Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Comperator</em>'.
-	 * @see de.avatar.query.Operator#getComperator()
+	 * @return the meta object for the containment reference '<em>Comparator</em>'.
+	 * @see de.avatar.query.Operator#getComparator()
 	 * @see #getOperator()
 	 * @generated
 	 */
-	EReference getOperator_Comperator();
+	EReference getOperator_Comparator();
 
 	/**
 	 * Returns the meta object for the '{@link de.avatar.query.Operator#execute() <em>Execute</em>}' operation.
@@ -2326,67 +2326,67 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getToUpperCase();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.Comperator <em>Comperator</em>}'.
+	 * Returns the meta object for class '{@link de.avatar.query.Comparator <em>Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Comperator</em>'.
-	 * @see de.avatar.query.Comperator
+	 * @return the meta object for class '<em>Comparator</em>'.
+	 * @see de.avatar.query.Comparator
 	 * @generated
 	 */
-	EClass getComperator();
+	EClass getComparator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.Comperator#getSuitableForType <em>Suitable For Type</em>}'.
+	 * Returns the meta object for the attribute '{@link de.avatar.query.Comparator#getSuitableForType <em>Suitable For Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Suitable For Type</em>'.
-	 * @see de.avatar.query.Comperator#getSuitableForType()
-	 * @see #getComperator()
+	 * @see de.avatar.query.Comparator#getSuitableForType()
+	 * @see #getComparator()
 	 * @generated
 	 */
-	EAttribute getComperator_SuitableForType();
+	EAttribute getComparator_SuitableForType();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.avatar.query.Comperator#getFeaturePath <em>Feature Path</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.avatar.query.Comparator#getFeaturePath <em>Feature Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Feature Path</em>'.
-	 * @see de.avatar.query.Comperator#getFeaturePath()
-	 * @see #getComperator()
+	 * @see de.avatar.query.Comparator#getFeaturePath()
+	 * @see #getComparator()
 	 * @generated
 	 */
-	EReference getComperator_FeaturePath();
+	EReference getComparator_FeaturePath();
 
 	/**
-	 * Returns the meta object for the '{@link de.avatar.query.Comperator#compare() <em>Compare</em>}' operation.
+	 * Returns the meta object for the '{@link de.avatar.query.Comparator#compare() <em>Compare</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Compare</em>' operation.
-	 * @see de.avatar.query.Comperator#compare()
+	 * @see de.avatar.query.Comparator#compare()
 	 * @generated
 	 */
-	EOperation getComperator__Compare();
+	EOperation getComparator__Compare();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.StringComperator <em>String Comperator</em>}'.
+	 * Returns the meta object for class '{@link de.avatar.query.StringComparator <em>String Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>String Comperator</em>'.
-	 * @see de.avatar.query.StringComperator
+	 * @return the meta object for class '<em>String Comparator</em>'.
+	 * @see de.avatar.query.StringComparator
 	 * @generated
 	 */
-	EClass getStringComperator();
+	EClass getStringComparator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.StringComperator#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link de.avatar.query.StringComparator#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.avatar.query.StringComperator#getValue()
-	 * @see #getStringComperator()
+	 * @see de.avatar.query.StringComparator#getValue()
+	 * @see #getStringComparator()
 	 * @generated
 	 */
-	EAttribute getStringComperator_Value();
+	EAttribute getStringComparator_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.EndsWith <em>Ends With</em>}'.
@@ -2429,25 +2429,25 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getLike();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.DateComperator <em>Date Comperator</em>}'.
+	 * Returns the meta object for class '{@link de.avatar.query.DateComparator <em>Date Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Date Comperator</em>'.
-	 * @see de.avatar.query.DateComperator
+	 * @return the meta object for class '<em>Date Comparator</em>'.
+	 * @see de.avatar.query.DateComparator
 	 * @generated
 	 */
-	EClass getDateComperator();
+	EClass getDateComparator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.DateComperator#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link de.avatar.query.DateComparator#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.avatar.query.DateComperator#getValue()
-	 * @see #getDateComperator()
+	 * @see de.avatar.query.DateComparator#getValue()
+	 * @see #getDateComparator()
 	 * @generated
 	 */
-	EAttribute getDateComperator_Value();
+	EAttribute getDateComparator_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.IsBefore <em>Is Before</em>}'.
@@ -2480,25 +2480,25 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getIsInRange();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.NumberComperator <em>Number Comperator</em>}'.
+	 * Returns the meta object for class '{@link de.avatar.query.NumberComparator <em>Number Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Number Comperator</em>'.
-	 * @see de.avatar.query.NumberComperator
+	 * @return the meta object for class '<em>Number Comparator</em>'.
+	 * @see de.avatar.query.NumberComparator
 	 * @generated
 	 */
-	EClass getNumberComperator();
+	EClass getNumberComparator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.NumberComperator#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link de.avatar.query.NumberComparator#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.avatar.query.NumberComperator#getValue()
-	 * @see #getNumberComperator()
+	 * @see de.avatar.query.NumberComparator#getValue()
+	 * @see #getNumberComparator()
 	 * @generated
 	 */
-	EAttribute getNumberComperator_Value();
+	EAttribute getNumberComparator_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.Lt <em>Lt</em>}'.
@@ -2551,25 +2551,25 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getEq();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.BoolComperator <em>Bool Comperator</em>}'.
+	 * Returns the meta object for class '{@link de.avatar.query.BoolComparator <em>Bool Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Bool Comperator</em>'.
-	 * @see de.avatar.query.BoolComperator
+	 * @return the meta object for class '<em>Bool Comparator</em>'.
+	 * @see de.avatar.query.BoolComparator
 	 * @generated
 	 */
-	EClass getBoolComperator();
+	EClass getBoolComparator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.BoolComperator#isValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link de.avatar.query.BoolComparator#isValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.avatar.query.BoolComperator#isValue()
-	 * @see #getBoolComperator()
+	 * @see de.avatar.query.BoolComparator#isValue()
+	 * @see #getBoolComparator()
 	 * @generated
 	 */
-	EAttribute getBoolComperator_Value();
+	EAttribute getBoolComparator_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.IsBool <em>Is Bool</em>}'.
@@ -2656,25 +2656,25 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EOperation getOperation__Execute();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.EnumComperator <em>Enum Comperator</em>}'.
+	 * Returns the meta object for class '{@link de.avatar.query.EnumComparator <em>Enum Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Enum Comperator</em>'.
-	 * @see de.avatar.query.EnumComperator
+	 * @return the meta object for class '<em>Enum Comparator</em>'.
+	 * @see de.avatar.query.EnumComparator
 	 * @generated
 	 */
-	EClass getEnumComperator();
+	EClass getEnumComparator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.EnumComperator#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link de.avatar.query.EnumComparator#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.avatar.query.EnumComperator#getValue()
-	 * @see #getEnumComperator()
+	 * @see de.avatar.query.EnumComparator#getValue()
+	 * @see #getEnumComparator()
 	 * @generated
 	 */
-	EAttribute getEnumComperator_Value();
+	EAttribute getEnumComparator_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.IsLiteral <em>Is Literal</em>}'.
@@ -2820,14 +2820,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EReference SUBJECT__FEATURE_PATH = eINSTANCE.getSubject_FeaturePath();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.WitheListedNounImpl <em>Withe Listed Noun</em>}' class.
+		 * The meta object literal for the '{@link de.avatar.query.impl.WhiteListedNounImpl <em>White Listed Noun</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.WitheListedNounImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getWitheListedNoun()
+		 * @see de.avatar.query.impl.WhiteListedNounImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getWhiteListedNoun()
 		 * @generated
 		 */
-		EClass WITHE_LISTED_NOUN = eINSTANCE.getWitheListedNoun();
+		EClass WHITE_LISTED_NOUN = eINSTANCE.getWhiteListedNoun();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.BlackListedNounImpl <em>Black Listed Noun</em>}' class.
@@ -2850,12 +2850,12 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass OPERATOR = eINSTANCE.getOperator();
 
 		/**
-		 * The meta object literal for the '<em><b>Comperator</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Comparator</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPERATOR__COMPERATOR = eINSTANCE.getOperator_Comperator();
+		EReference OPERATOR__COMPARATOR = eINSTANCE.getOperator_Comparator();
 
 		/**
 		 * The meta object literal for the '<em><b>Execute</b></em>' operation.
@@ -2936,14 +2936,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass TO_UPPER_CASE = eINSTANCE.getToUpperCase();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.ComperatorImpl <em>Comperator</em>}' class.
+		 * The meta object literal for the '{@link de.avatar.query.impl.ComparatorImpl <em>Comparator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.ComperatorImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getComperator()
+		 * @see de.avatar.query.impl.ComparatorImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getComparator()
 		 * @generated
 		 */
-		EClass COMPERATOR = eINSTANCE.getComperator();
+		EClass COMPARATOR = eINSTANCE.getComparator();
 
 		/**
 		 * The meta object literal for the '<em><b>Suitable For Type</b></em>' attribute feature.
@@ -2951,7 +2951,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMPERATOR__SUITABLE_FOR_TYPE = eINSTANCE.getComperator_SuitableForType();
+		EAttribute COMPARATOR__SUITABLE_FOR_TYPE = eINSTANCE.getComparator_SuitableForType();
 
 		/**
 		 * The meta object literal for the '<em><b>Feature Path</b></em>' containment reference feature.
@@ -2959,7 +2959,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPERATOR__FEATURE_PATH = eINSTANCE.getComperator_FeaturePath();
+		EReference COMPARATOR__FEATURE_PATH = eINSTANCE.getComparator_FeaturePath();
 
 		/**
 		 * The meta object literal for the '<em><b>Compare</b></em>' operation.
@@ -2967,17 +2967,17 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation COMPERATOR___COMPARE = eINSTANCE.getComperator__Compare();
+		EOperation COMPARATOR___COMPARE = eINSTANCE.getComparator__Compare();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.StringComperatorImpl <em>String Comperator</em>}' class.
+		 * The meta object literal for the '{@link de.avatar.query.impl.StringComparatorImpl <em>String Comparator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.StringComperatorImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getStringComperator()
+		 * @see de.avatar.query.impl.StringComparatorImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getStringComparator()
 		 * @generated
 		 */
-		EClass STRING_COMPERATOR = eINSTANCE.getStringComperator();
+		EClass STRING_COMPARATOR = eINSTANCE.getStringComparator();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -2985,7 +2985,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STRING_COMPERATOR__VALUE = eINSTANCE.getStringComperator_Value();
+		EAttribute STRING_COMPARATOR__VALUE = eINSTANCE.getStringComparator_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.EndsWithImpl <em>Ends With</em>}' class.
@@ -3028,14 +3028,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass LIKE = eINSTANCE.getLike();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.DateComperatorImpl <em>Date Comperator</em>}' class.
+		 * The meta object literal for the '{@link de.avatar.query.impl.DateComparatorImpl <em>Date Comparator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.DateComperatorImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getDateComperator()
+		 * @see de.avatar.query.impl.DateComparatorImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getDateComparator()
 		 * @generated
 		 */
-		EClass DATE_COMPERATOR = eINSTANCE.getDateComperator();
+		EClass DATE_COMPARATOR = eINSTANCE.getDateComparator();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -3043,7 +3043,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATE_COMPERATOR__VALUE = eINSTANCE.getDateComperator_Value();
+		EAttribute DATE_COMPARATOR__VALUE = eINSTANCE.getDateComparator_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.IsBeforeImpl <em>Is Before</em>}' class.
@@ -3076,14 +3076,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass IS_IN_RANGE = eINSTANCE.getIsInRange();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.NumberComperatorImpl <em>Number Comperator</em>}' class.
+		 * The meta object literal for the '{@link de.avatar.query.impl.NumberComparatorImpl <em>Number Comparator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.NumberComperatorImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getNumberComperator()
+		 * @see de.avatar.query.impl.NumberComparatorImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getNumberComparator()
 		 * @generated
 		 */
-		EClass NUMBER_COMPERATOR = eINSTANCE.getNumberComperator();
+		EClass NUMBER_COMPARATOR = eINSTANCE.getNumberComparator();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -3091,7 +3091,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NUMBER_COMPERATOR__VALUE = eINSTANCE.getNumberComperator_Value();
+		EAttribute NUMBER_COMPARATOR__VALUE = eINSTANCE.getNumberComparator_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.LtImpl <em>Lt</em>}' class.
@@ -3144,14 +3144,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass EQ = eINSTANCE.getEq();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.BoolComperatorImpl <em>Bool Comperator</em>}' class.
+		 * The meta object literal for the '{@link de.avatar.query.impl.BoolComparatorImpl <em>Bool Comparator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.BoolComperatorImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getBoolComperator()
+		 * @see de.avatar.query.impl.BoolComparatorImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getBoolComparator()
 		 * @generated
 		 */
-		EClass BOOL_COMPERATOR = eINSTANCE.getBoolComperator();
+		EClass BOOL_COMPARATOR = eINSTANCE.getBoolComparator();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -3159,7 +3159,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BOOL_COMPERATOR__VALUE = eINSTANCE.getBoolComperator_Value();
+		EAttribute BOOL_COMPARATOR__VALUE = eINSTANCE.getBoolComparator_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.IsBoolImpl <em>Is Bool</em>}' class.
@@ -3232,14 +3232,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EOperation OPERATION___EXECUTE = eINSTANCE.getOperation__Execute();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.EnumComperatorImpl <em>Enum Comperator</em>}' class.
+		 * The meta object literal for the '{@link de.avatar.query.impl.EnumComparatorImpl <em>Enum Comparator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.EnumComperatorImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getEnumComperator()
+		 * @see de.avatar.query.impl.EnumComparatorImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getEnumComparator()
 		 * @generated
 		 */
-		EClass ENUM_COMPERATOR = eINSTANCE.getEnumComperator();
+		EClass ENUM_COMPARATOR = eINSTANCE.getEnumComparator();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -3247,7 +3247,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ENUM_COMPERATOR__VALUE = eINSTANCE.getEnumComperator_Value();
+		EAttribute ENUM_COMPARATOR__VALUE = eINSTANCE.getEnumComparator_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.IsLiteralImpl <em>Is Literal</em>}' class.

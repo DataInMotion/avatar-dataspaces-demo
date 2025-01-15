@@ -13,7 +13,7 @@
  */
 package de.avatar.query.impl;
 
-import de.avatar.query.Comperator;
+import de.avatar.query.Comparator;
 import de.avatar.query.Operator;
 import de.avatar.query.QueryPackage;
 
@@ -38,21 +38,21 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.impl.OperatorImpl#getComperator <em>Comperator</em>}</li>
+ *   <li>{@link de.avatar.query.impl.OperatorImpl#getComparator <em>Comparator</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class OperatorImpl extends MinimalEObjectImpl.Container implements Operator {
 	/**
-	 * The cached value of the '{@link #getComperator() <em>Comperator</em>}' containment reference.
+	 * The cached value of the '{@link #getComparator() <em>Comparator</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComperator()
+	 * @see #getComparator()
 	 * @generated
 	 * @ordered
 	 */
-	protected Comperator comperator;
+	protected Comparator comparator;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -79,8 +79,8 @@ public abstract class OperatorImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public Comperator getComperator() {
-		return comperator;
+	public Comparator getComparator() {
+		return comparator;
 	}
 
 	/**
@@ -88,11 +88,11 @@ public abstract class OperatorImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetComperator(Comperator newComperator, NotificationChain msgs) {
-		Comperator oldComperator = comperator;
-		comperator = newComperator;
+	public NotificationChain basicSetComparator(Comparator newComparator, NotificationChain msgs) {
+		Comparator oldComparator = comparator;
+		comparator = newComparator;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QueryPackage.OPERATOR__COMPERATOR, oldComperator, newComperator);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QueryPackage.OPERATOR__COMPARATOR, oldComparator, newComparator);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -104,18 +104,18 @@ public abstract class OperatorImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public void setComperator(Comperator newComperator) {
-		if (newComperator != comperator) {
+	public void setComparator(Comparator newComparator) {
+		if (newComparator != comparator) {
 			NotificationChain msgs = null;
-			if (comperator != null)
-				msgs = ((InternalEObject)comperator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QueryPackage.OPERATOR__COMPERATOR, null, msgs);
-			if (newComperator != null)
-				msgs = ((InternalEObject)newComperator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QueryPackage.OPERATOR__COMPERATOR, null, msgs);
-			msgs = basicSetComperator(newComperator, msgs);
+			if (comparator != null)
+				msgs = ((InternalEObject)comparator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QueryPackage.OPERATOR__COMPARATOR, null, msgs);
+			if (newComparator != null)
+				msgs = ((InternalEObject)newComparator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QueryPackage.OPERATOR__COMPARATOR, null, msgs);
+			msgs = basicSetComparator(newComparator, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.OPERATOR__COMPERATOR, newComperator, newComperator));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.OPERATOR__COMPARATOR, newComparator, newComparator));
 	}
 
 	/**
@@ -138,8 +138,8 @@ public abstract class OperatorImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QueryPackage.OPERATOR__COMPERATOR:
-				return basicSetComperator(null, msgs);
+			case QueryPackage.OPERATOR__COMPARATOR:
+				return basicSetComparator(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -152,8 +152,8 @@ public abstract class OperatorImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QueryPackage.OPERATOR__COMPERATOR:
-				return getComperator();
+			case QueryPackage.OPERATOR__COMPARATOR:
+				return getComparator();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -166,8 +166,8 @@ public abstract class OperatorImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QueryPackage.OPERATOR__COMPERATOR:
-				setComperator((Comperator)newValue);
+			case QueryPackage.OPERATOR__COMPARATOR:
+				setComparator((Comparator)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -181,8 +181,8 @@ public abstract class OperatorImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QueryPackage.OPERATOR__COMPERATOR:
-				setComperator((Comperator)null);
+			case QueryPackage.OPERATOR__COMPARATOR:
+				setComparator((Comparator)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -196,8 +196,8 @@ public abstract class OperatorImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QueryPackage.OPERATOR__COMPERATOR:
-				return comperator != null;
+			case QueryPackage.OPERATOR__COMPARATOR:
+				return comparator != null;
 		}
 		return super.eIsSet(featureID);
 	}

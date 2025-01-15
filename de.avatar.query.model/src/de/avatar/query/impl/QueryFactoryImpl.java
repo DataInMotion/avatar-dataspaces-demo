@@ -69,7 +69,7 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QueryPackage.QUERY: return createQuery();
-			case QueryPackage.WITHE_LISTED_NOUN: return createWitheListedNoun();
+			case QueryPackage.WHITE_LISTED_NOUN: return createWhiteListedNoun();
 			case QueryPackage.BLACK_LISTED_NOUN: return createBlackListedNoun();
 			case QueryPackage.OR: return createOr();
 			case QueryPackage.NOT: return createNot();
@@ -88,7 +88,7 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 			case QueryPackage.GTE: return createGte();
 			case QueryPackage.GT: return createGt();
 			case QueryPackage.EQ: return createEq();
-			case QueryPackage.BOOL_COMPERATOR: return createBoolComperator();
+			case QueryPackage.BOOL_COMPARATOR: return createBoolComparator();
 			case QueryPackage.IS_BOOL: return createIsBool();
 			case QueryPackage.SORT_ENTITY: return createSortEntity();
 			case QueryPackage.IS_LITERAL: return createIsLiteral();
@@ -144,9 +144,9 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	 * @generated
 	 */
 	@Override
-	public WitheListedNoun createWitheListedNoun() {
-		WitheListedNounImpl witheListedNoun = new WitheListedNounImpl();
-		return witheListedNoun;
+	public WhiteListedNoun createWhiteListedNoun() {
+		WhiteListedNounImpl whiteListedNoun = new WhiteListedNounImpl();
+		return whiteListedNoun;
 	}
 
 	/**
@@ -353,9 +353,9 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	 * @generated
 	 */
 	@Override
-	public BoolComperator createBoolComperator() {
-		BoolComperatorImpl boolComperator = new BoolComperatorImpl();
-		return boolComperator;
+	public BoolComparator createBoolComparator() {
+		BoolComparatorImpl boolComparator = new BoolComparatorImpl();
+		return boolComparator;
 	}
 
 	/**

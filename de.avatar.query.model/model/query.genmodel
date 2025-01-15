@@ -27,10 +27,10 @@
     <genClasses image="false" ecoreClass="query.ecore#//Subject">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Subject/featurePath"/>
     </genClasses>
-    <genClasses ecoreClass="query.ecore#//WitheListedNoun"/>
+    <genClasses ecoreClass="query.ecore#//WhiteListedNoun"/>
     <genClasses ecoreClass="query.ecore#//BlackListedNoun"/>
     <genClasses image="false" ecoreClass="query.ecore#//Operator">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Operator/comperator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Operator/comparator"/>
       <genOperations ecoreOperation="query.ecore#//Operator/execute"/>
     </genClasses>
     <genClasses image="false" ecoreClass="query.ecore#//Chaining"/>
@@ -40,34 +40,34 @@
     <genClasses image="false" ecoreClass="query.ecore#//StringOperation"/>
     <genClasses ecoreClass="query.ecore#//ToLowerCase"/>
     <genClasses ecoreClass="query.ecore#//ToUpperCase"/>
-    <genClasses image="false" ecoreClass="query.ecore#//Comperator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Comperator/suitableForType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Comperator/featurePath"/>
-      <genOperations ecoreOperation="query.ecore#//Comperator/compare"/>
+    <genClasses image="false" ecoreClass="query.ecore#//Comparator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Comparator/suitableForType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Comparator/featurePath"/>
+      <genOperations ecoreOperation="query.ecore#//Comparator/compare"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="query.ecore#//StringComperator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//StringComperator/value"/>
+    <genClasses image="false" ecoreClass="query.ecore#//StringComparator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//StringComparator/value"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//EndsWith"/>
     <genClasses ecoreClass="query.ecore#//StartWith"/>
     <genClasses ecoreClass="query.ecore#//Contains"/>
     <genClasses ecoreClass="query.ecore#//Like"/>
-    <genClasses image="false" ecoreClass="query.ecore#//DateComperator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//DateComperator/value"/>
+    <genClasses image="false" ecoreClass="query.ecore#//DateComparator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//DateComparator/value"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//IsBefore"/>
     <genClasses ecoreClass="query.ecore#//IsAfter"/>
     <genClasses ecoreClass="query.ecore#//IsInRange"/>
-    <genClasses image="false" ecoreClass="query.ecore#//NumberComperator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//NumberComperator/value"/>
+    <genClasses image="false" ecoreClass="query.ecore#//NumberComparator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//NumberComparator/value"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Lt"/>
     <genClasses ecoreClass="query.ecore#//Lte"/>
     <genClasses ecoreClass="query.ecore#//Gte"/>
     <genClasses ecoreClass="query.ecore#//Gt"/>
     <genClasses ecoreClass="query.ecore#//Eq"/>
-    <genClasses ecoreClass="query.ecore#//BoolComperator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//BoolComperator/value"/>
+    <genClasses ecoreClass="query.ecore#//BoolComparator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//BoolComparator/value"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//IsBool"/>
     <genClasses ecoreClass="query.ecore#//SortEntity">
@@ -79,8 +79,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Operation/suitableForType"/>
       <genOperations ecoreOperation="query.ecore#//Operation/execute"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="query.ecore#//EnumComperator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//EnumComperator/value"/>
+    <genClasses image="false" ecoreClass="query.ecore#//EnumComparator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//EnumComparator/value"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//IsLiteral"/>
   </genPackages>

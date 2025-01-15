@@ -31,12 +31,12 @@
         eType="ecore:EClass ../../org.gecko.emf.util.model/model/utilities.ecore#//FeaturePath"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WitheListedNoun" eSuperTypes="#//Subject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhiteListedNoun" eSuperTypes="#//Subject"/>
   <eClassifiers xsi:type="ecore:EClass" name="BlackListedNoun" eSuperTypes="#//Subject"/>
   <eClassifiers xsi:type="ecore:EClass" name="Operator" abstract="true">
     <eOperations name="execute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="comperator" lowerBound="1"
-        eType="#//Comperator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comparator" lowerBound="1"
+        eType="#//Comparator" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Chaining" abstract="true" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//Chaining"/>
@@ -45,38 +45,38 @@
   <eClassifiers xsi:type="ecore:EClass" name="StringOperation" abstract="true" eSuperTypes="#//Operation"/>
   <eClassifiers xsi:type="ecore:EClass" name="ToLowerCase" eSuperTypes="#//StringOperation"/>
   <eClassifiers xsi:type="ecore:EClass" name="ToUpperCase" eSuperTypes="#//StringOperation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Comperator" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Comparator" abstract="true">
     <eOperations name="compare" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="suitableForType" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="featurePath" eType="ecore:EClass ../../org.gecko.emf.util.model/model/utilities.ecore#//FeaturePath"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StringComperator" abstract="true" eSuperTypes="#//Comperator">
+  <eClassifiers xsi:type="ecore:EClass" name="StringComparator" abstract="true" eSuperTypes="#//Comparator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EndsWith" eSuperTypes="#//StringComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StartWith" eSuperTypes="#//StringComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="#//StringComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Like" eSuperTypes="#//StringComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DateComperator" abstract="true" eSuperTypes="#//Comperator">
+  <eClassifiers xsi:type="ecore:EClass" name="EndsWith" eSuperTypes="#//StringComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StartWith" eSuperTypes="#//StringComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="#//StringComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Like" eSuperTypes="#//StringComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DateComparator" abstract="true" eSuperTypes="#//Comparator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IsBefore" eSuperTypes="#//DateComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IsAfter" eSuperTypes="#//DateComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IsInRange" eSuperTypes="#//DateComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NumberComperator" abstract="true" eSuperTypes="#//Comperator">
+  <eClassifiers xsi:type="ecore:EClass" name="IsBefore" eSuperTypes="#//DateComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IsAfter" eSuperTypes="#//DateComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IsInRange" eSuperTypes="#//DateComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NumberComparator" abstract="true" eSuperTypes="#//Comparator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Lt" eSuperTypes="#//NumberComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Lte" eSuperTypes="#//NumberComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Gte" eSuperTypes="#//NumberComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Gt" eSuperTypes="#//NumberComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Eq" eSuperTypes="#//NumberComperator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BoolComperator" eSuperTypes="#//Comperator">
+  <eClassifiers xsi:type="ecore:EClass" name="Lt" eSuperTypes="#//NumberComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Lte" eSuperTypes="#//NumberComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Gte" eSuperTypes="#//NumberComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Gt" eSuperTypes="#//NumberComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Eq" eSuperTypes="#//NumberComparator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BoolComparator" eSuperTypes="#//Comparator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IsBool" eSuperTypes="#//BoolComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IsBool" eSuperTypes="#//BoolComparator"/>
   <eClassifiers xsi:type="ecore:EClass" name="SortEntity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sortOrder" lowerBound="1"
         eType="#//SortOrder" defaultValueLiteral="DESC"/>
@@ -94,8 +94,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="suitableForType" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EnumComperator" abstract="true" eSuperTypes="#//Comperator">
+  <eClassifiers xsi:type="ecore:EClass" name="EnumComparator" abstract="true" eSuperTypes="#//Comparator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IsLiteral" eSuperTypes="#//EnumComperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IsLiteral" eSuperTypes="#//EnumComparator"/>
 </ecore:EPackage>

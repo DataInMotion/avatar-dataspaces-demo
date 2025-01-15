@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class EqImpl extends NumberComperatorImpl implements Eq {
+public class EqImpl extends NumberComparatorImpl implements Eq {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class GtImpl extends NumberComperatorImpl implements Gt {
+public class GtImpl extends NumberComparatorImpl implements Gt {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

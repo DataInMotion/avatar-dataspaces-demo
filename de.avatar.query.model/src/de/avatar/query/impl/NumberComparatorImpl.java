@@ -13,7 +13,7 @@
  */
 package de.avatar.query.impl;
 
-import de.avatar.query.EnumComperator;
+import de.avatar.query.NumberComparator;
 import de.avatar.query.QueryPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,18 +24,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Enum Comperator</b></em>'.
+ * An implementation of the model object '<em><b>Number Comparator</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.impl.EnumComperatorImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.avatar.query.impl.NumberComparatorImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumComperator {
+public abstract class NumberComparatorImpl extends ComparatorImpl implements NumberComparator {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -44,7 +44,7 @@ public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumC
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final float VALUE_EDEFAULT = 0.0F;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -54,14 +54,14 @@ public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumC
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected float value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EnumComperatorImpl() {
+	protected NumberComparatorImpl() {
 		super();
 	}
 
@@ -72,7 +72,7 @@ public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumC
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.ENUM_COMPERATOR;
+		return QueryPackage.Literals.NUMBER_COMPARATOR;
 	}
 
 	/**
@@ -81,7 +81,7 @@ public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumC
 	 * @generated
 	 */
 	@Override
-	public String getValue() {
+	public float getValue() {
 		return value;
 	}
 
@@ -91,11 +91,11 @@ public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumC
 	 * @generated
 	 */
 	@Override
-	public void setValue(String newValue) {
-		String oldValue = value;
+	public void setValue(float newValue) {
+		float oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.ENUM_COMPERATOR__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.NUMBER_COMPARATOR__VALUE, oldValue, value));
 	}
 
 	/**
@@ -106,7 +106,7 @@ public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumC
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QueryPackage.ENUM_COMPERATOR__VALUE:
+			case QueryPackage.NUMBER_COMPARATOR__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -120,8 +120,8 @@ public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumC
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QueryPackage.ENUM_COMPERATOR__VALUE:
-				setValue((String)newValue);
+			case QueryPackage.NUMBER_COMPARATOR__VALUE:
+				setValue((Float)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,7 +135,7 @@ public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumC
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QueryPackage.ENUM_COMPERATOR__VALUE:
+			case QueryPackage.NUMBER_COMPARATOR__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -150,8 +150,8 @@ public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumC
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QueryPackage.ENUM_COMPERATOR__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case QueryPackage.NUMBER_COMPARATOR__VALUE:
+				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -172,4 +172,4 @@ public abstract class EnumComperatorImpl extends ComperatorImpl implements EnumC
 		return result.toString();
 	}
 
-} //EnumComperatorImpl
+} //NumberComparatorImpl

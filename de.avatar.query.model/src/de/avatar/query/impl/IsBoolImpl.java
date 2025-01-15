@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class IsBoolImpl extends BoolComperatorImpl implements IsBool {
+public class IsBoolImpl extends BoolComparatorImpl implements IsBool {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

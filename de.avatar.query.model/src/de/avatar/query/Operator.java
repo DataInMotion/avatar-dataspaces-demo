@@ -26,7 +26,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.Operator#getComperator <em>Comperator</em>}</li>
+ *   <li>{@link de.avatar.query.Operator#getComparator <em>Comparator</em>}</li>
  * </ul>
  *
  * @see de.avatar.query.QueryPackage#getOperator()
@@ -36,26 +36,26 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface Operator extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Comperator</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Comparator</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Comperator</em>' containment reference.
-	 * @see #setComperator(Comperator)
-	 * @see de.avatar.query.QueryPackage#getOperator_Comperator()
+	 * @return the value of the '<em>Comparator</em>' containment reference.
+	 * @see #setComparator(Comparator)
+	 * @see de.avatar.query.QueryPackage#getOperator_Comparator()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	Comperator getComperator();
+	Comparator getComparator();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.query.Operator#getComperator <em>Comperator</em>}' containment reference.
+	 * Sets the value of the '{@link de.avatar.query.Operator#getComparator <em>Comparator</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Comperator</em>' containment reference.
-	 * @see #getComperator()
+	 * @param value the new value of the '<em>Comparator</em>' containment reference.
+	 * @see #getComparator()
 	 * @generated
 	 */
-	void setComperator(Comperator value);
+	void setComparator(Comparator value);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -87,8 +87,8 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 				return createSubjectAdapter();
 			}
 			@Override
-			public Adapter caseWitheListedNoun(WitheListedNoun object) {
-				return createWitheListedNounAdapter();
+			public Adapter caseWhiteListedNoun(WhiteListedNoun object) {
+				return createWhiteListedNounAdapter();
 			}
 			@Override
 			public Adapter caseBlackListedNoun(BlackListedNoun object) {
@@ -127,12 +127,12 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 				return createToUpperCaseAdapter();
 			}
 			@Override
-			public Adapter caseComperator(Comperator object) {
-				return createComperatorAdapter();
+			public Adapter caseComparator(Comparator object) {
+				return createComparatorAdapter();
 			}
 			@Override
-			public Adapter caseStringComperator(StringComperator object) {
-				return createStringComperatorAdapter();
+			public Adapter caseStringComparator(StringComparator object) {
+				return createStringComparatorAdapter();
 			}
 			@Override
 			public Adapter caseEndsWith(EndsWith object) {
@@ -151,8 +151,8 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 				return createLikeAdapter();
 			}
 			@Override
-			public Adapter caseDateComperator(DateComperator object) {
-				return createDateComperatorAdapter();
+			public Adapter caseDateComparator(DateComparator object) {
+				return createDateComparatorAdapter();
 			}
 			@Override
 			public Adapter caseIsBefore(IsBefore object) {
@@ -167,8 +167,8 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 				return createIsInRangeAdapter();
 			}
 			@Override
-			public Adapter caseNumberComperator(NumberComperator object) {
-				return createNumberComperatorAdapter();
+			public Adapter caseNumberComparator(NumberComparator object) {
+				return createNumberComparatorAdapter();
 			}
 			@Override
 			public Adapter caseLt(Lt object) {
@@ -191,8 +191,8 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 				return createEqAdapter();
 			}
 			@Override
-			public Adapter caseBoolComperator(BoolComperator object) {
-				return createBoolComperatorAdapter();
+			public Adapter caseBoolComparator(BoolComparator object) {
+				return createBoolComparatorAdapter();
 			}
 			@Override
 			public Adapter caseIsBool(IsBool object) {
@@ -207,8 +207,8 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 				return createOperationAdapter();
 			}
 			@Override
-			public Adapter caseEnumComperator(EnumComperator object) {
-				return createEnumComperatorAdapter();
+			public Adapter caseEnumComparator(EnumComparator object) {
+				return createEnumComparatorAdapter();
 			}
 			@Override
 			public Adapter caseIsLiteral(IsLiteral object) {
@@ -263,16 +263,16 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.WitheListedNoun <em>Withe Listed Noun</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.WhiteListedNoun <em>White Listed Noun</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.WitheListedNoun
+	 * @see de.avatar.query.WhiteListedNoun
 	 * @generated
 	 */
-	public Adapter createWitheListedNounAdapter() {
+	public Adapter createWhiteListedNounAdapter() {
 		return null;
 	}
 
@@ -403,30 +403,30 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.Comperator <em>Comperator</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.Comparator <em>Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.Comperator
+	 * @see de.avatar.query.Comparator
 	 * @generated
 	 */
-	public Adapter createComperatorAdapter() {
+	public Adapter createComparatorAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.StringComperator <em>String Comperator</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.StringComparator <em>String Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.StringComperator
+	 * @see de.avatar.query.StringComparator
 	 * @generated
 	 */
-	public Adapter createStringComperatorAdapter() {
+	public Adapter createStringComparatorAdapter() {
 		return null;
 	}
 
@@ -487,16 +487,16 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.DateComperator <em>Date Comperator</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.DateComparator <em>Date Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.DateComperator
+	 * @see de.avatar.query.DateComparator
 	 * @generated
 	 */
-	public Adapter createDateComperatorAdapter() {
+	public Adapter createDateComparatorAdapter() {
 		return null;
 	}
 
@@ -543,16 +543,16 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.NumberComperator <em>Number Comperator</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.NumberComparator <em>Number Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.NumberComperator
+	 * @see de.avatar.query.NumberComparator
 	 * @generated
 	 */
-	public Adapter createNumberComperatorAdapter() {
+	public Adapter createNumberComparatorAdapter() {
 		return null;
 	}
 
@@ -627,16 +627,16 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.BoolComperator <em>Bool Comperator</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.BoolComparator <em>Bool Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.BoolComperator
+	 * @see de.avatar.query.BoolComparator
 	 * @generated
 	 */
-	public Adapter createBoolComperatorAdapter() {
+	public Adapter createBoolComparatorAdapter() {
 		return null;
 	}
 
@@ -683,16 +683,16 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.EnumComperator <em>Enum Comperator</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.EnumComparator <em>Enum Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.EnumComperator
+	 * @see de.avatar.query.EnumComparator
 	 * @generated
 	 */
-	public Adapter createEnumComperatorAdapter() {
+	public Adapter createEnumComparatorAdapter() {
 		return null;
 	}
 

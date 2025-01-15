@@ -26,5 +26,5 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface IsAfter extends DateComperator {
+public interface IsAfter extends DateComparator {
 } // IsAfter

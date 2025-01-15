@@ -45,13 +45,13 @@ public interface QueryFactory extends EFactory {
 	Query createQuery();
 
 	/**
-	 * Returns a new object of class '<em>Withe Listed Noun</em>'.
+	 * Returns a new object of class '<em>White Listed Noun</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Withe Listed Noun</em>'.
+	 * @return a new object of class '<em>White Listed Noun</em>'.
 	 * @generated
 	 */
-	WitheListedNoun createWitheListedNoun();
+	WhiteListedNoun createWhiteListedNoun();
 
 	/**
 	 * Returns a new object of class '<em>Black Listed Noun</em>'.
@@ -216,13 +216,13 @@ public interface QueryFactory extends EFactory {
 	Eq createEq();
 
 	/**
-	 * Returns a new object of class '<em>Bool Comperator</em>'.
+	 * Returns a new object of class '<em>Bool Comparator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Bool Comperator</em>'.
+	 * @return a new object of class '<em>Bool Comparator</em>'.
 	 * @generated
 	 */
-	BoolComperator createBoolComperator();
+	BoolComparator createBoolComparator();
 
 	/**
 	 * Returns a new object of class '<em>Is Bool</em>'.

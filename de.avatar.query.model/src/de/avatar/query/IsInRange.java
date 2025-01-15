@@ -26,5 +26,5 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface IsInRange extends DateComperator {
+public interface IsInRange extends DateComparator {
 } // IsInRange
