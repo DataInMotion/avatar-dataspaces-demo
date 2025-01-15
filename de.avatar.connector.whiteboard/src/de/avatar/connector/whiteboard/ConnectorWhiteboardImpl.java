@@ -38,6 +38,7 @@ import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.DryRunResult;
+import de.avatar.model.connector.EcoreParameter;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.ErrorResult;
@@ -162,9 +163,18 @@ public class ConnectorWhiteboardImpl implements ConnectorWhiteboard {
 		QueryResponse queryResponse = StatusFactory.eINSTANCE.createQueryResponse();
 		queryResponse.setRequestId(request.getRequestId());
 		connectors.forEach(c -> {
-			EndpointRequest endpointReq = convertQueryToEndpointRequest(request);
-			EndpointResponse enpointRes = c.dryRequest(endpointReq);
-			addSingleConnectorQueryStatus(queryResponse, enpointRes, c);
+			ConnectorEndpoint endpoint = c.getEndpoints().stream().filter(e -> e.getId().contains("dryrun")).findFirst().orElse(null);
+			if(endpoint != null) {
+				EndpointRequest endpointReq = convertQueryToEndpointRequest(request);
+				endpointReq.setEndpoint(endpoint);
+				EcoreParameter parameter = AConnectorFactory.eINSTANCE.createEcoreParameter();
+				parameter.setName("request");
+				parameter.setNumber((short)0);
+				parameter.setValue(request);
+				endpointReq.getParameter().add(parameter);
+				EndpointResponse enpointRes = c.dryRequest(endpointReq);
+				addSingleConnectorQueryStatus(queryResponse, enpointRes, c);
+			}
 		});	
 		return derermineGlobalResponseStatus(queryResponse, request);
 	}
@@ -180,7 +190,7 @@ public class ConnectorWhiteboardImpl implements ConnectorWhiteboard {
 			throw new IllegalArgumentException(String.format("QueryRequest with id %s is already cached. This should not be the case!", request.getRequestId()));
 		}
 		cacheService.cacheRequest(request);		
-		QueryResponse response = doExecuteRequest(request);
+		QueryResponse response = doExecuteRequest(request, "request");
 		cacheService.updateStatus(response);
 		return response;
 	}
@@ -197,18 +207,27 @@ public class ConnectorWhiteboardImpl implements ConnectorWhiteboard {
 			LOGGER.severe(String.format("QueryRequest with id %s is NOT already cached. This should not be the case!", requestId));
 			throw new IllegalArgumentException(String.format("QueryRequest with id %s is NOT already cached. This should not be the case!", requestId));
 		}
-		QueryResponse response = doExecuteRequest(request);
+		QueryResponse response = doExecuteRequest(request, "status");
 		cacheService.updateStatus(response);
 		return response;
 	}
 	
-	private QueryResponse doExecuteRequest(QueryRequest request) {
+	private QueryResponse doExecuteRequest(QueryRequest request, String reqType) {
 		QueryResponse queryResponse = StatusFactory.eINSTANCE.createQueryResponse();
 		queryResponse.setRequestId(request.getRequestId());
 		connectors.forEach(c -> {
-			EndpointRequest endpointReq = convertQueryToEndpointRequest(request);
-			EndpointResponse enpointRes = c.executeRequest(endpointReq);
-			addSingleConnectorQueryStatus(queryResponse, enpointRes, c);
+			ConnectorEndpoint endpoint = c.getEndpoints().stream().filter(e -> e.getId().contains(reqType)).findFirst().orElse(null);
+			if(endpoint != null) {
+				EndpointRequest endpointReq = convertQueryToEndpointRequest(request);
+				endpointReq.setEndpoint(endpoint);
+				EcoreParameter parameter = AConnectorFactory.eINSTANCE.createEcoreParameter();
+				parameter.setName("request");
+				parameter.setNumber((short)0);
+				parameter.setValue(request);
+				endpointReq.getParameter().add(parameter);
+				EndpointResponse enpointRes = c.executeRequest(endpointReq);
+				addSingleConnectorQueryStatus(queryResponse, enpointRes, c);	
+			}			
 		});	
 		return derermineGlobalResponseStatus(queryResponse, request);
 	}
@@ -309,9 +328,6 @@ public class ConnectorWhiteboardImpl implements ConnectorWhiteboard {
 		EndpointRequest endpointRequest = AConnectorFactory.eINSTANCE.createEndpointRequest();
 		endpointRequest.setSourceId(queryRequest.getRequestId());
 		endpointRequest.setId(UUID.randomUUID().toString());
-		ConnectorEndpoint endpoint = AConnectorFactory.eINSTANCE.createConnectorEndpoint();
-		endpoint.setId(UUID.randomUUID().toString());
-		endpointRequest.setEndpoint(endpoint);
 		return endpointRequest;
 	}
 

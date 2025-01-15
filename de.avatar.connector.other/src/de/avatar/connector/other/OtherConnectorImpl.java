@@ -76,9 +76,19 @@ public class OtherConnectorImpl implements AvatarConnector {
 		ep.setName("Some HL7 MQTT Endpoint");
 		eps.add(ep);
 		ep = connectorFactory.createConnectorEndpoint();
-		ep.setUri("http://other/hl7/rest");
-		ep.setId("rest_other_hl7");
-		ep.setName("Some HL7 Rest Endpoint");
+		ep.setUri("http://other/hl7/rest/dryrun");
+		ep.setId("rest_other_hl7_dryrun");
+		ep.setName("Some HL7 Rest Endpoint for Dry Run");
+		eps.add(ep);
+		ep = connectorFactory.createConnectorEndpoint();
+		ep.setUri("http://other/hl7/rest/request");
+		ep.setId("rest_other_hl7_request");
+		ep.setName("Some HL7 Rest Endpoint for Request");
+		eps.add(ep);
+		ep = connectorFactory.createConnectorEndpoint();
+		ep.setUri("http://other/hl7/rest/status");
+		ep.setId("rest_other_hl7_status");
+		ep.setName("Some HL7 Rest Endpoint for Status");
 		eps.add(ep);
 		return eps;
 	}
@@ -117,7 +127,7 @@ public class OtherConnectorImpl implements AvatarConnector {
 				nonNull(request.getEndpoint()) && 
 				nonNull(request.getEndpoint().getId())) {
 			EndpointResponse response = ConnectorHelper.createResponse(request);
-			response.setCode(ResponseCode.PENDING);
+			response.setCode(ResponseCode.OK);
 			DryRunResult result = AConnectorFactory.eINSTANCE.createDryRunResult();
 			result.setEstRuntime(12);
 			result.setResultCount(1);
@@ -151,7 +161,8 @@ public class OtherConnectorImpl implements AvatarConnector {
 				nonNull(request.getEndpoint()) && 
 				nonNull(request.getEndpoint().getId())) {
 			EndpointResponse response = ConnectorHelper.createResponse(request);
-			response.setCode(ResponseCode.OK);
+			if(request.getEndpoint().getId().contains("request")) response.setCode(ResponseCode.PENDING);
+			else response.setCode(ResponseCode.OK);
 			EcoreResult result = AConnectorFactory.eINSTANCE.createEcoreResult();
 			response.setResult(result);
 			System.out.println(String.format("Execute  request %s to endpoint '%s'", request.getId(), request.getEndpoint().getUri()));

@@ -34,6 +34,7 @@ public class RequestCacheService {
 	Map<String, QueryResponse> cachedStatuses = new ConcurrentHashMap<>();
 	
 	public boolean isRequestCached(QueryRequest request) {
+		if(request.getRequestId() == null) return false;
 		if(cachedRequests.containsKey(request.getRequestId())) return true;
 		return false;
 	}
@@ -43,7 +44,9 @@ public class RequestCacheService {
 	}
 	
 	public void cacheRequest(QueryRequest request) {
-		cachedRequests.put(request.getRequestId(), request);
+		if(request.getRequestId() != null) {
+			cachedRequests.put(request.getRequestId(), request);
+		}
 	}
 	
 	public void updateStatus(QueryResponse response) {
@@ -51,7 +54,10 @@ public class RequestCacheService {
 			cachedStatuses.remove(response.getRequestId());
 			cachedRequests.remove(response.getRequestId());
 		} else {
-			cachedStatuses.put(response.getRequestId(), response);
+			if(response.getRequestId() != null) {
+				cachedStatuses.put(response.getRequestId(), response);
+			}
+			
 		}
 	}
 

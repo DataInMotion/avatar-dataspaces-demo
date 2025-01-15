@@ -31,6 +31,8 @@ import org.osgi.test.junit5.service.ServiceExtension;
 import de.avatar.connector.whiteboard.api.ConnectorWhiteboard;
 import de.avatar.query.Query;
 import de.avatar.query.QueryFactory;
+import de.avatar.query.QueryPackage;
+import de.avatar.query.Subject;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
@@ -80,12 +82,13 @@ public class ConnectorWhiteboardTest {
 		Query query = QueryFactory.eINSTANCE.createQuery();
 		query.setCount(true);
 		query.setDistinct(true);
+		
 		request.setQuery(query);
 		
 		QueryResponse response = whiteboard.executeDryRun(request);
 		assertThat(response).isNotNull();
 		assertThat(response.getRequestId()).isEqualTo(reqId);
-		assertThat(response.getStatus()).isEqualTo(QueryStatusType.PENDING);
+		assertThat(response.getStatus()).isEqualTo(QueryStatusType.SUCCESS);
 		assertThat(response.getDetailedStatus()).isNotNull();
 		assertThat(response.getDetailedStatus().getSingleConnectorQueryStatus()).hasSize(2);
 		SingleConnectorQueryStatus sc1 = null, sc2 = null;
@@ -98,6 +101,26 @@ public class ConnectorWhiteboardTest {
 		}
 		assertThat(sc1).isNotNull();
 		assertThat(sc2).isNotNull();
+	}
+	
+	@Test
+	public void testRequestNoId(@InjectService(timeout = 2000l) ServiceAware<ConnectorWhiteboard> whiteboardAware) {
+		assertThat(whiteboardAware).isNotNull();
+		ConnectorWhiteboard whiteboard = whiteboardAware.getService();
+		assertThat(whiteboard).isNotNull();
+		
+		String consumerId = UUID.randomUUID().toString();
+		QueryRequest request = StatusFactory.eINSTANCE.createQueryRequest();
+		request.setRequestId(null);
+		request.setConsumerId(consumerId);
+		Query query = QueryFactory.eINSTANCE.createQuery();
+		query.setCount(true);
+		query.setDistinct(true);
+		request.setQuery(query);
+		
+		QueryResponse response = whiteboard.executeRequest(request);
+		assertThat(response).isNotNull();
+		assertThat(response.getStatus()).isEqualTo(QueryStatusType.ERROR);
 	}
 	
 	@Test
@@ -119,7 +142,7 @@ public class ConnectorWhiteboardTest {
 		QueryResponse response = whiteboard.executeRequest(request);
 		assertThat(response).isNotNull();
 		assertThat(response.getRequestId()).isEqualTo(reqId);
-		assertThat(response.getStatus()).isEqualTo(QueryStatusType.SUCCESS);
+		assertThat(response.getStatus()).isEqualTo(QueryStatusType.PENDING);
 		assertThat(response.getDetailedStatus()).isNotNull();
 		assertThat(response.getDetailedStatus().getSingleConnectorQueryStatus()).hasSize(2);
 		SingleConnectorQueryStatus sc1 = null, sc2 = null;
@@ -174,7 +197,6 @@ public class ConnectorWhiteboardTest {
 		QueryResponse response = whiteboard.executeStatusRequest(reqId);
 		assertThat(response).isNotNull();
 		assertThat(response.getRequestId()).isEqualTo(reqId);
-		assertThat(response.getStatus()).isEqualTo(QueryStatusType.SUCCESS);
 		assertThat(response.getDetailedStatus()).isNotNull();
 		assertThat(response.getDetailedStatus().getSingleConnectorQueryStatus()).hasSize(2);
 		SingleConnectorQueryStatus sc1 = null, sc2 = null;
@@ -206,6 +228,43 @@ public class ConnectorWhiteboardTest {
 		request.setQuery(query);
 		
 		assertThrows(IllegalArgumentException.class, () -> whiteboard.executeStatusRequest(reqId));
+	}
+	
+	@Test
+	public void testPatientRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorWhiteboard> whiteboardAware) {
+		assertThat(whiteboardAware).isNotNull();
+		ConnectorWhiteboard whiteboard = whiteboardAware.getService();
+		assertThat(whiteboard).isNotNull();
+		
+		String reqId = UUID.randomUUID().toString();
+		String consumerId = UUID.randomUUID().toString();
+		QueryRequest request = StatusFactory.eINSTANCE.createQueryRequest();
+		request.setRequestId(reqId);
+		request.setConsumerId(consumerId);
+		Query query = QueryFactory.eINSTANCE.createQuery();
+//		Subject subject = QueryFactory.eINSTANCE.createWhiteListedNoun();
+//	
+//		query.getSubject().add(null);
+		query.setCount(true);
+		query.setDistinct(true);
+		request.setQuery(query);
+		
+		QueryResponse response = whiteboard.executeRequest(request);
+		assertThat(response).isNotNull();
+		assertThat(response.getRequestId()).isEqualTo(reqId);
+		assertThat(response.getStatus()).isEqualTo(QueryStatusType.PENDING);
+		assertThat(response.getDetailedStatus()).isNotNull();
+		assertThat(response.getDetailedStatus().getSingleConnectorQueryStatus()).hasSize(2);
+		SingleConnectorQueryStatus sc1 = null, sc2 = null;
+		for(SingleConnectorQueryStatus sc : response.getDetailedStatus().getSingleConnectorQueryStatus()) {
+			if("isma_himsa".equals(sc.getConnectorId())) {
+				sc1 = sc;
+			} else if("other_hl7".equals(sc.getConnectorId())) {
+				sc2 = sc;
+			}
+		}
+		assertThat(sc1).isNotNull();
+		assertThat(sc2).isNotNull();
 	}
 
 }

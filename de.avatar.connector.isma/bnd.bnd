@@ -5,7 +5,11 @@
 -buildpath: \
 	org.osgi.service.cm;version=latest,\
 	de.avatar.connector.api;version=snapshot,\
-	de.avatar.connector.model;version=snapshot
+	de.avatar.connector.model;version=snapshot,\
+	org.osgi.service.component,\
+	de.avatar.query.status.model,\
+	de.avatar.query.model;version=snapshot,\
+	org.gecko.emf.json
 	
 -workingset: provider
 	

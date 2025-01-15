@@ -25,6 +25,7 @@ import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.ErrorResult;
+import de.avatar.model.connector.ResponseCode;
 
 /**
  * 
@@ -34,6 +35,7 @@ import de.avatar.model.connector.ErrorResult;
 public class ConnectorHelper {
 	
 	private static final String UNKNOWN = "<unknown>";
+	
 	
 	public static EndpointResponse createResponse(EndpointRequest request) {
 		requireNonNull(request);
@@ -48,14 +50,15 @@ public class ConnectorHelper {
 		requireNonNull(request);
 		List<String> error = new ArrayList<>();
 		EndpointResponse response = AConnectorFactory.eINSTANCE.createEndpointResponse();
+		response.setCode(ResponseCode.OK);
 		response.setId(request.getId());
 		if (isNull(request.getId())) {
-			error.add("Request doesnt contain an mandatory id.");
+			error.add("Request doesnt contain a mandatory id.");
 			response.setId(UUID.randomUUID().toString());
 		}
 		response.setSourceId(request.getSourceId());
 		if (isNull(request.getSourceId())) {
-			error.add("Request doesnt contain an mandatory source-id.");
+			error.add("Request doesnt contain a mandatory source-id.");
 			response.setSourceId(UNKNOWN);
 		}
 		if (isNull(request.getEndpoint())) {
@@ -65,6 +68,7 @@ public class ConnectorHelper {
 		}
 		response.setTimestamp(Instant.now().toEpochMilli());
 		if (!error.isEmpty()) {
+			response.setCode(ResponseCode.ERROR);
 			ErrorResult errorResult = AConnectorFactory.eINSTANCE.createErrorResult();
 			errorResult.setError("invalid-request");
 			errorResult.setErrorText(String.join(",", error.toArray(new String[0])));
