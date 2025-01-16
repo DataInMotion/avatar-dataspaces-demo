@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012 - 2025 Data In Motion and others.
+ * Copyright (c) 2012 - 2024 Data In Motion and others.
  * All rights reserved. 
  * 
  * This program and the accompanying materials are made
@@ -13,18 +13,18 @@
  */
 package de.avatar.connector.whiteboard.api;
 
-import java.util.List;
-
-import de.avatar.model.connector.ConnectorInfo;
+import de.avatar.status.QueryRequest;
+import de.avatar.status.QueryResponse;
 
 /**
  * 
- * @author ilenia
- * @since Jan 16, 2025
+ * @author mark
+ * @since 13.11.2024
  */
-public interface ConnectorWhiteboard {
-
-	List<ConnectorInfo> getAllConnectors();
+public interface ConnectorRequestWhiteboard extends ConnectorWhiteboard{
 	
-	List<ConnectorInfo> getExternalConnectors();
+	QueryResponse executeDryRun(QueryRequest request);
+	
+	QueryResponse executeRequest(QueryRequest request);
+
 }

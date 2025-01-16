@@ -13,18 +13,24 @@
  */
 package de.avatar.connector.whiteboard.api;
 
-import java.util.List;
-
-import de.avatar.model.connector.ConnectorInfo;
+import de.avatar.status.QueryRequest;
+import de.avatar.status.QueryResponse;
 
 /**
  * 
  * @author ilenia
  * @since Jan 16, 2025
  */
-public interface ConnectorWhiteboard {
-
-	List<ConnectorInfo> getAllConnectors();
+public interface StatusService {
 	
-	List<ConnectorInfo> getExternalConnectors();
+	boolean isRequestCached(QueryRequest request);
+	
+	QueryRequest getCachedRequest(String requestId);
+	
+	void cacheRequest(QueryRequest request);
+	
+	void updateStatus(QueryResponse response);
+	
+	QueryResponse executeStatusRequest(String requestId);
+
 }

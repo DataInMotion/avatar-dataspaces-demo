@@ -17,7 +17,8 @@ import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsName;
 import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsResource;
 
-import de.avatar.connector.whiteboard.api.ConnectorWhiteboard;
+import de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard;
+import de.avatar.connector.whiteboard.api.StatusService;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import jakarta.ws.rs.Consumes;
@@ -41,7 +42,10 @@ import jakarta.ws.rs.core.Response;
 public class QueryRestResource {
 
 	@Reference
-	ConnectorWhiteboard connectorWhiteboard;
+	ConnectorRequestWhiteboard requestWhiteboard;
+	
+	@Reference
+	StatusService statusService;
 	
 	@GET
 	@Path("/hello")
@@ -54,7 +58,7 @@ public class QueryRestResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response dryRun(QueryRequest request) {		
-		QueryResponse response = connectorWhiteboard.executeDryRun(request);
+		QueryResponse response = requestWhiteboard.executeDryRun(request);
 		return Response.ok(response).build();
 	}
 	
@@ -65,7 +69,7 @@ public class QueryRestResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response query(QueryRequest request) {
 		try {
-			QueryResponse response = connectorWhiteboard.executeRequest(request);
+			QueryResponse response = requestWhiteboard.executeRequest(request);
 			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {
 			return Response.status(500, e.getMessage()).build();
@@ -77,7 +81,7 @@ public class QueryRestResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response status(@PathParam("requestId") String requestId) {
 		try {
-			QueryResponse response = connectorWhiteboard.executeStatusRequest(requestId);
+			QueryResponse response = statusService.executeStatusRequest(requestId);
 			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {
 			return Response.status(500, e.getMessage()).build();

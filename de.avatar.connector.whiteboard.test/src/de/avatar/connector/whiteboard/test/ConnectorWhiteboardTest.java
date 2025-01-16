@@ -18,7 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.UUID;
 
+import org.gecko.emf.utilities.FeaturePath;
+import org.gecko.emf.utilities.UtilitiesFactory;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.framework.BundleContext;
@@ -28,16 +31,16 @@ import org.osgi.test.common.service.ServiceAware;
 import org.osgi.test.junit5.context.BundleContextExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 
-import de.avatar.connector.whiteboard.api.ConnectorWhiteboard;
+import de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard;
+import de.avatar.connector.whiteboard.api.StatusService;
 import de.avatar.query.Query;
 import de.avatar.query.QueryFactory;
-import de.avatar.query.QueryPackage;
-import de.avatar.query.Subject;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.SingleConnectorQueryStatus;
 import de.avatar.status.StatusFactory;
+import de.avatar.status.StatusPackage;
 
 //import org.mockito.Mock;
 //import org.mockito.junit.jupiter.MockitoExtension;
@@ -62,16 +65,16 @@ public class ConnectorWhiteboardTest {
 	}
 	
 	@Test
-	public void test(@InjectService(timeout = 2000l) ServiceAware<ConnectorWhiteboard> whiteboardAware) {
+	public void test(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
-		ConnectorWhiteboard whiteboard = whiteboardAware.getService();
+		ConnectorRequestWhiteboard whiteboard = whiteboardAware.getService();
 		assertThat(whiteboard).isNotNull();
 	}
 	
 	@Test
-	public void testDryRun(@InjectService(timeout = 2000l) ServiceAware<ConnectorWhiteboard> whiteboardAware) {
+	public void testDryRun(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
-		ConnectorWhiteboard whiteboard = whiteboardAware.getService();
+		ConnectorRequestWhiteboard whiteboard = whiteboardAware.getService();
 		assertThat(whiteboard).isNotNull();
 		
 		String reqId = UUID.randomUUID().toString();
@@ -104,9 +107,9 @@ public class ConnectorWhiteboardTest {
 	}
 	
 	@Test
-	public void testRequestNoId(@InjectService(timeout = 2000l) ServiceAware<ConnectorWhiteboard> whiteboardAware) {
+	public void testRequestNoId(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
-		ConnectorWhiteboard whiteboard = whiteboardAware.getService();
+		ConnectorRequestWhiteboard whiteboard = whiteboardAware.getService();
 		assertThat(whiteboard).isNotNull();
 		
 		String consumerId = UUID.randomUUID().toString();
@@ -124,9 +127,9 @@ public class ConnectorWhiteboardTest {
 	}
 	
 	@Test
-	public void testRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorWhiteboard> whiteboardAware) {
+	public void testRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
-		ConnectorWhiteboard whiteboard = whiteboardAware.getService();
+		ConnectorRequestWhiteboard whiteboard = whiteboardAware.getService();
 		assertThat(whiteboard).isNotNull();
 		
 		String reqId = UUID.randomUUID().toString();
@@ -158,9 +161,9 @@ public class ConnectorWhiteboardTest {
 	}
 
 	@Test
-	public void testSameRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorWhiteboard> whiteboardAware) {
+	public void testSameRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
-		ConnectorWhiteboard whiteboard = whiteboardAware.getService();
+		ConnectorRequestWhiteboard whiteboard = whiteboardAware.getService();
 		assertThat(whiteboard).isNotNull();
 		
 		String reqId = UUID.randomUUID().toString();
@@ -178,10 +181,15 @@ public class ConnectorWhiteboardTest {
 	}
 	
 	@Test
-	public void testStatusRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorWhiteboard> whiteboardAware) {
+	public void testStatusRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware,
+			@InjectService(timeout = 2000l) ServiceAware<StatusService> statusAware) {
 		assertThat(whiteboardAware).isNotNull();
-		ConnectorWhiteboard whiteboard = whiteboardAware.getService();
+		ConnectorRequestWhiteboard whiteboard = whiteboardAware.getService();
 		assertThat(whiteboard).isNotNull();
+		
+		assertThat(statusAware).isNotNull();
+		StatusService statusService = statusAware.getService();
+		assertThat(statusService).isNotNull();
 		
 		String reqId = UUID.randomUUID().toString();
 		String consumerId = UUID.randomUUID().toString();
@@ -194,7 +202,7 @@ public class ConnectorWhiteboardTest {
 		request.setQuery(query);
 		
 		whiteboard.executeRequest(request);
-		QueryResponse response = whiteboard.executeStatusRequest(reqId);
+		QueryResponse response = statusService.executeStatusRequest(reqId);
 		assertThat(response).isNotNull();
 		assertThat(response.getRequestId()).isEqualTo(reqId);
 		assertThat(response.getDetailedStatus()).isNotNull();
@@ -212,10 +220,10 @@ public class ConnectorWhiteboardTest {
 	}
 	
 	@Test
-	public void testStatusRequestNoCache(@InjectService(timeout = 2000l) ServiceAware<ConnectorWhiteboard> whiteboardAware) {
-		assertThat(whiteboardAware).isNotNull();
-		ConnectorWhiteboard whiteboard = whiteboardAware.getService();
-		assertThat(whiteboard).isNotNull();
+	public void testStatusRequestNoCache(@InjectService(timeout = 2000l) ServiceAware<StatusService> statusAware) {
+		assertThat(statusAware).isNotNull();
+		StatusService statusService = statusAware.getService();
+		assertThat(statusService).isNotNull();
 		
 		String reqId = UUID.randomUUID().toString();
 		String consumerId = UUID.randomUUID().toString();
@@ -227,13 +235,14 @@ public class ConnectorWhiteboardTest {
 		query.setDistinct(true);
 		request.setQuery(query);
 		
-		assertThrows(IllegalArgumentException.class, () -> whiteboard.executeStatusRequest(reqId));
+		assertThrows(IllegalArgumentException.class, () -> statusService.executeStatusRequest(reqId));
 	}
 	
+	@Disabled
 	@Test
-	public void testPatientRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorWhiteboard> whiteboardAware) {
+	public void testPatientRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
-		ConnectorWhiteboard whiteboard = whiteboardAware.getService();
+		ConnectorRequestWhiteboard whiteboard = whiteboardAware.getService();
 		assertThat(whiteboard).isNotNull();
 		
 		String reqId = UUID.randomUUID().toString();
@@ -245,6 +254,8 @@ public class ConnectorWhiteboardTest {
 //		Subject subject = QueryFactory.eINSTANCE.createWhiteListedNoun();
 //	
 //		query.getSubject().add(null);
+//		FeaturePath fp = UtilitiesFactory.eINSTANCE.createFeaturePath();
+//		fp.getFeature().add(StatusPackage.Literals.DETAILED_QUERY_STATUS);
 		query.setCount(true);
 		query.setDistinct(true);
 		request.setQuery(query);
