@@ -1,8 +1,9 @@
 @startuml
 actor QueryUI as UI
 actor RestResource as RR
-actor Whiteboard as WB
-actor RequestCacheService as RCS
+actor RequestWhiteboard as RWB
+actor StatusService as RCS
+actor StatusWhiteboard as SWB
 actor Connectors as Cs
 actor AvatarGeneraror as AG
 
@@ -12,17 +13,17 @@ autonumber
 UI->RR: send a dry run request
 activate UI
 activate RR
-RR->WB: send the dry run request
-activate WB
-WB->Cs: send dry run request to all connectors
+RR->RWB: send the dry run request
+activate RWB
+RWB->Cs: send dry run request to all connectors
 activate Cs
-Cs->WB: send dry run responses
+Cs->RWB: send dry run responses
 deactivate Cs
-note right of WB
+note right of RWB
 Aggregate responses
 end note
-WB->RR: send aggregated response
-deactivate WB
+RWB->RR: send aggregated response
+deactivate RWB
 RR->UI: send dry run response
 deactivate RR
 deactivate UI
@@ -33,21 +34,21 @@ autonumber
 UI->RR: send a query request
 activate UI
 activate RR
-RR->WB: send a query request
-activate WB
-WB->RCS: cache the request
+RR->RWB: send a query request
+activate RWB
+RWB->RCS: cache the request
 activate RCS
 RCS->RCS: do the cache
 deactivate RCS
-WB->Cs: send request to all connectors
+RWB->Cs: send request to all connectors
 activate Cs
-Cs->WB: send status responses
+Cs->RWB: send status responses
 deactivate Cs
-note right of WB
+note right of RWB
 Aggregate responses
 end note
-WB->RR: send response (pending status)
-deactivate WB
+RWB->RR: send response (pending status)
+deactivate RWB
 RR->UI: send response (pending status)
 deactivate RR
 deactivate UI
@@ -58,29 +59,26 @@ autonumber
 UI->RR: send a status request
 activate UI 
 activate RR
-RR->WB: send a status request
-activate WB
-WB->RCS: retrieve the request from cache
+RR->RCS: send a status request
 activate RCS
-RCS->WB: return cached request
-deactivate RCS
-WB->Cs: send status request to pending connectors
+RCS->SWB: triggers status request to whiteboard
+activate SWB
+SWB->Cs: send status request to pending connectors
 activate Cs
-Cs->WB: send status response
+Cs->SWB: send status response
 deactivate Cs
-WB->RCS: update status in cache
-activate RCS
+note right of SWB
+Aggregate responses
+end note
+SWB->RCS: update status in cache
 RCS->RCS: do status update
-deactivate RCS
-WB->AG: send response for connector that are done
+SWB->AG: send response for connector that are done
+deactivate SWB
 activate AG
 AG->AG: aggregate response
 deactivate AG
-note right of WB
-Aggregate responses
-end note
-WB->RR: send status response 
-deactivate WB
+RCS->RR: send status response 
+deactivate RCS
 RR->UI: send status response
 deactivate RR
 deactivate UI
