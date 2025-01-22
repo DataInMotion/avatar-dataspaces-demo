@@ -13,11 +13,12 @@
  */
 package de.avatar.query.impl;
 
-import de.avatar.query.Operator;
+import de.avatar.query.QObject;
+import de.avatar.query.QSubject;
+import de.avatar.query.QWhere;
 import de.avatar.query.Query;
 import de.avatar.query.QueryPackage;
 import de.avatar.query.SortEntity;
-import de.avatar.query.Subject;
 
 import java.util.Collection;
 
@@ -27,7 +28,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -47,9 +47,9 @@ import org.gecko.emf.utilities.FeaturePath;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.impl.QueryImpl#getFrom <em>From</em>}</li>
- *   <li>{@link de.avatar.query.impl.QueryImpl#getObject <em>Object</em>}</li>
  *   <li>{@link de.avatar.query.impl.QueryImpl#getSubject <em>Subject</em>}</li>
+ *   <li>{@link de.avatar.query.impl.QueryImpl#getFrom <em>From</em>}</li>
+ *   <li>{@link de.avatar.query.impl.QueryImpl#getWhere <em>Where</em>}</li>
  *   <li>{@link de.avatar.query.impl.QueryImpl#getGroupBy <em>Group By</em>}</li>
  *   <li>{@link de.avatar.query.impl.QueryImpl#getSortBy <em>Sort By</em>}</li>
  *   <li>{@link de.avatar.query.impl.QueryImpl#isCount <em>Count</em>}</li>
@@ -62,26 +62,6 @@ import org.gecko.emf.utilities.FeaturePath;
  */
 public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	/**
-	 * The cached value of the '{@link #getFrom() <em>From</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFrom()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<EStructuralFeature> from;
-
-	/**
-	 * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getObject()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Operator> object;
-
-	/**
 	 * The cached value of the '{@link #getSubject() <em>Subject</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -89,17 +69,37 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Subject> subject;
+	protected EList<QSubject> subject;
 
 	/**
-	 * The cached value of the '{@link #getGroupBy() <em>Group By</em>}' containment reference.
+	 * The cached value of the '{@link #getFrom() <em>From</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFrom()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<QObject> from;
+
+	/**
+	 * The cached value of the '{@link #getWhere() <em>Where</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWhere()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<QWhere> where;
+
+	/**
+	 * The cached value of the '{@link #getGroupBy() <em>Group By</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGroupBy()
 	 * @generated
 	 * @ordered
 	 */
-	protected FeaturePath groupBy;
+	protected EList<FeaturePath> groupBy;
 
 	/**
 	 * The cached value of the '{@link #getSortBy() <em>Sort By</em>}' containment reference list.
@@ -216,35 +216,9 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	 * @generated
 	 */
 	@Override
-	public EList<EStructuralFeature> getFrom() {
-		if (from == null) {
-			from = new EObjectResolvingEList<EStructuralFeature>(EStructuralFeature.class, this, QueryPackage.QUERY__FROM);
-		}
-		return from;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Operator> getObject() {
-		if (object == null) {
-			object = new EObjectContainmentEList<Operator>(Operator.class, this, QueryPackage.QUERY__OBJECT);
-		}
-		return object;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Subject> getSubject() {
+	public EList<QSubject> getSubject() {
 		if (subject == null) {
-			subject = new EObjectContainmentEList<Subject>(Subject.class, this, QueryPackage.QUERY__SUBJECT);
+			subject = new EObjectContainmentEList<QSubject>(QSubject.class, this, QueryPackage.QUERY__SUBJECT);
 		}
 		return subject;
 	}
@@ -255,23 +229,11 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	 * @generated
 	 */
 	@Override
-	public FeaturePath getGroupBy() {
-		return groupBy;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetGroupBy(FeaturePath newGroupBy, NotificationChain msgs) {
-		FeaturePath oldGroupBy = groupBy;
-		groupBy = newGroupBy;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QueryPackage.QUERY__GROUP_BY, oldGroupBy, newGroupBy);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<QObject> getFrom() {
+		if (from == null) {
+			from = new EObjectResolvingEList<QObject>(QObject.class, this, QueryPackage.QUERY__FROM);
 		}
-		return msgs;
+		return from;
 	}
 
 	/**
@@ -280,18 +242,24 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	 * @generated
 	 */
 	@Override
-	public void setGroupBy(FeaturePath newGroupBy) {
-		if (newGroupBy != groupBy) {
-			NotificationChain msgs = null;
-			if (groupBy != null)
-				msgs = ((InternalEObject)groupBy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QueryPackage.QUERY__GROUP_BY, null, msgs);
-			if (newGroupBy != null)
-				msgs = ((InternalEObject)newGroupBy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QueryPackage.QUERY__GROUP_BY, null, msgs);
-			msgs = basicSetGroupBy(newGroupBy, msgs);
-			if (msgs != null) msgs.dispatch();
+	public EList<QWhere> getWhere() {
+		if (where == null) {
+			where = new EObjectContainmentEList<QWhere>(QWhere.class, this, QueryPackage.QUERY__WHERE);
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.QUERY__GROUP_BY, newGroupBy, newGroupBy));
+		return where;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<FeaturePath> getGroupBy() {
+		if (groupBy == null) {
+			groupBy = new EObjectContainmentEList<FeaturePath>(FeaturePath.class, this, QueryPackage.QUERY__GROUP_BY);
+		}
+		return groupBy;
 	}
 
 	/**
@@ -407,12 +375,12 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QueryPackage.QUERY__OBJECT:
-				return ((InternalEList<?>)getObject()).basicRemove(otherEnd, msgs);
 			case QueryPackage.QUERY__SUBJECT:
 				return ((InternalEList<?>)getSubject()).basicRemove(otherEnd, msgs);
+			case QueryPackage.QUERY__WHERE:
+				return ((InternalEList<?>)getWhere()).basicRemove(otherEnd, msgs);
 			case QueryPackage.QUERY__GROUP_BY:
-				return basicSetGroupBy(null, msgs);
+				return ((InternalEList<?>)getGroupBy()).basicRemove(otherEnd, msgs);
 			case QueryPackage.QUERY__SORT_BY:
 				return ((InternalEList<?>)getSortBy()).basicRemove(otherEnd, msgs);
 		}
@@ -427,12 +395,12 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QueryPackage.QUERY__FROM:
-				return getFrom();
-			case QueryPackage.QUERY__OBJECT:
-				return getObject();
 			case QueryPackage.QUERY__SUBJECT:
 				return getSubject();
+			case QueryPackage.QUERY__FROM:
+				return getFrom();
+			case QueryPackage.QUERY__WHERE:
+				return getWhere();
 			case QueryPackage.QUERY__GROUP_BY:
 				return getGroupBy();
 			case QueryPackage.QUERY__SORT_BY:
@@ -458,20 +426,21 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QueryPackage.QUERY__FROM:
-				getFrom().clear();
-				getFrom().addAll((Collection<? extends EStructuralFeature>)newValue);
-				return;
-			case QueryPackage.QUERY__OBJECT:
-				getObject().clear();
-				getObject().addAll((Collection<? extends Operator>)newValue);
-				return;
 			case QueryPackage.QUERY__SUBJECT:
 				getSubject().clear();
-				getSubject().addAll((Collection<? extends Subject>)newValue);
+				getSubject().addAll((Collection<? extends QSubject>)newValue);
+				return;
+			case QueryPackage.QUERY__FROM:
+				getFrom().clear();
+				getFrom().addAll((Collection<? extends QObject>)newValue);
+				return;
+			case QueryPackage.QUERY__WHERE:
+				getWhere().clear();
+				getWhere().addAll((Collection<? extends QWhere>)newValue);
 				return;
 			case QueryPackage.QUERY__GROUP_BY:
-				setGroupBy((FeaturePath)newValue);
+				getGroupBy().clear();
+				getGroupBy().addAll((Collection<? extends FeaturePath>)newValue);
 				return;
 			case QueryPackage.QUERY__SORT_BY:
 				getSortBy().clear();
@@ -501,17 +470,17 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QueryPackage.QUERY__FROM:
-				getFrom().clear();
-				return;
-			case QueryPackage.QUERY__OBJECT:
-				getObject().clear();
-				return;
 			case QueryPackage.QUERY__SUBJECT:
 				getSubject().clear();
 				return;
+			case QueryPackage.QUERY__FROM:
+				getFrom().clear();
+				return;
+			case QueryPackage.QUERY__WHERE:
+				getWhere().clear();
+				return;
 			case QueryPackage.QUERY__GROUP_BY:
-				setGroupBy((FeaturePath)null);
+				getGroupBy().clear();
 				return;
 			case QueryPackage.QUERY__SORT_BY:
 				getSortBy().clear();
@@ -540,14 +509,14 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QueryPackage.QUERY__FROM:
-				return from != null && !from.isEmpty();
-			case QueryPackage.QUERY__OBJECT:
-				return object != null && !object.isEmpty();
 			case QueryPackage.QUERY__SUBJECT:
 				return subject != null && !subject.isEmpty();
+			case QueryPackage.QUERY__FROM:
+				return from != null && !from.isEmpty();
+			case QueryPackage.QUERY__WHERE:
+				return where != null && !where.isEmpty();
 			case QueryPackage.QUERY__GROUP_BY:
-				return groupBy != null;
+				return groupBy != null && !groupBy.isEmpty();
 			case QueryPackage.QUERY__SORT_BY:
 				return sortBy != null && !sortBy.isEmpty();
 			case QueryPackage.QUERY__COUNT:

@@ -24,6 +24,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.gecko.emf.osgi.constants.EMFNamespaces;
@@ -46,6 +47,9 @@ import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.ProtocolType;
 import de.avatar.model.connector.StatusType;
 import de.avatar.model.connector.helper.ConnectorHelper;
+import de.avatar.query.QSubject;
+import de.avatar.query.QWhere;
+import de.avatar.query.Query;
 import de.avatar.status.QueryRequest;
 
 @Component(immediate = true, name = "ISMAConnector", property = {
@@ -223,8 +227,25 @@ public class ISMAConnectorImpl implements AvatarConnector {
 					if(!request.getParameter().isEmpty()) {
 						if(request.getParameter().get(0) instanceof EcoreParameter ecorePar) {
 							QueryRequest queryReq = (QueryRequest) ecorePar.getValue();
-							boolean count = queryReq.getQuery().isCount();
-							boolean distinct = queryReq.getQuery().isDistinct();
+							Query query = queryReq.getQuery();
+							
+//							subject are the projections
+							String projections = "";
+							for(QSubject subject : query.getSubject()) {
+								projections += "projections=";
+								for(EStructuralFeature feature : subject.getFeaturePath().getFeature()) {
+									projections += feature.getName()+",";
+								}
+								projections = projections.substring(0, projections.length()-1); //to remove the last ","
+							}
+							
+//							where are the feature on which to apply the comparator for the actual query
+							for(QWhere where : query.getWhere()) {
+								
+							}
+							
+							boolean count = query.isCount();
+							boolean distinct = query.isDistinct();
 							reqUri = reqUri.
 									concat("?count=").
 									concat(String.valueOf(count)).

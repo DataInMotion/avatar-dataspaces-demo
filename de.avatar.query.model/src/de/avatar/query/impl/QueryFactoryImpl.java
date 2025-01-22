@@ -69,19 +69,22 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QueryPackage.QUERY: return createQuery();
-			case QueryPackage.WHITE_LISTED_NOUN: return createWhiteListedNoun();
-			case QueryPackage.BLACK_LISTED_NOUN: return createBlackListedNoun();
+			case QueryPackage.QOBJECT: return createQObject();
+			case QueryPackage.QSUBJECT: return createQSubject();
 			case QueryPackage.OR: return createOr();
 			case QueryPackage.NOT: return createNot();
 			case QueryPackage.AND: return createAnd();
 			case QueryPackage.TO_LOWER_CASE: return createToLowerCase();
 			case QueryPackage.TO_UPPER_CASE: return createToUpperCase();
+			case QueryPackage.AVERAGE: return createAverage();
 			case QueryPackage.ENDS_WITH: return createEndsWith();
 			case QueryPackage.START_WITH: return createStartWith();
 			case QueryPackage.CONTAINS: return createContains();
 			case QueryPackage.LIKE: return createLike();
 			case QueryPackage.IS_BEFORE: return createIsBefore();
 			case QueryPackage.IS_AFTER: return createIsAfter();
+			case QueryPackage.IS_BEFORE_OR_EQUAL: return createIsBeforeOrEqual();
+			case QueryPackage.IS_AFTER_OR_EQUAL: return createIsAfterOrEqual();
 			case QueryPackage.IS_IN_RANGE: return createIsInRange();
 			case QueryPackage.LT: return createLt();
 			case QueryPackage.LTE: return createLte();
@@ -144,9 +147,9 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	 * @generated
 	 */
 	@Override
-	public WhiteListedNoun createWhiteListedNoun() {
-		WhiteListedNounImpl whiteListedNoun = new WhiteListedNounImpl();
-		return whiteListedNoun;
+	public QObject createQObject() {
+		QObjectImpl qObject = new QObjectImpl();
+		return qObject;
 	}
 
 	/**
@@ -155,9 +158,9 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	 * @generated
 	 */
 	@Override
-	public BlackListedNoun createBlackListedNoun() {
-		BlackListedNounImpl blackListedNoun = new BlackListedNounImpl();
-		return blackListedNoun;
+	public QSubject createQSubject() {
+		QSubjectImpl qSubject = new QSubjectImpl();
+		return qSubject;
 	}
 
 	/**
@@ -213,6 +216,17 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	public ToUpperCase createToUpperCase() {
 		ToUpperCaseImpl toUpperCase = new ToUpperCaseImpl();
 		return toUpperCase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Average createAverage() {
+		AverageImpl average = new AverageImpl();
+		return average;
 	}
 
 	/**
@@ -279,6 +293,28 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	public IsAfter createIsAfter() {
 		IsAfterImpl isAfter = new IsAfterImpl();
 		return isAfter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IsBeforeOrEqual createIsBeforeOrEqual() {
+		IsBeforeOrEqualImpl isBeforeOrEqual = new IsBeforeOrEqualImpl();
+		return isBeforeOrEqual;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IsAfterOrEqual createIsAfterOrEqual() {
+		IsAfterOrEqualImpl isAfterOrEqual = new IsAfterOrEqualImpl();
+		return isAfterOrEqual;
 	}
 
 	/**

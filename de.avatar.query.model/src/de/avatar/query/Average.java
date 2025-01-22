@@ -17,14 +17,14 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>White Listed Noun</b></em>'.
+ * A representation of the model object '<em><b>Average</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see de.avatar.query.QueryPackage#getWhiteListedNoun()
+ * @see de.avatar.query.QueryPackage#getAverage()
  * @model
  * @generated
  */
 @ProviderType
-public interface WhiteListedNoun extends Subject {
-} // WhiteListedNoun
+public interface Average extends NumberOperation {
+} // Average

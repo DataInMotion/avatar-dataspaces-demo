@@ -15,8 +15,6 @@ package de.avatar.query;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.gecko.emf.utilities.FeaturePath;
-
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
@@ -29,7 +27,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * </p>
  * <ul>
  *   <li>{@link de.avatar.query.Comparator#getSuitableForType <em>Suitable For Type</em>}</li>
- *   <li>{@link de.avatar.query.Comparator#getFeaturePath <em>Feature Path</em>}</li>
+ *   <li>{@link de.avatar.query.Comparator#getWhere <em>Where</em>}</li>
  * </ul>
  *
  * @see de.avatar.query.QueryPackage#getComparator()
@@ -61,26 +59,28 @@ public interface Comparator extends EObject {
 	void setSuitableForType(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Feature Path</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Where</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link de.avatar.query.QWhere#getComparator <em>Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Feature Path</em>' containment reference.
-	 * @see #setFeaturePath(FeaturePath)
-	 * @see de.avatar.query.QueryPackage#getComparator_FeaturePath()
-	 * @model containment="true"
+	 * @return the value of the '<em>Where</em>' container reference.
+	 * @see #setWhere(QWhere)
+	 * @see de.avatar.query.QueryPackage#getComparator_Where()
+	 * @see de.avatar.query.QWhere#getComparator
+	 * @model opposite="comparator" transient="false"
 	 * @generated
 	 */
-	FeaturePath getFeaturePath();
+	QWhere getWhere();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.query.Comparator#getFeaturePath <em>Feature Path</em>}' containment reference.
+	 * Sets the value of the '{@link de.avatar.query.Comparator#getWhere <em>Where</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Feature Path</em>' containment reference.
-	 * @see #getFeaturePath()
+	 * @param value the new value of the '<em>Where</em>' container reference.
+	 * @see #getWhere()
 	 * @generated
 	 */
-	void setFeaturePath(FeaturePath value);
+	void setWhere(QWhere value);
 
 	/**
 	 * <!-- begin-user-doc -->

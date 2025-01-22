@@ -15,8 +15,6 @@ package de.avatar.query;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.gecko.emf.utilities.FeaturePath;
-
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
@@ -28,8 +26,8 @@ import org.osgi.annotation.versioning.ProviderType;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.Operation#getFeaturePath <em>Feature Path</em>}</li>
  *   <li>{@link de.avatar.query.Operation#getSuitableForType <em>Suitable For Type</em>}</li>
+ *   <li>{@link de.avatar.query.Operation#getSubject <em>Subject</em>}</li>
  * </ul>
  *
  * @see de.avatar.query.QueryPackage#getOperation()
@@ -38,28 +36,6 @@ import org.osgi.annotation.versioning.ProviderType;
  */
 @ProviderType
 public interface Operation extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Feature Path</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Feature Path</em>' reference.
-	 * @see #setFeaturePath(FeaturePath)
-	 * @see de.avatar.query.QueryPackage#getOperation_FeaturePath()
-	 * @model
-	 * @generated
-	 */
-	FeaturePath getFeaturePath();
-
-	/**
-	 * Sets the value of the '{@link de.avatar.query.Operation#getFeaturePath <em>Feature Path</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Feature Path</em>' reference.
-	 * @see #getFeaturePath()
-	 * @generated
-	 */
-	void setFeaturePath(FeaturePath value);
-
 	/**
 	 * Returns the value of the '<em><b>Suitable For Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -81,6 +57,30 @@ public interface Operation extends EObject {
 	 * @generated
 	 */
 	void setSuitableForType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Subject</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link de.avatar.query.QSubject#getOperation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Subject</em>' container reference.
+	 * @see #setSubject(QSubject)
+	 * @see de.avatar.query.QueryPackage#getOperation_Subject()
+	 * @see de.avatar.query.QSubject#getOperation
+	 * @model opposite="operation" required="true" transient="false"
+	 * @generated
+	 */
+	QSubject getSubject();
+
+	/**
+	 * Sets the value of the '{@link de.avatar.query.Operation#getSubject <em>Subject</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Subject</em>' container reference.
+	 * @see #getSubject()
+	 * @generated
+	 */
+	void setSubject(QSubject value);
 
 	/**
 	 * <!-- begin-user-doc -->

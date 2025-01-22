@@ -17,14 +17,14 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Chaining</b></em>'.
+ * A representation of the model object '<em><b>Is Before Or Equal</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see de.avatar.query.QueryPackage#getChaining()
- * @model abstract="true"
+ * @see de.avatar.query.QueryPackage#getIsBeforeOrEqual()
+ * @model
  * @generated
  */
 @ProviderType
-public interface Chaining extends QWhere {
-} // Chaining
+public interface IsBeforeOrEqual extends DateComparator {
+} // IsBeforeOrEqual

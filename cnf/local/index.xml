@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Local" increment="1733130127679">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Local" increment="1737536491533">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.paremus.cert"/>
@@ -183,98 +183,6 @@
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="org.paremus.netty.tls"/>
-      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.geckoprojects.rsa"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="io.netty.channel,io.netty.handler.ssl,io.netty.util.concurrent"/>
-      <attribute name="bundle-symbolic-name" value="org.paremus.netty.tls"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.netty.tls"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-889253848,-206632653,-1105711527,-524907744,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.paremus.netty.tls"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.paremus.netty.tls"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="85659" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="org.paremus.netty.tls/org.paremus.netty.tls-1.0.0.jar"/>
-      <attribute name="osgi.content" value="25BD537D6647FFC8926688580376FA108138F50C7BDDF409B0D2A43B8E874A59"/>
-    </capability>
-    <capability namespace="osgi.service">
-      <directive name="uses" value="com.paremus.netty.tls"/>
-      <attribute name="objectClass" value="com.paremus.netty.tls.ParemusNettyTLS" type="List&lt;String&gt;"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=com.paremus.netty.tls)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.netty.tls"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.buffer)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="io.netty.buffer"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.channel)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="io.netty.channel"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.channel.socket)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="io.netty.channel.socket"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.handler.ssl)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="io.netty.handler.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.util)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="io.netty.util"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.util.concurrent)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="io.netty.util.concurrent"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
-      <attribute name="osgi.wiring.package" value="javax.net.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.jce.provider)(version&gt;=1.64.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.bouncycastle.jce.provider"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.jsse.provider)(version&gt;=1.64.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.bouncycastle.jsse.provider"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.tls)(version&gt;=1.64.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.bouncycastle.tls"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.util)(version&gt;=1.64.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.bouncycastle.util"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.slf4j"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(&amp;(osgi.extender=osgi.component)(version&gt;=1.4.0)(!(version&gt;=2.0.0)))"/>
     </requirement>
   </resource>
   <resource>
@@ -937,6 +845,1252 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="com.paremus.net"/>
+      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.geckoprojects.rsa"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.net,javax.net.ssl"/>
+      <attribute name="bundle-symbolic-name" value="com.paremus.net"/>
+      <attribute name="bundle-version" value="1.0.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.paremus.net.encode"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1587834632,-1614171918,1861865759,-1387543371,563662629,-1775476810" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.0.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="com.paremus.net"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.0.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="com.paremus.net"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="70199" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="com.paremus.net/com.paremus.net-1.0.0.jar"/>
+      <attribute name="osgi.content" value="A30838E1D498EB13896386E7F54AEA38A248F88A1325B0412CEDBFB4708713F8"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="com.paremus.net.encode.EncodingSchemeFactory"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.paremus.net.encode)"/>
+      <attribute name="osgi.wiring.package" value="com.paremus.net.encode"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto)"/>
+      <attribute name="osgi.wiring.package" value="javax.crypto"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto.spec)"/>
+      <attribute name="osgi.wiring.package" value="javax.crypto.spec"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net)"/>
+      <attribute name="osgi.wiring.package" value="javax.net"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+      <attribute name="osgi.wiring.package" value="javax.net.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.cm)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.cm"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.converter)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.converter"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.slf4j"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.paremus.netty.tls"/>
+      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.geckoprojects.rsa"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="io.netty.channel,io.netty.handler.ssl,io.netty.util.concurrent"/>
+      <attribute name="bundle-symbolic-name" value="org.paremus.netty.tls"/>
+      <attribute name="bundle-version" value="1.0.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.paremus.netty.tls"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-889253848,-206632653,-1105711527,-524907744,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.0.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.paremus.netty.tls"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.0.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.paremus.netty.tls"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="85659" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="org.paremus.netty.tls/org.paremus.netty.tls-1.0.0.jar"/>
+      <attribute name="osgi.content" value="25BD537D6647FFC8926688580376FA108138F50C7BDDF409B0D2A43B8E874A59"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="com.paremus.netty.tls"/>
+      <attribute name="objectClass" value="com.paremus.netty.tls.ParemusNettyTLS" type="List&lt;String&gt;"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.paremus.netty.tls)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="com.paremus.netty.tls"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.buffer)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="io.netty.buffer"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.channel)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="io.netty.channel"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.channel.socket)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="io.netty.channel.socket"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.handler.ssl)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="io.netty.handler.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.util)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="io.netty.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.netty.util.concurrent)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="io.netty.util.concurrent"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+      <attribute name="osgi.wiring.package" value="javax.net.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.jce.provider)(version&gt;=1.64.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.bouncycastle.jce.provider"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.jsse.provider)(version&gt;=1.64.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.bouncycastle.jsse.provider"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.tls)(version&gt;=1.64.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.bouncycastle.tls"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.util)(version&gt;=1.64.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.bouncycastle.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.slf4j"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(&amp;(osgi.extender=osgi.component)(version&gt;=1.4.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="Eclipse Public License 2.0"/>
+      <attribute name="copyright" value="Data In Motion Consulting GmbH - All rights reserved"/>
+      <attribute name="osgi.identity" value="org.avatar.himsa.model"/>
+      <attribute name="documentation" value="https://github.com/DataInMotion/avatar-dataspace"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="admittance"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1576829810,925076155,-452617348,-2099955609,1425955268,-167797064,-2095085048,642778890,-1482197870,-1950261588,-1442565797,-1537999069,1876771429,2054277805,-611972547,-1244395031,-1993659848,-1673913095,-747639605,745061726,-664280421,-1308945219,-301824112,1909932654,327134131,82909326,656160426,305838694,-1094493455,-206730432,-2113676047,-462621345,-2101376347,1778644555,-1093822459,190487814,1267094638,302158173,-608423495,-192073768,-2006350030,-996154493,-1559880885,-197027892,-1719295242,1065488579,430038140,448377878,17628691,-1304858947,1564217096,-938960579,-228008194,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="admittance,javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="admittance.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1009165362,-1866691717,1773556668,726106919,-1690019592,1960713288,-509327286,-419843630,-109248788,-1079451109,1313639395,-518103515,36012653,955218429,933086121,-2019307847,1321084024,621917342,-967707813,1624982653,1452749230,-1347456909,999270378,-1475482202,-1494396751,-232992079,-6766208,1346896927,-1390246299,1063038731,-290790459,1933279302,1100181789,-2006689256,-481345469,818172939,1190897676,1200754230,1609558,-1752395053,106733181,-208500483,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="admittance,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="admittance.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1966673911,-940494642,661794844,932263554,-956063420,1584305929,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="audiogram"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-691167184,1780355720,-144554691,1425955268,140265593,849557373,513447174,-779541875,-933267856,-1999107094,-353455046,804961011,-1835334767,-1308945219,-493714381,662126499,53425306,-462621345,2142029467,587841500,760097172,1980503850,895300192,1065488579,906476066,-899958922,-725985891,1939937705,-2109666278,-1886345117,242609683,161579005,-629897723,1467785711,-919719538,-1181628406,-2128146319,1823245969,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="audiogram,javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="audiogram.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="2042945136,811885768,1177957629,2009348665,-871503283,100766896,81714474,-1345790598,-309272653,-8410799,1624982653,-1868429069,349932643,1346896927,-1199253669,-694466454,81778848,1045029558,-1638984355,618460009,611075418,-419593517,1557794749,596568239,1017221326,-1625838511,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="audiogram,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="audiogram.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1347222312,-2141175537,-621906181,-1274556255,-1260593467,300604904,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="audiogram502"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="705622205,716546825,1725286777,-691167184,1780355720,1051559648,1425955268,1336379932,849557373,513447174,-779541875,-933267856,1530666398,-1999107094,-353455046,804961011,-1835334767,-1308945219,-301824112,198451434,-493714381,662126499,53425306,305838694,-462621345,2142029467,587841500,760097172,1980503850,895300192,1065488579,906476066,-899958922,-725985891,1939937705,-2109666278,-1886345117,242609683,161579005,17628691,-629897723,1467785711,-919719538,-1181628406,-2128146319,1823245969,-2062278949,699693833,243208318,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="audiogram502,javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="audiogram502.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1281286019,-1043477303,2042945136,811885768,-1930302176,-1098911140,-871503283,100766896,-21302050,81714474,-1345790598,-309272653,-8410799,1624982653,-1868429069,349932643,-1475482202,1346896927,-1199253669,-694466454,81778848,1045029558,-1638984355,618460009,611075418,-419593517,1557794749,-1752395053,596568239,1017221326,-1625838511,-174021431,-1618380866,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="audiogram502,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="audiogram502.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1620693979,1363093042,1806287672,-1790161250,1449018280,-1566168539,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="audiogrammetadata"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-306466298,-910520597,740834778,-1301306322,1425955268,-1016486038,1012127438,-210095006,2076989455,-1308945219,1641728888,-1143730535,466082676,58104394,-898556269,-1286324119,916902762,-374348277,1198428742,-748669015,-1063474122,491493641,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="audiogrammetadata,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="audiogrammetadata.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="987101099,1695159622,1071945498,-324488338,506902698,-1376610802,1624982653,2141974617,-186132556,1964948009,385737898,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="audiogrammetadata,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="audiogrammetadata.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-166388969,-1247166848,46909098,-1588965488,-502381194,969420183,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="cochlear"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1808086097,983377239,1425955268,-1523265813,-1308945219,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="cochlear,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="cochlear.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="497169007,-1301317609,1328560043,1624982653,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="cochlear,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="cochlear.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="808956022,1694018689,-251516983,195802095,670994102,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="data"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1601492601,1893336970,-905220640,1425955268,-620400356,269050681,-249363432,-1308945219,-301824112,2033276451,-1718137728,-183865450,-1404861605,-726454070,-1045239641,-1293751214,-431530418,-1940767037,637955850,-2079737280,1713740178,196243920,-774476438,-843783986,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="data,javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="data.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-566622006,-1403001785,-654027744,177363292,-512356776,1508242681,1624982653,742384320,233780251,-2069919018,1733497703,-220425718,1949518226,-2015233149,-806965174,-1740279680,648536080,-53444950,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="data,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="data.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="820405541,-201683662,-1578877896,-1021999202,-656366811,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="fitting"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1308945219,1606855083,1425955268,1891675367,-740292290,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="fitting,javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="fitting.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1624982653,1675014763,-1788561497,1715474558,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="fitting,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="fitting.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="129064698,496726141,1901963085,-663869837,-1782980685,-1470493126,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="impedance"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-2071475962,-329835826,463353583,-1753155051,-1298005959,-1866884528,-1308945219,1909932654,327134131,656160426,1472897680,-1421558829,1425955268,1757717964,-1093822459,1267094638,302158173,1095347582,-192073768,-2006350030,1065488579,430038140,-1304858947,1564217096,-938960579,-228008194,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="impedance,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="impedance.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-101536698,1655953934,584973743,-1681998379,-1796730375,182896784,1624982653,1452749230,-1347456909,999270378,1438232784,-1070632813,-2025343476,-290790459,1100181789,29201598,-2006689256,106733181,-208500483,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="impedance,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="impedance.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1506571659,1923103202,-1143310968,994376942,-1667026088,-220799883,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="journal"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1308945219,-687458476,-1584158221,1425955268,-1299337937,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="journal,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="journal.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1624982653,-271236204,-82161997,749229039,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="journal,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="journal.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-862388814,683820229,-1030908923,341572907,-1740116485,-108397838,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="notification"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1308945219,-732127749,1202207103,1425955268,1487027387,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="notification,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="notification.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1624982653,-122028357,1577334847,-1886241413,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="notification,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="notification.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="2134513830,-249568687,-1126114311,15813663,192334471,-203603226,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="admittance,audiogram,audiogram502,audiogrammetadata,cochlear,data,fitting,impedance,javax.xml.datatype,journal,notification,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util,realear,remotecontrol,selection,test,tinnitus"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.avatar.himsa.export"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="872752762,-1025823305,-1308945219,1054247355,890929409,873235173,-1705104431,1425955268,-1420284147,-720180142,-692644216,977142864,-653086731,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="admittance,audiogram,audiogram502,audiogrammetadata,cochlear,data,fitting,impedance,javax.xml.datatype,journal,notification,org.avatar.himsa.export,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,realear,remotecontrol,selection,test,tinnitus"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.avatar.himsa.export.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-941871174,1639075959,1624982653,-1527467631,-696076595,-2101780827,-27047534,-522491704,673591952,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.xml.datatype,org.avatar.himsa.export,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.avatar.himsa.export.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-915388908,510847395,1409256679,1030408077,-2005307303,-1963199532,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="realear"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="794346963,1261637968,208167847,1834979137,-772690656,-603747641,493232876,-1308945219,441160602,-1649882629,-2077196064,-1996984176,-1875619921,1837279031,-269691523,-45917978,-957388811,669667697,1874425605,521323143,1174007963,1988608884,-869002966,673055583,-817101099,-847756873,-1446069540,551070994,1425955268,835891278,1065488579,906476066,-442525250,1635802443,-976707835,-430707105,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,realear"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="realear.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1490126189,1842134928,349376103,-2001281791,1624982653,484904154,73918240,2135981776,-1187400081,285280759,-629234371,-2002564058,-1632303311,2022654661,-76350137,-533921445,-1653358668,-1447728491,-274373513,1545650972,2077928018,-1385648242,1958961406,-1001548277,1657432773,-1542816481,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util,realear"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="realear.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1115747917,1400410468,1507372102,-420832724,1515758938,-1865084109,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="remotecontrol"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-603747641,-1308945219,333963791,1015761619,1425955268,1300581903,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,remotecontrol"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="remotecontrol.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-968514169,1624982653,974985423,496402323,1327793359,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util,remotecontrol"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="remotecontrol.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-556490542,-1611688539,-275284187,-1652768693,1406850779,647226898,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="selection"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-603747641,1940483822,-1308945219,-279668597,-1423768066,1425955268,-1138947782,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,selection"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="selection.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-968514169,-1837162962,1624982653,-1961742005,-1237930690,-406539654,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util,selection"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="selection.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="385290055,-1446451120,1794967258,1455125440,2070967110,-1577488953,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="test"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="794346963,1261637968,208167847,1834979137,-772690656,-603747641,493232876,-1308945219,441160602,-1649882629,-2077196064,-1996984176,-1875619921,-134425424,-269691523,-45917978,1417523751,-957388811,669667697,1874425605,521323143,1174007963,1988608884,-869002966,673055583,-817101099,-847756873,1065488579,906476066,-442525250,1635802443,-976707835,-430707105,183387128,1425955268,468207412,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,test"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="test.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1490126189,1842134928,349376103,-2001281791,1624982653,484904154,73918240,2135981776,-1187400081,1329976048,-629234371,-2002564058,-1667425049,-1632303311,2022654661,-76350137,-533921445,-1653358668,-1447728491,-274373513,1958961406,-1001548277,1657432773,-1542816481,-1579262408,-747871372,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util,test"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="test.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-2040331251,-711655606,-196381408,-571240826,358881984,726129677,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="tinnitus"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-872795285,-1308945219,412238820,-1653019442,-1497572436,-1302133846,1501934259,909858838,1912734304,1065488579,906476066,473816427,813691334,1027516812,424597213,-1518590472,138806053,-2129684638,576171005,1425955268,1312337096,2045753618,725993597,-1421147531,-2128146319,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,tinnitus"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="tinnitus.impl"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="330259499,1624982653,1013483556,714910734,7470060,-56101654,-447088781,2049454934,-1029920608,429698914,-1013327412,-1632944072,-1225528158,-1768277059,-181936376,170268733,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util,tinnitus"/>
+      <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="tinnitus.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-17502215,-1523210530,167734284,1811293810,-181310636,1090245369,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.avatar.himsa.model"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.avatar.himsa.model"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/admittance.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/admittance.ecore"/>
+      <attribute name="class" value="admittance.AdmittancePackage"/>
+      <attribute name="uri" value="http://www.himsa.com/Measurement/Admittance/501"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/audiogram.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/audiogram.ecore"/>
+      <attribute name="class" value="audiogram.AudiogramPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/Measurement/Audiogram"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/audiogram_502.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/audiogram_502.ecore"/>
+      <attribute name="class" value="audiogram502.Audiogram502Package"/>
+      <attribute name="uri" value="http://www.himsa.com/Measurement/Audiogram/502"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/audiogram-metadata.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/audiogram-metadata.ecore"/>
+      <attribute name="class" value="audiogrammetadata.AudiogrammetadataPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/Measurement/AudiogramMetadata/500"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/cochlear.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/cochlear.ecore"/>
+      <attribute name="class" value="cochlear.CochlearPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/CochlearImplantSoundProcessorSelection/500"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/data.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/data.ecore"/>
+      <attribute name="class" value="data.DataPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/Scan/ScanMetaData"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/instrument-fitting.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/instrument-fitting.ecore"/>
+      <attribute name="class" value="fitting.FittingPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/Instrument/Fitting"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/impedance.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/impedance.ecore"/>
+      <attribute name="class" value="impedance.ImpedancePackage"/>
+      <attribute name="uri" value="http://www.himsa.com/Measurement/Impedance"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/journal.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/journal.ecore"/>
+      <attribute name="class" value="journal.JournalPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/other/Journal/500"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/notification.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/notification.ecore"/>
+      <attribute name="class" value="notification.NotificationPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/AlertDashboard/Notification/500"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/patient-export.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/patient-export.ecore"/>
+      <attribute name="class" value="org.avatar.himsa.export.PatientExportPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/PatientExport/PatientExport"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/realear-measurement.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/realear-measurement.ecore"/>
+      <attribute name="class" value="realear.RealearPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/Measurement/RealEar"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/remote-control.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/remote-control.ecore"/>
+      <attribute name="class" value="remotecontrol.RemotecontrolPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/Instrument/RemoteControl"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/instrument-selection.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/instrument-selection.ecore"/>
+      <attribute name="class" value="selection.SelectionPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/Instrument/Selection"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/instrument-test.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/instrument-test.ecore"/>
+      <attribute name="class" value="test.TestPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/Measurement/HearingInstrumentTest"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="org.eclipse.emf.ecore.generated_package">
+      <attribute name="ecoreSourceLocations" value="/model/tinnitus.ecore" type="List&lt;String&gt;"/>
+      <attribute name="ecore" value="/model/tinnitus.ecore"/>
+      <attribute name="class" value="tinnitus.TinnitusPackage"/>
+      <attribute name="uri" value="http://www.himsa.com/measurement/Tinnitus/500"/>
+      <attribute name="genModel" value="/model/patient-export-5.1.genmodel"/>
+      <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="3463874" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="org.avatar.himsa.model/org.avatar.himsa.model-1.0.0.jar"/>
+      <attribute name="osgi.content" value="C06F5DD1C43E0AC0EDEE35D748D841625FDBFA18409265C84DD564FC33E0D73C"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,admittance"/>
+      <attribute name="objectClass" value="admittance.AdmittanceFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,admittance"/>
+      <attribute name="objectClass" value="admittance.AdmittancePackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,admittance.util"/>
+      <attribute name="objectClass" value="admittance.util.AdmittanceResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,audiogram"/>
+      <attribute name="objectClass" value="audiogram.AudiogramFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,audiogram"/>
+      <attribute name="objectClass" value="audiogram.AudiogramPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,audiogram.util"/>
+      <attribute name="objectClass" value="audiogram.util.AudiogramResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,audiogram502"/>
+      <attribute name="objectClass" value="audiogram502.Audiogram502Factory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,audiogram502"/>
+      <attribute name="objectClass" value="audiogram502.Audiogram502Package, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,audiogram502.util"/>
+      <attribute name="objectClass" value="audiogram502.util.Audiogram502ResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,audiogrammetadata"/>
+      <attribute name="objectClass" value="audiogrammetadata.AudiogrammetadataFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,audiogrammetadata"/>
+      <attribute name="objectClass" value="audiogrammetadata.AudiogrammetadataPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,audiogrammetadata.util"/>
+      <attribute name="objectClass" value="audiogrammetadata.util.AudiogrammetadataResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,cochlear"/>
+      <attribute name="objectClass" value="cochlear.CochlearFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,cochlear"/>
+      <attribute name="objectClass" value="cochlear.CochlearPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,cochlear.util"/>
+      <attribute name="objectClass" value="cochlear.util.CochlearResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,data"/>
+      <attribute name="objectClass" value="data.DataFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,data"/>
+      <attribute name="objectClass" value="data.DataPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,data.util"/>
+      <attribute name="objectClass" value="data.util.DataResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,fitting"/>
+      <attribute name="objectClass" value="fitting.FittingFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,fitting"/>
+      <attribute name="objectClass" value="fitting.FittingPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,fitting.util"/>
+      <attribute name="objectClass" value="fitting.util.FittingResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,impedance"/>
+      <attribute name="objectClass" value="impedance.ImpedanceFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,impedance"/>
+      <attribute name="objectClass" value="impedance.ImpedancePackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,impedance.util"/>
+      <attribute name="objectClass" value="impedance.util.ImpedanceResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,journal"/>
+      <attribute name="objectClass" value="journal.JournalFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,journal"/>
+      <attribute name="objectClass" value="journal.JournalPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,journal.util"/>
+      <attribute name="objectClass" value="journal.util.JournalResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,notification"/>
+      <attribute name="objectClass" value="notification.NotificationFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,notification"/>
+      <attribute name="objectClass" value="notification.NotificationPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,notification.util"/>
+      <attribute name="objectClass" value="notification.util.NotificationResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,org.avatar.himsa.export"/>
+      <attribute name="objectClass" value="org.avatar.himsa.export.PatientExportFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,org.avatar.himsa.export"/>
+      <attribute name="objectClass" value="org.avatar.himsa.export.PatientExportPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,org.avatar.himsa.export.util"/>
+      <attribute name="objectClass" value="org.avatar.himsa.export.util.PatientExportResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,admittance"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,audiogram"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,audiogram502"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,audiogrammetadata"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,cochlear"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,data"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,fitting"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,impedance"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,journal"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,notification"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,org.avatar.himsa.export"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,realear"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,remotecontrol"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,selection"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,test"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,tinnitus"/>
+      <attribute name="objectClass" value="org.gecko.emf.osgi.configurator.EPackageConfigurator" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.osgi.service.condition"/>
+      <attribute name="objectClass" value="org.osgi.service.condition.Condition" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,realear"/>
+      <attribute name="objectClass" value="realear.RealearFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,realear"/>
+      <attribute name="objectClass" value="realear.RealearPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,realear.util"/>
+      <attribute name="objectClass" value="realear.util.RealearResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,remotecontrol"/>
+      <attribute name="objectClass" value="remotecontrol.RemotecontrolFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,remotecontrol"/>
+      <attribute name="objectClass" value="remotecontrol.RemotecontrolPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,remotecontrol.util"/>
+      <attribute name="objectClass" value="remotecontrol.util.RemotecontrolResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,selection"/>
+      <attribute name="objectClass" value="selection.SelectionFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,selection"/>
+      <attribute name="objectClass" value="selection.SelectionPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,selection.util"/>
+      <attribute name="objectClass" value="selection.util.SelectionResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,test"/>
+      <attribute name="objectClass" value="test.TestFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,test"/>
+      <attribute name="objectClass" value="test.TestPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,test.util"/>
+      <attribute name="objectClass" value="test.util.TestResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,tinnitus"/>
+      <attribute name="objectClass" value="tinnitus.TinnitusFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore,tinnitus"/>
+      <attribute name="objectClass" value="tinnitus.TinnitusPackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <directive name="uses" value="org.eclipse.emf.ecore.resource,tinnitus.util"/>
+      <attribute name="objectClass" value="tinnitus.util.TinnitusResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory" type="List&lt;String&gt;"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=admittance)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="admittance"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=admittance.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="admittance.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=admittance.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="admittance.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=audiogram)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="audiogram"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=audiogram.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="audiogram.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=audiogram.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="audiogram.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=audiogram502)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="audiogram502"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=audiogram502.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="audiogram502.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=audiogram502.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="audiogram502.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=audiogrammetadata)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="audiogrammetadata"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=audiogrammetadata.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="audiogrammetadata.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=audiogrammetadata.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="audiogrammetadata.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cochlear)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="cochlear"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cochlear.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="cochlear.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cochlear.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="cochlear.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=data)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="data"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=data.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="data.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=data.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="data.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=fitting)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="fitting"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=fitting.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="fitting.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=fitting.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="fitting.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=impedance)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="impedance"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=impedance.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="impedance.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=impedance.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="impedance.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang)"/>
+      <attribute name="osgi.wiring.package" value="java.lang"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang.invoke)"/>
+      <attribute name="osgi.wiring.package" value="java.lang.invoke"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.math)"/>
+      <attribute name="osgi.wiring.package" value="java.math"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util)"/>
+      <attribute name="osgi.wiring.package" value="java.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.datatype)"/>
+      <attribute name="osgi.wiring.package" value="javax.xml.datatype"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=journal)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="journal"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=journal.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="journal.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=journal.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="journal.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=notification)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="notification"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=notification.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="notification.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=notification.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="notification.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.avatar.himsa.export)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.avatar.himsa.export"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.avatar.himsa.export.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.avatar.himsa.export.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.avatar.himsa.export.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.avatar.himsa.export.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.common.notify)(version&gt;=2.29.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.common.notify"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.common.notify.impl)(version&gt;=2.29.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.common.notify.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.common.util)(version&gt;=2.29.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.common.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore)(version&gt;=2.35.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore.impl)(version&gt;=2.35.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore.plugin)(version&gt;=2.35.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore.plugin"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore.resource)(version&gt;=2.35.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore.resource"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore.resource.impl)(version&gt;=2.35.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore.resource.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore.util)(version&gt;=2.35.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore.xmi)(version&gt;=2.36.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore.xmi"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore.xmi.impl)(version&gt;=2.36.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore.xmi.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore.xmi.util)(version&gt;=2.36.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore.xmi.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore.xml.type)(version&gt;=2.35.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore.xml.type"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.emf.ecore.xml.type.util)(version&gt;=2.35.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.emf.ecore.xml.type.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.gecko.emf.osgi.configurator)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.gecko.emf.osgi.configurator"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.10.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.condition)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.condition"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=realear)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="realear"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=realear.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="realear.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=realear.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="realear.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=remotecontrol)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="remotecontrol"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=remotecontrol.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="remotecontrol.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=remotecontrol.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="remotecontrol.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=selection)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="selection"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=selection.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="selection.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=selection.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="selection.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=test)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="test"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=test.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="test.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=test.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="test.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=tinnitus)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="tinnitus"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=tinnitus.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="tinnitus.impl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=tinnitus.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="tinnitus.util"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=17))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(&amp;(osgi.extender=osgi.component)(version&gt;=1.4.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="license" value="Eclipse Public License 2.0"/>
       <attribute name="copyright" value="Data In Motion Consuling GmbH - All rights reserved"/>
       <attribute name="osgi.identity" value="org.gecko.playground.template"/>
@@ -1210,78 +2364,6 @@
       <directive name="filter" value="(osgi.wiring.package=org.conscrypt)"/>
       <directive name="resolution" value="optional"/>
       <attribute name="osgi.wiring.package" value="org.conscrypt"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="com.paremus.net"/>
-      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.geckoprojects.rsa"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.net,javax.net.ssl"/>
-      <attribute name="bundle-symbolic-name" value="com.paremus.net"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.net.encode"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-1587834632,-1614171918,1861865759,-1387543371,563662629,-1775476810" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="com.paremus.net"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.host" value="com.paremus.net"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="70199" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="com.paremus.net/com.paremus.net-1.0.0.jar"/>
-      <attribute name="osgi.content" value="A30838E1D498EB13896386E7F54AEA38A248F88A1325B0412CEDBFB4708713F8"/>
-    </capability>
-    <capability namespace="osgi.service">
-      <attribute name="objectClass" value="com.paremus.net.encode.EncodingSchemeFactory"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=com.paremus.net.encode)"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.net.encode"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.crypto)"/>
-      <attribute name="osgi.wiring.package" value="javax.crypto"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.crypto.spec)"/>
-      <attribute name="osgi.wiring.package" value="javax.crypto.spec"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.net)"/>
-      <attribute name="osgi.wiring.package" value="javax.net"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
-      <attribute name="osgi.wiring.package" value="javax.net.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.cm)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.cm"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.converter)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.converter"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.slf4j"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>

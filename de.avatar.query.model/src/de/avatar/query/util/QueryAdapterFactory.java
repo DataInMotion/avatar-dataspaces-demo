@@ -83,20 +83,16 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 				return createQueryAdapter();
 			}
 			@Override
-			public Adapter caseSubject(Subject object) {
-				return createSubjectAdapter();
+			public Adapter caseQObject(QObject object) {
+				return createQObjectAdapter();
 			}
 			@Override
-			public Adapter caseWhiteListedNoun(WhiteListedNoun object) {
-				return createWhiteListedNounAdapter();
+			public Adapter caseQSubject(QSubject object) {
+				return createQSubjectAdapter();
 			}
 			@Override
-			public Adapter caseBlackListedNoun(BlackListedNoun object) {
-				return createBlackListedNounAdapter();
-			}
-			@Override
-			public Adapter caseOperator(Operator object) {
-				return createOperatorAdapter();
+			public Adapter caseQWhere(QWhere object) {
+				return createQWhereAdapter();
 			}
 			@Override
 			public Adapter caseChaining(Chaining object) {
@@ -125,6 +121,14 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseToUpperCase(ToUpperCase object) {
 				return createToUpperCaseAdapter();
+			}
+			@Override
+			public Adapter caseNumberOperation(NumberOperation object) {
+				return createNumberOperationAdapter();
+			}
+			@Override
+			public Adapter caseAverage(Average object) {
+				return createAverageAdapter();
 			}
 			@Override
 			public Adapter caseComparator(Comparator object) {
@@ -161,6 +165,14 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIsAfter(IsAfter object) {
 				return createIsAfterAdapter();
+			}
+			@Override
+			public Adapter caseIsBeforeOrEqual(IsBeforeOrEqual object) {
+				return createIsBeforeOrEqualAdapter();
+			}
+			@Override
+			public Adapter caseIsAfterOrEqual(IsAfterOrEqual object) {
+				return createIsAfterOrEqualAdapter();
 			}
 			@Override
 			public Adapter caseIsInRange(IsInRange object) {
@@ -249,58 +261,44 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.Subject <em>Subject</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.QObject <em>QObject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.Subject
+	 * @see de.avatar.query.QObject
 	 * @generated
 	 */
-	public Adapter createSubjectAdapter() {
+	public Adapter createQObjectAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.WhiteListedNoun <em>White Listed Noun</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.QSubject <em>QSubject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.WhiteListedNoun
+	 * @see de.avatar.query.QSubject
 	 * @generated
 	 */
-	public Adapter createWhiteListedNounAdapter() {
+	public Adapter createQSubjectAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.BlackListedNoun <em>Black Listed Noun</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.QWhere <em>QWhere</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.avatar.query.BlackListedNoun
+	 * @see de.avatar.query.QWhere
 	 * @generated
 	 */
-	public Adapter createBlackListedNounAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.query.Operator <em>Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.avatar.query.Operator
-	 * @generated
-	 */
-	public Adapter createOperatorAdapter() {
+	public Adapter createQWhereAdapter() {
 		return null;
 	}
 
@@ -399,6 +397,34 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createToUpperCaseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.NumberOperation <em>Number Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.query.NumberOperation
+	 * @generated
+	 */
+	public Adapter createNumberOperationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.Average <em>Average</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.query.Average
+	 * @generated
+	 */
+	public Adapter createAverageAdapter() {
 		return null;
 	}
 
@@ -525,6 +551,34 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIsAfterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.IsBeforeOrEqual <em>Is Before Or Equal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.query.IsBeforeOrEqual
+	 * @generated
+	 */
+	public Adapter createIsBeforeOrEqualAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.query.IsAfterOrEqual <em>Is After Or Equal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.query.IsAfterOrEqual
+	 * @generated
+	 */
+	public Adapter createIsAfterOrEqualAdapter() {
 		return null;
 	}
 

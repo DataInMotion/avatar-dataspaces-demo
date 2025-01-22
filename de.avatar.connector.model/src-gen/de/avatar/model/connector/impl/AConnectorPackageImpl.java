@@ -1201,7 +1201,7 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		getEndpointResponse_Request().getEKeys().add(this.getEndpointRequest_Id());
 		initEAttribute(getEndpointResponse_Timestamp(), ecorePackage.getELong(), "timestamp", null, 1, 1, EndpointResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEndpointResponse_Code(), this.getResponseCode(), "code", null, 1, 1, EndpointResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEndpointResponse_Result(), this.getResponseResult(), null, "result", null, 0, 1, EndpointResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEndpointResponse_Result(), this.getResponseResult(), null, "result", null, 0, 1, EndpointResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEndpointResponse_SourceId(), ecorePackage.getEString(), "sourceId", null, 1, 1, EndpointResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -83,36 +83,28 @@ public class QuerySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.SUBJECT: {
-				Subject subject = (Subject)theEObject;
-				T result = caseSubject(subject);
+			case QueryPackage.QOBJECT: {
+				QObject qObject = (QObject)theEObject;
+				T result = caseQObject(qObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.WHITE_LISTED_NOUN: {
-				WhiteListedNoun whiteListedNoun = (WhiteListedNoun)theEObject;
-				T result = caseWhiteListedNoun(whiteListedNoun);
-				if (result == null) result = caseSubject(whiteListedNoun);
+			case QueryPackage.QSUBJECT: {
+				QSubject qSubject = (QSubject)theEObject;
+				T result = caseQSubject(qSubject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QueryPackage.BLACK_LISTED_NOUN: {
-				BlackListedNoun blackListedNoun = (BlackListedNoun)theEObject;
-				T result = caseBlackListedNoun(blackListedNoun);
-				if (result == null) result = caseSubject(blackListedNoun);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case QueryPackage.OPERATOR: {
-				Operator operator = (Operator)theEObject;
-				T result = caseOperator(operator);
+			case QueryPackage.QWHERE: {
+				QWhere qWhere = (QWhere)theEObject;
+				T result = caseQWhere(qWhere);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case QueryPackage.CHAINING: {
 				Chaining chaining = (Chaining)theEObject;
 				T result = caseChaining(chaining);
-				if (result == null) result = caseOperator(chaining);
+				if (result == null) result = caseQWhere(chaining);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,7 +112,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				Or or = (Or)theEObject;
 				T result = caseOr(or);
 				if (result == null) result = caseChaining(or);
-				if (result == null) result = caseOperator(or);
+				if (result == null) result = caseQWhere(or);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -128,7 +120,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				Not not = (Not)theEObject;
 				T result = caseNot(not);
 				if (result == null) result = caseChaining(not);
-				if (result == null) result = caseOperator(not);
+				if (result == null) result = caseQWhere(not);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -136,7 +128,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				And and = (And)theEObject;
 				T result = caseAnd(and);
 				if (result == null) result = caseChaining(and);
-				if (result == null) result = caseOperator(and);
+				if (result == null) result = caseQWhere(and);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -160,6 +152,21 @@ public class QuerySwitch<T> extends Switch<T> {
 				T result = caseToUpperCase(toUpperCase);
 				if (result == null) result = caseStringOperation(toUpperCase);
 				if (result == null) result = caseOperation(toUpperCase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case QueryPackage.NUMBER_OPERATION: {
+				NumberOperation numberOperation = (NumberOperation)theEObject;
+				T result = caseNumberOperation(numberOperation);
+				if (result == null) result = caseOperation(numberOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case QueryPackage.AVERAGE: {
+				Average average = (Average)theEObject;
+				T result = caseAverage(average);
+				if (result == null) result = caseNumberOperation(average);
+				if (result == null) result = caseOperation(average);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -228,6 +235,22 @@ public class QuerySwitch<T> extends Switch<T> {
 				T result = caseIsAfter(isAfter);
 				if (result == null) result = caseDateComparator(isAfter);
 				if (result == null) result = caseComparator(isAfter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case QueryPackage.IS_BEFORE_OR_EQUAL: {
+				IsBeforeOrEqual isBeforeOrEqual = (IsBeforeOrEqual)theEObject;
+				T result = caseIsBeforeOrEqual(isBeforeOrEqual);
+				if (result == null) result = caseDateComparator(isBeforeOrEqual);
+				if (result == null) result = caseComparator(isBeforeOrEqual);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case QueryPackage.IS_AFTER_OR_EQUAL: {
+				IsAfterOrEqual isAfterOrEqual = (IsAfterOrEqual)theEObject;
+				T result = caseIsAfterOrEqual(isAfterOrEqual);
+				if (result == null) result = caseDateComparator(isAfterOrEqual);
+				if (result == null) result = caseComparator(isAfterOrEqual);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -348,62 +371,47 @@ public class QuerySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Subject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>QObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Subject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>QObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSubject(Subject object) {
+	public T caseQObject(QObject object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>White Listed Noun</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>QSubject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>White Listed Noun</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>QSubject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWhiteListedNoun(WhiteListedNoun object) {
+	public T caseQSubject(QSubject object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Black Listed Noun</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>QWhere</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Black Listed Noun</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>QWhere</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBlackListedNoun(BlackListedNoun object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Operator</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Operator</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOperator(Operator object) {
+	public T caseQWhere(QWhere object) {
 		return null;
 	}
 
@@ -509,6 +517,36 @@ public class QuerySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseToUpperCase(ToUpperCase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Number Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Number Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNumberOperation(NumberOperation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Average</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Average</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAverage(Average object) {
 		return null;
 	}
 
@@ -644,6 +682,36 @@ public class QuerySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIsAfter(IsAfter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Is Before Or Equal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Is Before Or Equal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIsBeforeOrEqual(IsBeforeOrEqual object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Is After Or Equal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Is After Or Equal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIsAfterOrEqual(IsAfterOrEqual object) {
 		return null;
 	}
 

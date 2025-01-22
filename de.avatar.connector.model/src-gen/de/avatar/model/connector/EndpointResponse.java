@@ -132,22 +132,22 @@ public interface EndpointResponse extends EObject {
 	void setCode(ResponseCode value);
 
 	/**
-	 * Returns the value of the '<em><b>Result</b></em>' reference.
+	 * Returns the value of the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Result</em>' reference.
+	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(ResponseResult)
 	 * @see de.avatar.model.connector.AConnectorPackage#getEndpointResponse_Result()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	ResponseResult getResult();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.model.connector.EndpointResponse#getResult <em>Result</em>}' reference.
+	 * Sets the value of the '{@link de.avatar.model.connector.EndpointResponse#getResult <em>Result</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Result</em>' reference.
+	 * @param value the new value of the '<em>Result</em>' containment reference.
 	 * @see #getResult()
 	 * @generated
 	 */

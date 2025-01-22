@@ -9,7 +9,9 @@
 	org.osgi.service.component,\
 	de.avatar.query.status.model,\
 	de.avatar.query.model;version=snapshot,\
-	org.gecko.emf.json
+	org.gecko.emf.json,\
+	org.gecko.emf.util.model,\
+	org.avatar.himsa.model
 	
 -workingset: provider
 	

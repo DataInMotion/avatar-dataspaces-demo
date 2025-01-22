@@ -118,7 +118,7 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 	protected ResponseCode code = CODE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getResult() <em>Result</em>}' reference.
+	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getResult()
@@ -287,14 +287,6 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 	 */
 	@Override
 	public ResponseResult getResult() {
-		if (result != null && result.eIsProxy()) {
-			InternalEObject oldResult = (InternalEObject)result;
-			result = (ResponseResult)eResolveProxy(oldResult);
-			if (result != oldResult) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AConnectorPackage.ENDPOINT_RESPONSE__RESULT, oldResult, result));
-			}
-		}
 		return result;
 	}
 
@@ -303,8 +295,14 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResponseResult basicGetResult() {
-		return result;
+	public NotificationChain basicSetResult(ResponseResult newResult, NotificationChain msgs) {
+		ResponseResult oldResult = result;
+		result = newResult;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AConnectorPackage.ENDPOINT_RESPONSE__RESULT, oldResult, newResult);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -314,10 +312,17 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 	 */
 	@Override
 	public void setResult(ResponseResult newResult) {
-		ResponseResult oldResult = result;
-		result = newResult;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AConnectorPackage.ENDPOINT_RESPONSE__RESULT, oldResult, result));
+		if (newResult != result) {
+			NotificationChain msgs = null;
+			if (result != null)
+				msgs = ((InternalEObject)result).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AConnectorPackage.ENDPOINT_RESPONSE__RESULT, null, msgs);
+			if (newResult != null)
+				msgs = ((InternalEObject)newResult).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AConnectorPackage.ENDPOINT_RESPONSE__RESULT, null, msgs);
+			msgs = basicSetResult(newResult, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AConnectorPackage.ENDPOINT_RESPONSE__RESULT, newResult, newResult));
 	}
 
 	/**
@@ -353,6 +358,8 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 		switch (featureID) {
 			case AConnectorPackage.ENDPOINT_RESPONSE__REQUEST:
 				return basicSetRequest(null, msgs);
+			case AConnectorPackage.ENDPOINT_RESPONSE__RESULT:
+				return basicSetResult(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -374,8 +381,7 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 			case AConnectorPackage.ENDPOINT_RESPONSE__CODE:
 				return getCode();
 			case AConnectorPackage.ENDPOINT_RESPONSE__RESULT:
-				if (resolve) return getResult();
-				return basicGetResult();
+				return getResult();
 			case AConnectorPackage.ENDPOINT_RESPONSE__SOURCE_ID:
 				return getSourceId();
 		}

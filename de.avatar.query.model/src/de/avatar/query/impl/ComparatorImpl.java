@@ -14,6 +14,7 @@
 package de.avatar.query.impl;
 
 import de.avatar.query.Comparator;
+import de.avatar.query.QWhere;
 import de.avatar.query.QueryPackage;
 
 import java.lang.reflect.InvocationTargetException;
@@ -29,7 +30,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.gecko.emf.utilities.FeaturePath;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +41,7 @@ import org.gecko.emf.utilities.FeaturePath;
  * </p>
  * <ul>
  *   <li>{@link de.avatar.query.impl.ComparatorImpl#getSuitableForType <em>Suitable For Type</em>}</li>
- *   <li>{@link de.avatar.query.impl.ComparatorImpl#getFeaturePath <em>Feature Path</em>}</li>
+ *   <li>{@link de.avatar.query.impl.ComparatorImpl#getWhere <em>Where</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,16 +66,6 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected String suitableForType = SUITABLE_FOR_TYPE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getFeaturePath() <em>Feature Path</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFeaturePath()
-	 * @generated
-	 * @ordered
-	 */
-	protected FeaturePath featurePath;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,8 +115,9 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	@Override
-	public FeaturePath getFeaturePath() {
-		return featurePath;
+	public QWhere getWhere() {
+		if (eContainerFeatureID() != QueryPackage.COMPARATOR__WHERE) return null;
+		return (QWhere)eInternalContainer();
 	}
 
 	/**
@@ -133,13 +125,8 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFeaturePath(FeaturePath newFeaturePath, NotificationChain msgs) {
-		FeaturePath oldFeaturePath = featurePath;
-		featurePath = newFeaturePath;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QueryPackage.COMPARATOR__FEATURE_PATH, oldFeaturePath, newFeaturePath);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+	public NotificationChain basicSetWhere(QWhere newWhere, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newWhere, QueryPackage.COMPARATOR__WHERE, msgs);
 		return msgs;
 	}
 
@@ -149,18 +136,20 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	@Override
-	public void setFeaturePath(FeaturePath newFeaturePath) {
-		if (newFeaturePath != featurePath) {
+	public void setWhere(QWhere newWhere) {
+		if (newWhere != eInternalContainer() || (eContainerFeatureID() != QueryPackage.COMPARATOR__WHERE && newWhere != null)) {
+			if (EcoreUtil.isAncestor(this, newWhere))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (featurePath != null)
-				msgs = ((InternalEObject)featurePath).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QueryPackage.COMPARATOR__FEATURE_PATH, null, msgs);
-			if (newFeaturePath != null)
-				msgs = ((InternalEObject)newFeaturePath).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QueryPackage.COMPARATOR__FEATURE_PATH, null, msgs);
-			msgs = basicSetFeaturePath(newFeaturePath, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newWhere != null)
+				msgs = ((InternalEObject)newWhere).eInverseAdd(this, QueryPackage.QWHERE__COMPARATOR, QWhere.class, msgs);
+			msgs = basicSetWhere(newWhere, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.COMPARATOR__FEATURE_PATH, newFeaturePath, newFeaturePath));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.COMPARATOR__WHERE, newWhere, newWhere));
 	}
 
 	/**
@@ -181,12 +170,42 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case QueryPackage.COMPARATOR__WHERE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetWhere((QWhere)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QueryPackage.COMPARATOR__FEATURE_PATH:
-				return basicSetFeaturePath(null, msgs);
+			case QueryPackage.COMPARATOR__WHERE:
+				return basicSetWhere(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case QueryPackage.COMPARATOR__WHERE:
+				return eInternalContainer().eInverseRemove(this, QueryPackage.QWHERE__COMPARATOR, QWhere.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -199,8 +218,8 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 		switch (featureID) {
 			case QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE:
 				return getSuitableForType();
-			case QueryPackage.COMPARATOR__FEATURE_PATH:
-				return getFeaturePath();
+			case QueryPackage.COMPARATOR__WHERE:
+				return getWhere();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -216,8 +235,8 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 			case QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE:
 				setSuitableForType((String)newValue);
 				return;
-			case QueryPackage.COMPARATOR__FEATURE_PATH:
-				setFeaturePath((FeaturePath)newValue);
+			case QueryPackage.COMPARATOR__WHERE:
+				setWhere((QWhere)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -234,8 +253,8 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 			case QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE:
 				setSuitableForType(SUITABLE_FOR_TYPE_EDEFAULT);
 				return;
-			case QueryPackage.COMPARATOR__FEATURE_PATH:
-				setFeaturePath((FeaturePath)null);
+			case QueryPackage.COMPARATOR__WHERE:
+				setWhere((QWhere)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -251,8 +270,8 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 		switch (featureID) {
 			case QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE:
 				return SUITABLE_FOR_TYPE_EDEFAULT == null ? suitableForType != null : !SUITABLE_FOR_TYPE_EDEFAULT.equals(suitableForType);
-			case QueryPackage.COMPARATOR__FEATURE_PATH:
-				return featurePath != null;
+			case QueryPackage.COMPARATOR__WHERE:
+				return getWhere() != null;
 		}
 		return super.eIsSet(featureID);
 	}

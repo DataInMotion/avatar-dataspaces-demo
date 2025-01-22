@@ -47,6 +47,10 @@ deactivate Cs
 note right of RWB
 Aggregate responses
 end note
+RWB->RCS: update status in cache
+activate RCS
+RCS->RCS: do status update
+deactivate RCS
 RWB->RR: send response (pending status)
 deactivate RWB
 RR->UI: send response (pending status)

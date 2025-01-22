@@ -13,25 +13,25 @@
  */
 package de.avatar.query.impl;
 
-import de.avatar.query.Chaining;
+import de.avatar.query.Average;
 import de.avatar.query.QueryPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Chaining</b></em>'.
+ * An implementation of the model object '<em><b>Average</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public abstract class ChainingImpl extends QWhereImpl implements Chaining {
+public class AverageImpl extends NumberOperationImpl implements Average {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChainingImpl() {
+	protected AverageImpl() {
 		super();
 	}
 
@@ -42,7 +42,7 @@ public abstract class ChainingImpl extends QWhereImpl implements Chaining {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.CHAINING;
+		return QueryPackage.Literals.AVERAGE;
 	}
 
-} //ChainingImpl
+} //AverageImpl

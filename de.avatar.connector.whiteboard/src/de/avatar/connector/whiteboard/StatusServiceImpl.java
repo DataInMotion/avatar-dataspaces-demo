@@ -75,6 +75,8 @@ public class StatusServiceImpl implements StatusService {
 	 * @see de.avatar.connector.whiteboard.api.StatusService#updateStatus(de.avatar.status.QueryResponse)
 	 */
 	public void updateStatus(QueryResponse response) {
+		
+//		TODO: if everything is done, it should trigger the AvatarGenerator
 		if(QueryStatusType.SUCCESS.equals(response.getStatus())) {
 			cachedStatuses.remove(response.getRequestId());
 			cachedRequests.remove(response.getRequestId());

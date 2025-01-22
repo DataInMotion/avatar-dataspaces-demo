@@ -87,34 +87,34 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int QUERY = 0;
 
 	/**
-	 * The feature id for the '<em><b>From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUERY__FROM = 0;
-
-	/**
-	 * The feature id for the '<em><b>Object</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUERY__OBJECT = 1;
-
-	/**
 	 * The feature id for the '<em><b>Subject</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY__SUBJECT = 2;
+	int QUERY__SUBJECT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Group By</b></em>' containment reference.
+	 * The feature id for the '<em><b>From</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY__FROM = 1;
+
+	/**
+	 * The feature id for the '<em><b>Where</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY__WHERE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Group By</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -186,125 +186,133 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int QUERY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.SubjectImpl <em>Subject</em>}' class.
+	 * The meta object id for the '{@link de.avatar.query.impl.QObjectImpl <em>QObject</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.SubjectImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getSubject()
+	 * @see de.avatar.query.impl.QObjectImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getQObject()
 	 * @generated
 	 */
-	int SUBJECT = 1;
+	int QOBJECT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference list.
+	 * The feature id for the '<em><b>EClass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUBJECT__FEATURE_PATH = 0;
+	int QOBJECT__ECLASS = 0;
 
 	/**
-	 * The number of structural features of the '<em>Subject</em>' class.
+	 * The number of structural features of the '<em>QObject</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUBJECT_FEATURE_COUNT = 1;
+	int QOBJECT_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Subject</em>' class.
+	 * The number of operations of the '<em>QObject</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUBJECT_OPERATION_COUNT = 0;
+	int QOBJECT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.WhiteListedNounImpl <em>White Listed Noun</em>}' class.
+	 * The meta object id for the '{@link de.avatar.query.impl.QSubjectImpl <em>QSubject</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.WhiteListedNounImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getWhiteListedNoun()
+	 * @see de.avatar.query.impl.QSubjectImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getQSubject()
 	 * @generated
 	 */
-	int WHITE_LISTED_NOUN = 2;
+	int QSUBJECT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHITE_LISTED_NOUN__FEATURE_PATH = SUBJECT__FEATURE_PATH;
-
-	/**
-	 * The number of structural features of the '<em>White Listed Noun</em>' class.
+	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHITE_LISTED_NOUN_FEATURE_COUNT = SUBJECT_FEATURE_COUNT + 0;
+	int QSUBJECT__FEATURE_PATH = 0;
 
 	/**
-	 * The number of operations of the '<em>White Listed Noun</em>' class.
+	 * The feature id for the '<em><b>Is Exclude</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHITE_LISTED_NOUN_OPERATION_COUNT = SUBJECT_OPERATION_COUNT + 0;
+	int QSUBJECT__IS_EXCLUDE = 1;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.BlackListedNounImpl <em>Black Listed Noun</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.BlackListedNounImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getBlackListedNoun()
-	 * @generated
-	 */
-	int BLACK_LISTED_NOUN = 3;
-
-	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Alias</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BLACK_LISTED_NOUN__FEATURE_PATH = SUBJECT__FEATURE_PATH;
+	int QSUBJECT__ALIAS = 2;
 
 	/**
-	 * The number of structural features of the '<em>Black Listed Noun</em>' class.
+	 * The feature id for the '<em><b>Alias Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BLACK_LISTED_NOUN_FEATURE_COUNT = SUBJECT_FEATURE_COUNT + 0;
+	int QSUBJECT__ALIAS_FEATURE = 3;
 
 	/**
-	 * The number of operations of the '<em>Black Listed Noun</em>' class.
+	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BLACK_LISTED_NOUN_OPERATION_COUNT = SUBJECT_OPERATION_COUNT + 0;
+	int QSUBJECT__OPERATION = 4;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.OperatorImpl <em>Operator</em>}' class.
+	 * The number of structural features of the '<em>QSubject</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.OperatorImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getOperator()
+	 * @generated
+	 * @ordered
+	 */
+	int QSUBJECT_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>QSubject</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QSUBJECT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link de.avatar.query.impl.QWhereImpl <em>QWhere</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.query.impl.QWhereImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getQWhere()
 	 * @generated
 	 */
-	int OPERATOR = 4;
+	int QWHERE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QWHERE__FEATURE_PATH = 0;
 
 	/**
 	 * The feature id for the '<em><b>Comparator</b></em>' containment reference.
@@ -313,16 +321,25 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__COMPARATOR = 0;
+	int QWHERE__COMPARATOR = 1;
 
 	/**
-	 * The number of structural features of the '<em>Operator</em>' class.
+	 * The feature id for the '<em><b>Operation</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_FEATURE_COUNT = 1;
+	int QWHERE__OPERATION = 2;
+
+	/**
+	 * The number of structural features of the '<em>QWhere</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QWHERE_FEATURE_COUNT = 3;
 
 	/**
 	 * The operation id for the '<em>Execute</em>' operation.
@@ -331,16 +348,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR___EXECUTE = 0;
+	int QWHERE___EXECUTE = 0;
 
 	/**
-	 * The number of operations of the '<em>Operator</em>' class.
+	 * The number of operations of the '<em>QWhere</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_OPERATION_COUNT = 1;
+	int QWHERE_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.ChainingImpl <em>Chaining</em>}' class.
@@ -350,7 +367,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getChaining()
 	 * @generated
 	 */
-	int CHAINING = 5;
+	int CHAINING = 4;
+
+	/**
+	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAINING__FEATURE_PATH = QWHERE__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Comparator</b></em>' containment reference.
@@ -359,7 +385,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHAINING__COMPARATOR = OPERATOR__COMPARATOR;
+	int CHAINING__COMPARATOR = QWHERE__COMPARATOR;
+
+	/**
+	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAINING__OPERATION = QWHERE__OPERATION;
 
 	/**
 	 * The number of structural features of the '<em>Chaining</em>' class.
@@ -368,7 +403,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHAINING_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int CHAINING_FEATURE_COUNT = QWHERE_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Execute</em>' operation.
@@ -377,7 +412,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHAINING___EXECUTE = OPERATOR___EXECUTE;
+	int CHAINING___EXECUTE = QWHERE___EXECUTE;
 
 	/**
 	 * The number of operations of the '<em>Chaining</em>' class.
@@ -386,7 +421,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHAINING_OPERATION_COUNT = OPERATOR_OPERATION_COUNT + 0;
+	int CHAINING_OPERATION_COUNT = QWHERE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.OrImpl <em>Or</em>}' class.
@@ -396,7 +431,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 6;
+	int OR = 5;
+
+	/**
+	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR__FEATURE_PATH = CHAINING__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Comparator</b></em>' containment reference.
@@ -406,6 +450,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int OR__COMPARATOR = CHAINING__COMPARATOR;
+
+	/**
+	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR__OPERATION = CHAINING__OPERATION;
 
 	/**
 	 * The number of structural features of the '<em>Or</em>' class.
@@ -442,7 +495,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getNot()
 	 * @generated
 	 */
-	int NOT = 7;
+	int NOT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT__FEATURE_PATH = CHAINING__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Comparator</b></em>' containment reference.
@@ -452,6 +514,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int NOT__COMPARATOR = CHAINING__COMPARATOR;
+
+	/**
+	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT__OPERATION = CHAINING__OPERATION;
 
 	/**
 	 * The number of structural features of the '<em>Not</em>' class.
@@ -488,7 +559,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 8;
+	int AND = 7;
+
+	/**
+	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND__FEATURE_PATH = CHAINING__FEATURE_PATH;
 
 	/**
 	 * The feature id for the '<em><b>Comparator</b></em>' containment reference.
@@ -498,6 +578,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int AND__COMPARATOR = CHAINING__COMPARATOR;
+
+	/**
+	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND__OPERATION = CHAINING__OPERATION;
 
 	/**
 	 * The number of structural features of the '<em>And</em>' class.
@@ -534,16 +623,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getOperation()
 	 * @generated
 	 */
-	int OPERATION = 31;
-
-	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__FEATURE_PATH = 0;
+	int OPERATION = 34;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -552,7 +632,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__SUITABLE_FOR_TYPE = 1;
+	int OPERATION__SUITABLE_FOR_TYPE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Subject</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__SUBJECT = 1;
 
 	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
@@ -589,16 +678,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getStringOperation()
 	 * @generated
 	 */
-	int STRING_OPERATION = 9;
-
-	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_OPERATION__FEATURE_PATH = OPERATION__FEATURE_PATH;
+	int STRING_OPERATION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -608,6 +688,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int STRING_OPERATION__SUITABLE_FOR_TYPE = OPERATION__SUITABLE_FOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Subject</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_OPERATION__SUBJECT = OPERATION__SUBJECT;
 
 	/**
 	 * The number of structural features of the '<em>String Operation</em>' class.
@@ -644,16 +733,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getToLowerCase()
 	 * @generated
 	 */
-	int TO_LOWER_CASE = 10;
-
-	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TO_LOWER_CASE__FEATURE_PATH = STRING_OPERATION__FEATURE_PATH;
+	int TO_LOWER_CASE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -663,6 +743,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int TO_LOWER_CASE__SUITABLE_FOR_TYPE = STRING_OPERATION__SUITABLE_FOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Subject</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_LOWER_CASE__SUBJECT = STRING_OPERATION__SUBJECT;
 
 	/**
 	 * The number of structural features of the '<em>To Lower Case</em>' class.
@@ -699,16 +788,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getToUpperCase()
 	 * @generated
 	 */
-	int TO_UPPER_CASE = 11;
-
-	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TO_UPPER_CASE__FEATURE_PATH = STRING_OPERATION__FEATURE_PATH;
+	int TO_UPPER_CASE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -718,6 +798,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int TO_UPPER_CASE__SUITABLE_FOR_TYPE = STRING_OPERATION__SUITABLE_FOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Subject</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_UPPER_CASE__SUBJECT = STRING_OPERATION__SUBJECT;
 
 	/**
 	 * The number of structural features of the '<em>To Upper Case</em>' class.
@@ -747,6 +836,116 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int TO_UPPER_CASE_OPERATION_COUNT = STRING_OPERATION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.query.impl.NumberOperationImpl <em>Number Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.query.impl.NumberOperationImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getNumberOperation()
+	 * @generated
+	 */
+	int NUMBER_OPERATION = 11;
+
+	/**
+	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMBER_OPERATION__SUITABLE_FOR_TYPE = OPERATION__SUITABLE_FOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Subject</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMBER_OPERATION__SUBJECT = OPERATION__SUBJECT;
+
+	/**
+	 * The number of structural features of the '<em>Number Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMBER_OPERATION_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Execute</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMBER_OPERATION___EXECUTE = OPERATION___EXECUTE;
+
+	/**
+	 * The number of operations of the '<em>Number Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMBER_OPERATION_OPERATION_COUNT = OPERATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.avatar.query.impl.AverageImpl <em>Average</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.query.impl.AverageImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getAverage()
+	 * @generated
+	 */
+	int AVERAGE = 12;
+
+	/**
+	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVERAGE__SUITABLE_FOR_TYPE = NUMBER_OPERATION__SUITABLE_FOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Subject</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVERAGE__SUBJECT = NUMBER_OPERATION__SUBJECT;
+
+	/**
+	 * The number of structural features of the '<em>Average</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVERAGE_FEATURE_COUNT = NUMBER_OPERATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Execute</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVERAGE___EXECUTE = NUMBER_OPERATION___EXECUTE;
+
+	/**
+	 * The number of operations of the '<em>Average</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVERAGE_OPERATION_COUNT = NUMBER_OPERATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.ComparatorImpl <em>Comparator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -754,7 +953,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getComparator()
 	 * @generated
 	 */
-	int COMPARATOR = 12;
+	int COMPARATOR = 13;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -766,13 +965,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int COMPARATOR__SUITABLE_FOR_TYPE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPARATOR__FEATURE_PATH = 1;
+	int COMPARATOR__WHERE = 1;
 
 	/**
 	 * The number of structural features of the '<em>Comparator</em>' class.
@@ -809,7 +1008,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getStringComparator()
 	 * @generated
 	 */
-	int STRING_COMPARATOR = 13;
+	int STRING_COMPARATOR = 14;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -821,13 +1020,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int STRING_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPARATOR__FEATURE_PATH = COMPARATOR__FEATURE_PATH;
+	int STRING_COMPARATOR__WHERE = COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -873,7 +1072,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getEndsWith()
 	 * @generated
 	 */
-	int ENDS_WITH = 14;
+	int ENDS_WITH = 15;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -885,13 +1084,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int ENDS_WITH__SUITABLE_FOR_TYPE = STRING_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDS_WITH__FEATURE_PATH = STRING_COMPARATOR__FEATURE_PATH;
+	int ENDS_WITH__WHERE = STRING_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -937,7 +1136,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getStartWith()
 	 * @generated
 	 */
-	int START_WITH = 15;
+	int START_WITH = 16;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -949,13 +1148,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int START_WITH__SUITABLE_FOR_TYPE = STRING_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int START_WITH__FEATURE_PATH = STRING_COMPARATOR__FEATURE_PATH;
+	int START_WITH__WHERE = STRING_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1001,7 +1200,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getContains()
 	 * @generated
 	 */
-	int CONTAINS = 16;
+	int CONTAINS = 17;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1013,13 +1212,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int CONTAINS__SUITABLE_FOR_TYPE = STRING_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINS__FEATURE_PATH = STRING_COMPARATOR__FEATURE_PATH;
+	int CONTAINS__WHERE = STRING_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1065,7 +1264,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getLike()
 	 * @generated
 	 */
-	int LIKE = 17;
+	int LIKE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1077,13 +1276,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int LIKE__SUITABLE_FOR_TYPE = STRING_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIKE__FEATURE_PATH = STRING_COMPARATOR__FEATURE_PATH;
+	int LIKE__WHERE = STRING_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1129,7 +1328,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getDateComparator()
 	 * @generated
 	 */
-	int DATE_COMPARATOR = 18;
+	int DATE_COMPARATOR = 19;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1141,13 +1340,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int DATE_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPARATOR__FEATURE_PATH = COMPARATOR__FEATURE_PATH;
+	int DATE_COMPARATOR__WHERE = COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1193,7 +1392,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsBefore()
 	 * @generated
 	 */
-	int IS_BEFORE = 19;
+	int IS_BEFORE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1205,13 +1404,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int IS_BEFORE__SUITABLE_FOR_TYPE = DATE_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BEFORE__FEATURE_PATH = DATE_COMPARATOR__FEATURE_PATH;
+	int IS_BEFORE__WHERE = DATE_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1257,7 +1456,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsAfter()
 	 * @generated
 	 */
-	int IS_AFTER = 20;
+	int IS_AFTER = 21;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1269,13 +1468,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int IS_AFTER__SUITABLE_FOR_TYPE = DATE_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IS_AFTER__FEATURE_PATH = DATE_COMPARATOR__FEATURE_PATH;
+	int IS_AFTER__WHERE = DATE_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1314,6 +1513,134 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int IS_AFTER_OPERATION_COUNT = DATE_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.query.impl.IsBeforeOrEqualImpl <em>Is Before Or Equal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.query.impl.IsBeforeOrEqualImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getIsBeforeOrEqual()
+	 * @generated
+	 */
+	int IS_BEFORE_OR_EQUAL = 22;
+
+	/**
+	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BEFORE_OR_EQUAL__SUITABLE_FOR_TYPE = DATE_COMPARATOR__SUITABLE_FOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BEFORE_OR_EQUAL__WHERE = DATE_COMPARATOR__WHERE;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BEFORE_OR_EQUAL__VALUE = DATE_COMPARATOR__VALUE;
+
+	/**
+	 * The number of structural features of the '<em>Is Before Or Equal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BEFORE_OR_EQUAL_FEATURE_COUNT = DATE_COMPARATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Compare</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BEFORE_OR_EQUAL___COMPARE = DATE_COMPARATOR___COMPARE;
+
+	/**
+	 * The number of operations of the '<em>Is Before Or Equal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BEFORE_OR_EQUAL_OPERATION_COUNT = DATE_COMPARATOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.avatar.query.impl.IsAfterOrEqualImpl <em>Is After Or Equal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.query.impl.IsAfterOrEqualImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getIsAfterOrEqual()
+	 * @generated
+	 */
+	int IS_AFTER_OR_EQUAL = 23;
+
+	/**
+	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_AFTER_OR_EQUAL__SUITABLE_FOR_TYPE = DATE_COMPARATOR__SUITABLE_FOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_AFTER_OR_EQUAL__WHERE = DATE_COMPARATOR__WHERE;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_AFTER_OR_EQUAL__VALUE = DATE_COMPARATOR__VALUE;
+
+	/**
+	 * The number of structural features of the '<em>Is After Or Equal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_AFTER_OR_EQUAL_FEATURE_COUNT = DATE_COMPARATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Compare</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_AFTER_OR_EQUAL___COMPARE = DATE_COMPARATOR___COMPARE;
+
+	/**
+	 * The number of operations of the '<em>Is After Or Equal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_AFTER_OR_EQUAL_OPERATION_COUNT = DATE_COMPARATOR_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.IsInRangeImpl <em>Is In Range</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1321,7 +1648,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsInRange()
 	 * @generated
 	 */
-	int IS_IN_RANGE = 21;
+	int IS_IN_RANGE = 24;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1333,13 +1660,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int IS_IN_RANGE__SUITABLE_FOR_TYPE = DATE_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE__FEATURE_PATH = DATE_COMPARATOR__FEATURE_PATH;
+	int IS_IN_RANGE__WHERE = DATE_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1385,7 +1712,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getNumberComparator()
 	 * @generated
 	 */
-	int NUMBER_COMPARATOR = 22;
+	int NUMBER_COMPARATOR = 25;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1397,13 +1724,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int NUMBER_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPARATOR__FEATURE_PATH = COMPARATOR__FEATURE_PATH;
+	int NUMBER_COMPARATOR__WHERE = COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1449,7 +1776,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getLt()
 	 * @generated
 	 */
-	int LT = 23;
+	int LT = 26;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1461,13 +1788,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int LT__SUITABLE_FOR_TYPE = NUMBER_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LT__FEATURE_PATH = NUMBER_COMPARATOR__FEATURE_PATH;
+	int LT__WHERE = NUMBER_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1513,7 +1840,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getLte()
 	 * @generated
 	 */
-	int LTE = 24;
+	int LTE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1525,13 +1852,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int LTE__SUITABLE_FOR_TYPE = NUMBER_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LTE__FEATURE_PATH = NUMBER_COMPARATOR__FEATURE_PATH;
+	int LTE__WHERE = NUMBER_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1577,7 +1904,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getGte()
 	 * @generated
 	 */
-	int GTE = 25;
+	int GTE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1589,13 +1916,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int GTE__SUITABLE_FOR_TYPE = NUMBER_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GTE__FEATURE_PATH = NUMBER_COMPARATOR__FEATURE_PATH;
+	int GTE__WHERE = NUMBER_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1641,7 +1968,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getGt()
 	 * @generated
 	 */
-	int GT = 26;
+	int GT = 29;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1653,13 +1980,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int GT__SUITABLE_FOR_TYPE = NUMBER_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GT__FEATURE_PATH = NUMBER_COMPARATOR__FEATURE_PATH;
+	int GT__WHERE = NUMBER_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1705,7 +2032,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getEq()
 	 * @generated
 	 */
-	int EQ = 27;
+	int EQ = 30;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1717,13 +2044,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int EQ__SUITABLE_FOR_TYPE = NUMBER_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EQ__FEATURE_PATH = NUMBER_COMPARATOR__FEATURE_PATH;
+	int EQ__WHERE = NUMBER_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1769,7 +2096,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getBoolComparator()
 	 * @generated
 	 */
-	int BOOL_COMPARATOR = 28;
+	int BOOL_COMPARATOR = 31;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1781,13 +2108,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int BOOL_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPARATOR__FEATURE_PATH = COMPARATOR__FEATURE_PATH;
+	int BOOL_COMPARATOR__WHERE = COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1833,7 +2160,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsBool()
 	 * @generated
 	 */
-	int IS_BOOL = 29;
+	int IS_BOOL = 32;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1845,13 +2172,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int IS_BOOL__SUITABLE_FOR_TYPE = BOOL_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IS_BOOL__FEATURE_PATH = BOOL_COMPARATOR__FEATURE_PATH;
+	int IS_BOOL__WHERE = BOOL_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1897,7 +2224,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getSortEntity()
 	 * @generated
 	 */
-	int SORT_ENTITY = 30;
+	int SORT_ENTITY = 33;
 
 	/**
 	 * The feature id for the '<em><b>Sort Order</b></em>' attribute.
@@ -1943,7 +2270,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getEnumComparator()
 	 * @generated
 	 */
-	int ENUM_COMPARATOR = 32;
+	int ENUM_COMPARATOR = 35;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1955,13 +2282,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int ENUM_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPARATOR__FEATURE_PATH = COMPARATOR__FEATURE_PATH;
+	int ENUM_COMPARATOR__WHERE = COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2007,7 +2334,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsLiteral()
 	 * @generated
 	 */
-	int IS_LITERAL = 33;
+	int IS_LITERAL = 36;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -2019,13 +2346,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int IS_LITERAL__SUITABLE_FOR_TYPE = ENUM_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IS_LITERAL__FEATURE_PATH = ENUM_COMPARATOR__FEATURE_PATH;
+	int IS_LITERAL__WHERE = ENUM_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2071,7 +2398,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getSortOrder()
 	 * @generated
 	 */
-	int SORT_ORDER = 34;
+	int SORT_ORDER = 37;
 
 
 	/**
@@ -2085,28 +2412,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getQuery();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.avatar.query.Query#getFrom <em>From</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>From</em>'.
-	 * @see de.avatar.query.Query#getFrom()
-	 * @see #getQuery()
-	 * @generated
-	 */
-	EReference getQuery_From();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.avatar.query.Query#getObject <em>Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Object</em>'.
-	 * @see de.avatar.query.Query#getObject()
-	 * @see #getQuery()
-	 * @generated
-	 */
-	EReference getQuery_Object();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link de.avatar.query.Query#getSubject <em>Subject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2118,10 +2423,32 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getQuery_Subject();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.avatar.query.Query#getGroupBy <em>Group By</em>}'.
+	 * Returns the meta object for the reference list '{@link de.avatar.query.Query#getFrom <em>From</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Group By</em>'.
+	 * @return the meta object for the reference list '<em>From</em>'.
+	 * @see de.avatar.query.Query#getFrom()
+	 * @see #getQuery()
+	 * @generated
+	 */
+	EReference getQuery_From();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.avatar.query.Query#getWhere <em>Where</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Where</em>'.
+	 * @see de.avatar.query.Query#getWhere()
+	 * @see #getQuery()
+	 * @generated
+	 */
+	EReference getQuery_Where();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.avatar.query.Query#getGroupBy <em>Group By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Group By</em>'.
 	 * @see de.avatar.query.Query#getGroupBy()
 	 * @see #getQuery()
 	 * @generated
@@ -2184,76 +2511,143 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getQuery_Skip();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.Subject <em>Subject</em>}'.
+	 * Returns the meta object for class '{@link de.avatar.query.QObject <em>QObject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Subject</em>'.
-	 * @see de.avatar.query.Subject
+	 * @return the meta object for class '<em>QObject</em>'.
+	 * @see de.avatar.query.QObject
 	 * @generated
 	 */
-	EClass getSubject();
+	EClass getQObject();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.avatar.query.Subject#getFeaturePath <em>Feature Path</em>}'.
+	 * Returns the meta object for the reference '{@link de.avatar.query.QObject#getEClass <em>EClass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Feature Path</em>'.
-	 * @see de.avatar.query.Subject#getFeaturePath()
-	 * @see #getSubject()
+	 * @return the meta object for the reference '<em>EClass</em>'.
+	 * @see de.avatar.query.QObject#getEClass()
+	 * @see #getQObject()
 	 * @generated
 	 */
-	EReference getSubject_FeaturePath();
+	EReference getQObject_EClass();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.WhiteListedNoun <em>White Listed Noun</em>}'.
+	 * Returns the meta object for class '{@link de.avatar.query.QSubject <em>QSubject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>White Listed Noun</em>'.
-	 * @see de.avatar.query.WhiteListedNoun
+	 * @return the meta object for class '<em>QSubject</em>'.
+	 * @see de.avatar.query.QSubject
 	 * @generated
 	 */
-	EClass getWhiteListedNoun();
+	EClass getQSubject();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.BlackListedNoun <em>Black Listed Noun</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.avatar.query.QSubject#getFeaturePath <em>Feature Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Black Listed Noun</em>'.
-	 * @see de.avatar.query.BlackListedNoun
+	 * @return the meta object for the containment reference '<em>Feature Path</em>'.
+	 * @see de.avatar.query.QSubject#getFeaturePath()
+	 * @see #getQSubject()
 	 * @generated
 	 */
-	EClass getBlackListedNoun();
+	EReference getQSubject_FeaturePath();
 
 	/**
-	 * Returns the meta object for class '{@link de.avatar.query.Operator <em>Operator</em>}'.
+	 * Returns the meta object for the attribute '{@link de.avatar.query.QSubject#isIsExclude <em>Is Exclude</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Operator</em>'.
-	 * @see de.avatar.query.Operator
+	 * @return the meta object for the attribute '<em>Is Exclude</em>'.
+	 * @see de.avatar.query.QSubject#isIsExclude()
+	 * @see #getQSubject()
 	 * @generated
 	 */
-	EClass getOperator();
+	EAttribute getQSubject_IsExclude();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.avatar.query.Operator#getComparator <em>Comparator</em>}'.
+	 * Returns the meta object for the attribute '{@link de.avatar.query.QSubject#getAlias <em>Alias</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Alias</em>'.
+	 * @see de.avatar.query.QSubject#getAlias()
+	 * @see #getQSubject()
+	 * @generated
+	 */
+	EAttribute getQSubject_Alias();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.avatar.query.QSubject#getAliasFeature <em>Alias Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Alias Feature</em>'.
+	 * @see de.avatar.query.QSubject#getAliasFeature()
+	 * @see #getQSubject()
+	 * @generated
+	 */
+	EReference getQSubject_AliasFeature();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.avatar.query.QSubject#getOperation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Operation</em>'.
+	 * @see de.avatar.query.QSubject#getOperation()
+	 * @see #getQSubject()
+	 * @generated
+	 */
+	EReference getQSubject_Operation();
+
+	/**
+	 * Returns the meta object for class '{@link de.avatar.query.QWhere <em>QWhere</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>QWhere</em>'.
+	 * @see de.avatar.query.QWhere
+	 * @generated
+	 */
+	EClass getQWhere();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.avatar.query.QWhere#getFeaturePath <em>Feature Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Feature Path</em>'.
+	 * @see de.avatar.query.QWhere#getFeaturePath()
+	 * @see #getQWhere()
+	 * @generated
+	 */
+	EReference getQWhere_FeaturePath();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.avatar.query.QWhere#getComparator <em>Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Comparator</em>'.
-	 * @see de.avatar.query.Operator#getComparator()
-	 * @see #getOperator()
+	 * @see de.avatar.query.QWhere#getComparator()
+	 * @see #getQWhere()
 	 * @generated
 	 */
-	EReference getOperator_Comparator();
+	EReference getQWhere_Comparator();
 
 	/**
-	 * Returns the meta object for the '{@link de.avatar.query.Operator#execute() <em>Execute</em>}' operation.
+	 * Returns the meta object for the reference '{@link de.avatar.query.QWhere#getOperation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Operation</em>'.
+	 * @see de.avatar.query.QWhere#getOperation()
+	 * @see #getQWhere()
+	 * @generated
+	 */
+	EReference getQWhere_Operation();
+
+	/**
+	 * Returns the meta object for the '{@link de.avatar.query.QWhere#execute() <em>Execute</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Execute</em>' operation.
-	 * @see de.avatar.query.Operator#execute()
+	 * @see de.avatar.query.QWhere#execute()
 	 * @generated
 	 */
-	EOperation getOperator__Execute();
+	EOperation getQWhere__Execute();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.Chaining <em>Chaining</em>}'.
@@ -2326,6 +2720,26 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getToUpperCase();
 
 	/**
+	 * Returns the meta object for class '{@link de.avatar.query.NumberOperation <em>Number Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Number Operation</em>'.
+	 * @see de.avatar.query.NumberOperation
+	 * @generated
+	 */
+	EClass getNumberOperation();
+
+	/**
+	 * Returns the meta object for class '{@link de.avatar.query.Average <em>Average</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Average</em>'.
+	 * @see de.avatar.query.Average
+	 * @generated
+	 */
+	EClass getAverage();
+
+	/**
 	 * Returns the meta object for class '{@link de.avatar.query.Comparator <em>Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2347,15 +2761,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getComparator_SuitableForType();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.avatar.query.Comparator#getFeaturePath <em>Feature Path</em>}'.
+	 * Returns the meta object for the container reference '{@link de.avatar.query.Comparator#getWhere <em>Where</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Feature Path</em>'.
-	 * @see de.avatar.query.Comparator#getFeaturePath()
+	 * @return the meta object for the container reference '<em>Where</em>'.
+	 * @see de.avatar.query.Comparator#getWhere()
 	 * @see #getComparator()
 	 * @generated
 	 */
-	EReference getComparator_FeaturePath();
+	EReference getComparator_Where();
 
 	/**
 	 * Returns the meta object for the '{@link de.avatar.query.Comparator#compare() <em>Compare</em>}' operation.
@@ -2468,6 +2882,26 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EClass getIsAfter();
+
+	/**
+	 * Returns the meta object for class '{@link de.avatar.query.IsBeforeOrEqual <em>Is Before Or Equal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Is Before Or Equal</em>'.
+	 * @see de.avatar.query.IsBeforeOrEqual
+	 * @generated
+	 */
+	EClass getIsBeforeOrEqual();
+
+	/**
+	 * Returns the meta object for class '{@link de.avatar.query.IsAfterOrEqual <em>Is After Or Equal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Is After Or Equal</em>'.
+	 * @see de.avatar.query.IsAfterOrEqual
+	 * @generated
+	 */
+	EClass getIsAfterOrEqual();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.IsInRange <em>Is In Range</em>}'.
@@ -2624,17 +3058,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getOperation();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.avatar.query.Operation#getFeaturePath <em>Feature Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Feature Path</em>'.
-	 * @see de.avatar.query.Operation#getFeaturePath()
-	 * @see #getOperation()
-	 * @generated
-	 */
-	EReference getOperation_FeaturePath();
-
-	/**
 	 * Returns the meta object for the attribute '{@link de.avatar.query.Operation#getSuitableForType <em>Suitable For Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2644,6 +3067,17 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EAttribute getOperation_SuitableForType();
+
+	/**
+	 * Returns the meta object for the container reference '{@link de.avatar.query.Operation#getSubject <em>Subject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Subject</em>'.
+	 * @see de.avatar.query.Operation#getSubject()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_Subject();
 
 	/**
 	 * Returns the meta object for the '{@link de.avatar.query.Operation#execute() <em>Execute</em>}' operation.
@@ -2730,22 +3164,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass QUERY = eINSTANCE.getQuery();
 
 		/**
-		 * The meta object literal for the '<em><b>From</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference QUERY__FROM = eINSTANCE.getQuery_From();
-
-		/**
-		 * The meta object literal for the '<em><b>Object</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference QUERY__OBJECT = eINSTANCE.getQuery_Object();
-
-		/**
 		 * The meta object literal for the '<em><b>Subject</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2754,7 +3172,23 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EReference QUERY__SUBJECT = eINSTANCE.getQuery_Subject();
 
 		/**
-		 * The meta object literal for the '<em><b>Group By</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>From</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QUERY__FROM = eINSTANCE.getQuery_From();
+
+		/**
+		 * The meta object literal for the '<em><b>Where</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QUERY__WHERE = eINSTANCE.getQuery_Where();
+
+		/**
+		 * The meta object literal for the '<em><b>Group By</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2802,52 +3236,90 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute QUERY__SKIP = eINSTANCE.getQuery_Skip();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.SubjectImpl <em>Subject</em>}' class.
+		 * The meta object literal for the '{@link de.avatar.query.impl.QObjectImpl <em>QObject</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.SubjectImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getSubject()
+		 * @see de.avatar.query.impl.QObjectImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getQObject()
 		 * @generated
 		 */
-		EClass SUBJECT = eINSTANCE.getSubject();
+		EClass QOBJECT = eINSTANCE.getQObject();
 
 		/**
-		 * The meta object literal for the '<em><b>Feature Path</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>EClass</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SUBJECT__FEATURE_PATH = eINSTANCE.getSubject_FeaturePath();
+		EReference QOBJECT__ECLASS = eINSTANCE.getQObject_EClass();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.WhiteListedNounImpl <em>White Listed Noun</em>}' class.
+		 * The meta object literal for the '{@link de.avatar.query.impl.QSubjectImpl <em>QSubject</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.WhiteListedNounImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getWhiteListedNoun()
+		 * @see de.avatar.query.impl.QSubjectImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getQSubject()
 		 * @generated
 		 */
-		EClass WHITE_LISTED_NOUN = eINSTANCE.getWhiteListedNoun();
+		EClass QSUBJECT = eINSTANCE.getQSubject();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.BlackListedNounImpl <em>Black Listed Noun</em>}' class.
+		 * The meta object literal for the '<em><b>Feature Path</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.BlackListedNounImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getBlackListedNoun()
 		 * @generated
 		 */
-		EClass BLACK_LISTED_NOUN = eINSTANCE.getBlackListedNoun();
+		EReference QSUBJECT__FEATURE_PATH = eINSTANCE.getQSubject_FeaturePath();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.impl.OperatorImpl <em>Operator</em>}' class.
+		 * The meta object literal for the '<em><b>Is Exclude</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.impl.OperatorImpl
-		 * @see de.avatar.query.impl.QueryPackageImpl#getOperator()
 		 * @generated
 		 */
-		EClass OPERATOR = eINSTANCE.getOperator();
+		EAttribute QSUBJECT__IS_EXCLUDE = eINSTANCE.getQSubject_IsExclude();
+
+		/**
+		 * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QSUBJECT__ALIAS = eINSTANCE.getQSubject_Alias();
+
+		/**
+		 * The meta object literal for the '<em><b>Alias Feature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QSUBJECT__ALIAS_FEATURE = eINSTANCE.getQSubject_AliasFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QSUBJECT__OPERATION = eINSTANCE.getQSubject_Operation();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.query.impl.QWhereImpl <em>QWhere</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.query.impl.QWhereImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getQWhere()
+		 * @generated
+		 */
+		EClass QWHERE = eINSTANCE.getQWhere();
+
+		/**
+		 * The meta object literal for the '<em><b>Feature Path</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QWHERE__FEATURE_PATH = eINSTANCE.getQWhere_FeaturePath();
 
 		/**
 		 * The meta object literal for the '<em><b>Comparator</b></em>' containment reference feature.
@@ -2855,7 +3327,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPERATOR__COMPARATOR = eINSTANCE.getOperator_Comparator();
+		EReference QWHERE__COMPARATOR = eINSTANCE.getQWhere_Comparator();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QWHERE__OPERATION = eINSTANCE.getQWhere_Operation();
 
 		/**
 		 * The meta object literal for the '<em><b>Execute</b></em>' operation.
@@ -2863,7 +3343,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation OPERATOR___EXECUTE = eINSTANCE.getOperator__Execute();
+		EOperation QWHERE___EXECUTE = eINSTANCE.getQWhere__Execute();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.ChainingImpl <em>Chaining</em>}' class.
@@ -2936,6 +3416,26 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass TO_UPPER_CASE = eINSTANCE.getToUpperCase();
 
 		/**
+		 * The meta object literal for the '{@link de.avatar.query.impl.NumberOperationImpl <em>Number Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.query.impl.NumberOperationImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getNumberOperation()
+		 * @generated
+		 */
+		EClass NUMBER_OPERATION = eINSTANCE.getNumberOperation();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.query.impl.AverageImpl <em>Average</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.query.impl.AverageImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getAverage()
+		 * @generated
+		 */
+		EClass AVERAGE = eINSTANCE.getAverage();
+
+		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.ComparatorImpl <em>Comparator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2954,12 +3454,12 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute COMPARATOR__SUITABLE_FOR_TYPE = eINSTANCE.getComparator_SuitableForType();
 
 		/**
-		 * The meta object literal for the '<em><b>Feature Path</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Where</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPARATOR__FEATURE_PATH = eINSTANCE.getComparator_FeaturePath();
+		EReference COMPARATOR__WHERE = eINSTANCE.getComparator_Where();
 
 		/**
 		 * The meta object literal for the '<em><b>Compare</b></em>' operation.
@@ -3064,6 +3564,26 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EClass IS_AFTER = eINSTANCE.getIsAfter();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.query.impl.IsBeforeOrEqualImpl <em>Is Before Or Equal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.query.impl.IsBeforeOrEqualImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getIsBeforeOrEqual()
+		 * @generated
+		 */
+		EClass IS_BEFORE_OR_EQUAL = eINSTANCE.getIsBeforeOrEqual();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.query.impl.IsAfterOrEqualImpl <em>Is After Or Equal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.query.impl.IsAfterOrEqualImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getIsAfterOrEqual()
+		 * @generated
+		 */
+		EClass IS_AFTER_OR_EQUAL = eINSTANCE.getIsAfterOrEqual();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.IsInRangeImpl <em>Is In Range</em>}' class.
@@ -3208,20 +3728,20 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass OPERATION = eINSTANCE.getOperation();
 
 		/**
-		 * The meta object literal for the '<em><b>Feature Path</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OPERATION__FEATURE_PATH = eINSTANCE.getOperation_FeaturePath();
-
-		/**
 		 * The meta object literal for the '<em><b>Suitable For Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute OPERATION__SUITABLE_FOR_TYPE = eINSTANCE.getOperation_SuitableForType();
+
+		/**
+		 * The meta object literal for the '<em><b>Subject</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__SUBJECT = eINSTANCE.getOperation_Subject();
 
 		/**
 		 * The meta object literal for the '<em><b>Execute</b></em>' operation.

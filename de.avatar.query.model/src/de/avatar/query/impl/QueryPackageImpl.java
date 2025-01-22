@@ -14,7 +14,7 @@
 package de.avatar.query.impl;
 
 import de.avatar.query.And;
-import de.avatar.query.BlackListedNoun;
+import de.avatar.query.Average;
 import de.avatar.query.BoolComparator;
 import de.avatar.query.Chaining;
 import de.avatar.query.Comparator;
@@ -26,7 +26,9 @@ import de.avatar.query.Eq;
 import de.avatar.query.Gt;
 import de.avatar.query.Gte;
 import de.avatar.query.IsAfter;
+import de.avatar.query.IsAfterOrEqual;
 import de.avatar.query.IsBefore;
+import de.avatar.query.IsBeforeOrEqual;
 import de.avatar.query.IsBool;
 import de.avatar.query.IsInRange;
 import de.avatar.query.IsLiteral;
@@ -35,9 +37,12 @@ import de.avatar.query.Lt;
 import de.avatar.query.Lte;
 import de.avatar.query.Not;
 import de.avatar.query.NumberComparator;
+import de.avatar.query.NumberOperation;
 import de.avatar.query.Operation;
-import de.avatar.query.Operator;
 import de.avatar.query.Or;
+import de.avatar.query.QObject;
+import de.avatar.query.QSubject;
+import de.avatar.query.QWhere;
 import de.avatar.query.Query;
 import de.avatar.query.QueryFactory;
 import de.avatar.query.QueryPackage;
@@ -46,10 +51,8 @@ import de.avatar.query.SortOrder;
 import de.avatar.query.StartWith;
 import de.avatar.query.StringComparator;
 import de.avatar.query.StringOperation;
-import de.avatar.query.Subject;
 import de.avatar.query.ToLowerCase;
 import de.avatar.query.ToUpperCase;
-import de.avatar.query.WhiteListedNoun;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -81,28 +84,21 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass subjectEClass = null;
+	private EClass qObjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass whiteListedNounEClass = null;
+	private EClass qSubjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass blackListedNounEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass operatorEClass = null;
+	private EClass qWhereEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +148,20 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	private EClass toUpperCaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass numberOperationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass averageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -215,6 +225,20 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	private EClass isAfterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass isBeforeOrEqualEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass isAfterOrEqualEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -393,7 +417,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getQuery_From() {
+	public EReference getQuery_Subject() {
 		return (EReference)queryEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -403,7 +427,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getQuery_Object() {
+	public EReference getQuery_From() {
 		return (EReference)queryEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -413,7 +437,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getQuery_Subject() {
+	public EReference getQuery_Where() {
 		return (EReference)queryEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -483,8 +507,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getSubject() {
-		return subjectEClass;
+	public EClass getQObject() {
+		return qObjectEClass;
 	}
 
 	/**
@@ -493,8 +517,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getSubject_FeaturePath() {
-		return (EReference)subjectEClass.getEStructuralFeatures().get(0);
+	public EReference getQObject_EClass() {
+		return (EReference)qObjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -503,8 +527,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getWhiteListedNoun() {
-		return whiteListedNounEClass;
+	public EClass getQSubject() {
+		return qSubjectEClass;
 	}
 
 	/**
@@ -513,8 +537,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getBlackListedNoun() {
-		return blackListedNounEClass;
+	public EReference getQSubject_FeaturePath() {
+		return (EReference)qSubjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -523,8 +547,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getOperator() {
-		return operatorEClass;
+	public EAttribute getQSubject_IsExclude() {
+		return (EAttribute)qSubjectEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -533,8 +557,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getOperator_Comparator() {
-		return (EReference)operatorEClass.getEStructuralFeatures().get(0);
+	public EAttribute getQSubject_Alias() {
+		return (EAttribute)qSubjectEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -543,8 +567,68 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EOperation getOperator__Execute() {
-		return operatorEClass.getEOperations().get(0);
+	public EReference getQSubject_AliasFeature() {
+		return (EReference)qSubjectEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getQSubject_Operation() {
+		return (EReference)qSubjectEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getQWhere() {
+		return qWhereEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getQWhere_FeaturePath() {
+		return (EReference)qWhereEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getQWhere_Comparator() {
+		return (EReference)qWhereEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getQWhere_Operation() {
+		return (EReference)qWhereEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getQWhere__Execute() {
+		return qWhereEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -623,6 +707,26 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getNumberOperation() {
+		return numberOperationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAverage() {
+		return averageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getComparator() {
 		return comparatorEClass;
 	}
@@ -643,7 +747,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getComparator_FeaturePath() {
+	public EReference getComparator_Where() {
 		return (EReference)comparatorEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -755,6 +859,26 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	@Override
 	public EClass getIsAfter() {
 		return isAfterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIsBeforeOrEqual() {
+		return isBeforeOrEqualEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIsAfterOrEqual() {
+		return isAfterOrEqualEClass;
 	}
 
 	/**
@@ -913,8 +1037,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getOperation_FeaturePath() {
-		return (EReference)operationEClass.getEStructuralFeatures().get(0);
+	public EAttribute getOperation_SuitableForType() {
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -923,8 +1047,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOperation_SuitableForType() {
-		return (EAttribute)operationEClass.getEStructuralFeatures().get(1);
+	public EReference getOperation_Subject() {
+		return (EReference)operationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1007,9 +1131,9 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		// Create classes and their features
 		queryEClass = createEClass(QUERY);
-		createEReference(queryEClass, QUERY__FROM);
-		createEReference(queryEClass, QUERY__OBJECT);
 		createEReference(queryEClass, QUERY__SUBJECT);
+		createEReference(queryEClass, QUERY__FROM);
+		createEReference(queryEClass, QUERY__WHERE);
 		createEReference(queryEClass, QUERY__GROUP_BY);
 		createEReference(queryEClass, QUERY__SORT_BY);
 		createEAttribute(queryEClass, QUERY__COUNT);
@@ -1017,16 +1141,21 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		createEAttribute(queryEClass, QUERY__LIMIT);
 		createEAttribute(queryEClass, QUERY__SKIP);
 
-		subjectEClass = createEClass(SUBJECT);
-		createEReference(subjectEClass, SUBJECT__FEATURE_PATH);
+		qObjectEClass = createEClass(QOBJECT);
+		createEReference(qObjectEClass, QOBJECT__ECLASS);
 
-		whiteListedNounEClass = createEClass(WHITE_LISTED_NOUN);
+		qSubjectEClass = createEClass(QSUBJECT);
+		createEReference(qSubjectEClass, QSUBJECT__FEATURE_PATH);
+		createEAttribute(qSubjectEClass, QSUBJECT__IS_EXCLUDE);
+		createEAttribute(qSubjectEClass, QSUBJECT__ALIAS);
+		createEReference(qSubjectEClass, QSUBJECT__ALIAS_FEATURE);
+		createEReference(qSubjectEClass, QSUBJECT__OPERATION);
 
-		blackListedNounEClass = createEClass(BLACK_LISTED_NOUN);
-
-		operatorEClass = createEClass(OPERATOR);
-		createEReference(operatorEClass, OPERATOR__COMPARATOR);
-		createEOperation(operatorEClass, OPERATOR___EXECUTE);
+		qWhereEClass = createEClass(QWHERE);
+		createEReference(qWhereEClass, QWHERE__FEATURE_PATH);
+		createEReference(qWhereEClass, QWHERE__COMPARATOR);
+		createEReference(qWhereEClass, QWHERE__OPERATION);
+		createEOperation(qWhereEClass, QWHERE___EXECUTE);
 
 		chainingEClass = createEClass(CHAINING);
 
@@ -1042,9 +1171,13 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		toUpperCaseEClass = createEClass(TO_UPPER_CASE);
 
+		numberOperationEClass = createEClass(NUMBER_OPERATION);
+
+		averageEClass = createEClass(AVERAGE);
+
 		comparatorEClass = createEClass(COMPARATOR);
 		createEAttribute(comparatorEClass, COMPARATOR__SUITABLE_FOR_TYPE);
-		createEReference(comparatorEClass, COMPARATOR__FEATURE_PATH);
+		createEReference(comparatorEClass, COMPARATOR__WHERE);
 		createEOperation(comparatorEClass, COMPARATOR___COMPARE);
 
 		stringComparatorEClass = createEClass(STRING_COMPARATOR);
@@ -1064,6 +1197,10 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		isBeforeEClass = createEClass(IS_BEFORE);
 
 		isAfterEClass = createEClass(IS_AFTER);
+
+		isBeforeOrEqualEClass = createEClass(IS_BEFORE_OR_EQUAL);
+
+		isAfterOrEqualEClass = createEClass(IS_AFTER_OR_EQUAL);
 
 		isInRangeEClass = createEClass(IS_IN_RANGE);
 
@@ -1090,8 +1227,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		createEReference(sortEntityEClass, SORT_ENTITY__FEATURE_PATH);
 
 		operationEClass = createEClass(OPERATION);
-		createEReference(operationEClass, OPERATION__FEATURE_PATH);
 		createEAttribute(operationEClass, OPERATION__SUITABLE_FOR_TYPE);
+		createEReference(operationEClass, OPERATION__SUBJECT);
 		createEOperation(operationEClass, OPERATION___EXECUTE);
 
 		enumComparatorEClass = createEClass(ENUM_COMPARATOR);
@@ -1134,15 +1271,15 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		whiteListedNounEClass.getESuperTypes().add(this.getSubject());
-		blackListedNounEClass.getESuperTypes().add(this.getSubject());
-		chainingEClass.getESuperTypes().add(this.getOperator());
+		chainingEClass.getESuperTypes().add(this.getQWhere());
 		orEClass.getESuperTypes().add(this.getChaining());
 		notEClass.getESuperTypes().add(this.getChaining());
 		andEClass.getESuperTypes().add(this.getChaining());
 		stringOperationEClass.getESuperTypes().add(this.getOperation());
 		toLowerCaseEClass.getESuperTypes().add(this.getStringOperation());
 		toUpperCaseEClass.getESuperTypes().add(this.getStringOperation());
+		numberOperationEClass.getESuperTypes().add(this.getOperation());
+		averageEClass.getESuperTypes().add(this.getNumberOperation());
 		stringComparatorEClass.getESuperTypes().add(this.getComparator());
 		endsWithEClass.getESuperTypes().add(this.getStringComparator());
 		startWithEClass.getESuperTypes().add(this.getStringComparator());
@@ -1151,6 +1288,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		dateComparatorEClass.getESuperTypes().add(this.getComparator());
 		isBeforeEClass.getESuperTypes().add(this.getDateComparator());
 		isAfterEClass.getESuperTypes().add(this.getDateComparator());
+		isBeforeOrEqualEClass.getESuperTypes().add(this.getDateComparator());
+		isAfterOrEqualEClass.getESuperTypes().add(this.getDateComparator());
 		isInRangeEClass.getESuperTypes().add(this.getDateComparator());
 		numberComparatorEClass.getESuperTypes().add(this.getComparator());
 		ltEClass.getESuperTypes().add(this.getNumberComparator());
@@ -1165,27 +1304,32 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(queryEClass, Query.class, "Query", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getQuery_From(), ecorePackage.getEStructuralFeature(), null, "from", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getQuery_Object(), this.getOperator(), null, "object", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getQuery_Subject(), this.getSubject(), null, "subject", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getQuery_GroupBy(), theUtilitiesPackage.getFeaturePath(), null, "groupBy", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQuery_Subject(), this.getQSubject(), null, "subject", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQuery_From(), this.getQObject(), null, "from", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQuery_Where(), this.getQWhere(), null, "where", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQuery_GroupBy(), theUtilitiesPackage.getFeaturePath(), null, "groupBy", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getQuery_SortBy(), this.getSortEntity(), null, "sortBy", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuery_Count(), ecorePackage.getEBoolean(), "count", null, 1, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuery_Distinct(), ecorePackage.getEBoolean(), "distinct", null, 1, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuery_Limit(), ecorePackage.getEInt(), "limit", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuery_Skip(), ecorePackage.getEInt(), "skip", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(subjectEClass, Subject.class, "Subject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSubject_FeaturePath(), theUtilitiesPackage.getFeaturePath(), null, "featurePath", null, 0, -1, Subject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(qObjectEClass, QObject.class, "QObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getQObject_EClass(), ecorePackage.getEClass(), null, "eClass", null, 0, 1, QObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(whiteListedNounEClass, WhiteListedNoun.class, "WhiteListedNoun", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(qSubjectEClass, QSubject.class, "QSubject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getQSubject_FeaturePath(), theUtilitiesPackage.getFeaturePath(), null, "featurePath", null, 1, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQSubject_IsExclude(), ecorePackage.getEBoolean(), "isExclude", "false", 0, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQSubject_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQSubject_AliasFeature(), ecorePackage.getEStructuralFeature(), null, "aliasFeature", null, 0, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQSubject_Operation(), this.getOperation(), this.getOperation_Subject(), "operation", null, 0, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(blackListedNounEClass, BlackListedNoun.class, "BlackListedNoun", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(qWhereEClass, QWhere.class, "QWhere", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getQWhere_FeaturePath(), theUtilitiesPackage.getFeaturePath(), null, "featurePath", null, 1, 1, QWhere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQWhere_Comparator(), this.getComparator(), this.getComparator_Where(), "comparator", null, 1, 1, QWhere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQWhere_Operation(), this.getOperation(), null, "operation", null, 0, 1, QWhere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(operatorEClass, Operator.class, "Operator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperator_Comparator(), this.getComparator(), null, "comparator", null, 1, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getOperator__Execute(), ecorePackage.getEBoolean(), "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getQWhere__Execute(), ecorePackage.getEBoolean(), "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(chainingEClass, Chaining.class, "Chaining", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1201,9 +1345,13 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		initEClass(toUpperCaseEClass, ToUpperCase.class, "ToUpperCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(numberOperationEClass, NumberOperation.class, "NumberOperation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(averageEClass, Average.class, "Average", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(comparatorEClass, Comparator.class, "Comparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComparator_SuitableForType(), ecorePackage.getEString(), "suitableForType", null, 1, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComparator_FeaturePath(), theUtilitiesPackage.getFeaturePath(), null, "featurePath", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComparator_Where(), this.getQWhere(), this.getQWhere_Comparator(), "where", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getComparator__Compare(), ecorePackage.getEBoolean(), "compare", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1224,6 +1372,10 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEClass(isBeforeEClass, IsBefore.class, "IsBefore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(isAfterEClass, IsAfter.class, "IsAfter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(isBeforeOrEqualEClass, IsBeforeOrEqual.class, "IsBeforeOrEqual", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(isAfterOrEqualEClass, IsAfterOrEqual.class, "IsAfterOrEqual", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(isInRangeEClass, IsInRange.class, "IsInRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1250,8 +1402,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEReference(getSortEntity_FeaturePath(), ecorePackage.getEStructuralFeature(), null, "featurePath", null, 1, 1, SortEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperation_FeaturePath(), theUtilitiesPackage.getFeaturePath(), null, "featurePath", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperation_SuitableForType(), ecorePackage.getEString(), "suitableForType", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperation_Subject(), this.getQSubject(), this.getQSubject_Operation(), "subject", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getOperation__Execute(), ecorePackage.getEObject(), "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
 

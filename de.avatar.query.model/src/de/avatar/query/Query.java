@@ -16,7 +16,6 @@ package de.avatar.query;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.gecko.emf.utilities.FeaturePath;
 
@@ -31,9 +30,9 @@ import org.osgi.annotation.versioning.ProviderType;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.Query#getFrom <em>From</em>}</li>
- *   <li>{@link de.avatar.query.Query#getObject <em>Object</em>}</li>
  *   <li>{@link de.avatar.query.Query#getSubject <em>Subject</em>}</li>
+ *   <li>{@link de.avatar.query.Query#getFrom <em>From</em>}</li>
+ *   <li>{@link de.avatar.query.Query#getWhere <em>Where</em>}</li>
  *   <li>{@link de.avatar.query.Query#getGroupBy <em>Group By</em>}</li>
  *   <li>{@link de.avatar.query.Query#getSortBy <em>Sort By</em>}</li>
  *   <li>{@link de.avatar.query.Query#isCount <em>Count</em>}</li>
@@ -49,62 +48,58 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface Query extends EObject {
 	/**
-	 * Returns the value of the '<em><b>From</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.emf.ecore.EStructuralFeature}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>From</em>' reference list.
-	 * @see de.avatar.query.QueryPackage#getQuery_From()
-	 * @model
-	 * @generated
-	 */
-	EList<EStructuralFeature> getFrom();
-
-	/**
-	 * Returns the value of the '<em><b>Object</b></em>' containment reference list.
-	 * The list contents are of type {@link de.avatar.query.Operator}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Object</em>' containment reference list.
-	 * @see de.avatar.query.QueryPackage#getQuery_Object()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Operator> getObject();
-
-	/**
 	 * Returns the value of the '<em><b>Subject</b></em>' containment reference list.
-	 * The list contents are of type {@link de.avatar.query.Subject}.
+	 * The list contents are of type {@link de.avatar.query.QSubject}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A subject defines the SELECT subjects, e.g. SELECT address, name, age ... where adress, name, age are Subjects
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subject</em>' containment reference list.
 	 * @see de.avatar.query.QueryPackage#getQuery_Subject()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Subject> getSubject();
+	EList<QSubject> getSubject();
 
 	/**
-	 * Returns the value of the '<em><b>Group By</b></em>' containment reference.
+	 * Returns the value of the '<em><b>From</b></em>' reference list.
+	 * The list contents are of type {@link de.avatar.query.QObject}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Group By</em>' containment reference.
-	 * @see #setGroupBy(FeaturePath)
+	 * <!-- begin-model-doc -->
+	 * If we have an include Query, which is default, the FROM values can be calculated out of the set of all FeaturePath's from the subjects. If no Subject is given, the FROM must be set, because we have a SELECT * query, theat needs a FROM. The same applies to excluded queries. In this case we also need a FROM to be able to apply the exclusion from the subjects feature paths's
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>From</em>' reference list.
+	 * @see de.avatar.query.QueryPackage#getQuery_From()
+	 * @model
+	 * @generated
+	 */
+	EList<QObject> getFrom();
+
+	/**
+	 * Returns the value of the '<em><b>Where</b></em>' containment reference list.
+	 * The list contents are of type {@link de.avatar.query.QWhere}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Where</em>' containment reference list.
+	 * @see de.avatar.query.QueryPackage#getQuery_Where()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<QWhere> getWhere();
+
+	/**
+	 * Returns the value of the '<em><b>Group By</b></em>' containment reference list.
+	 * The list contents are of type {@link org.gecko.emf.utilities.FeaturePath}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Group By</em>' containment reference list.
 	 * @see de.avatar.query.QueryPackage#getQuery_GroupBy()
 	 * @model containment="true"
 	 * @generated
 	 */
-	FeaturePath getGroupBy();
-
-	/**
-	 * Sets the value of the '{@link de.avatar.query.Query#getGroupBy <em>Group By</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Group By</em>' containment reference.
-	 * @see #getGroupBy()
-	 * @generated
-	 */
-	void setGroupBy(FeaturePath value);
+	EList<FeaturePath> getGroupBy();
 
 	/**
 	 * Returns the value of the '<em><b>Sort By</b></em>' containment reference list.

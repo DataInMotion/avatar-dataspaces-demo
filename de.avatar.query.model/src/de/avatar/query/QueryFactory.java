@@ -45,22 +45,22 @@ public interface QueryFactory extends EFactory {
 	Query createQuery();
 
 	/**
-	 * Returns a new object of class '<em>White Listed Noun</em>'.
+	 * Returns a new object of class '<em>QObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>White Listed Noun</em>'.
+	 * @return a new object of class '<em>QObject</em>'.
 	 * @generated
 	 */
-	WhiteListedNoun createWhiteListedNoun();
+	QObject createQObject();
 
 	/**
-	 * Returns a new object of class '<em>Black Listed Noun</em>'.
+	 * Returns a new object of class '<em>QSubject</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Black Listed Noun</em>'.
+	 * @return a new object of class '<em>QSubject</em>'.
 	 * @generated
 	 */
-	BlackListedNoun createBlackListedNoun();
+	QSubject createQSubject();
 
 	/**
 	 * Returns a new object of class '<em>Or</em>'.
@@ -106,6 +106,15 @@ public interface QueryFactory extends EFactory {
 	 * @generated
 	 */
 	ToUpperCase createToUpperCase();
+
+	/**
+	 * Returns a new object of class '<em>Average</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Average</em>'.
+	 * @generated
+	 */
+	Average createAverage();
 
 	/**
 	 * Returns a new object of class '<em>Ends With</em>'.
@@ -160,6 +169,24 @@ public interface QueryFactory extends EFactory {
 	 * @generated
 	 */
 	IsAfter createIsAfter();
+
+	/**
+	 * Returns a new object of class '<em>Is Before Or Equal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Is Before Or Equal</em>'.
+	 * @generated
+	 */
+	IsBeforeOrEqual createIsBeforeOrEqual();
+
+	/**
+	 * Returns a new object of class '<em>Is After Or Equal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Is After Or Equal</em>'.
+	 * @generated
+	 */
+	IsAfterOrEqual createIsAfterOrEqual();
 
 	/**
 	 * Returns a new object of class '<em>Is In Range</em>'.

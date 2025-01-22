@@ -16,8 +16,12 @@ package de.avatar.connector.whiteboard.test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.UUID;
 
+import org.avatar.himsa.export.PatientExportPackage;
 import org.gecko.emf.utilities.FeaturePath;
 import org.gecko.emf.utilities.UtilitiesFactory;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,6 +37,9 @@ import org.osgi.test.junit5.service.ServiceExtension;
 
 import de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard;
 import de.avatar.connector.whiteboard.api.StatusService;
+import de.avatar.query.And;
+import de.avatar.query.IsAfter;
+import de.avatar.query.QSubject;
 import de.avatar.query.Query;
 import de.avatar.query.QueryFactory;
 import de.avatar.status.QueryRequest;
@@ -40,7 +47,6 @@ import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.SingleConnectorQueryStatus;
 import de.avatar.status.StatusFactory;
-import de.avatar.status.StatusPackage;
 
 //import org.mockito.Mock;
 //import org.mockito.junit.jupiter.MockitoExtension;
@@ -250,12 +256,22 @@ public class ConnectorWhiteboardTest {
 		QueryRequest request = StatusFactory.eINSTANCE.createQueryRequest();
 		request.setRequestId(reqId);
 		request.setConsumerId(consumerId);
+		
 		Query query = QueryFactory.eINSTANCE.createQuery();
-//		Subject subject = QueryFactory.eINSTANCE.createWhiteListedNoun();
-//	
-//		query.getSubject().add(null);
-//		FeaturePath fp = UtilitiesFactory.eINSTANCE.createFeaturePath();
-//		fp.getFeature().add(StatusPackage.Literals.DETAILED_QUERY_STATUS);
+		QSubject subject = QueryFactory.eINSTANCE.createQSubject();
+		subject.setIsExclude(false);
+		FeaturePath featurePath = UtilitiesFactory.eINSTANCE.createFeaturePath();
+		featurePath.getFeature().add(PatientExportPackage.Literals.PATIENT__PROVINCE);
+		subject.setFeaturePath(featurePath);
+		And where = QueryFactory.eINSTANCE.createAnd();
+		FeaturePath fp2 = UtilitiesFactory.eINSTANCE.createFeaturePath();
+		fp2.getFeature().add(PatientExportPackage.Literals.PATIENT__BIRTH_DATE);
+		where.setFeaturePath(fp2);
+		IsAfter comparator = QueryFactory.eINSTANCE.createIsAfter();
+		comparator.setValue(fromLocalDateToDate(LocalDate.of(1980, 1, 1)));
+		where.setComparator(comparator);
+		query.getSubject().add(subject);
+		query.getWhere().add(where);
 		query.setCount(true);
 		query.setDistinct(true);
 		request.setQuery(query);
@@ -276,6 +292,16 @@ public class ConnectorWhiteboardTest {
 		}
 		assertThat(sc1).isNotNull();
 		assertThat(sc2).isNotNull();
+	}
+	
+	private Date fromLocalDateToDate(LocalDate localDate) {
+		return Date.from(                     // Convert from modern java.time class to troublesome old legacy class.  DO NOT DO THIS unless you must, to inter operate with old code not yet updated for java.time.
+				localDate                          // `LocalDate` class represents a date-only, without time-of-day and without time zone nor offset-from-UTC. 
+			    .atStartOfDay(                       // Let java.time determine the first moment of the day on that date in that zone. Never assume the day starts at 00:00:00.
+			        ZoneId.of( "America/Montreal" )  // Specify time zone using proper name in `continent/region` format, never 3-4 letter pseudo-zones such as “PST”, “CST”, “IST”. 
+			    )                                    // Produce a `ZonedDateTime` object. 
+			    .toInstant()                         // Extract an `Instant` object, a moment always in UTC.
+			);
 	}
 
 }

@@ -13,55 +13,47 @@
  */
 package de.avatar.query.impl;
 
+import de.avatar.query.QObject;
 import de.avatar.query.QueryPackage;
-import de.avatar.query.Subject;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.gecko.emf.utilities.FeaturePath;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Subject</b></em>'.
+ * An implementation of the model object '<em><b>QObject</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.impl.SubjectImpl#getFeaturePath <em>Feature Path</em>}</li>
+ *   <li>{@link de.avatar.query.impl.QObjectImpl#getEClass <em>EClass</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class SubjectImpl extends MinimalEObjectImpl.Container implements Subject {
+public class QObjectImpl extends MinimalEObjectImpl.Container implements QObject {
 	/**
-	 * The cached value of the '{@link #getFeaturePath() <em>Feature Path</em>}' containment reference list.
+	 * The cached value of the '{@link #getEClass() <em>EClass</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFeaturePath()
+	 * @see #getEClass()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<FeaturePath> featurePath;
+	protected EClass eClass;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SubjectImpl() {
+	protected QObjectImpl() {
 		super();
 	}
 
@@ -72,7 +64,7 @@ public abstract class SubjectImpl extends MinimalEObjectImpl.Container implement
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.SUBJECT;
+		return QueryPackage.Literals.QOBJECT;
 	}
 
 	/**
@@ -81,11 +73,25 @@ public abstract class SubjectImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
-	public EList<FeaturePath> getFeaturePath() {
-		if (featurePath == null) {
-			featurePath = new EObjectContainmentEList<FeaturePath>(FeaturePath.class, this, QueryPackage.SUBJECT__FEATURE_PATH);
+	public EClass getEClass() {
+		if (eClass != null && eClass.eIsProxy()) {
+			InternalEObject oldEClass = (InternalEObject)eClass;
+			eClass = (EClass)eResolveProxy(oldEClass);
+			if (eClass != oldEClass) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QueryPackage.QOBJECT__ECLASS, oldEClass, eClass));
+			}
 		}
-		return featurePath;
+		return eClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass basicGetEClass() {
+		return eClass;
 	}
 
 	/**
@@ -94,12 +100,11 @@ public abstract class SubjectImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case QueryPackage.SUBJECT__FEATURE_PATH:
-				return ((InternalEList<?>)getFeaturePath()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setEClass(EClass newEClass) {
+		EClass oldEClass = eClass;
+		eClass = newEClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.QOBJECT__ECLASS, oldEClass, eClass));
 	}
 
 	/**
@@ -110,8 +115,9 @@ public abstract class SubjectImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QueryPackage.SUBJECT__FEATURE_PATH:
-				return getFeaturePath();
+			case QueryPackage.QOBJECT__ECLASS:
+				if (resolve) return getEClass();
+				return basicGetEClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -121,13 +127,11 @@ public abstract class SubjectImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QueryPackage.SUBJECT__FEATURE_PATH:
-				getFeaturePath().clear();
-				getFeaturePath().addAll((Collection<? extends FeaturePath>)newValue);
+			case QueryPackage.QOBJECT__ECLASS:
+				setEClass((EClass)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -141,8 +145,8 @@ public abstract class SubjectImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QueryPackage.SUBJECT__FEATURE_PATH:
-				getFeaturePath().clear();
+			case QueryPackage.QOBJECT__ECLASS:
+				setEClass((EClass)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -156,10 +160,10 @@ public abstract class SubjectImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QueryPackage.SUBJECT__FEATURE_PATH:
-				return featurePath != null && !featurePath.isEmpty();
+			case QueryPackage.QOBJECT__ECLASS:
+				return eClass != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //SubjectImpl
+} //QObjectImpl

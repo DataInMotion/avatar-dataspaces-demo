@@ -17,14 +17,14 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Black Listed Noun</b></em>'.
+ * A representation of the model object '<em><b>Number Operation</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see de.avatar.query.QueryPackage#getBlackListedNoun()
- * @model
+ * @see de.avatar.query.QueryPackage#getNumberOperation()
+ * @model abstract="true"
  * @generated
  */
 @ProviderType
-public interface BlackListedNoun extends Subject {
-} // BlackListedNoun
+public interface NumberOperation extends Operation {
+} // NumberOperation

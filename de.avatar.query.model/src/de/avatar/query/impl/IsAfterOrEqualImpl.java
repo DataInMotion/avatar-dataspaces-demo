@@ -13,25 +13,25 @@
  */
 package de.avatar.query.impl;
 
-import de.avatar.query.BlackListedNoun;
+import de.avatar.query.IsAfterOrEqual;
 import de.avatar.query.QueryPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Black Listed Noun</b></em>'.
+ * An implementation of the model object '<em><b>Is After Or Equal</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class BlackListedNounImpl extends SubjectImpl implements BlackListedNoun {
+public class IsAfterOrEqualImpl extends DateComparatorImpl implements IsAfterOrEqual {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BlackListedNounImpl() {
+	protected IsAfterOrEqualImpl() {
 		super();
 	}
 
@@ -42,7 +42,7 @@ public class BlackListedNounImpl extends SubjectImpl implements BlackListedNoun 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.BLACK_LISTED_NOUN;
+		return QueryPackage.Literals.IS_AFTER_OR_EQUAL;
 	}
 
-} //BlackListedNounImpl
+} //IsAfterOrEqualImpl

@@ -13,25 +13,25 @@
  */
 package de.avatar.query.impl;
 
+import de.avatar.query.NumberOperation;
 import de.avatar.query.QueryPackage;
-import de.avatar.query.WhiteListedNoun;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>White Listed Noun</b></em>'.
+ * An implementation of the model object '<em><b>Number Operation</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class WhiteListedNounImpl extends SubjectImpl implements WhiteListedNoun {
+public abstract class NumberOperationImpl extends OperationImpl implements NumberOperation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WhiteListedNounImpl() {
+	protected NumberOperationImpl() {
 		super();
 	}
 
@@ -42,7 +42,7 @@ public class WhiteListedNounImpl extends SubjectImpl implements WhiteListedNoun 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.WHITE_LISTED_NOUN;
+		return QueryPackage.Literals.NUMBER_OPERATION;
 	}
 
-} //WhiteListedNounImpl
+} //NumberOperationImpl

@@ -469,7 +469,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	int ENDPOINT_RESPONSE__CODE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Result</b></em>' reference.
+	 * The feature id for the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1530,10 +1530,10 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getEndpointResponse_Code();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.avatar.model.connector.EndpointResponse#getResult <em>Result</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.avatar.model.connector.EndpointResponse#getResult <em>Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Result</em>'.
+	 * @return the meta object for the containment reference '<em>Result</em>'.
 	 * @see de.avatar.model.connector.EndpointResponse#getResult()
 	 * @see #getEndpointResponse()
 	 * @generated
@@ -2249,7 +2249,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute ENDPOINT_RESPONSE__CODE = eINSTANCE.getEndpointResponse_Code();
 
 		/**
-		 * The meta object literal for the '<em><b>Result</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
