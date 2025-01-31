@@ -11,6 +11,11 @@
  */
 package de.avatar.query.rest;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+import org.gecko.emf.rest.annotations.RequireEMFMessageBodyReaderWriter;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
@@ -19,6 +24,7 @@ import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsResource;
 
 import de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard;
 import de.avatar.connector.whiteboard.api.StatusService;
+import de.avatar.generator.api.api.AvatarGenerator;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import jakarta.ws.rs.Consumes;
@@ -47,6 +53,9 @@ public class QueryRestResource {
 	@Reference
 	StatusService statusService;
 	
+	@Reference
+	AvatarGenerator avatarGenerator;
+	
 	@GET
 	@Path("/hello")
 	public String hello() {
@@ -67,7 +76,8 @@ public class QueryRestResource {
 	@Path("/query")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response query(QueryRequest request) {
+	public Response query( QueryRequest request) {
+		System.out.println("GOT REQUEST!!");
 		try {
 			QueryResponse response = requestWhiteboard.executeRequest(request);
 			return Response.ok(response).build();
@@ -86,6 +96,27 @@ public class QueryRestResource {
 		} catch(IllegalArgumentException e) {
 			return Response.status(500, e.getMessage()).build();
 		}
-		
 	}
+	
+	@GET
+	@Path("/downloads/{requestId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response download(@PathParam("requestId") String requestId) {
+		
+		File resultFile = avatarGenerator.getAggregatedResponse(requestId);
+		if(resultFile.exists()) {
+			try(InputStream is = new FileInputStream(resultFile)) {
+				return Response.ok(is.readAllBytes()).
+						header("Content-Disposition", "attachment; filename=".concat(requestId).concat(".zip")).
+						build();
+			} catch(Exception e) {
+				return Response.serverError().build();
+			}
+			
+			
+		} else {
+			return Response.noContent().build();
+		}
+	}
+
 }

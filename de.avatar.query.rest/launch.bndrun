@@ -31,9 +31,6 @@
 	org.eclipse.emf.common;version='[2.29.0,2.29.1)',\
 	org.eclipse.emf.ecore;version='[2.35.0,2.35.1)',\
 	org.eclipse.emf.ecore.xmi;version='[2.36.0,2.36.1)',\
-	org.eclipse.osgitech.rest;version='[1.2.2,1.2.3)',\
-	org.eclipse.osgitech.rest.servlet.whiteboard;version='[1.2.2,1.2.3)',\
-	org.eclipse.osgitech.rest.sse;version='[1.2.2,1.2.3)',\
 	org.eclipse.parsson.jakarta.json;version='[1.1.5,1.1.6)',\
 	org.gecko.emf.osgi.component.minimal;version='[6.2.0,6.2.1)',\
 	org.glassfish.hk2.api;version='[3.0.5,3.0.6)',\
@@ -57,12 +54,45 @@
 	org.osgi.util.function;version='[1.2.0,1.2.1)',\
 	org.osgi.util.promise;version='[1.3.0,1.3.1)',\
 	slf4j.api;version='[1.7.30,1.7.31)',\
-	slf4j.simple;version='[1.7.30,1.7.31)'
+	slf4j.simple;version='[1.7.30,1.7.31)',\
+	de.avatar.query.model;version=snapshot,\
+	de.avatar.query.status.model;version=snapshot,\
+	org.eclipse.osgitech.rest;version='[1.2.3,1.2.4)',\
+	org.eclipse.osgitech.rest.servlet.whiteboard;version='[1.2.3,1.2.4)',\
+	org.eclipse.osgitech.rest.sse;version='[1.2.3,1.2.4)',\
+	org.gecko.emf.util.model;version='[2.2.2,2.2.3)',\
+	com.fasterxml.jackson.core.jackson-annotations;version='[2.15.2,2.15.3)',\
+	com.fasterxml.jackson.core.jackson-core;version='[2.15.2,2.15.3)',\
+	com.fasterxml.jackson.core.jackson-databind;version='[2.15.2,2.15.3)',\
+	de.avatar.generator.api;version=snapshot,\
+	de.avatar.generator.impl;version=snapshot,\
+	com.fasterxml.jackson.dataformat.jackson-dataformat-properties;version='[2.14.1,2.14.2)',\
+	com.fasterxml.jackson.dataformat.jackson-dataformat-yaml;version='[2.14.1,2.14.2)',\
+	com.fasterxml.jackson.datatype.jackson-datatype-jsr310;version='[2.14.1,2.14.2)',\
+	org.eclipse.emfcloud.emfjson-jackson;version='[2.2.0,2.2.1)',\
+	org.gecko.emf.json;version='[1.5.1,1.5.2)',\
+	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
+	org.gecko.emf.osgi.model.info;version='[6.2.0,6.2.1)',\
+	org.gecko.emf.rest.jakartars;version='[2.3.0,2.3.1)',\
+	org.osgi.service.http;version='[1.2.1,1.2.2)',\
+	org.osgi.service.http.whiteboard;version='[1.1.0,1.1.1)',\
+	org.osgi.service.log;version='[1.5.0,1.5.1)',\
+	org.avatar.himsa.model;version='[1.0.0,1.0.1)'
 
+
+-runproperties: \
+    # Avoid To have the default Jetty run at port 8080
+	org.osgi.service.http.port=-1,\
+	data=./data/,\
+	org.eclipse.emf.common.util.URI.archiveSchemes="wsjar wszip jar zip"
+	
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
 	bnd.identity;id='de.avatar.query.rest',\
-	bnd.identity;id='de.avatar.connector.runtime.config'
+	bnd.identity;id='de.avatar.connector.runtime.config',\
+	bnd.identity;id='de.avatar.generator.impl',\
+	bnd.identity;id='org.gecko.emf.json',\
+	bnd.identity;id='org.avatar.himsa.model'
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-17

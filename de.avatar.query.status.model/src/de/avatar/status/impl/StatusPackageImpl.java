@@ -684,6 +684,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		statusResultEClass.getESuperTypes().add(this.getStatus());
 		pendingStatusResultEClass.getESuperTypes().add(this.getStatusResult());
 		errorStatusResultEClass.getESuperTypes().add(this.getStatusResult());
 		queryStatusEClass.getESuperTypes().add(this.getStatus());

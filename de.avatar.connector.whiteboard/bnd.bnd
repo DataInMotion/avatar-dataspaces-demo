@@ -11,7 +11,8 @@
 	org.osgi.service.remoteserviceadmin;version=latest,\
 	de.avatar.connector.api;version=project,\
 	de.avatar.connector.model;version=project,\
-	de.avatar.query.status.model
+	de.avatar.query.status.model,\
+	de.avatar.generator.api;version=snapshot
 	
 -workingset: connector
 	

@@ -55,7 +55,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectorName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statusResult" eType="#//StatusResult"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StatusResult">
+  <eClassifiers xsi:type="ecore:EClass" name="StatusResult" eSuperTypes="#//Status">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//QueryStatusType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PendingStatusResult" eSuperTypes="#//StatusResult">

@@ -7,10 +7,14 @@
 	bnd.identity;id='de.avatar.connector.other',\
 	bnd.identity;id='org.apache.felix.gogo.shell',\
 	bnd.identity;id='org.apache.felix.gogo.command',\
-	bnd.identity;id='org.gecko.emf.json'
+	bnd.identity;id='org.gecko.emf.json',\
+	bnd.identity;id='org.avatar.himsa.model',\
+	bnd.identity;id='de.avatar.generator.impl'
 	
 -runbundles.test: \
 	de.avatar.connector.whiteboard.test;version=snapshot
+	
+-runproperties: data=./data/
 
 -runfw: org.apache.felix.framework
 
@@ -59,4 +63,7 @@
 	com.fasterxml.jackson.datatype.jackson-datatype-jsr310;version='[2.14.1,2.14.2)',\
 	org.eclipse.emfcloud.emfjson-jackson;version='[2.2.0,2.2.1)',\
 	org.gecko.emf.json;version='[1.5.1,1.5.2)',\
-	org.yaml.snakeyaml;version='[1.33.0,1.33.1)'
+	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
+	de.avatar.generator.api;version=snapshot,\
+	org.avatar.himsa.model;version='[1.0.0,1.0.1)',\
+	de.avatar.generator.impl;version=snapshot

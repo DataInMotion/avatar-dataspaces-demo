@@ -296,135 +296,6 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	int SINGLE_CONNECTOR_QUERY_STATUS_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.status.impl.StatusResultImpl <em>Result</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.avatar.status.impl.StatusResultImpl
-	 * @see de.avatar.status.impl.StatusPackageImpl#getStatusResult()
-	 * @generated
-	 */
-	int STATUS_RESULT = 4;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATUS_RESULT__STATUS = 0;
-
-	/**
-	 * The number of structural features of the '<em>Result</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATUS_RESULT_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Result</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATUS_RESULT_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link de.avatar.status.impl.PendingStatusResultImpl <em>Pending Status Result</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.avatar.status.impl.PendingStatusResultImpl
-	 * @see de.avatar.status.impl.StatusPackageImpl#getPendingStatusResult()
-	 * @generated
-	 */
-	int PENDING_STATUS_RESULT = 5;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PENDING_STATUS_RESULT__STATUS = STATUS_RESULT__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Est Runtime</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PENDING_STATUS_RESULT__EST_RUNTIME = STATUS_RESULT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Pending Status Result</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PENDING_STATUS_RESULT_FEATURE_COUNT = STATUS_RESULT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Pending Status Result</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PENDING_STATUS_RESULT_OPERATION_COUNT = STATUS_RESULT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.avatar.status.impl.ErrorStatusResultImpl <em>Error Status Result</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.avatar.status.impl.ErrorStatusResultImpl
-	 * @see de.avatar.status.impl.StatusPackageImpl#getErrorStatusResult()
-	 * @generated
-	 */
-	int ERROR_STATUS_RESULT = 6;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ERROR_STATUS_RESULT__STATUS = STATUS_RESULT__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Error Message</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ERROR_STATUS_RESULT__ERROR_MESSAGE = STATUS_RESULT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Error Status Result</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ERROR_STATUS_RESULT_FEATURE_COUNT = STATUS_RESULT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Error Status Result</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ERROR_STATUS_RESULT_OPERATION_COUNT = STATUS_RESULT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link de.avatar.status.impl.StatusImpl <em>Status</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -505,6 +376,297 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int STATUS_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link de.avatar.status.impl.StatusResultImpl <em>Result</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.status.impl.StatusResultImpl
+	 * @see de.avatar.status.impl.StatusPackageImpl#getStatusResult()
+	 * @generated
+	 */
+	int STATUS_RESULT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_RESULT__ID = STATUS__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_RESULT__NAME = STATUS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Username</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_RESULT__USERNAME = STATUS__USERNAME;
+
+	/**
+	 * The feature id for the '<em><b>Created</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_RESULT__CREATED = STATUS__CREATED;
+
+	/**
+	 * The feature id for the '<em><b>Changed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_RESULT__CHANGED = STATUS__CHANGED;
+
+	/**
+	 * The feature id for the '<em><b>Response</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_RESULT__RESPONSE = STATUS__RESPONSE;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_RESULT__STATUS = STATUS_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_RESULT_FEATURE_COUNT = STATUS_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_RESULT_OPERATION_COUNT = STATUS_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.avatar.status.impl.PendingStatusResultImpl <em>Pending Status Result</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.status.impl.PendingStatusResultImpl
+	 * @see de.avatar.status.impl.StatusPackageImpl#getPendingStatusResult()
+	 * @generated
+	 */
+	int PENDING_STATUS_RESULT = 5;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_STATUS_RESULT__ID = STATUS_RESULT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_STATUS_RESULT__NAME = STATUS_RESULT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Username</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_STATUS_RESULT__USERNAME = STATUS_RESULT__USERNAME;
+
+	/**
+	 * The feature id for the '<em><b>Created</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_STATUS_RESULT__CREATED = STATUS_RESULT__CREATED;
+
+	/**
+	 * The feature id for the '<em><b>Changed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_STATUS_RESULT__CHANGED = STATUS_RESULT__CHANGED;
+
+	/**
+	 * The feature id for the '<em><b>Response</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_STATUS_RESULT__RESPONSE = STATUS_RESULT__RESPONSE;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_STATUS_RESULT__STATUS = STATUS_RESULT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Est Runtime</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_STATUS_RESULT__EST_RUNTIME = STATUS_RESULT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Pending Status Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_STATUS_RESULT_FEATURE_COUNT = STATUS_RESULT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Pending Status Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PENDING_STATUS_RESULT_OPERATION_COUNT = STATUS_RESULT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.avatar.status.impl.ErrorStatusResultImpl <em>Error Status Result</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.status.impl.ErrorStatusResultImpl
+	 * @see de.avatar.status.impl.StatusPackageImpl#getErrorStatusResult()
+	 * @generated
+	 */
+	int ERROR_STATUS_RESULT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_STATUS_RESULT__ID = STATUS_RESULT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_STATUS_RESULT__NAME = STATUS_RESULT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Username</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_STATUS_RESULT__USERNAME = STATUS_RESULT__USERNAME;
+
+	/**
+	 * The feature id for the '<em><b>Created</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_STATUS_RESULT__CREATED = STATUS_RESULT__CREATED;
+
+	/**
+	 * The feature id for the '<em><b>Changed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_STATUS_RESULT__CHANGED = STATUS_RESULT__CHANGED;
+
+	/**
+	 * The feature id for the '<em><b>Response</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_STATUS_RESULT__RESPONSE = STATUS_RESULT__RESPONSE;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_STATUS_RESULT__STATUS = STATUS_RESULT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Error Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_STATUS_RESULT__ERROR_MESSAGE = STATUS_RESULT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Error Status Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_STATUS_RESULT_FEATURE_COUNT = STATUS_RESULT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Error Status Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_STATUS_RESULT_OPERATION_COUNT = STATUS_RESULT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.status.impl.QueryStatusImpl <em>Query Status</em>}' class.

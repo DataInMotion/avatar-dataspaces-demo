@@ -22,6 +22,7 @@ import org.osgi.service.component.annotations.Reference;
 
 import de.avatar.connector.whiteboard.api.ConnectorStatusWhiteboard;
 import de.avatar.connector.whiteboard.api.StatusService;
+import de.avatar.generator.api.api.AvatarGenerator;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
@@ -36,6 +37,9 @@ public class StatusServiceImpl implements StatusService {
 
 	@Reference
 	ConnectorStatusWhiteboard statusWhiteboard;
+	
+	@Reference
+	AvatarGenerator avatarGenerator;
 
 	private static final Logger LOGGER = Logger.getLogger(StatusServiceImpl.class.getName());
 	
@@ -76,7 +80,13 @@ public class StatusServiceImpl implements StatusService {
 	 */
 	public void updateStatus(QueryResponse response) {
 		
-//		TODO: if everything is done, it should trigger the AvatarGenerator
+//		if some connector is done, it should trigger the AvatarGenerator
+		response.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
+			if(QueryStatusType.SUCCESS.equals(scs.getStatusResult().getStatus())) {
+				avatarGenerator.aggregateResponse(scs.getStatusResult().getResponse());
+			}
+		});
+		
 		if(QueryStatusType.SUCCESS.equals(response.getStatus())) {
 			cachedStatuses.remove(response.getRequestId());
 			cachedRequests.remove(response.getRequestId());
@@ -84,7 +94,6 @@ public class StatusServiceImpl implements StatusService {
 			if(response.getRequestId() != null) {
 				cachedStatuses.put(response.getRequestId(), response);
 			}
-
 		}
 	}
 

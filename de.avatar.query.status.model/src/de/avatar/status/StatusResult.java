@@ -13,8 +13,6 @@
  */
 package de.avatar.status;
 
-import org.eclipse.emf.ecore.EObject;
-
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
@@ -34,7 +32,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface StatusResult extends EObject {
+public interface StatusResult extends Status {
 	/**
 	 * Returns the value of the '<em><b>Status</b></em>' attribute.
 	 * The literals are from the enumeration {@link de.avatar.status.QueryStatusType}.

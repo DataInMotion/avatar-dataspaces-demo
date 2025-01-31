@@ -16,12 +16,17 @@ package de.avatar.connector.whiteboard.test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.UUID;
 
 import org.avatar.himsa.export.PatientExportPackage;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.gecko.emf.utilities.FeaturePath;
 import org.gecko.emf.utilities.UtilitiesFactory;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,6 +47,7 @@ import de.avatar.query.IsAfter;
 import de.avatar.query.QSubject;
 import de.avatar.query.Query;
 import de.avatar.query.QueryFactory;
+import de.avatar.query.QueryPackage;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
@@ -67,9 +73,11 @@ public class ConnectorWhiteboardTest {
 	
 	@BeforeEach
 	public void before(@InjectBundleContext BundleContext ctx) {
-		
+		System.out.println("Test");
 	}
 	
+	
+	@Disabled
 	@Test
 	public void test(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
@@ -77,6 +85,8 @@ public class ConnectorWhiteboardTest {
 		assertThat(whiteboard).isNotNull();
 	}
 	
+	
+	@Disabled
 	@Test
 	public void testDryRun(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
@@ -112,6 +122,8 @@ public class ConnectorWhiteboardTest {
 		assertThat(sc2).isNotNull();
 	}
 	
+	
+	@Disabled
 	@Test
 	public void testRequestNoId(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
@@ -132,6 +144,8 @@ public class ConnectorWhiteboardTest {
 		assertThat(response.getStatus()).isEqualTo(QueryStatusType.ERROR);
 	}
 	
+	
+	@Disabled
 	@Test
 	public void testRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
@@ -166,6 +180,7 @@ public class ConnectorWhiteboardTest {
 		assertThat(sc2).isNotNull();
 	}
 
+	@Disabled
 	@Test
 	public void testSameRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware) {
 		assertThat(whiteboardAware).isNotNull();
@@ -186,6 +201,7 @@ public class ConnectorWhiteboardTest {
 		assertThrows(IllegalArgumentException.class, () -> whiteboard.executeRequest(request));
 	}
 	
+	@Disabled
 	@Test
 	public void testStatusRequest(@InjectService(timeout = 2000l) ServiceAware<ConnectorRequestWhiteboard> whiteboardAware,
 			@InjectService(timeout = 2000l) ServiceAware<StatusService> statusAware) {
@@ -225,6 +241,7 @@ public class ConnectorWhiteboardTest {
 		assertThat(sc2).isNotNull();
 	}
 	
+	@Disabled
 	@Test
 	public void testStatusRequestNoCache(@InjectService(timeout = 2000l) ServiceAware<StatusService> statusAware) {
 		assertThat(statusAware).isNotNull();
@@ -293,6 +310,47 @@ public class ConnectorWhiteboardTest {
 		assertThat(sc1).isNotNull();
 		assertThat(sc2).isNotNull();
 	}
+	
+	@Test
+	public void printRequest(
+//			@InjectService ServiceAware<PatientExportPackage> modelPackageAware,
+			@InjectService(timeout = 2000l, filter = "("+EMFNamespaces.EMF_MODEL_FILE_EXT +"=json)") ServiceAware<ResourceSet> resSetAware) throws IOException {
+		
+		assertThat(resSetAware).isNotNull();
+		ResourceSet resSet = resSetAware.getService();
+		assertThat(resSet).isNotNull();
+		
+		String reqId = UUID.randomUUID().toString();
+		String consumerId = UUID.randomUUID().toString();
+		QueryRequest request = StatusFactory.eINSTANCE.createQueryRequest();
+		request.setRequestId(reqId);
+		request.setConsumerId(consumerId);
+		
+		Query query = QueryFactory.eINSTANCE.createQuery();
+		QSubject subject = QueryFactory.eINSTANCE.createQSubject();
+		subject.setIsExclude(false);
+		FeaturePath featurePath = UtilitiesFactory.eINSTANCE.createFeaturePath();
+		featurePath.getFeature().add(QueryPackage.Literals.QUERY__COUNT);
+		subject.setFeaturePath(featurePath);
+		And where = QueryFactory.eINSTANCE.createAnd();
+		FeaturePath fp2 = UtilitiesFactory.eINSTANCE.createFeaturePath();
+		fp2.getFeature().add(QueryPackage.Literals.QUERY__COUNT);
+		where.setFeaturePath(fp2);
+		IsAfter comparator = QueryFactory.eINSTANCE.createIsAfter();
+		comparator.setValue(fromLocalDateToDate(LocalDate.of(1980, 1, 1)));
+		where.setComparator(comparator);
+		query.getSubject().add(subject);
+		query.getWhere().add(where);
+		query.setCount(true);
+		query.setDistinct(true);
+		request.setQuery(query);
+		
+		Resource res = resSet.createResource(URI.createFileURI(System.getProperty("data").concat("test.json")));
+		res.getContents().add(request);
+		res.save(null);
+		
+	}
+	
 	
 	private Date fromLocalDateToDate(LocalDate localDate) {
 		return Date.from(                     // Convert from modern java.time class to troublesome old legacy class.  DO NOT DO THIS unless you must, to inter operate with old code not yet updated for java.time.

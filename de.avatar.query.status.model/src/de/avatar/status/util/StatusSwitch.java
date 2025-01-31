@@ -104,6 +104,7 @@ public class StatusSwitch<T> extends Switch<T> {
 			case StatusPackage.STATUS_RESULT: {
 				StatusResult statusResult = (StatusResult)theEObject;
 				T result = caseStatusResult(statusResult);
+				if (result == null) result = caseStatus(statusResult);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -111,6 +112,7 @@ public class StatusSwitch<T> extends Switch<T> {
 				PendingStatusResult pendingStatusResult = (PendingStatusResult)theEObject;
 				T result = casePendingStatusResult(pendingStatusResult);
 				if (result == null) result = caseStatusResult(pendingStatusResult);
+				if (result == null) result = caseStatus(pendingStatusResult);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -118,6 +120,7 @@ public class StatusSwitch<T> extends Switch<T> {
 				ErrorStatusResult errorStatusResult = (ErrorStatusResult)theEObject;
 				T result = caseErrorStatusResult(errorStatusResult);
 				if (result == null) result = caseStatusResult(errorStatusResult);
+				if (result == null) result = caseStatus(errorStatusResult);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
