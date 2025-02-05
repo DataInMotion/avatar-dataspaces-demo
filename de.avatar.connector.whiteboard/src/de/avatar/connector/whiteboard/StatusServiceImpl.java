@@ -14,6 +14,7 @@
 package de.avatar.connector.whiteboard;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
@@ -23,8 +24,11 @@ import org.osgi.service.component.annotations.Reference;
 import de.avatar.connector.whiteboard.api.ConnectorStatusWhiteboard;
 import de.avatar.connector.whiteboard.api.StatusService;
 import de.avatar.generator.api.api.AvatarGenerator;
+import de.avatar.model.connector.EndpointResponse;
+import de.avatar.model.connector.ResponseCode;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusResponse;
 import de.avatar.status.QueryStatusType;
 
 /**
@@ -37,12 +41,12 @@ public class StatusServiceImpl implements StatusService {
 
 	@Reference
 	ConnectorStatusWhiteboard statusWhiteboard;
-	
+
 	@Reference
 	AvatarGenerator avatarGenerator;
 
 	private static final Logger LOGGER = Logger.getLogger(StatusServiceImpl.class.getName());
-	
+
 	Map<String, QueryRequest> cachedRequests = new ConcurrentHashMap<>();
 	Map<String, QueryResponse> cachedStatuses = new ConcurrentHashMap<>();
 
@@ -78,23 +82,36 @@ public class StatusServiceImpl implements StatusService {
 	 * (non-Javadoc)
 	 * @see de.avatar.connector.whiteboard.api.StatusService#updateStatus(de.avatar.status.QueryResponse)
 	 */
-	public void updateStatus(QueryResponse response) {
-		
-//		if some connector is done, it should trigger the AvatarGenerator
-		response.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
-			if(QueryStatusType.SUCCESS.equals(scs.getStatusResult().getStatus())) {
-				avatarGenerator.aggregateResponse(scs.getStatusResult().getResponse());
-			}
-		});
-		
-		if(QueryStatusType.SUCCESS.equals(response.getStatus())) {
-			cachedStatuses.remove(response.getRequestId());
-			cachedRequests.remove(response.getRequestId());
-		} else {
-			if(response.getRequestId() != null) {
-				cachedStatuses.put(response.getRequestId(), response);
-			}
+	//	public void updateStatus(QueryResponse response) {
+	//		
+	////		if some connector is done, it should trigger the AvatarGenerator
+	//		response.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
+	//			if(QueryStatusType.SUCCESS.equals(scs.getStatusResult().getStatus())) {
+	//				avatarGenerator.aggregateResponse(scs.getStatusResult().getResponse());
+	//			}
+	//		});
+	//		
+	//		if(QueryStatusType.SUCCESS.equals(response.getStatus())) {
+	//			cachedStatuses.remove(response.getRequestId());
+	//			cachedRequests.remove(response.getRequestId());
+	//		} else {
+	//			if(response.getRequestId() != null) {
+	//				cachedStatuses.put(response.getRequestId(), response);
+	//			}
+	//		}
+	//	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.StatusService#updateStatus(de.avatar.model.connector.EndpointResponse)
+	 */
+	@Override
+	public void updateStatus(EndpointResponse endpointResponse) {
+
+		if(ResponseCode.OK.equals(endpointResponse.getCode())) {
+			avatarGenerator.aggregateResponse(endpointResponse);
 		}
+
 	}
 
 	/* 
@@ -102,16 +119,37 @@ public class StatusServiceImpl implements StatusService {
 	 * @see de.avatar.connector.whiteboard.api.StatusService#executeStatusRequest(java.lang.String)
 	 */
 	@Override
-	public QueryResponse executeStatusRequest(String requestId) {
+	public QueryStatusResponse executeStatusRequest(String requestId) {
 
 		QueryRequest request = getCachedRequest(requestId);
 		if(request == null) {
 			LOGGER.severe(String.format("QueryRequest with id %s is NOT already cached. This should not be the case!", requestId));
 			throw new IllegalArgumentException(String.format("QueryRequest with id %s is NOT already cached. This should not be the case!", requestId));
 		}
-		QueryResponse response = statusWhiteboard.executeStatusRequest(request);
+		QueryStatusResponse response = statusWhiteboard.executeStatusRequest(request);
 		updateStatus(response);
 		return response;
 	}
 
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.StatusService#updateStatus(de.avatar.status.QueryStatusResponse)
+	 */
+	@Override
+	public void updateStatus(QueryStatusResponse statusResponse) {
+		Objects.requireNonNull(statusResponse.getRequestId(), "Request ID cannot be null in QueryStatusResponse");
+		//	if some connector is done, it should trigger the AvatarGenerator
+		statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
+			if(QueryStatusType.SUCCESS.equals(scs.getStatusResult().getStatus())) {
+				avatarGenerator.aggregateResponse(scs.getStatusResult().getResponse());
+			}
+		});
+
+		if(QueryStatusType.SUCCESS.equals(statusResponse.getStatus())) {
+			cachedStatuses.remove(statusResponse.getRequestId());
+			cachedRequests.remove(statusResponse.getRequestId());
+		} else {
+			cachedStatuses.put(statusResponse.getRequestId(), statusResponse);
+		}
+	}
 }

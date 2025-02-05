@@ -38,25 +38,28 @@ import org.osgi.annotation.versioning.ProviderType;
 public interface Comparator extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Suitable For Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link de.avatar.query.RangeComparatorType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Suitable For Type</em>' attribute.
-	 * @see #setSuitableForType(String)
+	 * @see de.avatar.query.RangeComparatorType
+	 * @see #setSuitableForType(RangeComparatorType)
 	 * @see de.avatar.query.QueryPackage#getComparator_SuitableForType()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getSuitableForType();
+	RangeComparatorType getSuitableForType();
 
 	/**
 	 * Sets the value of the '{@link de.avatar.query.Comparator#getSuitableForType <em>Suitable For Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Suitable For Type</em>' attribute.
+	 * @see de.avatar.query.RangeComparatorType
 	 * @see #getSuitableForType()
 	 * @generated
 	 */
-	void setSuitableForType(String value);
+	void setSuitableForType(RangeComparatorType value);
 
 	/**
 	 * Returns the value of the '<em><b>Where</b></em>' container reference.

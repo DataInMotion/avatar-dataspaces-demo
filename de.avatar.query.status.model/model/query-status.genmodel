@@ -31,7 +31,9 @@
     <genClasses ecoreClass="query-status.ecore#//QueryResponse">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/requestId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/status"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//QueryResponse/detailedStatus"/>
+    </genClasses>
+    <genClasses ecoreClass="query-status.ecore#//QueryStatusResponse">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//QueryStatusResponse/detailedStatus"/>
     </genClasses>
     <genClasses ecoreClass="query-status.ecore#//DetailedQueryStatus">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//DetailedQueryStatus/singleConnectorQueryStatus"/>

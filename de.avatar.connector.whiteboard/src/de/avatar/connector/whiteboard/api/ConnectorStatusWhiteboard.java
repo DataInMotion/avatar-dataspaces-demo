@@ -14,7 +14,7 @@
 package de.avatar.connector.whiteboard.api;
 
 import de.avatar.status.QueryRequest;
-import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusResponse;
 
 /**
  * 
@@ -23,6 +23,6 @@ import de.avatar.status.QueryResponse;
  */
 public interface ConnectorStatusWhiteboard extends ConnectorWhiteboard{
 	
-	QueryResponse executeStatusRequest(QueryRequest request);
+	QueryStatusResponse executeStatusRequest(QueryRequest request);
 
 }

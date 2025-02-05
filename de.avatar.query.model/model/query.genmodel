@@ -13,6 +13,15 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//SortOrder/DESC"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//SortOrder/ASC"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//RangeComparatorType">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RangeComparatorType/NUMERIC"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RangeComparatorType/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RangeComparatorType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RangeComparatorType/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RangeComparatorType/ENUM"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RangeComparatorType/MIXED"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RangeComparatorType/OTHER"/>
+    </genEnums>
     <genClasses ecoreClass="query.ecore#//Query">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Query/subject"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Query/from"/>
@@ -54,32 +63,32 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference query.ecore#//Comparator/where"/>
       <genOperations ecoreOperation="query.ecore#//Comparator/compare"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="query.ecore#//StringComparator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//StringComparator/value"/>
+    <genClasses image="false" ecoreClass="query.ecore#//SimpleValueComparator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//SimpleValueComparator/value"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//StringComparator"/>
     <genClasses ecoreClass="query.ecore#//EndsWith"/>
     <genClasses ecoreClass="query.ecore#//StartWith"/>
     <genClasses ecoreClass="query.ecore#//Contains"/>
     <genClasses ecoreClass="query.ecore#//Like"/>
-    <genClasses image="false" ecoreClass="query.ecore#//DateComparator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//DateComparator/value"/>
-    </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//DateComparator"/>
     <genClasses ecoreClass="query.ecore#//IsBefore"/>
     <genClasses ecoreClass="query.ecore#//IsAfter"/>
     <genClasses ecoreClass="query.ecore#//IsBeforeOrEqual"/>
     <genClasses ecoreClass="query.ecore#//IsAfterOrEqual"/>
-    <genClasses ecoreClass="query.ecore#//IsInRange"/>
-    <genClasses image="false" ecoreClass="query.ecore#//NumberComparator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//NumberComparator/value"/>
+    <genClasses ecoreClass="query.ecore#//IsInRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//IsInRange/startValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//IsInRange/endValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//IsInRange/startIncluded"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//IsInRange/endIncluded"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//NumberComparator"/>
     <genClasses ecoreClass="query.ecore#//Lt"/>
     <genClasses ecoreClass="query.ecore#//Lte"/>
     <genClasses ecoreClass="query.ecore#//Gte"/>
     <genClasses ecoreClass="query.ecore#//Gt"/>
     <genClasses ecoreClass="query.ecore#//Eq"/>
-    <genClasses ecoreClass="query.ecore#//BoolComparator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//BoolComparator/value"/>
-    </genClasses>
+    <genClasses ecoreClass="query.ecore#//BoolComparator"/>
     <genClasses ecoreClass="query.ecore#//IsBool"/>
     <genClasses ecoreClass="query.ecore#//SortEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//SortEntity/sortOrder"/>
@@ -90,9 +99,7 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference query.ecore#//Operation/subject"/>
       <genOperations ecoreOperation="query.ecore#//Operation/execute"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="query.ecore#//EnumComparator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//EnumComparator/value"/>
-    </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//EnumComparator"/>
     <genClasses ecoreClass="query.ecore#//IsLiteral"/>
   </genPackages>
 </genmodel:GenModel>

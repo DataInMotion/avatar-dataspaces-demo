@@ -40,8 +40,10 @@ import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.EcoreParameter;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
+import de.avatar.model.connector.ResponseCode;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusType;
 import de.avatar.status.StatusFactory;
 
 @Component(immediate = true, name = "ConnectorRequestWhiteboard", service = ConnectorRequestWhiteboard.class)
@@ -135,23 +137,14 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 	 */
 	@Override
 	public QueryResponse executeDryRun(QueryRequest request) {		
-		QueryResponse queryResponse = StatusFactory.eINSTANCE.createQueryResponse();
-		queryResponse.setRequestId(request.getRequestId());
-		connectors.forEach(c -> {
-			ConnectorEndpoint endpoint = c.getEndpoints().stream().filter(e -> e.getId().contains("dryrun")).findFirst().orElse(null);
-			if(endpoint != null) {
-				EndpointRequest endpointReq = ConnectorWhiteboardHelper.convertQueryToEndpointRequest(request);
-				endpointReq.setEndpoint(endpoint);
-				EcoreParameter parameter = AConnectorFactory.eINSTANCE.createEcoreParameter();
-				parameter.setName("request");
-				parameter.setNumber((short)0);
-				parameter.setValue(request);
-				endpointReq.getParameter().add(parameter);
-				EndpointResponse enpointRes = c.dryRequest(endpointReq);
-				ConnectorWhiteboardHelper.addSingleConnectorQueryStatus(queryResponse, enpointRes, c);
-			}
-		});	
-		return ConnectorWhiteboardHelper.derermineGlobalResponseStatus(queryResponse, request);
+		try {
+			QueryResponse response = doExecuteRequest(request, "dryrun");
+			return response;
+		} catch(Exception e) {
+			LOGGER.severe(String.format("Something went wrong when executing dry run request %s", request.getRequestId()));
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	
@@ -165,15 +158,22 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 			LOGGER.severe(String.format("QueryRequest with id %s is already cached. This should not be the case!", request.getRequestId()));
 			throw new IllegalArgumentException(String.format("QueryRequest with id %s is already cached. This should not be the case!", request.getRequestId()));
 		}
-		statusService.cacheRequest(request);		
-		QueryResponse response = doExecuteRequest(request, "request");
-		statusService.updateStatus(response);
-		return response;
+		try {
+			QueryResponse response = doExecuteRequest(request, "request");
+			statusService.cacheRequest(request);			
+			return response;
+		} catch(Exception e) {
+			LOGGER.severe(String.format("Something went wrong when executing request %s", request.getRequestId()));
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	private QueryResponse doExecuteRequest(QueryRequest request, String reqType) {
+		
 		QueryResponse queryResponse = StatusFactory.eINSTANCE.createQueryResponse();
 		queryResponse.setRequestId(request.getRequestId());
+		queryResponse.setStatus(QueryStatusType.SUCCESS);
 		connectors.forEach(c -> {
 			ConnectorEndpoint endpoint = c.getEndpoints().stream().filter(e -> e.getId().contains(reqType)).findFirst().orElse(null);
 			if(endpoint != null) {
@@ -184,11 +184,21 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 				parameter.setNumber((short)0);
 				parameter.setValue(request);
 				endpointReq.getParameter().add(parameter);
-				EndpointResponse enpointRes = c.executeRequest(endpointReq);
-				ConnectorWhiteboardHelper.addSingleConnectorQueryStatus(queryResponse, enpointRes, c);	
+				try {
+					EndpointResponse endpointRes = "request".equals(reqType) ? c.executeRequest(endpointReq) : c.dryRequest(endpointReq);
+					endpointRes.setSourceId(c.getInfo().getId());
+					statusService.updateStatus(endpointRes);
+					if(ResponseCode.ERROR.equals(endpointRes.getCode())) {
+						queryResponse.setStatus(QueryStatusType.ERROR);
+					} else if(QueryStatusType.SUCCESS.equals(queryResponse.getStatus()) && ResponseCode.PENDING.equals(endpointRes.getCode())) {
+						queryResponse.setStatus(QueryStatusType.PENDING);	
+					}
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
 			}			
 		});	
-		return ConnectorWhiteboardHelper.derermineGlobalResponseStatus(queryResponse, request);
+		return queryResponse;
 	}
 
 	

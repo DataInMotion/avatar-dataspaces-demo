@@ -15,7 +15,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-import org.gecko.emf.rest.annotations.RequireEMFMessageBodyReaderWriter;
+import org.gecko.emf.json.constants.EMFJs;
+import org.gecko.emf.rest.annotations.EMFResourceOptions;
+import org.gecko.emf.rest.annotations.ResourceOption;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
@@ -27,6 +29,7 @@ import de.avatar.connector.whiteboard.api.StatusService;
 import de.avatar.generator.api.api.AvatarGenerator;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusResponse;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -76,7 +79,8 @@ public class QueryRestResource {
 	@Path("/query")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response query( QueryRequest request) {
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response query(QueryRequest request) {
 		System.out.println("GOT REQUEST!!");
 		try {
 			QueryResponse response = requestWhiteboard.executeRequest(request);
@@ -91,9 +95,9 @@ public class QueryRestResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response status(@PathParam("requestId") String requestId) {
 		try {
-			QueryResponse response = statusService.executeStatusRequest(requestId);
+			QueryStatusResponse response = statusService.executeStatusRequest(requestId);
 			return Response.ok(response).build();
-		} catch(IllegalArgumentException e) {
+		} catch(IllegalArgumentException e) {			
 			return Response.status(500, e.getMessage()).build();
 		}
 	}
@@ -110,10 +114,8 @@ public class QueryRestResource {
 						header("Content-Disposition", "attachment; filename=".concat(requestId).concat(".zip")).
 						build();
 			} catch(Exception e) {
-				return Response.serverError().build();
+				return Response.status(500, e.getMessage()).build();
 			}
-			
-			
 		} else {
 			return Response.noContent().build();
 		}

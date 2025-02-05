@@ -89,6 +89,13 @@ public class StatusSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case StatusPackage.QUERY_STATUS_RESPONSE: {
+				QueryStatusResponse queryStatusResponse = (QueryStatusResponse)theEObject;
+				T result = caseQueryStatusResponse(queryStatusResponse);
+				if (result == null) result = caseQueryResponse(queryStatusResponse);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case StatusPackage.DETAILED_QUERY_STATUS: {
 				DetailedQueryStatus detailedQueryStatus = (DetailedQueryStatus)theEObject;
 				T result = caseDetailedQueryStatus(detailedQueryStatus);
@@ -168,6 +175,21 @@ public class StatusSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseQueryResponse(QueryResponse object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Query Status Response</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Query Status Response</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseQueryStatusResponse(QueryStatusResponse object) {
 		return null;
 	}
 

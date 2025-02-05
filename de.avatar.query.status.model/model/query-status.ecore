@@ -35,6 +35,8 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//QueryStatusType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QueryStatusResponse" eSuperTypes="#//QueryResponse">
     <eStructuralFeatures xsi:type="ecore:EReference" name="detailedStatus" eType="#//DetailedQueryStatus"
         containment="true"/>
   </eClassifiers>
@@ -53,7 +55,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="SingleConnectorQueryStatus">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectorId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectorName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="statusResult" eType="#//StatusResult"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statusResult" eType="#//StatusResult"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StatusResult" eSuperTypes="#//Status">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//QueryStatusType"/>

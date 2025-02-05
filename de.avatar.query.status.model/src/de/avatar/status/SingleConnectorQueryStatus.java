@@ -82,22 +82,22 @@ public interface SingleConnectorQueryStatus extends EObject {
 	void setConnectorName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Status Result</b></em>' reference.
+	 * Returns the value of the '<em><b>Status Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Status Result</em>' reference.
+	 * @return the value of the '<em>Status Result</em>' containment reference.
 	 * @see #setStatusResult(StatusResult)
 	 * @see de.avatar.status.StatusPackage#getSingleConnectorQueryStatus_StatusResult()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	StatusResult getStatusResult();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.status.SingleConnectorQueryStatus#getStatusResult <em>Status Result</em>}' reference.
+	 * Sets the value of the '{@link de.avatar.status.SingleConnectorQueryStatus#getStatusResult <em>Status Result</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Status Result</em>' reference.
+	 * @param value the new value of the '<em>Status Result</em>' containment reference.
 	 * @see #getStatusResult()
 	 * @generated
 	 */

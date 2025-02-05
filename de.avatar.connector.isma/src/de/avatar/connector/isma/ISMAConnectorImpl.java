@@ -15,6 +15,8 @@ package de.avatar.connector.isma;
 import static java.util.Objects.nonNull;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,9 +49,26 @@ import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.ProtocolType;
 import de.avatar.model.connector.StatusType;
 import de.avatar.model.connector.helper.ConnectorHelper;
+import de.avatar.query.And;
+import de.avatar.query.Comparator;
+import de.avatar.query.DateComparator;
+import de.avatar.query.Eq;
+import de.avatar.query.Gt;
+import de.avatar.query.Gte;
+import de.avatar.query.IsAfter;
+import de.avatar.query.IsAfterOrEqual;
+import de.avatar.query.IsBefore;
+import de.avatar.query.IsBeforeOrEqual;
+import de.avatar.query.IsInRange;
+import de.avatar.query.Lt;
+import de.avatar.query.Lte;
+import de.avatar.query.Not;
+import de.avatar.query.NumberComparator;
+import de.avatar.query.Or;
 import de.avatar.query.QSubject;
 import de.avatar.query.QWhere;
 import de.avatar.query.Query;
+import de.avatar.query.StringComparator;
 import de.avatar.status.QueryRequest;
 
 @Component(immediate = true, name = "ISMAConnector", property = {
@@ -65,6 +84,8 @@ public class ISMAConnectorImpl implements AvatarConnector {
 	private AConnectorFactory connectorFactory;
 
 	private static final Logger LOGGER = Logger.getLogger(ISMAConnectorImpl.class.getName());
+	private final static DateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
+
 	private long startTimestamp;
 	private ComponentServiceObjects<ResourceSet> rsFactory;
 
@@ -101,7 +122,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 		eps.add(ep);
 		ep = connectorFactory.createConnectorEndpoint();
 		ep.setProtocol(ProtocolType.HTTP_REST);
-		ep.setUri("http://localhost:8088/himsa/rest/request");
+		ep.setUri("http://localhost:8088/himsa/rest/patient/query");
 		ep.setId("rest_isma_himsa_request");
 		ep.setName("ISMA HIMSA Rest Endpoint for Request");	
 		eps.add(ep);
@@ -206,21 +227,21 @@ public class ISMAConnectorImpl implements AvatarConnector {
 			String reqUri = request.getEndpoint().getUri();
 
 			if(request.getEndpoint().getId().contains("status")) {
-				reqUri = reqUri.concat("/").concat(request.getSourceId());
+				reqUri = reqUri.concat("/").concat(request.getId());
 				ResourceSet set = rsFactory.getService();
 				try {
 					Resource res = set.createResource(URI.createURI(reqUri), "application/json");
 					return sendRequest(request, res);
 				} catch (IOException e) {
 					e.printStackTrace();
-					LOGGER.severe(String.format("Error while sending Dry Run Request to ISMA", e.getMessage()));
+					LOGGER.severe(String.format("Error while sending request to ISMA", e.getMessage()));
 					return null;
 				} 
 				finally {
 					rsFactory.ungetService(set);
 				}
 			} else {
-				reqUri = reqUri.concat("/").concat(request.getSourceId());
+				reqUri = reqUri.concat("?");
 				ResourceSet set = rsFactory.getService();
 				Resource res = null;
 				try {
@@ -232,25 +253,56 @@ public class ISMAConnectorImpl implements AvatarConnector {
 //							subject are the projections
 							String projections = "";
 							for(QSubject subject : query.getSubject()) {
-								projections += "projections=";
+								projections = "projections=";
 								for(EStructuralFeature feature : subject.getFeaturePath().getFeature()) {
 									projections += feature.getName()+",";
 								}
 								projections = projections.substring(0, projections.length()-1); //to remove the last ","
+								reqUri += projections.concat("&");
 							}
 							
 //							where are the feature on which to apply the comparator for the actual query
+							List<String> whereURIs = new ArrayList<>(query.getWhere().size());
 							for(QWhere where : query.getWhere()) {
+								String queryType = "queryType=";
+								String featurePath = "feature=";
+								String comparatorName = "comparatorName=".concat(where.getComparator().eClass().getName());
+								String[] values = buildValueFromComparator(where.getComparator());
 								
+								if(where instanceof And) queryType += "AND";
+								else if(where instanceof Or) queryType += "OR";
+								else if(where instanceof Not) queryType += "NOT";
+								for(EStructuralFeature feature : where.getFeaturePath().getFeature()) {
+									featurePath += feature.getName()+"-";
+								}
+								featurePath = featurePath.substring(0, featurePath.length()-1); //to remove the last ","
+								String whereURI = new StringBuilder("where=").
+										append(queryType).
+										append(",").
+										append(featurePath).
+										append(",").
+										append(comparatorName).
+										append(",").
+										append("comparatorType=").
+										append(values[0]+",").
+										append(values[1] != null ? "start="+values[1]+"," : "").
+										append(values[2] != null ? "end="+values[2]+"," : "").
+										append(values[3] != null ? "includeStart="+values[3]+"," : "").
+										append(values[4] != null ? "includeEnd="+values[4] : "").
+										toString();
+								if(whereURI.endsWith(",")) whereURI = whereURI.substring(0, whereURI.length()-1);
+								whereURIs.add(whereURI);								
 							}
-							
-							boolean count = query.isCount();
-							boolean distinct = query.isDistinct();
-							reqUri = reqUri.
-									concat("?count=").
-									concat(String.valueOf(count)).
-									concat("&distinct=").
-									concat(String.valueOf(distinct));
+							StringBuilder sb = new StringBuilder(reqUri);
+							for(String whereURI : whereURIs) {
+								sb.
+								append(whereURI).
+								append("&");								
+							}
+							reqUri = sb.toString();
+							reqUri = reqUri.substring(0, reqUri.length()-1); //to remove the last "&"
+
+							System.out.println(reqUri);
 							res = set.createResource(URI.createURI(reqUri), "application/json");
 							return sendRequest(request, res);
 						} 
@@ -276,6 +328,57 @@ public class ISMAConnectorImpl implements AvatarConnector {
 			LOGGER.warning(String.format("Request is incomplete"));
 			return ConnectorHelper.validateResponse(request);
 		}
+	}
+	
+	private String[] buildValueFromComparator(Comparator comparator) {
+		String start = null, end = null, includeStart = null, includeEnd = null, comparatorType = null;
+		comparatorType = comparator.getSuitableForType().toString();
+		if(comparator instanceof StringComparator strComparator) {
+			start = (String) strComparator.getValue();
+		}
+		else if(comparator instanceof DateComparator dateComparator) {
+			if(dateComparator instanceof IsBefore) {
+				end = String.valueOf(dateComparator.getValue());
+				includeEnd = "false";
+			} else if(dateComparator instanceof IsBeforeOrEqual) {
+				end = String.valueOf(dateComparator.getValue());
+				includeEnd = "true";
+			} else if(dateComparator instanceof IsAfter) {
+				try {
+					start = String.valueOf(dateComparator.getValue());
+					includeStart = "false";
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			} else if(dateComparator instanceof IsAfterOrEqual) {
+				start = String.valueOf(dateComparator.getValue());
+				includeStart = "true";
+			}
+		} 
+		else if(comparator instanceof NumberComparator numComparator) {
+			if(numComparator instanceof Lt) {
+				end = String.valueOf(numComparator.getValue());
+				includeEnd = "false";
+			} else if(numComparator instanceof Lte) {
+				end = String.valueOf(numComparator.getValue());
+				includeEnd = "true";
+			} else if(numComparator instanceof Gt) {
+				start = String.valueOf(numComparator.getValue());
+				includeStart = "false";
+			} else if(numComparator instanceof Gte) {
+				start = String.valueOf(numComparator.getValue());
+				includeStart = "true";
+			} else if(numComparator instanceof Eq) {
+				start = String.valueOf(numComparator.getValue());
+			}
+		} else if(comparator instanceof IsInRange rangeComparator) {
+			start = String.valueOf(rangeComparator.getStartValue());
+			end = String.valueOf(rangeComparator.getEndValue());
+			includeStart = String.valueOf(rangeComparator.isStartIncluded());
+			includeEnd = String.valueOf(rangeComparator.isEndIncluded());
+		}
+		return new String[] {comparatorType, start, end, includeStart, includeEnd};
 	}
 	
 	private EndpointResponse sendRequest(EndpointRequest request, Resource res) throws IOException {

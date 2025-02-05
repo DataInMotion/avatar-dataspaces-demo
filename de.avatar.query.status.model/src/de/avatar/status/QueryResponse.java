@@ -28,7 +28,6 @@ import org.osgi.annotation.versioning.ProviderType;
  * <ul>
  *   <li>{@link de.avatar.status.QueryResponse#getRequestId <em>Request Id</em>}</li>
  *   <li>{@link de.avatar.status.QueryResponse#getStatus <em>Status</em>}</li>
- *   <li>{@link de.avatar.status.QueryResponse#getDetailedStatus <em>Detailed Status</em>}</li>
  * </ul>
  *
  * @see de.avatar.status.StatusPackage#getQueryResponse()
@@ -83,27 +82,5 @@ public interface QueryResponse extends EObject {
 	 * @generated
 	 */
 	void setStatus(QueryStatusType value);
-
-	/**
-	 * Returns the value of the '<em><b>Detailed Status</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Detailed Status</em>' containment reference.
-	 * @see #setDetailedStatus(DetailedQueryStatus)
-	 * @see de.avatar.status.StatusPackage#getQueryResponse_DetailedStatus()
-	 * @model containment="true"
-	 * @generated
-	 */
-	DetailedQueryStatus getDetailedStatus();
-
-	/**
-	 * Sets the value of the '{@link de.avatar.status.QueryResponse#getDetailedStatus <em>Detailed Status</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Detailed Status</em>' containment reference.
-	 * @see #getDetailedStatus()
-	 * @generated
-	 */
-	void setDetailedStatus(DetailedQueryStatus value);
 
 } // QueryResponse

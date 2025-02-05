@@ -87,6 +87,10 @@ public class StatusAdapterFactory extends AdapterFactoryImpl {
 				return createQueryResponseAdapter();
 			}
 			@Override
+			public Adapter caseQueryStatusResponse(QueryStatusResponse object) {
+				return createQueryStatusResponseAdapter();
+			}
+			@Override
 			public Adapter caseDetailedQueryStatus(DetailedQueryStatus object) {
 				return createDetailedQueryStatusAdapter();
 			}
@@ -159,6 +163,20 @@ public class StatusAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createQueryResponseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.QueryStatusResponse <em>Query Status Response</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.status.QueryStatusResponse
+	 * @generated
+	 */
+	public Adapter createQueryStatusResponseAdapter() {
 		return null;
 	}
 

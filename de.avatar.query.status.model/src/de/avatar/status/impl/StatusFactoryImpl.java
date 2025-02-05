@@ -70,6 +70,7 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 		switch (eClass.getClassifierID()) {
 			case StatusPackage.QUERY_REQUEST: return createQueryRequest();
 			case StatusPackage.QUERY_RESPONSE: return createQueryResponse();
+			case StatusPackage.QUERY_STATUS_RESPONSE: return createQueryStatusResponse();
 			case StatusPackage.DETAILED_QUERY_STATUS: return createDetailedQueryStatus();
 			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS: return createSingleConnectorQueryStatus();
 			case StatusPackage.STATUS_RESULT: return createStatusResult();
@@ -136,6 +137,17 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 	public QueryResponse createQueryResponse() {
 		QueryResponseImpl queryResponse = new QueryResponseImpl();
 		return queryResponse;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public QueryStatusResponse createQueryStatusResponse() {
+		QueryStatusResponseImpl queryStatusResponse = new QueryStatusResponseImpl();
+		return queryStatusResponse;
 	}
 
 	/**

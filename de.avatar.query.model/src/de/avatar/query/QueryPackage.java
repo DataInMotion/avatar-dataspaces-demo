@@ -623,7 +623,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getOperation()
 	 * @generated
 	 */
-	int OPERATION = 34;
+	int OPERATION = 35;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1001,14 +1001,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int COMPARATOR_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.impl.StringComparatorImpl <em>String Comparator</em>}' class.
+	 * The meta object id for the '{@link de.avatar.query.impl.SimpleValueComparatorImpl <em>Simple Value Comparator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.impl.StringComparatorImpl
-	 * @see de.avatar.query.impl.QueryPackageImpl#getStringComparator()
+	 * @see de.avatar.query.impl.SimpleValueComparatorImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getSimpleValueComparator()
 	 * @generated
 	 */
-	int STRING_COMPARATOR = 14;
+	int SIMPLE_VALUE_COMPARATOR = 14;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1017,7 +1017,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
+	int SIMPLE_VALUE_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Where</b></em>' container reference.
@@ -1026,7 +1026,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPARATOR__WHERE = COMPARATOR__WHERE;
+	int SIMPLE_VALUE_COMPARATOR__WHERE = COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1035,16 +1035,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
+	int SIMPLE_VALUE_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>String Comparator</em>' class.
+	 * The number of structural features of the '<em>Simple Value Comparator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
+	int SIMPLE_VALUE_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1053,7 +1053,71 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
+	int SIMPLE_VALUE_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
+
+	/**
+	 * The number of operations of the '<em>Simple Value Comparator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_VALUE_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.avatar.query.impl.StringComparatorImpl <em>String Comparator</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.query.impl.StringComparatorImpl
+	 * @see de.avatar.query.impl.QueryPackageImpl#getStringComparator()
+	 * @generated
+	 */
+	int STRING_COMPARATOR = 15;
+
+	/**
+	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_COMPARATOR__SUITABLE_FOR_TYPE = SIMPLE_VALUE_COMPARATOR__SUITABLE_FOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Where</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_COMPARATOR__WHERE = SIMPLE_VALUE_COMPARATOR__WHERE;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_COMPARATOR__VALUE = SIMPLE_VALUE_COMPARATOR__VALUE;
+
+	/**
+	 * The number of structural features of the '<em>String Comparator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_COMPARATOR_FEATURE_COUNT = SIMPLE_VALUE_COMPARATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Compare</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_COMPARATOR___COMPARE = SIMPLE_VALUE_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>String Comparator</em>' class.
@@ -1062,7 +1126,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
+	int STRING_COMPARATOR_OPERATION_COUNT = SIMPLE_VALUE_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.EndsWithImpl <em>Ends With</em>}' class.
@@ -1072,7 +1136,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getEndsWith()
 	 * @generated
 	 */
-	int ENDS_WITH = 15;
+	int ENDS_WITH = 16;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1136,7 +1200,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getStartWith()
 	 * @generated
 	 */
-	int START_WITH = 16;
+	int START_WITH = 17;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1200,7 +1264,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getContains()
 	 * @generated
 	 */
-	int CONTAINS = 17;
+	int CONTAINS = 18;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1264,7 +1328,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getLike()
 	 * @generated
 	 */
-	int LIKE = 18;
+	int LIKE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1328,7 +1392,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getDateComparator()
 	 * @generated
 	 */
-	int DATE_COMPARATOR = 19;
+	int DATE_COMPARATOR = 20;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1337,7 +1401,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
+	int DATE_COMPARATOR__SUITABLE_FOR_TYPE = SIMPLE_VALUE_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Where</b></em>' container reference.
@@ -1346,7 +1410,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPARATOR__WHERE = COMPARATOR__WHERE;
+	int DATE_COMPARATOR__WHERE = SIMPLE_VALUE_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1355,7 +1419,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
+	int DATE_COMPARATOR__VALUE = SIMPLE_VALUE_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Date Comparator</em>' class.
@@ -1364,7 +1428,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
+	int DATE_COMPARATOR_FEATURE_COUNT = SIMPLE_VALUE_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1373,7 +1437,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
+	int DATE_COMPARATOR___COMPARE = SIMPLE_VALUE_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Date Comparator</em>' class.
@@ -1382,7 +1446,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATE_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
+	int DATE_COMPARATOR_OPERATION_COUNT = SIMPLE_VALUE_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.IsBeforeImpl <em>Is Before</em>}' class.
@@ -1392,7 +1456,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsBefore()
 	 * @generated
 	 */
-	int IS_BEFORE = 20;
+	int IS_BEFORE = 21;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1456,7 +1520,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsAfter()
 	 * @generated
 	 */
-	int IS_AFTER = 21;
+	int IS_AFTER = 22;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1520,7 +1584,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsBeforeOrEqual()
 	 * @generated
 	 */
-	int IS_BEFORE_OR_EQUAL = 22;
+	int IS_BEFORE_OR_EQUAL = 23;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1584,7 +1648,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsAfterOrEqual()
 	 * @generated
 	 */
-	int IS_AFTER_OR_EQUAL = 23;
+	int IS_AFTER_OR_EQUAL = 24;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1648,7 +1712,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsInRange()
 	 * @generated
 	 */
-	int IS_IN_RANGE = 24;
+	int IS_IN_RANGE = 25;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1657,7 +1721,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE__SUITABLE_FOR_TYPE = DATE_COMPARATOR__SUITABLE_FOR_TYPE;
+	int IS_IN_RANGE__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Where</b></em>' container reference.
@@ -1666,16 +1730,43 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE__WHERE = DATE_COMPARATOR__WHERE;
+	int IS_IN_RANGE__WHERE = COMPARATOR__WHERE;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Start Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE__VALUE = DATE_COMPARATOR__VALUE;
+	int IS_IN_RANGE__START_VALUE = COMPARATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>End Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_IN_RANGE__END_VALUE = COMPARATOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Start Included</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_IN_RANGE__START_INCLUDED = COMPARATOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>End Included</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_IN_RANGE__END_INCLUDED = COMPARATOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Is In Range</em>' class.
@@ -1684,7 +1775,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE_FEATURE_COUNT = DATE_COMPARATOR_FEATURE_COUNT + 0;
+	int IS_IN_RANGE_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1693,7 +1784,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE___COMPARE = DATE_COMPARATOR___COMPARE;
+	int IS_IN_RANGE___COMPARE = COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Is In Range</em>' class.
@@ -1702,7 +1793,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_IN_RANGE_OPERATION_COUNT = DATE_COMPARATOR_OPERATION_COUNT + 0;
+	int IS_IN_RANGE_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.NumberComparatorImpl <em>Number Comparator</em>}' class.
@@ -1712,7 +1803,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getNumberComparator()
 	 * @generated
 	 */
-	int NUMBER_COMPARATOR = 25;
+	int NUMBER_COMPARATOR = 26;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1721,7 +1812,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
+	int NUMBER_COMPARATOR__SUITABLE_FOR_TYPE = SIMPLE_VALUE_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Where</b></em>' container reference.
@@ -1730,7 +1821,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPARATOR__WHERE = COMPARATOR__WHERE;
+	int NUMBER_COMPARATOR__WHERE = SIMPLE_VALUE_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1739,7 +1830,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
+	int NUMBER_COMPARATOR__VALUE = SIMPLE_VALUE_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Number Comparator</em>' class.
@@ -1748,7 +1839,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
+	int NUMBER_COMPARATOR_FEATURE_COUNT = SIMPLE_VALUE_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -1757,7 +1848,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
+	int NUMBER_COMPARATOR___COMPARE = SIMPLE_VALUE_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Number Comparator</em>' class.
@@ -1766,7 +1857,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
+	int NUMBER_COMPARATOR_OPERATION_COUNT = SIMPLE_VALUE_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.LtImpl <em>Lt</em>}' class.
@@ -1776,7 +1867,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getLt()
 	 * @generated
 	 */
-	int LT = 26;
+	int LT = 27;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1840,7 +1931,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getLte()
 	 * @generated
 	 */
-	int LTE = 27;
+	int LTE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1904,7 +1995,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getGte()
 	 * @generated
 	 */
-	int GTE = 28;
+	int GTE = 29;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -1968,7 +2059,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getGt()
 	 * @generated
 	 */
-	int GT = 29;
+	int GT = 30;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -2032,7 +2123,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getEq()
 	 * @generated
 	 */
-	int EQ = 30;
+	int EQ = 31;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -2096,7 +2187,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getBoolComparator()
 	 * @generated
 	 */
-	int BOOL_COMPARATOR = 31;
+	int BOOL_COMPARATOR = 32;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -2105,7 +2196,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
+	int BOOL_COMPARATOR__SUITABLE_FOR_TYPE = SIMPLE_VALUE_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Where</b></em>' container reference.
@@ -2114,7 +2205,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPARATOR__WHERE = COMPARATOR__WHERE;
+	int BOOL_COMPARATOR__WHERE = SIMPLE_VALUE_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2123,7 +2214,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
+	int BOOL_COMPARATOR__VALUE = SIMPLE_VALUE_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Bool Comparator</em>' class.
@@ -2132,7 +2223,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
+	int BOOL_COMPARATOR_FEATURE_COUNT = SIMPLE_VALUE_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -2141,7 +2232,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
+	int BOOL_COMPARATOR___COMPARE = SIMPLE_VALUE_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Bool Comparator</em>' class.
@@ -2150,7 +2241,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOL_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
+	int BOOL_COMPARATOR_OPERATION_COUNT = SIMPLE_VALUE_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.IsBoolImpl <em>Is Bool</em>}' class.
@@ -2160,7 +2251,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsBool()
 	 * @generated
 	 */
-	int IS_BOOL = 32;
+	int IS_BOOL = 33;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -2224,7 +2315,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getSortEntity()
 	 * @generated
 	 */
-	int SORT_ENTITY = 33;
+	int SORT_ENTITY = 34;
 
 	/**
 	 * The feature id for the '<em><b>Sort Order</b></em>' attribute.
@@ -2270,7 +2361,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getEnumComparator()
 	 * @generated
 	 */
-	int ENUM_COMPARATOR = 35;
+	int ENUM_COMPARATOR = 36;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -2279,7 +2370,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPARATOR__SUITABLE_FOR_TYPE = COMPARATOR__SUITABLE_FOR_TYPE;
+	int ENUM_COMPARATOR__SUITABLE_FOR_TYPE = SIMPLE_VALUE_COMPARATOR__SUITABLE_FOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Where</b></em>' container reference.
@@ -2288,7 +2379,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPARATOR__WHERE = COMPARATOR__WHERE;
+	int ENUM_COMPARATOR__WHERE = SIMPLE_VALUE_COMPARATOR__WHERE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2297,7 +2388,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPARATOR__VALUE = COMPARATOR_FEATURE_COUNT + 0;
+	int ENUM_COMPARATOR__VALUE = SIMPLE_VALUE_COMPARATOR__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Enum Comparator</em>' class.
@@ -2306,7 +2397,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPARATOR_FEATURE_COUNT = COMPARATOR_FEATURE_COUNT + 1;
+	int ENUM_COMPARATOR_FEATURE_COUNT = SIMPLE_VALUE_COMPARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare</em>' operation.
@@ -2315,7 +2406,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPARATOR___COMPARE = COMPARATOR___COMPARE;
+	int ENUM_COMPARATOR___COMPARE = SIMPLE_VALUE_COMPARATOR___COMPARE;
 
 	/**
 	 * The number of operations of the '<em>Enum Comparator</em>' class.
@@ -2324,7 +2415,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_COMPARATOR_OPERATION_COUNT = COMPARATOR_OPERATION_COUNT + 0;
+	int ENUM_COMPARATOR_OPERATION_COUNT = SIMPLE_VALUE_COMPARATOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.query.impl.IsLiteralImpl <em>Is Literal</em>}' class.
@@ -2334,7 +2425,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getIsLiteral()
 	 * @generated
 	 */
-	int IS_LITERAL = 36;
+	int IS_LITERAL = 37;
 
 	/**
 	 * The feature id for the '<em><b>Suitable For Type</b></em>' attribute.
@@ -2398,7 +2489,17 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.query.impl.QueryPackageImpl#getSortOrder()
 	 * @generated
 	 */
-	int SORT_ORDER = 37;
+	int SORT_ORDER = 38;
+
+	/**
+	 * The meta object id for the '{@link de.avatar.query.RangeComparatorType <em>Range Comparator Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.query.RangeComparatorType
+	 * @see de.avatar.query.impl.QueryPackageImpl#getRangeComparatorType()
+	 * @generated
+	 */
+	int RANGE_COMPARATOR_TYPE = 39;
 
 
 	/**
@@ -2782,6 +2883,27 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EOperation getComparator__Compare();
 
 	/**
+	 * Returns the meta object for class '{@link de.avatar.query.SimpleValueComparator <em>Simple Value Comparator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Simple Value Comparator</em>'.
+	 * @see de.avatar.query.SimpleValueComparator
+	 * @generated
+	 */
+	EClass getSimpleValueComparator();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.query.SimpleValueComparator#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see de.avatar.query.SimpleValueComparator#getValue()
+	 * @see #getSimpleValueComparator()
+	 * @generated
+	 */
+	EAttribute getSimpleValueComparator_Value();
+
+	/**
 	 * Returns the meta object for class '{@link de.avatar.query.StringComparator <em>String Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2790,17 +2912,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EClass getStringComparator();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.StringComparator#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.avatar.query.StringComparator#getValue()
-	 * @see #getStringComparator()
-	 * @generated
-	 */
-	EAttribute getStringComparator_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.EndsWith <em>Ends With</em>}'.
@@ -2853,17 +2964,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getDateComparator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.DateComparator#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.avatar.query.DateComparator#getValue()
-	 * @see #getDateComparator()
-	 * @generated
-	 */
-	EAttribute getDateComparator_Value();
-
-	/**
 	 * Returns the meta object for class '{@link de.avatar.query.IsBefore <em>Is Before</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2914,6 +3014,50 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getIsInRange();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.query.IsInRange#getStartValue <em>Start Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start Value</em>'.
+	 * @see de.avatar.query.IsInRange#getStartValue()
+	 * @see #getIsInRange()
+	 * @generated
+	 */
+	EAttribute getIsInRange_StartValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.query.IsInRange#getEndValue <em>End Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>End Value</em>'.
+	 * @see de.avatar.query.IsInRange#getEndValue()
+	 * @see #getIsInRange()
+	 * @generated
+	 */
+	EAttribute getIsInRange_EndValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.query.IsInRange#isStartIncluded <em>Start Included</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start Included</em>'.
+	 * @see de.avatar.query.IsInRange#isStartIncluded()
+	 * @see #getIsInRange()
+	 * @generated
+	 */
+	EAttribute getIsInRange_StartIncluded();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.query.IsInRange#isEndIncluded <em>End Included</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>End Included</em>'.
+	 * @see de.avatar.query.IsInRange#isEndIncluded()
+	 * @see #getIsInRange()
+	 * @generated
+	 */
+	EAttribute getIsInRange_EndIncluded();
+
+	/**
 	 * Returns the meta object for class '{@link de.avatar.query.NumberComparator <em>Number Comparator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2922,17 +3066,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EClass getNumberComparator();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.NumberComparator#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.avatar.query.NumberComparator#getValue()
-	 * @see #getNumberComparator()
-	 * @generated
-	 */
-	EAttribute getNumberComparator_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.Lt <em>Lt</em>}'.
@@ -2993,17 +3126,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EClass getBoolComparator();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.BoolComparator#isValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.avatar.query.BoolComparator#isValue()
-	 * @see #getBoolComparator()
-	 * @generated
-	 */
-	EAttribute getBoolComparator_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.IsBool <em>Is Bool</em>}'.
@@ -3100,17 +3222,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getEnumComparator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.query.EnumComparator#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.avatar.query.EnumComparator#getValue()
-	 * @see #getEnumComparator()
-	 * @generated
-	 */
-	EAttribute getEnumComparator_Value();
-
-	/**
 	 * Returns the meta object for class '{@link de.avatar.query.IsLiteral <em>Is Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3129,6 +3240,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EEnum getSortOrder();
+
+	/**
+	 * Returns the meta object for enum '{@link de.avatar.query.RangeComparatorType <em>Range Comparator Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Range Comparator Type</em>'.
+	 * @see de.avatar.query.RangeComparatorType
+	 * @generated
+	 */
+	EEnum getRangeComparatorType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3470,6 +3591,24 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EOperation COMPARATOR___COMPARE = eINSTANCE.getComparator__Compare();
 
 		/**
+		 * The meta object literal for the '{@link de.avatar.query.impl.SimpleValueComparatorImpl <em>Simple Value Comparator</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.query.impl.SimpleValueComparatorImpl
+		 * @see de.avatar.query.impl.QueryPackageImpl#getSimpleValueComparator()
+		 * @generated
+		 */
+		EClass SIMPLE_VALUE_COMPARATOR = eINSTANCE.getSimpleValueComparator();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_VALUE_COMPARATOR__VALUE = eINSTANCE.getSimpleValueComparator_Value();
+
+		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.StringComparatorImpl <em>String Comparator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3478,14 +3617,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EClass STRING_COMPARATOR = eINSTANCE.getStringComparator();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute STRING_COMPARATOR__VALUE = eINSTANCE.getStringComparator_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.EndsWithImpl <em>Ends With</em>}' class.
@@ -3538,14 +3669,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass DATE_COMPARATOR = eINSTANCE.getDateComparator();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DATE_COMPARATOR__VALUE = eINSTANCE.getDateComparator_Value();
-
-		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.IsBeforeImpl <em>Is Before</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3596,6 +3719,38 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass IS_IN_RANGE = eINSTANCE.getIsInRange();
 
 		/**
+		 * The meta object literal for the '<em><b>Start Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IS_IN_RANGE__START_VALUE = eINSTANCE.getIsInRange_StartValue();
+
+		/**
+		 * The meta object literal for the '<em><b>End Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IS_IN_RANGE__END_VALUE = eINSTANCE.getIsInRange_EndValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Start Included</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IS_IN_RANGE__START_INCLUDED = eINSTANCE.getIsInRange_StartIncluded();
+
+		/**
+		 * The meta object literal for the '<em><b>End Included</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IS_IN_RANGE__END_INCLUDED = eINSTANCE.getIsInRange_EndIncluded();
+
+		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.NumberComparatorImpl <em>Number Comparator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3604,14 +3759,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EClass NUMBER_COMPARATOR = eINSTANCE.getNumberComparator();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute NUMBER_COMPARATOR__VALUE = eINSTANCE.getNumberComparator_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.LtImpl <em>Lt</em>}' class.
@@ -3672,14 +3819,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EClass BOOL_COMPARATOR = eINSTANCE.getBoolComparator();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BOOL_COMPARATOR__VALUE = eINSTANCE.getBoolComparator_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.IsBoolImpl <em>Is Bool</em>}' class.
@@ -3762,14 +3901,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass ENUM_COMPARATOR = eINSTANCE.getEnumComparator();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENUM_COMPARATOR__VALUE = eINSTANCE.getEnumComparator_Value();
-
-		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.IsLiteralImpl <em>Is Literal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3788,6 +3919,16 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EEnum SORT_ORDER = eINSTANCE.getSortOrder();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.query.RangeComparatorType <em>Range Comparator Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.query.RangeComparatorType
+		 * @see de.avatar.query.impl.QueryPackageImpl#getRangeComparatorType()
+		 * @generated
+		 */
+		EEnum RANGE_COMPARATOR_TYPE = eINSTANCE.getRangeComparatorType();
 
 	}
 

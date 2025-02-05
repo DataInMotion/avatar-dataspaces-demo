@@ -176,9 +176,17 @@ public class QuerySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case QueryPackage.SIMPLE_VALUE_COMPARATOR: {
+				SimpleValueComparator simpleValueComparator = (SimpleValueComparator)theEObject;
+				T result = caseSimpleValueComparator(simpleValueComparator);
+				if (result == null) result = caseComparator(simpleValueComparator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case QueryPackage.STRING_COMPARATOR: {
 				StringComparator stringComparator = (StringComparator)theEObject;
 				T result = caseStringComparator(stringComparator);
+				if (result == null) result = caseSimpleValueComparator(stringComparator);
 				if (result == null) result = caseComparator(stringComparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -187,6 +195,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				EndsWith endsWith = (EndsWith)theEObject;
 				T result = caseEndsWith(endsWith);
 				if (result == null) result = caseStringComparator(endsWith);
+				if (result == null) result = caseSimpleValueComparator(endsWith);
 				if (result == null) result = caseComparator(endsWith);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -195,6 +204,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				StartWith startWith = (StartWith)theEObject;
 				T result = caseStartWith(startWith);
 				if (result == null) result = caseStringComparator(startWith);
+				if (result == null) result = caseSimpleValueComparator(startWith);
 				if (result == null) result = caseComparator(startWith);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -203,6 +213,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				Contains contains = (Contains)theEObject;
 				T result = caseContains(contains);
 				if (result == null) result = caseStringComparator(contains);
+				if (result == null) result = caseSimpleValueComparator(contains);
 				if (result == null) result = caseComparator(contains);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -211,6 +222,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				Like like = (Like)theEObject;
 				T result = caseLike(like);
 				if (result == null) result = caseStringComparator(like);
+				if (result == null) result = caseSimpleValueComparator(like);
 				if (result == null) result = caseComparator(like);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -218,6 +230,7 @@ public class QuerySwitch<T> extends Switch<T> {
 			case QueryPackage.DATE_COMPARATOR: {
 				DateComparator dateComparator = (DateComparator)theEObject;
 				T result = caseDateComparator(dateComparator);
+				if (result == null) result = caseSimpleValueComparator(dateComparator);
 				if (result == null) result = caseComparator(dateComparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -226,6 +239,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				IsBefore isBefore = (IsBefore)theEObject;
 				T result = caseIsBefore(isBefore);
 				if (result == null) result = caseDateComparator(isBefore);
+				if (result == null) result = caseSimpleValueComparator(isBefore);
 				if (result == null) result = caseComparator(isBefore);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -234,6 +248,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				IsAfter isAfter = (IsAfter)theEObject;
 				T result = caseIsAfter(isAfter);
 				if (result == null) result = caseDateComparator(isAfter);
+				if (result == null) result = caseSimpleValueComparator(isAfter);
 				if (result == null) result = caseComparator(isAfter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -242,6 +257,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				IsBeforeOrEqual isBeforeOrEqual = (IsBeforeOrEqual)theEObject;
 				T result = caseIsBeforeOrEqual(isBeforeOrEqual);
 				if (result == null) result = caseDateComparator(isBeforeOrEqual);
+				if (result == null) result = caseSimpleValueComparator(isBeforeOrEqual);
 				if (result == null) result = caseComparator(isBeforeOrEqual);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -250,6 +266,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				IsAfterOrEqual isAfterOrEqual = (IsAfterOrEqual)theEObject;
 				T result = caseIsAfterOrEqual(isAfterOrEqual);
 				if (result == null) result = caseDateComparator(isAfterOrEqual);
+				if (result == null) result = caseSimpleValueComparator(isAfterOrEqual);
 				if (result == null) result = caseComparator(isAfterOrEqual);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -257,7 +274,6 @@ public class QuerySwitch<T> extends Switch<T> {
 			case QueryPackage.IS_IN_RANGE: {
 				IsInRange isInRange = (IsInRange)theEObject;
 				T result = caseIsInRange(isInRange);
-				if (result == null) result = caseDateComparator(isInRange);
 				if (result == null) result = caseComparator(isInRange);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -265,6 +281,7 @@ public class QuerySwitch<T> extends Switch<T> {
 			case QueryPackage.NUMBER_COMPARATOR: {
 				NumberComparator numberComparator = (NumberComparator)theEObject;
 				T result = caseNumberComparator(numberComparator);
+				if (result == null) result = caseSimpleValueComparator(numberComparator);
 				if (result == null) result = caseComparator(numberComparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -273,6 +290,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				Lt lt = (Lt)theEObject;
 				T result = caseLt(lt);
 				if (result == null) result = caseNumberComparator(lt);
+				if (result == null) result = caseSimpleValueComparator(lt);
 				if (result == null) result = caseComparator(lt);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -281,6 +299,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				Lte lte = (Lte)theEObject;
 				T result = caseLte(lte);
 				if (result == null) result = caseNumberComparator(lte);
+				if (result == null) result = caseSimpleValueComparator(lte);
 				if (result == null) result = caseComparator(lte);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -289,6 +308,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				Gte gte = (Gte)theEObject;
 				T result = caseGte(gte);
 				if (result == null) result = caseNumberComparator(gte);
+				if (result == null) result = caseSimpleValueComparator(gte);
 				if (result == null) result = caseComparator(gte);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -297,6 +317,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				Gt gt = (Gt)theEObject;
 				T result = caseGt(gt);
 				if (result == null) result = caseNumberComparator(gt);
+				if (result == null) result = caseSimpleValueComparator(gt);
 				if (result == null) result = caseComparator(gt);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -305,6 +326,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				Eq eq = (Eq)theEObject;
 				T result = caseEq(eq);
 				if (result == null) result = caseNumberComparator(eq);
+				if (result == null) result = caseSimpleValueComparator(eq);
 				if (result == null) result = caseComparator(eq);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -312,6 +334,7 @@ public class QuerySwitch<T> extends Switch<T> {
 			case QueryPackage.BOOL_COMPARATOR: {
 				BoolComparator boolComparator = (BoolComparator)theEObject;
 				T result = caseBoolComparator(boolComparator);
+				if (result == null) result = caseSimpleValueComparator(boolComparator);
 				if (result == null) result = caseComparator(boolComparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -320,6 +343,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				IsBool isBool = (IsBool)theEObject;
 				T result = caseIsBool(isBool);
 				if (result == null) result = caseBoolComparator(isBool);
+				if (result == null) result = caseSimpleValueComparator(isBool);
 				if (result == null) result = caseComparator(isBool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -339,6 +363,7 @@ public class QuerySwitch<T> extends Switch<T> {
 			case QueryPackage.ENUM_COMPARATOR: {
 				EnumComparator enumComparator = (EnumComparator)theEObject;
 				T result = caseEnumComparator(enumComparator);
+				if (result == null) result = caseSimpleValueComparator(enumComparator);
 				if (result == null) result = caseComparator(enumComparator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -347,6 +372,7 @@ public class QuerySwitch<T> extends Switch<T> {
 				IsLiteral isLiteral = (IsLiteral)theEObject;
 				T result = caseIsLiteral(isLiteral);
 				if (result == null) result = caseEnumComparator(isLiteral);
+				if (result == null) result = caseSimpleValueComparator(isLiteral);
 				if (result == null) result = caseComparator(isLiteral);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -562,6 +588,21 @@ public class QuerySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseComparator(Comparator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Simple Value Comparator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Simple Value Comparator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSimpleValueComparator(SimpleValueComparator object) {
 		return null;
 	}
 

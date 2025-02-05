@@ -13,8 +13,9 @@
  */
 package de.avatar.connector.whiteboard.api;
 
+import de.avatar.model.connector.EndpointResponse;
 import de.avatar.status.QueryRequest;
-import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusResponse;
 
 /**
  * 
@@ -28,9 +29,11 @@ public interface StatusService {
 	QueryRequest getCachedRequest(String requestId);
 	
 	void cacheRequest(QueryRequest request);
+		
+	void updateStatus(QueryStatusResponse statusResponse);
 	
-	void updateStatus(QueryResponse response);
+	void updateStatus(EndpointResponse endpointResponse);
 	
-	QueryResponse executeStatusRequest(String requestId);
+	QueryStatusResponse executeStatusRequest(String requestId);
 
 }

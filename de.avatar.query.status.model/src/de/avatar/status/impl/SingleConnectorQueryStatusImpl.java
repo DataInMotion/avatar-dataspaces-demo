@@ -18,6 +18,7 @@ import de.avatar.status.StatusPackage;
 import de.avatar.status.StatusResult;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -82,7 +83,7 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 	protected String connectorName = CONNECTOR_NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getStatusResult() <em>Status Result</em>}' reference.
+	 * The cached value of the '{@link #getStatusResult() <em>Status Result</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getStatusResult()
@@ -163,14 +164,6 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 	 */
 	@Override
 	public StatusResult getStatusResult() {
-		if (statusResult != null && statusResult.eIsProxy()) {
-			InternalEObject oldStatusResult = (InternalEObject)statusResult;
-			statusResult = (StatusResult)eResolveProxy(oldStatusResult);
-			if (statusResult != oldStatusResult) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT, oldStatusResult, statusResult));
-			}
-		}
 		return statusResult;
 	}
 
@@ -179,8 +172,14 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StatusResult basicGetStatusResult() {
-		return statusResult;
+	public NotificationChain basicSetStatusResult(StatusResult newStatusResult, NotificationChain msgs) {
+		StatusResult oldStatusResult = statusResult;
+		statusResult = newStatusResult;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT, oldStatusResult, newStatusResult);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -190,10 +189,31 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 	 */
 	@Override
 	public void setStatusResult(StatusResult newStatusResult) {
-		StatusResult oldStatusResult = statusResult;
-		statusResult = newStatusResult;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT, oldStatusResult, statusResult));
+		if (newStatusResult != statusResult) {
+			NotificationChain msgs = null;
+			if (statusResult != null)
+				msgs = ((InternalEObject)statusResult).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT, null, msgs);
+			if (newStatusResult != null)
+				msgs = ((InternalEObject)newStatusResult).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT, null, msgs);
+			msgs = basicSetStatusResult(newStatusResult, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT, newStatusResult, newStatusResult));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT:
+				return basicSetStatusResult(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -209,8 +229,7 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__CONNECTOR_NAME:
 				return getConnectorName();
 			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT:
-				if (resolve) return getStatusResult();
-				return basicGetStatusResult();
+				return getStatusResult();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

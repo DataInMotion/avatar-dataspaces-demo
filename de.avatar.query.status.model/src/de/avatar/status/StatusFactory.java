@@ -54,6 +54,15 @@ public interface StatusFactory extends EFactory {
 	QueryResponse createQueryResponse();
 
 	/**
+	 * Returns a new object of class '<em>Query Status Response</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Query Status Response</em>'.
+	 * @generated
+	 */
+	QueryStatusResponse createQueryStatusResponse();
+
+	/**
 	 * Returns a new object of class '<em>Detailed Query Status</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

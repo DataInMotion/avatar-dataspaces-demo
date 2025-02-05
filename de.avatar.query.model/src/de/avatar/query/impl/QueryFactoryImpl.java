@@ -110,6 +110,8 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 		switch (eDataType.getClassifierID()) {
 			case QueryPackage.SORT_ORDER:
 				return createSortOrderFromString(eDataType, initialValue);
+			case QueryPackage.RANGE_COMPARATOR_TYPE:
+				return createRangeComparatorTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -125,6 +127,8 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 		switch (eDataType.getClassifierID()) {
 			case QueryPackage.SORT_ORDER:
 				return convertSortOrderToString(eDataType, instanceValue);
+			case QueryPackage.RANGE_COMPARATOR_TYPE:
+				return convertRangeComparatorTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -444,6 +448,26 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	 * @generated
 	 */
 	public String convertSortOrderToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RangeComparatorType createRangeComparatorTypeFromString(EDataType eDataType, String initialValue) {
+		RangeComparatorType result = RangeComparatorType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRangeComparatorTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

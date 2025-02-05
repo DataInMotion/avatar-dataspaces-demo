@@ -67,29 +67,29 @@ public class AvatarGeneratorImpl implements AvatarGenerator {
 	@Override
 	public void aggregateResponse(EndpointResponse response) {
 		String requestId = response.getRequest().getId();
-		String responseId = response.getId();
-		Objects.requireNonNull(responseId, "Response ID cannot be null!");
+		String connectorId = response.getSourceId();
 		Objects.requireNonNull(requestId, "Request ID cannot be null!");
+		Objects.requireNonNull(connectorId, "Source ID cannot be null!");
 		if(aggregateResponseMap.get(requestId) == null) {
 			aggregateResponseMap.put(requestId, new HashMap<String, String>());
 		}
-		if(aggregateResponseMap.get(requestId).containsKey(responseId)) {
+		if(aggregateResponseMap.get(requestId).containsKey(connectorId)) {
 			return;
 		}
 		String filePath = System.getProperty("data").
 				concat(requestId).
 				concat("-").
-				concat(responseId).
+				concat(connectorId).
 				concat(".json");
 		File responseFile = new File(filePath);
 		try {
 			responseFile.createNewFile();
 		} catch(IOException e) {
-			LOGGER.severe(String.format("IOException when creating new file for response with id %s", responseId));
+			LOGGER.severe(String.format("IOException when creating new file for response from connector with id %s", connectorId));
 			e.printStackTrace();
 		}
 
-		aggregateResponseMap.get(requestId).put(responseId, responseFile.getAbsolutePath());
+		aggregateResponseMap.get(requestId).put(connectorId, responseFile.getAbsolutePath());
 
 		ResponseResult result = response.getResult();
 		if(result instanceof EcoreResult ecoreRes) {
@@ -99,7 +99,7 @@ public class AvatarGeneratorImpl implements AvatarGenerator {
 				resource.getContents().add(ecoreRes.getValue());
 				resource.save(null);				
 			} catch(IOException e) {
-				LOGGER.severe(String.format("IOException while saving EcoreResult for response with id %s", responseId));
+				LOGGER.severe(String.format("IOException while saving EcoreResult for response from connector with id %s", connectorId));
 				e.printStackTrace();
 				responseFile.delete();
 			} finally {
@@ -109,7 +109,7 @@ public class AvatarGeneratorImpl implements AvatarGenerator {
 			try {
 				mapper.writeValue(responseFile, javaRes.getValue());				
 			} catch(IOException e) {
-				LOGGER.severe(String.format("Error serializing JavaResult for response with id %s", responseId));
+				LOGGER.severe(String.format("Error serializing JavaResult for response from connector with id %s", connectorId));
 				e.printStackTrace();
 				responseFile.delete();
 			}

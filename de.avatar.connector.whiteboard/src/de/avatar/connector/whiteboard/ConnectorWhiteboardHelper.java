@@ -13,8 +13,7 @@
  */
 package de.avatar.connector.whiteboard;
 
-import java.util.List;
-import java.util.UUID;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.avatar.connector.api.AvatarConnector;
 import de.avatar.model.connector.AConnectorFactory;
@@ -29,7 +28,7 @@ import de.avatar.status.DetailedQueryStatus;
 import de.avatar.status.ErrorStatusResult;
 import de.avatar.status.PendingStatusResult;
 import de.avatar.status.QueryRequest;
-import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.SingleConnectorQueryStatus;
 import de.avatar.status.StatusFactory;
@@ -42,27 +41,7 @@ import de.avatar.status.StatusResult;
  */
 public class ConnectorWhiteboardHelper {
 
-	public static QueryResponse derermineGlobalResponseStatus(QueryResponse response, QueryRequest request) {
-		List<QueryStatusType> statuses = response.
-				getDetailedStatus().
-				getSingleConnectorQueryStatus().
-				stream().
-				map(r -> r.getStatusResult().getStatus()).
-				toList();
-
-		if(statuses.contains(QueryStatusType.PENDING)) {
-			response.setStatus(QueryStatusType.PENDING);
-		} else if(!statuses.contains(QueryStatusType.PENDING) && !statuses.contains(QueryStatusType.SUCCESS)) {
-			response.setStatus(QueryStatusType.ERROR);
-		} else if(statuses.size() == statuses.stream().filter(s -> s.equals(QueryStatusType.SUCCESS)).count()) {
-			response.setStatus(QueryStatusType.SUCCESS);
-		} else {
-			response.setStatus(QueryStatusType.OTHER);
-		}
-		return response;
-	}
-
-	public static void addSingleConnectorQueryStatus(QueryResponse queryResponse, EndpointResponse endpointResponse, AvatarConnector connector) {
+	public static void addSingleConnectorQueryStatus(QueryStatusResponse queryResponse, EndpointResponse endpointResponse, AvatarConnector connector) {
 
 		DetailedQueryStatus detailedStatus = queryResponse.getDetailedStatus();
 		if(detailedStatus == null) {
@@ -74,6 +53,7 @@ public class ConnectorWhiteboardHelper {
 		sgConnQueryStatus.setConnectorName(connector.getInfo().getName());
 		sgConnQueryStatus.setStatusResult(getStatusResult(endpointResponse.getResult()));
 		sgConnQueryStatus.getStatusResult().setStatus(getQueryStatusType(endpointResponse.getCode()));
+		sgConnQueryStatus.getStatusResult().setResponse(EcoreUtil.copy(endpointResponse));
 		detailedStatus.getSingleConnectorQueryStatus().add(sgConnQueryStatus);		
 
 	}
@@ -82,7 +62,6 @@ public class ConnectorWhiteboardHelper {
 		if(responseResult instanceof PendingResult pendingRes) {
 			PendingStatusResult pendingStatusRes = StatusFactory.eINSTANCE.createPendingStatusResult();
 			pendingStatusRes.setEstRuntime(pendingRes.getEstRuntime());
-
 			return pendingStatusRes;
 		}
 		if(responseResult instanceof DryRunResult pendingRes) {
@@ -117,8 +96,8 @@ public class ConnectorWhiteboardHelper {
 
 	public static  EndpointRequest convertQueryToEndpointRequest(QueryRequest queryRequest) {
 		EndpointRequest endpointRequest = AConnectorFactory.eINSTANCE.createEndpointRequest();
-		endpointRequest.setSourceId(queryRequest.getRequestId());
-		endpointRequest.setId(UUID.randomUUID().toString());
+		endpointRequest.setSourceId(queryRequest.getConsumerId());
+		endpointRequest.setId(queryRequest.getRequestId());
 		return endpointRequest;
 	}
 

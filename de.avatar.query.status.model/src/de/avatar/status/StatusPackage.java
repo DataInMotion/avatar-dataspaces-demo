@@ -177,22 +177,13 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	int QUERY_RESPONSE__STATUS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Detailed Status</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUERY_RESPONSE__DETAILED_STATUS = 2;
-
-	/**
 	 * The number of structural features of the '<em>Query Response</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_RESPONSE_FEATURE_COUNT = 3;
+	int QUERY_RESPONSE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Query Response</em>' class.
@@ -204,6 +195,61 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	int QUERY_RESPONSE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.status.impl.QueryStatusResponseImpl <em>Query Status Response</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.status.impl.QueryStatusResponseImpl
+	 * @see de.avatar.status.impl.StatusPackageImpl#getQueryStatusResponse()
+	 * @generated
+	 */
+	int QUERY_STATUS_RESPONSE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Request Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_STATUS_RESPONSE__REQUEST_ID = QUERY_RESPONSE__REQUEST_ID;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_STATUS_RESPONSE__STATUS = QUERY_RESPONSE__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Detailed Status</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_STATUS_RESPONSE__DETAILED_STATUS = QUERY_RESPONSE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Query Status Response</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_STATUS_RESPONSE_FEATURE_COUNT = QUERY_RESPONSE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Query Status Response</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_STATUS_RESPONSE_OPERATION_COUNT = QUERY_RESPONSE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.status.impl.DetailedQueryStatusImpl <em>Detailed Query Status</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -211,7 +257,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getDetailedQueryStatus()
 	 * @generated
 	 */
-	int DETAILED_QUERY_STATUS = 2;
+	int DETAILED_QUERY_STATUS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Single Connector Query Status</b></em>' containment reference list.
@@ -248,7 +294,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getSingleConnectorQueryStatus()
 	 * @generated
 	 */
-	int SINGLE_CONNECTOR_QUERY_STATUS = 3;
+	int SINGLE_CONNECTOR_QUERY_STATUS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Connector Id</b></em>' attribute.
@@ -269,7 +315,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	int SINGLE_CONNECTOR_QUERY_STATUS__CONNECTOR_NAME = 1;
 
 	/**
-	 * The feature id for the '<em><b>Status Result</b></em>' reference.
+	 * The feature id for the '<em><b>Status Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -303,7 +349,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getStatus()
 	 * @generated
 	 */
-	int STATUS = 8;
+	int STATUS = 9;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -385,7 +431,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getStatusResult()
 	 * @generated
 	 */
-	int STATUS_RESULT = 4;
+	int STATUS_RESULT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -476,7 +522,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getPendingStatusResult()
 	 * @generated
 	 */
-	int PENDING_STATUS_RESULT = 5;
+	int PENDING_STATUS_RESULT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -576,7 +622,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getErrorStatusResult()
 	 * @generated
 	 */
-	int ERROR_STATUS_RESULT = 6;
+	int ERROR_STATUS_RESULT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -676,7 +722,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getQueryStatus()
 	 * @generated
 	 */
-	int QUERY_STATUS = 7;
+	int QUERY_STATUS = 8;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -812,7 +858,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getResultFormatType()
 	 * @generated
 	 */
-	int RESULT_FORMAT_TYPE = 9;
+	int RESULT_FORMAT_TYPE = 10;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.status.QueryStatusType <em>Query Status Type</em>}' enum.
@@ -822,7 +868,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getQueryStatusType()
 	 * @generated
 	 */
-	int QUERY_STATUS_TYPE = 10;
+	int QUERY_STATUS_TYPE = 11;
 
 
 	/**
@@ -923,15 +969,25 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getQueryResponse_Status();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.avatar.status.QueryResponse#getDetailedStatus <em>Detailed Status</em>}'.
+	 * Returns the meta object for class '{@link de.avatar.status.QueryStatusResponse <em>Query Status Response</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Query Status Response</em>'.
+	 * @see de.avatar.status.QueryStatusResponse
+	 * @generated
+	 */
+	EClass getQueryStatusResponse();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.avatar.status.QueryStatusResponse#getDetailedStatus <em>Detailed Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Detailed Status</em>'.
-	 * @see de.avatar.status.QueryResponse#getDetailedStatus()
-	 * @see #getQueryResponse()
+	 * @see de.avatar.status.QueryStatusResponse#getDetailedStatus()
+	 * @see #getQueryStatusResponse()
 	 * @generated
 	 */
-	EReference getQueryResponse_DetailedStatus();
+	EReference getQueryStatusResponse_DetailedStatus();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.status.DetailedQueryStatus <em>Detailed Query Status</em>}'.
@@ -987,10 +1043,10 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getSingleConnectorQueryStatus_ConnectorName();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.avatar.status.SingleConnectorQueryStatus#getStatusResult <em>Status Result</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.avatar.status.SingleConnectorQueryStatus#getStatusResult <em>Status Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Status Result</em>'.
+	 * @return the meta object for the containment reference '<em>Status Result</em>'.
 	 * @see de.avatar.status.SingleConnectorQueryStatus#getStatusResult()
 	 * @see #getSingleConnectorQueryStatus()
 	 * @generated
@@ -1332,12 +1388,22 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute QUERY_RESPONSE__STATUS = eINSTANCE.getQueryResponse_Status();
 
 		/**
+		 * The meta object literal for the '{@link de.avatar.status.impl.QueryStatusResponseImpl <em>Query Status Response</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.status.impl.QueryStatusResponseImpl
+		 * @see de.avatar.status.impl.StatusPackageImpl#getQueryStatusResponse()
+		 * @generated
+		 */
+		EClass QUERY_STATUS_RESPONSE = eINSTANCE.getQueryStatusResponse();
+
+		/**
 		 * The meta object literal for the '<em><b>Detailed Status</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference QUERY_RESPONSE__DETAILED_STATUS = eINSTANCE.getQueryResponse_DetailedStatus();
+		EReference QUERY_STATUS_RESPONSE__DETAILED_STATUS = eINSTANCE.getQueryStatusResponse_DetailedStatus();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.status.impl.DetailedQueryStatusImpl <em>Detailed Query Status</em>}' class.
@@ -1384,7 +1450,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute SINGLE_CONNECTOR_QUERY_STATUS__CONNECTOR_NAME = eINSTANCE.getSingleConnectorQueryStatus_ConnectorName();
 
 		/**
-		 * The meta object literal for the '<em><b>Status Result</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Status Result</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

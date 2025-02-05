@@ -46,6 +46,8 @@ import de.avatar.query.QWhere;
 import de.avatar.query.Query;
 import de.avatar.query.QueryFactory;
 import de.avatar.query.QueryPackage;
+import de.avatar.query.RangeComparatorType;
+import de.avatar.query.SimpleValueComparator;
 import de.avatar.query.SortEntity;
 import de.avatar.query.SortOrder;
 import de.avatar.query.StartWith;
@@ -169,6 +171,13 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	private EClass comparatorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass simpleValueComparatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -337,6 +346,13 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	private EEnum sortOrderEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum rangeComparatorTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -767,8 +783,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getStringComparator() {
-		return stringComparatorEClass;
+	public EClass getSimpleValueComparator() {
+		return simpleValueComparatorEClass;
 	}
 
 	/**
@@ -777,8 +793,18 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStringComparator_Value() {
-		return (EAttribute)stringComparatorEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSimpleValueComparator_Value() {
+		return (EAttribute)simpleValueComparatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStringComparator() {
+		return stringComparatorEClass;
 	}
 
 	/**
@@ -837,16 +863,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDateComparator_Value() {
-		return (EAttribute)dateComparatorEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getIsBefore() {
 		return isBeforeEClass;
 	}
@@ -897,8 +913,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getNumberComparator() {
-		return numberComparatorEClass;
+	public EAttribute getIsInRange_StartValue() {
+		return (EAttribute)isInRangeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -907,8 +923,38 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getNumberComparator_Value() {
-		return (EAttribute)numberComparatorEClass.getEStructuralFeatures().get(0);
+	public EAttribute getIsInRange_EndValue() {
+		return (EAttribute)isInRangeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIsInRange_StartIncluded() {
+		return (EAttribute)isInRangeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIsInRange_EndIncluded() {
+		return (EAttribute)isInRangeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNumberComparator() {
+		return numberComparatorEClass;
 	}
 
 	/**
@@ -969,16 +1015,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	@Override
 	public EClass getBoolComparator() {
 		return boolComparatorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getBoolComparator_Value() {
-		return (EAttribute)boolComparatorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1077,16 +1113,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEnumComparator_Value() {
-		return (EAttribute)enumComparatorEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getIsLiteral() {
 		return isLiteralEClass;
 	}
@@ -1099,6 +1125,16 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	@Override
 	public EEnum getSortOrder() {
 		return sortOrderEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getRangeComparatorType() {
+		return rangeComparatorTypeEEnum;
 	}
 
 	/**
@@ -1180,8 +1216,10 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		createEReference(comparatorEClass, COMPARATOR__WHERE);
 		createEOperation(comparatorEClass, COMPARATOR___COMPARE);
 
+		simpleValueComparatorEClass = createEClass(SIMPLE_VALUE_COMPARATOR);
+		createEAttribute(simpleValueComparatorEClass, SIMPLE_VALUE_COMPARATOR__VALUE);
+
 		stringComparatorEClass = createEClass(STRING_COMPARATOR);
-		createEAttribute(stringComparatorEClass, STRING_COMPARATOR__VALUE);
 
 		endsWithEClass = createEClass(ENDS_WITH);
 
@@ -1192,7 +1230,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		likeEClass = createEClass(LIKE);
 
 		dateComparatorEClass = createEClass(DATE_COMPARATOR);
-		createEAttribute(dateComparatorEClass, DATE_COMPARATOR__VALUE);
 
 		isBeforeEClass = createEClass(IS_BEFORE);
 
@@ -1203,9 +1240,12 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		isAfterOrEqualEClass = createEClass(IS_AFTER_OR_EQUAL);
 
 		isInRangeEClass = createEClass(IS_IN_RANGE);
+		createEAttribute(isInRangeEClass, IS_IN_RANGE__START_VALUE);
+		createEAttribute(isInRangeEClass, IS_IN_RANGE__END_VALUE);
+		createEAttribute(isInRangeEClass, IS_IN_RANGE__START_INCLUDED);
+		createEAttribute(isInRangeEClass, IS_IN_RANGE__END_INCLUDED);
 
 		numberComparatorEClass = createEClass(NUMBER_COMPARATOR);
-		createEAttribute(numberComparatorEClass, NUMBER_COMPARATOR__VALUE);
 
 		ltEClass = createEClass(LT);
 
@@ -1218,7 +1258,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		eqEClass = createEClass(EQ);
 
 		boolComparatorEClass = createEClass(BOOL_COMPARATOR);
-		createEAttribute(boolComparatorEClass, BOOL_COMPARATOR__VALUE);
 
 		isBoolEClass = createEClass(IS_BOOL);
 
@@ -1232,12 +1271,12 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		createEOperation(operationEClass, OPERATION___EXECUTE);
 
 		enumComparatorEClass = createEClass(ENUM_COMPARATOR);
-		createEAttribute(enumComparatorEClass, ENUM_COMPARATOR__VALUE);
 
 		isLiteralEClass = createEClass(IS_LITERAL);
 
 		// Create enums
 		sortOrderEEnum = createEEnum(SORT_ORDER);
+		rangeComparatorTypeEEnum = createEEnum(RANGE_COMPARATOR_TYPE);
 	}
 
 	/**
@@ -1280,26 +1319,27 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		toUpperCaseEClass.getESuperTypes().add(this.getStringOperation());
 		numberOperationEClass.getESuperTypes().add(this.getOperation());
 		averageEClass.getESuperTypes().add(this.getNumberOperation());
-		stringComparatorEClass.getESuperTypes().add(this.getComparator());
+		simpleValueComparatorEClass.getESuperTypes().add(this.getComparator());
+		stringComparatorEClass.getESuperTypes().add(this.getSimpleValueComparator());
 		endsWithEClass.getESuperTypes().add(this.getStringComparator());
 		startWithEClass.getESuperTypes().add(this.getStringComparator());
 		containsEClass.getESuperTypes().add(this.getStringComparator());
 		likeEClass.getESuperTypes().add(this.getStringComparator());
-		dateComparatorEClass.getESuperTypes().add(this.getComparator());
+		dateComparatorEClass.getESuperTypes().add(this.getSimpleValueComparator());
 		isBeforeEClass.getESuperTypes().add(this.getDateComparator());
 		isAfterEClass.getESuperTypes().add(this.getDateComparator());
 		isBeforeOrEqualEClass.getESuperTypes().add(this.getDateComparator());
 		isAfterOrEqualEClass.getESuperTypes().add(this.getDateComparator());
-		isInRangeEClass.getESuperTypes().add(this.getDateComparator());
-		numberComparatorEClass.getESuperTypes().add(this.getComparator());
+		isInRangeEClass.getESuperTypes().add(this.getComparator());
+		numberComparatorEClass.getESuperTypes().add(this.getSimpleValueComparator());
 		ltEClass.getESuperTypes().add(this.getNumberComparator());
 		lteEClass.getESuperTypes().add(this.getNumberComparator());
 		gteEClass.getESuperTypes().add(this.getNumberComparator());
 		gtEClass.getESuperTypes().add(this.getNumberComparator());
 		eqEClass.getESuperTypes().add(this.getNumberComparator());
-		boolComparatorEClass.getESuperTypes().add(this.getComparator());
+		boolComparatorEClass.getESuperTypes().add(this.getSimpleValueComparator());
 		isBoolEClass.getESuperTypes().add(this.getBoolComparator());
-		enumComparatorEClass.getESuperTypes().add(this.getComparator());
+		enumComparatorEClass.getESuperTypes().add(this.getSimpleValueComparator());
 		isLiteralEClass.getESuperTypes().add(this.getEnumComparator());
 
 		// Initialize classes, features, and operations; add parameters
@@ -1350,13 +1390,15 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEClass(averageEClass, Average.class, "Average", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(comparatorEClass, Comparator.class, "Comparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComparator_SuitableForType(), ecorePackage.getEString(), "suitableForType", null, 1, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComparator_SuitableForType(), this.getRangeComparatorType(), "suitableForType", null, 1, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComparator_Where(), this.getQWhere(), this.getQWhere_Comparator(), "where", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getComparator__Compare(), ecorePackage.getEBoolean(), "compare", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(simpleValueComparatorEClass, SimpleValueComparator.class, "SimpleValueComparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSimpleValueComparator_Value(), ecorePackage.getEString(), "value", null, 0, 1, SimpleValueComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(stringComparatorEClass, StringComparator.class, "StringComparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringComparator_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(endsWithEClass, EndsWith.class, "EndsWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1367,7 +1409,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEClass(likeEClass, Like.class, "Like", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dateComparatorEClass, DateComparator.class, "DateComparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDateComparator_Value(), ecorePackage.getEDate(), "value", null, 0, 1, DateComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isBeforeEClass, IsBefore.class, "IsBefore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1378,9 +1419,12 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEClass(isAfterOrEqualEClass, IsAfterOrEqual.class, "IsAfterOrEqual", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(isInRangeEClass, IsInRange.class, "IsInRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIsInRange_StartValue(), ecorePackage.getEString(), "startValue", null, 0, 1, IsInRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIsInRange_EndValue(), ecorePackage.getEString(), "endValue", null, 0, 1, IsInRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIsInRange_StartIncluded(), ecorePackage.getEBoolean(), "startIncluded", null, 0, 1, IsInRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIsInRange_EndIncluded(), ecorePackage.getEBoolean(), "endIncluded", null, 0, 1, IsInRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(numberComparatorEClass, NumberComparator.class, "NumberComparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNumberComparator_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, NumberComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ltEClass, Lt.class, "Lt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1393,7 +1437,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(boolComparatorEClass, BoolComparator.class, "BoolComparator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBoolComparator_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, BoolComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isBoolEClass, IsBool.class, "IsBool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1408,7 +1451,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEOperation(getOperation__Execute(), ecorePackage.getEObject(), "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(enumComparatorEClass, EnumComparator.class, "EnumComparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEnumComparator_Value(), ecorePackage.getEString(), "value", null, 0, 1, EnumComparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isLiteralEClass, IsLiteral.class, "IsLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1416,6 +1458,15 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEEnum(sortOrderEEnum, SortOrder.class, "SortOrder");
 		addEEnumLiteral(sortOrderEEnum, SortOrder.DESC);
 		addEEnumLiteral(sortOrderEEnum, SortOrder.ASC);
+
+		initEEnum(rangeComparatorTypeEEnum, RangeComparatorType.class, "RangeComparatorType");
+		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.NUMERIC);
+		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.DATE);
+		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.STRING);
+		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.BOOLEAN);
+		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.ENUM);
+		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.MIXED);
+		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.OTHER);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -40,8 +40,10 @@ import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.EcoreParameter;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
+import de.avatar.model.connector.ResponseCode;
 import de.avatar.status.QueryRequest;
-import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusResponse;
+import de.avatar.status.QueryStatusType;
 import de.avatar.status.StatusFactory;
 
 /**
@@ -104,8 +106,8 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 	 * @see de.avatar.connector.whiteboard.api.ConnectorStatusWhiteboard#executeStatusRequest(de.avatar.status.QueryRequest)
 	 */
 	@Override
-	public QueryResponse executeStatusRequest(QueryRequest request) {
-		return doExecuteRequest(request, "status");
+	public QueryStatusResponse executeStatusRequest(QueryRequest request) {
+		return doExecuteRequest(request);
 	}
 	
 	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
@@ -135,11 +137,13 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 		printConnectionInfo(connector, false);
 	}
 	
-	private QueryResponse doExecuteRequest(QueryRequest request, String reqType) {
-		QueryResponse queryResponse = StatusFactory.eINSTANCE.createQueryResponse();
+	private QueryStatusResponse doExecuteRequest(QueryRequest request) {
+		
+		QueryStatusResponse queryResponse = StatusFactory.eINSTANCE.createQueryStatusResponse();
 		queryResponse.setRequestId(request.getRequestId());
+		queryResponse.setStatus(QueryStatusType.SUCCESS);
 		connectors.forEach(c -> {
-			ConnectorEndpoint endpoint = c.getEndpoints().stream().filter(e -> e.getId().contains(reqType)).findFirst().orElse(null);
+			ConnectorEndpoint endpoint = c.getEndpoints().stream().filter(e -> e.getId().contains("status")).findFirst().orElse(null);
 			if(endpoint != null) {
 				EndpointRequest endpointReq = ConnectorWhiteboardHelper.convertQueryToEndpointRequest(request);
 				endpointReq.setEndpoint(endpoint);
@@ -148,11 +152,23 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 				parameter.setNumber((short)0);
 				parameter.setValue(request);
 				endpointReq.getParameter().add(parameter);
-				EndpointResponse enpointRes = c.executeRequest(endpointReq);
-				ConnectorWhiteboardHelper.addSingleConnectorQueryStatus(queryResponse, enpointRes, c);	
+//				TODO: if something goes wrong here (like timeout exception) we should do something
+				try {
+					EndpointResponse endpointRes = c.executeRequest(endpointReq);
+					endpointRes.setSourceId(c.getInfo().getId());
+					if(ResponseCode.ERROR.equals(endpointRes.getCode())) {
+						queryResponse.setStatus(QueryStatusType.ERROR);
+					} else if(QueryStatusType.SUCCESS.equals(queryResponse.getStatus()) && ResponseCode.PENDING.equals(endpointRes.getCode())) {
+						queryResponse.setStatus(QueryStatusType.PENDING);	
+					}
+					ConnectorWhiteboardHelper.addSingleConnectorQueryStatus(queryResponse, endpointRes, c);	
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+				
 			}			
 		});	
-		return ConnectorWhiteboardHelper.derermineGlobalResponseStatus(queryResponse, request);
+		return queryResponse;
 	}
 	
 	private void printConnectionInfo(AvatarConnector connector, boolean add) {

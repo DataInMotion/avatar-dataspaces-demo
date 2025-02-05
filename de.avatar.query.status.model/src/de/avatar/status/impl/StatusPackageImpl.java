@@ -23,6 +23,7 @@ import de.avatar.status.PendingStatusResult;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatus;
+import de.avatar.status.QueryStatusResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.ResultFormatType;
 import de.avatar.status.SingleConnectorQueryStatus;
@@ -62,6 +63,13 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 	 * @generated
 	 */
 	private EClass queryResponseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass queryStatusResponseEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -288,8 +296,18 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getQueryResponse_DetailedStatus() {
-		return (EReference)queryResponseEClass.getEStructuralFeatures().get(2);
+	public EClass getQueryStatusResponse() {
+		return queryStatusResponseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getQueryStatusResponse_DetailedStatus() {
+		return (EReference)queryStatusResponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -611,7 +629,9 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		queryResponseEClass = createEClass(QUERY_RESPONSE);
 		createEAttribute(queryResponseEClass, QUERY_RESPONSE__REQUEST_ID);
 		createEAttribute(queryResponseEClass, QUERY_RESPONSE__STATUS);
-		createEReference(queryResponseEClass, QUERY_RESPONSE__DETAILED_STATUS);
+
+		queryStatusResponseEClass = createEClass(QUERY_STATUS_RESPONSE);
+		createEReference(queryStatusResponseEClass, QUERY_STATUS_RESPONSE__DETAILED_STATUS);
 
 		detailedQueryStatusEClass = createEClass(DETAILED_QUERY_STATUS);
 		createEReference(detailedQueryStatusEClass, DETAILED_QUERY_STATUS__SINGLE_CONNECTOR_QUERY_STATUS);
@@ -684,6 +704,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		queryStatusResponseEClass.getESuperTypes().add(this.getQueryResponse());
 		statusResultEClass.getESuperTypes().add(this.getStatus());
 		pendingStatusResultEClass.getESuperTypes().add(this.getStatusResult());
 		errorStatusResultEClass.getESuperTypes().add(this.getStatusResult());
@@ -700,7 +721,9 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		initEClass(queryResponseEClass, QueryResponse.class, "QueryResponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getQueryResponse_RequestId(), theEcorePackage.getEString(), "requestId", null, 1, 1, QueryResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQueryResponse_Status(), this.getQueryStatusType(), "status", null, 0, 1, QueryResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getQueryResponse_DetailedStatus(), this.getDetailedQueryStatus(), null, "detailedStatus", null, 0, 1, QueryResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(queryStatusResponseEClass, QueryStatusResponse.class, "QueryStatusResponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getQueryStatusResponse_DetailedStatus(), this.getDetailedQueryStatus(), null, "detailedStatus", null, 0, 1, QueryStatusResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(detailedQueryStatusEClass, DetailedQueryStatus.class, "DetailedQueryStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDetailedQueryStatus_SingleConnectorQueryStatus(), this.getSingleConnectorQueryStatus(), null, "singleConnectorQueryStatus", null, 0, -1, DetailedQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -708,7 +731,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		initEClass(singleConnectorQueryStatusEClass, SingleConnectorQueryStatus.class, "SingleConnectorQueryStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSingleConnectorQueryStatus_ConnectorId(), theEcorePackage.getEString(), "connectorId", null, 0, 1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSingleConnectorQueryStatus_ConnectorName(), theEcorePackage.getEString(), "connectorName", null, 0, 1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSingleConnectorQueryStatus_StatusResult(), this.getStatusResult(), null, "statusResult", null, 0, 1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleConnectorQueryStatus_StatusResult(), this.getStatusResult(), null, "statusResult", null, 0, 1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(statusResultEClass, StatusResult.class, "StatusResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStatusResult_Status(), this.getQueryStatusType(), "status", null, 0, 1, StatusResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

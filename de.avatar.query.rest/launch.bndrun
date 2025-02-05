@@ -77,11 +77,12 @@
 	org.osgi.service.http;version='[1.2.1,1.2.2)',\
 	org.osgi.service.http.whiteboard;version='[1.1.0,1.1.1)',\
 	org.osgi.service.log;version='[1.5.0,1.5.1)',\
-	org.avatar.himsa.model;version='[1.0.0,1.0.1)'
+	org.avatar.himsa.model;version='[1.0.0,1.0.1)',\
+	de.avatar.connector.isma;version=snapshot
 
 
+#Avoid To have the default Jetty run at port 8080	
 -runproperties: \
-    # Avoid To have the default Jetty run at port 8080
 	org.osgi.service.http.port=-1,\
 	data=./data/,\
 	org.eclipse.emf.common.util.URI.archiveSchemes="wsjar wszip jar zip"
@@ -93,6 +94,8 @@
 	bnd.identity;id='de.avatar.connector.runtime.config',\
 	bnd.identity;id='de.avatar.generator.impl',\
 	bnd.identity;id='org.gecko.emf.json',\
-	bnd.identity;id='org.avatar.himsa.model'
+	bnd.identity;id='org.avatar.himsa.model',\
+	bnd.identity;id='org.gecko.emf.rest.jakartars';version='[2.3.0,3.0.0)',\
+	bnd.identity;id='de.avatar.connector.isma'
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-17
