@@ -15,8 +15,6 @@ package de.avatar.connector.isma;
 import static java.util.Objects.nonNull;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,7 +82,6 @@ public class ISMAConnectorImpl implements AvatarConnector {
 	private AConnectorFactory connectorFactory;
 
 	private static final Logger LOGGER = Logger.getLogger(ISMAConnectorImpl.class.getName());
-	private final static DateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 
 	private long startTimestamp;
 	private ComponentServiceObjects<ResourceSet> rsFactory;
@@ -241,7 +238,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 					rsFactory.ungetService(set);
 				}
 			} else {
-				reqUri = reqUri.concat("?");
+				reqUri = reqUri.concat("/").concat(request.getId()).concat("?");
 				ResourceSet set = rsFactory.getService();
 				Resource res = null;
 				try {

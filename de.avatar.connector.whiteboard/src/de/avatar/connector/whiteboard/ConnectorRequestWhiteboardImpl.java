@@ -160,7 +160,7 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 		}
 		try {
 			QueryResponse response = doExecuteRequest(request, "request");
-			statusService.cacheRequest(request);			
+			if(!QueryStatusType.ERROR.equals(response.getStatus())) statusService.cacheRequest(request);			
 			return response;
 		} catch(Exception e) {
 			LOGGER.severe(String.format("Something went wrong when executing request %s", request.getRequestId()));

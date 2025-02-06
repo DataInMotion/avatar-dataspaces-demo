@@ -93,6 +93,7 @@ public class QueryRestResource {
 	@GET
 	@Path("/status/{requestId}")
 	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
 	public Response status(@PathParam("requestId") String requestId) {
 		try {
 			QueryStatusResponse response = statusService.executeStatusRequest(requestId);
