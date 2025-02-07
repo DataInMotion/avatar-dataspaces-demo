@@ -69,9 +69,14 @@ public class QueryRestResource {
 	@Path("/dryrun")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response dryRun(QueryRequest request) {		
-		QueryResponse response = requestWhiteboard.executeDryRun(request);
-		return Response.ok(response).build();
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response dryRun(QueryRequest request) {	
+		try {
+			QueryResponse response = requestWhiteboard.executeDryRun(request);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {
+			return Response.status(500, e.getMessage()).build();
+		}		
 	}
 	
 	
@@ -106,6 +111,7 @@ public class QueryRestResource {
 	@GET
 	@Path("/downloads/{requestId}")
 	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
 	public Response download(@PathParam("requestId") String requestId) {
 		
 		File resultFile = avatarGenerator.getAggregatedResponse(requestId);

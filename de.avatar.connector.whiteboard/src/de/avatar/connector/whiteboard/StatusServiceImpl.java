@@ -30,6 +30,7 @@ import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusResponse;
 import de.avatar.status.QueryStatusType;
+import de.avatar.status.StatusPackage;
 
 /**
  * 
@@ -128,6 +129,13 @@ public class StatusServiceImpl implements StatusService {
 		}
 		QueryStatusResponse response = statusWhiteboard.executeStatusRequest(request);
 		updateStatus(response);
+
+		response.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
+
+			//				We do not want to display the full response result when the status is SUCCESS
+			scs.getStatusResult().eUnset(StatusPackage.Literals.STATUS__RESPONSE);
+
+		});
 		return response;
 	}
 

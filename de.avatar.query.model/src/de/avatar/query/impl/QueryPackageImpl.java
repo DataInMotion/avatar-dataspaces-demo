@@ -46,13 +46,13 @@ import de.avatar.query.QWhere;
 import de.avatar.query.Query;
 import de.avatar.query.QueryFactory;
 import de.avatar.query.QueryPackage;
-import de.avatar.query.RangeComparatorType;
 import de.avatar.query.SimpleValueComparator;
 import de.avatar.query.SortEntity;
 import de.avatar.query.SortOrder;
 import de.avatar.query.StartWith;
 import de.avatar.query.StringComparator;
 import de.avatar.query.StringOperation;
+import de.avatar.query.SuitableType;
 import de.avatar.query.ToLowerCase;
 import de.avatar.query.ToUpperCase;
 
@@ -352,7 +352,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum rangeComparatorTypeEEnum = null;
+	private EEnum suitableTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1083,16 +1083,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getOperation_Subject() {
-		return (EReference)operationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EOperation getOperation__Execute() {
 		return operationEClass.getEOperations().get(0);
 	}
@@ -1133,8 +1123,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getRangeComparatorType() {
-		return rangeComparatorTypeEEnum;
+	public EEnum getSuitableType() {
+		return suitableTypeEEnum;
 	}
 
 	/**
@@ -1267,7 +1257,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		operationEClass = createEClass(OPERATION);
 		createEAttribute(operationEClass, OPERATION__SUITABLE_FOR_TYPE);
-		createEReference(operationEClass, OPERATION__SUBJECT);
 		createEOperation(operationEClass, OPERATION___EXECUTE);
 
 		enumComparatorEClass = createEClass(ENUM_COMPARATOR);
@@ -1276,7 +1265,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		// Create enums
 		sortOrderEEnum = createEEnum(SORT_ORDER);
-		rangeComparatorTypeEEnum = createEEnum(RANGE_COMPARATOR_TYPE);
+		suitableTypeEEnum = createEEnum(SUITABLE_TYPE);
 	}
 
 	/**
@@ -1362,12 +1351,12 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEAttribute(getQSubject_IsExclude(), ecorePackage.getEBoolean(), "isExclude", "false", 0, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQSubject_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getQSubject_AliasFeature(), ecorePackage.getEStructuralFeature(), null, "aliasFeature", null, 0, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getQSubject_Operation(), this.getOperation(), this.getOperation_Subject(), "operation", null, 0, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQSubject_Operation(), this.getOperation(), null, "operation", null, 0, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(qWhereEClass, QWhere.class, "QWhere", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getQWhere_FeaturePath(), theUtilitiesPackage.getFeaturePath(), null, "featurePath", null, 1, 1, QWhere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getQWhere_Comparator(), this.getComparator(), this.getComparator_Where(), "comparator", null, 1, 1, QWhere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getQWhere_Operation(), this.getOperation(), null, "operation", null, 0, 1, QWhere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQWhere_Operation(), this.getOperation(), null, "operation", null, 0, 1, QWhere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getQWhere__Execute(), ecorePackage.getEBoolean(), "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1390,7 +1379,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEClass(averageEClass, Average.class, "Average", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(comparatorEClass, Comparator.class, "Comparator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComparator_SuitableForType(), this.getRangeComparatorType(), "suitableForType", null, 1, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComparator_SuitableForType(), this.getSuitableType(), "suitableForType", null, 1, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComparator_Where(), this.getQWhere(), this.getQWhere_Comparator(), "where", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getComparator__Compare(), ecorePackage.getEBoolean(), "compare", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1445,8 +1434,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEReference(getSortEntity_FeaturePath(), ecorePackage.getEStructuralFeature(), null, "featurePath", null, 1, 1, SortEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOperation_SuitableForType(), ecorePackage.getEString(), "suitableForType", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOperation_Subject(), this.getQSubject(), this.getQSubject_Operation(), "subject", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperation_SuitableForType(), this.getSuitableType(), "suitableForType", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getOperation__Execute(), ecorePackage.getEObject(), "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1459,14 +1447,14 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		addEEnumLiteral(sortOrderEEnum, SortOrder.DESC);
 		addEEnumLiteral(sortOrderEEnum, SortOrder.ASC);
 
-		initEEnum(rangeComparatorTypeEEnum, RangeComparatorType.class, "RangeComparatorType");
-		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.NUMERIC);
-		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.DATE);
-		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.STRING);
-		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.BOOLEAN);
-		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.ENUM);
-		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.MIXED);
-		addEEnumLiteral(rangeComparatorTypeEEnum, RangeComparatorType.OTHER);
+		initEEnum(suitableTypeEEnum, SuitableType.class, "SuitableType");
+		addEEnumLiteral(suitableTypeEEnum, SuitableType.NUMERIC);
+		addEEnumLiteral(suitableTypeEEnum, SuitableType.DATE);
+		addEEnumLiteral(suitableTypeEEnum, SuitableType.STRING);
+		addEEnumLiteral(suitableTypeEEnum, SuitableType.BOOLEAN);
+		addEEnumLiteral(suitableTypeEEnum, SuitableType.ENUM);
+		addEEnumLiteral(suitableTypeEEnum, SuitableType.MIXED);
+		addEEnumLiteral(suitableTypeEEnum, SuitableType.OTHER);
 
 		// Create resource
 		createResource(eNS_URI);

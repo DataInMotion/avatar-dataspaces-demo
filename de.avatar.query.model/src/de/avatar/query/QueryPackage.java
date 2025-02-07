@@ -324,7 +324,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int QWHERE__COMPARATOR = 1;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -388,7 +388,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int CHAINING__COMPARATOR = QWHERE__COMPARATOR;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -452,7 +452,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int OR__COMPARATOR = CHAINING__COMPARATOR;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -516,7 +516,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int NOT__COMPARATOR = CHAINING__COMPARATOR;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -580,7 +580,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int AND__COMPARATOR = CHAINING__COMPARATOR;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -635,22 +635,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int OPERATION__SUITABLE_FOR_TYPE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Subject</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__SUBJECT = 1;
-
-	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = 2;
+	int OPERATION_FEATURE_COUNT = 1;
 
 	/**
 	 * The operation id for the '<em>Execute</em>' operation.
@@ -688,15 +679,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int STRING_OPERATION__SUITABLE_FOR_TYPE = OPERATION__SUITABLE_FOR_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Subject</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_OPERATION__SUBJECT = OPERATION__SUBJECT;
 
 	/**
 	 * The number of structural features of the '<em>String Operation</em>' class.
@@ -745,15 +727,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int TO_LOWER_CASE__SUITABLE_FOR_TYPE = STRING_OPERATION__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Subject</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TO_LOWER_CASE__SUBJECT = STRING_OPERATION__SUBJECT;
-
-	/**
 	 * The number of structural features of the '<em>To Lower Case</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -798,15 +771,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int TO_UPPER_CASE__SUITABLE_FOR_TYPE = STRING_OPERATION__SUITABLE_FOR_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Subject</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TO_UPPER_CASE__SUBJECT = STRING_OPERATION__SUBJECT;
 
 	/**
 	 * The number of structural features of the '<em>To Upper Case</em>' class.
@@ -855,15 +819,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int NUMBER_OPERATION__SUITABLE_FOR_TYPE = OPERATION__SUITABLE_FOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Subject</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NUMBER_OPERATION__SUBJECT = OPERATION__SUBJECT;
-
-	/**
 	 * The number of structural features of the '<em>Number Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -908,15 +863,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int AVERAGE__SUITABLE_FOR_TYPE = NUMBER_OPERATION__SUITABLE_FOR_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Subject</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AVERAGE__SUBJECT = NUMBER_OPERATION__SUBJECT;
 
 	/**
 	 * The number of structural features of the '<em>Average</em>' class.
@@ -2492,14 +2438,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int SORT_ORDER = 38;
 
 	/**
-	 * The meta object id for the '{@link de.avatar.query.RangeComparatorType <em>Range Comparator Type</em>}' enum.
+	 * The meta object id for the '{@link de.avatar.query.SuitableType <em>Suitable Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.avatar.query.RangeComparatorType
-	 * @see de.avatar.query.impl.QueryPackageImpl#getRangeComparatorType()
+	 * @see de.avatar.query.SuitableType
+	 * @see de.avatar.query.impl.QueryPackageImpl#getSuitableType()
 	 * @generated
 	 */
-	int RANGE_COMPARATOR_TYPE = 39;
+	int SUITABLE_TYPE = 39;
 
 
 	/**
@@ -2730,10 +2676,10 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getQWhere_Comparator();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.avatar.query.QWhere#getOperation <em>Operation</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.avatar.query.QWhere#getOperation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operation</em>'.
+	 * @return the meta object for the containment reference '<em>Operation</em>'.
 	 * @see de.avatar.query.QWhere#getOperation()
 	 * @see #getQWhere()
 	 * @generated
@@ -3191,17 +3137,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getOperation_SuitableForType();
 
 	/**
-	 * Returns the meta object for the container reference '{@link de.avatar.query.Operation#getSubject <em>Subject</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Subject</em>'.
-	 * @see de.avatar.query.Operation#getSubject()
-	 * @see #getOperation()
-	 * @generated
-	 */
-	EReference getOperation_Subject();
-
-	/**
 	 * Returns the meta object for the '{@link de.avatar.query.Operation#execute() <em>Execute</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3242,14 +3177,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EEnum getSortOrder();
 
 	/**
-	 * Returns the meta object for enum '{@link de.avatar.query.RangeComparatorType <em>Range Comparator Type</em>}'.
+	 * Returns the meta object for enum '{@link de.avatar.query.SuitableType <em>Suitable Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Range Comparator Type</em>'.
-	 * @see de.avatar.query.RangeComparatorType
+	 * @return the meta object for enum '<em>Suitable Type</em>'.
+	 * @see de.avatar.query.SuitableType
 	 * @generated
 	 */
-	EEnum getRangeComparatorType();
+	EEnum getSuitableType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3451,7 +3386,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EReference QWHERE__COMPARATOR = eINSTANCE.getQWhere_Comparator();
 
 		/**
-		 * The meta object literal for the '<em><b>Operation</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Operation</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3875,14 +3810,6 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute OPERATION__SUITABLE_FOR_TYPE = eINSTANCE.getOperation_SuitableForType();
 
 		/**
-		 * The meta object literal for the '<em><b>Subject</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OPERATION__SUBJECT = eINSTANCE.getOperation_Subject();
-
-		/**
 		 * The meta object literal for the '<em><b>Execute</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3921,14 +3848,14 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EEnum SORT_ORDER = eINSTANCE.getSortOrder();
 
 		/**
-		 * The meta object literal for the '{@link de.avatar.query.RangeComparatorType <em>Range Comparator Type</em>}' enum.
+		 * The meta object literal for the '{@link de.avatar.query.SuitableType <em>Suitable Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.avatar.query.RangeComparatorType
-		 * @see de.avatar.query.impl.QueryPackageImpl#getRangeComparatorType()
+		 * @see de.avatar.query.SuitableType
+		 * @see de.avatar.query.impl.QueryPackageImpl#getSuitableType()
 		 * @generated
 		 */
-		EEnum RANGE_COMPARATOR_TYPE = eINSTANCE.getRangeComparatorType();
+		EEnum SUITABLE_TYPE = eINSTANCE.getSuitableType();
 
 	}
 

@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link de.avatar.status.impl.QueryResponseImpl#getRequestId <em>Request Id</em>}</li>
  *   <li>{@link de.avatar.status.impl.QueryResponseImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link de.avatar.status.impl.QueryResponseImpl#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
  * @generated
@@ -78,6 +79,26 @@ public class QueryResponseImpl extends MinimalEObjectImpl.Container implements Q
 	 * @ordered
 	 */
 	protected QueryStatusType status = STATUS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimestamp()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long TIMESTAMP_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimestamp()
+	 * @generated
+	 * @ordered
+	 */
+	protected long timestamp = TIMESTAMP_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,12 +171,37 @@ public class QueryResponseImpl extends MinimalEObjectImpl.Container implements Q
 	 * @generated
 	 */
 	@Override
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTimestamp(long newTimestamp) {
+		long oldTimestamp = timestamp;
+		timestamp = newTimestamp;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StatusPackage.QUERY_RESPONSE__TIMESTAMP, oldTimestamp, timestamp));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case StatusPackage.QUERY_RESPONSE__REQUEST_ID:
 				return getRequestId();
 			case StatusPackage.QUERY_RESPONSE__STATUS:
 				return getStatus();
+			case StatusPackage.QUERY_RESPONSE__TIMESTAMP:
+				return getTimestamp();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -173,6 +219,9 @@ public class QueryResponseImpl extends MinimalEObjectImpl.Container implements Q
 				return;
 			case StatusPackage.QUERY_RESPONSE__STATUS:
 				setStatus((QueryStatusType)newValue);
+				return;
+			case StatusPackage.QUERY_RESPONSE__TIMESTAMP:
+				setTimestamp((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -192,6 +241,9 @@ public class QueryResponseImpl extends MinimalEObjectImpl.Container implements Q
 			case StatusPackage.QUERY_RESPONSE__STATUS:
 				setStatus(STATUS_EDEFAULT);
 				return;
+			case StatusPackage.QUERY_RESPONSE__TIMESTAMP:
+				setTimestamp(TIMESTAMP_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -208,6 +260,8 @@ public class QueryResponseImpl extends MinimalEObjectImpl.Container implements Q
 				return REQUEST_ID_EDEFAULT == null ? requestId != null : !REQUEST_ID_EDEFAULT.equals(requestId);
 			case StatusPackage.QUERY_RESPONSE__STATUS:
 				return status != STATUS_EDEFAULT;
+			case StatusPackage.QUERY_RESPONSE__TIMESTAMP:
+				return timestamp != TIMESTAMP_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -226,6 +280,8 @@ public class QueryResponseImpl extends MinimalEObjectImpl.Container implements Q
 		result.append(requestId);
 		result.append(", status: ");
 		result.append(status);
+		result.append(", timestamp: ");
+		result.append(timestamp);
 		result.append(')');
 		return result.toString();
 	}

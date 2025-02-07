@@ -90,6 +90,15 @@ public interface StatusFactory extends EFactory {
 	StatusResult createStatusResult();
 
 	/**
+	 * Returns a new object of class '<em>Success Status Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Success Status Result</em>'.
+	 * @generated
+	 */
+	SuccessStatusResult createSuccessStatusResult();
+
+	/**
 	 * Returns a new object of class '<em>Pending Status Result</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -74,6 +74,7 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 			case StatusPackage.DETAILED_QUERY_STATUS: return createDetailedQueryStatus();
 			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS: return createSingleConnectorQueryStatus();
 			case StatusPackage.STATUS_RESULT: return createStatusResult();
+			case StatusPackage.SUCCESS_STATUS_RESULT: return createSuccessStatusResult();
 			case StatusPackage.PENDING_STATUS_RESULT: return createPendingStatusResult();
 			case StatusPackage.ERROR_STATUS_RESULT: return createErrorStatusResult();
 			case StatusPackage.QUERY_STATUS: return createQueryStatus();
@@ -181,6 +182,17 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 	public StatusResult createStatusResult() {
 		StatusResultImpl statusResult = new StatusResultImpl();
 		return statusResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SuccessStatusResult createSuccessStatusResult() {
+		SuccessStatusResultImpl successStatusResult = new SuccessStatusResultImpl();
+		return successStatusResult;
 	}
 
 	/**

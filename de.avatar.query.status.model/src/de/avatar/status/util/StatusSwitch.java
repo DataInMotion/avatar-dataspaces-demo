@@ -115,6 +115,14 @@ public class StatusSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case StatusPackage.SUCCESS_STATUS_RESULT: {
+				SuccessStatusResult successStatusResult = (SuccessStatusResult)theEObject;
+				T result = caseSuccessStatusResult(successStatusResult);
+				if (result == null) result = caseStatusResult(successStatusResult);
+				if (result == null) result = caseStatus(successStatusResult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case StatusPackage.PENDING_STATUS_RESULT: {
 				PendingStatusResult pendingStatusResult = (PendingStatusResult)theEObject;
 				T result = casePendingStatusResult(pendingStatusResult);
@@ -235,6 +243,21 @@ public class StatusSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStatusResult(StatusResult object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Success Status Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Success Status Result</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSuccessStatusResult(SuccessStatusResult object) {
 		return null;
 	}
 

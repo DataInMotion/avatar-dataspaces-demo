@@ -302,30 +302,14 @@ public class QSubjectImpl extends MinimalEObjectImpl.Container implements QSubje
 		if (newOperation != operation) {
 			NotificationChain msgs = null;
 			if (operation != null)
-				msgs = ((InternalEObject)operation).eInverseRemove(this, QueryPackage.OPERATION__SUBJECT, Operation.class, msgs);
+				msgs = ((InternalEObject)operation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QueryPackage.QSUBJECT__OPERATION, null, msgs);
 			if (newOperation != null)
-				msgs = ((InternalEObject)newOperation).eInverseAdd(this, QueryPackage.OPERATION__SUBJECT, Operation.class, msgs);
+				msgs = ((InternalEObject)newOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QueryPackage.QSUBJECT__OPERATION, null, msgs);
 			msgs = basicSetOperation(newOperation, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.QSUBJECT__OPERATION, newOperation, newOperation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case QueryPackage.QSUBJECT__OPERATION:
-				if (operation != null)
-					msgs = ((InternalEObject)operation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QueryPackage.QSUBJECT__OPERATION, null, msgs);
-				return basicSetOperation((Operation)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

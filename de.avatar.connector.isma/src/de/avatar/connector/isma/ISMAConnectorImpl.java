@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
@@ -157,54 +156,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 	 */
 	@Override
 	public EndpointResponse dryRequest(EndpointRequest request) {
-		if (Objects.isNull(request)) {
-			throw new IllegalArgumentException("Request must not be null");
-		}
-		if (nonNull(request) && 
-				nonNull(request.getId()) && 
-				nonNull(request.getSourceId()) && 
-				nonNull(request.getEndpoint()) && 
-				nonNull(request.getEndpoint().getId())) {
-
-			String reqUri = request.getEndpoint().getUri();
-			reqUri = reqUri.concat("/").concat(request.getSourceId());
-			ResourceSet set = rsFactory.getService();
-			Resource res = null;
-			try {
-				if(!request.getParameter().isEmpty()) {
-					if(request.getParameter().get(0) instanceof EcoreParameter ecorePar) {
-						QueryRequest queryReq = (QueryRequest) ecorePar.getValue();
-						boolean count = queryReq.getQuery().isCount();
-						boolean distinct = queryReq.getQuery().isDistinct();
-						reqUri = reqUri.
-								concat("?count=").
-								concat(String.valueOf(count)).
-								concat("&distinct=").
-								concat(String.valueOf(distinct));
-						res = set.createResource(URI.createURI(reqUri), "application/json");
-						return sendRequest(request, res);
-					} else {
-						LOGGER.severe(String.format("Expecting an EcoreParameter in the request for %s", reqUri));
-						return null;
-					} 
-				}
-				else {
-					LOGGER.severe(String.format("Expecting an EcoreParameter in the request for %s", reqUri));
-					return null;
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-				LOGGER.severe(String.format("Error while sending Dry Run Request to ISMA", e.getMessage()));
-				return null;
-			} 
-			finally {
-				rsFactory.ungetService(set);
-			}
-
-		} else {
-			LOGGER.warning(String.format("Request is incomplete"));
-			return ConnectorHelper.validateResponse(request);
-		}
+		return doExecuteRequest(request);
 	}
 
 	/* 
@@ -213,14 +165,17 @@ public class ISMAConnectorImpl implements AvatarConnector {
 	 */
 	@Override
 	public EndpointResponse executeRequest(EndpointRequest request) {
-		if (Objects.isNull(request)) {
-			throw new IllegalArgumentException("Request must not be null");
-		}
+		return doExecuteRequest(request);
+	}
+	
+	private EndpointResponse doExecuteRequest(EndpointRequest request) {
+		
 		if (nonNull(request) && 
 				nonNull(request.getId()) && 
 				nonNull(request.getSourceId()) && 
 				nonNull(request.getEndpoint()) && 
 				nonNull(request.getEndpoint().getId())) {
+			
 			String reqUri = request.getEndpoint().getUri();
 
 			if(request.getEndpoint().getId().contains("status")) {
@@ -248,21 +203,27 @@ public class ISMAConnectorImpl implements AvatarConnector {
 							Query query = queryReq.getQuery();
 							
 //							subject are the projections
-							String projections = "";
+							List<String> subjectURIs = new ArrayList<>(query.getSubject().size());
 							for(QSubject subject : query.getSubject()) {
-								projections = "projections=";
+								String projections = "projections=";
+								String operation = subject.getOperation() != null ? "operation=".concat(subject.getOperation().eClass().getName()) : "";
 								for(EStructuralFeature feature : subject.getFeaturePath().getFeature()) {
-									projections += feature.getName()+",";
+									projections += feature.getName()+"-";
 								}
-								projections = projections.substring(0, projections.length()-1); //to remove the last ","
-								reqUri += projections.concat("&");
+								projections = projections.substring(0, projections.length()-1); //to remove the last "-"
+								String subjectURI = new StringBuilder("subject=").
+										append(projections).
+										append(operation.isEmpty() ? "" : ",".concat(operation)).
+										toString();
+								subjectURIs.add(subjectURI);
 							}
-							
+														
 //							where are the feature on which to apply the comparator for the actual query
 							List<String> whereURIs = new ArrayList<>(query.getWhere().size());
 							for(QWhere where : query.getWhere()) {
 								String queryType = "queryType=";
 								String featurePath = "feature=";
+								String operation = where.getOperation() != null ? "operation=".concat(where.getOperation().eClass().getName()) : "";
 								String comparatorName = "comparatorName=".concat(where.getComparator().eClass().getName());
 								String[] values = buildValueFromComparator(where.getComparator());
 								
@@ -276,6 +237,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 								String whereURI = new StringBuilder("where=").
 										append(queryType).
 										append(",").
+										append(operation.isEmpty() ? "" : operation + ",").
 										append(featurePath).
 										append(",").
 										append(comparatorName).
@@ -291,6 +253,11 @@ public class ISMAConnectorImpl implements AvatarConnector {
 								whereURIs.add(whereURI);								
 							}
 							StringBuilder sb = new StringBuilder(reqUri);
+							for(String subjectURI : subjectURIs) {
+								sb.
+								append(subjectURI).
+								append("&");								
+							}
 							for(String whereURI : whereURIs) {
 								sb.
 								append(whereURI).
@@ -314,7 +281,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
-					LOGGER.severe(String.format("Error while sending Dry Run Request to ISMA", e.getMessage()));
+					LOGGER.severe(String.format("Error while sending Request to ISMA", e.getMessage()));
 					return null;
 				} 
 				finally {

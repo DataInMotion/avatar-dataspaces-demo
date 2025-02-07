@@ -164,10 +164,10 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 					ConnectorWhiteboardHelper.addSingleConnectorQueryStatus(queryResponse, endpointRes, c);	
 				} catch(Exception e) {
 					e.printStackTrace();
-				}
-				
+				}		
 			}			
 		});	
+		queryResponse.setTimestamp(Instant.now().toEpochMilli());
 		return queryResponse;
 	}
 	

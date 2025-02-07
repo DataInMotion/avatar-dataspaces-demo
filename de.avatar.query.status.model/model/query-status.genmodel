@@ -31,6 +31,7 @@
     <genClasses ecoreClass="query-status.ecore#//QueryResponse">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/requestId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/timestamp"/>
     </genClasses>
     <genClasses ecoreClass="query-status.ecore#//QueryStatusResponse">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//QueryStatusResponse/detailedStatus"/>
@@ -45,6 +46,9 @@
     </genClasses>
     <genClasses ecoreClass="query-status.ecore#//StatusResult">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//StatusResult/status"/>
+    </genClasses>
+    <genClasses ecoreClass="query-status.ecore#//SuccessStatusResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//SuccessStatusResult/message"/>
     </genClasses>
     <genClasses ecoreClass="query-status.ecore#//PendingStatusResult">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//PendingStatusResult/estRuntime"/>

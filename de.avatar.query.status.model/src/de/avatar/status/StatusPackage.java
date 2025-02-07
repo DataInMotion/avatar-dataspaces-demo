@@ -177,13 +177,22 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	int QUERY_RESPONSE__STATUS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_RESPONSE__TIMESTAMP = 2;
+
+	/**
 	 * The number of structural features of the '<em>Query Response</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_RESPONSE_FEATURE_COUNT = 2;
+	int QUERY_RESPONSE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Query Response</em>' class.
@@ -221,6 +230,15 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int QUERY_STATUS_RESPONSE__STATUS = QUERY_RESPONSE__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_STATUS_RESPONSE__TIMESTAMP = QUERY_RESPONSE__TIMESTAMP;
 
 	/**
 	 * The feature id for the '<em><b>Detailed Status</b></em>' containment reference.
@@ -349,7 +367,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getStatus()
 	 * @generated
 	 */
-	int STATUS = 9;
+	int STATUS = 10;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -515,6 +533,106 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	int STATUS_RESULT_OPERATION_COUNT = STATUS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.status.impl.SuccessStatusResultImpl <em>Success Status Result</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.status.impl.SuccessStatusResultImpl
+	 * @see de.avatar.status.impl.StatusPackageImpl#getSuccessStatusResult()
+	 * @generated
+	 */
+	int SUCCESS_STATUS_RESULT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUCCESS_STATUS_RESULT__ID = STATUS_RESULT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUCCESS_STATUS_RESULT__NAME = STATUS_RESULT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Username</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUCCESS_STATUS_RESULT__USERNAME = STATUS_RESULT__USERNAME;
+
+	/**
+	 * The feature id for the '<em><b>Created</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUCCESS_STATUS_RESULT__CREATED = STATUS_RESULT__CREATED;
+
+	/**
+	 * The feature id for the '<em><b>Changed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUCCESS_STATUS_RESULT__CHANGED = STATUS_RESULT__CHANGED;
+
+	/**
+	 * The feature id for the '<em><b>Response</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUCCESS_STATUS_RESULT__RESPONSE = STATUS_RESULT__RESPONSE;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUCCESS_STATUS_RESULT__STATUS = STATUS_RESULT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUCCESS_STATUS_RESULT__MESSAGE = STATUS_RESULT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Success Status Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUCCESS_STATUS_RESULT_FEATURE_COUNT = STATUS_RESULT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Success Status Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUCCESS_STATUS_RESULT_OPERATION_COUNT = STATUS_RESULT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.status.impl.PendingStatusResultImpl <em>Pending Status Result</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -522,7 +640,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getPendingStatusResult()
 	 * @generated
 	 */
-	int PENDING_STATUS_RESULT = 6;
+	int PENDING_STATUS_RESULT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -622,7 +740,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getErrorStatusResult()
 	 * @generated
 	 */
-	int ERROR_STATUS_RESULT = 7;
+	int ERROR_STATUS_RESULT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -722,7 +840,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getQueryStatus()
 	 * @generated
 	 */
-	int QUERY_STATUS = 8;
+	int QUERY_STATUS = 9;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -858,7 +976,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getResultFormatType()
 	 * @generated
 	 */
-	int RESULT_FORMAT_TYPE = 10;
+	int RESULT_FORMAT_TYPE = 11;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.status.QueryStatusType <em>Query Status Type</em>}' enum.
@@ -868,7 +986,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getQueryStatusType()
 	 * @generated
 	 */
-	int QUERY_STATUS_TYPE = 11;
+	int QUERY_STATUS_TYPE = 12;
 
 
 	/**
@@ -967,6 +1085,17 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EAttribute getQueryResponse_Status();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.status.QueryResponse#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.avatar.status.QueryResponse#getTimestamp()
+	 * @see #getQueryResponse()
+	 * @generated
+	 */
+	EAttribute getQueryResponse_Timestamp();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.status.QueryStatusResponse <em>Query Status Response</em>}'.
@@ -1073,6 +1202,27 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EAttribute getStatusResult_Status();
+
+	/**
+	 * Returns the meta object for class '{@link de.avatar.status.SuccessStatusResult <em>Success Status Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Success Status Result</em>'.
+	 * @see de.avatar.status.SuccessStatusResult
+	 * @generated
+	 */
+	EClass getSuccessStatusResult();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.status.SuccessStatusResult#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see de.avatar.status.SuccessStatusResult#getMessage()
+	 * @see #getSuccessStatusResult()
+	 * @generated
+	 */
+	EAttribute getSuccessStatusResult_Message();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.status.PendingStatusResult <em>Pending Status Result</em>}'.
@@ -1388,6 +1538,14 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute QUERY_RESPONSE__STATUS = eINSTANCE.getQueryResponse_Status();
 
 		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUERY_RESPONSE__TIMESTAMP = eINSTANCE.getQueryResponse_Timestamp();
+
+		/**
 		 * The meta object literal for the '{@link de.avatar.status.impl.QueryStatusResponseImpl <em>Query Status Response</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1474,6 +1632,24 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute STATUS_RESULT__STATUS = eINSTANCE.getStatusResult_Status();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.status.impl.SuccessStatusResultImpl <em>Success Status Result</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.status.impl.SuccessStatusResultImpl
+		 * @see de.avatar.status.impl.StatusPackageImpl#getSuccessStatusResult()
+		 * @generated
+		 */
+		EClass SUCCESS_STATUS_RESULT = eINSTANCE.getSuccessStatusResult();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUCCESS_STATUS_RESULT__MESSAGE = eINSTANCE.getSuccessStatusResult_Message();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.status.impl.PendingStatusResultImpl <em>Pending Status Result</em>}' class.

@@ -70,7 +70,7 @@ public abstract class QWhereImpl extends MinimalEObjectImpl.Container implements
 	protected Comparator comparator;
 
 	/**
-	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' reference.
+	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOperation()
@@ -195,14 +195,6 @@ public abstract class QWhereImpl extends MinimalEObjectImpl.Container implements
 	 */
 	@Override
 	public Operation getOperation() {
-		if (operation != null && operation.eIsProxy()) {
-			InternalEObject oldOperation = (InternalEObject)operation;
-			operation = (Operation)eResolveProxy(oldOperation);
-			if (operation != oldOperation) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QueryPackage.QWHERE__OPERATION, oldOperation, operation));
-			}
-		}
 		return operation;
 	}
 
@@ -211,8 +203,14 @@ public abstract class QWhereImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation basicGetOperation() {
-		return operation;
+	public NotificationChain basicSetOperation(Operation newOperation, NotificationChain msgs) {
+		Operation oldOperation = operation;
+		operation = newOperation;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QueryPackage.QWHERE__OPERATION, oldOperation, newOperation);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -222,10 +220,17 @@ public abstract class QWhereImpl extends MinimalEObjectImpl.Container implements
 	 */
 	@Override
 	public void setOperation(Operation newOperation) {
-		Operation oldOperation = operation;
-		operation = newOperation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.QWHERE__OPERATION, oldOperation, operation));
+		if (newOperation != operation) {
+			NotificationChain msgs = null;
+			if (operation != null)
+				msgs = ((InternalEObject)operation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QueryPackage.QWHERE__OPERATION, null, msgs);
+			if (newOperation != null)
+				msgs = ((InternalEObject)newOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QueryPackage.QWHERE__OPERATION, null, msgs);
+			msgs = basicSetOperation(newOperation, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.QWHERE__OPERATION, newOperation, newOperation));
 	}
 
 	/**
@@ -268,6 +273,8 @@ public abstract class QWhereImpl extends MinimalEObjectImpl.Container implements
 				return basicSetFeaturePath(null, msgs);
 			case QueryPackage.QWHERE__COMPARATOR:
 				return basicSetComparator(null, msgs);
+			case QueryPackage.QWHERE__OPERATION:
+				return basicSetOperation(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -285,8 +292,7 @@ public abstract class QWhereImpl extends MinimalEObjectImpl.Container implements
 			case QueryPackage.QWHERE__COMPARATOR:
 				return getComparator();
 			case QueryPackage.QWHERE__OPERATION:
-				if (resolve) return getOperation();
-				return basicGetOperation();
+				return getOperation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

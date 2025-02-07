@@ -42,9 +42,10 @@ import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.ResponseCode;
 import de.avatar.status.QueryRequest;
-import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.StatusFactory;
+import de.avatar.status.StatusPackage;
 
 @Component(immediate = true, name = "ConnectorRequestWhiteboard", service = ConnectorRequestWhiteboard.class)
 public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboard {
@@ -136,9 +137,14 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 	 * @see de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard#executeDryRun(de.avatar.status.QueryRequest)
 	 */
 	@Override
-	public QueryResponse executeDryRun(QueryRequest request) {		
+	public QueryStatusResponse executeDryRun(QueryRequest request) {		
 		try {
-			QueryResponse response = doExecuteRequest(request, "dryrun");
+			QueryStatusResponse response = doExecuteRequest(request, "dryrun");
+			response.setTimestamp(Instant.now().toEpochMilli());
+			response.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
+				//				We do not want to display the full response result when the status is SUCCESS
+				scs.getStatusResult().eUnset(StatusPackage.Literals.STATUS__RESPONSE);
+			});
 			return response;
 		} catch(Exception e) {
 			LOGGER.severe(String.format("Something went wrong when executing dry run request %s", request.getRequestId()));
@@ -153,14 +159,19 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 	 * @see de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard#executeRequest(de.avatar.status.QueryRequest)
 	 */
 	@Override
-	public QueryResponse executeRequest(QueryRequest request) {
+	public QueryStatusResponse executeRequest(QueryRequest request) {
 		if(statusService.isRequestCached(request)) {
 			LOGGER.severe(String.format("QueryRequest with id %s is already cached. This should not be the case!", request.getRequestId()));
 			throw new IllegalArgumentException(String.format("QueryRequest with id %s is already cached. This should not be the case!", request.getRequestId()));
 		}
 		try {
-			QueryResponse response = doExecuteRequest(request, "request");
-			if(!QueryStatusType.ERROR.equals(response.getStatus())) statusService.cacheRequest(request);			
+			QueryStatusResponse response = doExecuteRequest(request, "request");
+			response.setTimestamp(Instant.now().toEpochMilli());
+			if(!QueryStatusType.ERROR.equals(response.getStatus())) statusService.cacheRequest(request);	
+			response.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
+				//				We do not want to display the full response result when the status is SUCCESS
+				scs.getStatusResult().eUnset(StatusPackage.Literals.STATUS__RESPONSE);
+			});
 			return response;
 		} catch(Exception e) {
 			LOGGER.severe(String.format("Something went wrong when executing request %s", request.getRequestId()));
@@ -169,9 +180,9 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 		}
 	}
 	
-	private QueryResponse doExecuteRequest(QueryRequest request, String reqType) {
+	private QueryStatusResponse doExecuteRequest(QueryRequest request, String reqType) {
 		
-		QueryResponse queryResponse = StatusFactory.eINSTANCE.createQueryResponse();
+		QueryStatusResponse queryResponse = StatusFactory.eINSTANCE.createQueryStatusResponse();
 		queryResponse.setRequestId(request.getRequestId());
 		queryResponse.setStatus(QueryStatusType.SUCCESS);
 		connectors.forEach(c -> {
@@ -193,6 +204,7 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 					} else if(QueryStatusType.SUCCESS.equals(queryResponse.getStatus()) && ResponseCode.PENDING.equals(endpointRes.getCode())) {
 						queryResponse.setStatus(QueryStatusType.PENDING);	
 					}
+					ConnectorWhiteboardHelper.addSingleConnectorQueryStatus((QueryStatusResponse )queryResponse, endpointRes, c);	
 				} catch(Exception e) {
 					e.printStackTrace();
 				}

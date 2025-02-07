@@ -110,8 +110,8 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 		switch (eDataType.getClassifierID()) {
 			case QueryPackage.SORT_ORDER:
 				return createSortOrderFromString(eDataType, initialValue);
-			case QueryPackage.RANGE_COMPARATOR_TYPE:
-				return createRangeComparatorTypeFromString(eDataType, initialValue);
+			case QueryPackage.SUITABLE_TYPE:
+				return createSuitableTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -127,8 +127,8 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 		switch (eDataType.getClassifierID()) {
 			case QueryPackage.SORT_ORDER:
 				return convertSortOrderToString(eDataType, instanceValue);
-			case QueryPackage.RANGE_COMPARATOR_TYPE:
-				return convertRangeComparatorTypeToString(eDataType, instanceValue);
+			case QueryPackage.SUITABLE_TYPE:
+				return convertSuitableTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -456,8 +456,8 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RangeComparatorType createRangeComparatorTypeFromString(EDataType eDataType, String initialValue) {
-		RangeComparatorType result = RangeComparatorType.get(initialValue);
+	public SuitableType createSuitableTypeFromString(EDataType eDataType, String initialValue) {
+		SuitableType result = SuitableType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -467,7 +467,7 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertRangeComparatorTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertSuitableTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

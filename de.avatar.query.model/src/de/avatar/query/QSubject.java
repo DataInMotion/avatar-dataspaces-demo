@@ -145,7 +145,6 @@ public interface QSubject extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Operation</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link de.avatar.query.Operation#getSubject <em>Subject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -154,8 +153,7 @@ public interface QSubject extends EObject {
 	 * @return the value of the '<em>Operation</em>' containment reference.
 	 * @see #setOperation(Operation)
 	 * @see de.avatar.query.QueryPackage#getQSubject_Operation()
-	 * @see de.avatar.query.Operation#getSubject
-	 * @model opposite="subject" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Operation getOperation();

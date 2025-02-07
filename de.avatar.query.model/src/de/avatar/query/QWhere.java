@@ -92,25 +92,25 @@ public interface QWhere extends EObject {
 	void setComparator(Comparator value);
 
 	/**
-	 * Returns the value of the '<em><b>Operation</b></em>' reference.
+	 * Returns the value of the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * This is an optional function to be applied to the feature path before the comparator 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Operation</em>' reference.
+	 * @return the value of the '<em>Operation</em>' containment reference.
 	 * @see #setOperation(Operation)
 	 * @see de.avatar.query.QueryPackage#getQWhere_Operation()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	Operation getOperation();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.query.QWhere#getOperation <em>Operation</em>}' reference.
+	 * Sets the value of the '{@link de.avatar.query.QWhere#getOperation <em>Operation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operation</em>' reference.
+	 * @param value the new value of the '<em>Operation</em>' containment reference.
 	 * @see #getOperation()
 	 * @generated
 	 */

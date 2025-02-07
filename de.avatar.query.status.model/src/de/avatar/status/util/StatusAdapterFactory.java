@@ -103,6 +103,10 @@ public class StatusAdapterFactory extends AdapterFactoryImpl {
 				return createStatusResultAdapter();
 			}
 			@Override
+			public Adapter caseSuccessStatusResult(SuccessStatusResult object) {
+				return createSuccessStatusResultAdapter();
+			}
+			@Override
 			public Adapter casePendingStatusResult(PendingStatusResult object) {
 				return createPendingStatusResultAdapter();
 			}
@@ -219,6 +223,20 @@ public class StatusAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStatusResultAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.status.SuccessStatusResult <em>Success Status Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.status.SuccessStatusResult
+	 * @generated
+	 */
+	public Adapter createSuccessStatusResultAdapter() {
 		return null;
 	}
 

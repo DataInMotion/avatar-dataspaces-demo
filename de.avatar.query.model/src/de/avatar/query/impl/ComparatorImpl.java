@@ -16,7 +16,7 @@ package de.avatar.query.impl;
 import de.avatar.query.Comparator;
 import de.avatar.query.QWhere;
 import de.avatar.query.QueryPackage;
-import de.avatar.query.RangeComparatorType;
+import de.avatar.query.SuitableType;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -56,7 +56,7 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 * @ordered
 	 */
-	protected static final RangeComparatorType SUITABLE_FOR_TYPE_EDEFAULT = RangeComparatorType.NUMERIC;
+	protected static final SuitableType SUITABLE_FOR_TYPE_EDEFAULT = SuitableType.NUMERIC;
 
 	/**
 	 * The cached value of the '{@link #getSuitableForType() <em>Suitable For Type</em>}' attribute.
@@ -66,7 +66,7 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 * @ordered
 	 */
-	protected RangeComparatorType suitableForType = SUITABLE_FOR_TYPE_EDEFAULT;
+	protected SuitableType suitableForType = SUITABLE_FOR_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,7 +93,7 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	@Override
-	public RangeComparatorType getSuitableForType() {
+	public SuitableType getSuitableForType() {
 		return suitableForType;
 	}
 
@@ -103,8 +103,8 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	@Override
-	public void setSuitableForType(RangeComparatorType newSuitableForType) {
-		RangeComparatorType oldSuitableForType = suitableForType;
+	public void setSuitableForType(SuitableType newSuitableForType) {
+		SuitableType oldSuitableForType = suitableForType;
 		suitableForType = newSuitableForType == null ? SUITABLE_FOR_TYPE_EDEFAULT : newSuitableForType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE, oldSuitableForType, suitableForType));
@@ -234,7 +234,7 @@ public abstract class ComparatorImpl extends MinimalEObjectImpl.Container implem
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case QueryPackage.COMPARATOR__SUITABLE_FOR_TYPE:
-				setSuitableForType((RangeComparatorType)newValue);
+				setSuitableForType((SuitableType)newValue);
 				return;
 			case QueryPackage.COMPARATOR__WHERE:
 				setWhere((QWhere)newValue);

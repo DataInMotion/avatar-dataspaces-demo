@@ -27,7 +27,6 @@ import org.osgi.annotation.versioning.ProviderType;
  * </p>
  * <ul>
  *   <li>{@link de.avatar.query.Operation#getSuitableForType <em>Suitable For Type</em>}</li>
- *   <li>{@link de.avatar.query.Operation#getSubject <em>Subject</em>}</li>
  * </ul>
  *
  * @see de.avatar.query.QueryPackage#getOperation()
@@ -38,49 +37,28 @@ import org.osgi.annotation.versioning.ProviderType;
 public interface Operation extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Suitable For Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link de.avatar.query.SuitableType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Suitable For Type</em>' attribute.
-	 * @see #setSuitableForType(String)
+	 * @see de.avatar.query.SuitableType
+	 * @see #setSuitableForType(SuitableType)
 	 * @see de.avatar.query.QueryPackage#getOperation_SuitableForType()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getSuitableForType();
+	SuitableType getSuitableForType();
 
 	/**
 	 * Sets the value of the '{@link de.avatar.query.Operation#getSuitableForType <em>Suitable For Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Suitable For Type</em>' attribute.
+	 * @see de.avatar.query.SuitableType
 	 * @see #getSuitableForType()
 	 * @generated
 	 */
-	void setSuitableForType(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Subject</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link de.avatar.query.QSubject#getOperation <em>Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Subject</em>' container reference.
-	 * @see #setSubject(QSubject)
-	 * @see de.avatar.query.QueryPackage#getOperation_Subject()
-	 * @see de.avatar.query.QSubject#getOperation
-	 * @model opposite="operation" required="true" transient="false"
-	 * @generated
-	 */
-	QSubject getSubject();
-
-	/**
-	 * Sets the value of the '{@link de.avatar.query.Operation#getSubject <em>Subject</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Subject</em>' container reference.
-	 * @see #getSubject()
-	 * @generated
-	 */
-	void setSubject(QSubject value);
+	void setSuitableForType(SuitableType value);
 
 	/**
 	 * <!-- begin-user-doc -->
