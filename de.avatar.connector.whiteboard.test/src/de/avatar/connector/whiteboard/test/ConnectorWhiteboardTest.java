@@ -17,9 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.UUID;
 
 import org.avatar.himsa.export.PatientExportPackage;
@@ -50,6 +47,7 @@ import de.avatar.query.QueryFactory;
 import de.avatar.query.QueryPackage;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
+import de.avatar.status.QueryStatusResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.SingleConnectorQueryStatus;
 import de.avatar.status.StatusFactory;
@@ -104,7 +102,7 @@ public class ConnectorWhiteboardTest {
 		
 		request.setQuery(query);
 		
-		QueryResponse response = whiteboard.executeDryRun(request);
+		QueryStatusResponse response = whiteboard.executeDryRun(request);
 		assertThat(response).isNotNull();
 		assertThat(response.getRequestId()).isEqualTo(reqId);
 		assertThat(response.getStatus()).isEqualTo(QueryStatusType.SUCCESS);
@@ -162,7 +160,7 @@ public class ConnectorWhiteboardTest {
 		query.setDistinct(true);
 		request.setQuery(query);
 		
-		QueryResponse response = whiteboard.executeRequest(request);
+		QueryStatusResponse response = whiteboard.executeRequest(request);
 		assertThat(response).isNotNull();
 		assertThat(response.getRequestId()).isEqualTo(reqId);
 		assertThat(response.getStatus()).isEqualTo(QueryStatusType.PENDING);
@@ -224,7 +222,7 @@ public class ConnectorWhiteboardTest {
 		request.setQuery(query);
 		
 		whiteboard.executeRequest(request);
-		QueryResponse response = statusService.executeStatusRequest(reqId);
+		QueryStatusResponse response = statusService.executeStatusRequest(reqId);
 		assertThat(response).isNotNull();
 		assertThat(response.getRequestId()).isEqualTo(reqId);
 		assertThat(response.getDetailedStatus()).isNotNull();
@@ -285,7 +283,7 @@ public class ConnectorWhiteboardTest {
 		fp2.getFeature().add(PatientExportPackage.Literals.PATIENT__BIRTH_DATE);
 		where.setFeaturePath(fp2);
 		IsAfter comparator = QueryFactory.eINSTANCE.createIsAfter();
-		comparator.setValue(fromLocalDateToDate(LocalDate.of(1980, 1, 1)));
+		comparator.setValue("1980-01-01");
 		where.setComparator(comparator);
 		query.getSubject().add(subject);
 		query.getWhere().add(where);
@@ -293,7 +291,7 @@ public class ConnectorWhiteboardTest {
 		query.setDistinct(true);
 		request.setQuery(query);
 		
-		QueryResponse response = whiteboard.executeRequest(request);
+		QueryStatusResponse response = whiteboard.executeRequest(request);
 		assertThat(response).isNotNull();
 		assertThat(response.getRequestId()).isEqualTo(reqId);
 		assertThat(response.getStatus()).isEqualTo(QueryStatusType.PENDING);
@@ -337,7 +335,7 @@ public class ConnectorWhiteboardTest {
 		fp2.getFeature().add(QueryPackage.Literals.QUERY__COUNT);
 		where.setFeaturePath(fp2);
 		IsAfter comparator = QueryFactory.eINSTANCE.createIsAfter();
-		comparator.setValue(fromLocalDateToDate(LocalDate.of(1980, 1, 1)));
+		comparator.setValue("1980-01-01");
 		where.setComparator(comparator);
 		query.getSubject().add(subject);
 		query.getWhere().add(where);
@@ -352,14 +350,14 @@ public class ConnectorWhiteboardTest {
 	}
 	
 	
-	private Date fromLocalDateToDate(LocalDate localDate) {
-		return Date.from(                     // Convert from modern java.time class to troublesome old legacy class.  DO NOT DO THIS unless you must, to inter operate with old code not yet updated for java.time.
-				localDate                          // `LocalDate` class represents a date-only, without time-of-day and without time zone nor offset-from-UTC. 
-			    .atStartOfDay(                       // Let java.time determine the first moment of the day on that date in that zone. Never assume the day starts at 00:00:00.
-			        ZoneId.of( "America/Montreal" )  // Specify time zone using proper name in `continent/region` format, never 3-4 letter pseudo-zones such as “PST”, “CST”, “IST”. 
-			    )                                    // Produce a `ZonedDateTime` object. 
-			    .toInstant()                         // Extract an `Instant` object, a moment always in UTC.
-			);
-	}
+//	private Date fromLocalDateToDate(LocalDate localDate) {
+//		return Date.from(                     // Convert from modern java.time class to troublesome old legacy class.  DO NOT DO THIS unless you must, to inter operate with old code not yet updated for java.time.
+//				localDate                          // `LocalDate` class represents a date-only, without time-of-day and without time zone nor offset-from-UTC. 
+//			    .atStartOfDay(                       // Let java.time determine the first moment of the day on that date in that zone. Never assume the day starts at 00:00:00.
+//			        ZoneId.of( "America/Montreal" )  // Specify time zone using proper name in `continent/region` format, never 3-4 letter pseudo-zones such as “PST”, “CST”, “IST”. 
+//			    )                                    // Produce a `ZonedDateTime` object. 
+//			    .toInstant()                         // Extract an `Instant` object, a moment always in UTC.
+//			);
+//	}
 
 }

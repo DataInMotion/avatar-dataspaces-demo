@@ -28,7 +28,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * </p>
  * <ul>
  *   <li>{@link de.avatar.query.SortEntity#getSortOrder <em>Sort Order</em>}</li>
- *   <li>{@link de.avatar.query.SortEntity#getFeaturePath <em>Feature Path</em>}</li>
+ *   <li>{@link de.avatar.query.SortEntity#getSortFeature <em>Sort Feature</em>}</li>
  * </ul>
  *
  * @see de.avatar.query.QueryPackage#getSortEntity()
@@ -64,25 +64,25 @@ public interface SortEntity extends EObject {
 	void setSortOrder(SortOrder value);
 
 	/**
-	 * Returns the value of the '<em><b>Feature Path</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Sort Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Feature Path</em>' containment reference.
-	 * @see #setFeaturePath(EStructuralFeature)
-	 * @see de.avatar.query.QueryPackage#getSortEntity_FeaturePath()
-	 * @model containment="true" required="true"
+	 * @return the value of the '<em>Sort Feature</em>' reference.
+	 * @see #setSortFeature(EStructuralFeature)
+	 * @see de.avatar.query.QueryPackage#getSortEntity_SortFeature()
+	 * @model required="true"
 	 * @generated
 	 */
-	EStructuralFeature getFeaturePath();
+	EStructuralFeature getSortFeature();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.query.SortEntity#getFeaturePath <em>Feature Path</em>}' containment reference.
+	 * Sets the value of the '{@link de.avatar.query.SortEntity#getSortFeature <em>Sort Feature</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Feature Path</em>' containment reference.
-	 * @see #getFeaturePath()
+	 * @param value the new value of the '<em>Sort Feature</em>' reference.
+	 * @see #getSortFeature()
 	 * @generated
 	 */
-	void setFeaturePath(EStructuralFeature value);
+	void setSortFeature(EStructuralFeature value);
 
 } // SortEntity

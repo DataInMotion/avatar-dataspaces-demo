@@ -65,6 +65,7 @@ import de.avatar.query.Or;
 import de.avatar.query.QSubject;
 import de.avatar.query.QWhere;
 import de.avatar.query.Query;
+import de.avatar.query.SortEntity;
 import de.avatar.query.StringComparator;
 import de.avatar.status.QueryRequest;
 
@@ -217,7 +218,14 @@ public class ISMAConnectorImpl implements AvatarConnector {
 										toString();
 								subjectURIs.add(subjectURI);
 							}
-														
+							
+							List<String> sortURIs = new ArrayList<>(query.getSortBy().size());
+							for(SortEntity se : query.getSortBy()) {
+								String sort = "sort=";
+								sort += "sortOrder=" + se.getSortOrder().getLiteral()+",";
+								sort += "sortFeature=" + se.getSortFeature().getName();
+								sortURIs.add(sort);					
+							}
 //							where are the feature on which to apply the comparator for the actual query
 							List<String> whereURIs = new ArrayList<>(query.getWhere().size());
 							for(QWhere where : query.getWhere()) {
@@ -226,13 +234,13 @@ public class ISMAConnectorImpl implements AvatarConnector {
 								String operation = where.getOperation() != null ? "operation=".concat(where.getOperation().eClass().getName()) : "";
 								String comparatorName = "comparatorName=".concat(where.getComparator().eClass().getName());
 								String[] values = buildValueFromComparator(where.getComparator());
-								
 								if(where instanceof And) queryType += "AND";
 								else if(where instanceof Or) queryType += "OR";
 								else if(where instanceof Not) queryType += "NOT";
 								for(EStructuralFeature feature : where.getFeaturePath().getFeature()) {
 									featurePath += feature.getName()+"-";
 								}
+								
 								featurePath = featurePath.substring(0, featurePath.length()-1); //to remove the last ","
 								String whereURI = new StringBuilder("where=").
 										append(queryType).
@@ -253,6 +261,17 @@ public class ISMAConnectorImpl implements AvatarConnector {
 								whereURIs.add(whereURI);								
 							}
 							StringBuilder sb = new StringBuilder(reqUri);
+							for(String sortURI : sortURIs) {
+								sb.
+								append(sortURI).
+								append("&");								
+							}
+							if(query.getLimit() != 0) {
+								sb.append("limit="+query.getLimit()+"&");
+							}
+							if(query.getSkip() != 0) {
+								sb.append("skip="+query.getSkip()+"&");
+							}
 							for(String subjectURI : subjectURIs) {
 								sb.
 								append(subjectURI).

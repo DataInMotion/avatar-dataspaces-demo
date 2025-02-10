@@ -198,7 +198,7 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 				try {
 					EndpointResponse endpointRes = "request".equals(reqType) ? c.executeRequest(endpointReq) : c.dryRequest(endpointReq);
 					endpointRes.setSourceId(c.getInfo().getId());
-					statusService.updateStatus(endpointRes);
+					if("request".equals(reqType)) statusService.updateStatus(endpointRes);
 					if(ResponseCode.ERROR.equals(endpointRes.getCode())) {
 						queryResponse.setStatus(QueryStatusType.ERROR);
 					} else if(QueryStatusType.SUCCESS.equals(queryResponse.getStatus()) && ResponseCode.PENDING.equals(endpointRes.getCode())) {

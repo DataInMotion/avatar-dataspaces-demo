@@ -1053,7 +1053,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getSortEntity_FeaturePath() {
+	public EReference getSortEntity_SortFeature() {
 		return (EReference)sortEntityEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1253,7 +1253,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		sortEntityEClass = createEClass(SORT_ENTITY);
 		createEAttribute(sortEntityEClass, SORT_ENTITY__SORT_ORDER);
-		createEReference(sortEntityEClass, SORT_ENTITY__FEATURE_PATH);
+		createEReference(sortEntityEClass, SORT_ENTITY__SORT_FEATURE);
 
 		operationEClass = createEClass(OPERATION);
 		createEAttribute(operationEClass, OPERATION__SUITABLE_FOR_TYPE);
@@ -1431,7 +1431,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		initEClass(sortEntityEClass, SortEntity.class, "SortEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSortEntity_SortOrder(), this.getSortOrder(), "sortOrder", "DESC", 1, 1, SortEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSortEntity_FeaturePath(), ecorePackage.getEStructuralFeature(), null, "featurePath", null, 1, 1, SortEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSortEntity_SortFeature(), ecorePackage.getEStructuralFeature(), null, "sortFeature", null, 1, 1, SortEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOperation_SuitableForType(), this.getSuitableType(), "suitableForType", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

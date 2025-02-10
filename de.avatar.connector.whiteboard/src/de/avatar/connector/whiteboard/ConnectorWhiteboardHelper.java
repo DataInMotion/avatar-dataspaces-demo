@@ -68,9 +68,9 @@ public class ConnectorWhiteboardHelper {
 			return pendingStatusRes;
 		}
 		if(responseResult instanceof DryRunResult pendingRes) {
-			PendingStatusResult pendingStatusRes = StatusFactory.eINSTANCE.createPendingStatusResult();
-			pendingStatusRes.setEstRuntime(pendingRes.getEstRuntime());
-			return pendingStatusRes;
+			SuccessStatusResult okRes = StatusFactory.eINSTANCE.createSuccessStatusResult();
+			okRes.setMessage(String.format("Estimated time for query is %d seconds", pendingRes.getEstRuntime()));
+			return okRes;
 		}
 		else if(responseResult instanceof ErrorResult errResult) {
 			ErrorStatusResult errStatusRes = StatusFactory.eINSTANCE.createErrorStatusResult();

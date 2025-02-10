@@ -18,7 +18,6 @@ import de.avatar.query.SortEntity;
 import de.avatar.query.SortOrder;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -36,7 +35,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link de.avatar.query.impl.SortEntityImpl#getSortOrder <em>Sort Order</em>}</li>
- *   <li>{@link de.avatar.query.impl.SortEntityImpl#getFeaturePath <em>Feature Path</em>}</li>
+ *   <li>{@link de.avatar.query.impl.SortEntityImpl#getSortFeature <em>Sort Feature</em>}</li>
  * </ul>
  *
  * @generated
@@ -63,14 +62,14 @@ public class SortEntityImpl extends MinimalEObjectImpl.Container implements Sort
 	protected SortOrder sortOrder = SORT_ORDER_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getFeaturePath() <em>Feature Path</em>}' containment reference.
+	 * The cached value of the '{@link #getSortFeature() <em>Sort Feature</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFeaturePath()
+	 * @see #getSortFeature()
 	 * @generated
 	 * @ordered
 	 */
-	protected EStructuralFeature featurePath;
+	protected EStructuralFeature sortFeature;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,8 +119,16 @@ public class SortEntityImpl extends MinimalEObjectImpl.Container implements Sort
 	 * @generated
 	 */
 	@Override
-	public EStructuralFeature getFeaturePath() {
-		return featurePath;
+	public EStructuralFeature getSortFeature() {
+		if (sortFeature != null && sortFeature.eIsProxy()) {
+			InternalEObject oldSortFeature = (InternalEObject)sortFeature;
+			sortFeature = (EStructuralFeature)eResolveProxy(oldSortFeature);
+			if (sortFeature != oldSortFeature) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QueryPackage.SORT_ENTITY__SORT_FEATURE, oldSortFeature, sortFeature));
+			}
+		}
+		return sortFeature;
 	}
 
 	/**
@@ -129,34 +136,8 @@ public class SortEntityImpl extends MinimalEObjectImpl.Container implements Sort
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFeaturePath(EStructuralFeature newFeaturePath, NotificationChain msgs) {
-		EStructuralFeature oldFeaturePath = featurePath;
-		featurePath = newFeaturePath;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QueryPackage.SORT_ENTITY__FEATURE_PATH, oldFeaturePath, newFeaturePath);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setFeaturePath(EStructuralFeature newFeaturePath) {
-		if (newFeaturePath != featurePath) {
-			NotificationChain msgs = null;
-			if (featurePath != null)
-				msgs = ((InternalEObject)featurePath).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QueryPackage.SORT_ENTITY__FEATURE_PATH, null, msgs);
-			if (newFeaturePath != null)
-				msgs = ((InternalEObject)newFeaturePath).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QueryPackage.SORT_ENTITY__FEATURE_PATH, null, msgs);
-			msgs = basicSetFeaturePath(newFeaturePath, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.SORT_ENTITY__FEATURE_PATH, newFeaturePath, newFeaturePath));
+	public EStructuralFeature basicGetSortFeature() {
+		return sortFeature;
 	}
 
 	/**
@@ -165,12 +146,11 @@ public class SortEntityImpl extends MinimalEObjectImpl.Container implements Sort
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case QueryPackage.SORT_ENTITY__FEATURE_PATH:
-				return basicSetFeaturePath(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setSortFeature(EStructuralFeature newSortFeature) {
+		EStructuralFeature oldSortFeature = sortFeature;
+		sortFeature = newSortFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.SORT_ENTITY__SORT_FEATURE, oldSortFeature, sortFeature));
 	}
 
 	/**
@@ -183,8 +163,9 @@ public class SortEntityImpl extends MinimalEObjectImpl.Container implements Sort
 		switch (featureID) {
 			case QueryPackage.SORT_ENTITY__SORT_ORDER:
 				return getSortOrder();
-			case QueryPackage.SORT_ENTITY__FEATURE_PATH:
-				return getFeaturePath();
+			case QueryPackage.SORT_ENTITY__SORT_FEATURE:
+				if (resolve) return getSortFeature();
+				return basicGetSortFeature();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -200,8 +181,8 @@ public class SortEntityImpl extends MinimalEObjectImpl.Container implements Sort
 			case QueryPackage.SORT_ENTITY__SORT_ORDER:
 				setSortOrder((SortOrder)newValue);
 				return;
-			case QueryPackage.SORT_ENTITY__FEATURE_PATH:
-				setFeaturePath((EStructuralFeature)newValue);
+			case QueryPackage.SORT_ENTITY__SORT_FEATURE:
+				setSortFeature((EStructuralFeature)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -218,8 +199,8 @@ public class SortEntityImpl extends MinimalEObjectImpl.Container implements Sort
 			case QueryPackage.SORT_ENTITY__SORT_ORDER:
 				setSortOrder(SORT_ORDER_EDEFAULT);
 				return;
-			case QueryPackage.SORT_ENTITY__FEATURE_PATH:
-				setFeaturePath((EStructuralFeature)null);
+			case QueryPackage.SORT_ENTITY__SORT_FEATURE:
+				setSortFeature((EStructuralFeature)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -235,8 +216,8 @@ public class SortEntityImpl extends MinimalEObjectImpl.Container implements Sort
 		switch (featureID) {
 			case QueryPackage.SORT_ENTITY__SORT_ORDER:
 				return sortOrder != SORT_ORDER_EDEFAULT;
-			case QueryPackage.SORT_ENTITY__FEATURE_PATH:
-				return featurePath != null;
+			case QueryPackage.SORT_ENTITY__SORT_FEATURE:
+				return sortFeature != null;
 		}
 		return super.eIsSet(featureID);
 	}

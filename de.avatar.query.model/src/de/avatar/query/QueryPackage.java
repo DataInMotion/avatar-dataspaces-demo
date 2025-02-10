@@ -2273,13 +2273,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int SORT_ENTITY__SORT_ORDER = 0;
 
 	/**
-	 * The feature id for the '<em><b>Feature Path</b></em>' containment reference.
+	 * The feature id for the '<em><b>Sort Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SORT_ENTITY__FEATURE_PATH = 1;
+	int SORT_ENTITY__SORT_FEATURE = 1;
 
 	/**
 	 * The number of structural features of the '<em>Sort Entity</em>' class.
@@ -3105,15 +3105,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getSortEntity_SortOrder();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.avatar.query.SortEntity#getFeaturePath <em>Feature Path</em>}'.
+	 * Returns the meta object for the reference '{@link de.avatar.query.SortEntity#getSortFeature <em>Sort Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Feature Path</em>'.
-	 * @see de.avatar.query.SortEntity#getFeaturePath()
+	 * @return the meta object for the reference '<em>Sort Feature</em>'.
+	 * @see de.avatar.query.SortEntity#getSortFeature()
 	 * @see #getSortEntity()
 	 * @generated
 	 */
-	EReference getSortEntity_FeaturePath();
+	EReference getSortEntity_SortFeature();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.Operation <em>Operation</em>}'.
@@ -3784,12 +3784,12 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute SORT_ENTITY__SORT_ORDER = eINSTANCE.getSortEntity_SortOrder();
 
 		/**
-		 * The meta object literal for the '<em><b>Feature Path</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Sort Feature</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SORT_ENTITY__FEATURE_PATH = eINSTANCE.getSortEntity_FeaturePath();
+		EReference SORT_ENTITY__SORT_FEATURE = eINSTANCE.getSortEntity_SortFeature();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.OperationImpl <em>Operation</em>}' class.

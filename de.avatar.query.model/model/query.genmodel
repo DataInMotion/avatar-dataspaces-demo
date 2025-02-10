@@ -92,7 +92,7 @@
     <genClasses ecoreClass="query.ecore#//IsBool"/>
     <genClasses ecoreClass="query.ecore#//SortEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//SortEntity/sortOrder"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SortEntity/featurePath"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SortEntity/sortFeature"/>
     </genClasses>
     <genClasses image="false" ecoreClass="query.ecore#//Operation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Operation/suitableForType"/>

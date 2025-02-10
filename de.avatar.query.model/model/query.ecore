@@ -138,9 +138,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="SortEntity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sortOrder" lowerBound="1"
         eType="#//SortOrder" defaultValueLiteral="DESC"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="featurePath" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sortFeature" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SortOrder">
     <eLiterals name="DESC"/>
