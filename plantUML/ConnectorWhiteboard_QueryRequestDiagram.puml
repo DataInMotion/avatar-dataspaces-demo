@@ -1,0 +1,51 @@
+@startuml
+
+!theme bluegray
+skinparam actorStyle awesome
+
+title Query Request
+
+actor User as U
+participant QueryUI as UI
+participant RestResource as RR
+participant RequestWhiteboard as RWB
+participant StatusService as RCS
+collections Connectors as Cs
+collections DataProviders as DP
+
+autonumber
+U->UI: send a query request
+activate U
+UI->RR: send a query request
+activate UI
+activate RR
+RR->RWB: send a query request
+activate RWB
+RWB->RCS: cache the request
+activate RCS
+RCS->RCS: do the cache
+deactivate RCS
+RWB->Cs: send request to all connectors
+activate Cs
+Cs->DP: each connector sends the query\nto the corresponding data provider
+activate DP
+DP->Cs: each data provider sends the response\nto the corresponding connector
+deactivate DP
+Cs->RWB: each connector sends the\nresponse to the whiteboard
+deactivate Cs
+note right of RWB
+Aggregate responses
+end note
+RWB->RCS: update status in cache
+activate RCS
+RCS->RCS: do status update
+deactivate RCS
+RWB->RR: send aggregated response 
+deactivate RWB
+RR->UI: send response 
+deactivate RR
+UI->U: send response
+deactivate UI
+deactivate U
+
+@enduml
