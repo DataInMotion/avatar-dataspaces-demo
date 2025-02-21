@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.avatar.himsa.export.PatientExportPackage;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -40,9 +41,11 @@ import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.ConnectorMetric;
+import de.avatar.model.connector.ConsentInfo;
 import de.avatar.model.connector.EcoreParameter;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
+import de.avatar.model.connector.ModelInfo;
 import de.avatar.model.connector.ProtocolType;
 import de.avatar.model.connector.StatusType;
 import de.avatar.model.connector.helper.ConnectorHelper;
@@ -384,6 +387,32 @@ public class ISMAConnectorImpl implements AvatarConnector {
 			LOGGER.severe(String.format("Response does NOT contain any object for request %s", res.getURI()));
 			return null;
 		}
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.api.AvatarConnectorInfo#getModelInfos()
+	 */
+	@Override
+	public List<ModelInfo> getModelInfos() {
+		ModelInfo modelInfo = connectorFactory.createModelInfo();
+		modelInfo.setName(PatientExportPackage.eNAME);
+		modelInfo.setUri(PatientExportPackage.eNS_URI);
+		modelInfo.setDescription("A model for Patients and their hearing data");
+		return List.of(modelInfo);
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.api.AvatarConnectorInfo#getConsentInfos()
+	 */
+	@Override
+	public List<ConsentInfo> getConsentInfos() {
+		ConsentInfo consentInfo = connectorFactory.createConsentInfo();
+		consentInfo.setDomain("avatar");
+		consentInfo.setPolicy("hearing_policy");
+		consentInfo.setTemplate("");
+		return List.of(consentInfo);
 	}
 
 

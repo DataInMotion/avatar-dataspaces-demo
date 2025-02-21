@@ -119,5 +119,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorPendingResult/connectorProviderId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorPendingResult/responseCode"/>
     </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//ConsentInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConsentInfo/domain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConsentInfo/policy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConsentInfo/template"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConsentInfo/description"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//ModelInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ModelInfo/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ModelInfo/uri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ModelInfo/description"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

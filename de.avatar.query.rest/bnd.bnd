@@ -19,4 +19,5 @@ Private-Package: de.avatar.query.rest
 	de.avatar.query.status.model;version=snapshot,\
 	de.avatar.generator.api;version=snapshot,\
 	org.osgi.service.http.whiteboard,\
-	org.gecko.emf.util.annotations
+	org.gecko.emf.util.annotations,\
+	org.gecko.emf.util.model

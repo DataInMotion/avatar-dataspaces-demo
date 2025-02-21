@@ -111,13 +111,31 @@ public interface ApiPackage extends org.eclipse.emf.ecore.EPackage {
 	int AVATAR_CONNECTOR_INFO___GET_INFO = 1;
 
 	/**
+	 * The operation id for the '<em>Get Model Infos</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVATAR_CONNECTOR_INFO___GET_MODEL_INFOS = 2;
+
+	/**
+	 * The operation id for the '<em>Get Consent Infos</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVATAR_CONNECTOR_INFO___GET_CONSENT_INFOS = 3;
+
+	/**
 	 * The number of operations of the '<em>Avatar Connector Info</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AVATAR_CONNECTOR_INFO_OPERATION_COUNT = 2;
+	int AVATAR_CONNECTOR_INFO_OPERATION_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.connector.api.AvatarConnector <em>Avatar Connector</em>}' class.
@@ -155,6 +173,24 @@ public interface ApiPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int AVATAR_CONNECTOR___GET_INFO = AVATAR_CONNECTOR_INFO___GET_INFO;
+
+	/**
+	 * The operation id for the '<em>Get Model Infos</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVATAR_CONNECTOR___GET_MODEL_INFOS = AVATAR_CONNECTOR_INFO___GET_MODEL_INFOS;
+
+	/**
+	 * The operation id for the '<em>Get Consent Infos</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVATAR_CONNECTOR___GET_CONSENT_INFOS = AVATAR_CONNECTOR_INFO___GET_CONSENT_INFOS;
 
 	/**
 	 * The operation id for the '<em>Dry Request</em>' operation.
@@ -245,6 +281,26 @@ public interface ApiPackage extends org.eclipse.emf.ecore.EPackage {
 	EOperation getAvatarConnectorInfo__GetInfo();
 
 	/**
+	 * Returns the meta object for the '{@link de.avatar.connector.api.AvatarConnectorInfo#getModelInfos() <em>Get Model Infos</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Model Infos</em>' operation.
+	 * @see de.avatar.connector.api.AvatarConnectorInfo#getModelInfos()
+	 * @generated
+	 */
+	EOperation getAvatarConnectorInfo__GetModelInfos();
+
+	/**
+	 * Returns the meta object for the '{@link de.avatar.connector.api.AvatarConnectorInfo#getConsentInfos() <em>Get Consent Infos</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Consent Infos</em>' operation.
+	 * @see de.avatar.connector.api.AvatarConnectorInfo#getConsentInfos()
+	 * @generated
+	 */
+	EOperation getAvatarConnectorInfo__GetConsentInfos();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -318,6 +374,22 @@ public interface ApiPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EOperation AVATAR_CONNECTOR_INFO___GET_INFO = eINSTANCE.getAvatarConnectorInfo__GetInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Model Infos</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation AVATAR_CONNECTOR_INFO___GET_MODEL_INFOS = eINSTANCE.getAvatarConnectorInfo__GetModelInfos();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Consent Infos</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation AVATAR_CONNECTOR_INFO___GET_CONSENT_INFOS = eINSTANCE.getAvatarConnectorInfo__GetConsentInfos();
 
 	}
 

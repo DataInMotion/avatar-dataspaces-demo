@@ -187,6 +187,18 @@ public class AConnectorSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AConnectorPackage.CONSENT_INFO: {
+				ConsentInfo consentInfo = (ConsentInfo)theEObject;
+				T result = caseConsentInfo(consentInfo);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AConnectorPackage.MODEL_INFO: {
+				ModelInfo modelInfo = (ModelInfo)theEObject;
+				T result = caseModelInfo(modelInfo);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -443,6 +455,36 @@ public class AConnectorSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConnectorPendingResult(ConnectorPendingResult object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Consent Info</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Consent Info</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConsentInfo(ConsentInfo object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Info</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Info</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelInfo(ModelInfo object) {
 		return null;
 	}
 

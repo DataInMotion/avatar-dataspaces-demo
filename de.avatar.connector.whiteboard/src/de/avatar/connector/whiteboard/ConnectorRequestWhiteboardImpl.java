@@ -37,9 +37,11 @@ import de.avatar.connector.whiteboard.api.StatusService;
 import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
+import de.avatar.model.connector.ConsentInfo;
 import de.avatar.model.connector.EcoreParameter;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
+import de.avatar.model.connector.ModelInfo;
 import de.avatar.model.connector.ResponseCode;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryStatusResponse;
@@ -227,6 +229,24 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 				System.out.println(String.format("  - Detected endpoint with name %s (%s) and method %s iwth media type %s", ep.getName(), ep.getId(), ep.getMethod(), ep.getMediaType()));
 			}
 		}
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.ConnectorWhiteboard#getModelInfoForAllConnectors()
+	 */
+	@Override
+	public List<ModelInfo> getModelInfoForAllConnectors() {
+		return connectors.stream().map(c -> c.getModelInfos()).flatMap(c -> c.stream()).toList();
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.ConnectorWhiteboard#getConsentInfoForAllConnectors()
+	 */
+	@Override
+	public List<ConsentInfo> getConsentInfoForAllConnectors() {
+		return connectors.stream().map(c -> c.getConsentInfos()).flatMap(c -> c.stream()).toList();
 	}
 
 }

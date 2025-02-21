@@ -84,6 +84,8 @@ public class AConnectorFactoryImpl extends EFactoryImpl implements AConnectorFac
 			case AConnectorPackage.JAVA_RESULT: return createJavaResult();
 			case AConnectorPackage.SIMPLE_RESULT: return createSimpleResult();
 			case AConnectorPackage.CONNECTOR_PENDING_RESULT: return createConnectorPendingResult();
+			case AConnectorPackage.CONSENT_INFO: return createConsentInfo();
+			case AConnectorPackage.MODEL_INFO: return createModelInfo();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -305,6 +307,28 @@ public class AConnectorFactoryImpl extends EFactoryImpl implements AConnectorFac
 	public ConnectorPendingResult createConnectorPendingResult() {
 		ConnectorPendingResultImpl connectorPendingResult = new ConnectorPendingResultImpl();
 		return connectorPendingResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ConsentInfo createConsentInfo() {
+		ConsentInfoImpl consentInfo = new ConsentInfoImpl();
+		return consentInfo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ModelInfo createModelInfo() {
+		ModelInfoImpl modelInfo = new ModelInfoImpl();
+		return modelInfo;
 	}
 
 	/**

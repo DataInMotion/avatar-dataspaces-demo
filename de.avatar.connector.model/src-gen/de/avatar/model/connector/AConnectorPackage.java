@@ -1120,6 +1120,125 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	int CONNECTOR_PENDING_RESULT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.model.connector.impl.ConsentInfoImpl <em>Consent Info</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.model.connector.impl.ConsentInfoImpl
+	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getConsentInfo()
+	 * @generated
+	 */
+	int CONSENT_INFO = 17;
+
+	/**
+	 * The feature id for the '<em><b>Domain</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSENT_INFO__DOMAIN = 0;
+
+	/**
+	 * The feature id for the '<em><b>Policy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSENT_INFO__POLICY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Template</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSENT_INFO__TEMPLATE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSENT_INFO__DESCRIPTION = 3;
+
+	/**
+	 * The number of structural features of the '<em>Consent Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSENT_INFO_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Consent Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSENT_INFO_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link de.avatar.model.connector.impl.ModelInfoImpl <em>Model Info</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.model.connector.impl.ModelInfoImpl
+	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getModelInfo()
+	 * @generated
+	 */
+	int MODEL_INFO = 18;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_INFO__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_INFO__URI = 1;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_INFO__DESCRIPTION = 2;
+
+	/**
+	 * The number of structural features of the '<em>Model Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_INFO_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Model Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_INFO_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1127,7 +1246,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getProtocolType()
 	 * @generated
 	 */
-	int PROTOCOL_TYPE = 17;
+	int PROTOCOL_TYPE = 19;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.StatusType <em>Status Type</em>}' enum.
@@ -1137,7 +1256,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getStatusType()
 	 * @generated
 	 */
-	int STATUS_TYPE = 18;
+	int STATUS_TYPE = 20;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.ResponseCode <em>Response Code</em>}' enum.
@@ -1147,7 +1266,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getResponseCode()
 	 * @generated
 	 */
-	int RESPONSE_CODE = 19;
+	int RESPONSE_CODE = 21;
 
 	/**
 	 * The meta object id for the '<em>Java Throwable</em>' data type.
@@ -1157,7 +1276,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getJavaThrowable()
 	 * @generated
 	 */
-	int JAVA_THROWABLE = 20;
+	int JAVA_THROWABLE = 22;
 
 
 	/**
@@ -1903,6 +2022,103 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getConnectorPendingResult_ResponseCode();
 
 	/**
+	 * Returns the meta object for class '{@link de.avatar.model.connector.ConsentInfo <em>Consent Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Consent Info</em>'.
+	 * @see de.avatar.model.connector.ConsentInfo
+	 * @generated
+	 */
+	EClass getConsentInfo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.ConsentInfo#getDomain <em>Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Domain</em>'.
+	 * @see de.avatar.model.connector.ConsentInfo#getDomain()
+	 * @see #getConsentInfo()
+	 * @generated
+	 */
+	EAttribute getConsentInfo_Domain();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.ConsentInfo#getPolicy <em>Policy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Policy</em>'.
+	 * @see de.avatar.model.connector.ConsentInfo#getPolicy()
+	 * @see #getConsentInfo()
+	 * @generated
+	 */
+	EAttribute getConsentInfo_Policy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.ConsentInfo#getTemplate <em>Template</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Template</em>'.
+	 * @see de.avatar.model.connector.ConsentInfo#getTemplate()
+	 * @see #getConsentInfo()
+	 * @generated
+	 */
+	EAttribute getConsentInfo_Template();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.ConsentInfo#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see de.avatar.model.connector.ConsentInfo#getDescription()
+	 * @see #getConsentInfo()
+	 * @generated
+	 */
+	EAttribute getConsentInfo_Description();
+
+	/**
+	 * Returns the meta object for class '{@link de.avatar.model.connector.ModelInfo <em>Model Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Model Info</em>'.
+	 * @see de.avatar.model.connector.ModelInfo
+	 * @generated
+	 */
+	EClass getModelInfo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.ModelInfo#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.avatar.model.connector.ModelInfo#getName()
+	 * @see #getModelInfo()
+	 * @generated
+	 */
+	EAttribute getModelInfo_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.ModelInfo#getUri <em>Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uri</em>'.
+	 * @see de.avatar.model.connector.ModelInfo#getUri()
+	 * @see #getModelInfo()
+	 * @generated
+	 */
+	EAttribute getModelInfo_Uri();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.ModelInfo#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see de.avatar.model.connector.ModelInfo#getDescription()
+	 * @see #getModelInfo()
+	 * @generated
+	 */
+	EAttribute getModelInfo_Description();
+
+	/**
 	 * Returns the meta object for enum '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2551,6 +2767,82 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute CONNECTOR_PENDING_RESULT__RESPONSE_CODE = eINSTANCE.getConnectorPendingResult_ResponseCode();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.model.connector.impl.ConsentInfoImpl <em>Consent Info</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.model.connector.impl.ConsentInfoImpl
+		 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getConsentInfo()
+		 * @generated
+		 */
+		EClass CONSENT_INFO = eINSTANCE.getConsentInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSENT_INFO__DOMAIN = eINSTANCE.getConsentInfo_Domain();
+
+		/**
+		 * The meta object literal for the '<em><b>Policy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSENT_INFO__POLICY = eINSTANCE.getConsentInfo_Policy();
+
+		/**
+		 * The meta object literal for the '<em><b>Template</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSENT_INFO__TEMPLATE = eINSTANCE.getConsentInfo_Template();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSENT_INFO__DESCRIPTION = eINSTANCE.getConsentInfo_Description();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.model.connector.impl.ModelInfoImpl <em>Model Info</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.model.connector.impl.ModelInfoImpl
+		 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getModelInfo()
+		 * @generated
+		 */
+		EClass MODEL_INFO = eINSTANCE.getModelInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_INFO__NAME = eINSTANCE.getModelInfo_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_INFO__URI = eINSTANCE.getModelInfo_Uri();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_INFO__DESCRIPTION = eINSTANCE.getModelInfo_Description();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}' enum.

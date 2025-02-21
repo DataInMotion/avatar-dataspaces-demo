@@ -14,10 +14,12 @@ package de.avatar.query.rest;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 import org.gecko.emf.json.constants.EMFJs;
 import org.gecko.emf.rest.annotations.EMFResourceOptions;
 import org.gecko.emf.rest.annotations.ResourceOption;
+import org.gecko.emf.utilities.UtilitiesFactory;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
@@ -27,6 +29,8 @@ import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsResource;
 import de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard;
 import de.avatar.connector.whiteboard.api.StatusService;
 import de.avatar.generator.api.api.AvatarGenerator;
+import de.avatar.model.connector.ConsentInfo;
+import de.avatar.model.connector.ModelInfo;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusResponse;
@@ -65,6 +69,27 @@ public class QueryRestResource {
 		return "Hello ConnectorRestResource!";
 	}
 	
+	@GET
+	@Path("/connectors/modelinfo")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response modelInfo() {
+		List<ModelInfo> modelInfos = requestWhiteboard.getModelInfoForAllConnectors();
+		org.gecko.emf.utilities.Response emfResponse = UtilitiesFactory.eINSTANCE.createResponse();
+		emfResponse.getData().addAll(modelInfos);
+		return Response.ok(emfResponse).build();
+	}
+	
+	@GET
+	@Path("/connectors/consentinfo")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response consentInfo() {
+		List<ConsentInfo> consentInfos = requestWhiteboard.getConsentInfoForAllConnectors();
+		org.gecko.emf.utilities.Response emfResponse = UtilitiesFactory.eINSTANCE.createResponse();
+		emfResponse.getData().addAll(consentInfos);
+		return Response.ok(emfResponse).build();
+	}
+	
+
 	@POST
 	@Path("/dryrun")
 	@Produces(MediaType.APPLICATION_JSON)

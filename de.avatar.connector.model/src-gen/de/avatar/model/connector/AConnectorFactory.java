@@ -180,6 +180,24 @@ public interface AConnectorFactory extends EFactory {
 	ConnectorPendingResult createConnectorPendingResult();
 
 	/**
+	 * Returns a new object of class '<em>Consent Info</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Consent Info</em>'.
+	 * @generated
+	 */
+	ConsentInfo createConsentInfo();
+
+	/**
+	 * Returns a new object of class '<em>Model Info</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model Info</em>'.
+	 * @generated
+	 */
+	ModelInfo createModelInfo();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

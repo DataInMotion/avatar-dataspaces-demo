@@ -147,6 +147,14 @@ public class AConnectorAdapterFactory extends AdapterFactoryImpl {
 				return createConnectorPendingResultAdapter();
 			}
 			@Override
+			public Adapter caseConsentInfo(ConsentInfo object) {
+				return createConsentInfoAdapter();
+			}
+			@Override
+			public Adapter caseModelInfo(ModelInfo object) {
+				return createModelInfoAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -401,6 +409,34 @@ public class AConnectorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConnectorPendingResultAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.model.connector.ConsentInfo <em>Consent Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.model.connector.ConsentInfo
+	 * @generated
+	 */
+	public Adapter createConsentInfoAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.model.connector.ModelInfo <em>Model Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.model.connector.ModelInfo
+	 * @generated
+	 */
+	public Adapter createModelInfoAdapter() {
 		return null;
 	}
 

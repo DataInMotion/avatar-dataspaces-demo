@@ -178,6 +178,26 @@ public class ApiPackageImpl extends EPackageImpl implements ApiPackage {
 	 * @generated
 	 */
 	@Override
+	public EOperation getAvatarConnectorInfo__GetModelInfos() {
+		return avatarConnectorInfoEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getAvatarConnectorInfo__GetConsentInfos() {
+		return avatarConnectorInfoEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ApiFactory getApiFactory() {
 		return (ApiFactory)getEFactoryInstance();
 	}
@@ -208,6 +228,8 @@ public class ApiPackageImpl extends EPackageImpl implements ApiPackage {
 		avatarConnectorInfoEClass = createEClass(AVATAR_CONNECTOR_INFO);
 		createEOperation(avatarConnectorInfoEClass, AVATAR_CONNECTOR_INFO___GET_ENDPOINTS);
 		createEOperation(avatarConnectorInfoEClass, AVATAR_CONNECTOR_INFO___GET_INFO);
+		createEOperation(avatarConnectorInfoEClass, AVATAR_CONNECTOR_INFO___GET_MODEL_INFOS);
+		createEOperation(avatarConnectorInfoEClass, AVATAR_CONNECTOR_INFO___GET_CONSENT_INFOS);
 	}
 
 	/**
@@ -257,6 +279,10 @@ public class ApiPackageImpl extends EPackageImpl implements ApiPackage {
 		initEOperation(getAvatarConnectorInfo__GetEndpoints(), theAConnectorPackage.getConnectorEndpoint(), "getEndpoints", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getAvatarConnectorInfo__GetInfo(), theAConnectorPackage.getConnectorInfo(), "getInfo", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getAvatarConnectorInfo__GetModelInfos(), theAConnectorPackage.getModelInfo(), "getModelInfos", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getAvatarConnectorInfo__GetConsentInfos(), theAConnectorPackage.getConsentInfo(), "getConsentInfos", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

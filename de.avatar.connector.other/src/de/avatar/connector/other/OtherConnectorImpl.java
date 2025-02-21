@@ -16,6 +16,7 @@ import static java.util.Objects.nonNull;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,11 +30,13 @@ import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.ConnectorMetric;
+import de.avatar.model.connector.ConsentInfo;
 import de.avatar.model.connector.DryRunResult;
 import de.avatar.model.connector.EcoreResult;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.JavaParameter;
+import de.avatar.model.connector.ModelInfo;
 import de.avatar.model.connector.Parameter;
 import de.avatar.model.connector.ProtocolType;
 import de.avatar.model.connector.ResponseCode;
@@ -182,6 +185,24 @@ public class OtherConnectorImpl implements AvatarConnector {
 		} else {
 			return ConnectorHelper.validateResponse(request);
 		}
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.api.AvatarConnectorInfo#getModelInfos()
+	 */
+	@Override
+	public List<ModelInfo> getModelInfos() {
+		return Collections.emptyList();
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.api.AvatarConnectorInfo#getConsentInfos()
+	 */
+	@Override
+	public List<ConsentInfo> getConsentInfos() {
+		return Collections.emptyList();
 	}
 
 
