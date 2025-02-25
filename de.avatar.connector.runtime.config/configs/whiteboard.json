@@ -1,0 +1,30 @@
+{
+  ":configurator:resource-version": 1,
+  
+  "CamundaWorker~request":
+	{
+		"camunda.worker.name": "forward-query",
+		"camunda.engine.url": "http://localhost:8080/engine-rest",
+		"camunda.polling.timeout": 10000,
+		"camunda.task.topic": "forward-query",
+		"camunda.task.lock.duration": 1000
+	},
+	"CamundaWorker~status":
+	{
+		"camunda.worker.name": "update-status",
+		"camunda.engine.url": "http://localhost:8080/engine-rest",
+		"camunda.polling.timeout": 10000,
+		"camunda.task.topic": "update-status",
+		"camunda.task.lock.duration": 1000
+	},
+	"CamundaProcessLauncher~status":
+	{
+		"camunda.process.name": "update-status",
+		"camunda.process.url": "http://localhost:8080/engine-rest/process-definition/key/update-status/start"
+	},
+	"CamundaProcessLauncher~request":
+	{
+		"camunda.process.name": "connector-whiteboard",
+		"camunda.process.url": "http://localhost:8080/engine-rest/process-definition/key/connector-whiteboard/start"
+	}
+}

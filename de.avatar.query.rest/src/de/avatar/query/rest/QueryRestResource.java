@@ -74,7 +74,8 @@ public class QueryRestResource {
 		try {
 			QueryResponse response = requestWhiteboard.executeDryRun(request);
 			return Response.ok(response).build();
-		} catch(IllegalArgumentException e) {
+		} catch(Exception e) {
+			System.out.println("I got the Exception");
 			return Response.status(500, e.getMessage()).build();
 		}		
 	}

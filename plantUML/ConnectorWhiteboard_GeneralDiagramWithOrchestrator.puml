@@ -1,0 +1,67 @@
+@startuml
+
+!theme bluegray
+skinparam actorStyle awesome
+!pragma teoz true
+
+title Avatar Connector System
+
+actor User as U
+participant QueryUI as UI
+participant RestResource as RR
+participant RequestWhiteboard as RWB
+collections Connectors as Cs
+collections DataProviders as DP
+
+
+
+box "Orchestrator" #LightGrey
+participant Orchestrator as O
+end box
+
+box "Data Providers" #LightBlue
+box "Data Provider 1"
+participant Connector1 as C1
+participant DataProvider1 as DP1
+end box
+box "Data Provider 2"
+participant Connector2 as C2
+participant DataProvider2 as DP2
+end box
+end box
+
+box "Consent Manager" #LightGrey
+participant ConsentManager as CS
+end box
+
+box "Anonymization" #LightGrey
+participant AnonymizationAlgorithm as AA
+end box
+
+autonumber
+U->UI: send dry run request
+activate U
+UI->RR: send dry run request
+activate UI
+activate RR
+RR->RWB: send the dry run request
+activate RWB
+RWB->Cs: send dry run request to all connectors
+activate Cs
+Cs->DP: each connector sends the request\nto the corresponding data provider
+activate DP
+DP->Cs: each data provider sends the response\nto the corresponding connector
+deactivate DP
+Cs->RWB: each connector sends the\nresponse to the whiteboard
+deactivate Cs
+note right of RWB
+Aggregate responses
+end note
+RWB->RR: send aggregated dry run response
+deactivate RWB
+RR->UI: send dry run response
+deactivate RR
+UI->U: send dry run response
+deactivate UI
+deactivate U
+@enduml

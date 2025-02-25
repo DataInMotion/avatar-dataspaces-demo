@@ -1,0 +1,64 @@
+/**
+ * Copyright (c) 2012 - 2025 Data In Motion and others.
+ * All rights reserved. 
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Data In Motion - initial API and implementation
+ */
+package de.avatar.connector.whiteboard;
+
+import java.util.Map;
+
+import org.camunda.bpm.client.ExternalTaskClient;
+import org.camunda.bpm.client.topic.TopicSubscriptionBuilder;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.ServiceScope;
+
+import de.avatar.connector.whiteboard.api.OrchestratorWorker;
+
+/**
+ * 
+ * @author ilenia
+ * @since Feb 25, 2025
+ */
+@Component(name = "CamundaOrchestratorWorker", service = OrchestratorWorker.class,
+configurationPid = "CamundaWorker", configurationPolicy = ConfigurationPolicy.REQUIRE, 
+scope = ServiceScope.PROTOTYPE)
+public class CamundaOrchestratorWorker implements OrchestratorWorker {
+	
+	private Map<String, Object> properties;
+
+	@Activate
+	public void activate(Map<String, Object> properties) {
+		this.properties = properties;
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.OrchestratorWorker#getTopicSubscriptionBuilder()
+	 */
+	@Override
+	public TopicSubscriptionBuilder getTopicSubscriptionBuilder() {
+		return subscribe();
+	}
+	
+	private TopicSubscriptionBuilder subscribe() {
+		ExternalTaskClient client = ExternalTaskClient.create()
+				.baseUrl((String)properties.get("camunda.engine.url"))
+				.asyncResponseTimeout((Long)properties.get("camunda.polling.timeout") == null ? 10000 : (Long)properties.get("camunda.polling.timeout")) // long polling timeout
+				.build();
+		// subscribe to an external task topic as specified in the process
+		return client.
+				subscribe((String)properties.get("camunda.task.topic")).
+				lockDuration((Long)properties.get("camunda.task.lock.duration") == null ? 1000 : (Long)properties.get("camunda.task.lock.duration"));
+	}
+
+}

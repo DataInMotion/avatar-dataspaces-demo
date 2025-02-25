@@ -13,25 +13,15 @@
  */
 package de.avatar.connector.whiteboard.api;
 
-import de.avatar.model.connector.EndpointResponse;
-import de.avatar.status.QueryRequest;
-import de.avatar.status.QueryStatusResponse;
+import org.camunda.bpm.client.topic.TopicSubscriptionBuilder;
 
 /**
  * 
  * @author ilenia
- * @since Jan 16, 2025
+ * @since Feb 25, 2025
  */
-public interface StatusService {
-	
-	boolean isRequestCached(QueryRequest request);
-	
-	QueryRequest getCachedRequest(String requestId);
-	
-	void cacheRequest(QueryRequest request);
-			
-	void updateStatus(EndpointResponse endpointResponse);
-	
-	QueryStatusResponse executeStatusRequest(String requestId);
+public interface OrchestratorWorker {
+		
+	TopicSubscriptionBuilder getTopicSubscriptionBuilder();
 
 }

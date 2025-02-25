@@ -1,21 +1,23 @@
 /**
- * Copyright (c) 2012 - 2025 Data In Motion and others.
+ * Copyright (c) 2012 - 2021 Paremus Ltd., Data In Motion and others.
  * All rights reserved. 
  * 
- * This program and the accompanying materials are made
- * available under the terms of the Eclipse Public License 2.0
- * which is available at https://www.eclipse.org/legal/epl-2.0/
- *
- * SPDX-License-Identifier: EPL-2.0
+ * This program and the accompanying materials are made available under the terms of the 
+ * Eclipse Public License v2.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v20.html
  * 
  * Contributors:
- *     Data In Motion - initial API and implementation
+ * 		Paremus Ltd. - initial API and implementation
+ *      Data In Motion
  */
 package de.avatar.connector.whiteboard;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+//import java.net.http.HttpClient;
+//import java.net.http.HttpRequest;
+//import java.net.http.HttpResponse;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,9 +47,10 @@ import org.osgi.util.promise.Deferred;
 import org.osgi.util.promise.Promise;
 
 import de.avatar.connector.api.AvatarConnector;
-import de.avatar.connector.whiteboard.api.ConnectorStatusWhiteboard;
+import de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard;
 import de.avatar.connector.whiteboard.api.OrchestratorProcessLauncher;
 import de.avatar.connector.whiteboard.api.OrchestratorWorker;
+import de.avatar.connector.whiteboard.api.StatusService;
 import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
@@ -59,43 +62,46 @@ import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryStatusResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.StatusFactory;
+import de.avatar.status.StatusPackage;
 
-/**
- * 
- * @author ilenia
- * @since Jan 16, 2025
- */
-@Component(immediate = true, name = "ConnectorStatusWhiteboard", service = ConnectorStatusWhiteboard.class)
-public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard {
-	
+@Component(immediate = true, name = "ConnectorRequestWhiteboardWithCamunda", service = ConnectorRequestWhiteboard.class)
+public class ConnectorRequestWhiteboardWithCamunda implements ConnectorRequestWhiteboard {
+
+	@Reference
+	private AConnectorFactory connectorFactory;
+
+	@Reference
+	StatusService statusService;
+
 	@Reference
 	private ComponentServiceObjects<ResourceSet> rsFactory;
-	
-	private static final Logger LOGGER = Logger.getLogger(ConnectorStatusWhiteboardImpl.class.getName());
+
+	private static final Logger LOGGER = Logger.getLogger(ConnectorRequestWhiteboardWithCamunda.class.getName());
 
 	private List<AvatarConnector> connectors = new LinkedList<>();
 	private List<AvatarConnector> externalConnectors = new LinkedList<>();
 	private Map<AvatarConnector, ConnectorInfo> infoMap = new ConcurrentHashMap<>();
 
 	private OrchestratorWorker queryCamundaWorker;
-	private OrchestratorProcessLauncher statusCamundaProcessLauncher;
 	private OrchestratorProcessLauncher queryCamundaProcessLauncher;
-	
+	private OrchestratorProcessLauncher statusCamundaProcessLauncher;
+
+
 	@Activate
-	public ConnectorStatusWhiteboardImpl(@Reference(target = "(camunda.worker.name=forward-query)")
+	public ConnectorRequestWhiteboardWithCamunda(@Reference(target = "(camunda.worker.name=forward-query)")
 	OrchestratorWorker queryCamundaWorker, @Reference(target = "(camunda.process.name=connector-whiteboard)")
 	OrchestratorProcessLauncher queryCamundaProcessLauncher, @Reference(target = "(camunda.process.name=update-status)")
 	OrchestratorProcessLauncher statusCamundaProcessLauncher) {
 		this.queryCamundaWorker = queryCamundaWorker;
 		this.queryCamundaProcessLauncher = queryCamundaProcessLauncher;
 		this.statusCamundaProcessLauncher = statusCamundaProcessLauncher;
-		LOGGER.info("Activate AvatarConnector-StatusWhiteboard");
 	}
-	
+
 	@Deactivate
 	public void deactivate() {
-		LOGGER.info("De-activate AvatarConnector-StatusWhiteboard");
+		
 	}
+
 
 	/* 
 	 * (non-Javadoc)
@@ -115,6 +121,7 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 		return Collections.unmodifiableList(cons);
 	}
 
+
 	/* 
 	 * (non-Javadoc)
 	 * @see de.avatar.connector.whiteboard.api.ConnectorWhiteboard#getExternalConnectors()
@@ -127,38 +134,6 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 				collect(Collectors.toList()));
 	}
 
-	
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.connector.whiteboard.api.ConnectorStatusWhiteboard#executeStatusRequest(de.avatar.status.QueryRequest)
-	 */
-	@Override
-	public QueryStatusResponse executeStatusRequest(QueryRequest request) {
-		try {
-			Promise<String> promise = handleOrchestratorTask(Map.of("reqId",request.getRequestId()));			
-			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
-			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
-			variables.get("variables").put("query", new HashMap<String, Object>());
-			variables.get("variables").get("query").put("value", saveEObjectToString(request));
-			variables.get("variables").put("reqId", new HashMap<String, Object>());
-			variables.get("variables").get("reqId").put("value", request.getRequestId());
-			queryCamundaProcessLauncher.launchProcess(variables);
-			String value = promise.getValue();
-			EObject obj = loadEObjectFromString(value);
-			if(obj instanceof QueryRequest queryRequest) {
-				return doExecuteRequest(queryRequest);
-			} else {
-				LOGGER.severe(String.format("Object in loaded res is not of type QueryRequest for request %s", request.getRequestId()));
-				return null;
-			}			
-		} catch(Exception e) {
-			LOGGER.severe(String.format("Something went wrong when executing status request %s", request.getRequestId()));
-			e.printStackTrace();
-			return null;
-		}
-		
-	}
-	
 	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
 	public void addConnector(AvatarConnector connector, Map<String, Object> properties) {
 		if (properties.containsKey(RemoteConstants.SERVICE_IMPORTED)) {
@@ -172,7 +147,7 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 		}
 		printConnectionInfo(connector, true);
 	}
-	
+
 	public void removeConnector(AvatarConnector connector, Map<String, Object> properties) {
 		if (properties.containsKey(RemoteConstants.SERVICE_IMPORTED)) {
 			synchronized (externalConnectors) {
@@ -185,14 +160,93 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 		}
 		printConnectionInfo(connector, false);
 	}
-	
-	private QueryStatusResponse doExecuteRequest(QueryRequest request) {
-		
+
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard#executeDryRun(de.avatar.status.QueryRequest)
+	 */
+	@Override
+	public QueryStatusResponse executeDryRun(QueryRequest request) {		
+		try {
+			Promise<String> promise = handleOrchestratorTask(Map.of("reqId",request.getRequestId()));			
+			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
+			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
+			variables.get("variables").put("query", new HashMap<String, Object>());
+			variables.get("variables").get("query").put("value", saveEObjectToString(request));
+			variables.get("variables").put("reqId", new HashMap<String, Object>());
+			variables.get("variables").get("reqId").put("value", request.getRequestId());
+			queryCamundaProcessLauncher.launchProcess(variables);
+			String value = promise.getValue();
+			EObject obj = loadEObjectFromString(value);
+			if(obj instanceof QueryRequest queryRequest) {
+				QueryStatusResponse response = doExecuteRequest(queryRequest, "dryrun");
+				response.setTimestamp(Instant.now().toEpochMilli());
+				response.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
+					//We do not want to display the full response result when the status is SUCCESS
+					scs.getStatusResult().eUnset(StatusPackage.Literals.STATUS__RESPONSE);
+				});
+				return response;
+			} else {
+				LOGGER.severe(String.format("Object in loaded res is not of type QueryRequest for request %s", request.getRequestId()));
+				return null;
+			}
+		} catch(Exception e) {
+			LOGGER.severe(String.format("Something went wrong when executing dry run request %s", request.getRequestId()));
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard#executeRequest(de.avatar.status.QueryRequest)
+	 */
+	@Override
+	public QueryStatusResponse executeRequest(QueryRequest request) {
+		if(statusService.isRequestCached(request)) {
+			LOGGER.severe(String.format("QueryRequest with id %s is already cached. This should not be the case!", request.getRequestId()));
+			throw new IllegalArgumentException(String.format("QueryRequest with id %s is already cached. This should not be the case!", request.getRequestId()));
+		}
+		try {
+			Promise<String> promise = handleOrchestratorTask(Map.of("reqId",request.getRequestId()));			
+			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
+			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
+			variables.get("variables").put("query", new HashMap<String, Object>());
+			variables.get("variables").get("query").put("value", saveEObjectToString(request));
+			variables.get("variables").put("reqId", new HashMap<String, Object>());
+			variables.get("variables").get("reqId").put("value", request.getRequestId());
+			queryCamundaProcessLauncher.launchProcess(variables);
+			String value = promise.getValue();
+			EObject obj = loadEObjectFromString(value);
+			if(obj instanceof QueryRequest queryRequest) {
+				QueryStatusResponse response = doExecuteRequest(request, "request");
+				response.setTimestamp(Instant.now().toEpochMilli());
+				if(!QueryStatusType.ERROR.equals(response.getStatus())) statusService.cacheRequest(request);	
+				response.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
+					//				We do not want to display the full response result when the status is SUCCESS
+					scs.getStatusResult().eUnset(StatusPackage.Literals.STATUS__RESPONSE);
+				});
+				return response;
+			} else {
+				LOGGER.severe(String.format("Object in loaded res is not of type QueryRequest for request %s", request.getRequestId()));
+				return null;
+			}
+		} catch(Exception e) {
+			LOGGER.severe(String.format("Something went wrong when executing request %s", request.getRequestId()));
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	private QueryStatusResponse doExecuteRequest(QueryRequest request, String reqType) {
+
 		QueryStatusResponse queryResponse = StatusFactory.eINSTANCE.createQueryStatusResponse();
 		queryResponse.setRequestId(request.getRequestId());
 		queryResponse.setStatus(QueryStatusType.SUCCESS);
 		connectors.forEach(c -> {
-			ConnectorEndpoint endpoint = c.getEndpoints().stream().filter(e -> e.getId().contains("status")).findFirst().orElse(null);
+			ConnectorEndpoint endpoint = c.getEndpoints().stream().filter(e -> e.getId().contains(reqType)).findFirst().orElse(null);
 			if(endpoint != null) {
 				EndpointRequest endpointReq = ConnectorWhiteboardHelper.convertQueryToEndpointRequest(request);
 				endpointReq.setEndpoint(endpoint);
@@ -201,33 +255,36 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 				parameter.setNumber((short)0);
 				parameter.setValue(request);
 				endpointReq.getParameter().add(parameter);
-//				TODO: if something goes wrong here (like timeout exception) we should do something
 				try {
-					EndpointResponse endpointRes = c.executeRequest(endpointReq);
+					EndpointResponse endpointRes = "request".equals(reqType) ? c.executeRequest(endpointReq) : c.dryRequest(endpointReq);
 					endpointRes.setSourceId(c.getInfo().getId());
-					Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
-					variables.put("variables", new HashMap<String, HashMap<String, Object>>());
-					variables.get("variables").put("endpointRes", new HashMap<String, Object>());
-					variables.get("variables").get("endpointRes").put("value", saveEObjectToString(endpointRes).getBytes());
-					variables.get("variables").get("endpointRes").put("type", "bytes");
-					variables.get("variables").put("reqId", new HashMap<String, Object>());
-					variables.get("variables").get("reqId").put("value", request.getRequestId());
-					statusCamundaProcessLauncher.launchProcess(variables);
+					if("request".equals(reqType)) {
+						//						TODO: instead of updating status here, we send the EndpointResponse to Camunda
+						//						statusService.updateStatus(endpointRes);
+						Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
+						variables.put("variables", new HashMap<String, HashMap<String, Object>>());
+						variables.get("variables").put("endpointRes", new HashMap<String, Object>());
+						variables.get("variables").get("endpointRes").put("value", saveEObjectToString(endpointRes).getBytes());
+						variables.get("variables").get("endpointRes").put("type", "bytes");
+						variables.get("variables").put("reqId", new HashMap<String, Object>());
+						variables.get("variables").get("reqId").put("value", request.getRequestId());
+						statusCamundaProcessLauncher.launchProcess(variables);
+					}
 					if(ResponseCode.ERROR.equals(endpointRes.getCode())) {
 						queryResponse.setStatus(QueryStatusType.ERROR);
 					} else if(QueryStatusType.SUCCESS.equals(queryResponse.getStatus()) && ResponseCode.PENDING.equals(endpointRes.getCode())) {
 						queryResponse.setStatus(QueryStatusType.PENDING);	
 					}
-					ConnectorWhiteboardHelper.addSingleConnectorQueryStatus(queryResponse, endpointRes, c);	
+					ConnectorWhiteboardHelper.addSingleConnectorQueryStatus((QueryStatusResponse )queryResponse, endpointRes, c);	
 				} catch(Exception e) {
 					e.printStackTrace();
-				}		
+				}
 			}			
 		});	
-		queryResponse.setTimestamp(Instant.now().toEpochMilli());
 		return queryResponse;
 	}
-	
+
+
 	private void printConnectionInfo(AvatarConnector connector, boolean add) {
 		long start = Instant.now().toEpochMilli();
 		ConnectorInfo info = add ? connector.getInfo() : infoMap.remove(connector);
@@ -242,24 +299,7 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 			}
 		}
 	}
-	
-	private String saveEObjectToString(EObject obj) {
-		ResourceSet resSet = rsFactory.getService();
-		try {
-			Resource res = resSet.createResource(URI.createURI(UUID.randomUUID().toString().concat(".json")), "application/json");
-			res.getContents().add(obj);
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			res.save(baos, null);
-			return new String(baos.toByteArray());
-		} catch(IOException e) {
-			LOGGER.severe(String.format("IOException while converting EObject to String"));
-			return null;
-		} finally {
-			rsFactory.ungetService(resSet);
-		}
-	}
 
-	
 	public Promise<String> handleOrchestratorTask(Map<String, Object> properties) {
 
 		Deferred<String> deferred = new Deferred<>();
@@ -279,7 +319,23 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 		}
 		return deferred.getPromise();
 	}
-	
+
+	private String saveEObjectToString(EObject obj) {
+		ResourceSet resSet = rsFactory.getService();
+		try {
+			Resource res = resSet.createResource(URI.createURI(UUID.randomUUID().toString().concat(".json")), "application/json");
+			res.getContents().add(obj);
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			res.save(baos, null);
+			return new String(baos.toByteArray());
+		} catch(IOException e) {
+			LOGGER.severe(String.format("IOException while converting EObject to String"));
+			return null;
+		} finally {
+			rsFactory.ungetService(resSet);
+		}
+	}
+
 	private EObject loadEObjectFromString(String value) {
 		ResourceSet resSet = rsFactory.getService();
 		try {
@@ -300,5 +356,4 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 			rsFactory.ungetService(resSet);
 		}
 	}
-
 }
