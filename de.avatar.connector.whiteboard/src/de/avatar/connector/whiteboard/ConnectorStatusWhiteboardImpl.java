@@ -29,6 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import org.camunda.bpm.client.topic.TopicSubscription;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -135,13 +136,15 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 	@Override
 	public QueryStatusResponse executeStatusRequest(QueryRequest request) {
 		try {
-			Promise<String> promise = handleOrchestratorTask(Map.of("reqId",request.getRequestId()));			
+			Promise<String> promise = handleOrchestratorTask(Map.of("reqId",request.getRequestId(), "reqType", "status"));			
 			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
 			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
 			variables.get("variables").put("query", new HashMap<String, Object>());
 			variables.get("variables").get("query").put("value", saveEObjectToString(request));
 			variables.get("variables").put("reqId", new HashMap<String, Object>());
 			variables.get("variables").get("reqId").put("value", request.getRequestId());
+			variables.get("variables").put("reqType", new HashMap<String, Object>());
+			variables.get("variables").get("reqType").put("value", "status");
 			queryCamundaProcessLauncher.launchProcess(variables);
 			String value = promise.getValue();
 			EObject obj = loadEObjectFromString(value);
@@ -264,15 +267,16 @@ public class ConnectorStatusWhiteboardImpl implements ConnectorStatusWhiteboard 
 
 		Deferred<String> deferred = new Deferred<>();
 		try {
-			queryCamundaWorker.getTopicSubscriptionBuilder()
-			.processVariableEquals("reqId", properties.get("reqId"))
+			TopicSubscription subscription =queryCamundaWorker.getTopicSubscriptionBuilder()
+			.processVariablesEqualsIn(properties)
 			.handler((externalTask, externalTaskService) -> {
 				String query = externalTask.getVariable("query");
-				LOGGER.info(String.format("Got query task %s", query));
+				LOGGER.info(String.format("Got query task in status %s", query));
 				deferred.resolve(query);
 				externalTaskService.complete(externalTask);
 			})
 			.open();
+			deferred.getPromise().onResolve(() -> subscription.close());
 		} catch(Exception e) {
 			e.printStackTrace();
 			deferred.fail(e);

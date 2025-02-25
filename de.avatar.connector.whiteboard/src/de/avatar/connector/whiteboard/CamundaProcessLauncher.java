@@ -62,7 +62,6 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 		try {			
 			ObjectMapper objectMapper = new ObjectMapper();
 			String jacksonData = objectMapper.writeValueAsString(processVariables);
-			System.out.println(jacksonData);
 			HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
 			StringEntity params =new StringEntity(jacksonData);
 			post.addHeader("content-type", "application/json");

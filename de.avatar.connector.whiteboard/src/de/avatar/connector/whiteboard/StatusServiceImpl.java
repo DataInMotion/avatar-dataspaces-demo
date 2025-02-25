@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
+import org.camunda.bpm.client.topic.TopicSubscription;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -66,6 +67,7 @@ public class StatusServiceImpl implements StatusService{
 	private static final Logger LOGGER = Logger.getLogger(StatusServiceImpl.class.getName());
 	
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
+	private TopicSubscription camundaSubscription;
 
 	Map<String, QueryRequest> cachedRequests = new ConcurrentHashMap<>();
 	Map<String, QueryResponse> cachedStatuses = new ConcurrentHashMap<>();
@@ -81,6 +83,7 @@ public class StatusServiceImpl implements StatusService{
 	
 	@Deactivate
 	public void deactivate() {
+		camundaSubscription.close();
 		executor.shutdown();
 	}
 
@@ -159,8 +162,8 @@ public class StatusServiceImpl implements StatusService{
 
 	private void handleOrchestratorTask() {
 		try {
-			statusCamundaWorker.getTopicSubscriptionBuilder()
-			.handler(this::accept)
+			camundaSubscription = statusCamundaWorker.getTopicSubscriptionBuilder()
+			.handler(this::doHandleOrchestratorTask)
 			.open();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -188,7 +191,7 @@ public class StatusServiceImpl implements StatusService{
 		}
 	}
 
-	private void accept(ExternalTask externalTask, ExternalTaskService externalTaskService) {
+	private void doHandleOrchestratorTask(ExternalTask externalTask, ExternalTaskService externalTaskService) {
 		// Get a process variable
 		byte[] enpointResponse = externalTask.getVariable("endpointRes");
 		LOGGER.info(String.format("Got enpointResponse task %s", new String(enpointResponse)));

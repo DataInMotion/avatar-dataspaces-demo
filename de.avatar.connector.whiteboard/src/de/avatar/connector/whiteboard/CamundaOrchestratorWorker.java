@@ -56,6 +56,7 @@ public class CamundaOrchestratorWorker implements OrchestratorWorker {
 				.asyncResponseTimeout((Long)properties.get("camunda.polling.timeout") == null ? 10000 : (Long)properties.get("camunda.polling.timeout")) // long polling timeout
 				.build();
 		// subscribe to an external task topic as specified in the process
+		System.out.println(client.toString());
 		return client.
 				subscribe((String)properties.get("camunda.task.topic")).
 				lockDuration((Long)properties.get("camunda.task.lock.duration") == null ? 1000 : (Long)properties.get("camunda.task.lock.duration"));
