@@ -32,6 +32,7 @@ import org.gecko.emf.osgi.constants.EMFUriHandlerConstants;
 import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
@@ -78,7 +79,7 @@ import de.avatar.status.QueryRequest;
 		"com.paremus.dosgi.scope=global", 
 		"com.paremus.dosgi.target.clusters=DIMC", 
 		"com.paremus.dosgi.net.serialization=ecore",
-"connector=isma.himsa"})
+"connector=isma.himsa"}, configurationPid = "AvatarConnector", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class ISMAConnectorImpl implements AvatarConnector {
 
 	@Reference
@@ -88,10 +89,13 @@ public class ISMAConnectorImpl implements AvatarConnector {
 
 	private long startTimestamp;
 	private ComponentServiceObjects<ResourceSet> rsFactory;
+	private Map<String, Object> properties;
 
 	@Activate
-	public ISMAConnectorImpl(@Reference(target = "("+EMFNamespaces.EMF_MODEL_FILE_EXT +"=json)", cardinality = ReferenceCardinality.MANDATORY) ComponentServiceObjects<ResourceSet> rsFactory) {
+	public ISMAConnectorImpl(@Reference(target = "("+EMFNamespaces.EMF_MODEL_FILE_EXT +"=json)", cardinality = ReferenceCardinality.MANDATORY) 
+	ComponentServiceObjects<ResourceSet> rsFactory, Map<String, Object> properties) {
 		this.rsFactory = rsFactory;
+		this.properties = properties;
 		System.out.println("Activate ISMA-Connector-Implementation");
 		startTimestamp = Instant.now().getEpochSecond();
 	}
@@ -108,30 +112,20 @@ public class ISMAConnectorImpl implements AvatarConnector {
 	@Override
 	public List<ConnectorEndpoint> getEndpoints() {
 		List<ConnectorEndpoint> eps = new ArrayList<>();
-		ConnectorEndpoint ep = connectorFactory.createConnectorEndpoint();
-		ep.setProtocol(ProtocolType.MQTT);
-		ep.setUri("mqtt://isma/himsa");
-		ep.setId("mqtt_isma_himsa");
-		ep.setName("ISMA HIMSA MQTT Endpoint");
-		eps.add(ep);
-		ep = connectorFactory.createConnectorEndpoint();
-		ep.setProtocol(ProtocolType.HTTP_REST);
-		ep.setUri("http://localhost:8088/himsa/rest/dryrun");
-		ep.setId("rest_isma_himsa_dryrun");
-		ep.setName("ISMA HIMSA Rest Endpoint for Dry Run");	
-		eps.add(ep);
-		ep = connectorFactory.createConnectorEndpoint();
-		ep.setProtocol(ProtocolType.HTTP_REST);
-		ep.setUri("http://localhost:8088/himsa/rest/patient/query");
-		ep.setId("rest_isma_himsa_request");
-		ep.setName("ISMA HIMSA Rest Endpoint for Request");	
-		eps.add(ep);
-		ep = connectorFactory.createConnectorEndpoint();
-		ep.setProtocol(ProtocolType.HTTP_REST);
-		ep.setUri("http://localhost:8088/himsa/rest/status");
-		ep.setId("rest_isma_himsa_status");
-		ep.setName("ISMA HIMSA Rest Endpoint for Status");	
-		eps.add(ep);
+		int i = 1;
+		while(i == 0) {
+			if(!properties.containsKey("endpoint.id."+i) || !properties.containsKey("endpoint.uri."+i)) {
+				i = 0;
+				break;
+			}
+			ConnectorEndpoint ep = connectorFactory.createConnectorEndpoint();
+			ep.setId((String) properties.get("endpoint.id."+i));
+			ep.setUri((String) properties.get("endpoint.uri."+i));
+			ep.setName((String) properties.getOrDefault("endpoint.name."+i, ep.getId()));
+			ep.setProtocol(ProtocolType.valueOf((String)properties.getOrDefault("endpoint.protocol."+i, "HTTP_REST")));			
+			eps.add(ep);
+			i++;
+		}	
 		return eps;
 	}
 
@@ -142,9 +136,9 @@ public class ISMAConnectorImpl implements AvatarConnector {
 	@Override
 	public ConnectorInfo getInfo() {
 		ConnectorInfo info = connectorFactory.createConnectorInfo();
-		info.setId("isma_himsa");
-		info.setName("ISMA Himsa Connector");
-		info.setVersion((short)1);
+		info.setId((String) properties.get("connector.id"));
+		info.setName((String) properties.get("connector.name"));
+		info.setVersion((short)(int)(long)properties.get("connector.version"));
 		ConnectorMetric metric = connectorFactory.createConnectorMetric();
 		metric.setStatus(StatusType.RUNNING);
 		metric.setTimestamp(Instant.now().toEpochMilli());
@@ -171,15 +165,15 @@ public class ISMAConnectorImpl implements AvatarConnector {
 	public EndpointResponse executeRequest(EndpointRequest request) {
 		return doExecuteRequest(request);
 	}
-	
+
 	private EndpointResponse doExecuteRequest(EndpointRequest request) {
-		
+
 		if (nonNull(request) && 
 				nonNull(request.getId()) && 
 				nonNull(request.getSourceId()) && 
 				nonNull(request.getEndpoint()) && 
 				nonNull(request.getEndpoint().getId())) {
-			
+
 			String reqUri = request.getEndpoint().getUri();
 
 			if(request.getEndpoint().getId().contains("status")) {
@@ -205,8 +199,8 @@ public class ISMAConnectorImpl implements AvatarConnector {
 						if(request.getParameter().get(0) instanceof EcoreParameter ecorePar) {
 							QueryRequest queryReq = (QueryRequest) ecorePar.getValue();
 							Query query = queryReq.getQuery();
-							
-//							subject are the projections
+
+							//							subject are the projections
 							List<String> subjectURIs = new ArrayList<>(query.getSubject().size());
 							for(QSubject subject : query.getSubject()) {
 								String projections = "projections=";
@@ -221,7 +215,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 										toString();
 								subjectURIs.add(subjectURI);
 							}
-							
+
 							List<String> sortURIs = new ArrayList<>(query.getSortBy().size());
 							for(SortEntity se : query.getSortBy()) {
 								String sort = "sort=";
@@ -229,7 +223,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 								sort += "sortFeature=" + se.getSortFeature().getName();
 								sortURIs.add(sort);					
 							}
-//							where are the feature on which to apply the comparator for the actual query
+							//							where are the feature on which to apply the comparator for the actual query
 							List<String> whereURIs = new ArrayList<>(query.getWhere().size());
 							for(QWhere where : query.getWhere()) {
 								String queryType = "queryType=";
@@ -243,7 +237,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 								for(EStructuralFeature feature : where.getFeaturePath().getFeature()) {
 									featurePath += feature.getName()+"-";
 								}
-								
+
 								featurePath = featurePath.substring(0, featurePath.length()-1); //to remove the last ","
 								String whereURI = new StringBuilder("where=").
 										append(queryType).
@@ -315,7 +309,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 			return ConnectorHelper.validateResponse(request);
 		}
 	}
-	
+
 	private String[] buildValueFromComparator(Comparator comparator) {
 		String start = null, end = null, includeStart = null, includeEnd = null, comparatorType = null;
 		comparatorType = comparator.getSuitableForType().toString();
@@ -336,7 +330,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+
 			} else if(dateComparator instanceof IsAfterOrEqual) {
 				start = String.valueOf(dateComparator.getValue());
 				includeStart = "true";
@@ -366,7 +360,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 		}
 		return new String[] {comparatorType, start, end, includeStart, includeEnd};
 	}
-	
+
 	private EndpointResponse sendRequest(EndpointRequest request, Resource res) throws IOException {
 		Map<String, Object> options = new HashMap<>();
 		Map<String, Object> headers = new HashMap<>();		
@@ -414,6 +408,4 @@ public class ISMAConnectorImpl implements AvatarConnector {
 		consentInfo.setTemplate("");
 		return List.of(consentInfo);
 	}
-
-
 }

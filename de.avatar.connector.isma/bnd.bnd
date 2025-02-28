@@ -1,6 +1,6 @@
 -library: enable-emf
 
--includeresource: OSGI-INF/configurator/=configs/provider-config.json
+-includeresource: OSGI-INF/configurator/=configs/
 
 -buildpath: \
 	org.osgi.service.cm;version=latest,\
