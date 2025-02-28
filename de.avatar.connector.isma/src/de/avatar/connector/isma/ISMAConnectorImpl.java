@@ -113,7 +113,7 @@ public class ISMAConnectorImpl implements AvatarConnector {
 	public List<ConnectorEndpoint> getEndpoints() {
 		List<ConnectorEndpoint> eps = new ArrayList<>();
 		int i = 1;
-		while(i == 0) {
+		while(i != 0) {
 			if(!properties.containsKey("endpoint.id."+i) || !properties.containsKey("endpoint.uri."+i)) {
 				i = 0;
 				break;
