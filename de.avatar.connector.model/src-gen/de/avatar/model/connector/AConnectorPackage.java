@@ -487,13 +487,22 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	int ENDPOINT_RESPONSE__SOURCE_ID = 5;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDPOINT_RESPONSE__METADATA = 6;
+
+	/**
 	 * The number of structural features of the '<em>Endpoint Response</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDPOINT_RESPONSE_FEATURE_COUNT = 6;
+	int ENDPOINT_RESPONSE_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Endpoint Response</em>' class.
@@ -1239,6 +1248,52 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	int MODEL_INFO_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.model.connector.impl.MetadataImpl <em>Metadata</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.model.connector.impl.MetadataImpl
+	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getMetadata()
+	 * @generated
+	 */
+	int METADATA = 19;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Metadata</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Metadata</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1246,7 +1301,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getProtocolType()
 	 * @generated
 	 */
-	int PROTOCOL_TYPE = 19;
+	int PROTOCOL_TYPE = 20;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.StatusType <em>Status Type</em>}' enum.
@@ -1256,7 +1311,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getStatusType()
 	 * @generated
 	 */
-	int STATUS_TYPE = 20;
+	int STATUS_TYPE = 21;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.model.connector.ResponseCode <em>Response Code</em>}' enum.
@@ -1266,7 +1321,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getResponseCode()
 	 * @generated
 	 */
-	int RESPONSE_CODE = 21;
+	int RESPONSE_CODE = 22;
 
 	/**
 	 * The meta object id for the '<em>Java Throwable</em>' data type.
@@ -1276,7 +1331,7 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getJavaThrowable()
 	 * @generated
 	 */
-	int JAVA_THROWABLE = 22;
+	int JAVA_THROWABLE = 23;
 
 
 	/**
@@ -1669,6 +1724,17 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EAttribute getEndpointResponse_SourceId();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.avatar.model.connector.EndpointResponse#getMetadata <em>Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Metadata</em>'.
+	 * @see de.avatar.model.connector.EndpointResponse#getMetadata()
+	 * @see #getEndpointResponse()
+	 * @generated
+	 */
+	EReference getEndpointResponse_Metadata();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.model.connector.Parameter <em>Parameter</em>}'.
@@ -2119,6 +2185,38 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getModelInfo_Description();
 
 	/**
+	 * Returns the meta object for class '{@link de.avatar.model.connector.Metadata <em>Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Metadata</em>'.
+	 * @see de.avatar.model.connector.Metadata
+	 * @generated
+	 */
+	EClass getMetadata();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.Metadata#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see de.avatar.model.connector.Metadata#getKey()
+	 * @see #getMetadata()
+	 * @generated
+	 */
+	EAttribute getMetadata_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.model.connector.Metadata#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see de.avatar.model.connector.Metadata#getValue()
+	 * @see #getMetadata()
+	 * @generated
+	 */
+	EAttribute getMetadata_Value();
+
+	/**
 	 * Returns the meta object for enum '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2479,6 +2577,14 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute ENDPOINT_RESPONSE__SOURCE_ID = eINSTANCE.getEndpointResponse_SourceId();
+
+		/**
+		 * The meta object literal for the '<em><b>Metadata</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENDPOINT_RESPONSE__METADATA = eINSTANCE.getEndpointResponse_Metadata();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.model.connector.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -2843,6 +2949,32 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute MODEL_INFO__DESCRIPTION = eINSTANCE.getModelInfo_Description();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.model.connector.impl.MetadataImpl <em>Metadata</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.model.connector.impl.MetadataImpl
+		 * @see de.avatar.model.connector.impl.AConnectorPackageImpl#getMetadata()
+		 * @generated
+		 */
+		EClass METADATA = eINSTANCE.getMetadata();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METADATA__KEY = eINSTANCE.getMetadata_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METADATA__VALUE = eINSTANCE.getMetadata_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.model.connector.ProtocolType <em>Protocol Type</em>}' enum.

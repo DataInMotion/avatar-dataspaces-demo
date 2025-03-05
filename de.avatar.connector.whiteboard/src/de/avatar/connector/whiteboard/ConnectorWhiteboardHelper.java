@@ -57,6 +57,7 @@ public class ConnectorWhiteboardHelper {
 		sgConnQueryStatus.setStatusResult(getStatusResult(endpointResponse.getResult()));
 		sgConnQueryStatus.getStatusResult().setStatus(getQueryStatusType(endpointResponse.getCode()));
 		sgConnQueryStatus.getStatusResult().setResponse(EcoreUtil.copy(endpointResponse));
+		sgConnQueryStatus.getMetadata().addAll(endpointResponse.getMetadata());
 		detailedStatus.getSingleConnectorQueryStatus().add(sgConnQueryStatus);		
 
 	}

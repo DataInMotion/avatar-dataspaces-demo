@@ -13,6 +13,8 @@
  */
 package de.avatar.model.connector;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -32,6 +34,7 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link de.avatar.model.connector.EndpointResponse#getCode <em>Code</em>}</li>
  *   <li>{@link de.avatar.model.connector.EndpointResponse#getResult <em>Result</em>}</li>
  *   <li>{@link de.avatar.model.connector.EndpointResponse#getSourceId <em>Source Id</em>}</li>
+ *   <li>{@link de.avatar.model.connector.EndpointResponse#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @see de.avatar.model.connector.AConnectorPackage#getEndpointResponse()
@@ -174,5 +177,17 @@ public interface EndpointResponse extends EObject {
 	 * @generated
 	 */
 	void setSourceId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Metadata</b></em>' containment reference list.
+	 * The list contents are of type {@link de.avatar.model.connector.Metadata}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Metadata</em>' containment reference list.
+	 * @see de.avatar.model.connector.AConnectorPackage#getEndpointResponse_Metadata()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Metadata> getMetadata();
 
 } // EndpointResponse

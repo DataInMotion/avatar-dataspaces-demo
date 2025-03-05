@@ -342,13 +342,22 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	int SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT = 2;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_CONNECTOR_QUERY_STATUS__METADATA = 3;
+
+	/**
 	 * The number of structural features of the '<em>Single Connector Query Status</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLE_CONNECTOR_QUERY_STATUS_FEATURE_COUNT = 3;
+	int SINGLE_CONNECTOR_QUERY_STATUS_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Single Connector Query Status</em>' class.
@@ -1183,6 +1192,17 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getSingleConnectorQueryStatus_StatusResult();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.avatar.status.SingleConnectorQueryStatus#getMetadata <em>Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Metadata</em>'.
+	 * @see de.avatar.status.SingleConnectorQueryStatus#getMetadata()
+	 * @see #getSingleConnectorQueryStatus()
+	 * @generated
+	 */
+	EReference getSingleConnectorQueryStatus_Metadata();
+
+	/**
 	 * Returns the meta object for class '{@link de.avatar.status.StatusResult <em>Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1614,6 +1634,14 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT = eINSTANCE.getSingleConnectorQueryStatus_StatusResult();
+
+		/**
+		 * The meta object literal for the '<em><b>Metadata</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_CONNECTOR_QUERY_STATUS__METADATA = eINSTANCE.getSingleConnectorQueryStatus_Metadata();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.status.impl.StatusResultImpl <em>Result</em>}' class.

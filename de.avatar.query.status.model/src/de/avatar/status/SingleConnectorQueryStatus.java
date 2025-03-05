@@ -13,6 +13,10 @@
  */
 package de.avatar.status;
 
+import de.avatar.model.connector.Metadata;
+
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -29,6 +33,7 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link de.avatar.status.SingleConnectorQueryStatus#getConnectorId <em>Connector Id</em>}</li>
  *   <li>{@link de.avatar.status.SingleConnectorQueryStatus#getConnectorName <em>Connector Name</em>}</li>
  *   <li>{@link de.avatar.status.SingleConnectorQueryStatus#getStatusResult <em>Status Result</em>}</li>
+ *   <li>{@link de.avatar.status.SingleConnectorQueryStatus#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @see de.avatar.status.StatusPackage#getSingleConnectorQueryStatus()
@@ -102,5 +107,17 @@ public interface SingleConnectorQueryStatus extends EObject {
 	 * @generated
 	 */
 	void setStatusResult(StatusResult value);
+
+	/**
+	 * Returns the value of the '<em><b>Metadata</b></em>' containment reference list.
+	 * The list contents are of type {@link de.avatar.model.connector.Metadata}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Metadata</em>' containment reference list.
+	 * @see de.avatar.status.StatusPackage#getSingleConnectorQueryStatus_Metadata()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Metadata> getMetadata();
 
 } // SingleConnectorQueryStatus

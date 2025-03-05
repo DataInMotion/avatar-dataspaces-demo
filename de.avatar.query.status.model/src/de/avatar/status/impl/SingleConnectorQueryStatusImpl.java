@@ -13,18 +13,27 @@
  */
 package de.avatar.status.impl;
 
+import de.avatar.model.connector.Metadata;
+
 import de.avatar.status.SingleConnectorQueryStatus;
 import de.avatar.status.StatusPackage;
 import de.avatar.status.StatusResult;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,6 +46,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link de.avatar.status.impl.SingleConnectorQueryStatusImpl#getConnectorId <em>Connector Id</em>}</li>
  *   <li>{@link de.avatar.status.impl.SingleConnectorQueryStatusImpl#getConnectorName <em>Connector Name</em>}</li>
  *   <li>{@link de.avatar.status.impl.SingleConnectorQueryStatusImpl#getStatusResult <em>Status Result</em>}</li>
+ *   <li>{@link de.avatar.status.impl.SingleConnectorQueryStatusImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,6 +101,16 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 	 * @ordered
 	 */
 	protected StatusResult statusResult;
+
+	/**
+	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadata()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Metadata> metadata;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,10 +228,25 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	@Override
+	public EList<Metadata> getMetadata() {
+		if (metadata == null) {
+			metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__METADATA);
+		}
+		return metadata;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT:
 				return basicSetStatusResult(null, msgs);
+			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__METADATA:
+				return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -230,6 +265,8 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 				return getConnectorName();
 			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT:
 				return getStatusResult();
+			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__METADATA:
+				return getMetadata();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -239,6 +276,7 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -250,6 +288,10 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 				return;
 			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT:
 				setStatusResult((StatusResult)newValue);
+				return;
+			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__METADATA:
+				getMetadata().clear();
+				getMetadata().addAll((Collection<? extends Metadata>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -272,6 +314,9 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT:
 				setStatusResult((StatusResult)null);
 				return;
+			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__METADATA:
+				getMetadata().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -290,6 +335,8 @@ public class SingleConnectorQueryStatusImpl extends MinimalEObjectImpl.Container
 				return CONNECTOR_NAME_EDEFAULT == null ? connectorName != null : !CONNECTOR_NAME_EDEFAULT.equals(connectorName);
 			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__STATUS_RESULT:
 				return statusResult != null;
+			case StatusPackage.SINGLE_CONNECTOR_QUERY_STATUS__METADATA:
+				return metadata != null && !metadata.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

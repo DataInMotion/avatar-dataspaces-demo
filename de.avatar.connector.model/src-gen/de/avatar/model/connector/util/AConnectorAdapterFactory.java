@@ -155,6 +155,10 @@ public class AConnectorAdapterFactory extends AdapterFactoryImpl {
 				return createModelInfoAdapter();
 			}
 			@Override
+			public Adapter caseMetadata(Metadata object) {
+				return createMetadataAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -437,6 +441,20 @@ public class AConnectorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModelInfoAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.model.connector.Metadata <em>Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.model.connector.Metadata
+	 * @generated
+	 */
+	public Adapter createMetadataAdapter() {
 		return null;
 	}
 

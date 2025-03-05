@@ -1,0 +1,120 @@
+{
+  "eClass" : "http://gecko.io/utils/1.0#//Response",
+  "data" : [ {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1989-02-06T23:55:00",
+    "Province" : "Sachsen"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1989-01-02T12:39:45",
+    "Province" : "Thüringen"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1989-03-11T04:47:31",
+    "Province" : "Sachsen"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1989-08-04T20:12:09",
+    "Province" : "Sachsen-Anhalt"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1996-08-30T00:26:42",
+    "Province" : "Bayern"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1991-09-20T11:46:44",
+    "Province" : "Thüringen"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1995-09-10T15:45:41",
+    "Province" : "Saarland"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "2007-01-11T17:39:25",
+    "Province" : "Schleswig-Holstein"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1988-05-25T23:03:26",
+    "Province" : "Sachsen-Anhalt"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1997-05-18T08:47:46",
+    "Province" : "Sachsen-Anhalt"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1995-11-15T13:08:25",
+    "Province" : "Hamburg"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "2006-02-03T09:45:22",
+    "Province" : "Baden-Württemberg"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "2005-11-30T18:46:32",
+    "Province" : "Niedersachsen"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "2000-03-26T23:39:02",
+    "Province" : "Rheinland-Pfalz"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1998-09-28T01:05:52",
+    "Province" : "Berlin"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "2000-08-31T12:52:26",
+    "Province" : "Sachsen-Anhalt"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1983-05-24T21:25:49",
+    "Province" : "Nordrhein-Westfalen"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1988-09-29T15:28:45",
+    "Province" : "Hamburg"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1990-05-07T17:12:19",
+    "Province" : "Thüringen"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1986-09-26T23:13:41",
+    "Province" : "Hamburg"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1982-11-21T13:42:17",
+    "Province" : "Schleswig-Holstein"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1982-09-20T10:06:35",
+    "Province" : "Brandenburg"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1999-11-16T05:04:54",
+    "Province" : "Saarland"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1987-10-14T00:11:38",
+    "Province" : "Bayern"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1986-05-09T21:24:37",
+    "Province" : "Hamburg"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1991-11-14T04:06:36",
+    "Province" : "Sachsen-Anhalt"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1999-06-13T06:30:08",
+    "Province" : "Bremen"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "1991-02-15T14:19:02",
+    "Province" : "Niedersachsen"
+  }, {
+    "eClass" : "http://www.himsa.com/PatientExport/PatientExport#//Patient",
+    "BirthDate" : "2005-07-08T10:32:00",
+    "Province" : "Berlin"
+  } ]
+}
