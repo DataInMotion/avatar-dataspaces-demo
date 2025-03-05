@@ -15,6 +15,8 @@ package de.avatar.connector.api;
 
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
+import de.avatar.model.connector.ConsentInfo;
+import de.avatar.model.connector.ModelInfo;
 
 import java.util.List;
 
@@ -47,5 +49,21 @@ public interface AvatarConnectorInfo {
 	 * @generated
 	 */
 	ConnectorInfo getInfo();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	List<ModelInfo> getModelInfos();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	List<ConsentInfo> getConsentInfos();
 
 } // AvatarConnectorInfo

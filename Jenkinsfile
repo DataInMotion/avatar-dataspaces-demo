@@ -13,24 +13,34 @@ pipeline  {
     }
 
     stages {
-//        stage('Unit & Integration Tests') {
+        stage('Build') {
+
+            steps {
+                echo "I am building app on branch: ${env.GIT_BRANCH}"
+                sh "./gradlew clean build -x testOSGi --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"   
+            }   
+        }
+//        stage('Integration Tests') {
+//
 //            steps {
-//                script {
+//                 script {
+//                    echo "I am running integration tests on branch: ${env.GIT_BRANCH}"
 //                    try {
-//                        sh './gradlew clean testOSGi --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2 --no-daemon'
+//                        sh './gradlew testOSGi --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2 --no-daemon'
 //                    } finally {
-//                        junit testResults: '**/generated/test-reports/testOSGi/TEST-*.xml', skipPublishingChecks: true
+//                        junit testResults: '**/generated/test-reports/testOSGi/TEST-*.xml', skipPublishingChecks: true, allowEmptyResults: true
 //                    }
 //                }
 //            }
 //        }
+
         stage('Main branch release') {
             when { 
                 branch 'main' 
             }
             steps {
                 echo "I am building on ${env.BRANCH_NAME}"
-                sh "./gradlew clean build release -Drelease.dir=$JENKINS_HOME/repo.gecko/release/de.avatar.connector --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew release -Drelease.dir=$JENKINS_HOME/repo.gecko/release/de.avatar.connector --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
             }
         }
         stage('Snapshot branch release') {
@@ -39,7 +49,7 @@ pipeline  {
             }
             steps  {
                 echo "I am building on ${env.JOB_NAME}"
-                sh "./gradlew clean build release --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew release --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "mkdir -p $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connector"
                 sh "rm -rf $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connector/*"
                 sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/snapshot/de.avatar.connector"

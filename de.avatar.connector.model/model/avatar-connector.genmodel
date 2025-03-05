@@ -73,6 +73,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//EndpointResponse/code"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference avatar-connector.ecore#//EndpointResponse/result"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//EndpointResponse/sourceId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference avatar-connector.ecore#//EndpointResponse/metadata"/>
     </genClasses>
     <genClasses ecoreClass="avatar-connector.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//Parameter/name"/>
@@ -118,6 +119,21 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorPendingResult/connectorId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorPendingResult/connectorProviderId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConnectorPendingResult/responseCode"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//ConsentInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConsentInfo/domain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConsentInfo/policy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConsentInfo/template"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ConsentInfo/description"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//ModelInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ModelInfo/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ModelInfo/uri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ModelInfo/description"/>
+    </genClasses>
+    <genClasses ecoreClass="avatar-connector.ecore#//Metadata">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//Metadata/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//Metadata/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

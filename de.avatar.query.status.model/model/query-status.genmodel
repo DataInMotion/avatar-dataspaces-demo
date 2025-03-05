@@ -43,6 +43,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//SingleConnectorQueryStatus/connectorId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//SingleConnectorQueryStatus/connectorName"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query-status.ecore#//SingleConnectorQueryStatus/statusResult"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//SingleConnectorQueryStatus/metadata"/>
     </genClasses>
     <genClasses ecoreClass="query-status.ecore#//StatusResult">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//StatusResult/status"/>

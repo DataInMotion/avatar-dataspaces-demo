@@ -24,5 +24,7 @@
       interface="true">
     <eOperations name="getEndpoints" upperBound="-1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//ConnectorEndpoint"/>
     <eOperations name="getInfo" lowerBound="1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//ConnectorInfo"/>
+    <eOperations name="getModelInfos" upperBound="-1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//ModelInfo"/>
+    <eOperations name="getConsentInfos" upperBound="-1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//ConsentInfo"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -20,6 +20,8 @@
     <genClasses image="false" ecoreClass="avatar-connector-api.ecore#//AvatarConnectorInfo">
       <genOperations ecoreOperation="avatar-connector-api.ecore#//AvatarConnectorInfo/getEndpoints"/>
       <genOperations ecoreOperation="avatar-connector-api.ecore#//AvatarConnectorInfo/getInfo"/>
+      <genOperations ecoreOperation="avatar-connector-api.ecore#//AvatarConnectorInfo/getModelInfos"/>
+      <genOperations ecoreOperation="avatar-connector-api.ecore#//AvatarConnectorInfo/getConsentInfos"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

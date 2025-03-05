@@ -16,17 +16,25 @@ package de.avatar.model.connector.impl;
 import de.avatar.model.connector.AConnectorPackage;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
+import de.avatar.model.connector.Metadata;
 import de.avatar.model.connector.ResponseCode;
 import de.avatar.model.connector.ResponseResult;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,6 +50,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link de.avatar.model.connector.impl.EndpointResponseImpl#getCode <em>Code</em>}</li>
  *   <li>{@link de.avatar.model.connector.impl.EndpointResponseImpl#getResult <em>Result</em>}</li>
  *   <li>{@link de.avatar.model.connector.impl.EndpointResponseImpl#getSourceId <em>Source Id</em>}</li>
+ *   <li>{@link de.avatar.model.connector.impl.EndpointResponseImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @generated
@@ -146,6 +155,16 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String sourceId = SOURCE_ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadata()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Metadata> metadata;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -354,12 +373,27 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
+	public EList<Metadata> getMetadata() {
+		if (metadata == null) {
+			metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, AConnectorPackage.ENDPOINT_RESPONSE__METADATA);
+		}
+		return metadata;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AConnectorPackage.ENDPOINT_RESPONSE__REQUEST:
 				return basicSetRequest(null, msgs);
 			case AConnectorPackage.ENDPOINT_RESPONSE__RESULT:
 				return basicSetResult(null, msgs);
+			case AConnectorPackage.ENDPOINT_RESPONSE__METADATA:
+				return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -384,6 +418,8 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 				return getResult();
 			case AConnectorPackage.ENDPOINT_RESPONSE__SOURCE_ID:
 				return getSourceId();
+			case AConnectorPackage.ENDPOINT_RESPONSE__METADATA:
+				return getMetadata();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -393,6 +429,7 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -413,6 +450,10 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case AConnectorPackage.ENDPOINT_RESPONSE__SOURCE_ID:
 				setSourceId((String)newValue);
+				return;
+			case AConnectorPackage.ENDPOINT_RESPONSE__METADATA:
+				getMetadata().clear();
+				getMetadata().addAll((Collection<? extends Metadata>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -444,6 +485,9 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 			case AConnectorPackage.ENDPOINT_RESPONSE__SOURCE_ID:
 				setSourceId(SOURCE_ID_EDEFAULT);
 				return;
+			case AConnectorPackage.ENDPOINT_RESPONSE__METADATA:
+				getMetadata().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -468,6 +512,8 @@ public class EndpointResponseImpl extends MinimalEObjectImpl.Container implement
 				return result != null;
 			case AConnectorPackage.ENDPOINT_RESPONSE__SOURCE_ID:
 				return SOURCE_ID_EDEFAULT == null ? sourceId != null : !SOURCE_ID_EDEFAULT.equals(sourceId);
+			case AConnectorPackage.ENDPOINT_RESPONSE__METADATA:
+				return metadata != null && !metadata.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
