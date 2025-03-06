@@ -233,18 +233,12 @@ org.fusesource.jansi:jansi:1.18
 org.apache.aries.typedevent:org.apache.aries.typedevent.bus:0.0.2
 com.liferay:org.apache.aries.component.dsl:1.2.2.LIFERAY-PATCHED-1
 
-#Camunda
-org.camunda.bpm:camunda-external-task-client:7.22.0
-org.camunda.bpm:camunda-external-task-client:jar:sources:7.22.0
-org.camunda.commons:camunda-commons-logging:7.22.0
-org.camunda.commons:camunda-commons-utils:7.22.0
+#Camunda deps already osgified
+org.camunda.bpm:camunda-engine:7.22.0
 org.camunda.commons:camunda-commons-typed-values:7.22.0
-org.apache.httpcomponents.core5:httpcore5-h2:5.3.3
-org.apache.httpcomponents.core5:httpcore5:5.3.3
-org.apache.httpcomponents.client5:httpclient5:5.4.2
-org.brotli:dec:0.1.2
-org.conscrypt:conscrypt-openjdk-uber:2.5.2
-org.conscrypt:conscrypt-openjdk-uber:jar:sources:2.5.2
+org.apache.httpcomponents.client5:httpclient5-osgi:5.0-beta2
+org.apache.httpcomponents.core5:httpcore5-osgi:5.0-beta5
+
 
 
 

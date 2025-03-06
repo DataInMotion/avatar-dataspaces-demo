@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Local" increment="1738655995780">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Local" increment="1741254345421">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.paremus.cert"/>
@@ -536,6 +536,125 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="license" value="Eclipse Public License 2.0"/>
+      <attribute name="copyright" value="Data In Motion Consulting GmbH - All rights reserved"/>
+      <attribute name="osgi.identity" value="org.conscrypt.openjdk.uber"/>
+      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.gecko.libraries"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="2.5.2" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.crypto,javax.net.ssl,javax.security.auth.x500,org.conscrypt.ct"/>
+      <attribute name="bundle-symbolic-name" value="org.conscrypt.openjdk.uber"/>
+      <attribute name="bundle-version" value="2.5.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.conscrypt"/>
+      <attribute name="version" value="2.5.2" type="Version"/>
+      <attribute name="bnd.hashes" value="700909789,1102523918,-1405953253,1604515984,419377469,2145525703,584081383,2108389736,771758584,-1855658613,633658417,-74930671,536696007,2051131836,-2135377039,244185288,-1463689200,-523220220,1355208778,2016261304,1566508221,-528591648,-1123899041,692932190,771220461,-1510149710,-418084421,-1381618938,-451829261,-1187268839,-1468639239,-1888197905,-1817343396,-1817343395,480278340,1793472933,-1662650072,906567980,76158,2543909,-1850268184,-1850268089,-1850267037,-1850265334,626717949,-1646472206,-922850799,1416340523,1449961470,2283072,1107677363,-2067236933,-1670513237,1003994483,2121283248,490617115,635054813,64687,1457374398,2013046356,1698442007,55915544,847063467,-171589285,-788556327,-570574668,155629675,-137773332,2017346,-1606027241,1752946092,954016943,954017038,954018090,954019793,-188860524,-1051861764,1314831278,-1849015592,78727453,962784675,2106905560,-342374178,171548845,1735233731,1990479287,-1611061594,2115894142,2124110479,-1317626797,1172727263,1391258223,-458207177,-1822700113,-1410184413,995722460,-1745534325,995723861,-1207683455,1866001351,198882420,426431045,541747476,-386860377,-386859325,70385,580428402,-1287976165,872929746,-1158392412,1365621273,15359810,-1892189663,2403779,858313713,-1697878035,1428551595,1041354103,2418173,76183014,81928,345385747,79923350,-1817343397,-1014108211,667137135,1177253296,-1176695509,-1787073414,-1532415617,1959160156,1154974646,1151519656,1789205232,-1129069881,66500,67073,68452,1018343431,1503887338,-2093870084,-1984548931,-1120114743,-1984547155,-1342912216,990486355,-49952791,1687199928,-1859552609,-1209064422,-194152136,-1275892059,2062563890,-861476676,-2026062878,-1348199061,-51393183,260239919,-1523736869,-135633419,-1681383604,270888760,-196420488,1038385741,273718905,-1782916713,1091481521,305059037,-136947533,-1692681878,355793110,-546666982,-2033505386,182619842,1054950446,-188499531,-1799566059,-1186158379,1406446749,1775866227,-2075418511,-1892944753,-1911543745,2127061919,-500865669,1702809878,-539346758,-673560735,1939328147,2093771131,-1344391933,1453017901,348559747,1591011563,2020069126,-10759114,-600310661,1015926532,1645408976,1530606117,1574311036,-1607500198,-1288771546,-1195419467,-276642201,709488579,1225133589,2117451890,-1312998352" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.conscrypt"/>
+      <attribute name="bundle-symbolic-name" value="org.conscrypt.openjdk.uber"/>
+      <attribute name="bundle-version" value="2.5.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.conscrypt.ct"/>
+      <attribute name="version" value="2.5.2" type="Version"/>
+      <attribute name="bnd.hashes" value="2117769182,1532860513,283458446,441237763,1414476905,581405287,2085797896,762413371,-1533111583,-1891809609,-1668065023,1721768912,398204511,-1924752570,-1856393230,2016261304,1606711963,-1808614382,-733416420" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.conscrypt.openjdk.uber"/>
+      <attribute name="bundle-version" value="2.5.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.conscrypt.io"/>
+      <attribute name="version" value="2.5.2" type="Version"/>
+      <attribute name="bnd.hashes" value="-671812853" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.conscrypt.openjdk.uber"/>
+      <attribute name="bundle-version" value="2.5.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.annotation.bundle"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="2017053308,-1323277354,1209794872,1041377327,990467869,2089680852,-2137403731,-1835006106,-916552039,-1781885586,393434316,2031256611,-1455554384,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.conscrypt.openjdk.uber"/>
+      <attribute name="bundle-version" value="2.5.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.annotation.versioning"/>
+      <attribute name="version" value="1.1.2" type="Version"/>
+      <attribute name="bnd.hashes" value="-676532112,-254739221,2016261304,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.conscrypt.openjdk.uber"/>
+      <attribute name="bundle-version" value="2.5.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component.annotations"/>
+      <attribute name="version" value="1.5.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-1591330541,-691011816,604060893,-1654121428,42974632,-3298156,1908775407,-550869271,1078812459,1251122531,-200760259,1946760978,1381413353,2125972971,512804031,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.conscrypt.openjdk.uber"/>
+      <attribute name="bundle-version" value="2.5.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.metatype.annotations"/>
+      <attribute name="version" value="1.4.1" type="Version"/>
+      <attribute name="bnd.hashes" value="321319151,-650104874,-629368844,2273433,1821631372,-1926269803,-613825365,1457121302,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="2.5.2" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.conscrypt.openjdk.uber"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="2.5.2" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.conscrypt.openjdk.uber"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="870685" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="org.conscrypt.openjdk.uber/org.conscrypt.openjdk.uber-2.5.2.jar"/>
+      <attribute name="osgi.content" value="26BCFB22AD6C2558D999E405921132997AF560F1C3342A3133F41C71699C5406"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto)"/>
+      <attribute name="osgi.wiring.package" value="javax.crypto"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto.spec)"/>
+      <attribute name="osgi.wiring.package" value="javax.crypto.spec"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net)"/>
+      <attribute name="osgi.wiring.package" value="javax.net"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+      <attribute name="osgi.wiring.package" value="javax.net.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.auth.x500)"/>
+      <attribute name="osgi.wiring.package" value="javax.security.auth.x500"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.cert)"/>
+      <attribute name="osgi.wiring.package" value="javax.security.cert"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.conscrypt)(version&gt;=2.5.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.conscrypt"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.conscrypt.ct)(version&gt;=2.5.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.conscrypt.ct"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.conscrypt.io)(version&gt;=2.5.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.conscrypt.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=sun.security.x509)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="sun.security.x509"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.paremus.discovery.cluster"/>
       <attribute name="documentation" value="https://github.com/geckoprojects-org/org.geckoprojects.rsa"/>
       <attribute name="description" value="Implementation of the cluster manager"/>
@@ -1042,6 +1161,57 @@
     <requirement namespace="osgi.service">
       <directive name="filter" value="(objectClass=com.paremus.netty.tls.ParemusNettyTLS)"/>
       <directive name="effective" value="active"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="Eclipse Public License 2.0"/>
+      <attribute name="copyright" value="Data In Motion Consulting GmbH - All rights reserved"/>
+      <attribute name="osgi.identity" value="org.camunda.commons.logging"/>
+      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.gecko.libraries"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.slf4j"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.commons.logging"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.commons.logging"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="970367969,73313124,371226128" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.camunda.commons.logging"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.camunda.commons.logging"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="18472" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="org.camunda.commons.logging/org.camunda.commons.logging-7.22.0.jar"/>
+      <attribute name="osgi.content" value="449E045CC4746C3C892DF96F054D7E3FBB443C8C6A99C43078F0D29EE0EE0328"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang)"/>
+      <attribute name="osgi.wiring.package" value="java.lang"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang.invoke)"/>
+      <attribute name="osgi.wiring.package" value="java.lang.invoke"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.slf4j)"/>
+      <attribute name="osgi.wiring.package" value="org.slf4j"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.slf4j.helpers)"/>
+      <attribute name="osgi.wiring.package" value="org.slf4j.helpers"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=11))"/>
     </requirement>
   </resource>
   <resource>
@@ -2293,6 +2463,405 @@
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="Eclipse Public License 2.0"/>
+      <attribute name="copyright" value="Data In Motion Consulting GmbH - All rights reserved"/>
+      <attribute name="osgi.identity" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.gecko.libraries"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.hc.client5.http.impl.classic,org.camunda.bpm.client.backoff,org.camunda.bpm.client.interceptor,org.camunda.bpm.client.topic"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-715646981,2104725280" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.exception,org.camunda.bpm.client.task"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.backoff"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1717484901,1028264581,1414701782,361422936" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.exception"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-646165371,1993085741,194839790,-1895491571,-1701469548,29979776,-757869893,-2036582503,829150589" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.databind,org.apache.hc.client5.http.classic,org.apache.hc.client5.http.impl.classic,org.apache.hc.core5.http,org.apache.hc.core5.http.io,org.apache.hc.core5.http.io.entity,org.camunda.bpm.client,org.camunda.bpm.client.backoff,org.camunda.bpm.client.exception,org.camunda.bpm.client.interceptor,org.camunda.bpm.client.spi,org.camunda.bpm.client.task,org.camunda.bpm.client.topic,org.camunda.bpm.client.topic.impl,org.camunda.bpm.client.topic.impl.dto,org.camunda.bpm.client.variable.impl,org.camunda.bpm.client.variable.impl.format.json,org.camunda.bpm.client.variable.impl.format.serializable,org.camunda.bpm.client.variable.impl.format.xml,org.camunda.bpm.engine.variable.value,org.camunda.commons.logging"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.impl"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="550696141,433132034,270944445,-1164910714,1828312416,-1150781253,-2006724245,2030549232,-659945374" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.interceptor"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="143368427,509834081" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.impl,org.camunda.bpm.client.interceptor"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.interceptor.auth"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="955757287" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.hc.core5.http,org.apache.hc.core5.http.protocol,org.camunda.bpm.client.impl,org.camunda.bpm.client.interceptor"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.interceptor.impl"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1496446549,1592446516" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.spi"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1401304991,-884576714,-1860288142" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.impl,org.camunda.bpm.engine.variable,org.camunda.bpm.engine.variable.value"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.task"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1221622768,-878003942,413345925,1041377119,-625633303,261128694,-1506364842,1904178651" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.annotation,org.camunda.bpm.client.impl,org.camunda.bpm.client.task,org.camunda.bpm.client.variable.impl,org.camunda.bpm.engine.variable,org.camunda.bpm.engine.variable.value"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.task.impl"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-858664368,1245983813" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.impl,org.camunda.bpm.client.variable.impl"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.task.impl.dto"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1793545833,-571264247,1137580591,-386429387,1367819738,653856891,355554821" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.task"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.topic"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1799394356,-1131512273" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.backoff,org.camunda.bpm.client.exception,org.camunda.bpm.client.impl,org.camunda.bpm.client.task,org.camunda.bpm.client.task.impl,org.camunda.bpm.client.topic,org.camunda.bpm.client.topic.impl.dto,org.camunda.bpm.client.variable.impl"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.topic.impl"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1210538769,208632844,-527196607,-178844879" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.annotation,org.camunda.bpm.client.exception,org.camunda.bpm.client.impl,org.camunda.bpm.client.task,org.camunda.bpm.client.topic"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.topic.impl.dto"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1025247592,-1019992810,-103690433" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.variable.value,org.camunda.bpm.engine.variable,org.camunda.bpm.engine.variable.type"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.variable"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1200124691" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.impl,org.camunda.bpm.client.task,org.camunda.bpm.engine.variable.impl.value,org.camunda.bpm.engine.variable.type,org.camunda.bpm.engine.variable.value"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.variable.impl"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1750187862,-1668392862,-1194766861,1841435148,53889778,1670583233,2127572021" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.variable.impl.format"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-2015787712" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.databind,org.camunda.bpm.client.exception,org.camunda.bpm.client.impl,org.camunda.bpm.client.spi,org.camunda.bpm.client.variable.impl.format"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.variable.impl.format.json"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1977488214,754554716,-1828133523,-342268373,1077733117" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.exception,org.camunda.bpm.client.impl,org.camunda.bpm.client.spi"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.variable.impl.format.serializable"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="2111101632,-1397979951,-1186595953" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="jakarta.xml.bind,javax.xml.parsers,javax.xml.transform,javax.xml.transform.stream,org.camunda.bpm.client.exception,org.camunda.bpm.client.impl,org.camunda.bpm.client.spi,org.w3c.dom"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.variable.impl.format.xml"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-856444490,-1403517497,-1457341051" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.impl,org.camunda.bpm.client.spi,org.camunda.bpm.client.variable.impl,org.camunda.bpm.client.variable.value,org.camunda.bpm.engine.variable.impl.value,org.camunda.bpm.engine.variable.type,org.camunda.bpm.engine.variable.value"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.variable.impl.mapper"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="734327274,-1229594559,-1828906396,1864381025,-511047722,-897584364,745108714,877303510,2091274987,-289212439,1274919475,-846910517,1218880790,-1663752671,1949246107" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.variable.value,org.camunda.bpm.engine.variable.impl.type,org.camunda.bpm.engine.variable.value"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.variable.impl.type"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1730447966,-1706619503" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.client.impl,org.camunda.bpm.client.variable.value,org.camunda.bpm.engine.variable.impl.value"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.variable.impl.value"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="581457750,925806345,1664488698" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.bpm.engine.variable.value"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.bpm.external.task.client"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.client.variable.value"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1282243606,912368969,-123491398" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.camunda.bpm.external.task.client"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.camunda.bpm.external.task.client"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="272904" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="org.camunda.bpm.external.task.client/org.camunda.bpm.external.task.client-7.22.0.jar"/>
+      <attribute name="osgi.content" value="70CAD74B2B9D7280F620447C3DEABF87F58DAE1630ABFD5C7D3982BFD5B5D38F"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.fasterxml.jackson.annotation)"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.fasterxml.jackson.core)"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.fasterxml.jackson.databind)"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.databind"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.fasterxml.jackson.databind.type)"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.databind.type"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=jakarta.xml.bind)"/>
+      <attribute name="osgi.wiring.package" value="jakarta.xml.bind"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=jakarta.xml.bind.annotation)"/>
+      <attribute name="osgi.wiring.package" value="jakarta.xml.bind.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.beans)"/>
+      <attribute name="osgi.wiring.package" value="java.beans"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.io)"/>
+      <attribute name="osgi.wiring.package" value="java.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang)"/>
+      <attribute name="osgi.wiring.package" value="java.lang"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang.annotation)"/>
+      <attribute name="osgi.wiring.package" value="java.lang.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang.invoke)"/>
+      <attribute name="osgi.wiring.package" value="java.lang.invoke"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang.reflect)"/>
+      <attribute name="osgi.wiring.package" value="java.lang.reflect"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.net)"/>
+      <attribute name="osgi.wiring.package" value="java.net"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.nio.charset)"/>
+      <attribute name="osgi.wiring.package" value="java.nio.charset"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.text)"/>
+      <attribute name="osgi.wiring.package" value="java.text"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util)"/>
+      <attribute name="osgi.wiring.package" value="java.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util.concurrent)"/>
+      <attribute name="osgi.wiring.package" value="java.util.concurrent"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util.concurrent.atomic)"/>
+      <attribute name="osgi.wiring.package" value="java.util.concurrent.atomic"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util.concurrent.locks)"/>
+      <attribute name="osgi.wiring.package" value="java.util.concurrent.locks"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util.function)"/>
+      <attribute name="osgi.wiring.package" value="java.util.function"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util.stream)"/>
+      <attribute name="osgi.wiring.package" value="java.util.stream"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.namespace)"/>
+      <attribute name="osgi.wiring.package" value="javax.xml.namespace"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.parsers)"/>
+      <attribute name="osgi.wiring.package" value="javax.xml.parsers"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform)"/>
+      <attribute name="osgi.wiring.package" value="javax.xml.transform"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform.dom)"/>
+      <attribute name="osgi.wiring.package" value="javax.xml.transform.dom"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform.stream)"/>
+      <attribute name="osgi.wiring.package" value="javax.xml.transform.stream"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.hc.client5.http.classic)"/>
+      <attribute name="osgi.wiring.package" value="org.apache.hc.client5.http.classic"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.hc.client5.http.impl.classic)"/>
+      <attribute name="osgi.wiring.package" value="org.apache.hc.client5.http.impl.classic"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.hc.client5.http.utils)"/>
+      <attribute name="osgi.wiring.package" value="org.apache.hc.client5.http.utils"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.hc.core5.http)"/>
+      <attribute name="osgi.wiring.package" value="org.apache.hc.core5.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.hc.core5.http.io)"/>
+      <attribute name="osgi.wiring.package" value="org.apache.hc.core5.http.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.hc.core5.http.io.entity)"/>
+      <attribute name="osgi.wiring.package" value="org.apache.hc.core5.http.io.entity"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.hc.core5.http.io.support)"/>
+      <attribute name="osgi.wiring.package" value="org.apache.hc.core5.http.io.support"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.hc.core5.http.message)"/>
+      <attribute name="osgi.wiring.package" value="org.apache.hc.core5.http.message"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.hc.core5.http.protocol)"/>
+      <attribute name="osgi.wiring.package" value="org.apache.hc.core5.http.protocol"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.camunda.bpm.engine.variable)"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.engine.variable"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.camunda.bpm.engine.variable.impl.type)"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.engine.variable.impl.type"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.camunda.bpm.engine.variable.impl.value)"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.engine.variable.impl.value"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.camunda.bpm.engine.variable.type)"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.engine.variable.type"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.camunda.bpm.engine.variable.value)"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.engine.variable.value"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.camunda.bpm.engine.variable.value.builder)"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.bpm.engine.variable.value.builder"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.camunda.commons.logging)"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.commons.logging"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.camunda.commons.utils)"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.commons.utils"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.slf4j)"/>
+      <attribute name="osgi.wiring.package" value="org.slf4j"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.w3c.dom)"/>
+      <attribute name="osgi.wiring.package" value="org.w3c.dom"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.xml.sax)"/>
+      <attribute name="osgi.wiring.package" value="org.xml.sax"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=11))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="Eclipse Public License 2.0"/>
       <attribute name="copyright" value="Data In Motion Consuling GmbH - All rights reserved"/>
       <attribute name="osgi.identity" value="org.gecko.playground.template"/>
       <attribute name="documentation" value="https://github.com/geckoprojects-org/org.gecko.playground"/>
@@ -2568,6 +3137,76 @@
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="Eclipse Public License 2.0"/>
+      <attribute name="copyright" value="Data In Motion Consulting GmbH - All rights reserved"/>
+      <attribute name="osgi.identity" value="org.camunda.commons.utils"/>
+      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.gecko.libraries"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.camunda.commons.logging"/>
+      <attribute name="bundle-symbolic-name" value="org.camunda.commons.utils"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.commons.utils"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="752061824,-867152080,-2099881368,759614151,-2135962088,420425683,263229825" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.camunda.commons.utils"/>
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.commons.utils.cache"/>
+      <attribute name="version" value="7.22.0" type="Version"/>
+      <attribute name="bnd.hashes" value="64864098,199127050" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.camunda.commons.utils"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="7.22.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.camunda.commons.utils"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="30480" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="org.camunda.commons.utils/org.camunda.commons.utils-7.22.0.jar"/>
+      <attribute name="osgi.content" value="22AB092A441D8B85237946A4AA9C59ECC7BA088E6F516C5D1431C5B7B2BE5AA1"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.io)"/>
+      <attribute name="osgi.wiring.package" value="java.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang)"/>
+      <attribute name="osgi.wiring.package" value="java.lang"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.net)"/>
+      <attribute name="osgi.wiring.package" value="java.net"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.nio.charset)"/>
+      <attribute name="osgi.wiring.package" value="java.nio.charset"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util)"/>
+      <attribute name="osgi.wiring.package" value="java.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util.concurrent)"/>
+      <attribute name="osgi.wiring.package" value="java.util.concurrent"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.camunda.commons.logging)(version&gt;=7.22.0)(!(version&gt;=8.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.camunda.commons.logging"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=11))"/>
     </requirement>
   </resource>
 </repository>

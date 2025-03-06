@@ -2,4 +2,4 @@
 
 Bundle-Version: 1.0.0.SNAPSHOT
 Private-Package: org.camunda.bpm.getstarted.chargecard
--buildpath: camunda.external.task.client;version=snapshot
+-buildpath: org.camunda.bpm.external.task.client

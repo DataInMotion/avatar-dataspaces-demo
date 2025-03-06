@@ -13,11 +13,13 @@
 	de.avatar.connector.model;version=project,\
 	de.avatar.query.status.model,\
 	de.avatar.generator.api;version=snapshot,\
-	camunda.external.task.client,\
 	org.osgi.service.component,\
 	com.fasterxml.jackson.core.jackson-databind,\
 	com.fasterxml.jackson.core.jackson-core,\
-	org.osgi.util.promise
+	org.osgi.util.promise,\
+	org.camunda.bpm.external.task.client,\
+	org.apache.httpcomponents.client5.httpclient,\
+	org.apache.httpcomponents.core5.httpcore5
 	
 -workingset: connector
 	
