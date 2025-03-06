@@ -236,8 +236,8 @@ com.liferay:org.apache.aries.component.dsl:1.2.2.LIFERAY-PATCHED-1
 #Camunda deps already osgified
 org.camunda.bpm:camunda-engine:7.22.0
 org.camunda.commons:camunda-commons-typed-values:7.22.0
-org.apache.httpcomponents.client5:httpclient5-osgi:5.0-beta2
-org.apache.httpcomponents.core5:httpcore5-osgi:5.0-beta5
+org.brotli:dec:0.1.2
+
 
 
 

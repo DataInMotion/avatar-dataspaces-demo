@@ -18,8 +18,8 @@
 	com.fasterxml.jackson.core.jackson-core,\
 	org.osgi.util.promise,\
 	org.camunda.bpm.external.task.client,\
-	org.apache.httpcomponents.client5.httpclient,\
-	org.apache.httpcomponents.core5.httpcore5
+	org.apache.httpcomponents.client5,\
+	org.apache.httpcomponents.core5
 	
 -workingset: connector
 	
