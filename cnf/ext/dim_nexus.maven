@@ -6,3 +6,11 @@ org.geckoprojects.emf:org.gecko.emf.pushstreams:1.0.15
 org.gecko.addons:org.gecko.util.pushstream:6.0.0
 org.gecko.addons:org.gecko.util.common:2.0.0-SNAPSHOT
 
+org.geckoprojects.libraries:org.camunda.bpm.external.task.client:7.22.0
+org.geckoprojects.libraries:org.camunda.commons.logging:7.22.0
+org.geckoprojects.libraries:org.camunda.commons.utils:7.22.0
+org.geckoprojects.libraries:org.conscrypt.openjdk.uber:2.5.2
+
+org.geckoprojects.libraries:org.apache.httpcomponents.client5:5.4.2
+org.geckoprojects.libraries:org.apache.httpcomponents.core5:5.3.3
+org.geckoprojects.libraries:org.apache.httpcomponents.core5.h2:5.3.3
