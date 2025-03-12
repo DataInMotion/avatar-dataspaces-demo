@@ -13,6 +13,7 @@
  */
 package de.avatar.connector.whiteboard.api;
 
+import org.camunda.bpm.client.interceptor.ClientRequestInterceptor;
 import org.camunda.bpm.client.topic.TopicSubscriptionBuilder;
 
 /**
@@ -20,7 +21,7 @@ import org.camunda.bpm.client.topic.TopicSubscriptionBuilder;
  * @author ilenia
  * @since Feb 25, 2025
  */
-public interface OrchestratorWorker {
+public interface OrchestratorWorker extends ClientRequestInterceptor{
 		
 	TopicSubscriptionBuilder getTopicSubscriptionBuilder();
 

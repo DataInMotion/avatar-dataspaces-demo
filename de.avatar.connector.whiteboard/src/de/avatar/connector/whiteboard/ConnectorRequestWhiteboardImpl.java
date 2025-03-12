@@ -91,7 +91,7 @@ public class ConnectorRequestWhiteboardImpl implements ConnectorRequestWhiteboar
 
 	@Activate
 	public ConnectorRequestWhiteboardImpl(@Reference(target = "(camunda.worker.name=forward-query)")
-	OrchestratorWorker queryCamundaWorker, @Reference(target = "(camunda.process.name=connector-whiteboard)")
+	OrchestratorWorker queryCamundaWorker, @Reference(target = "(camunda.process.name=forward-query)")
 	OrchestratorProcessLauncher queryCamundaProcessLauncher, @Reference(target = "(camunda.process.name=update-status)")
 	OrchestratorProcessLauncher statusCamundaProcessLauncher) {
 		this.queryCamundaWorker = queryCamundaWorker;

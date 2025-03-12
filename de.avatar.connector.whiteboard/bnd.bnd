@@ -19,7 +19,10 @@
 	org.osgi.util.promise,\
 	org.camunda.bpm.external.task.client,\
 	org.apache.httpcomponents.client5,\
-	org.apache.httpcomponents.core5
+	org.apache.httpcomponents.core5,\
+	de.avatar.keycloak.service.api;version=snapshot,\
+	org.keycloak.client.common.synced,\
+	org.keycloak.authz.client
 	
 -workingset: connector
 	

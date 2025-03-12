@@ -14,3 +14,6 @@ org.geckoprojects.libraries:org.conscrypt.openjdk.uber:2.5.2
 org.geckoprojects.libraries:org.apache.httpcomponents.client5:5.4.2
 org.geckoprojects.libraries:org.apache.httpcomponents.core5:5.3.3
 org.geckoprojects.libraries:org.apache.httpcomponents.core5.h2:5.3.3
+
+org.geckoprojects.libraries:org.keycloak.authz.client:26.0.4
+org.geckoprojects.libraries:org.keycloak.client.common.synced:26.0.4

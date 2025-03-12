@@ -28,11 +28,13 @@ import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.avatar.connector.whiteboard.api.OrchestratorProcessLauncher;
+import de.avatar.keycloak.service.api.KeycloakService;
 
 /**
  * 
@@ -42,6 +44,9 @@ import de.avatar.connector.whiteboard.api.OrchestratorProcessLauncher;
 @Component(name = "CamundaProcessLauncher", configurationPid = "CamundaProcessLauncher", 
 configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
 public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
+	
+	@Reference
+	KeycloakService keycloakService;
 	
 	
 	private static final Logger LOGGER = Logger.getLogger(CamundaProcessLauncher.class.getName());
@@ -71,7 +76,6 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 			LOGGER.severe(String.format("Exception while sending request %s to Orchestrator", (String)properties.get("camunda.process.url")));
 			return;
 		}		
-
 	}
 	
 	class MyResponseHandler implements HttpClientResponseHandler<Integer>{

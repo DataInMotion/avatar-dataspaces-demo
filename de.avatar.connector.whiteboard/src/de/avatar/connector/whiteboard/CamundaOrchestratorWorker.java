@@ -16,13 +16,16 @@ package de.avatar.connector.whiteboard;
 import java.util.Map;
 
 import org.camunda.bpm.client.ExternalTaskClient;
+import org.camunda.bpm.client.interceptor.ClientRequestContext;
 import org.camunda.bpm.client.topic.TopicSubscriptionBuilder;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
 
 import de.avatar.connector.whiteboard.api.OrchestratorWorker;
+import de.avatar.keycloak.service.api.KeycloakService;
 
 /**
  * 
@@ -33,6 +36,9 @@ import de.avatar.connector.whiteboard.api.OrchestratorWorker;
 configurationPid = "CamundaWorker", configurationPolicy = ConfigurationPolicy.REQUIRE, 
 scope = ServiceScope.PROTOTYPE)
 public class CamundaOrchestratorWorker implements OrchestratorWorker {
+	
+	@Reference
+	KeycloakService keycloakService;
 	
 	private Map<String, Object> properties;
 
@@ -54,12 +60,22 @@ public class CamundaOrchestratorWorker implements OrchestratorWorker {
 		ExternalTaskClient client = ExternalTaskClient.create()
 				.baseUrl((String)properties.get("camunda.engine.url"))
 				.asyncResponseTimeout((Long)properties.get("camunda.polling.timeout") == null ? 10000 : (Long)properties.get("camunda.polling.timeout")) // long polling timeout
+				.addInterceptor(this)
 				.build();
 		// subscribe to an external task topic as specified in the process
 		System.out.println(client.toString());
 		return client.
 				subscribe((String)properties.get("camunda.task.topic")).
 				lockDuration((Long)properties.get("camunda.task.lock.duration") == null ? 1000 : (Long)properties.get("camunda.task.lock.duration"));
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see org.camunda.bpm.client.interceptor.ClientRequestInterceptor#intercept(org.camunda.bpm.client.interceptor.ClientRequestContext)
+	 */
+	@Override
+	public void intercept(ClientRequestContext requestContext) {
+		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
 	}
 
 }

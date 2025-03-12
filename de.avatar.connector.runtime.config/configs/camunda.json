@@ -1,0 +1,34 @@
+{
+  ":configurator:resource-version": 1,
+  
+  "CamundaWorker~request":
+	{
+		"camunda.worker.name": "forward-query",
+		"keycloakService.target": "(serviceName=QueryForwardService)",
+		"camunda.engine.url": "http://apisix-gateway:9080/api/camundainterface/engine-rest",
+		"camunda.polling.timeout": 10000,
+		"camunda.task.topic": "forward-query",
+		"camunda.task.lock.duration": 1000
+	},
+	"CamundaWorker~status":
+	{
+		"camunda.worker.name": "update-status",
+		"keycloakService.target": "(serviceName=StatusUpdateService)",
+		"camunda.engine.url": "http://apisix-gateway:9080/api/camundainterface/engine-rest",
+		"camunda.polling.timeout": 10000,
+		"camunda.task.topic": "update-status",
+		"camunda.task.lock.duration": 1000
+	},
+	"CamundaProcessLauncher~status":
+	{
+		"camunda.process.name": "update-status",
+		"keycloakService.target": "(serviceName=StatusUpdateService)",
+		"camunda.process.url": "http://apisix-gateway:9080/api/processuserinterface/engine-rest/process-definition/key/update-status/start"
+	},
+	"CamundaProcessLauncher~query":
+	{
+		"camunda.process.name": "forward-query",
+		"keycloakService.target": "(serviceName=QueryForwardService)",
+		"camunda.process.url": "http://apisix-gateway:9080/api/processuserinterface/engine-rest/process-definition/key/forward-query/start"
+	}
+}

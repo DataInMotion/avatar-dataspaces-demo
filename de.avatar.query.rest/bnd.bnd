@@ -9,7 +9,8 @@ buildpath:  \
 	org.gecko.emf.json;version=latest,\
 	org.gecko.emf.util.model
 
--includeresource: data/=data/
+-includeresource: \
+	data/=data/
 
 Bundle-Version: 1.0.0.SNAPSHOT
 Private-Package: de.avatar.query.rest
