@@ -51,3 +51,20 @@ task prepareDockerWhiteboard(){
 	    }
     }
 }
+task prepareDockerQuery(){
+	def stageDir = file('query/content')
+	def runtimeDir = new File(stageDir, 'runtime')
+	doFirst {
+		stageDir.deleteDir()
+    }
+    doLast {
+		println "Prepare Docker build"
+		stageDir.mkdirs()
+	     // copy all necessary files to  build/docker/ dir
+    	copy {
+	        from new File("../de.avatar.query.rest/generated/distributions/executable/launch.jar")
+	        into stageDir
+            rename("launch.jar", "de.avatar.query.rest.jar")
+	    }
+    }
+}
