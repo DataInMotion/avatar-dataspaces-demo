@@ -1,0 +1,14 @@
+-library: enable-emf
+
+
+-buildpath: \
+	de.avatar.query.backend;version=snapshot,\
+	de.avatar.query.status.model,\
+	de.avatar.connector.model,\
+	de.avatar.connector.whiteboard;version=snapshot,\
+	de.avatar.connector.camunda.api,\
+	org.osgi.service.component,\
+	org.osgi.util.promise
+	
+-includeresource: OSGI-INF/configurator/=configs/consumer-config.json
+Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'

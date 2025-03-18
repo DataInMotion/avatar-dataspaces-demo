@@ -1,0 +1,22 @@
+{
+  ":configurator:resource-version": 1,
+  
+  "CamundaQueryWorker~request":
+	{
+		"camunda.worker.name": "forward-query",
+		"keycloakService.target": "(serviceName=QueryForwardService)",
+		"camunda.engine.url": "http://localhost:8080/engine-rest",
+		"camunda.polling.timeout": 10000,
+		"camunda.task.topic": "forward-query",
+		"camunda.task.lock.duration": 1000
+	},
+	"CamundaStatusWorker~status":
+	{
+		"camunda.worker.name": "update-status",
+		"keycloakService.target": "(serviceName=StatusUpdateService)",
+		"camunda.engine.url": "http://localhost:8080/engine-rest",
+		"camunda.polling.timeout": 10000,
+		"camunda.task.topic": "update-status",
+		"camunda.task.lock.duration": 1000
+	}
+}

@@ -314,6 +314,16 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getQueryResponse_Message() {
+		return (EAttribute)queryResponseEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getQueryStatusResponse() {
 		return queryStatusResponseEClass;
 	}
@@ -678,6 +688,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		createEAttribute(queryResponseEClass, QUERY_RESPONSE__REQUEST_ID);
 		createEAttribute(queryResponseEClass, QUERY_RESPONSE__STATUS);
 		createEAttribute(queryResponseEClass, QUERY_RESPONSE__TIMESTAMP);
+		createEAttribute(queryResponseEClass, QUERY_RESPONSE__MESSAGE);
 
 		queryStatusResponseEClass = createEClass(QUERY_STATUS_RESPONSE);
 		createEReference(queryStatusResponseEClass, QUERY_STATUS_RESPONSE__DETAILED_STATUS);
@@ -776,6 +787,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		initEAttribute(getQueryResponse_RequestId(), theEcorePackage.getEString(), "requestId", null, 1, 1, QueryResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQueryResponse_Status(), this.getQueryStatusType(), "status", null, 0, 1, QueryResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQueryResponse_Timestamp(), theEcorePackage.getELong(), "timestamp", null, 0, 1, QueryResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQueryResponse_Message(), ecorePackage.getEString(), "message", null, 0, 1, QueryResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(queryStatusResponseEClass, QueryStatusResponse.class, "QueryStatusResponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getQueryStatusResponse_DetailedStatus(), this.getDetailedQueryStatus(), null, "detailedStatus", null, 0, 1, QueryStatusResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

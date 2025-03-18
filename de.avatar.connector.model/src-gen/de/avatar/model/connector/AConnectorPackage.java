@@ -159,13 +159,31 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	int CONNECTOR_INFO__CONNECTOR_MODEL = 6;
 
 	/**
+	 * The feature id for the '<em><b>Model Info</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_INFO__MODEL_INFO = 7;
+
+	/**
+	 * The feature id for the '<em><b>Consent Info</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_INFO__CONSENT_INFO = 8;
+
+	/**
 	 * The number of structural features of the '<em>Connector Info</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_INFO_FEATURE_COUNT = 7;
+	int CONNECTOR_INFO_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Connector Info</em>' class.
@@ -1422,6 +1440,28 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getConnectorInfo_ConnectorModel();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.avatar.model.connector.ConnectorInfo#getModelInfo <em>Model Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Model Info</em>'.
+	 * @see de.avatar.model.connector.ConnectorInfo#getModelInfo()
+	 * @see #getConnectorInfo()
+	 * @generated
+	 */
+	EReference getConnectorInfo_ModelInfo();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.avatar.model.connector.ConnectorInfo#getConsentInfo <em>Consent Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Consent Info</em>'.
+	 * @see de.avatar.model.connector.ConnectorInfo#getConsentInfo()
+	 * @see #getConnectorInfo()
+	 * @generated
+	 */
+	EReference getConnectorInfo_ConsentInfo();
+
+	/**
 	 * Returns the meta object for class '{@link de.avatar.model.connector.ConnectorMetric <em>Connector Metric</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2345,6 +2385,22 @@ public interface AConnectorPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference CONNECTOR_INFO__CONNECTOR_MODEL = eINSTANCE.getConnectorInfo_ConnectorModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Info</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_INFO__MODEL_INFO = eINSTANCE.getConnectorInfo_ModelInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Consent Info</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_INFO__CONSENT_INFO = eINSTANCE.getConnectorInfo_ConsentInfo();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.model.connector.impl.ConnectorMetricImpl <em>Connector Metric</em>}' class.

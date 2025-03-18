@@ -205,5 +205,13 @@ public class OtherConnectorImpl implements AvatarConnector {
 		return Collections.emptyList();
 	}
 
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.api.AvatarConnectorInfo#canHandleModel(java.lang.String)
+	 */
+	@Override
+	public boolean canHandleModel(String modelUri) {
+		return getModelInfos().stream().map(mi -> mi.getUri()).filter(uri -> uri.equals(modelUri)).count() > 0;
+	}
 
 }

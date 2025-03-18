@@ -36,6 +36,8 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link de.avatar.model.connector.ConnectorInfo#getEndpoint <em>Endpoint</em>}</li>
  *   <li>{@link de.avatar.model.connector.ConnectorInfo#getMetric <em>Metric</em>}</li>
  *   <li>{@link de.avatar.model.connector.ConnectorInfo#getConnectorModel <em>Connector Model</em>}</li>
+ *   <li>{@link de.avatar.model.connector.ConnectorInfo#getModelInfo <em>Model Info</em>}</li>
+ *   <li>{@link de.avatar.model.connector.ConnectorInfo#getConsentInfo <em>Consent Info</em>}</li>
  * </ul>
  *
  * @see de.avatar.model.connector.AConnectorPackage#getConnectorInfo()
@@ -190,5 +192,29 @@ public interface ConnectorInfo extends EObject {
 	 * @generated
 	 */
 	void setConnectorModel(EPackage value);
+
+	/**
+	 * Returns the value of the '<em><b>Model Info</b></em>' containment reference list.
+	 * The list contents are of type {@link de.avatar.model.connector.ModelInfo}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Model Info</em>' containment reference list.
+	 * @see de.avatar.model.connector.AConnectorPackage#getConnectorInfo_ModelInfo()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ModelInfo> getModelInfo();
+
+	/**
+	 * Returns the value of the '<em><b>Consent Info</b></em>' containment reference list.
+	 * The list contents are of type {@link de.avatar.model.connector.ConsentInfo}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Consent Info</em>' containment reference list.
+	 * @see de.avatar.model.connector.AConnectorPackage#getConnectorInfo_ConsentInfo()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ConsentInfo> getConsentInfo();
 
 } // ConnectorInfo

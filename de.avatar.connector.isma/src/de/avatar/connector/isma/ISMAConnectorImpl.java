@@ -24,9 +24,11 @@ import java.util.logging.Logger;
 
 import org.avatar.himsa.export.PatientExportPackage;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.gecko.emf.osgi.constants.EMFUriHandlerConstants;
 import org.osgi.service.component.ComponentServiceObjects;
@@ -145,6 +147,8 @@ public class ISMAConnectorImpl implements AvatarConnector {
 		metric.setUptime(Instant.now().getEpochSecond() - startTimestamp);
 		info.setMetric(metric);
 		info.getEndpoint().addAll(getEndpoints());
+		info.getModelInfo().addAll(getModelInfos());
+		info.getConsentInfo().addAll(getConsentInfos());
 		return info;
 	}
 
@@ -206,6 +210,9 @@ public class ISMAConnectorImpl implements AvatarConnector {
 								String projections = "projections=";
 								String operation = subject.getOperation() != null ? "operation=".concat(subject.getOperation().eClass().getName()) : "";
 								for(EStructuralFeature feature : subject.getFeaturePath().getFeature()) {
+									if(feature.eIsProxy()) {
+										feature = (EStructuralFeature) EcoreUtil.resolve(feature, (EObject) null);
+									}
 									projections += feature.getName()+"-";
 								}
 								projections = projections.substring(0, projections.length()-1); //to remove the last "-"
@@ -408,4 +415,15 @@ public class ISMAConnectorImpl implements AvatarConnector {
 		consentInfo.setTemplate("");
 		return List.of(consentInfo);
 	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.api.AvatarConnectorInfo#canHandleModel(java.lang.String)
+	 */
+	@Override
+	public boolean canHandleModel(String modelUri) {
+		return getModelInfos().stream().map(mi -> mi.getUri()).filter(uri -> uri.equals(modelUri)).count() > 0;
+	}
+
+	
 }

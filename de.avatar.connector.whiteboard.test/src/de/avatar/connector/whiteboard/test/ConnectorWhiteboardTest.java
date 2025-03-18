@@ -222,7 +222,7 @@ public class ConnectorWhiteboardTest {
 		request.setQuery(query);
 		
 		whiteboard.executeRequest(request);
-		QueryStatusResponse response = statusService.executeStatusRequest(reqId);
+		QueryStatusResponse response = statusService.getStatusUpdate(reqId);
 		assertThat(response).isNotNull();
 		assertThat(response.getRequestId()).isEqualTo(reqId);
 		assertThat(response.getDetailedStatus()).isNotNull();
@@ -256,7 +256,7 @@ public class ConnectorWhiteboardTest {
 		query.setDistinct(true);
 		request.setQuery(query);
 		
-		assertThrows(IllegalArgumentException.class, () -> statusService.executeStatusRequest(reqId));
+		assertThrows(IllegalArgumentException.class, () -> statusService.getStatusUpdate(reqId));
 	}
 	
 	@Disabled

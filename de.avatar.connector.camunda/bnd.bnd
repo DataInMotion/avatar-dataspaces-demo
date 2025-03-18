@@ -1,5 +1,0 @@
--library: enable-emf
-
-Bundle-Version: 1.0.0.SNAPSHOT
-Private-Package: de.avatar.connector.camunda
--buildpath: org.camunda.bpm.external.task.client

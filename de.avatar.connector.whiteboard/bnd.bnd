@@ -1,29 +1,11 @@
 -library: enable-emf
 
--includeresource: OSGI-INF/configurator/=configs/consumer-config.json
-
 -buildpath: \
 	org.osgi.annotation.bundle;version=latest,\
 	org.osgi.annotation.versioning;version=latest,\
 	org.osgi.service.component.annotations;version=latest,\
-	org.osgi.service.cm;version=latest,\
-	org.osgi.service.event;version=latest,\
-	org.osgi.service.remoteserviceadmin;version=latest,\
 	de.avatar.connector.api;version=project,\
 	de.avatar.connector.model;version=project,\
-	de.avatar.query.status.model,\
-	de.avatar.generator.api;version=snapshot,\
-	org.osgi.service.component,\
-	com.fasterxml.jackson.core.jackson-databind,\
-	com.fasterxml.jackson.core.jackson-core,\
-	org.osgi.util.promise,\
-	org.camunda.bpm.external.task.client,\
-	org.apache.httpcomponents.client5,\
-	org.apache.httpcomponents.core5,\
-	de.avatar.keycloak.service.api;version=snapshot,\
-	org.keycloak.client.common.synced,\
-	org.keycloak.authz.client
-	
+	de.avatar.query.status.model
 -workingset: connector
 	
-Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'

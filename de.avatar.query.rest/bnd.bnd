@@ -16,9 +16,8 @@ Bundle-Version: 1.0.0.SNAPSHOT
 Private-Package: de.avatar.query.rest
 -buildpath: \
 	de.avatar.connector.model;version=snapshot,\
-	de.avatar.connector.whiteboard;version=snapshot,\
 	de.avatar.query.status.model;version=snapshot,\
 	de.avatar.generator.api;version=snapshot,\
-	org.osgi.service.http.whiteboard,\
 	org.gecko.emf.util.annotations,\
-	org.gecko.emf.util.model
+	org.gecko.emf.util.model,\
+	de.avatar.query.backend

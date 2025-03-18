@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Local" increment="1738655995780">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Local" increment="1742387494962">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.paremus.cert"/>
@@ -305,230 +305,6 @@
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
       <attribute name="osgi.wiring.package" value="org.slf4j"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="com.paremus.dosgi.net"/>
-      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.geckoprojects.rsa"/>
-      <attribute name="description" value="The implementation of Remote Service Admin and a distribution provider. The provider"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="com.paremus.dosgi.net"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.remoteserviceadmin"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-326896397,-1488128249,185059813,-998425159,-552983159,-232897180,1093231394,115338711,-765976915,-1178211066,1834163486,-8757367,1522664736,-782782118,-1416491532,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.util.promise"/>
-      <attribute name="bundle-symbolic-name" value="com.paremus.dosgi.net"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.async.delegate"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-421513215,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.util.function"/>
-      <attribute name="bundle-symbolic-name" value="com.paremus.dosgi.net"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.promise"/>
-      <attribute name="version" value="1.1.1" type="Version"/>
-      <attribute name="bnd.hashes" value="712535039,65070753,-973241247,65915235,1335848159,-891069155,2104342424,885810947,77116,-1547713212,-2009290710,-674203470,-1807668168,2605629,-1892220507,350741825,1437638748,393463102,1872034202,578079082,1355436283,65921,1229938816,-122541857,695804588,1910929295,-2041294197,1473077508,-1850559427,1360409019,-931148072,-374893917,-202516509,126968846,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="com.paremus.dosgi.net"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.function"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-503125994,1445582840,655935895,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="com.paremus.dosgi.net.serialize"/>
-      <attribute name="bundle-symbolic-name" value="com.paremus.dosgi.net"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.dosgi.net.message"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-136773765,-368864355,-1983406199,794775489,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="com.paremus.dosgi.net"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.dosgi.net.serialize"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="80204913,-1773861776,-1632258262,1395478962,-870675720" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="com.paremus.dosgi.net"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.dosgi.net.promise"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-324471198,1715794324,-78848672,801298750,396626858,1910929295,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="com.paremus.dosgi.net.message"/>
-      <attribute name="bundle-symbolic-name" value="com.paremus.dosgi.net"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.dosgi.net.pushstream"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1905074132,1678739579,1558675963,1187818912,-1024516118,1016516032,-3368469,565759092,1999086672,-2087729220,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="com.paremus.dosgi.net"/>
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.dosgi.topology.scoped"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="com.paremus.dosgi.net"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.host" value="com.paremus.dosgi.net"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="2510352" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="com.paremus.dosgi.net/com.paremus.dosgi.net-1.0.0.jar"/>
-      <attribute name="osgi.content" value="D9F770612C284D91270ACB49553682A926134CFABED2DCC477A4133B4FBB8CAA"/>
-    </capability>
-    <capability namespace="osgi.remoteserviceadmin.distribution">
-      <attribute name="configs" value="com.paremus.dosgi.net" type="List&lt;String&gt;"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.service">
-      <attribute name="objectClass" value="org.osgi.service.remoteserviceadmin.RemoteServiceAdmin"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=reactor.blockhound)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="reactor.blockhound"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=reactor.blockhound.integration)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="reactor.blockhound.integration"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.conscrypt)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.conscrypt"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.apache.logging.log4j.message)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.apache.logging.log4j.message"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.apache.logging.log4j.spi)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.apache.logging.log4j.spi"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=io.netty.internal.tcnative)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="io.netty.internal.tcnative"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=sun.misc)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="sun.misc"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=com.paremus.dosgi.scoping.rsa)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.dosgi.scoping.rsa"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=com.paremus.netty.tls)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="com.paremus.netty.tls"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.crypto)"/>
-      <attribute name="osgi.wiring.package" value="javax.crypto"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.crypto.spec)"/>
-      <attribute name="osgi.wiring.package" value="javax.crypto.spec"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
-      <attribute name="osgi.wiring.package" value="javax.net.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.security.auth.x500)"/>
-      <attribute name="osgi.wiring.package" value="javax.security.auth.x500"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.security.cert)"/>
-      <attribute name="osgi.wiring.package" value="javax.security.cert"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.launch)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework.launch"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.wiring)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework.wiring"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.resource)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.resource"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.cm)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.cm"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.event)(version&gt;=1.4.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.event"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.remoteserviceadmin)(version&gt;=1.1.0)(!(version&gt;=1.2.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.remoteserviceadmin"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.converter)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.converter"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.function)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.function"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.promise)(version&gt;=1.1.0)(!(version&gt;=1.2.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.promise"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.pushstream)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.pushstream"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.tracker"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.slf4j"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j.helpers)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.slf4j.helpers"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j.spi)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.slf4j.spi"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
@@ -1215,12 +991,12 @@
       <attribute name="osgi.identity" value="org.avatar.himsa.model"/>
       <attribute name="documentation" value="https://github.com/DataInMotion/avatar-dataspace"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="admittance"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1576829810,925076155,-452617348,-2099955609,1425955268,-167797064,-2095085048,642778890,-1482197870,-1950261588,-1442565797,-1537999069,1876771429,2054277805,-611972547,-1244395031,-1993659848,-1673913095,-747639605,745061726,-664280421,-1308945219,-301824112,1909932654,327134131,82909326,656160426,305838694,-1094493455,-206730432,-2113676047,-462621345,-2101376347,1778644555,-1093822459,190487814,1267094638,302158173,-608423495,-192073768,-2006350030,-996154493,-1559880885,-197027892,-1719295242,1065488579,430038140,448377878,17628691,-1304858947,1564217096,-938960579,-228008194,-1923478059" type="List&lt;Long&gt;"/>
@@ -1228,7 +1004,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="admittance,javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="admittance.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1009165362,-1866691717,1773556668,726106919,-1690019592,1960713288,-509327286,-419843630,-109248788,-1079451109,1313639395,-518103515,36012653,955218429,933086121,-2019307847,1321084024,621917342,-967707813,1624982653,1452749230,-1347456909,999270378,-1475482202,-1494396751,-232992079,-6766208,1346896927,-1390246299,1063038731,-290790459,1933279302,1100181789,-2006689256,-481345469,818172939,1190897676,1200754230,1609558,-1752395053,106733181,-208500483,-1923478059" type="List&lt;Long&gt;"/>
@@ -1236,7 +1012,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="admittance,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="admittance.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1966673911,-940494642,661794844,932263554,-956063420,1584305929,-1923478059" type="List&lt;Long&gt;"/>
@@ -1244,7 +1020,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="audiogram"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-691167184,1780355720,-144554691,1425955268,140265593,849557373,513447174,-779541875,-933267856,-1999107094,-353455046,804961011,-1835334767,-1308945219,-493714381,662126499,53425306,-462621345,2142029467,587841500,760097172,1980503850,895300192,1065488579,906476066,-899958922,-725985891,1939937705,-2109666278,-1886345117,242609683,161579005,-629897723,1467785711,-919719538,-1181628406,-2128146319,1823245969,-1923478059" type="List&lt;Long&gt;"/>
@@ -1252,7 +1028,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="audiogram,javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="audiogram.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="2042945136,811885768,1177957629,2009348665,-871503283,100766896,81714474,-1345790598,-309272653,-8410799,1624982653,-1868429069,349932643,1346896927,-1199253669,-694466454,81778848,1045029558,-1638984355,618460009,611075418,-419593517,1557794749,596568239,1017221326,-1625838511,-1923478059" type="List&lt;Long&gt;"/>
@@ -1260,7 +1036,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="audiogram,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="audiogram.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="1347222312,-2141175537,-621906181,-1274556255,-1260593467,300604904,-1923478059" type="List&lt;Long&gt;"/>
@@ -1268,7 +1044,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="audiogram502"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="705622205,716546825,1725286777,-691167184,1780355720,1051559648,1425955268,1336379932,849557373,513447174,-779541875,-933267856,1530666398,-1999107094,-353455046,804961011,-1835334767,-1308945219,-301824112,198451434,-493714381,662126499,53425306,305838694,-462621345,2142029467,587841500,760097172,1980503850,895300192,1065488579,906476066,-899958922,-725985891,1939937705,-2109666278,-1886345117,242609683,161579005,17628691,-629897723,1467785711,-919719538,-1181628406,-2128146319,1823245969,-2062278949,699693833,243208318,-1923478059" type="List&lt;Long&gt;"/>
@@ -1276,7 +1052,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="audiogram502,javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="audiogram502.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1281286019,-1043477303,2042945136,811885768,-1930302176,-1098911140,-871503283,100766896,-21302050,81714474,-1345790598,-309272653,-8410799,1624982653,-1868429069,349932643,-1475482202,1346896927,-1199253669,-694466454,81778848,1045029558,-1638984355,618460009,611075418,-419593517,1557794749,-1752395053,596568239,1017221326,-1625838511,-174021431,-1618380866,-1923478059" type="List&lt;Long&gt;"/>
@@ -1284,7 +1060,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="audiogram502,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="audiogram502.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1620693979,1363093042,1806287672,-1790161250,1449018280,-1566168539,-1923478059" type="List&lt;Long&gt;"/>
@@ -1292,7 +1068,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="audiogrammetadata"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-306466298,-910520597,740834778,-1301306322,1425955268,-1016486038,1012127438,-210095006,2076989455,-1308945219,1641728888,-1143730535,466082676,58104394,-898556269,-1286324119,916902762,-374348277,1198428742,-748669015,-1063474122,491493641,-1923478059" type="List&lt;Long&gt;"/>
@@ -1300,7 +1076,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="audiogrammetadata,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="audiogrammetadata.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="987101099,1695159622,1071945498,-324488338,506902698,-1376610802,1624982653,2141974617,-186132556,1964948009,385737898,-1923478059" type="List&lt;Long&gt;"/>
@@ -1308,7 +1084,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="audiogrammetadata,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="audiogrammetadata.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-166388969,-1247166848,46909098,-1588965488,-502381194,969420183,-1923478059" type="List&lt;Long&gt;"/>
@@ -1316,7 +1092,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="cochlear"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1808086097,983377239,1425955268,-1523265813,-1308945219,-1923478059" type="List&lt;Long&gt;"/>
@@ -1324,7 +1100,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="cochlear,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="cochlear.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="497169007,-1301317609,1328560043,1624982653,-1923478059" type="List&lt;Long&gt;"/>
@@ -1332,7 +1108,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="cochlear,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="cochlear.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="808956022,1694018689,-251516983,195802095,670994102,-1923478059" type="List&lt;Long&gt;"/>
@@ -1340,7 +1116,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="data"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1601492601,1893336970,-905220640,1425955268,-620400356,269050681,-249363432,-1308945219,-301824112,2033276451,-1718137728,-183865450,-1404861605,-726454070,-1045239641,-1293751214,-431530418,-1940767037,637955850,-2079737280,1713740178,196243920,-774476438,-843783986,-1923478059" type="List&lt;Long&gt;"/>
@@ -1348,7 +1124,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="data,javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="data.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-566622006,-1403001785,-654027744,177363292,-512356776,1508242681,1624982653,742384320,233780251,-2069919018,1733497703,-220425718,1949518226,-2015233149,-806965174,-1740279680,648536080,-53444950,-1923478059" type="List&lt;Long&gt;"/>
@@ -1356,7 +1132,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="data,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="data.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="820405541,-201683662,-1578877896,-1021999202,-656366811,-1923478059" type="List&lt;Long&gt;"/>
@@ -1364,7 +1140,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="fitting"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1308945219,1606855083,1425955268,1891675367,-740292290,-1923478059" type="List&lt;Long&gt;"/>
@@ -1372,7 +1148,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="fitting,javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="fitting.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="1624982653,1675014763,-1788561497,1715474558,-1923478059" type="List&lt;Long&gt;"/>
@@ -1380,7 +1156,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="fitting,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="fitting.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="129064698,496726141,1901963085,-663869837,-1782980685,-1470493126,-1923478059" type="List&lt;Long&gt;"/>
@@ -1388,7 +1164,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="impedance"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-2071475962,-329835826,463353583,-1753155051,-1298005959,-1866884528,-1308945219,1909932654,327134131,656160426,1472897680,-1421558829,1425955268,1757717964,-1093822459,1267094638,302158173,1095347582,-192073768,-2006350030,1065488579,430038140,-1304858947,1564217096,-938960579,-228008194,-1923478059" type="List&lt;Long&gt;"/>
@@ -1396,7 +1172,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="impedance,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="impedance.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-101536698,1655953934,584973743,-1681998379,-1796730375,182896784,1624982653,1452749230,-1347456909,999270378,1438232784,-1070632813,-2025343476,-290790459,1100181789,29201598,-2006689256,106733181,-208500483,-1923478059" type="List&lt;Long&gt;"/>
@@ -1404,7 +1180,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="impedance,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="impedance.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1506571659,1923103202,-1143310968,994376942,-1667026088,-220799883,-1923478059" type="List&lt;Long&gt;"/>
@@ -1412,7 +1188,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="journal"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1308945219,-687458476,-1584158221,1425955268,-1299337937,-1923478059" type="List&lt;Long&gt;"/>
@@ -1420,7 +1196,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="journal,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="journal.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="1624982653,-271236204,-82161997,749229039,-1923478059" type="List&lt;Long&gt;"/>
@@ -1428,7 +1204,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="journal,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="journal.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-862388814,683820229,-1030908923,341572907,-1740116485,-108397838,-1923478059" type="List&lt;Long&gt;"/>
@@ -1436,7 +1212,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="notification"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1308945219,-732127749,1202207103,1425955268,1487027387,-1923478059" type="List&lt;Long&gt;"/>
@@ -1444,7 +1220,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="notification,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="notification.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="1624982653,-122028357,1577334847,-1886241413,-1923478059" type="List&lt;Long&gt;"/>
@@ -1452,7 +1228,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="notification,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="notification.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="2134513830,-249568687,-1126114311,15813663,192334471,-203603226,-1923478059" type="List&lt;Long&gt;"/>
@@ -1460,7 +1236,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="admittance,audiogram,audiogram502,audiogrammetadata,cochlear,data,fitting,impedance,javax.xml.datatype,journal,notification,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util,realear,remotecontrol,selection,test,tinnitus"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.avatar.himsa.export"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="872752762,-1025823305,-1308945219,1054247355,890929409,873235173,-1705104431,1425955268,-1420284147,-720180142,-692644216,977142864,-653086731,-1923478059" type="List&lt;Long&gt;"/>
@@ -1468,7 +1244,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="admittance,audiogram,audiogram502,audiogrammetadata,cochlear,data,fitting,impedance,javax.xml.datatype,journal,notification,org.avatar.himsa.export,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,realear,remotecontrol,selection,test,tinnitus"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.avatar.himsa.export.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-941871174,1639075959,1624982653,-1527467631,-696076595,-2101780827,-27047534,-522491704,673591952,-1923478059" type="List&lt;Long&gt;"/>
@@ -1476,7 +1252,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="javax.xml.datatype,org.avatar.himsa.export,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.avatar.himsa.export.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-915388908,510847395,1409256679,1030408077,-2005307303,-1963199532,-1923478059" type="List&lt;Long&gt;"/>
@@ -1484,7 +1260,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="realear"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="794346963,1261637968,208167847,1834979137,-772690656,-603747641,493232876,-1308945219,441160602,-1649882629,-2077196064,-1996984176,-1875619921,1837279031,-269691523,-45917978,-957388811,669667697,1874425605,521323143,1174007963,1988608884,-869002966,673055583,-817101099,-847756873,-1446069540,551070994,1425955268,835891278,1065488579,906476066,-442525250,1635802443,-976707835,-430707105,-1923478059" type="List&lt;Long&gt;"/>
@@ -1492,7 +1268,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,realear"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="realear.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1490126189,1842134928,349376103,-2001281791,1624982653,484904154,73918240,2135981776,-1187400081,285280759,-629234371,-2002564058,-1632303311,2022654661,-76350137,-533921445,-1653358668,-1447728491,-274373513,1545650972,2077928018,-1385648242,1958961406,-1001548277,1657432773,-1542816481,-1923478059" type="List&lt;Long&gt;"/>
@@ -1500,7 +1276,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util,realear"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="realear.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1115747917,1400410468,1507372102,-420832724,1515758938,-1865084109,-1923478059" type="List&lt;Long&gt;"/>
@@ -1508,7 +1284,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="remotecontrol"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-603747641,-1308945219,333963791,1015761619,1425955268,1300581903,-1923478059" type="List&lt;Long&gt;"/>
@@ -1516,7 +1292,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,remotecontrol"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="remotecontrol.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-968514169,1624982653,974985423,496402323,1327793359,-1923478059" type="List&lt;Long&gt;"/>
@@ -1524,7 +1300,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util,remotecontrol"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="remotecontrol.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-556490542,-1611688539,-275284187,-1652768693,1406850779,647226898,-1923478059" type="List&lt;Long&gt;"/>
@@ -1532,7 +1308,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="selection"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-603747641,1940483822,-1308945219,-279668597,-1423768066,1425955268,-1138947782,-1923478059" type="List&lt;Long&gt;"/>
@@ -1540,7 +1316,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,selection"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="selection.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-968514169,-1837162962,1624982653,-1961742005,-1237930690,-406539654,-1923478059" type="List&lt;Long&gt;"/>
@@ -1548,7 +1324,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util,selection"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="selection.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="385290055,-1446451120,1794967258,1455125440,2070967110,-1577488953,-1923478059" type="List&lt;Long&gt;"/>
@@ -1556,7 +1332,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="test"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="794346963,1261637968,208167847,1834979137,-772690656,-603747641,493232876,-1308945219,441160602,-1649882629,-2077196064,-1996984176,-1875619921,-134425424,-269691523,-45917978,1417523751,-957388811,669667697,1874425605,521323143,1174007963,1988608884,-869002966,673055583,-817101099,-847756873,1065488579,906476066,-442525250,1635802443,-976707835,-430707105,183387128,1425955268,468207412,-1923478059" type="List&lt;Long&gt;"/>
@@ -1564,7 +1340,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,test"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="test.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1490126189,1842134928,349376103,-2001281791,1624982653,484904154,73918240,2135981776,-1187400081,1329976048,-629234371,-2002564058,-1667425049,-1632303311,2022654661,-76350137,-533921445,-1653358668,-1447728491,-274373513,1958961406,-1001548277,1657432773,-1542816481,-1579262408,-747871372,-1923478059" type="List&lt;Long&gt;"/>
@@ -1572,7 +1348,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util,test"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="test.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-2040331251,-711655606,-196381408,-571240826,358881984,726129677,-1923478059" type="List&lt;Long&gt;"/>
@@ -1580,7 +1356,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="tinnitus"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-872795285,-1308945219,412238820,-1653019442,-1497572436,-1302133846,1501934259,909858838,1912734304,1065488579,906476066,473816427,813691334,1027516812,424597213,-1518590472,138806053,-2129684638,576171005,1425955268,1312337096,2045753618,725993597,-1421147531,-2128146319,-1923478059" type="List&lt;Long&gt;"/>
@@ -1588,7 +1364,7 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="javax.xml.datatype,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.util,tinnitus"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="tinnitus.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="330259499,1624982653,1013483556,714910734,7470060,-56101654,-447088781,2049454934,-1029920608,429698914,-1013327412,-1632944072,-1225528158,-1768277059,-181936376,170268733,-1923478059" type="List&lt;Long&gt;"/>
@@ -1596,17 +1372,17 @@
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.eclipse.emf.ecore.xmi.util,org.eclipse.emf.ecore.xml.type.util,tinnitus"/>
       <attribute name="bundle-symbolic-name" value="org.avatar.himsa.model"/>
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.package" value="tinnitus.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-17502215,-1523210530,167734284,1811293810,-181310636,1090245369,-1923478059" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.bundle" value="org.avatar.himsa.model"/>
     </capability>
     <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.0.0.202412030757-SNAPSHOT" type="Version"/>
+      <attribute name="bundle-version" value="1.0.0.202503170906-SNAPSHOT" type="Version"/>
       <attribute name="osgi.wiring.host" value="org.avatar.himsa.model"/>
     </capability>
     <capability namespace="org.eclipse.emf.ecore.generated_package">
@@ -1738,10 +1514,10 @@
       <attribute name="genModelSourceLocations" value="model/patient-export-5.1.genmodel,org.avatar.himsa.model/model/patient-export-5.1.genmodel" type="List&lt;String&gt;"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="size" value="3463874" type="Long"/>
+      <attribute name="size" value="3463872" type="Long"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="url" value="org.avatar.himsa.model/org.avatar.himsa.model-1.0.0.jar"/>
-      <attribute name="osgi.content" value="C06F5DD1C43E0AC0EDEE35D748D841625FDBFA18409265C84DD564FC33E0D73C"/>
+      <attribute name="osgi.content" value="415CD397399A6CA1B25E73AE81EBD8F074694A29EBE26F2EE1BE4C003DB62413"/>
     </capability>
     <capability namespace="osgi.service">
       <directive name="uses" value="org.eclipse.emf.ecore,admittance"/>

@@ -26,5 +26,8 @@
     <eOperations name="getInfo" lowerBound="1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//ConnectorInfo"/>
     <eOperations name="getModelInfos" upperBound="-1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//ModelInfo"/>
     <eOperations name="getConsentInfos" upperBound="-1" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//ConsentInfo"/>
+    <eOperations name="canHandleModel" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="modelUri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
   </eClassifiers>
 </ecore:EPackage>

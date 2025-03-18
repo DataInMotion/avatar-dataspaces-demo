@@ -32,6 +32,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/requestId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/status"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryResponse/message"/>
     </genClasses>
     <genClasses ecoreClass="query-status.ecore#//QueryStatusResponse">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//QueryStatusResponse/detailedStatus"/>

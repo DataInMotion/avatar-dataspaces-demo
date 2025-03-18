@@ -22,6 +22,9 @@
       <genOperations ecoreOperation="avatar-connector-api.ecore#//AvatarConnectorInfo/getInfo"/>
       <genOperations ecoreOperation="avatar-connector-api.ecore#//AvatarConnectorInfo/getModelInfos"/>
       <genOperations ecoreOperation="avatar-connector-api.ecore#//AvatarConnectorInfo/getConsentInfos"/>
+      <genOperations ecoreOperation="avatar-connector-api.ecore#//AvatarConnectorInfo/canHandleModel">
+        <genParameters ecoreParameter="avatar-connector-api.ecore#//AvatarConnectorInfo/canHandleModel/modelUri"/>
+      </genOperations>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

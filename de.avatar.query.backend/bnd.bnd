@@ -1,0 +1,6 @@
+-library: enable-emf
+
+-buildpath: \
+	de.avatar.connector.model,\
+	de.avatar.query.status.model
+	

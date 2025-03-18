@@ -66,4 +66,12 @@ public interface AvatarConnectorInfo {
 	 */
 	List<ConsentInfo> getConsentInfos();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	boolean canHandleModel(String modelUri);
+
 } // AvatarConnectorInfo

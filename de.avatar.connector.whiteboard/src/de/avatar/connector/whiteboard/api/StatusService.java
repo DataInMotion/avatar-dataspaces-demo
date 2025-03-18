@@ -16,6 +16,7 @@ package de.avatar.connector.whiteboard.api;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryStatusResponse;
+import de.avatar.status.SingleConnectorQueryStatus;
 
 /**
  * 
@@ -32,6 +33,8 @@ public interface StatusService {
 			
 	void updateStatus(EndpointResponse endpointResponse);
 	
-	QueryStatusResponse executeStatusRequest(String requestId);
+	void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus);
+	
+	QueryStatusResponse getStatusUpdate(String requestId);
 
 }

@@ -6,3 +6,4 @@ generated/
 bin/
 build/
 bin_test/
+secrets/

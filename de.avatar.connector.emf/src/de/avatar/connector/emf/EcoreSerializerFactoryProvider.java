@@ -29,7 +29,7 @@ import de.avatar.model.connector.AConnectorPackage;
  * @author mark
  * @since 19.10.2024
  */
-@Component(immediate = true, property = "serializerType=ecore")
+@Component(immediate = true, name = "EcoreSerializerFactoryProvider", property = "serializerType=ecore")
 public class EcoreSerializerFactoryProvider implements SerializerFactoryProvider {
 	
 	@Reference

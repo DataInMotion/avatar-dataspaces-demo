@@ -29,6 +29,7 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link de.avatar.status.QueryResponse#getRequestId <em>Request Id</em>}</li>
  *   <li>{@link de.avatar.status.QueryResponse#getStatus <em>Status</em>}</li>
  *   <li>{@link de.avatar.status.QueryResponse#getTimestamp <em>Timestamp</em>}</li>
+ *   <li>{@link de.avatar.status.QueryResponse#getMessage <em>Message</em>}</li>
  * </ul>
  *
  * @see de.avatar.status.StatusPackage#getQueryResponse()
@@ -105,5 +106,27 @@ public interface QueryResponse extends EObject {
 	 * @generated
 	 */
 	void setTimestamp(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Message</em>' attribute.
+	 * @see #setMessage(String)
+	 * @see de.avatar.status.StatusPackage#getQueryResponse_Message()
+	 * @model
+	 * @generated
+	 */
+	String getMessage();
+
+	/**
+	 * Sets the value of the '{@link de.avatar.status.QueryResponse#getMessage <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Message</em>' attribute.
+	 * @see #getMessage()
+	 * @generated
+	 */
+	void setMessage(String value);
 
 } // QueryResponse

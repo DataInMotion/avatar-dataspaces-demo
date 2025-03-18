@@ -373,6 +373,26 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 	 * @generated
 	 */
 	@Override
+	public EReference getConnectorInfo_ModelInfo() {
+		return (EReference)connectorInfoEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConnectorInfo_ConsentInfo() {
+		return (EReference)connectorInfoEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getConnectorMetric() {
 		return connectorMetricEClass;
 	}
@@ -1184,6 +1204,8 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		createEReference(connectorInfoEClass, CONNECTOR_INFO__ENDPOINT);
 		createEReference(connectorInfoEClass, CONNECTOR_INFO__METRIC);
 		createEReference(connectorInfoEClass, CONNECTOR_INFO__CONNECTOR_MODEL);
+		createEReference(connectorInfoEClass, CONNECTOR_INFO__MODEL_INFO);
+		createEReference(connectorInfoEClass, CONNECTOR_INFO__CONSENT_INFO);
 
 		connectorMetricEClass = createEClass(CONNECTOR_METRIC);
 		createEAttribute(connectorMetricEClass, CONNECTOR_METRIC__ID);
@@ -1338,6 +1360,8 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		getConnectorInfo_Metric().getEKeys().add(this.getConnectorMetric_Id());
 		initEReference(getConnectorInfo_ConnectorModel(), theEcorePackage.getEPackage(), null, "connectorModel", null, 0, 1, ConnectorInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getConnectorInfo_ConnectorModel().getEKeys().add(theEcorePackage.getEPackage_NsURI());
+		initEReference(getConnectorInfo_ModelInfo(), this.getModelInfo(), null, "modelInfo", null, 0, -1, ConnectorInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectorInfo_ConsentInfo(), this.getConsentInfo(), null, "consentInfo", null, 0, -1, ConnectorInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectorMetricEClass, ConnectorMetric.class, "ConnectorMetric", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConnectorMetric_Id(), ecorePackage.getEString(), "id", null, 0, 1, ConnectorMetric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

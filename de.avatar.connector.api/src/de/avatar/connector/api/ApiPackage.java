@@ -129,13 +129,22 @@ public interface ApiPackage extends org.eclipse.emf.ecore.EPackage {
 	int AVATAR_CONNECTOR_INFO___GET_CONSENT_INFOS = 3;
 
 	/**
+	 * The operation id for the '<em>Can Handle Model</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVATAR_CONNECTOR_INFO___CAN_HANDLE_MODEL__STRING = 4;
+
+	/**
 	 * The number of operations of the '<em>Avatar Connector Info</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AVATAR_CONNECTOR_INFO_OPERATION_COUNT = 4;
+	int AVATAR_CONNECTOR_INFO_OPERATION_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link de.avatar.connector.api.AvatarConnector <em>Avatar Connector</em>}' class.
@@ -191,6 +200,15 @@ public interface ApiPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int AVATAR_CONNECTOR___GET_CONSENT_INFOS = AVATAR_CONNECTOR_INFO___GET_CONSENT_INFOS;
+
+	/**
+	 * The operation id for the '<em>Can Handle Model</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVATAR_CONNECTOR___CAN_HANDLE_MODEL__STRING = AVATAR_CONNECTOR_INFO___CAN_HANDLE_MODEL__STRING;
 
 	/**
 	 * The operation id for the '<em>Dry Request</em>' operation.
@@ -301,6 +319,16 @@ public interface ApiPackage extends org.eclipse.emf.ecore.EPackage {
 	EOperation getAvatarConnectorInfo__GetConsentInfos();
 
 	/**
+	 * Returns the meta object for the '{@link de.avatar.connector.api.AvatarConnectorInfo#canHandleModel(java.lang.String) <em>Can Handle Model</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Can Handle Model</em>' operation.
+	 * @see de.avatar.connector.api.AvatarConnectorInfo#canHandleModel(java.lang.String)
+	 * @generated
+	 */
+	EOperation getAvatarConnectorInfo__CanHandleModel__String();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -390,6 +418,14 @@ public interface ApiPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EOperation AVATAR_CONNECTOR_INFO___GET_CONSENT_INFOS = eINSTANCE.getAvatarConnectorInfo__GetConsentInfos();
+
+		/**
+		 * The meta object literal for the '<em><b>Can Handle Model</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation AVATAR_CONNECTOR_INFO___CAN_HANDLE_MODEL__STRING = eINSTANCE.getAvatarConnectorInfo__CanHandleModel__String();
 
 	}
 

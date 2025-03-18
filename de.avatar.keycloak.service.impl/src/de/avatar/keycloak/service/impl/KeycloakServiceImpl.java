@@ -11,6 +11,8 @@
  */
 package de.avatar.keycloak.service.impl;
 
+import static org.mockito.ArgumentMatchers.contains;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,10 +23,11 @@ import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.ServiceScope;
 
 import de.avatar.keycloak.service.api.KeycloakService;
 
-@Component(name = "KeycloakService", service =  KeycloakService.class, 
+@Component(immediate = true, name = "KeycloakService", service =  KeycloakService.class, 
 configurationPid = "KeycloakService", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class KeycloakServiceImpl implements KeycloakService {
 	
@@ -39,15 +42,16 @@ public class KeycloakServiceImpl implements KeycloakService {
 	
 	@Activate 
 	public void activate(KeycloakConfig config) throws ConfigurationException {
-		String configPath = config.configurationFilePath();
-		if (configPath.isEmpty() || configPath.isBlank()) {
-			throw new ConfigurationException("configFilePath", "The 'configFilePath' must be given");
-		}
-		try(InputStream configStream = new FileInputStream(configPath)) {
-			authzClient = AuthzClient.create(configStream);	
-		} catch(IOException e) {
-			throw new ConfigurationException("configPath", String.format("Cannot load keycloak configuration from file path '%s'", configPath), e);
-		}
+		System.out.println("KeycloakService " + config.serviceName());
+//		String configPath = config.configurationFilePath();
+//		if (configPath.isEmpty() || configPath.isBlank()) {
+//			throw new ConfigurationException("configFilePath", "The 'configFilePath' must be given");
+//		}
+//		try(InputStream configStream = new FileInputStream(configPath)) {
+//			authzClient = AuthzClient.create(configStream);	
+//		} catch(IOException e) {
+//			throw new ConfigurationException("configPath", String.format("Cannot load keycloak configuration from file path '%s'", configPath), e);
+//		}
 	}
 	
 

@@ -54,10 +54,8 @@
 	com.fasterxml.jackson.core.jackson-annotations;version='[2.18.3,2.18.4)',\
 	com.fasterxml.jackson.core.jackson-core;version='[2.18.3,2.18.4)',\
 	com.fasterxml.jackson.core.jackson-databind;version='[2.18.3,2.18.4)',\
-	com.fasterxml.jackson.datatype.jackson-datatype-jdk8;version='[2.18.3,2.18.4)',\
 	com.fasterxml.jackson.datatype.jackson-datatype-jsr310;version='[2.14.1,2.14.2)',\
 	de.avatar.generator.api;version=snapshot,\
-	de.avatar.keycloak.service.api;version=snapshot,\
 	de.avatar.query.model;version=snapshot,\
 	de.avatar.query.status.model;version=snapshot,\
 	jakarta.activation-api;version='[2.1.2,2.1.3)',\
@@ -71,24 +69,17 @@
 	org.camunda.commons.logging;version='[7.22.0,7.22.1)',\
 	org.camunda.commons.utils;version='[7.22.0,7.22.1)',\
 	org.conscrypt.openjdk.uber;version='[2.5.2,2.5.3)',\
-	org.eclipse.microprofile.openapi;version='[4.0.2,4.0.3)',\
 	org.eclipse.parsson.jakarta.json;version='[1.1.5,1.1.6)',\
 	org.gecko.emf.util.model;version='[2.2.2,2.2.3)',\
-	org.jboss.logging.jboss-logging;version='[3.6.1,3.6.2)',\
-	org.keycloak.client.common.synced;version='[26.0.4,26.0.5)',\
 	slf4j.api;version='[1.7.30,1.7.31)',\
 	de.avatar.connector.runtime.config;version=snapshot,\
-	de.avatar.keycloak.service.impl;version=snapshot,\
-	org.apache.commons.logging;version='[1.2.0,1.2.1)',\
-	org.apache.httpcomponents.httpclient;version='[4.5.14,4.5.15)',\
-	org.apache.httpcomponents.httpcore;version='[4.4.16,4.4.17)',\
-	org.keycloak.authz.client;version='[26.0.4,26.0.5)',\
 	de.avatar.generator.impl;version=snapshot,\
 	com.fasterxml.jackson.dataformat.jackson-dataformat-properties;version='[2.14.1,2.14.2)',\
 	com.fasterxml.jackson.dataformat.jackson-dataformat-yaml;version='[2.14.1,2.14.2)',\
 	org.eclipse.emfcloud.emfjson-jackson;version='[2.2.0,2.2.1)',\
 	org.gecko.emf.json;version='[1.5.1,1.5.2)',\
-	org.yaml.snakeyaml;version='[1.33.0,1.33.1)'
+	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
+	de.avatar.connector.camunda.api;version=snapshot
 
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
@@ -100,7 +91,6 @@
 	bnd.identity;id='org.eclipse.parsson.jakarta.json',\
 	bnd.identity;id='de.avatar.connector.whiteboard',\
 	bnd.identity;id='de.avatar.connector.runtime.config',\
-	bnd.identity;id='de.avatar.keycloak.service.impl',\
 	bnd.identity;id='de.avatar.generator.impl',\
 	bnd.identity;id='org.gecko.emf.json'
 	

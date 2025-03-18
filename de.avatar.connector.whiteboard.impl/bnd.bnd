@@ -1,0 +1,13 @@
+-library: enable-emf
+-buildpath: \
+	de.avatar.connector.whiteboard;version=snapshot,\
+	de.avatar.connector.model,\
+	de.avatar.connector.api,\
+	org.osgi.service.remoteserviceadmin,\
+	org.osgi.service.cm,\
+	de.avatar.query.status.model,\
+	org.osgi.service.component,\
+	de.avatar.generator.api
+	
+-includeresource: OSGI-INF/configurator/=configs/consumer-config.json
+Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'

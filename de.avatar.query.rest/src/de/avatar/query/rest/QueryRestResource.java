@@ -11,9 +11,6 @@
  */
 package de.avatar.query.rest;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.List;
 
 import org.gecko.emf.json.constants.EMFJs;
@@ -26,11 +23,9 @@ import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsName;
 import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsResource;
 
-import de.avatar.connector.whiteboard.api.ConnectorRequestWhiteboard;
-import de.avatar.connector.whiteboard.api.StatusService;
-import de.avatar.generator.api.api.AvatarGenerator;
 import de.avatar.model.connector.ConsentInfo;
 import de.avatar.model.connector.ModelInfo;
+import de.avatar.query.backend.api.QueryBackendService;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusResponse;
@@ -55,13 +50,13 @@ import jakarta.ws.rs.core.Response;
 public class QueryRestResource {
 
 	@Reference
-	ConnectorRequestWhiteboard requestWhiteboard;
+	QueryBackendService queryBEService;
 	
-	@Reference
-	StatusService statusService;
-	
-	@Reference
-	AvatarGenerator avatarGenerator;
+//	@Reference
+//	StatusService statusService;
+//	
+//	@Reference
+//	AvatarGenerator avatarGenerator;
 	
 	@GET
 	@Path("/hello")
@@ -73,7 +68,7 @@ public class QueryRestResource {
 	@Path("/connectors/modelinfo")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response modelInfo() {
-		List<ModelInfo> modelInfos = requestWhiteboard.getModelInfoForAllConnectors();
+		List<ModelInfo> modelInfos = queryBEService.getConnectorsModelInfo();
 		org.gecko.emf.utilities.Response emfResponse = UtilitiesFactory.eINSTANCE.createResponse();
 		emfResponse.getData().addAll(modelInfos);
 		return Response.ok(emfResponse).build();
@@ -83,7 +78,7 @@ public class QueryRestResource {
 	@Path("/connectors/consentinfo")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response consentInfo() {
-		List<ConsentInfo> consentInfos = requestWhiteboard.getConsentInfoForAllConnectors();
+		List<ConsentInfo> consentInfos = queryBEService.getConnectorsConsentInfo();
 		org.gecko.emf.utilities.Response emfResponse = UtilitiesFactory.eINSTANCE.createResponse();
 		emfResponse.getData().addAll(consentInfos);
 		return Response.ok(emfResponse).build();
@@ -97,7 +92,7 @@ public class QueryRestResource {
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
 	public Response dryRun(QueryRequest request) {	
 		try {
-			QueryResponse response = requestWhiteboard.executeDryRun(request);
+			QueryResponse response = queryBEService.executeDryRun(request);
 			return Response.ok(response).build();
 		} catch(Exception e) {
 			System.out.println("I got the Exception");
@@ -114,7 +109,7 @@ public class QueryRestResource {
 	public Response query(QueryRequest request) {
 		System.out.println("GOT REQUEST!!");
 		try {
-			QueryResponse response = requestWhiteboard.executeRequest(request);
+			QueryResponse response = queryBEService.executeQuery(request);
 			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {
 			return Response.status(500, e.getMessage()).build();
@@ -127,31 +122,31 @@ public class QueryRestResource {
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
 	public Response status(@PathParam("requestId") String requestId) {
 		try {
-			QueryStatusResponse response = statusService.executeStatusRequest(requestId);
+			QueryStatusResponse response = queryBEService.executeStatusRequest(requestId);
 			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {			
 			return Response.status(500, e.getMessage()).build();
 		}
 	}
-	
-	@GET
-	@Path("/downloads/{requestId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
-	public Response download(@PathParam("requestId") String requestId) {
-		
-		File resultFile = avatarGenerator.getAggregatedResponse(requestId);
-		if(resultFile.exists()) {
-			try(InputStream is = new FileInputStream(resultFile)) {
-				return Response.ok(is.readAllBytes()).
-						header("Content-Disposition", "attachment; filename=".concat(requestId).concat(".zip")).
-						build();
-			} catch(Exception e) {
-				return Response.status(500, e.getMessage()).build();
-			}
-		} else {
-			return Response.noContent().build();
-		}
-	}
+//	
+//	@GET
+//	@Path("/downloads/{requestId}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+//	public Response download(@PathParam("requestId") String requestId) {
+//		
+//		File resultFile = avatarGenerator.getAggregatedResponse(requestId);
+//		if(resultFile.exists()) {
+//			try(InputStream is = new FileInputStream(resultFile)) {
+//				return Response.ok(is.readAllBytes()).
+//						header("Content-Disposition", "attachment; filename=".concat(requestId).concat(".zip")).
+//						build();
+//			} catch(Exception e) {
+//				return Response.status(500, e.getMessage()).build();
+//			}
+//		} else {
+//			return Response.noContent().build();
+//		}
+//	}
 
 }

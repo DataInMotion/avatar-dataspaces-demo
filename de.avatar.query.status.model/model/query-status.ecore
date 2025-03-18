@@ -36,6 +36,7 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//QueryStatusType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QueryStatusResponse" eSuperTypes="#//QueryResponse">
     <eStructuralFeatures xsi:type="ecore:EReference" name="detailedStatus" eType="#//DetailedQueryStatus"

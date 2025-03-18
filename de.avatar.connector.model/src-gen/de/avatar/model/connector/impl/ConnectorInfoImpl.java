@@ -17,6 +17,8 @@ import de.avatar.model.connector.AConnectorPackage;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.ConnectorMetric;
+import de.avatar.model.connector.ConsentInfo;
+import de.avatar.model.connector.ModelInfo;
 
 import java.util.Collection;
 
@@ -50,6 +52,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.avatar.model.connector.impl.ConnectorInfoImpl#getEndpoint <em>Endpoint</em>}</li>
  *   <li>{@link de.avatar.model.connector.impl.ConnectorInfoImpl#getMetric <em>Metric</em>}</li>
  *   <li>{@link de.avatar.model.connector.impl.ConnectorInfoImpl#getConnectorModel <em>Connector Model</em>}</li>
+ *   <li>{@link de.avatar.model.connector.impl.ConnectorInfoImpl#getModelInfo <em>Model Info</em>}</li>
+ *   <li>{@link de.avatar.model.connector.impl.ConnectorInfoImpl#getConsentInfo <em>Consent Info</em>}</li>
  * </ul>
  *
  * @generated
@@ -164,6 +168,26 @@ public class ConnectorInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @ordered
 	 */
 	protected EPackage connectorModel;
+
+	/**
+	 * The cached value of the '{@link #getModelInfo() <em>Model Info</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModelInfo()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ModelInfo> modelInfo;
+
+	/**
+	 * The cached value of the '{@link #getConsentInfo() <em>Consent Info</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConsentInfo()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ConsentInfo> consentInfo;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -380,6 +404,32 @@ public class ConnectorInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 */
 	@Override
+	public EList<ModelInfo> getModelInfo() {
+		if (modelInfo == null) {
+			modelInfo = new EObjectContainmentEList<ModelInfo>(ModelInfo.class, this, AConnectorPackage.CONNECTOR_INFO__MODEL_INFO);
+		}
+		return modelInfo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<ConsentInfo> getConsentInfo() {
+		if (consentInfo == null) {
+			consentInfo = new EObjectContainmentEList<ConsentInfo>(ConsentInfo.class, this, AConnectorPackage.CONNECTOR_INFO__CONSENT_INFO);
+		}
+		return consentInfo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AConnectorPackage.CONNECTOR_INFO__METRIC:
@@ -402,6 +452,10 @@ public class ConnectorInfoImpl extends MinimalEObjectImpl.Container implements C
 				return ((InternalEList<?>)getEndpoint()).basicRemove(otherEnd, msgs);
 			case AConnectorPackage.CONNECTOR_INFO__METRIC:
 				return basicSetMetric(null, msgs);
+			case AConnectorPackage.CONNECTOR_INFO__MODEL_INFO:
+				return ((InternalEList<?>)getModelInfo()).basicRemove(otherEnd, msgs);
+			case AConnectorPackage.CONNECTOR_INFO__CONSENT_INFO:
+				return ((InternalEList<?>)getConsentInfo()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -429,6 +483,10 @@ public class ConnectorInfoImpl extends MinimalEObjectImpl.Container implements C
 			case AConnectorPackage.CONNECTOR_INFO__CONNECTOR_MODEL:
 				if (resolve) return getConnectorModel();
 				return basicGetConnectorModel();
+			case AConnectorPackage.CONNECTOR_INFO__MODEL_INFO:
+				return getModelInfo();
+			case AConnectorPackage.CONNECTOR_INFO__CONSENT_INFO:
+				return getConsentInfo();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -464,6 +522,14 @@ public class ConnectorInfoImpl extends MinimalEObjectImpl.Container implements C
 			case AConnectorPackage.CONNECTOR_INFO__CONNECTOR_MODEL:
 				setConnectorModel((EPackage)newValue);
 				return;
+			case AConnectorPackage.CONNECTOR_INFO__MODEL_INFO:
+				getModelInfo().clear();
+				getModelInfo().addAll((Collection<? extends ModelInfo>)newValue);
+				return;
+			case AConnectorPackage.CONNECTOR_INFO__CONSENT_INFO:
+				getConsentInfo().clear();
+				getConsentInfo().addAll((Collection<? extends ConsentInfo>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -497,6 +563,12 @@ public class ConnectorInfoImpl extends MinimalEObjectImpl.Container implements C
 			case AConnectorPackage.CONNECTOR_INFO__CONNECTOR_MODEL:
 				setConnectorModel((EPackage)null);
 				return;
+			case AConnectorPackage.CONNECTOR_INFO__MODEL_INFO:
+				getModelInfo().clear();
+				return;
+			case AConnectorPackage.CONNECTOR_INFO__CONSENT_INFO:
+				getConsentInfo().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -523,6 +595,10 @@ public class ConnectorInfoImpl extends MinimalEObjectImpl.Container implements C
 				return metric != null;
 			case AConnectorPackage.CONNECTOR_INFO__CONNECTOR_MODEL:
 				return connectorModel != null;
+			case AConnectorPackage.CONNECTOR_INFO__MODEL_INFO:
+				return modelInfo != null && !modelInfo.isEmpty();
+			case AConnectorPackage.CONNECTOR_INFO__CONSENT_INFO:
+				return consentInfo != null && !consentInfo.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

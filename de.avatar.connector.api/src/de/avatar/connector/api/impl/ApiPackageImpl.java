@@ -198,6 +198,16 @@ public class ApiPackageImpl extends EPackageImpl implements ApiPackage {
 	 * @generated
 	 */
 	@Override
+	public EOperation getAvatarConnectorInfo__CanHandleModel__String() {
+		return avatarConnectorInfoEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ApiFactory getApiFactory() {
 		return (ApiFactory)getEFactoryInstance();
 	}
@@ -230,6 +240,7 @@ public class ApiPackageImpl extends EPackageImpl implements ApiPackage {
 		createEOperation(avatarConnectorInfoEClass, AVATAR_CONNECTOR_INFO___GET_INFO);
 		createEOperation(avatarConnectorInfoEClass, AVATAR_CONNECTOR_INFO___GET_MODEL_INFOS);
 		createEOperation(avatarConnectorInfoEClass, AVATAR_CONNECTOR_INFO___GET_CONSENT_INFOS);
+		createEOperation(avatarConnectorInfoEClass, AVATAR_CONNECTOR_INFO___CAN_HANDLE_MODEL__STRING);
 	}
 
 	/**
@@ -283,6 +294,9 @@ public class ApiPackageImpl extends EPackageImpl implements ApiPackage {
 		initEOperation(getAvatarConnectorInfo__GetModelInfos(), theAConnectorPackage.getModelInfo(), "getModelInfos", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getAvatarConnectorInfo__GetConsentInfos(), theAConnectorPackage.getConsentInfo(), "getConsentInfos", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getAvatarConnectorInfo__CanHandleModel__String(), ecorePackage.getEBoolean(), "canHandleModel", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "modelUri", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

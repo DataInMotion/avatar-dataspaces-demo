@@ -15,6 +15,7 @@ package de.avatar.connector.whiteboard.api;
 
 import java.util.List;
 
+import de.avatar.connector.api.AvatarConnector;
 import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.ConsentInfo;
 import de.avatar.model.connector.ModelInfo;
@@ -26,9 +27,11 @@ import de.avatar.model.connector.ModelInfo;
  */
 public interface ConnectorWhiteboard {
 
-	List<ConnectorInfo> getAllConnectors();
+	List<ConnectorInfo> getAllConnectorsInfo();
 	
-	List<ConnectorInfo> getExternalConnectors();
+	List<ConnectorInfo> getExternalConnectorsInfo();
+	
+	List<AvatarConnector> getAllConnectors();
 	
 	List<ModelInfo> getModelInfoForAllConnectors();
 	

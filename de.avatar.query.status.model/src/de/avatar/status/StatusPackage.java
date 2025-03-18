@@ -186,13 +186,22 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	int QUERY_RESPONSE__TIMESTAMP = 2;
 
 	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_RESPONSE__MESSAGE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Query Response</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_RESPONSE_FEATURE_COUNT = 3;
+	int QUERY_RESPONSE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Query Response</em>' class.
@@ -239,6 +248,15 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int QUERY_STATUS_RESPONSE__TIMESTAMP = QUERY_RESPONSE__TIMESTAMP;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_STATUS_RESPONSE__MESSAGE = QUERY_RESPONSE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Detailed Status</b></em>' containment reference.
@@ -1107,6 +1125,17 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getQueryResponse_Timestamp();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.status.QueryResponse#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see de.avatar.status.QueryResponse#getMessage()
+	 * @see #getQueryResponse()
+	 * @generated
+	 */
+	EAttribute getQueryResponse_Message();
+
+	/**
 	 * Returns the meta object for class '{@link de.avatar.status.QueryStatusResponse <em>Query Status Response</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1564,6 +1593,14 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute QUERY_RESPONSE__TIMESTAMP = eINSTANCE.getQueryResponse_Timestamp();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUERY_RESPONSE__MESSAGE = eINSTANCE.getQueryResponse_Message();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.status.impl.QueryStatusResponseImpl <em>Query Status Response</em>}' class.
