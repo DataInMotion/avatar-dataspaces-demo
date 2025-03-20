@@ -101,6 +101,8 @@ public class CamundaWorkerHelper {
 			return QueryStatusType.NO_CONTENT;
 		case OK:
 			return QueryStatusType.SUCCESS;
+		case DRYRUN_OK:
+			return QueryStatusType.DRYRUN_SUCCESS;
 		case PENDING:
 			return QueryStatusType.PENDING;
 		case TIMEOUT:

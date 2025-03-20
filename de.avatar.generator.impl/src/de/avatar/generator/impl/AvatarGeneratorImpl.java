@@ -45,14 +45,16 @@ import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.JavaResult;
 import de.avatar.model.connector.ResponseResult;
 
-@Component(name = "AvatarGenerator", service = AvatarGenerator.class)
+@Component(immediate = true, name = "AvatarGenerator", service = AvatarGenerator.class)
 public class AvatarGeneratorImpl implements AvatarGenerator {
-
+	
 	private static final Logger LOGGER = Logger.getLogger(AvatarGeneratorImpl.class.getName());
 	private Map<String, Map<String, String>> aggregateResponseMap = new ConcurrentHashMap<>();
 	private ObjectMapper mapper = new ObjectMapper();
 
 	private ComponentServiceObjects<ResourceSet> rsFactory;
+	
+	
 
 	@Activate
 	public AvatarGeneratorImpl(@Reference(target = "("+EMFNamespaces.EMF_MODEL_FILE_EXT +"=json)", cardinality = ReferenceCardinality.MANDATORY) ComponentServiceObjects<ResourceSet> rsFactory) {
@@ -115,6 +117,36 @@ public class AvatarGeneratorImpl implements AvatarGenerator {
 			}
 		}
 	}
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.generator.api.api.AvatarGenerator#generatePublicLinkForRequest(java.lang.String)
+	 */
+	@Override
+	public String generatePublicLinkForRequest(String requestId) {
+		String zipFilePath = System.getProperty("data").concat("aggregated-").concat(requestId).concat(".zip");
+		File zipFile = new File(zipFilePath);
+		if(zipFile.exists()) return zipFile.getName();
+		try {
+			List<String> scrFiles = new LinkedList<>();
+			Files.list(Path.of(System.getProperty("data"))).
+			filter(p -> p.getFileName().toString().startsWith(requestId.concat("-"))).
+			forEach(p -> {
+				System.out.println(p.getFileName());
+				scrFiles.add(p.toString());
+			});
+			if(scrFiles.isEmpty()) {
+				LOGGER.severe(String.format("No data file for request %s has been found. Cannot create a public link", requestId));
+				throw new IllegalArgumentException(String.format("No data file for request %s has been found. Cannot create a public link", requestId));
+			}
+			zipAggregateResponse(zipFilePath, scrFiles);
+			return zipFile.getName();
+		} catch(IOException e) {
+			LOGGER.severe(String.format("Error creating public link for request with id %s", requestId));
+			throw new IllegalArgumentException(String.format("Error creating public link for request with id %s", requestId));
+		}
+	}
+
 
 	/* 
 	 * (non-Javadoc)
@@ -125,21 +157,8 @@ public class AvatarGeneratorImpl implements AvatarGenerator {
 		String zipFilePath = System.getProperty("data").concat("aggregated-").concat(requestId).concat(".zip");
 		File zipFile = new File(zipFilePath);
 		if(zipFile.exists()) return zipFile;
-		try {
-			List<String> scrFiles = new LinkedList<>();
-			Files.list(Path.of(System.getProperty("data"))).
-			filter(p -> p.getFileName().toString().startsWith(requestId.concat("-"))).
-			forEach(p -> {
-				System.out.println(p.getFileName());
-				scrFiles.add(p.toString());
-			});
-			zipAggregateResponse(zipFilePath, scrFiles);
-			return zipFile;
-		} catch(IOException e) {
-			LOGGER.severe(String.format("Error creating aggregate response for request with id %s", requestId));
-			e.printStackTrace();
-		}
-		return null;
+		LOGGER.severe(String.format("Public Link not valid or already expired for request with id %s", requestId));
+		throw new IllegalArgumentException(String.format("Public Link not valid or already expired for request with id %s", requestId));
 	}
 
 	private void zipAggregateResponse(String pathToZipFile, List<String> srcFiles) throws IOException {
@@ -163,5 +182,8 @@ public class AvatarGeneratorImpl implements AvatarGenerator {
 		zipOut.close();
 		fos.close();
 	}
+
+
+	
 
 }

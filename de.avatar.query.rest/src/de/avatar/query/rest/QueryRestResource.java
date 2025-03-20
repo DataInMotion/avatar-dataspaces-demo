@@ -11,6 +11,9 @@
  */
 package de.avatar.query.rest;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 import org.gecko.emf.json.constants.EMFJs;
@@ -128,25 +131,38 @@ public class QueryRestResource {
 			return Response.status(500, e.getMessage()).build();
 		}
 	}
-//	
-//	@GET
-//	@Path("/downloads/{requestId}")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
-//	public Response download(@PathParam("requestId") String requestId) {
-//		
-//		File resultFile = avatarGenerator.getAggregatedResponse(requestId);
-//		if(resultFile.exists()) {
-//			try(InputStream is = new FileInputStream(resultFile)) {
-//				return Response.ok(is.readAllBytes()).
-//						header("Content-Disposition", "attachment; filename=".concat(requestId).concat(".zip")).
-//						build();
-//			} catch(Exception e) {
-//				return Response.status(500, e.getMessage()).build();
-//			}
-//		} else {
-//			return Response.noContent().build();
-//		}
-//	}
+	
+	@GET
+	@Path("public/link/{requestId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response publicLink(@PathParam("requestId") String requestId) {
+		try {
+			queryBEService.generatePublicLinkForRequest(requestId);
+			return Response.ok("connector/rest/downloads/"+requestId).build();
+		} catch(IllegalArgumentException e) {			
+			return Response.status(500, e.getMessage()).build();
+		}
+	}
+
+	@GET
+	@Path("/downloads/{requestId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response download(@PathParam("requestId") String requestId) {
+		
+		File resultFile = queryBEService.downloadResponseData(requestId);
+		if(resultFile.exists()) {
+			try(InputStream is = new FileInputStream(resultFile)) {
+				return Response.ok(is.readAllBytes()).
+						header("Content-Disposition", "attachment; filename=".concat(requestId).concat(".zip")).
+						build();
+			} catch(Exception e) {
+				return Response.status(500, e.getMessage()).build();
+			}
+		} else {
+			return Response.noContent().build();
+		}
+	}
 
 }

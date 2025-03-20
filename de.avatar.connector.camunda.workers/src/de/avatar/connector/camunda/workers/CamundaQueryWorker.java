@@ -125,7 +125,7 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 			String reqType = externalTask.getVariable("reqType");
 			LOGGER.info(String.format("I got the query in CamundaQueryWorker %s", queryStr));
 
-			//			TODO: we should send the query to all connectors that can handle it
+			//send the query to all connectors that can handle it
 			try {
 				EObject obj = CamundaWorkerHelper.loadEObjectFromString(queryStr, rsFactory);
 				if(obj instanceof QueryRequest queryRequest) {
@@ -135,8 +135,7 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 					for(AvatarConnector c : availableConnectors) {
 						LOGGER.info(String.format("Sending request for connector"));
 						LOGGER.info(c.getInfo().getId());
-						EndpointResponse connectorResponse = doForwardQueryRequestToConnector(c, queryRequest, reqType);
-						
+						EndpointResponse connectorResponse = doForwardQueryRequestToConnector(c, queryRequest, reqType);						
 						if(connectorResponse != null) {
 							LOGGER.info(String.format("Got an EndpointRes from connector for request %s", connectorResponse.getRequest().getId()));
 							Metadata connRelativeId = AConnectorFactory.eINSTANCE.createMetadata();
@@ -162,17 +161,6 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 			
 		})
 		.open();
-	}
-
-	private void launchStatusUpdateProcess(EndpointResponse connectorResponse) {
-		Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
-		variables.put("variables", new HashMap<String, HashMap<String, Object>>());
-		variables.get("variables").put("endpointRes", new HashMap<String, Object>());
-		variables.get("variables").get("endpointRes").put("value", CamundaWorkerHelper.saveEObjectToString(connectorResponse, rsFactory).getBytes());
-		variables.get("variables").get("endpointRes").put("type", "bytes");
-		variables.get("variables").put("reqId", new HashMap<String, Object>());
-		variables.get("variables").get("reqId").put("value", connectorResponse.getRequest().getId());
-		statusCamundaProcessLauncher.launchProcess(variables);		
 	}
 	
 	private void launchStatusUpdateProcess(EndpointResponse endpointResponse, AvatarConnector connector) {
@@ -208,20 +196,9 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 			parameter.setValue(request);
 			endpointReq.getParameter().add(parameter);
 			try {
-				EndpointResponse endpointRes = "request".equals(reqType) ? c.executeRequest(endpointReq) : c.dryRequest(endpointReq);
+				EndpointResponse endpointRes = "dryrun".equals(reqType) ? c.dryRequest(endpointReq) : c.executeRequest(endpointReq);
 				endpointRes.setSourceId(c.getInfo().getId());
 				return endpointRes;
-				
-					//						TODO: instead of updating status here, we send the EndpointResponse to Camunda
-					//						statusService.updateStatus(endpointRes);
-
-//				
-//				if(ResponseCode.ERROR.equals(endpointRes.getCode())) {
-//					queryResponse.setStatus(QueryStatusType.ERROR);
-//				} else if(QueryStatusType.SUCCESS.equals(queryResponse.getStatus()) && ResponseCode.PENDING.equals(endpointRes.getCode())) {
-//					queryResponse.setStatus(QueryStatusType.PENDING);	
-//				}
-//				ConnectorWhiteboardHelper.addSingleConnectorQueryStatus((QueryStatusResponse )queryResponse, endpointRes, c);	
 			} catch(Exception e) {
 				e.printStackTrace();
 			}

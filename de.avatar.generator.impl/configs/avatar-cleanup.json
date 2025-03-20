@@ -1,0 +1,17 @@
+{
+  ":configurator:resource-version": 1,
+  
+	"AvatarDataCleanup": 
+  	{
+		"responseCleanupDelay": 0,
+		"responseCleanupRate": 10,
+		"responseCleanupUnit": "MINUTES",
+		"removeResponsesOlderThan": 10, 
+		"removeResponsesOlderThanUnit": "MINUTES",
+		"publicLinkCleanupDelay": 0,
+		"publicLinkCleanupRate": 10,
+		"publicLinkCleanupUnit": "MINUTES",
+		"removePublicLinksOlderThan": 10, 
+		"removePublicLinksOlderThanUnit": "MINUTES"
+	}
+}

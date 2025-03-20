@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.osgi.service.component.ComponentServiceObjects;
-import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -48,9 +47,6 @@ public class StatusServiceImpl implements StatusService{
 	@Reference
 	private ComponentServiceObjects<ResourceSet> rsFactory;
 
-//	@Reference
-//	ConnectorStatusWhiteboard statusWhiteboard;
-
 	@Reference
 	AvatarGenerator avatarGenerator;
 
@@ -60,13 +56,6 @@ public class StatusServiceImpl implements StatusService{
 	Map<String, QueryRequest> cachedRequests = new ConcurrentHashMap<>();
 	Map<String, QueryStatusResponse> cachedStatuses = new ConcurrentHashMap<>();
 
-	
-	@Activate
-	public StatusServiceImpl() {
-		
-	}
-	
-	
 
 	/* 
 	 * (non-Javadoc)
@@ -108,8 +97,7 @@ public class StatusServiceImpl implements StatusService{
 		}
 		QueryStatusResponse statusResponse = cachedStatuses.get(endpointResponse.getRequest().getId());
 		statusResponse.setRequestId(endpointResponse.getRequest().getId());
-		statusResponse.setTimestamp(Instant.now().toEpochMilli());
-		
+		statusResponse.setTimestamp(Instant.now().toEpochMilli());		
 		
 		if(ResponseCode.OK.equals(endpointResponse.getCode())) {
 			LOGGER.info(String.format("I am aggregating response for %s", endpointResponse.getRequest().getId()));
@@ -126,30 +114,6 @@ public class StatusServiceImpl implements StatusService{
 	@Override
 	public QueryStatusResponse getStatusUpdate(String requestId) {		
 		return cachedStatuses.getOrDefault(requestId, null);
-		
-		
-//		QueryRequest request = getCachedRequest(requestId);
-//		if(request == null) {
-//			LOGGER.severe(String.format("QueryRequest with id %s is NOT already cached. This should not be the case!", requestId));
-//			throw new IllegalArgumentException(String.format("QueryRequest with id %s is NOT already cached. This should not be the case!", requestId));
-//		}
-//		QueryStatusResponse response = statusWhiteboard.executeStatusRequest(request);
-////		updateStatus(response);
-//		
-//		if(QueryStatusType.SUCCESS.equals(response.getStatus())) {
-//			cachedStatuses.remove(response.getRequestId());
-//			cachedRequests.remove(response.getRequestId());
-//		} else {
-//			cachedStatuses.put(response.getRequestId(), response);
-//		}
-//
-//		response.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
-//
-//			//				We do not want to display the full response result when the status is SUCCESS
-//			scs.getStatusResult().eUnset(StatusPackage.Literals.STATUS__RESPONSE);
-//
-//		});
-//		return response;
 	}
 
 
@@ -192,11 +156,12 @@ public class StatusServiceImpl implements StatusService{
 			int numConnUpdates = detailedStatus.getSingleConnectorQueryStatus().size();
 			QueryStatusType queryStatusType = QueryStatusType.SUCCESS;
 			for(QueryStatusType connStatus : detailedStatus.getSingleConnectorQueryStatus().stream().map(c -> c.getStatusResult().getStatus()).toList()) {
-				if(QueryStatusType.ERROR.equals(connStatus) && QueryStatusType.SUCCESS.equals(queryStatusType)) {
+				if(QueryStatusType.ERROR.equals(connStatus) && !QueryStatusType.ERROR.equals(queryStatusType)) {
 					queryStatusType = QueryStatusType.ERROR;
-				} else if(QueryStatusType.PENDING.equals(connStatus)) {
-					LOGGER.info(String.format("Setting status to pending for %s", endpointResponse.getRequest().getId()));
+				} else if(QueryStatusType.PENDING.equals(connStatus) && !QueryStatusType.ERROR.equals(queryStatusType)) {
 					queryStatusType = QueryStatusType.PENDING;
+				} else if(QueryStatusType.DRYRUN_SUCCESS.equals(connStatus) && (!QueryStatusType.ERROR.equals(queryStatusType) && !QueryStatusType.PENDING.equals(queryStatusType))) {
+					queryStatusType = QueryStatusType.DRYRUN_SUCCESS;
 				}
 			}
 			if(QueryStatusType.SUCCESS.equals(queryStatusType) && (numConnForReq > numConnUpdates)) {
@@ -205,6 +170,7 @@ public class StatusServiceImpl implements StatusService{
 			}
 			statusResponse.setStatus(queryStatusType);
 		}
+		
 		
 		if(ResponseCode.OK.equals(endpointResponse.getCode())) {
 			LOGGER.info(String.format("I am aggregating response for %s", endpointResponse.getRequest().getId()));

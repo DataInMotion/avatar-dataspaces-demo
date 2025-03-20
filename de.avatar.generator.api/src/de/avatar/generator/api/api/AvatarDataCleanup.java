@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012 - 2018 Data In Motion and others.
+ * Copyright (c) 2012 - 2025 Data In Motion and others.
  * All rights reserved. 
  * 
  * This program and the accompanying materials are made available under the terms of the 
@@ -11,19 +11,17 @@
  */
 package de.avatar.generator.api.api;
 
-import java.io.File;
-
 import org.osgi.annotation.versioning.ProviderType;
 
-import de.avatar.model.connector.EndpointResponse;
-
+/**
+ * 
+ * @author ilenia
+ * @since Mar 20, 2025
+ */
 @ProviderType
-public interface AvatarGenerator{
+public interface AvatarDataCleanup {
 
-	void aggregateResponse(EndpointResponse response);
+	void cleanupPublicLinks();
 	
-	String generatePublicLinkForRequest(String requestId);
-	
-	File getAggregatedResponse(String requestId);
-
+	void cleanupResponseData();
 }

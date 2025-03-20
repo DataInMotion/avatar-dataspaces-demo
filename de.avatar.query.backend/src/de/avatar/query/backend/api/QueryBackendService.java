@@ -11,6 +11,7 @@
  */
 package de.avatar.query.backend.api;
 
+import java.io.File;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -38,11 +39,9 @@ public interface QueryBackendService{
 	QueryResponse executeQuery(QueryRequest queryRequest);
 	
 	QueryStatusResponse executeStatusRequest(String requestId);
+		
+	String generatePublicLinkForRequest(String requestId);
 	
-//	TODO: think about endpoint for public link and then download the actual results
-	
-	
-
-	// TODO: class provided by template
+	File downloadResponseData(String requestId);
 
 }

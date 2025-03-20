@@ -12,6 +12,7 @@
 package de.avatar.query.backend.impl;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.HashMap;
@@ -38,6 +39,7 @@ import org.osgi.service.component.annotations.Reference;
 import de.avatar.connector.camunda.api.OrchestratorProcessLauncher;
 import de.avatar.connector.whiteboard.api.ConnectorWhiteboard;
 import de.avatar.connector.whiteboard.api.StatusService;
+import de.avatar.generator.api.api.AvatarGenerator;
 import de.avatar.model.connector.ConsentInfo;
 import de.avatar.model.connector.ModelInfo;
 import de.avatar.query.backend.api.QueryBackendService;
@@ -57,6 +59,9 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	
 	@Reference
 	StatusService statusService;
+	
+	@Reference
+	AvatarGenerator avatarGenerator;
 	
 	@Reference
 	private ComponentServiceObjects<ResourceSet> rsFactory;
@@ -95,11 +100,12 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	@Override
 	public QueryResponse executeDryRun(QueryRequest queryRequest) {
 		sendQueryRequest(queryRequest, "dryrun");
-		
-//		TODO: understand what we should give back
-//		maybe here we just ping the status for updates
-		
-		return null;
+//		here we just ping the status for updates
+		QueryStatusResponse response = pingForStatus(queryRequest.getRequestId(), true);
+		if(response == null) {
+			response = getBasicPendingResponse(queryRequest.getRequestId());
+		}
+		return response;	
 	}
 
 	/* 
@@ -109,18 +115,50 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	@Override
 	public QueryResponse executeQuery(QueryRequest queryRequest) {
 		sendQueryRequest(queryRequest, "request");
-		
+		statusService.cacheRequest(queryRequest);
 //		here we just ping the status for updates
 		QueryStatusResponse response = pingForStatus(queryRequest.getRequestId(), true);
 		if(response == null) {
-			response = StatusFactory.eINSTANCE.createQueryStatusResponse();
-			response.setRequestId(queryRequest.getRequestId());
-			response.setStatus(QueryStatusType.PENDING);
-			response.setTimestamp(Instant.now().toEpochMilli());
-			response.setMessage("Request has been sent, but no updates from connectors arrived yet");			
+			response = getBasicPendingResponse(queryRequest.getRequestId());
 		}
-		return response;
+		return response;		
+	}
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#executeStatusRequest(java.lang.String)
+	 */
+	@Override
+	public QueryStatusResponse executeStatusRequest(String requestId) {
 		
+		QueryRequest queryRequest = statusService.getCachedRequest(requestId);
+		if(queryRequest == null) {
+			throw new IllegalArgumentException(String.format("No cached request for id %s", requestId));
+		}
+		sendQueryRequest(queryRequest, "status");
+		QueryStatusResponse response = pingForStatus(queryRequest.getRequestId(), false);
+		if(response == null) {
+			response = getBasicPendingResponse(queryRequest.getRequestId());
+		}		
+		return response;
+	}
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#generatePublicLinkForRequest(java.lang.String)
+	 */
+	@Override
+	public String generatePublicLinkForRequest(String requestId) {
+		return avatarGenerator.generatePublicLinkForRequest(requestId);
+	}
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#downloadResponseData(java.lang.String)
+	 */
+	@Override
+	public File downloadResponseData(String requestId) {
+		return avatarGenerator.getAggregatedResponse(requestId);
 	}
 	
 	private QueryStatusResponse pingForStatus(String requestId, boolean fromCache) {
@@ -166,29 +204,9 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		public QueryStatusResponse call() throws Exception {
 			return statusService.getStatusUpdate(requestId);
 		}
-		
 	}
 
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#executeStatusRequest(java.lang.String)
-	 */
-	@Override
-	public QueryStatusResponse executeStatusRequest(String requestId) {
-		
-		QueryRequest queryRequest = statusService.getCachedRequest(requestId);
-		if(queryRequest == null) {
-			throw new IllegalArgumentException(String.format("No cached request for id %s", requestId));
-		}
-		sendQueryRequest(queryRequest, "status");
-		QueryStatusResponse response = pingForStatus(queryRequest.getRequestId(), false);
-		if(response == null) response = StatusFactory.eINSTANCE.createQueryStatusResponse();
-		response.setRequestId(queryRequest.getConsumerId());
-		response.setStatus(QueryStatusType.PENDING);
-		response.setTimestamp(Instant.now().toEpochMilli());
-		response.setMessage("Request has been sent, but no new updates from connectors arrived yet");
-		return response;
-	}
+	
 
 	private String saveEObjectToString(EObject obj) {
 		ResourceSet resSet = rsFactory.getService();
@@ -216,6 +234,15 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		variables.get("variables").put("reqType", new HashMap<String, Object>());
 		variables.get("variables").get("reqType").put("value", reqType);
 		queryCamundaProcessLauncher.launchProcess(variables);		
+	}
+	
+	private QueryStatusResponse getBasicPendingResponse(String requestId) {
+		QueryStatusResponse response = StatusFactory.eINSTANCE.createQueryStatusResponse();
+		response.setRequestId(requestId);
+		response.setStatus(QueryStatusType.PENDING);
+		response.setTimestamp(Instant.now().toEpochMilli());
+		response.setMessage("Request has been sent, but no updates from connectors arrived yet");	
+		return response;
 	}
 
 }
