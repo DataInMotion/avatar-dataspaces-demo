@@ -840,6 +840,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.NO_CONTENT);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.TIMEOUT);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PENDING);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.DRYRUN_SUCCESS);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.OTHER);
 
 		// Create resource

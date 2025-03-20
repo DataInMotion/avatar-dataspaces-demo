@@ -113,6 +113,7 @@
     <eLiterals name="NO_CONTENT" value="2"/>
     <eLiterals name="TIMEOUT" value="3"/>
     <eLiterals name="PENDING" value="4"/>
+    <eLiterals name="DRYRUN_OK" value="5"/>
     <eLiterals name="OTHER" value="50"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResponseResult" abstract="true">

@@ -19,6 +19,7 @@
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/NO_CONTENT"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/TIMEOUT"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PENDING"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/DRYRUN_SUCCESS"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/OTHER"/>
     </genEnums>
     <genClasses ecoreClass="query-status.ecore#//QueryRequest">

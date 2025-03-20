@@ -30,6 +30,7 @@
       <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/NO_CONTENT"/>
       <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/TIMEOUT"/>
       <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/PENDING"/>
+      <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/DRYRUN_OK"/>
       <genEnumLiterals ecoreEnumLiteral="avatar-connector.ecore#//ResponseCode/OTHER"/>
     </genEnums>
     <genDataTypes ecoreDataType="avatar-connector.ecore#//JavaThrowable"/>

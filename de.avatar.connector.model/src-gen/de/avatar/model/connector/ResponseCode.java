@@ -83,6 +83,16 @@ public enum ResponseCode implements Enumerator {
 	PENDING(4, "PENDING", "PENDING"),
 
 	/**
+	 * The '<em><b>DRYRUN OK</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DRYRUN_OK_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DRYRUN_OK(5, "DRYRUN_OK", "DRYRUN_OK"),
+
+	/**
 	 * The '<em><b>OTHER</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -148,6 +158,17 @@ public enum ResponseCode implements Enumerator {
 	public static final int PENDING_VALUE = 4;
 
 	/**
+	 * The '<em><b>DRYRUN OK</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DRYRUN_OK
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DRYRUN_OK_VALUE = 5;
+
+	/**
 	 * The '<em><b>OTHER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -171,6 +192,7 @@ public enum ResponseCode implements Enumerator {
 			NO_CONTENT,
 			TIMEOUT,
 			PENDING,
+			DRYRUN_OK,
 			OTHER,
 		};
 
@@ -233,6 +255,7 @@ public enum ResponseCode implements Enumerator {
 			case NO_CONTENT_VALUE: return NO_CONTENT;
 			case TIMEOUT_VALUE: return TIMEOUT;
 			case PENDING_VALUE: return PENDING;
+			case DRYRUN_OK_VALUE: return DRYRUN_OK;
 			case OTHER_VALUE: return OTHER;
 		}
 		return null;

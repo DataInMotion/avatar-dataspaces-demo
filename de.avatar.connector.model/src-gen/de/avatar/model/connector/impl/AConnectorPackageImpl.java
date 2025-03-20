@@ -1481,6 +1481,7 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		addEEnumLiteral(responseCodeEEnum, ResponseCode.NO_CONTENT);
 		addEEnumLiteral(responseCodeEEnum, ResponseCode.TIMEOUT);
 		addEEnumLiteral(responseCodeEEnum, ResponseCode.PENDING);
+		addEEnumLiteral(responseCodeEEnum, ResponseCode.DRYRUN_OK);
 		addEEnumLiteral(responseCodeEEnum, ResponseCode.OTHER);
 
 		// Initialize data types
