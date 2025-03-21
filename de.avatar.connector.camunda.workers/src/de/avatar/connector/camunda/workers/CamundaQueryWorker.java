@@ -11,6 +11,10 @@
  */
 package de.avatar.connector.camunda.workers;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,6 +82,9 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 
 	
 	private static final Logger LOGGER = Logger.getLogger(CamundaQueryWorker.class.getName());
+	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'hh:mm:ss'Z'")
+            .withZone(ZoneId.systemDefault());
+	
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
 	
 	private Map<String, Object> properties;
@@ -138,14 +145,7 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 						EndpointResponse connectorResponse = doForwardQueryRequestToConnector(c, queryRequest, reqType);						
 						if(connectorResponse != null) {
 							LOGGER.info(String.format("Got an EndpointRes from connector for request %s", connectorResponse.getRequest().getId()));
-							Metadata connRelativeId = AConnectorFactory.eINSTANCE.createMetadata();
-							connRelativeId.setKey("connector.relative.id");
-							connRelativeId.setValue(""+i);
-							Metadata totConn = AConnectorFactory.eINSTANCE.createMetadata();
-							totConn.setKey("tot.connectors.for.request");
-							totConn.setValue(""+availableConnectors.size());
-							connectorResponse.getMetadata().add(connRelativeId);
-							connectorResponse.getMetadata().add(totConn);
+							connectorResponse.getMetadata().addAll(createConnectorResponseMetadata(c, connectorResponse, availableConnectors.size(), i));
 							i++;
 //							Update status - trigger status update process on camunda
 							launchStatusUpdateProcess(connectorResponse, c);
@@ -161,6 +161,37 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 			
 		})
 		.open();
+	}
+	
+	private List<Metadata> createConnectorResponseMetadata(AvatarConnector connector, EndpointResponse response, int totConnectors, int thisConnectorNum) {
+		List<Metadata> metadatas = new ArrayList<>(5);
+		Metadata metadata = AConnectorFactory.eINSTANCE.createMetadata();
+		metadata.setKey("connector.relative.id");
+		metadata.setValue(""+thisConnectorNum);
+		metadatas.add(metadata);
+		
+		metadata = AConnectorFactory.eINSTANCE.createMetadata();
+		metadata.setKey("tot.connectors.for.request");
+		metadata.setValue(""+totConnectors);
+		metadatas.add(metadata);
+		
+		metadata = AConnectorFactory.eINSTANCE.createMetadata();
+		metadata.setKey("connector.id");
+		metadata.setValue(connector.getInfo().getId());
+		metadatas.add(metadata);
+		
+		metadata = AConnectorFactory.eINSTANCE.createMetadata();
+		metadata.setKey("connector.name");
+		metadata.setValue(connector.getInfo().getName());
+		metadatas.add(metadata);
+		
+		metadata = AConnectorFactory.eINSTANCE.createMetadata();
+		metadata.setKey("response.time");
+		metadata.setValue(DATE_TIME_FORMATTER.format(Instant.ofEpochMilli(response.getTimestamp())));
+		metadatas.add(metadata);
+		
+		return metadatas;
+		
 	}
 	
 	private void launchStatusUpdateProcess(EndpointResponse endpointResponse, AvatarConnector connector) {

@@ -100,6 +100,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	@Override
 	public QueryResponse executeDryRun(QueryRequest queryRequest) {
 		sendQueryRequest(queryRequest, "dryrun");
+		
 //		here we just ping the status for updates
 		QueryStatusResponse response = pingForStatus(queryRequest.getRequestId(), true);
 		if(response == null) {

@@ -27,6 +27,7 @@ import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -43,6 +44,7 @@ import de.avatar.generator.api.api.AvatarGenerator;
 import de.avatar.model.connector.EcoreResult;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.JavaResult;
+import de.avatar.model.connector.Metadata;
 import de.avatar.model.connector.ResponseResult;
 
 @Component(immediate = true, name = "AvatarGenerator", service = AvatarGenerator.class)
@@ -94,20 +96,24 @@ public class AvatarGeneratorImpl implements AvatarGenerator {
 		aggregateResponseMap.get(requestId).put(connectorId, responseFile.getAbsolutePath());
 
 		ResponseResult result = response.getResult();
+		EList<Metadata> metadatas = response.getMetadata();
+		ResourceSet resourceSet = rsFactory.getService();
+		Resource resource = resourceSet.createResource(URI.createFileURI(filePath), "application/json");
+		resource.getContents().addAll(metadatas);
 		if(result instanceof EcoreResult ecoreRes) {
-			ResourceSet resourceSet = rsFactory.getService();
-			try {
-				Resource resource = resourceSet.createResource(URI.createFileURI(filePath), "application/json");
-				resource.getContents().add(ecoreRes.getValue());
-				resource.save(null);				
-			} catch(IOException e) {
-				LOGGER.severe(String.format("IOException while saving EcoreResult for response from connector with id %s", connectorId));
-				e.printStackTrace();
-				responseFile.delete();
-			} finally {
-				rsFactory.ungetService(resourceSet);
-			}
-		} else if(result instanceof JavaResult javaRes) {
+			resource.getContents().add(ecoreRes.getValue());			
+		}
+		try {				
+			resource.save(null);				
+		} catch(IOException e) {
+			LOGGER.severe(String.format("IOException while saving EcoreResult for response from connector with id %s", connectorId));
+			e.printStackTrace();
+			responseFile.delete();
+		} finally {
+			rsFactory.ungetService(resourceSet);
+		}
+		
+		if(result instanceof JavaResult javaRes) {
 			try {
 				mapper.writeValue(responseFile, javaRes.getValue());				
 			} catch(IOException e) {
