@@ -7,5 +7,3 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	com.fasterxml.jackson.core.jackson-databind,\
 	org.osgi.service.component
 	
--includeresource: OSGI-INF/configurator/=configs/avatar-cleanup.json
-Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'

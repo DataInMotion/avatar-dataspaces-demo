@@ -163,7 +163,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	
 	private QueryStatusResponse pingForStatus(String requestId, boolean fromCache) {
 		Long now = Instant.now().toEpochMilli();
-		for(int i = 0; i < 5; i ++) {
+		for(int i = 0; i < 10; i ++) {
 			ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 			ScheduledFuture<QueryStatusResponse> schedule = executor.schedule(new MyCheckStatusWork(requestId), 1, TimeUnit.SECONDS);
 			QueryStatusResponse statusResponse;
