@@ -124,7 +124,9 @@
 	de.avatar.connector.keycloak.config;version=snapshot,\
 	de.avatar.connector.rest.config;version=snapshot,\
 	de.avatar.connector.whiteboard.config;version=snapshot,\
-	de.avatar.generator.config;version=snapshot
+	de.avatar.connector.cleanup.api;version=snapshot,\
+	de.avatar.connector.cleanup.config;version=snapshot,\
+	de.avatar.connector.cleanup.impl;version=snapshot
 
 
 #Avoid To have the default Jetty run at port 8080	
@@ -157,6 +159,7 @@
 	bnd.identity;id='de.avatar.connector.keycloak.config',\
 	bnd.identity;id='de.avatar.connector.rest.config',\
 	bnd.identity;id='de.avatar.connector.whiteboard.config',\
-	bnd.identity;id='de.avatar.generator.config'
+	bnd.identity;id='de.avatar.connector.cleanup.config',\
+	bnd.identity;id='de.avatar.connector.cleanup.impl'
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-17

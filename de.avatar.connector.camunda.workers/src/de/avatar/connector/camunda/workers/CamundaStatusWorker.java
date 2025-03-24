@@ -20,7 +20,6 @@ import org.camunda.bpm.client.ExternalTaskClient;
 import org.camunda.bpm.client.interceptor.ClientRequestContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
@@ -40,23 +39,14 @@ import de.avatar.status.SingleConnectorQueryStatus;
  * @since Mar 18, 2025
  */
 @Component(immediate = true, name = "CamundaStatusWorker", service = OrchestratorWorker.class,
-configurationPid = "CamundaStatusWorker", configurationPolicy = ConfigurationPolicy.REQUIRE
-/**, 
-scope = ServiceScope.PROTOTYPE, property = {
-		"service.exported.configs=com.paremus.dosgi.net", 
-		"service.exported.interfaces=*", 
-		"com.paremus.dosgi.scope=global", 
-		"com.paremus.dosgi.target.clusters=DIMC", 
-		"com.paremus.dosgi.net.serialization=ecore",
-"camunda=camunda.worker"}**/
-)
+configurationPid = "CamundaStatusWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class CamundaStatusWorker implements OrchestratorWorker {
 	
 	@Reference
 	KeycloakService keycloakService;
 	
 	@Reference
-	private ComponentServiceObjects<ResourceSet> rsFactory;
+	private ResourceSet resourceSet;
 	
 	@Reference
 	StatusService statusService;
@@ -85,7 +75,7 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 	 */
 	@Override
 	public void intercept(ClientRequestContext requestContext) {
-		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
+//		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
 	}
 
 	/* 
@@ -97,7 +87,7 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 		ExternalTaskClient client = ExternalTaskClient.create()
 				.baseUrl((String)properties.get("camunda.engine.url"))
 				.asyncResponseTimeout((Long)properties.get("camunda.polling.timeout") == null ? 10000 : (Long)properties.get("camunda.polling.timeout")) // long polling timeout
-//				.addInterceptor(this)
+				.addInterceptor(this)
 				.build();
 		client.
 		subscribe((String)properties.get("camunda.task.topic")).
@@ -108,8 +98,8 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 			LOGGER.info(String.format("I got the  SingleConnectorQueryStatus in CamundaStatusWorker %s", sgConnQueryStatusStr));
 			LOGGER.info(String.format("I got the  EndpointResponse in CamundaStatusWorker %s", endpointResStr));
 			try {
-				EObject sgConnStatusObj = CamundaWorkerHelper.loadEObjectFromString(sgConnQueryStatusStr, rsFactory);
-				EObject endpointResObj = CamundaWorkerHelper.loadEObjectFromString(endpointResStr, rsFactory);
+				EObject sgConnStatusObj = CamundaWorkerHelper.loadEObjectFromString(sgConnQueryStatusStr, resourceSet);
+				EObject endpointResObj = CamundaWorkerHelper.loadEObjectFromString(endpointResStr, resourceSet);
 				if(sgConnStatusObj instanceof SingleConnectorQueryStatus sgConnQueryStatus && endpointResObj instanceof EndpointResponse endpointResponse) {
 					statusService.updateStatus(endpointResponse, sgConnQueryStatus);
 				}

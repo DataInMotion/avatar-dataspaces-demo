@@ -1,0 +1,19 @@
+{
+  ":configurator:resource-version": 1,
+  
+	"PublicLinkCleanup": 
+  	{
+		"cleanupDelay": 0,
+		"cleanupRate": 10,
+		"cleanupUnit": "MINUTES",
+		"removeOlderThan": 10, 
+		"removeOlderThanUnit": "MINUTES"
+	},
+	"ResponseDataCleanup": {
+		"cleanupDelay": 0,
+		"cleanupRate": 10,
+		"cleanupUnit": "MINUTES",
+		"removeOlderThan": 10, 
+		"removeOlderThanUnit": "MINUTES"
+	}
+}

@@ -1,11 +1,16 @@
 -library: enable-emf
 
--includeresource: OSGI-INF/configurator/=configs/provider-config.json
+-includeresource: OSGI-INF/configurator/=configs/
 Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'
 
 -buildpath: \
 	org.osgi.service.cm;version=latest,\
 	de.avatar.connector.api;version=snapshot,\
-	de.avatar.connector.model;version=snapshot
+	de.avatar.connector.model;version=snapshot,\
+	org.osgi.service.component,\
+	org.avatar.himsa.model,\
+	de.avatar.query.model,\
+	org.gecko.emf.util.model,\
+	de.avatar.query.status.model
 	
 -workingset: provider

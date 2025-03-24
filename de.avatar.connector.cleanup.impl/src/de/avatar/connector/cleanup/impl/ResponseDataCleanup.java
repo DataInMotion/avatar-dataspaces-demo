@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.avatar.generator.impl;
+package de.avatar.connector.cleanup.impl;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,25 +17,42 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
+
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Deactivate;
+
+import de.avatar.connector.cleanup.api.api.AvatarDataCleanup;
+import de.avatar.connector.cleanup.api.api.AvatarDataCleanupConfig;
 
 /**
  * 
  * @author ilenia
  * @since Mar 20, 2025
  */
-public class ResponseDataCleanup implements Runnable {
+@Component(immediate = true, name = "ResponseDataCleanup", configurationPid = "ResponseDataCleanup", configurationPolicy = ConfigurationPolicy.REQUIRE)
+public class ResponseDataCleanup implements AvatarDataCleanup {
 	
 	private final static Logger LOGGER = Logger.getLogger(ResponseDataCleanup.class.getName());
-	private long removeResponsesOlderThan;
-	private TemporalUnit removeResponsesOlderThanUnit;
+	private AvatarDataCleanupConfig config;
+	private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 	
-	public ResponseDataCleanup(long removeResponsesOlderThan, String removeResponsesOlderThanUnit) {
-		this.removeResponsesOlderThan = removeResponsesOlderThan;
-		this.removeResponsesOlderThanUnit = ChronoUnit.valueOf(removeResponsesOlderThanUnit);
+	@Activate
+	public ResponseDataCleanup(AvatarDataCleanupConfig config) {
+		this.config = config;
+		executor.scheduleAtFixedRate(this::run, config.cleanupDelay(), config.cleanupRate(), TimeUnit.valueOf(config.cleanupUnit()));
+	}
+	
+	@Deactivate
+	public void deactivate() {
+		executor.shutdown();
 	}
 	
 	
@@ -47,10 +64,10 @@ public class ResponseDataCleanup implements Runnable {
 	public void run() {
 		LOGGER.info(String.format("Starting ResponseDataCleanup job!"));
 		Instant now = Instant.now();
-		Instant criticInstant = now.minus(removeResponsesOlderThan, removeResponsesOlderThanUnit);
+		Instant criticInstant = now.minus(config.removeOlderThan(), ChronoUnit.valueOf(config.removeOlderThanUnit()));
 		List<Path> filesToBeRemoved = new LinkedList<>();
 		try {
-			Files.list(Path.of(System.getProperty("data"))).
+			Files.list(Path.of(System.getProperty(config.cleanupRootFolder()))).
 			filter(p -> p.getFileName().toString().endsWith(".json")).
 			forEach(p -> {
 				try {
@@ -75,7 +92,5 @@ public class ResponseDataCleanup implements Runnable {
 		} catch (IOException e) {
 			LOGGER.severe(String.format("IOException while executing ResponseDataCleanup job!"));
 		}
-
 	}
-
 }

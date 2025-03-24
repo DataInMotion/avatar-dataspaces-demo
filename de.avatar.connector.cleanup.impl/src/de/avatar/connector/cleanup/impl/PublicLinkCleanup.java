@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.avatar.generator.impl;
+package de.avatar.connector.cleanup.impl;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,25 +17,43 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
+
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Deactivate;
+
+import de.avatar.connector.cleanup.api.api.AvatarDataCleanup;
+import de.avatar.connector.cleanup.api.api.AvatarDataCleanupConfig;
 
 /**
  * 
  * @author ilenia
  * @since Mar 20, 2025
  */
-public class PublicLinkCleanup implements Runnable {
+@Component(immediate = true, name = "PublicLinkCleanup", configurationPid = "PublicLinkCleanup", configurationPolicy = ConfigurationPolicy.REQUIRE)
+public class PublicLinkCleanup implements AvatarDataCleanup {
 	
 	private static final Logger LOGGER = Logger.getLogger(PublicLinkCleanup.class.getName());
-	private long removePublicLinkssOlderThan;
-	private TemporalUnit removePublicLinksOlderThanUnit;
 	
-	public PublicLinkCleanup(long removePublicLinkssOlderThan, String removePublicLinksOlderThanUnit) {
-		this.removePublicLinkssOlderThan = removePublicLinkssOlderThan;
-		this.removePublicLinksOlderThanUnit = ChronoUnit.valueOf(removePublicLinksOlderThanUnit);
+	private AvatarDataCleanupConfig config;
+	private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+	
+	@Activate
+	public PublicLinkCleanup(AvatarDataCleanupConfig config) {
+		this.config = config;
+		executor.scheduleAtFixedRate(this::run, config.cleanupDelay(), config.cleanupRate(), TimeUnit.valueOf(config.cleanupUnit()));
+	}
+	
+	@Deactivate
+	public void deactivate() {
+		executor.shutdown();
 	}
 	
 
@@ -47,10 +65,10 @@ public class PublicLinkCleanup implements Runnable {
 	public void run() {
 		LOGGER.info(String.format("Starting PublicLinkCleanup job!"));
 		Instant now = Instant.now();
-		Instant criticInstant = now.minus(removePublicLinkssOlderThan, removePublicLinksOlderThanUnit);
+		Instant criticInstant = now.minus(config.removeOlderThan(), ChronoUnit.valueOf(config.removeOlderThanUnit()));
 		List<Path> filesToBeRemoved = new LinkedList<>();
 		try {
-			Files.list(Path.of(System.getProperty("data"))).
+			Files.list(Path.of(System.getProperty(config.cleanupRootFolder()))).
 			filter(p -> p.getFileName().toString().endsWith(".zip") && p.getFileName().toString().startsWith("aggregated-")).
 			forEach(p -> {
 				try {

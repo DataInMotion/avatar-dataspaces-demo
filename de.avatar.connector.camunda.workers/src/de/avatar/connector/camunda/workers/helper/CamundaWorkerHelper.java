@@ -21,7 +21,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.osgi.service.component.ComponentServiceObjects;
 
 import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.DryRunResult;
@@ -49,8 +48,7 @@ public class CamundaWorkerHelper {
 	
 	private static final Logger LOGGER = Logger.getLogger(CamundaWorkerHelper.class.getName());
 	
-	public static EObject loadEObjectFromString(String value,  ComponentServiceObjects<ResourceSet> rsFactory) {
-		ResourceSet resSet = rsFactory.getService();
+	public static EObject loadEObjectFromString(String value,  ResourceSet resSet) {
 		try {
 			Resource res = resSet.createResource(URI.createURI(UUID.randomUUID().toString()), "application/json");
 			res.load(new ByteArrayInputStream(value.getBytes()), null);
@@ -65,13 +63,10 @@ public class CamundaWorkerHelper {
 			LOGGER.severe(String.format("IOException while loading EObject from String"));
 			e.printStackTrace();
 			return null;
-		} finally {
-			rsFactory.ungetService(resSet);
 		}
 	}
 	
-	public static String saveEObjectToString(EObject obj,  ComponentServiceObjects<ResourceSet> rsFactory) {
-		ResourceSet resSet = rsFactory.getService();
+	public static String saveEObjectToString(EObject obj, ResourceSet resSet) {
 		try {
 			Resource res = resSet.createResource(URI.createURI(UUID.randomUUID().toString().concat(".json")), "application/json");
 			res.getContents().add(obj);
@@ -81,9 +76,7 @@ public class CamundaWorkerHelper {
 		} catch(IOException e) {
 			LOGGER.severe(String.format("IOException while converting EObject to String"));
 			return null;
-		} finally {
-			rsFactory.ungetService(resSet);
-		}
+		} 
 	}
 
 	public static  EndpointRequest convertQueryToEndpointRequest(QueryRequest queryRequest) {

@@ -75,8 +75,9 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 			ObjectMapper objectMapper = new ObjectMapper();
 			String jacksonData = objectMapper.writeValueAsString(processVariables);
 			HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
-			StringEntity params =new StringEntity(jacksonData);
+			StringEntity params = new StringEntity(jacksonData);
 			post.addHeader("content-type", "application/json");
+//			TODO: add authentication header with token from keycloak service (but we have to understand which keycloak we need)
 			post.setEntity(params);
 			httpClient.execute(post, new MyResponseHandler());
 			LOGGER.info("I sent the process to camunda");

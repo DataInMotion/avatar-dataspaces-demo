@@ -11,9 +11,6 @@
  */
 package de.avatar.connector.camunda.workers;
 
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +24,6 @@ import org.camunda.bpm.client.interceptor.ClientRequestContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
@@ -59,16 +55,7 @@ import de.avatar.status.StatusFactory;
  * @since Mar 18, 2025
  */
 @Component(immediate = true, name = "CamundaQueryWorker", service = OrchestratorWorker.class,
-configurationPid = "CamundaQueryWorker", configurationPolicy = ConfigurationPolicy.REQUIRE
-/**, 
-scope = ServiceScope.PROTOTYPE, property = {
-		"service.exported.configs=com.paremus.dosgi.net", 
-		"service.exported.interfaces=*", 
-		"com.paremus.dosgi.scope=global", 
-		"com.paremus.dosgi.target.clusters=DIMC", 
-		"com.paremus.dosgi.net.serialization=ecore",
-"camunda=camunda.worker"}**/
-)
+configurationPid = "CamundaQueryWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class CamundaQueryWorker implements OrchestratorWorker {
 	
 	@Reference
@@ -78,12 +65,11 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 	ConnectorWhiteboard connectorWhiteboard;	
 	
 	@Reference
-	private ComponentServiceObjects<ResourceSet> rsFactory;
+	private ResourceSet resourceSet;
 
 	
 	private static final Logger LOGGER = Logger.getLogger(CamundaQueryWorker.class.getName());
-	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'hh:mm:ss'Z'")
-            .withZone(ZoneId.systemDefault());
+	
 	
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
 	
@@ -110,7 +96,7 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 	 */
 	@Override
 	public void intercept(ClientRequestContext requestContext) {
-		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
+//		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
 	}
 
 	/* 
@@ -122,7 +108,7 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 		ExternalTaskClient client = ExternalTaskClient.create()
 				.baseUrl((String)properties.get("camunda.engine.url"))
 				.asyncResponseTimeout((Long)properties.get("camunda.polling.timeout") == null ? 10000 : (Long)properties.get("camunda.polling.timeout")) // long polling timeout
-//				.addInterceptor(this)
+				.addInterceptor(this)
 				.build();
 		client.
 		subscribe((String)properties.get("camunda.task.topic")).
@@ -134,7 +120,7 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 
 			//send the query to all connectors that can handle it
 			try {
-				EObject obj = CamundaWorkerHelper.loadEObjectFromString(queryStr, rsFactory);
+				EObject obj = CamundaWorkerHelper.loadEObjectFromString(queryStr, resourceSet);
 				if(obj instanceof QueryRequest queryRequest) {
 					
 					List<AvatarConnector> availableConnectors = connectorWhiteboard.getAllConnectors().stream().filter(c -> canConnectorHandleQuery(c, queryRequest.getQuery())).toList();
@@ -185,11 +171,6 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 		metadata.setValue(connector.getInfo().getName());
 		metadatas.add(metadata);
 		
-		metadata = AConnectorFactory.eINSTANCE.createMetadata();
-		metadata.setKey("response.time");
-		metadata.setValue(DATE_TIME_FORMATTER.format(Instant.ofEpochMilli(response.getTimestamp())));
-		metadatas.add(metadata);
-		
 		return metadatas;
 		
 	}
@@ -206,10 +187,10 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 		Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
 		variables.put("variables", new HashMap<String, HashMap<String, Object>>());
 		variables.get("variables").put("sgConnQueryStatus", new HashMap<String, Object>());
-		variables.get("variables").get("sgConnQueryStatus").put("value", CamundaWorkerHelper.saveEObjectToString(sgConnQueryStatus, rsFactory).getBytes());
+		variables.get("variables").get("sgConnQueryStatus").put("value", CamundaWorkerHelper.saveEObjectToString(sgConnQueryStatus, resourceSet).getBytes());
 		variables.get("variables").get("sgConnQueryStatus").put("type", "bytes");
 		variables.get("variables").put("endpointRes", new HashMap<String, Object>());
-		variables.get("variables").get("endpointRes").put("value", CamundaWorkerHelper.saveEObjectToString(endpointResponse, rsFactory).getBytes());
+		variables.get("variables").get("endpointRes").put("value", CamundaWorkerHelper.saveEObjectToString(endpointResponse, resourceSet).getBytes());
 		variables.get("variables").get("endpointRes").put("type", "bytes");
 		variables.get("variables").put("reqId", new HashMap<String, Object>());
 		variables.get("variables").get("reqId").put("value", endpointResponse.getRequest().getId());

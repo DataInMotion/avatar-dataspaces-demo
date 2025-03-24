@@ -9,19 +9,25 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.avatar.generator.api.api;
-
-import org.osgi.annotation.versioning.ProviderType;
+package de.avatar.connector.cleanup.api.api;
 
 /**
  * 
  * @author ilenia
  * @since Mar 20, 2025
  */
-@ProviderType
-public interface AvatarDataCleanup {
-
-	void cleanupPublicLinks();
+public @interface AvatarDataCleanupConfig {
 	
-	void cleanupResponseData();
+	String cleanupRootFolder();
+	
+	long cleanupDelay() default 0;
+	
+	long cleanupRate() default 1;
+	
+	String cleanupUnit() default "DAYS";
+	
+	long removeOlderThan() default 1;
+	
+	String removeOlderThanUnit() default "DAYS";
+	
 }

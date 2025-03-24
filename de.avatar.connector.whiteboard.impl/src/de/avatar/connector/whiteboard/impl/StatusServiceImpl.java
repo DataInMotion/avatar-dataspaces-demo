@@ -14,15 +14,24 @@
 package de.avatar.connector.whiteboard.impl;
 
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.osgi.service.component.ComponentServiceObjects;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 
+import de.avatar.connector.cleanup.api.api.AvatarDataCleanup;
+import de.avatar.connector.cleanup.api.api.AvatarDataCleanupConfig;
 import de.avatar.connector.whiteboard.api.StatusService;
 import de.avatar.generator.api.api.AvatarGenerator;
 import de.avatar.model.connector.EndpointResponse;
@@ -41,8 +50,9 @@ import de.avatar.status.StatusPackage;
  * @author ilenia
  * @since Jan 13, 2025
  */
-@Component(immediate = true, name = "StatusService", service = StatusService.class)
-public class StatusServiceImpl implements StatusService{
+@Component(immediate = true, name = "StatusService", service = {StatusService.class, AvatarDataCleanup.class}, 
+configurationPid = "StatusServiceCleanup", configurationPolicy = ConfigurationPolicy.REQUIRE)
+public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 
 	@Reference
 	private ComponentServiceObjects<ResourceSet> rsFactory;
@@ -50,11 +60,23 @@ public class StatusServiceImpl implements StatusService{
 	@Reference
 	AvatarGenerator avatarGenerator;
 
-	private static final Logger LOGGER = Logger.getLogger(StatusServiceImpl.class.getName());
-	
+	private static final Logger LOGGER = Logger.getLogger(StatusServiceImpl.class.getName());	
 
-	Map<String, QueryRequest> cachedRequests = new ConcurrentHashMap<>();
-	Map<String, QueryStatusResponse> cachedStatuses = new ConcurrentHashMap<>();
+	private Map<String, QueryRequest> cachedRequests = new ConcurrentHashMap<>();
+	private Map<String, QueryStatusResponse> cachedStatuses = new ConcurrentHashMap<>();
+	private AvatarDataCleanupConfig cleanupConfig;
+	private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+	
+	@Activate
+	public void activate(AvatarDataCleanupConfig cleanupConfig) {
+		this.cleanupConfig = cleanupConfig;	
+		executor.scheduleAtFixedRate(this::run, cleanupConfig.cleanupDelay(), cleanupConfig.cleanupRate(), TimeUnit.valueOf(cleanupConfig.cleanupUnit()));
+	}
+	
+	@Deactivate
+	public void deactivate() {
+		executor.shutdown();
+	}
 
 
 	/* 
@@ -143,33 +165,14 @@ public class StatusServiceImpl implements StatusService{
 				stream().
 				filter(scqs -> scqs.getConnectorId().equals(sgConnQueryStatus.getConnectorId())).
 				findAny().
-				orElseGet(null);
+				orElse(null);
 			if(oldConnStatus != null) {
 				detailedStatus.getSingleConnectorQueryStatus().remove(oldConnStatus);
 			}
 		}
 		detailedStatus.getSingleConnectorQueryStatus().add(sgConnQueryStatus);
 		
-		Metadata totConnForRequest = endpointResponse.getMetadata().stream().filter(m -> "tot.connectors.for.request".equals(m.getKey())).findAny().orElse(null);
-		if(totConnForRequest != null) {
-			int numConnForReq = Integer.valueOf(totConnForRequest.getValue());
-			int numConnUpdates = detailedStatus.getSingleConnectorQueryStatus().size();
-			QueryStatusType queryStatusType = QueryStatusType.SUCCESS;
-			for(QueryStatusType connStatus : detailedStatus.getSingleConnectorQueryStatus().stream().map(c -> c.getStatusResult().getStatus()).toList()) {
-				if(QueryStatusType.ERROR.equals(connStatus) && !QueryStatusType.ERROR.equals(queryStatusType)) {
-					queryStatusType = QueryStatusType.ERROR;
-				} else if(QueryStatusType.PENDING.equals(connStatus) && !QueryStatusType.ERROR.equals(queryStatusType)) {
-					queryStatusType = QueryStatusType.PENDING;
-				} else if(QueryStatusType.DRYRUN_SUCCESS.equals(connStatus) && (!QueryStatusType.ERROR.equals(queryStatusType) && !QueryStatusType.PENDING.equals(queryStatusType))) {
-					queryStatusType = QueryStatusType.DRYRUN_SUCCESS;
-				}
-			}
-			if(QueryStatusType.SUCCESS.equals(queryStatusType) && (numConnForReq > numConnUpdates)) {
-				LOGGER.info(String.format("Setting status to pending for %s", endpointResponse.getRequest().getId()));
-				queryStatusType = QueryStatusType.PENDING;
-			}
-			statusResponse.setStatus(queryStatusType);
-		}
+		determineGlobalStatusType(endpointResponse, statusResponse);
 		
 		
 		if(ResponseCode.OK.equals(endpointResponse.getCode())) {
@@ -181,6 +184,63 @@ public class StatusServiceImpl implements StatusService{
 			//				We do not want to display the full response result when the status is SUCCESS
 			scs.getStatusResult().eUnset(StatusPackage.Literals.STATUS__RESPONSE);
 		});
+	}
+	
+	private void determineGlobalStatusType(EndpointResponse endpointResponse, QueryStatusResponse statusResponse) {
+		QueryStatusType queryStatusType = QueryStatusType.SUCCESS;
+		Metadata totConnForRequest = endpointResponse.getMetadata().stream().filter(m -> "tot.connectors.for.request".equals(m.getKey())).findAny().orElse(null);
+		if(totConnForRequest != null) {
+			int numConnForReq = Integer.valueOf(totConnForRequest.getValue());
+			int numConnUpdates = statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().size();
+			
+//			if all the connectors have a success --> SUCCESS
+//			if all the connectors have a dryrun_success --> DRYRUN_SUCCESS
+//			if at least one connector is pending --> PENDING
+//			if not all the connectors responded --> PENDING
+//			if there are no pending connectors and at least one has an error --> ERROR			
+			if(numConnForReq > numConnUpdates) {
+				queryStatusType = QueryStatusType.PENDING;
+			} else {
+				for(QueryStatusType connStatus : statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().stream().map(c -> c.getStatusResult().getStatus()).toList()) {
+					if(QueryStatusType.PENDING.equals(connStatus)) {
+						queryStatusType = QueryStatusType.PENDING;
+						break;
+					} else if(QueryStatusType.ERROR.equals(connStatus)) {
+						queryStatusType = QueryStatusType.ERROR;
+					}
+				}
+			}		
+			if(QueryStatusType.SUCCESS.equals(queryStatusType) && (numConnForReq == numConnUpdates)) {
+				if(QueryStatusType.SUCCESS.equals(statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().stream().map(c -> c.getStatusResult().getStatus()).findFirst().orElse(null))) {
+					queryStatusType = QueryStatusType.SUCCESS;
+				} else if(QueryStatusType.DRYRUN_SUCCESS.equals(statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().stream().map(c -> c.getStatusResult().getStatus()).findFirst().orElse(null))) {
+					queryStatusType = QueryStatusType.DRYRUN_SUCCESS;
+				}
+			}
+		} else {
+			LOGGER.severe(String.format("No metadata for tot.connectors.for.request: cannot determine global status, so setting to error"));
+			queryStatusType = QueryStatusType.ERROR;
+			statusResponse.setMessage(String.format("No metadata for tot.connectors.for.request: cannot determine global status, so setting to error"));
+		}
+		statusResponse.setStatus(queryStatusType);
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
+	@Override
+	public void run() {
+		LOGGER.info(String.format("Starting StatusCleanup job! Initial Status Map Size %d", cachedStatuses.size()));
+		Instant now = Instant.now();
+		Instant criticInstant = now.minus(cleanupConfig.removeOlderThan(), ChronoUnit.valueOf(cleanupConfig.removeOlderThanUnit()));
+		cachedStatuses.
+			entrySet(). 
+            removeIf(entry -> criticInstant.isAfter(Instant.ofEpochMilli(entry.getValue().getTimestamp()))); 
+		cachedRequests.
+			entrySet().
+			removeIf(entry -> !cachedStatuses.containsKey(entry.getKey()));		
+		LOGGER.info(String.format("Finished StatusCleanup job! Final Status Map Size %d", cachedStatuses.size()));
 	}
 
 }

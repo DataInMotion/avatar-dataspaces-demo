@@ -1,0 +1,2 @@
+-library: enable-emf
+-buildpath: de.avatar.connector.cleanup.api;version=snapshot

@@ -7,4 +7,5 @@
 	org.osgi.service.cm,\
 	de.avatar.query.status.model,\
 	org.osgi.service.component,\
-	de.avatar.generator.api
+	de.avatar.generator.api,\
+	de.avatar.connector.cleanup.api;version=snapshot

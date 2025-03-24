@@ -99,6 +99,11 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	 */
 	@Override
 	public QueryResponse executeDryRun(QueryRequest queryRequest) {
+//		what if you send a dry run for a request that already exists? You should get back the status if it's already available
+		if(statusService.getCachedRequest(queryRequest.getRequestId()) != null) {
+			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", queryRequest.getRequestId()));
+			return statusService.getStatusUpdate(queryRequest.getRequestId());
+		}
 		sendQueryRequest(queryRequest, "dryrun");
 		
 //		here we just ping the status for updates
@@ -115,13 +120,18 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	 */
 	@Override
 	public QueryResponse executeQuery(QueryRequest queryRequest) {
-		sendQueryRequest(queryRequest, "request");
-		statusService.cacheRequest(queryRequest);
+//		what if you send a query for a request that already exists? You should get back the status if it's already available
+		if(statusService.getCachedRequest(queryRequest.getRequestId()) != null) {
+			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", queryRequest.getRequestId()));
+			return statusService.getStatusUpdate(queryRequest.getRequestId());
+		}
+		sendQueryRequest(queryRequest, "request");		
 //		here we just ping the status for updates
-		QueryStatusResponse response = pingForStatus(queryRequest.getRequestId(), true);
+		QueryStatusResponse response = pingForStatus(queryRequest.getRequestId(), false);
 		if(response == null) {
 			response = getBasicPendingResponse(queryRequest.getRequestId());
 		}
+		statusService.cacheRequest(queryRequest);
 		return response;		
 	}
 	
@@ -135,6 +145,11 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		QueryRequest queryRequest = statusService.getCachedRequest(requestId);
 		if(queryRequest == null) {
 			throw new IllegalArgumentException(String.format("No cached request for id %s", requestId));
+		}
+		QueryStatusResponse cachedStatus = statusService.getStatusUpdate(requestId);
+		if(QueryStatusType.SUCCESS.equals(cachedStatus.getStatus())) {
+			LOGGER.info(String.format("Request %s already executed with success!", requestId));
+			return cachedStatus;
 		}
 		sendQueryRequest(queryRequest, "status");
 		QueryStatusResponse response = pingForStatus(queryRequest.getRequestId(), false);

@@ -81,7 +81,7 @@ import de.avatar.status.QueryRequest;
 		"com.paremus.dosgi.scope=global", 
 		"com.paremus.dosgi.target.clusters=DIMC", 
 		"com.paremus.dosgi.net.serialization=ecore",
-"connector=isma.himsa"}, configurationPid = "AvatarConnector", configurationPolicy = ConfigurationPolicy.REQUIRE)
+"connector=isma.himsa"}, configurationPid = "HIMSAAvatarConnector", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class ISMAConnectorImpl implements AvatarConnector {
 
 	@Reference
