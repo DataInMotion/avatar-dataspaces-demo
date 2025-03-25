@@ -3,6 +3,7 @@
   
 	"PublicLinkCleanup": 
   	{
+  	    "cleanupRootFolder": "data",
 		"cleanupDelay": 0,
 		"cleanupRate": 10,
 		"cleanupUnit": "MINUTES",
@@ -10,6 +11,7 @@
 		"removeOlderThanUnit": "MINUTES"
 	},
 	"ResponseDataCleanup": {
+	    "cleanupRootFolder": "data",
 		"cleanupDelay": 0,
 		"cleanupRate": 10,
 		"cleanupUnit": "MINUTES",

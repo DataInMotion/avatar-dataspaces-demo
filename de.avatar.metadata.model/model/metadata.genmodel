@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012 - 2024 Data In Motion and others.&#xA;All rights reserved. &#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;    Data In Motion - initial API and implementation"
+    modelDirectory="/de.avatar.query.model/src" editDirectory="/de.avatar.metadata.model.edit/src"
+    editorDirectory="/de.avatar.metadata.model.editor/src" modelPluginID="de.avatar.query.model"
+    modelName="Metadata" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
+    editPluginID="de.avatar.metadata.model.edit" editorPluginID="de.avatar.metadata.model.editor"
+    operationReflection="true" importOrganizing="true" oSGiCompatible="true">
+  <foreignModel>metadata.ecore</foreignModel>
+  <genPackages prefix="Metadata" basePackage="de.avatar" resource="XMI" disposableProviderFactory="true"
+      ecorePackage="metadata.ecore#/">
+    <genClasses ecoreClass="metadata.ecore#//Metadata">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//Metadata/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//Metadata/description"/>
+    </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//ConnectorMetadata">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConnectorMetadata/connectorId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConnectorMetadata/connectorName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConnectorMetadata/totConnectorsPerRequest"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConnectorMetadata/connectorRelativeNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//ConsentMetadata">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//ConsentMetadata/consentInfo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConsentMetadata/resultsBeforeConsentFilter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConsentMetadata/resultsAfterConsentFilter"/>
+    </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//AnonymizationMetadata">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//AnonymizationMetadata/anonymizationInfo"/>
+    </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//ConsentInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConsentInfo/domainId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConsentInfo/policyId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConsentInfo/policyVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConsentInfo/consentIdType"/>
+    </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//AnonymizationInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//AnonymizationInfo/modelName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//AnonymizationInfo/modelDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//AnonymizationInfo/modelVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//AnonymizationInfo/modelProvider"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//AnonymizationInfo/modelConfig"/>
+    </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//AnonymizationModelConfig">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//AnonymizationModelConfig/featureConfig"/>
+    </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//AnonymizationModelFeatureConfig">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//AnonymizationModelFeatureConfig/feature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//AnonymizationModelFeatureConfig/strategy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//AnonymizationModelFeatureConfig/metric"/>
+    </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//DataQualityMetadata">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//DataQualityMetadata/dataQualityFilter"/>
+    </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//DataQualityFilter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//DataQualityFilter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//DataQualityFilter/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//DataQualityFilter/dataQualityResult"/>
+    </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//DataQualityResult">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//DataQualityResult/feature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//DataQualityResult/elementsBeforeQualityFilter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//DataQualityResult/elementsAfterQualityFilter"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
