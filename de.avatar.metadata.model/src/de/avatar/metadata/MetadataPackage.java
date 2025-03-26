@@ -121,6 +121,88 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	int METADATA_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.metadata.impl.ResponseMetadataImpl <em>Response Metadata</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.metadata.impl.ResponseMetadataImpl
+	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getResponseMetadata()
+	 * @generated
+	 */
+	int RESPONSE_METADATA = 1;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE_METADATA__ID = METADATA__ID;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE_METADATA__DESCRIPTION = METADATA__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Response Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE_METADATA__RESPONSE_ID = METADATA_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Request Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE_METADATA__REQUEST_ID = METADATA_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Response Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE_METADATA__RESPONSE_TIME = METADATA_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Tot Connectors Per Request</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE_METADATA__TOT_CONNECTORS_PER_REQUEST = METADATA_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Response Metadata</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE_METADATA_FEATURE_COUNT = METADATA_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Response Metadata</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE_METADATA_OPERATION_COUNT = METADATA_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.metadata.impl.ConnectorMetadataImpl <em>Connector Metadata</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,7 +210,7 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getConnectorMetadata()
 	 * @generated
 	 */
-	int CONNECTOR_METADATA = 1;
+	int CONNECTOR_METADATA = 2;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -167,22 +249,13 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	int CONNECTOR_METADATA__CONNECTOR_NAME = METADATA_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Tot Connectors Per Request</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTOR_METADATA__TOT_CONNECTORS_PER_REQUEST = METADATA_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Connector Relative Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_METADATA__CONNECTOR_RELATIVE_NUMBER = METADATA_FEATURE_COUNT + 3;
+	int CONNECTOR_METADATA__CONNECTOR_RELATIVE_NUMBER = METADATA_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Connector Metadata</em>' class.
@@ -191,7 +264,7 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_METADATA_FEATURE_COUNT = METADATA_FEATURE_COUNT + 4;
+	int CONNECTOR_METADATA_FEATURE_COUNT = METADATA_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Connector Metadata</em>' class.
@@ -210,7 +283,7 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getConsentMetadata()
 	 * @generated
 	 */
-	int CONSENT_METADATA = 2;
+	int CONSENT_METADATA = 3;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -283,7 +356,7 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getAnonymizationMetadata()
 	 * @generated
 	 */
-	int ANONYMIZATION_METADATA = 3;
+	int ANONYMIZATION_METADATA = 4;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -338,7 +411,7 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getConsentInfo()
 	 * @generated
 	 */
-	int CONSENT_INFO = 4;
+	int CONSENT_INFO = 5;
 
 	/**
 	 * The feature id for the '<em><b>Domain Id</b></em>' attribute.
@@ -402,7 +475,7 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getAnonymizationInfo()
 	 * @generated
 	 */
-	int ANONYMIZATION_INFO = 5;
+	int ANONYMIZATION_INFO = 6;
 
 	/**
 	 * The feature id for the '<em><b>Model Name</b></em>' attribute.
@@ -475,7 +548,7 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getAnonymizationModelConfig()
 	 * @generated
 	 */
-	int ANONYMIZATION_MODEL_CONFIG = 6;
+	int ANONYMIZATION_MODEL_CONFIG = 7;
 
 	/**
 	 * The feature id for the '<em><b>Feature Config</b></em>' containment reference list.
@@ -512,16 +585,16 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getAnonymizationModelFeatureConfig()
 	 * @generated
 	 */
-	int ANONYMIZATION_MODEL_FEATURE_CONFIG = 7;
+	int ANONYMIZATION_MODEL_FEATURE_CONFIG = 8;
 
 	/**
-	 * The feature id for the '<em><b>Feature</b></em>' containment reference.
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE = 0;
+	int ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE_NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Strategy</b></em>' attribute.
@@ -567,7 +640,7 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getDataQualityMetadata()
 	 * @generated
 	 */
-	int DATA_QUALITY_METADATA = 8;
+	int DATA_QUALITY_METADATA = 9;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -622,7 +695,7 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getDataQualityFilter()
 	 * @generated
 	 */
-	int DATA_QUALITY_FILTER = 9;
+	int DATA_QUALITY_FILTER = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -677,16 +750,16 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.metadata.impl.MetadataPackageImpl#getDataQualityResult()
 	 * @generated
 	 */
-	int DATA_QUALITY_RESULT = 10;
+	int DATA_QUALITY_RESULT = 11;
 
 	/**
-	 * The feature id for the '<em><b>Feature</b></em>' containment reference.
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUALITY_RESULT__FEATURE = 0;
+	int DATA_QUALITY_RESULT__FEATURE_NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Elements Before Quality Filter</b></em>' attribute.
@@ -758,6 +831,60 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getMetadata_Description();
 
 	/**
+	 * Returns the meta object for class '{@link de.avatar.metadata.ResponseMetadata <em>Response Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Response Metadata</em>'.
+	 * @see de.avatar.metadata.ResponseMetadata
+	 * @generated
+	 */
+	EClass getResponseMetadata();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.metadata.ResponseMetadata#getResponseId <em>Response Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Response Id</em>'.
+	 * @see de.avatar.metadata.ResponseMetadata#getResponseId()
+	 * @see #getResponseMetadata()
+	 * @generated
+	 */
+	EAttribute getResponseMetadata_ResponseId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.metadata.ResponseMetadata#getRequestId <em>Request Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Request Id</em>'.
+	 * @see de.avatar.metadata.ResponseMetadata#getRequestId()
+	 * @see #getResponseMetadata()
+	 * @generated
+	 */
+	EAttribute getResponseMetadata_RequestId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.metadata.ResponseMetadata#getResponseTime <em>Response Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Response Time</em>'.
+	 * @see de.avatar.metadata.ResponseMetadata#getResponseTime()
+	 * @see #getResponseMetadata()
+	 * @generated
+	 */
+	EAttribute getResponseMetadata_ResponseTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.metadata.ResponseMetadata#getTotConnectorsPerRequest <em>Tot Connectors Per Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Tot Connectors Per Request</em>'.
+	 * @see de.avatar.metadata.ResponseMetadata#getTotConnectorsPerRequest()
+	 * @see #getResponseMetadata()
+	 * @generated
+	 */
+	EAttribute getResponseMetadata_TotConnectorsPerRequest();
+
+	/**
 	 * Returns the meta object for class '{@link de.avatar.metadata.ConnectorMetadata <em>Connector Metadata</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -788,17 +915,6 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EAttribute getConnectorMetadata_ConnectorName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.avatar.metadata.ConnectorMetadata#getTotConnectorsPerRequest <em>Tot Connectors Per Request</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Tot Connectors Per Request</em>'.
-	 * @see de.avatar.metadata.ConnectorMetadata#getTotConnectorsPerRequest()
-	 * @see #getConnectorMetadata()
-	 * @generated
-	 */
-	EAttribute getConnectorMetadata_TotConnectorsPerRequest();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.avatar.metadata.ConnectorMetadata#getConnectorRelativeNumber <em>Connector Relative Number</em>}'.
@@ -1026,15 +1142,15 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getAnonymizationModelFeatureConfig();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.avatar.metadata.AnonymizationModelFeatureConfig#getFeature <em>Feature</em>}'.
+	 * Returns the meta object for the attribute '{@link de.avatar.metadata.AnonymizationModelFeatureConfig#getFeatureName <em>Feature Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Feature</em>'.
-	 * @see de.avatar.metadata.AnonymizationModelFeatureConfig#getFeature()
+	 * @return the meta object for the attribute '<em>Feature Name</em>'.
+	 * @see de.avatar.metadata.AnonymizationModelFeatureConfig#getFeatureName()
 	 * @see #getAnonymizationModelFeatureConfig()
 	 * @generated
 	 */
-	EReference getAnonymizationModelFeatureConfig_Feature();
+	EAttribute getAnonymizationModelFeatureConfig_FeatureName();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.avatar.metadata.AnonymizationModelFeatureConfig#getStrategy <em>Strategy</em>}'.
@@ -1133,15 +1249,15 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getDataQualityResult();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.avatar.metadata.DataQualityResult#getFeature <em>Feature</em>}'.
+	 * Returns the meta object for the attribute '{@link de.avatar.metadata.DataQualityResult#getFeatureName <em>Feature Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Feature</em>'.
-	 * @see de.avatar.metadata.DataQualityResult#getFeature()
+	 * @return the meta object for the attribute '<em>Feature Name</em>'.
+	 * @see de.avatar.metadata.DataQualityResult#getFeatureName()
 	 * @see #getDataQualityResult()
 	 * @generated
 	 */
-	EReference getDataQualityResult_Feature();
+	EAttribute getDataQualityResult_FeatureName();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.avatar.metadata.DataQualityResult#getElementsBeforeQualityFilter <em>Elements Before Quality Filter</em>}'.
@@ -1215,6 +1331,48 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute METADATA__DESCRIPTION = eINSTANCE.getMetadata_Description();
 
 		/**
+		 * The meta object literal for the '{@link de.avatar.metadata.impl.ResponseMetadataImpl <em>Response Metadata</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.metadata.impl.ResponseMetadataImpl
+		 * @see de.avatar.metadata.impl.MetadataPackageImpl#getResponseMetadata()
+		 * @generated
+		 */
+		EClass RESPONSE_METADATA = eINSTANCE.getResponseMetadata();
+
+		/**
+		 * The meta object literal for the '<em><b>Response Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESPONSE_METADATA__RESPONSE_ID = eINSTANCE.getResponseMetadata_ResponseId();
+
+		/**
+		 * The meta object literal for the '<em><b>Request Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESPONSE_METADATA__REQUEST_ID = eINSTANCE.getResponseMetadata_RequestId();
+
+		/**
+		 * The meta object literal for the '<em><b>Response Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESPONSE_METADATA__RESPONSE_TIME = eINSTANCE.getResponseMetadata_ResponseTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Tot Connectors Per Request</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESPONSE_METADATA__TOT_CONNECTORS_PER_REQUEST = eINSTANCE.getResponseMetadata_TotConnectorsPerRequest();
+
+		/**
 		 * The meta object literal for the '{@link de.avatar.metadata.impl.ConnectorMetadataImpl <em>Connector Metadata</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1239,14 +1397,6 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute CONNECTOR_METADATA__CONNECTOR_NAME = eINSTANCE.getConnectorMetadata_ConnectorName();
-
-		/**
-		 * The meta object literal for the '<em><b>Tot Connectors Per Request</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONNECTOR_METADATA__TOT_CONNECTORS_PER_REQUEST = eINSTANCE.getConnectorMetadata_TotConnectorsPerRequest();
 
 		/**
 		 * The meta object literal for the '<em><b>Connector Relative Number</b></em>' attribute feature.
@@ -1429,12 +1579,12 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass ANONYMIZATION_MODEL_FEATURE_CONFIG = eINSTANCE.getAnonymizationModelFeatureConfig();
 
 		/**
-		 * The meta object literal for the '<em><b>Feature</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Feature Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE = eINSTANCE.getAnonymizationModelFeatureConfig_Feature();
+		EAttribute ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE_NAME = eINSTANCE.getAnonymizationModelFeatureConfig_FeatureName();
 
 		/**
 		 * The meta object literal for the '<em><b>Strategy</b></em>' attribute feature.
@@ -1515,12 +1665,12 @@ public interface MetadataPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass DATA_QUALITY_RESULT = eINSTANCE.getDataQualityResult();
 
 		/**
-		 * The meta object literal for the '<em><b>Feature</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Feature Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_QUALITY_RESULT__FEATURE = eINSTANCE.getDataQualityResult_Feature();
+		EAttribute DATA_QUALITY_RESULT__FEATURE_NAME = eINSTANCE.getDataQualityResult_FeatureName();
 
 		/**
 		 * The meta object literal for the '<em><b>Elements Before Quality Filter</b></em>' attribute feature.

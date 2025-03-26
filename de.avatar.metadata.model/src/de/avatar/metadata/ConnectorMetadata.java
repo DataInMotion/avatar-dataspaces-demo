@@ -26,7 +26,6 @@ import org.osgi.annotation.versioning.ProviderType;
  * <ul>
  *   <li>{@link de.avatar.metadata.ConnectorMetadata#getConnectorId <em>Connector Id</em>}</li>
  *   <li>{@link de.avatar.metadata.ConnectorMetadata#getConnectorName <em>Connector Name</em>}</li>
- *   <li>{@link de.avatar.metadata.ConnectorMetadata#getTotConnectorsPerRequest <em>Tot Connectors Per Request</em>}</li>
  *   <li>{@link de.avatar.metadata.ConnectorMetadata#getConnectorRelativeNumber <em>Connector Relative Number</em>}</li>
  * </ul>
  *
@@ -79,28 +78,6 @@ public interface ConnectorMetadata extends Metadata {
 	 * @generated
 	 */
 	void setConnectorName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Tot Connectors Per Request</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tot Connectors Per Request</em>' attribute.
-	 * @see #setTotConnectorsPerRequest(Integer)
-	 * @see de.avatar.metadata.MetadataPackage#getConnectorMetadata_TotConnectorsPerRequest()
-	 * @model
-	 * @generated
-	 */
-	Integer getTotConnectorsPerRequest();
-
-	/**
-	 * Sets the value of the '{@link de.avatar.metadata.ConnectorMetadata#getTotConnectorsPerRequest <em>Tot Connectors Per Request</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Tot Connectors Per Request</em>' attribute.
-	 * @see #getTotConnectorsPerRequest()
-	 * @generated
-	 */
-	void setTotConnectorsPerRequest(Integer value);
 
 	/**
 	 * Returns the value of the '<em><b>Connector Relative Number</b></em>' attribute.

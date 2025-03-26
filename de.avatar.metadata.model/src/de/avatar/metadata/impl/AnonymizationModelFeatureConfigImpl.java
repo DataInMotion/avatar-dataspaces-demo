@@ -17,11 +17,8 @@ import de.avatar.metadata.AnonymizationModelFeatureConfig;
 import de.avatar.metadata.MetadataPackage;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -34,7 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.metadata.impl.AnonymizationModelFeatureConfigImpl#getFeature <em>Feature</em>}</li>
+ *   <li>{@link de.avatar.metadata.impl.AnonymizationModelFeatureConfigImpl#getFeatureName <em>Feature Name</em>}</li>
  *   <li>{@link de.avatar.metadata.impl.AnonymizationModelFeatureConfigImpl#getStrategy <em>Strategy</em>}</li>
  *   <li>{@link de.avatar.metadata.impl.AnonymizationModelFeatureConfigImpl#getMetric <em>Metric</em>}</li>
  * </ul>
@@ -43,14 +40,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class AnonymizationModelFeatureConfigImpl extends MinimalEObjectImpl.Container implements AnonymizationModelFeatureConfig {
 	/**
-	 * The cached value of the '{@link #getFeature() <em>Feature</em>}' containment reference.
+	 * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFeature()
+	 * @see #getFeatureName()
 	 * @generated
 	 * @ordered
 	 */
-	protected EStructuralFeature feature;
+	protected static final String FEATURE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeatureName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String featureName = FEATURE_NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getStrategy() <em>Strategy</em>}' attribute.
@@ -117,23 +124,8 @@ public class AnonymizationModelFeatureConfigImpl extends MinimalEObjectImpl.Cont
 	 * @generated
 	 */
 	@Override
-	public EStructuralFeature getFeature() {
-		return feature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetFeature(EStructuralFeature newFeature, NotificationChain msgs) {
-		EStructuralFeature oldFeature = feature;
-		feature = newFeature;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE, oldFeature, newFeature);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public String getFeatureName() {
+		return featureName;
 	}
 
 	/**
@@ -142,18 +134,11 @@ public class AnonymizationModelFeatureConfigImpl extends MinimalEObjectImpl.Cont
 	 * @generated
 	 */
 	@Override
-	public void setFeature(EStructuralFeature newFeature) {
-		if (newFeature != feature) {
-			NotificationChain msgs = null;
-			if (feature != null)
-				msgs = ((InternalEObject)feature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE, null, msgs);
-			if (newFeature != null)
-				msgs = ((InternalEObject)newFeature).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE, null, msgs);
-			msgs = basicSetFeature(newFeature, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE, newFeature, newFeature));
+	public void setFeatureName(String newFeatureName) {
+		String oldFeatureName = featureName;
+		featureName = newFeatureName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE_NAME, oldFeatureName, featureName));
 	}
 
 	/**
@@ -208,24 +193,10 @@ public class AnonymizationModelFeatureConfigImpl extends MinimalEObjectImpl.Cont
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE:
-				return basicSetFeature(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE:
-				return getFeature();
+			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE_NAME:
+				return getFeatureName();
 			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__STRATEGY:
 				return getStrategy();
 			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__METRIC:
@@ -242,8 +213,8 @@ public class AnonymizationModelFeatureConfigImpl extends MinimalEObjectImpl.Cont
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE:
-				setFeature((EStructuralFeature)newValue);
+			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE_NAME:
+				setFeatureName((String)newValue);
 				return;
 			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__STRATEGY:
 				setStrategy((String)newValue);
@@ -263,8 +234,8 @@ public class AnonymizationModelFeatureConfigImpl extends MinimalEObjectImpl.Cont
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE:
-				setFeature((EStructuralFeature)null);
+			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE_NAME:
+				setFeatureName(FEATURE_NAME_EDEFAULT);
 				return;
 			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__STRATEGY:
 				setStrategy(STRATEGY_EDEFAULT);
@@ -284,8 +255,8 @@ public class AnonymizationModelFeatureConfigImpl extends MinimalEObjectImpl.Cont
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE:
-				return feature != null;
+			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE_NAME:
+				return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
 			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__STRATEGY:
 				return STRATEGY_EDEFAULT == null ? strategy != null : !STRATEGY_EDEFAULT.equals(strategy);
 			case MetadataPackage.ANONYMIZATION_MODEL_FEATURE_CONFIG__METRIC:
@@ -304,7 +275,9 @@ public class AnonymizationModelFeatureConfigImpl extends MinimalEObjectImpl.Cont
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (strategy: ");
+		result.append(" (featureName: ");
+		result.append(featureName);
+		result.append(", strategy: ");
 		result.append(strategy);
 		result.append(", metric: ");
 		result.append(metric);

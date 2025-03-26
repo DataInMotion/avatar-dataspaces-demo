@@ -26,6 +26,7 @@ import de.avatar.metadata.DataQualityResult;
 import de.avatar.metadata.Metadata;
 import de.avatar.metadata.MetadataFactory;
 import de.avatar.metadata.MetadataPackage;
+import de.avatar.metadata.ResponseMetadata;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -47,6 +48,13 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 	 * @generated
 	 */
 	private EClass metadataEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass responseMetadataEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,6 +222,56 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getResponseMetadata() {
+		return responseMetadataEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getResponseMetadata_ResponseId() {
+		return (EAttribute)responseMetadataEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getResponseMetadata_RequestId() {
+		return (EAttribute)responseMetadataEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getResponseMetadata_ResponseTime() {
+		return (EAttribute)responseMetadataEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getResponseMetadata_TotConnectorsPerRequest() {
+		return (EAttribute)responseMetadataEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getConnectorMetadata() {
 		return connectorMetadataEClass;
 	}
@@ -244,18 +302,8 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getConnectorMetadata_TotConnectorsPerRequest() {
-		return (EAttribute)connectorMetadataEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getConnectorMetadata_ConnectorRelativeNumber() {
-		return (EAttribute)connectorMetadataEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)connectorMetadataEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -464,8 +512,8 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getAnonymizationModelFeatureConfig_Feature() {
-		return (EReference)anonymizationModelFeatureConfigEClass.getEStructuralFeatures().get(0);
+	public EAttribute getAnonymizationModelFeatureConfig_FeatureName() {
+		return (EAttribute)anonymizationModelFeatureConfigEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -564,8 +612,8 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDataQualityResult_Feature() {
-		return (EReference)dataQualityResultEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDataQualityResult_FeatureName() {
+		return (EAttribute)dataQualityResultEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -621,10 +669,15 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 		createEAttribute(metadataEClass, METADATA__ID);
 		createEAttribute(metadataEClass, METADATA__DESCRIPTION);
 
+		responseMetadataEClass = createEClass(RESPONSE_METADATA);
+		createEAttribute(responseMetadataEClass, RESPONSE_METADATA__RESPONSE_ID);
+		createEAttribute(responseMetadataEClass, RESPONSE_METADATA__REQUEST_ID);
+		createEAttribute(responseMetadataEClass, RESPONSE_METADATA__RESPONSE_TIME);
+		createEAttribute(responseMetadataEClass, RESPONSE_METADATA__TOT_CONNECTORS_PER_REQUEST);
+
 		connectorMetadataEClass = createEClass(CONNECTOR_METADATA);
 		createEAttribute(connectorMetadataEClass, CONNECTOR_METADATA__CONNECTOR_ID);
 		createEAttribute(connectorMetadataEClass, CONNECTOR_METADATA__CONNECTOR_NAME);
-		createEAttribute(connectorMetadataEClass, CONNECTOR_METADATA__TOT_CONNECTORS_PER_REQUEST);
 		createEAttribute(connectorMetadataEClass, CONNECTOR_METADATA__CONNECTOR_RELATIVE_NUMBER);
 
 		consentMetadataEClass = createEClass(CONSENT_METADATA);
@@ -652,7 +705,7 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 		createEReference(anonymizationModelConfigEClass, ANONYMIZATION_MODEL_CONFIG__FEATURE_CONFIG);
 
 		anonymizationModelFeatureConfigEClass = createEClass(ANONYMIZATION_MODEL_FEATURE_CONFIG);
-		createEReference(anonymizationModelFeatureConfigEClass, ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE);
+		createEAttribute(anonymizationModelFeatureConfigEClass, ANONYMIZATION_MODEL_FEATURE_CONFIG__FEATURE_NAME);
 		createEAttribute(anonymizationModelFeatureConfigEClass, ANONYMIZATION_MODEL_FEATURE_CONFIG__STRATEGY);
 		createEAttribute(anonymizationModelFeatureConfigEClass, ANONYMIZATION_MODEL_FEATURE_CONFIG__METRIC);
 
@@ -665,7 +718,7 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 		createEReference(dataQualityFilterEClass, DATA_QUALITY_FILTER__DATA_QUALITY_RESULT);
 
 		dataQualityResultEClass = createEClass(DATA_QUALITY_RESULT);
-		createEReference(dataQualityResultEClass, DATA_QUALITY_RESULT__FEATURE);
+		createEAttribute(dataQualityResultEClass, DATA_QUALITY_RESULT__FEATURE_NAME);
 		createEAttribute(dataQualityResultEClass, DATA_QUALITY_RESULT__ELEMENTS_BEFORE_QUALITY_FILTER);
 		createEAttribute(dataQualityResultEClass, DATA_QUALITY_RESULT__ELEMENTS_AFTER_QUALITY_FILTER);
 	}
@@ -698,6 +751,7 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		responseMetadataEClass.getESuperTypes().add(this.getMetadata());
 		connectorMetadataEClass.getESuperTypes().add(this.getMetadata());
 		consentMetadataEClass.getESuperTypes().add(this.getMetadata());
 		anonymizationMetadataEClass.getESuperTypes().add(this.getMetadata());
@@ -708,10 +762,15 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 		initEAttribute(getMetadata_Id(), ecorePackage.getEString(), "id", null, 1, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMetadata_Description(), ecorePackage.getEString(), "description", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(responseMetadataEClass, ResponseMetadata.class, "ResponseMetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getResponseMetadata_ResponseId(), ecorePackage.getEString(), "responseId", null, 1, 1, ResponseMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResponseMetadata_RequestId(), ecorePackage.getEString(), "requestId", null, 1, 1, ResponseMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResponseMetadata_ResponseTime(), ecorePackage.getEString(), "responseTime", null, 0, 1, ResponseMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResponseMetadata_TotConnectorsPerRequest(), ecorePackage.getEIntegerObject(), "totConnectorsPerRequest", null, 0, 1, ResponseMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(connectorMetadataEClass, ConnectorMetadata.class, "ConnectorMetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConnectorMetadata_ConnectorId(), ecorePackage.getEString(), "connectorId", null, 1, 1, ConnectorMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnectorMetadata_ConnectorName(), ecorePackage.getEString(), "connectorName", null, 0, 1, ConnectorMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConnectorMetadata_TotConnectorsPerRequest(), ecorePackage.getEIntegerObject(), "totConnectorsPerRequest", null, 0, 1, ConnectorMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnectorMetadata_ConnectorRelativeNumber(), ecorePackage.getEIntegerObject(), "connectorRelativeNumber", null, 0, 1, ConnectorMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(consentMetadataEClass, ConsentMetadata.class, "ConsentMetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -739,7 +798,7 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 		initEReference(getAnonymizationModelConfig_FeatureConfig(), this.getAnonymizationModelFeatureConfig(), null, "featureConfig", null, 0, -1, AnonymizationModelConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(anonymizationModelFeatureConfigEClass, AnonymizationModelFeatureConfig.class, "AnonymizationModelFeatureConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnonymizationModelFeatureConfig_Feature(), ecorePackage.getEStructuralFeature(), null, "feature", null, 0, 1, AnonymizationModelFeatureConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnonymizationModelFeatureConfig_FeatureName(), ecorePackage.getEString(), "featureName", null, 0, 1, AnonymizationModelFeatureConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnonymizationModelFeatureConfig_Strategy(), ecorePackage.getEString(), "strategy", null, 0, 1, AnonymizationModelFeatureConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnonymizationModelFeatureConfig_Metric(), ecorePackage.getEString(), "metric", null, 0, 1, AnonymizationModelFeatureConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -752,7 +811,7 @@ public class MetadataPackageImpl extends EPackageImpl implements MetadataPackage
 		initEReference(getDataQualityFilter_DataQualityResult(), this.getDataQualityResult(), null, "dataQualityResult", null, 0, -1, DataQualityFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataQualityResultEClass, DataQualityResult.class, "DataQualityResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataQualityResult_Feature(), ecorePackage.getEStructuralFeature(), null, "feature", null, 0, 1, DataQualityResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataQualityResult_FeatureName(), ecorePackage.getEString(), "featureName", null, 0, 1, DataQualityResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataQualityResult_ElementsBeforeQualityFilter(), ecorePackage.getEIntegerObject(), "elementsBeforeQualityFilter", null, 0, 1, DataQualityResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataQualityResult_ElementsAfterQualityFilter(), ecorePackage.getEIntegerObject(), "elementsAfterQualityFilter", null, 0, 1, DataQualityResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

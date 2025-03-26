@@ -13,6 +13,8 @@
  */
 package de.avatar.status.impl;
 
+import de.avatar.metadata.MetadataPackage;
+
 import de.avatar.model.connector.AConnectorPackage;
 
 import de.avatar.query.QueryPackage;
@@ -193,6 +195,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		EcorePackage.eINSTANCE.eClass();
 		QueryPackage.eINSTANCE.eClass();
 		UtilitiesPackage.eINSTANCE.eClass();
+		MetadataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theStatusPackage.createPackageContents();
@@ -761,6 +764,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		// Obtain other dependent packages
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		QueryPackage theQueryPackage = (QueryPackage)EPackage.Registry.INSTANCE.getEPackage(QueryPackage.eNS_URI);
+		MetadataPackage theMetadataPackage = (MetadataPackage)EPackage.Registry.INSTANCE.getEPackage(MetadataPackage.eNS_URI);
 		AConnectorPackage theAConnectorPackage = (AConnectorPackage)EPackage.Registry.INSTANCE.getEPackage(AConnectorPackage.eNS_URI);
 
 		// Create type parameters
@@ -799,7 +803,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		initEAttribute(getSingleConnectorQueryStatus_ConnectorId(), theEcorePackage.getEString(), "connectorId", null, 0, 1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSingleConnectorQueryStatus_ConnectorName(), theEcorePackage.getEString(), "connectorName", null, 0, 1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingleConnectorQueryStatus_StatusResult(), this.getStatusResult(), null, "statusResult", null, 0, 1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSingleConnectorQueryStatus_Metadata(), theAConnectorPackage.getMetadata(), null, "metadata", null, 0, -1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleConnectorQueryStatus_Metadata(), theMetadataPackage.getMetadata(), null, "metadata", null, 0, -1, SingleConnectorQueryStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(statusResultEClass, StatusResult.class, "StatusResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStatusResult_Status(), this.getQueryStatusType(), "status", null, 0, 1, StatusResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

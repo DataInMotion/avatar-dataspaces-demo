@@ -223,7 +223,7 @@ public class OtherConnectorImpl implements AvatarConnector {
 					return sendRequest(request, res);
 				} catch (IOException e) {
 					e.printStackTrace();
-					LOGGER.severe(String.format("Error while sending request to ISMA", e.getMessage()));
+					LOGGER.severe(String.format("Error while sending request to Other", e.getMessage()));
 					return null;
 				} 
 				finally {
@@ -339,7 +339,7 @@ public class OtherConnectorImpl implements AvatarConnector {
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
-					LOGGER.severe(String.format("Error while sending Request to ISMA", e.getMessage()));
+					LOGGER.severe(String.format("Error while sending Request to Other", e.getMessage()));
 					return null;
 				} 
 				finally {

@@ -14,10 +14,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//Metadata/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//Metadata/description"/>
     </genClasses>
+    <genClasses ecoreClass="metadata.ecore#//ResponseMetadata">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ResponseMetadata/responseId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ResponseMetadata/requestId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ResponseMetadata/responseTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ResponseMetadata/totConnectorsPerRequest"/>
+    </genClasses>
     <genClasses ecoreClass="metadata.ecore#//ConnectorMetadata">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConnectorMetadata/connectorId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConnectorMetadata/connectorName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConnectorMetadata/totConnectorsPerRequest"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//ConnectorMetadata/connectorRelativeNumber"/>
     </genClasses>
     <genClasses ecoreClass="metadata.ecore#//ConsentMetadata">
@@ -45,7 +50,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//AnonymizationModelConfig/featureConfig"/>
     </genClasses>
     <genClasses ecoreClass="metadata.ecore#//AnonymizationModelFeatureConfig">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//AnonymizationModelFeatureConfig/feature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//AnonymizationModelFeatureConfig/featureName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//AnonymizationModelFeatureConfig/strategy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//AnonymizationModelFeatureConfig/metric"/>
     </genClasses>
@@ -58,7 +63,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//DataQualityFilter/dataQualityResult"/>
     </genClasses>
     <genClasses ecoreClass="metadata.ecore#//DataQualityResult">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metadata.ecore#//DataQualityResult/feature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//DataQualityResult/featureName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//DataQualityResult/elementsBeforeQualityFilter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metadata.ecore#//DataQualityResult/elementsAfterQualityFilter"/>
     </genClasses>

@@ -13,7 +13,7 @@
  */
 package de.avatar.status;
 
-import de.avatar.model.connector.Metadata;
+import de.avatar.metadata.Metadata;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -110,7 +110,7 @@ public interface SingleConnectorQueryStatus extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Metadata</b></em>' containment reference list.
-	 * The list contents are of type {@link de.avatar.model.connector.Metadata}.
+	 * The list contents are of type {@link de.avatar.metadata.Metadata}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metadata</em>' containment reference list.

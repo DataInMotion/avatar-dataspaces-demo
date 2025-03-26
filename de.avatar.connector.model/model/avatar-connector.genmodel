@@ -4,7 +4,7 @@
     modelDirectory="/de.avatar.connector.model/src" modelPluginID="de.avatar.connector.model"
     modelName="avatar-connector" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" suppressGenModelAnnotations="false"
-    copyrightFields="false" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    copyrightFields="false" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../de.avatar.metadata.model/model/metadata.genmodel#//metadata"
     operationReflection="true" importOrganizing="true" oSGiCompatible="true">
   <foreignModel>avatar-connector.ecore</foreignModel>
   <genPackages prefix="AConnector" basePackage="de.avatar.model" resource="XMI" disposableProviderFactory="true"
@@ -133,10 +133,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ModelInfo/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ModelInfo/uri"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//ModelInfo/description"/>
-    </genClasses>
-    <genClasses ecoreClass="avatar-connector.ecore#//Metadata">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//Metadata/key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute avatar-connector.ecore#//Metadata/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

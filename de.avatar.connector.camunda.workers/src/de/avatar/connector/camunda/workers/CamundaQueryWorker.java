@@ -11,10 +11,14 @@
  */
 package de.avatar.connector.camunda.workers;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
@@ -36,12 +40,15 @@ import de.avatar.connector.camunda.api.OrchestratorWorker;
 import de.avatar.connector.camunda.workers.helper.CamundaWorkerHelper;
 import de.avatar.connector.whiteboard.api.ConnectorWhiteboard;
 import de.avatar.keycloak.service.api.KeycloakService;
+import de.avatar.metadata.ConnectorMetadata;
+import de.avatar.metadata.Metadata;
+import de.avatar.metadata.MetadataFactory;
+import de.avatar.metadata.ResponseMetadata;
 import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.EcoreParameter;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
-import de.avatar.model.connector.Metadata;
 import de.avatar.query.QObject;
 import de.avatar.query.QSubject;
 import de.avatar.query.Query;
@@ -69,6 +76,8 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 
 	
 	private static final Logger LOGGER = Logger.getLogger(CamundaQueryWorker.class.getName());
+	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'hh:mm:ss'Z'")
+			.withZone(ZoneId.of("Europe/Berlin"));
 	
 	
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -116,6 +125,7 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 		handler((externalTask, externalTaskService) -> {
 			String queryStr = externalTask.getVariable("query");
 			String reqType = externalTask.getVariable("reqType");
+			String reqId = externalTask.getVariable("reqId");
 			LOGGER.info(String.format("I got the query in CamundaQueryWorker %s", queryStr));
 
 			//send the query to all connectors that can handle it
@@ -131,7 +141,7 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 						EndpointResponse connectorResponse = doForwardQueryRequestToConnector(c, queryRequest, reqType);						
 						if(connectorResponse != null) {
 							LOGGER.info(String.format("Got an EndpointRes from connector for request %s", connectorResponse.getRequest().getId()));
-							connectorResponse.getMetadata().addAll(createConnectorResponseMetadata(c, connectorResponse, availableConnectors.size(), i));
+							connectorResponse.getMetadata().addAll(createConnectorResponseMetadata(c, connectorResponse, availableConnectors.size(), i, reqId));
 							i++;
 //							Update status - trigger status update process on camunda
 							launchStatusUpdateProcess(connectorResponse, c);
@@ -149,28 +159,25 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 		.open();
 	}
 	
-	private List<Metadata> createConnectorResponseMetadata(AvatarConnector connector, EndpointResponse response, int totConnectors, int thisConnectorNum) {
+	private List<Metadata> createConnectorResponseMetadata(AvatarConnector connector, EndpointResponse response, int totConnectors, int thisConnectorNum, String reqId) {
 		List<Metadata> metadatas = new ArrayList<>(5);
-		Metadata metadata = AConnectorFactory.eINSTANCE.createMetadata();
-		metadata.setKey("connector.relative.id");
-		metadata.setValue(""+thisConnectorNum);
+		ConnectorMetadata metadata = MetadataFactory.eINSTANCE.createConnectorMetadata();
+		
+		metadata.setId(UUID.randomUUID().toString());
+		metadata.setConnectorId(connector.getInfo().getId());
+		metadata.setConnectorName(connector.getInfo().getName());
+		metadata.setConnectorRelativeNumber(thisConnectorNum);
 		metadatas.add(metadata);
 		
-		metadata = AConnectorFactory.eINSTANCE.createMetadata();
-		metadata.setKey("tot.connectors.for.request");
-		metadata.setValue(""+totConnectors);
-		metadatas.add(metadata);
-		
-		metadata = AConnectorFactory.eINSTANCE.createMetadata();
-		metadata.setKey("connector.id");
-		metadata.setValue(connector.getInfo().getId());
-		metadatas.add(metadata);
-		
-		metadata = AConnectorFactory.eINSTANCE.createMetadata();
-		metadata.setKey("connector.name");
-		metadata.setValue(connector.getInfo().getName());
-		metadatas.add(metadata);
-		
+		ResponseMetadata responseMetadata = response.getMetadata().stream().filter(m -> m instanceof ResponseMetadata).map(m -> (ResponseMetadata) m).findAny().orElse(null);
+		if(responseMetadata == null) {
+			responseMetadata = MetadataFactory.eINSTANCE.createResponseMetadata();
+			responseMetadata.setResponseId(response.getId());
+			responseMetadata.setRequestId(reqId);
+			responseMetadata.setResponseTime(DATE_TIME_FORMATTER.format(response.getTimestamp() != 0 ? Instant.ofEpochMilli(response.getTimestamp()) : Instant.now()));
+		}
+		responseMetadata.setTotConnectorsPerRequest(totConnectors);
+		metadatas.add(responseMetadata);		
 		return metadatas;
 		
 	}

@@ -86,7 +86,6 @@ public class AConnectorFactoryImpl extends EFactoryImpl implements AConnectorFac
 			case AConnectorPackage.CONNECTOR_PENDING_RESULT: return createConnectorPendingResult();
 			case AConnectorPackage.CONSENT_INFO: return createConsentInfo();
 			case AConnectorPackage.MODEL_INFO: return createModelInfo();
-			case AConnectorPackage.METADATA: return createMetadata();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -330,17 +329,6 @@ public class AConnectorFactoryImpl extends EFactoryImpl implements AConnectorFac
 	public ModelInfo createModelInfo() {
 		ModelInfoImpl modelInfo = new ModelInfoImpl();
 		return modelInfo;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Metadata createMetadata() {
-		MetadataImpl metadata = new MetadataImpl();
-		return metadata;
 	}
 
 	/**

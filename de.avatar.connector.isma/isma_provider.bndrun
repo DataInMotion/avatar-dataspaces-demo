@@ -64,7 +64,8 @@
 	org.eclipse.emfcloud.emfjson-jackson;version='[2.2.0,2.2.1)',\
 	org.gecko.emf.json;version='[1.5.1,1.5.2)',\
 	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
-	org.avatar.himsa.model;version='[1.0.0,1.0.1)'
+	org.avatar.himsa.model;version='[1.0.0,1.0.1)',\
+	de.avatar.metadata.model;version=snapshot
 
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\

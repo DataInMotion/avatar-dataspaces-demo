@@ -13,10 +13,11 @@
  */
 package de.avatar.model.connector.impl;
 
+import de.avatar.metadata.Metadata;
+
 import de.avatar.model.connector.AConnectorPackage;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
-import de.avatar.model.connector.Metadata;
 import de.avatar.model.connector.ResponseCode;
 import de.avatar.model.connector.ResponseResult;
 

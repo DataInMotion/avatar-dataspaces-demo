@@ -22,4 +22,5 @@ Bundle-Version: 1.0.0.SNAPSHOT
 -buildpath: \
 	org.gecko.emf.util.model;version=latest,\
 	de.avatar.connector.model;version=snapshot,\
-	de.avatar.query.model;version=snapshot
+	de.avatar.query.model;version=snapshot,\
+	de.avatar.metadata.model;version=snapshot

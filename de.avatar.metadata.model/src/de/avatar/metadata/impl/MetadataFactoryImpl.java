@@ -68,6 +68,7 @@ public class MetadataFactoryImpl extends EFactoryImpl implements MetadataFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case MetadataPackage.METADATA: return createMetadata();
+			case MetadataPackage.RESPONSE_METADATA: return createResponseMetadata();
 			case MetadataPackage.CONNECTOR_METADATA: return createConnectorMetadata();
 			case MetadataPackage.CONSENT_METADATA: return createConsentMetadata();
 			case MetadataPackage.ANONYMIZATION_METADATA: return createAnonymizationMetadata();
@@ -92,6 +93,17 @@ public class MetadataFactoryImpl extends EFactoryImpl implements MetadataFactory
 	public Metadata createMetadata() {
 		MetadataImpl metadata = new MetadataImpl();
 		return metadata;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResponseMetadata createResponseMetadata() {
+		ResponseMetadataImpl responseMetadata = new ResponseMetadataImpl();
+		return responseMetadata;
 	}
 
 	/**

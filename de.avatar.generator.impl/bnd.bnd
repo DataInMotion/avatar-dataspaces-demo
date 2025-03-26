@@ -5,5 +5,6 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	de.avatar.connector.model;version=snapshot,\
 	com.fasterxml.jackson.core.jackson-core,\
 	com.fasterxml.jackson.core.jackson-databind,\
-	org.osgi.service.component
+	org.osgi.service.component,\
+	de.avatar.metadata.model;version=snapshot
 	

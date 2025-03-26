@@ -126,7 +126,8 @@
 	de.avatar.connector.whiteboard.config;version=snapshot,\
 	de.avatar.connector.cleanup.api;version=snapshot,\
 	de.avatar.connector.cleanup.config;version=snapshot,\
-	de.avatar.connector.cleanup.impl;version=snapshot
+	de.avatar.connector.cleanup.impl;version=snapshot,\
+	de.avatar.metadata.model;version=snapshot
 
 
 #Avoid To have the default Jetty run at port 8080	

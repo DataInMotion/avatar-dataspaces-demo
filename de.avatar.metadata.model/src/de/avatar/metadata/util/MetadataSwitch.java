@@ -83,6 +83,13 @@ public class MetadataSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case MetadataPackage.RESPONSE_METADATA: {
+				ResponseMetadata responseMetadata = (ResponseMetadata)theEObject;
+				T result = caseResponseMetadata(responseMetadata);
+				if (result == null) result = caseMetadata(responseMetadata);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case MetadataPackage.CONNECTOR_METADATA: {
 				ConnectorMetadata connectorMetadata = (ConnectorMetadata)theEObject;
 				T result = caseConnectorMetadata(connectorMetadata);
@@ -163,6 +170,21 @@ public class MetadataSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMetadata(Metadata object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Response Metadata</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Response Metadata</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseResponseMetadata(ResponseMetadata object) {
 		return null;
 	}
 

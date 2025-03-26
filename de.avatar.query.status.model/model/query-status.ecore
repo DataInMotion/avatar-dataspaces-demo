@@ -61,7 +61,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="statusResult" eType="#//StatusResult"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metadata" upperBound="-1"
-        eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//Metadata"
+        eType="ecore:EClass ../../de.avatar.metadata.model/model/metadata.ecore#//Metadata"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StatusResult" eSuperTypes="#//Status">

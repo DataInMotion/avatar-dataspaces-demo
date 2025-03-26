@@ -41,10 +41,10 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.avatar.generator.api.api.AvatarGenerator;
+import de.avatar.metadata.Metadata;
 import de.avatar.model.connector.EcoreResult;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.JavaResult;
-import de.avatar.model.connector.Metadata;
 import de.avatar.model.connector.ResponseResult;
 
 @Component(immediate = true, name = "AvatarGenerator", service = AvatarGenerator.class)
@@ -96,7 +96,7 @@ public class AvatarGeneratorImpl implements AvatarGenerator {
 		aggregateResponseMap.get(requestId).put(connectorId, responseFile.getAbsolutePath());
 
 		ResponseResult result = response.getResult();
-		EList<Metadata> metadatas = response.getMetadata();
+		List<Metadata> metadatas = response.getMetadata();
 		ResourceSet resourceSet = rsFactory.getService();
 		Resource resource = resourceSet.createResource(URI.createFileURI(filePath), "application/json");
 		resource.getContents().addAll(metadatas);

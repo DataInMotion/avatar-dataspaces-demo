@@ -21,3 +21,4 @@ src=${^src},src-gen
 
 Bundle-Version: 1.0.0.SNAPSHOT
 
+-buildpath: de.avatar.metadata.model;version=snapshot

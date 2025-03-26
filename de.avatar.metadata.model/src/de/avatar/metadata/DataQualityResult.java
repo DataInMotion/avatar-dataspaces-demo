@@ -14,7 +14,6 @@
 package de.avatar.metadata;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -27,7 +26,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.metadata.DataQualityResult#getFeature <em>Feature</em>}</li>
+ *   <li>{@link de.avatar.metadata.DataQualityResult#getFeatureName <em>Feature Name</em>}</li>
  *   <li>{@link de.avatar.metadata.DataQualityResult#getElementsBeforeQualityFilter <em>Elements Before Quality Filter</em>}</li>
  *   <li>{@link de.avatar.metadata.DataQualityResult#getElementsAfterQualityFilter <em>Elements After Quality Filter</em>}</li>
  * </ul>
@@ -39,26 +38,26 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface DataQualityResult extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Feature</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Feature Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Feature</em>' containment reference.
-	 * @see #setFeature(EStructuralFeature)
-	 * @see de.avatar.metadata.MetadataPackage#getDataQualityResult_Feature()
-	 * @model containment="true"
+	 * @return the value of the '<em>Feature Name</em>' attribute.
+	 * @see #setFeatureName(String)
+	 * @see de.avatar.metadata.MetadataPackage#getDataQualityResult_FeatureName()
+	 * @model
 	 * @generated
 	 */
-	EStructuralFeature getFeature();
+	String getFeatureName();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.metadata.DataQualityResult#getFeature <em>Feature</em>}' containment reference.
+	 * Sets the value of the '{@link de.avatar.metadata.DataQualityResult#getFeatureName <em>Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Feature</em>' containment reference.
-	 * @see #getFeature()
+	 * @param value the new value of the '<em>Feature Name</em>' attribute.
+	 * @see #getFeatureName()
 	 * @generated
 	 */
-	void setFeature(EStructuralFeature value);
+	void setFeatureName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Elements Before Quality Filter</b></em>' attribute.

@@ -32,7 +32,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link de.avatar.metadata.impl.ConnectorMetadataImpl#getConnectorId <em>Connector Id</em>}</li>
  *   <li>{@link de.avatar.metadata.impl.ConnectorMetadataImpl#getConnectorName <em>Connector Name</em>}</li>
- *   <li>{@link de.avatar.metadata.impl.ConnectorMetadataImpl#getTotConnectorsPerRequest <em>Tot Connectors Per Request</em>}</li>
  *   <li>{@link de.avatar.metadata.impl.ConnectorMetadataImpl#getConnectorRelativeNumber <em>Connector Relative Number</em>}</li>
  * </ul>
  *
@@ -78,26 +77,6 @@ public class ConnectorMetadataImpl extends MetadataImpl implements ConnectorMeta
 	 * @ordered
 	 */
 	protected String connectorName = CONNECTOR_NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getTotConnectorsPerRequest() <em>Tot Connectors Per Request</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTotConnectorsPerRequest()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Integer TOT_CONNECTORS_PER_REQUEST_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getTotConnectorsPerRequest() <em>Tot Connectors Per Request</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTotConnectorsPerRequest()
-	 * @generated
-	 * @ordered
-	 */
-	protected Integer totConnectorsPerRequest = TOT_CONNECTORS_PER_REQUEST_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getConnectorRelativeNumber() <em>Connector Relative Number</em>}' attribute.
@@ -190,29 +169,6 @@ public class ConnectorMetadataImpl extends MetadataImpl implements ConnectorMeta
 	 * @generated
 	 */
 	@Override
-	public Integer getTotConnectorsPerRequest() {
-		return totConnectorsPerRequest;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setTotConnectorsPerRequest(Integer newTotConnectorsPerRequest) {
-		Integer oldTotConnectorsPerRequest = totConnectorsPerRequest;
-		totConnectorsPerRequest = newTotConnectorsPerRequest;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetadataPackage.CONNECTOR_METADATA__TOT_CONNECTORS_PER_REQUEST, oldTotConnectorsPerRequest, totConnectorsPerRequest));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Integer getConnectorRelativeNumber() {
 		return connectorRelativeNumber;
 	}
@@ -242,8 +198,6 @@ public class ConnectorMetadataImpl extends MetadataImpl implements ConnectorMeta
 				return getConnectorId();
 			case MetadataPackage.CONNECTOR_METADATA__CONNECTOR_NAME:
 				return getConnectorName();
-			case MetadataPackage.CONNECTOR_METADATA__TOT_CONNECTORS_PER_REQUEST:
-				return getTotConnectorsPerRequest();
 			case MetadataPackage.CONNECTOR_METADATA__CONNECTOR_RELATIVE_NUMBER:
 				return getConnectorRelativeNumber();
 		}
@@ -263,9 +217,6 @@ public class ConnectorMetadataImpl extends MetadataImpl implements ConnectorMeta
 				return;
 			case MetadataPackage.CONNECTOR_METADATA__CONNECTOR_NAME:
 				setConnectorName((String)newValue);
-				return;
-			case MetadataPackage.CONNECTOR_METADATA__TOT_CONNECTORS_PER_REQUEST:
-				setTotConnectorsPerRequest((Integer)newValue);
 				return;
 			case MetadataPackage.CONNECTOR_METADATA__CONNECTOR_RELATIVE_NUMBER:
 				setConnectorRelativeNumber((Integer)newValue);
@@ -288,9 +239,6 @@ public class ConnectorMetadataImpl extends MetadataImpl implements ConnectorMeta
 			case MetadataPackage.CONNECTOR_METADATA__CONNECTOR_NAME:
 				setConnectorName(CONNECTOR_NAME_EDEFAULT);
 				return;
-			case MetadataPackage.CONNECTOR_METADATA__TOT_CONNECTORS_PER_REQUEST:
-				setTotConnectorsPerRequest(TOT_CONNECTORS_PER_REQUEST_EDEFAULT);
-				return;
 			case MetadataPackage.CONNECTOR_METADATA__CONNECTOR_RELATIVE_NUMBER:
 				setConnectorRelativeNumber(CONNECTOR_RELATIVE_NUMBER_EDEFAULT);
 				return;
@@ -310,8 +258,6 @@ public class ConnectorMetadataImpl extends MetadataImpl implements ConnectorMeta
 				return CONNECTOR_ID_EDEFAULT == null ? connectorId != null : !CONNECTOR_ID_EDEFAULT.equals(connectorId);
 			case MetadataPackage.CONNECTOR_METADATA__CONNECTOR_NAME:
 				return CONNECTOR_NAME_EDEFAULT == null ? connectorName != null : !CONNECTOR_NAME_EDEFAULT.equals(connectorName);
-			case MetadataPackage.CONNECTOR_METADATA__TOT_CONNECTORS_PER_REQUEST:
-				return TOT_CONNECTORS_PER_REQUEST_EDEFAULT == null ? totConnectorsPerRequest != null : !TOT_CONNECTORS_PER_REQUEST_EDEFAULT.equals(totConnectorsPerRequest);
 			case MetadataPackage.CONNECTOR_METADATA__CONNECTOR_RELATIVE_NUMBER:
 				return CONNECTOR_RELATIVE_NUMBER_EDEFAULT == null ? connectorRelativeNumber != null : !CONNECTOR_RELATIVE_NUMBER_EDEFAULT.equals(connectorRelativeNumber);
 		}
@@ -332,8 +278,6 @@ public class ConnectorMetadataImpl extends MetadataImpl implements ConnectorMeta
 		result.append(connectorId);
 		result.append(", connectorName: ");
 		result.append(connectorName);
-		result.append(", totConnectorsPerRequest: ");
-		result.append(totConnectorsPerRequest);
 		result.append(", connectorRelativeNumber: ");
 		result.append(connectorRelativeNumber);
 		result.append(')');

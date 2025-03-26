@@ -45,6 +45,15 @@ public interface MetadataFactory extends EFactory {
 	Metadata createMetadata();
 
 	/**
+	 * Returns a new object of class '<em>Response Metadata</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Response Metadata</em>'.
+	 * @generated
+	 */
+	ResponseMetadata createResponseMetadata();
+
+	/**
 	 * Returns a new object of class '<em>Connector Metadata</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

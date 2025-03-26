@@ -34,8 +34,8 @@ import de.avatar.connector.cleanup.api.api.AvatarDataCleanup;
 import de.avatar.connector.cleanup.api.api.AvatarDataCleanupConfig;
 import de.avatar.connector.whiteboard.api.StatusService;
 import de.avatar.generator.api.api.AvatarGenerator;
+import de.avatar.metadata.ResponseMetadata;
 import de.avatar.model.connector.EndpointResponse;
-import de.avatar.model.connector.Metadata;
 import de.avatar.model.connector.ResponseCode;
 import de.avatar.status.DetailedQueryStatus;
 import de.avatar.status.QueryRequest;
@@ -188,9 +188,9 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 	
 	private void determineGlobalStatusType(EndpointResponse endpointResponse, QueryStatusResponse statusResponse) {
 		QueryStatusType queryStatusType = QueryStatusType.SUCCESS;
-		Metadata totConnForRequest = endpointResponse.getMetadata().stream().filter(m -> "tot.connectors.for.request".equals(m.getKey())).findAny().orElse(null);
-		if(totConnForRequest != null) {
-			int numConnForReq = Integer.valueOf(totConnForRequest.getValue());
+		ResponseMetadata responseMetadata = endpointResponse.getMetadata().stream().filter(m -> m instanceof ResponseMetadata).map(m -> (ResponseMetadata)m).findAny().orElse(null);
+		if(responseMetadata.getTotConnectorsPerRequest() != null) {
+			int numConnForReq = responseMetadata.getTotConnectorsPerRequest();
 			int numConnUpdates = statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().size();
 			
 //			if all the connectors have a success --> SUCCESS

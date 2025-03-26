@@ -83,6 +83,10 @@ public class MetadataAdapterFactory extends AdapterFactoryImpl {
 				return createMetadataAdapter();
 			}
 			@Override
+			public Adapter caseResponseMetadata(ResponseMetadata object) {
+				return createResponseMetadataAdapter();
+			}
+			@Override
 			public Adapter caseConnectorMetadata(ConnectorMetadata object) {
 				return createConnectorMetadataAdapter();
 			}
@@ -153,6 +157,20 @@ public class MetadataAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMetadataAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.avatar.metadata.ResponseMetadata <em>Response Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.avatar.metadata.ResponseMetadata
+	 * @generated
+	 */
+	public Adapter createResponseMetadataAdapter() {
 		return null;
 	}
 

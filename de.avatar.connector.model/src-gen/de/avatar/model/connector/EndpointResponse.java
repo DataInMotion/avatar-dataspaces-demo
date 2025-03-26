@@ -13,6 +13,8 @@
  */
 package de.avatar.model.connector;
 
+import de.avatar.metadata.Metadata;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -180,7 +182,7 @@ public interface EndpointResponse extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Metadata</b></em>' containment reference list.
-	 * The list contents are of type {@link de.avatar.model.connector.Metadata}.
+	 * The list contents are of type {@link de.avatar.metadata.Metadata}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metadata</em>' containment reference list.

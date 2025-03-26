@@ -13,7 +13,7 @@
  */
 package de.avatar.status.impl;
 
-import de.avatar.model.connector.Metadata;
+import de.avatar.metadata.Metadata;
 
 import de.avatar.status.SingleConnectorQueryStatus;
 import de.avatar.status.StatusPackage;

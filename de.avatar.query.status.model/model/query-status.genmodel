@@ -4,7 +4,7 @@
     modelDirectory="/de.avatar.query.status.model/src" modelPluginID="de.avatar.query.status.model"
     modelName="Query-status" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
-    usedGenPackages="../../de.avatar.connector.model/model/avatar-connector.genmodel#//connector ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../de.avatar.query.model/model/query.genmodel#//query ../../org.gecko.emf.util.model/model/utilities.genmodel#//utilities"
+    usedGenPackages="../../de.avatar.connector.model/model/avatar-connector.genmodel#//connector ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../de.avatar.query.model/model/query.genmodel#//query ../../org.gecko.emf.util.model/model/utilities.genmodel#//utilities ../../de.avatar.metadata.model/model/metadata.genmodel#//metadata"
     operationReflection="true" importOrganizing="true" oSGiCompatible="true">
   <foreignModel>query-status.ecore</foreignModel>
   <genPackages prefix="Status" basePackage="de.avatar" resource="XMI" disposableProviderFactory="true"

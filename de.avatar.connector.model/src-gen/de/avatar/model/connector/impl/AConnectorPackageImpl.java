@@ -13,6 +13,8 @@
  */
 package de.avatar.model.connector.impl;
 
+import de.avatar.metadata.MetadataPackage;
+
 import de.avatar.model.connector.AConnectorFactory;
 import de.avatar.model.connector.AConnectorPackage;
 import de.avatar.model.connector.ConnectorEndpoint;
@@ -28,7 +30,6 @@ import de.avatar.model.connector.EndpointResponse;
 import de.avatar.model.connector.ErrorResult;
 import de.avatar.model.connector.JavaParameter;
 import de.avatar.model.connector.JavaResult;
-import de.avatar.model.connector.Metadata;
 import de.avatar.model.connector.ModelInfo;
 import de.avatar.model.connector.Parameter;
 import de.avatar.model.connector.PendingResult;
@@ -194,13 +195,6 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass metadataEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EEnum protocolTypeEEnum = null;
 
 	/**
@@ -272,6 +266,7 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 
 		// Initialize simple dependencies
 		EcorePackage.eINSTANCE.eClass();
+		MetadataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theAConnectorPackage.createPackageContents();
@@ -1103,36 +1098,6 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 	 * @generated
 	 */
 	@Override
-	public EClass getMetadata() {
-		return metadataEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getMetadata_Key() {
-		return (EAttribute)metadataEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getMetadata_Value() {
-		return (EAttribute)metadataEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EEnum getProtocolType() {
 		return protocolTypeEEnum;
 	}
@@ -1296,10 +1261,6 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		createEAttribute(modelInfoEClass, MODEL_INFO__URI);
 		createEAttribute(modelInfoEClass, MODEL_INFO__DESCRIPTION);
 
-		metadataEClass = createEClass(METADATA);
-		createEAttribute(metadataEClass, METADATA__KEY);
-		createEAttribute(metadataEClass, METADATA__VALUE);
-
 		// Create enums
 		protocolTypeEEnum = createEEnum(PROTOCOL_TYPE);
 		statusTypeEEnum = createEEnum(STATUS_TYPE);
@@ -1334,6 +1295,7 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 
 		// Obtain other dependent packages
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		MetadataPackage theMetadataPackage = (MetadataPackage)EPackage.Registry.INSTANCE.getEPackage(MetadataPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1397,7 +1359,7 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		initEAttribute(getEndpointResponse_Code(), this.getResponseCode(), "code", null, 1, 1, EndpointResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEndpointResponse_Result(), this.getResponseResult(), null, "result", null, 0, 1, EndpointResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEndpointResponse_SourceId(), ecorePackage.getEString(), "sourceId", null, 1, 1, EndpointResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEndpointResponse_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, EndpointResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEndpointResponse_Metadata(), theMetadataPackage.getMetadata(), null, "metadata", null, 0, -1, EndpointResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1454,10 +1416,6 @@ public class AConnectorPackageImpl extends EPackageImpl implements AConnectorPac
 		initEAttribute(getModelInfo_Name(), ecorePackage.getEString(), "name", null, 0, 1, ModelInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelInfo_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, ModelInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelInfo_Description(), ecorePackage.getEString(), "description", null, 0, 1, ModelInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(metadataEClass, Metadata.class, "Metadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMetadata_Key(), theEcorePackage.getEString(), "key", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMetadata_Value(), theEcorePackage.getEString(), "value", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(protocolTypeEEnum, ProtocolType.class, "ProtocolType");
