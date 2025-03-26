@@ -9,10 +9,6 @@
   <foreignModel>query-status.ecore</foreignModel>
   <genPackages prefix="Status" basePackage="de.avatar" resource="XMI" disposableProviderFactory="true"
       ecorePackage="query-status.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query-status.ecore#//ResultFormatType">
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//ResultFormatType/JSON"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//ResultFormatType/CSV"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query-status.ecore#//QueryStatusType">
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/SUCCESS"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/ERROR"/>
@@ -48,7 +44,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//SingleConnectorQueryStatus/metadata"/>
     </genClasses>
     <genClasses ecoreClass="query-status.ecore#//StatusResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//StatusResult/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//StatusResult/status"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//StatusResult/response"/>
     </genClasses>
     <genClasses ecoreClass="query-status.ecore#//SuccessStatusResult">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//SuccessStatusResult/message"/>
@@ -58,22 +56,6 @@
     </genClasses>
     <genClasses ecoreClass="query-status.ecore#//ErrorStatusResult">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//ErrorStatusResult/errorMessage"/>
-    </genClasses>
-    <genClasses ecoreClass="query-status.ecore#//QueryStatus">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//QueryStatus/query"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryStatus/minResultCount"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryStatus/maxResultCount"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryStatus/timeout"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryStatus/resultFormat"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryStatus/connector"/>
-    </genClasses>
-    <genClasses ecoreClass="query-status.ecore#//Status">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//Status/id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//Status/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//Status/username"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//Status/created"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//Status/changed"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query-status.ecore#//Status/response"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

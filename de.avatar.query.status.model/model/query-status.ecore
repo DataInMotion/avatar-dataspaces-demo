@@ -11,10 +11,6 @@
     <details key="basePackage" value="de.avatar"/>
     <details key="resource" value="XMI"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EEnum" name="ResultFormatType">
-    <eLiterals name="JSON"/>
-    <eLiterals name="CSV" value="1"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QueryRequest">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="requestId" lowerBound="1"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
@@ -64,8 +60,12 @@
         eType="ecore:EClass ../../de.avatar.metadata.model/model/metadata.ecore#//Metadata"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StatusResult" eSuperTypes="#//Status">
+  <eClassifiers xsi:type="ecore:EClass" name="StatusResult">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//QueryStatusType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="response" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//EndpointResponse"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SuccessStatusResult" eSuperTypes="#//StatusResult">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
@@ -75,31 +75,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ErrorStatusResult" eSuperTypes="#//StatusResult">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="errorMessage" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="QueryStatus" eSuperTypes="#//Status">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="query" lowerBound="1" eType="ecore:EClass ../../de.avatar.query.model/model/query.ecore#//Query"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minResultCount" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxResultCount" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"
-        defaultValueLiteral="10000"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeout" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"
-        defaultValueLiteral="120">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Timeout in seconds"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultFormat" eType="#//ResultFormatType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connector" upperBound="-1"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Status">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
-        iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="created" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="changed" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="response" eType="ecore:EClass ../../de.avatar.connector.model/model/avatar-connector.ecore#//EndpointResponse"
-        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

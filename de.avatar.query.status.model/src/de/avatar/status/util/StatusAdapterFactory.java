@@ -115,14 +115,6 @@ public class StatusAdapterFactory extends AdapterFactoryImpl {
 				return createErrorStatusResultAdapter();
 			}
 			@Override
-			public Adapter caseQueryStatus(QueryStatus object) {
-				return createQueryStatusAdapter();
-			}
-			@Override
-			public Adapter caseStatus(Status object) {
-				return createStatusAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -265,34 +257,6 @@ public class StatusAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createErrorStatusResultAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.status.QueryStatus <em>Query Status</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.avatar.status.QueryStatus
-	 * @generated
-	 */
-	public Adapter createQueryStatusAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.avatar.status.Status <em>Status</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.avatar.status.Status
-	 * @generated
-	 */
-	public Adapter createStatusAdapter() {
 		return null;
 	}
 

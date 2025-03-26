@@ -182,7 +182,7 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 		
 		statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
 			//				We do not want to display the full response result when the status is SUCCESS
-			scs.getStatusResult().eUnset(StatusPackage.Literals.STATUS__RESPONSE);
+			scs.getStatusResult().eUnset(StatusPackage.Literals.STATUS_RESULT__RESPONSE);
 		});
 	}
 	

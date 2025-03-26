@@ -111,7 +111,6 @@ public class StatusSwitch<T> extends Switch<T> {
 			case StatusPackage.STATUS_RESULT: {
 				StatusResult statusResult = (StatusResult)theEObject;
 				T result = caseStatusResult(statusResult);
-				if (result == null) result = caseStatus(statusResult);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -119,7 +118,6 @@ public class StatusSwitch<T> extends Switch<T> {
 				SuccessStatusResult successStatusResult = (SuccessStatusResult)theEObject;
 				T result = caseSuccessStatusResult(successStatusResult);
 				if (result == null) result = caseStatusResult(successStatusResult);
-				if (result == null) result = caseStatus(successStatusResult);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -127,7 +125,6 @@ public class StatusSwitch<T> extends Switch<T> {
 				PendingStatusResult pendingStatusResult = (PendingStatusResult)theEObject;
 				T result = casePendingStatusResult(pendingStatusResult);
 				if (result == null) result = caseStatusResult(pendingStatusResult);
-				if (result == null) result = caseStatus(pendingStatusResult);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -135,20 +132,6 @@ public class StatusSwitch<T> extends Switch<T> {
 				ErrorStatusResult errorStatusResult = (ErrorStatusResult)theEObject;
 				T result = caseErrorStatusResult(errorStatusResult);
 				if (result == null) result = caseStatusResult(errorStatusResult);
-				if (result == null) result = caseStatus(errorStatusResult);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StatusPackage.QUERY_STATUS: {
-				QueryStatus queryStatus = (QueryStatus)theEObject;
-				T result = caseQueryStatus(queryStatus);
-				if (result == null) result = caseStatus(queryStatus);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StatusPackage.STATUS: {
-				Status status = (Status)theEObject;
-				T result = caseStatus(status);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -288,36 +271,6 @@ public class StatusSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseErrorStatusResult(ErrorStatusResult object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Query Status</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Query Status</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseQueryStatus(QueryStatus object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Status</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Status</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseStatus(Status object) {
 		return null;
 	}
 

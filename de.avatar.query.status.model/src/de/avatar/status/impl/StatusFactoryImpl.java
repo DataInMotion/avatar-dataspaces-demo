@@ -77,8 +77,6 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 			case StatusPackage.SUCCESS_STATUS_RESULT: return createSuccessStatusResult();
 			case StatusPackage.PENDING_STATUS_RESULT: return createPendingStatusResult();
 			case StatusPackage.ERROR_STATUS_RESULT: return createErrorStatusResult();
-			case StatusPackage.QUERY_STATUS: return createQueryStatus();
-			case StatusPackage.STATUS: return createStatus();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -92,8 +90,6 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case StatusPackage.RESULT_FORMAT_TYPE:
-				return createResultFormatTypeFromString(eDataType, initialValue);
 			case StatusPackage.QUERY_STATUS_TYPE:
 				return createQueryStatusTypeFromString(eDataType, initialValue);
 			default:
@@ -109,8 +105,6 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case StatusPackage.RESULT_FORMAT_TYPE:
-				return convertResultFormatTypeToString(eDataType, instanceValue);
 			case StatusPackage.QUERY_STATUS_TYPE:
 				return convertQueryStatusTypeToString(eDataType, instanceValue);
 			default:
@@ -215,48 +209,6 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 	public ErrorStatusResult createErrorStatusResult() {
 		ErrorStatusResultImpl errorStatusResult = new ErrorStatusResultImpl();
 		return errorStatusResult;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QueryStatus createQueryStatus() {
-		QueryStatusImpl queryStatus = new QueryStatusImpl();
-		return queryStatus;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Status createStatus() {
-		StatusImpl status = new StatusImpl();
-		return status;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ResultFormatType createResultFormatTypeFromString(EDataType eDataType, String initialValue) {
-		ResultFormatType result = ResultFormatType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertResultFormatTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
