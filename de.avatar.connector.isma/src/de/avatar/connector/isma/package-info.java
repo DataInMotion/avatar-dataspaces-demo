@@ -13,4 +13,9 @@
  */
 @org.gecko.emf.osgi.annotation.require.RequireEMF
 @org.osgi.service.cm.annotations.RequireConfigurationAdmin
+@RequireEMFJson
+@RequireEMFMessageBodyReaderWriter
 package de.avatar.connector.isma;
+
+import org.gecko.emf.json.annotation.RequireEMFJson;
+import org.gecko.emf.rest.annotations.RequireEMFMessageBodyReaderWriter;

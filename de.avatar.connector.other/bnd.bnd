@@ -11,6 +11,8 @@ Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'
 	org.avatar.himsa.model,\
 	de.avatar.query.model,\
 	org.gecko.emf.util.model,\
-	de.avatar.query.status.model
+	de.avatar.query.status.model,\
+	de.avatar.metadata.model;version=snapshot,\
+	org.gecko.emf.json
 	
 -workingset: provider

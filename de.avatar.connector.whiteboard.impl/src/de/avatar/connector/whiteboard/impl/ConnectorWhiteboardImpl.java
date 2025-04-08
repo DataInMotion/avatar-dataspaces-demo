@@ -130,7 +130,7 @@ public class ConnectorWhiteboardImpl implements ConnectorWhiteboard{
 		if (add) {
 			infoMap.put(connector, info);
 			for(ConnectorEndpoint ep : info.getEndpoint()) {
-				LOGGER.info(String.format("  - Detected endpoint with name %s (%s) and method %s iwth media type %s", ep.getName(), ep.getId(), ep.getMethod(), ep.getMediaType()));
+				LOGGER.info(String.format("  - Detected endpoint with name %s (%s) and method %s with media type %s", ep.getName(), ep.getId(), ep.getMethod(), ep.getMediaType()));
 			}
 		}
 	}

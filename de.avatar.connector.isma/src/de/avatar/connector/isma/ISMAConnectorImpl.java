@@ -16,19 +16,20 @@ import static java.util.Objects.nonNull;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import org.avatar.himsa.export.PatientExportPackage;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.gecko.emf.json.constants.EMFJs;
 import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.gecko.emf.osgi.constants.EMFUriHandlerConstants;
 import org.osgi.service.component.ComponentServiceObjects;
@@ -40,7 +41,10 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 
 import de.avatar.connector.api.AvatarConnector;
+import de.avatar.metadata.MetadataFactory;
+import de.avatar.metadata.ResponseMetadata;
 import de.avatar.model.connector.AConnectorFactory;
+import de.avatar.model.connector.AConnectorPackage;
 import de.avatar.model.connector.ConnectorEndpoint;
 import de.avatar.model.connector.ConnectorInfo;
 import de.avatar.model.connector.ConnectorMetric;
@@ -48,31 +52,13 @@ import de.avatar.model.connector.ConsentInfo;
 import de.avatar.model.connector.EcoreParameter;
 import de.avatar.model.connector.EndpointRequest;
 import de.avatar.model.connector.EndpointResponse;
+import de.avatar.model.connector.ErrorResult;
 import de.avatar.model.connector.ModelInfo;
 import de.avatar.model.connector.ProtocolType;
+import de.avatar.model.connector.ResponseCode;
 import de.avatar.model.connector.StatusType;
 import de.avatar.model.connector.helper.ConnectorHelper;
-import de.avatar.query.And;
-import de.avatar.query.Comparator;
-import de.avatar.query.DateComparator;
-import de.avatar.query.Eq;
-import de.avatar.query.Gt;
-import de.avatar.query.Gte;
-import de.avatar.query.IsAfter;
-import de.avatar.query.IsAfterOrEqual;
-import de.avatar.query.IsBefore;
-import de.avatar.query.IsBeforeOrEqual;
-import de.avatar.query.IsInRange;
-import de.avatar.query.Lt;
-import de.avatar.query.Lte;
-import de.avatar.query.Not;
-import de.avatar.query.NumberComparator;
-import de.avatar.query.Or;
-import de.avatar.query.QSubject;
-import de.avatar.query.QWhere;
 import de.avatar.query.Query;
-import de.avatar.query.SortEntity;
-import de.avatar.query.StringComparator;
 import de.avatar.status.QueryRequest;
 
 @Component(immediate = true, name = "ISMAConnector", property = {
@@ -88,6 +74,8 @@ public class ISMAConnectorImpl implements AvatarConnector {
 	private AConnectorFactory connectorFactory;
 
 	private static final Logger LOGGER = Logger.getLogger(ISMAConnectorImpl.class.getName());
+	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'hh:mm:ss'Z'")
+			.withZone(ZoneId.of("Europe/Berlin"));
 
 	private long startTimestamp;
 	private ComponentServiceObjects<ResourceSet> rsFactory;
@@ -124,6 +112,8 @@ public class ISMAConnectorImpl implements AvatarConnector {
 			ep.setId((String) properties.get("endpoint.id."+i));
 			ep.setUri((String) properties.get("endpoint.uri."+i));
 			ep.setName((String) properties.getOrDefault("endpoint.name."+i, ep.getId()));
+			ep.setMethod((String) properties.getOrDefault("endpoint.method."+i, "GET"));
+			ep.setMediaType((String) properties.getOrDefault("endpoint.mediatype."+i, null));
 			ep.setProtocol(ProtocolType.valueOf((String)properties.getOrDefault("endpoint.protocol."+i, "HTTP_REST")));			
 			eps.add(ep);
 			i++;
@@ -179,9 +169,8 @@ public class ISMAConnectorImpl implements AvatarConnector {
 				nonNull(request.getEndpoint().getId())) {
 
 			String reqUri = request.getEndpoint().getUri();
-
-			if(request.getEndpoint().getId().contains("status")) {
-				reqUri = reqUri.concat("/").concat(request.getId());
+			reqUri = reqUri.concat("/").concat(request.getId());
+			if(request.getEndpoint().getId().contains("status")) {				
 				ResourceSet set = rsFactory.getService();
 				try {
 					Resource res = set.createResource(URI.createURI(reqUri), "application/json");
@@ -189,123 +178,36 @@ public class ISMAConnectorImpl implements AvatarConnector {
 				} catch (IOException e) {
 					e.printStackTrace();
 					LOGGER.severe(String.format("Error while sending request to ISMA", e.getMessage()));
-					return null;
+					return createErrorResponse(request, String.format("Error while sending request to ISMA", e.getMessage()));
 				} 
 				finally {
 					rsFactory.ungetService(set);
 				}
 			} else {
-				reqUri = reqUri.concat("/").concat(request.getId()).concat("?");
 				ResourceSet set = rsFactory.getService();
-				Resource res = null;
+				Resource requestRes = set.createResource(URI.createURI(reqUri), "application/json");
+				Resource responseRes = set.createResource(URI.createURI(UUID.randomUUID().toString().concat(".json")), "application/json");
 				try {
 					if(!request.getParameter().isEmpty()) {
 						if(request.getParameter().get(0) instanceof EcoreParameter ecorePar) {
 							QueryRequest queryReq = (QueryRequest) ecorePar.getValue();
 							Query query = queryReq.getQuery();
-
-							//							subject are the projections
-							List<String> subjectURIs = new ArrayList<>(query.getSubject().size());
-							for(QSubject subject : query.getSubject()) {
-								String projections = "projections=";
-								String operation = subject.getOperation() != null ? "operation=".concat(subject.getOperation().eClass().getName()) : "";
-								for(EStructuralFeature feature : subject.getFeaturePath().getFeature()) {
-									if(feature.eIsProxy()) {
-										feature = (EStructuralFeature) EcoreUtil.resolve(feature, (EObject) null);
-									}
-									projections += feature.getName()+"-";
-								}
-								projections = projections.substring(0, projections.length()-1); //to remove the last "-"
-								String subjectURI = new StringBuilder("subject=").
-										append(projections).
-										append(operation.isEmpty() ? "" : ",".concat(operation)).
-										toString();
-								subjectURIs.add(subjectURI);
-							}
-
-							List<String> sortURIs = new ArrayList<>(query.getSortBy().size());
-							for(SortEntity se : query.getSortBy()) {
-								String sort = "sort=";
-								sort += "sortOrder=" + se.getSortOrder().getLiteral()+",";
-								sort += "sortFeature=" + se.getSortFeature().getName();
-								sortURIs.add(sort);					
-							}
-							//							where are the feature on which to apply the comparator for the actual query
-							List<String> whereURIs = new ArrayList<>(query.getWhere().size());
-							for(QWhere where : query.getWhere()) {
-								String queryType = "queryType=";
-								String featurePath = "feature=";
-								String operation = where.getOperation() != null ? "operation=".concat(where.getOperation().eClass().getName()) : "";
-								String comparatorName = "comparatorName=".concat(where.getComparator().eClass().getName());
-								String[] values = buildValueFromComparator(where.getComparator());
-								if(where instanceof And) queryType += "AND";
-								else if(where instanceof Or) queryType += "OR";
-								else if(where instanceof Not) queryType += "NOT";
-								for(EStructuralFeature feature : where.getFeaturePath().getFeature()) {
-									featurePath += feature.getName()+"-";
-								}
-
-								featurePath = featurePath.substring(0, featurePath.length()-1); //to remove the last ","
-								String whereURI = new StringBuilder("where=").
-										append(queryType).
-										append(",").
-										append(operation.isEmpty() ? "" : operation + ",").
-										append(featurePath).
-										append(",").
-										append(comparatorName).
-										append(",").
-										append("comparatorType=").
-										append(values[0]+",").
-										append(values[1] != null ? "start="+values[1]+"," : "").
-										append(values[2] != null ? "end="+values[2]+"," : "").
-										append(values[3] != null ? "includeStart="+values[3]+"," : "").
-										append(values[4] != null ? "includeEnd="+values[4] : "").
-										toString();
-								if(whereURI.endsWith(",")) whereURI = whereURI.substring(0, whereURI.length()-1);
-								whereURIs.add(whereURI);								
-							}
-							StringBuilder sb = new StringBuilder(reqUri);
-							for(String sortURI : sortURIs) {
-								sb.
-								append(sortURI).
-								append("&");								
-							}
-							if(query.getLimit() != 0) {
-								sb.append("limit="+query.getLimit()+"&");
-							}
-							if(query.getSkip() != 0) {
-								sb.append("skip="+query.getSkip()+"&");
-							}
-							for(String subjectURI : subjectURIs) {
-								sb.
-								append(subjectURI).
-								append("&");								
-							}
-							for(String whereURI : whereURIs) {
-								sb.
-								append(whereURI).
-								append("&");								
-							}
-							reqUri = sb.toString();
-							reqUri = reqUri.substring(0, reqUri.length()-1); //to remove the last "&"
-
-							System.out.println(reqUri);
-							res = set.createResource(URI.createURI(reqUri), "application/json");
-							return sendRequest(request, res);
+							requestRes.getContents().add(query);							
+							return sendRequest(request, requestRes, responseRes);
 						} 
 						else {
 							LOGGER.severe(String.format("Expecting an EcoreParameter in the request for %s", reqUri));
-							return null;
+							return createErrorResponse(request, String.format("Expecting an EcoreParameter in the request for %s", reqUri));
 						} 
 					}
 					else {
-						LOGGER.severe(String.format("Expecting an EcoreParameter in the request for %s", reqUri));
-						return null;
+						LOGGER.severe(String.format("Parameter list in Request is empty for %s", reqUri));
+						return createErrorResponse(request, String.format("Parameter list in Request is empty for %s", reqUri));
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
-					LOGGER.severe(String.format("Error while sending Request to ISMA", e.getMessage()));
-					return null;
+					LOGGER.severe(String.format("Error while sending Request to ISMA %s", e.getMessage()));
+					return createErrorResponse(request, String.format("Error while sending Request to ISMA %s", e.getMessage()));
 				} 
 				finally {
 					rsFactory.ungetService(set);
@@ -317,77 +219,131 @@ public class ISMAConnectorImpl implements AvatarConnector {
 		}
 	}
 
-	private String[] buildValueFromComparator(Comparator comparator) {
-		String start = null, end = null, includeStart = null, includeEnd = null, comparatorType = null;
-		comparatorType = comparator.getSuitableForType().toString();
-		if(comparator instanceof StringComparator strComparator) {
-			start = (String) strComparator.getValue();
-		}
-		else if(comparator instanceof DateComparator dateComparator) {
-			if(dateComparator instanceof IsBefore) {
-				end = String.valueOf(dateComparator.getValue());
-				includeEnd = "false";
-			} else if(dateComparator instanceof IsBeforeOrEqual) {
-				end = String.valueOf(dateComparator.getValue());
-				includeEnd = "true";
-			} else if(dateComparator instanceof IsAfter) {
-				try {
-					start = String.valueOf(dateComparator.getValue());
-					includeStart = "false";
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+//	private String[] buildValueFromComparator(Comparator comparator) {
+//		String start = null, end = null, includeStart = null, includeEnd = null, comparatorType = null;
+//		comparatorType = comparator.getSuitableForType().toString();
+//		if(comparator instanceof StringComparator strComparator) {
+//			start = (String) strComparator.getValue();
+//		}
+//		else if(comparator instanceof DateComparator dateComparator) {
+//			if(dateComparator instanceof IsBefore) {
+//				end = String.valueOf(dateComparator.getValue());
+//				includeEnd = "false";
+//			} else if(dateComparator instanceof IsBeforeOrEqual) {
+//				end = String.valueOf(dateComparator.getValue());
+//				includeEnd = "true";
+//			} else if(dateComparator instanceof IsAfter) {
+//				try {
+//					start = String.valueOf(dateComparator.getValue());
+//					includeStart = "false";
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//
+//			} else if(dateComparator instanceof IsAfterOrEqual) {
+//				start = String.valueOf(dateComparator.getValue());
+//				includeStart = "true";
+//			}
+//		} 
+//		else if(comparator instanceof NumberComparator numComparator) {
+//			if(numComparator instanceof Lt) {
+//				end = String.valueOf(numComparator.getValue());
+//				includeEnd = "false";
+//			} else if(numComparator instanceof Lte) {
+//				end = String.valueOf(numComparator.getValue());
+//				includeEnd = "true";
+//			} else if(numComparator instanceof Gt) {
+//				start = String.valueOf(numComparator.getValue());
+//				includeStart = "false";
+//			} else if(numComparator instanceof Gte) {
+//				start = String.valueOf(numComparator.getValue());
+//				includeStart = "true";
+//			} else if(numComparator instanceof Eq) {
+//				start = String.valueOf(numComparator.getValue());
+//			}
+//		} else if(comparator instanceof IsInRange rangeComparator) {
+//			start = String.valueOf(rangeComparator.getStartValue());
+//			end = String.valueOf(rangeComparator.getEndValue());
+//			includeStart = String.valueOf(rangeComparator.isStartIncluded());
+//			includeEnd = String.valueOf(rangeComparator.isEndIncluded());
+//		}
+//		return new String[] {comparatorType, start, end, includeStart, includeEnd};
+//	}
 
-			} else if(dateComparator instanceof IsAfterOrEqual) {
-				start = String.valueOf(dateComparator.getValue());
-				includeStart = "true";
-			}
-		} 
-		else if(comparator instanceof NumberComparator numComparator) {
-			if(numComparator instanceof Lt) {
-				end = String.valueOf(numComparator.getValue());
-				includeEnd = "false";
-			} else if(numComparator instanceof Lte) {
-				end = String.valueOf(numComparator.getValue());
-				includeEnd = "true";
-			} else if(numComparator instanceof Gt) {
-				start = String.valueOf(numComparator.getValue());
-				includeStart = "false";
-			} else if(numComparator instanceof Gte) {
-				start = String.valueOf(numComparator.getValue());
-				includeStart = "true";
-			} else if(numComparator instanceof Eq) {
-				start = String.valueOf(numComparator.getValue());
-			}
-		} else if(comparator instanceof IsInRange rangeComparator) {
-			start = String.valueOf(rangeComparator.getStartValue());
-			end = String.valueOf(rangeComparator.getEndValue());
-			includeStart = String.valueOf(rangeComparator.isStartIncluded());
-			includeEnd = String.valueOf(rangeComparator.isEndIncluded());
+	private EndpointResponse sendRequest(EndpointRequest request, Resource ...   resources) throws IOException {
+		if(resources == null || resources.length == 0) {
+			return createErrorResponse(request, String.format("Cannot send a request with 0 resources for request with id %s", request.getId()));
 		}
-		return new String[] {comparatorType, start, end, includeStart, includeEnd};
-	}
-
-	private EndpointResponse sendRequest(EndpointRequest request, Resource res) throws IOException {
 		Map<String, Object> options = new HashMap<>();
 		Map<String, Object> headers = new HashMap<>();		
-		headers.put("Accept", "*/*");
-		headers.put("Method", "GET");
-		options.put(EMFUriHandlerConstants.OPTION_HTTP_HEADERS, headers);
-		options.put(EMFUriHandlerConstants.OPTION_HTTP_METHOD, "GET");		
-		res.load(options);
-		if(!res.getContents().isEmpty()) {
-			if(res.getContents().get(0) instanceof EndpointResponse response) {
-				response.setRequest(request);
-				return response;
+		headers.put("Accept", "application/json");
+		headers.put("Content-Type", "application/json");
+		if(resources.length == 1) {
+			headers.put("Method", "GET");
+			options.put(EMFUriHandlerConstants.OPTION_HTTP_METHOD, "GET");	
+			options.put(EMFUriHandlerConstants.OPTION_HTTP_HEADERS, headers);
+			resources[0].load(options);
+			if(!resources[0].getContents().isEmpty()) {
+				if(resources[0].getContents().get(0) instanceof EndpointResponse response) {
+					response.setRequest(request);
+					return response;
+				} else {
+					LOGGER.severe(String.format("Response object is not of expected type EndpointResponse for request %s", request.getId()));
+					return createErrorResponse(request, String.format("Response object is not of expected type EndpointResponse for request %s", request.getId()));
+				}
 			} else {
-				LOGGER.severe(String.format("Response object is not of expected type EndpointResponse for request %s", res.getURI()));
-				return null;
+				LOGGER.severe(String.format("Response does NOT contain any object for request %s", request.getId()));
+				return createErrorResponse(request, String.format("Response does NOT contain any object for request %s", request.getId()));
+			}
+		} else if(resources.length == 2) {
+			headers.put("Method", "POST");
+			options.put(EMFUriHandlerConstants.OPTION_HTTP_METHOD, "POST");	
+			options.put(EMFUriHandlerConstants.OPTION_HTTP_HEADERS, headers);
+			options.put(EMFUriHandlerConstants.OPTIONS_EXPECTED_RESPONSE_RESOURCE, resources[1]);
+			Map<String, Object> responseOptions = new HashMap<>();
+			responseOptions.put(EMFJs.OPTION_ROOT_ELEMENT, AConnectorPackage.Literals.ENDPOINT_RESPONSE);
+			responseOptions.put("Accepts", "application/json");
+			options.put(EMFUriHandlerConstants.OPTIONS_EXPECTED_RESPONSE_RESOURCE_OPTIONS, responseOptions);
+			resources[0].save(System.out, options);
+			resources[0].save(options);
+			if(!resources[1].getContents().isEmpty()) {
+				if(resources[1].getContents().get(0) instanceof EndpointResponse response) {
+					response.setRequest(request);
+					return response;
+				} else {
+					LOGGER.severe(String.format("Response object is not of expected type EndpointResponse for request %s", request.getId()));
+					return createErrorResponse(request, String.format("Response object is not of expected type EndpointResponse for request %s", request.getId()));
+				}
+			} else {
+				LOGGER.severe(String.format("Response does NOT contain any object for request %s", request.getId()));
+				return createErrorResponse(request, String.format("Response does NOT contain any object for request %s", request.getId()));
 			}
 		} else {
-			LOGGER.severe(String.format("Response does NOT contain any object for request %s", res.getURI()));
-			return null;
+			return createErrorResponse(request, String.format("More than 2 resources are not supported for sending a request", request.getId()));
 		}
+	}
+	
+	private void addResponseMetadata(EndpointResponse response, String requestId) {
+		ResponseMetadata metadata = MetadataFactory.eINSTANCE.createResponseMetadata();
+		metadata.setId(UUID.randomUUID().toString());
+		metadata.setRequestId(requestId);
+		if(response.getId() == null) response.setId(UUID.randomUUID().toString());
+		metadata.setResponseId(response.getId());
+		response.setTimestamp(Instant.now().toEpochMilli());
+		metadata.setResponseTime(DATE_TIME_FORMATTER.format(Instant.ofEpochMilli(response.getTimestamp())));
+		response.getMetadata().add(metadata);
+	}
+	
+	private EndpointResponse createErrorResponse(EndpointRequest request, String errMsg) {
+		EndpointResponse response = AConnectorFactory.eINSTANCE.createEndpointResponse();
+		response.setCode(ResponseCode.ERROR);
+		ErrorResult result = AConnectorFactory.eINSTANCE.createErrorResult();
+		result.setError(errMsg);
+		result.setErrorText(errMsg);
+		response.setResult(result);
+		response.setRequest(request);
+		addResponseMetadata(response, request.getId());
+		return response;
 	}
 
 	/* 

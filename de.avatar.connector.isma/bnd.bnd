@@ -11,7 +11,9 @@
 	de.avatar.query.model;version=snapshot,\
 	org.gecko.emf.json,\
 	org.gecko.emf.util.model,\
-	org.avatar.himsa.model
+	org.avatar.himsa.model,\
+	de.avatar.metadata.model,\
+	org.gecko.emf.util.annotations
 	
 -workingset: provider
 	
