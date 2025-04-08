@@ -2,5 +2,6 @@
 
 -buildpath: \
 	de.avatar.connector.model,\
-	de.avatar.query.status.model
+	de.avatar.query.status.model,\
+	de.avatar.query.model
 	

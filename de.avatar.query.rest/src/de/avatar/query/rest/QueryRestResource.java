@@ -28,6 +28,7 @@ import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsResource;
 
 import de.avatar.model.connector.ConsentInfo;
 import de.avatar.model.connector.ModelInfo;
+import de.avatar.query.Query;
 import de.avatar.query.backend.api.QueryBackendService;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
@@ -110,7 +111,6 @@ public class QueryRestResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
 	public Response query(QueryRequest request) {
-		System.out.println("GOT REQUEST!!");
 		try {
 			QueryResponse response = queryBEService.executeQuery(request);
 			return Response.ok(response).build();
@@ -162,6 +162,33 @@ public class QueryRestResource {
 			}
 		} else {
 			return Response.noContent().build();
+		}
+	}
+	
+	@POST
+	@Path("/save-query")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response saveQuery(Query query) {
+		try {
+			Query response = queryBEService.saveQuery(query);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {
+			return Response.status(500, e.getMessage()).build();
+		}
+	}
+	
+	@GET
+	@Path("/get-query/{queryName}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response getQuery(@PathParam("queryName") String queryName) {
+		try {
+			Query response = queryBEService.getQueryByName(queryName);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {
+			return Response.status(500, e.getMessage()).build();
 		}
 	}
 

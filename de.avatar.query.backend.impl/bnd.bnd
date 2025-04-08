@@ -9,5 +9,7 @@
 	de.avatar.connector.camunda.api,\
 	org.osgi.service.component,\
 	org.osgi.util.promise,\
-	de.avatar.generator.api;version=snapshot
+	de.avatar.generator.api;version=snapshot,\
+	de.avatar.query.service.api,\
+	de.avatar.query.model
 	

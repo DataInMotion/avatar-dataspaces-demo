@@ -20,4 +20,5 @@ Private-Package: de.avatar.query.rest
 	de.avatar.generator.api;version=snapshot,\
 	org.gecko.emf.util.annotations,\
 	org.gecko.emf.util.model,\
-	de.avatar.query.backend
+	de.avatar.query.backend,\
+	de.avatar.query.model

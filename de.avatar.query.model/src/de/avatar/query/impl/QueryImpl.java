@@ -56,6 +56,8 @@ import org.gecko.emf.utilities.FeaturePath;
  *   <li>{@link de.avatar.query.impl.QueryImpl#isDistinct <em>Distinct</em>}</li>
  *   <li>{@link de.avatar.query.impl.QueryImpl#getLimit <em>Limit</em>}</li>
  *   <li>{@link de.avatar.query.impl.QueryImpl#getSkip <em>Skip</em>}</li>
+ *   <li>{@link de.avatar.query.impl.QueryImpl#isSaveQuery <em>Save Query</em>}</li>
+ *   <li>{@link de.avatar.query.impl.QueryImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -190,6 +192,46 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	 * @ordered
 	 */
 	protected int skip = SKIP_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isSaveQuery() <em>Save Query</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSaveQuery()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SAVE_QUERY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isSaveQuery() <em>Save Query</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSaveQuery()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean saveQuery = SAVE_QUERY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -373,6 +415,52 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	 * @generated
 	 */
 	@Override
+	public boolean isSaveQuery() {
+		return saveQuery;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setSaveQuery(boolean newSaveQuery) {
+		boolean oldSaveQuery = saveQuery;
+		saveQuery = newSaveQuery;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.QUERY__SAVE_QUERY, oldSaveQuery, saveQuery));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.QUERY__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case QueryPackage.QUERY__SUBJECT:
@@ -413,6 +501,10 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 				return getLimit();
 			case QueryPackage.QUERY__SKIP:
 				return getSkip();
+			case QueryPackage.QUERY__SAVE_QUERY:
+				return isSaveQuery();
+			case QueryPackage.QUERY__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -458,6 +550,12 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 			case QueryPackage.QUERY__SKIP:
 				setSkip((Integer)newValue);
 				return;
+			case QueryPackage.QUERY__SAVE_QUERY:
+				setSaveQuery((Boolean)newValue);
+				return;
+			case QueryPackage.QUERY__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -497,6 +595,12 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 			case QueryPackage.QUERY__SKIP:
 				setSkip(SKIP_EDEFAULT);
 				return;
+			case QueryPackage.QUERY__SAVE_QUERY:
+				setSaveQuery(SAVE_QUERY_EDEFAULT);
+				return;
+			case QueryPackage.QUERY__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -527,6 +631,10 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 				return limit != LIMIT_EDEFAULT;
 			case QueryPackage.QUERY__SKIP:
 				return skip != SKIP_EDEFAULT;
+			case QueryPackage.QUERY__SAVE_QUERY:
+				return saveQuery != SAVE_QUERY_EDEFAULT;
+			case QueryPackage.QUERY__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -549,6 +657,10 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 		result.append(limit);
 		result.append(", skip: ");
 		result.append(skip);
+		result.append(", saveQuery: ");
+		result.append(saveQuery);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

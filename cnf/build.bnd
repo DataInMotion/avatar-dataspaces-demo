@@ -10,7 +10,8 @@
 	geckoOSGi-Test,\
 	geckoDIMC,\
 	geckoEMFUtil,\
-	geckoSearch
+	geckoSearch,\
+	geckoEMFRepository
 	
 	
 # Needed because we enabled library 'gecko-dimc' 	

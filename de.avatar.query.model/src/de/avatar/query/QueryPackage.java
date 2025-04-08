@@ -168,13 +168,31 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int QUERY__SKIP = 8;
 
 	/**
+	 * The feature id for the '<em><b>Save Query</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY__SAVE_QUERY = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY__NAME = 10;
+
+	/**
 	 * The number of structural features of the '<em>Query</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_FEATURE_COUNT = 9;
+	int QUERY_FEATURE_COUNT = 11;
 
 	/**
 	 * The number of operations of the '<em>Query</em>' class.
@@ -2558,6 +2576,28 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getQuery_Skip();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.query.Query#isSaveQuery <em>Save Query</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Save Query</em>'.
+	 * @see de.avatar.query.Query#isSaveQuery()
+	 * @see #getQuery()
+	 * @generated
+	 */
+	EAttribute getQuery_SaveQuery();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.query.Query#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.avatar.query.Query#getName()
+	 * @see #getQuery()
+	 * @generated
+	 */
+	EAttribute getQuery_Name();
+
+	/**
 	 * Returns the meta object for class '{@link de.avatar.query.QObject <em>QObject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3290,6 +3330,22 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute QUERY__SKIP = eINSTANCE.getQuery_Skip();
+
+		/**
+		 * The meta object literal for the '<em><b>Save Query</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUERY__SAVE_QUERY = eINSTANCE.getQuery_SaveQuery();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUERY__NAME = eINSTANCE.getQuery_Name();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.QObjectImpl <em>QObject</em>}' class.

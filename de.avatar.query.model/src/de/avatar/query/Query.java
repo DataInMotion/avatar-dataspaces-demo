@@ -39,6 +39,8 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link de.avatar.query.Query#isDistinct <em>Distinct</em>}</li>
  *   <li>{@link de.avatar.query.Query#getLimit <em>Limit</em>}</li>
  *   <li>{@link de.avatar.query.Query#getSkip <em>Skip</em>}</li>
+ *   <li>{@link de.avatar.query.Query#isSaveQuery <em>Save Query</em>}</li>
+ *   <li>{@link de.avatar.query.Query#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see de.avatar.query.QueryPackage#getQuery()
@@ -200,5 +202,55 @@ public interface Query extends EObject {
 	 * @generated
 	 */
 	void setSkip(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Save Query</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This attribute can be used to indicate that the Query should be saved to be used at a later step. If a persistence mechanism is present, then the Query will be saved. If set to true, also the name attribute should be set, to allow saving of the Query.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Save Query</em>' attribute.
+	 * @see #setSaveQuery(boolean)
+	 * @see de.avatar.query.QueryPackage#getQuery_SaveQuery()
+	 * @model
+	 * @generated
+	 */
+	boolean isSaveQuery();
+
+	/**
+	 * Sets the value of the '{@link de.avatar.query.Query#isSaveQuery <em>Save Query</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Save Query</em>' attribute.
+	 * @see #isSaveQuery()
+	 * @generated
+	 */
+	void setSaveQuery(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A name for the Query. Must be set if saveQuery is set to true.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see de.avatar.query.QueryPackage#getQuery_Name()
+	 * @model id="true"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link de.avatar.query.Query#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 } // Query

@@ -523,6 +523,26 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getQuery_SaveQuery() {
+		return (EAttribute)queryEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getQuery_Name() {
+		return (EAttribute)queryEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getQObject() {
 		return qObjectEClass;
 	}
@@ -1166,6 +1186,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		createEAttribute(queryEClass, QUERY__DISTINCT);
 		createEAttribute(queryEClass, QUERY__LIMIT);
 		createEAttribute(queryEClass, QUERY__SKIP);
+		createEAttribute(queryEClass, QUERY__SAVE_QUERY);
+		createEAttribute(queryEClass, QUERY__NAME);
 
 		qObjectEClass = createEClass(QOBJECT);
 		createEReference(qObjectEClass, QOBJECT__ECLASS);
@@ -1342,6 +1364,8 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEAttribute(getQuery_Distinct(), ecorePackage.getEBoolean(), "distinct", null, 1, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuery_Limit(), ecorePackage.getEInt(), "limit", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuery_Skip(), ecorePackage.getEInt(), "skip", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQuery_SaveQuery(), ecorePackage.getEBoolean(), "saveQuery", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQuery_Name(), ecorePackage.getEString(), "name", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(qObjectEClass, QObject.class, "QObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getQObject_EClass(), ecorePackage.getEClass(), null, "eClass", null, 0, 1, QObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

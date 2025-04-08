@@ -27,6 +27,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -48,6 +49,8 @@ import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.StatusFactory;
+import de.avatar.query.service.api.QueryService;
+import de.avatar.query.Query;
 
 @Component(name = "QueryBackendService")
 public class QueryBackendServiceImpl implements QueryBackendService{
@@ -62,6 +65,9 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	
 	@Reference
 	AvatarGenerator avatarGenerator;
+	
+	@Reference
+	QueryService queryService;
 	
 	@Reference
 	private ComponentServiceObjects<ResourceSet> rsFactory;
@@ -150,6 +156,9 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		if(QueryStatusType.SUCCESS.equals(cachedStatus.getStatus())) {
 			LOGGER.info(String.format("Request %s already executed with success!", requestId));
 			return cachedStatus;
+		} else if(QueryStatusType.ERROR.equals(cachedStatus.getStatus())) {
+			LOGGER.info(String.format("Request %s already executed with error!", requestId));
+			return cachedStatus;
 		}
 		sendQueryRequest(queryRequest, "status");
 		QueryStatusResponse response = pingForStatus(queryRequest.getRequestId(), false);
@@ -175,6 +184,25 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	@Override
 	public File downloadResponseData(String requestId) {
 		return avatarGenerator.getAggregatedResponse(requestId);
+	}
+	
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#saveQuery(de.avatar.query.backend.api.Query)
+	 */
+	@Override
+	public Query saveQuery(Query query) {
+		return queryService.saveQuery(query);
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#getQueryByName(java.lang.String)
+	 */
+	@Override
+	public Query getQueryByName(String queryName) {
+		return queryService.getQueryByName(queryName);
 	}
 	
 	private QueryStatusResponse pingForStatus(String requestId, boolean fromCache) {
@@ -261,4 +289,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		return response;
 	}
 
+	
+
+	
 }

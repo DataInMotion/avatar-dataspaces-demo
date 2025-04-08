@@ -14,6 +14,7 @@ package de.avatar.query.backend.api;
 import java.io.File;
 import java.util.List;
 
+
 import org.osgi.annotation.versioning.ProviderType;
 
 import de.avatar.model.connector.ConsentInfo;
@@ -21,6 +22,7 @@ import de.avatar.model.connector.ModelInfo;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusResponse;
+import de.avatar.query.Query;
 
 /**
  * Service responsible for communicating with the Query REST API 
@@ -43,5 +45,9 @@ public interface QueryBackendService{
 	String generatePublicLinkForRequest(String requestId);
 	
 	File downloadResponseData(String requestId);
+	
+	Query saveQuery(Query query);
+	
+	Query getQueryByName(String queryName);
 
 }

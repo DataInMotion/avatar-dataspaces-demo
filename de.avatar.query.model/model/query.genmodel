@@ -32,6 +32,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Query/distinct"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Query/limit"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Query/skip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Query/saveQuery"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Query/name"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//QObject">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//QObject/eClass"/>

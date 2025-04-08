@@ -1,0 +1,7 @@
+-library: enable-emf
+	
+-buildpath: \
+	de.avatar.query.model;version=snapshot,\
+	de.avatar.query.service.api;version=snapshot,\
+	org.gecko.emf.repository.api,\
+	org.osgi.service.component

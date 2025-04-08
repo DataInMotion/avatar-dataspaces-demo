@@ -1,0 +1,11 @@
+{
+  ":configurator:resource-version": 1,
+  
+ "EMFMongoRepositoryConfigurator": 
+    {
+        "mongo.instances": "query",
+        "query.baseUris": "mongodb://mongodb:27017",
+        "query.databases": "query",
+        "query.query.repoType": "PROTOTYPE"
+  	}
+}

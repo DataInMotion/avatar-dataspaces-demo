@@ -168,16 +168,7 @@ org.eclipse.osgi-technology.rest:org.eclipse.osgitech.rest.bnd.library:1.2.3
 org.eclipse.osgi-technology.rest:org.eclipse.osgitech.rest.bnd.project.library:1.2.3
 
 
-org.geckoprojects.repository:org.gecko.emf.repository.api:9.2.2
-org.geckoprojects.repository:org.gecko.emf.repository.mongo:3.1.0
-
-# Mongo
-org.mongodb:mongo-java-driver:3.9.1
-org.geckoprojects.mongo:org.gecko.emf.mongo.api:6.0.0
-org.geckoprojects.mongo:org.gecko.emf.mongo.component:6.0.0
-org.geckoprojects.mongo:org.gecko.emf.mongo.pushstream:6.0.0
-org.geckoprojects.mongo:org.gecko.mongo.osgi.component:6.0.0
-org.geckoprojects.mongo:org.gecko.emf.mongo.collection:6.0.0
+org.geckoprojects.emf.persistence:org.gecko.emf.repository.bnd.library.workspace:6.1.0
 
 
 # jline
