@@ -20,8 +20,3 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	de.avatar.query.model;version=snapshot,\
 	org.gecko.emf.util.model,\
 	de.avatar.connector.model
-
--includeresource: OSGI-INF/configurator/=configs/
-Require-Capability: \
-	osgi.extender;filter:='(osgi.extender=osgi.configurator)',\
-	osgi.implementation;filter:='(&(osgi.implementation=osgi.cm)(version>=1.6.0)(!(version>=2.0.0)))'

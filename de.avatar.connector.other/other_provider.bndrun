@@ -65,7 +65,8 @@
 	org.gecko.emf.json;version='[1.5.1,1.5.2)',\
 	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
 	org.avatar.himsa.model;version='[1.0.0,1.0.1)',\
-	de.avatar.metadata.model;version=snapshot
+	de.avatar.metadata.model;version=snapshot,\
+	de.avatar.connector.other.runtime.config;version=snapshot
 
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
@@ -77,7 +78,8 @@
 	bnd.identity;id='org.eclipse.parsson.jakarta.json',\
 	bnd.identity;id='de.avatar.connector.other',\
 	bnd.identity;id='org.gecko.emf.json',\
-	bnd.identity;id='org.avatar.himsa.model'
+	bnd.identity;id='org.avatar.himsa.model',\
+	bnd.identity;id='de.avatar.connector.other.runtime.config'
 	
 -runee: JavaSE-17
 -resolve: manual

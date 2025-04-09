@@ -17,6 +17,7 @@ import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 import org.camunda.bpm.client.ExternalTaskClient;
+import org.camunda.bpm.client.ExternalTaskClientBuilder;
 import org.camunda.bpm.client.interceptor.ClientRequestContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -42,7 +43,7 @@ import de.avatar.status.SingleConnectorQueryStatus;
 configurationPid = "CamundaStatusWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class CamundaStatusWorker implements OrchestratorWorker {
 	
-	@Reference
+	@Reference(target = "(serviceName=StatusUpdateService)")
 	KeycloakService keycloakService;
 	
 	@Reference
@@ -75,7 +76,7 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 	 */
 	@Override
 	public void intercept(ClientRequestContext requestContext) {
-//		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
+		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
 	}
 
 	/* 
@@ -84,11 +85,16 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 	 */
 	@Override
 	public void handleTask() {
-		ExternalTaskClient client = ExternalTaskClient.create()
+		ExternalTaskClientBuilder taskBuilder = ExternalTaskClient.create()
 				.baseUrl((String)properties.get("camunda.engine.url"))
-				.asyncResponseTimeout((Long)properties.get("camunda.polling.timeout") == null ? 10000 : (Long)properties.get("camunda.polling.timeout")) // long polling timeout
-				.addInterceptor(this)
-				.build();
+				.asyncResponseTimeout((Long)properties.get("camunda.polling.timeout") == null ? 10000 : (Long)properties.get("camunda.polling.timeout"));
+		
+		if("prod".equals((String) properties.get("camunda.worker.type"))) {
+			taskBuilder = taskBuilder.addInterceptor(this);
+		}
+		
+		ExternalTaskClient client = taskBuilder.build();
+		
 		client.
 		subscribe((String)properties.get("camunda.task.topic")).
 		lockDuration((Long)properties.get("camunda.task.lock.duration") == null ? 1000 : (Long)properties.get("camunda.task.lock.duration")).

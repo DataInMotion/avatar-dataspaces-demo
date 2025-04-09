@@ -23,6 +23,10 @@ import java.util.Map;
  */
 public interface OrchestratorProcessLauncher {
 	
-	public void launchProcess(Map<String, HashMap<String, HashMap<String, Object>>> processVariables);
+	void launchProcessToEngine(Map<String, HashMap<String, HashMap<String, Object>>> processVariables);
+	
+	void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables);
+	
+	boolean isLocal();
 
 }

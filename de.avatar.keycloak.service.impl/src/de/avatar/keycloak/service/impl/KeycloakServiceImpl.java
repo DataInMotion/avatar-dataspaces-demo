@@ -11,11 +11,10 @@
  */
 package de.avatar.keycloak.service.impl;
 
-import static org.mockito.ArgumentMatchers.contains;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 
 import org.keycloak.authorization.client.AuthzClient;
 import org.keycloak.representations.AccessTokenResponse;
@@ -23,7 +22,6 @@ import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
-import org.osgi.service.component.annotations.ServiceScope;
 
 import de.avatar.keycloak.service.api.KeycloakService;
 
@@ -33,25 +31,23 @@ public class KeycloakServiceImpl implements KeycloakService {
 	
 	private AuthzClient authzClient;
 	private AccessTokenResponse token;
-	
-	@interface KeycloakConfig {
-		String serviceName();
-		String configurationFilePath() default "";
-	}
+	private Map<String, Object> properties;
 	
 	
 	@Activate 
-	public void activate(KeycloakConfig config) throws ConfigurationException {
-		System.out.println("KeycloakService " + config.serviceName());
-//		String configPath = config.configurationFilePath();
-//		if (configPath.isEmpty() || configPath.isBlank()) {
-//			throw new ConfigurationException("configFilePath", "The 'configFilePath' must be given");
-//		}
-//		try(InputStream configStream = new FileInputStream(configPath)) {
-//			authzClient = AuthzClient.create(configStream);	
-//		} catch(IOException e) {
-//			throw new ConfigurationException("configPath", String.format("Cannot load keycloak configuration from file path '%s'", configPath), e);
-//		}
+	public void activate(Map<String, Object> properties) throws ConfigurationException {
+		this.properties = properties;
+		if("prod".equals((String) properties.get("service.type"))) {
+			String configPath = (String) properties.get("configuration.file.path");
+			if (configPath.isEmpty() || configPath.isBlank()) {
+				throw new ConfigurationException("configFilePath", "The 'configFilePath' must be given");
+			}
+			try(InputStream configStream = new FileInputStream(configPath)) {
+				authzClient = AuthzClient.create(configStream);	
+			} catch(IOException e) {
+				throw new ConfigurationException("configPath", String.format("Cannot load keycloak configuration from file path '%s'", configPath), e);
+			}
+		}		
 	}
 	
 
@@ -61,6 +57,9 @@ public class KeycloakServiceImpl implements KeycloakService {
 	 */
 	@Override
 	public AccessTokenResponse getAccessToken() {
+		if("local".equals((String) properties.get("service.type"))) {
+			return null;
+		}
 		if(token == null) {
 			token = authzClient.obtainAccessToken();
 		}
@@ -79,6 +78,9 @@ public class KeycloakServiceImpl implements KeycloakService {
 	 */
 	@Override
 	public AccessTokenResponse getAccessTokenForUser(String username, String password) {
+		if("local".equals((String) properties.get("service.type"))) {
+			return null;
+		}
 		return authzClient.obtainAccessToken(username, password);
 	}
 	
@@ -89,8 +91,5 @@ public class KeycloakServiceImpl implements KeycloakService {
 		} catch(Exception e) {
 			return false;
 		}		
-	}
-
-
-	
+	}	
 }

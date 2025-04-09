@@ -269,15 +269,35 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	}
 	
 	private void sendQueryRequest(QueryRequest queryRequest, String reqType) {
-		Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
-		variables.put("variables", new HashMap<String, HashMap<String, Object>>());
-		variables.get("variables").put("query", new HashMap<String, Object>());
-		variables.get("variables").get("query").put("value", saveEObjectToString(queryRequest));
-		variables.get("variables").put("reqId", new HashMap<String, Object>());
-		variables.get("variables").get("reqId").put("value", queryRequest.getRequestId());
-		variables.get("variables").put("reqType", new HashMap<String, Object>());
-		variables.get("variables").get("reqType").put("value", reqType);
-		queryCamundaProcessLauncher.launchProcess(variables);		
+		
+		if(queryCamundaProcessLauncher.isLocal()) {
+			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
+			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
+			variables.get("variables").put("query", new HashMap<String, Object>());
+			variables.get("variables").get("query").put("value", saveEObjectToString(queryRequest));
+			variables.get("variables").put("reqId", new HashMap<String, Object>());
+			variables.get("variables").get("reqId").put("value", queryRequest.getRequestId());
+			variables.get("variables").put("reqType", new HashMap<String, Object>());
+			variables.get("variables").get("reqType").put("value", reqType);
+			variables.get("variables").put("reqType", new HashMap<String, Object>());
+			variables.get("variables").get("reqType").put("value", reqType);
+			queryCamundaProcessLauncher.launchProcessToEngine(variables);		
+		} else {
+			Map<String, HashMap<String, Object>> variables = new HashMap<>();
+			variables.put("tenant", new HashMap<String, Object>());
+			variables.get("tenant").put("value", "TENANT_DIM");
+			variables.get("tenant").put("type", "String");
+			variables.put("query", new HashMap<String, Object>());
+			variables.get("query").put("value", saveEObjectToString(queryRequest));
+			variables.get("query").put("type", "String");
+			variables.put("reqId", new HashMap<String, Object>());
+			variables.get("reqId").put("value", queryRequest.getRequestId());
+			variables.get("reqId").put("type", "String");
+			variables.put("reqType", new HashMap<String, Object>());
+			variables.get("reqType").put("value", reqType);
+			variables.get("reqType").put("type", "String");
+			queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables);
+		}		
 	}
 	
 	private QueryStatusResponse getBasicPendingResponse(String requestId) {

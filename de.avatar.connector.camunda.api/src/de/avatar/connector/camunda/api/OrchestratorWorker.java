@@ -24,6 +24,4 @@ public interface OrchestratorWorker extends ClientRequestInterceptor{
 	
 	void handleTask();
 		
-//	TopicSubscriptionBuilder getTopicSubscriptionBuilder();
-
 }

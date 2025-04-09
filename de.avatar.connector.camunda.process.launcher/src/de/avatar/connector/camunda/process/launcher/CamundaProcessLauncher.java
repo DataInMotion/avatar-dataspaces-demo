@@ -38,16 +38,7 @@ import de.avatar.keycloak.service.api.KeycloakService;
  * @since Feb 25, 2025
  */
 @Component(immediate = true, name = "CamundaProcessLauncher", configurationPid = "CamundaProcessLauncher", 
-configurationPolicy = ConfigurationPolicy.REQUIRE
-/**,
-property = {
-		"service.exported.configs=com.paremus.dosgi.net", 
-		"service.exported.interfaces=*", 
-		"com.paremus.dosgi.scope=global", 
-		"com.paremus.dosgi.target.clusters=DIMC", 
-		"com.paremus.dosgi.net.serialization=ecore",
-"camunda=camunda.process.launcher"}*/
-)
+configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 	
 	@Reference
@@ -69,7 +60,7 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 	 * @see de.avatar.connector.whiteboard.api.OrchestratorProcessLauncher#launchProcess(java.util.Map)
 	 */
 	@Override
-	public void launchProcess(Map<String, HashMap<String, HashMap<String, Object>>> processVariables) {
+	public void launchProcessToEngine(Map<String, HashMap<String, HashMap<String, Object>>> processVariables) {
 		HttpClient httpClient = HttpClients.createDefault();
 		try {			
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -77,7 +68,6 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 			HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
 			StringEntity params = new StringEntity(jacksonData);
 			post.addHeader("content-type", "application/json");
-//			TODO: add authentication header with token from keycloak service (but we have to understand which keycloak we need)
 			post.setEntity(params);
 			httpClient.execute(post, new MyResponseHandler());
 			LOGGER.info("I sent the process to camunda");
@@ -86,4 +76,38 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 			return;
 		}		
 	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.camunda.api.OrchestratorProcessLauncher#isLocal()
+	 */
+	@Override
+	public boolean isLocal() {
+		return "local".equals((String) properties.get("camunda.process.type"));
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.camunda.api.OrchestratorProcessLauncher#launchProcessToProcessUserInterface(java.util.Map)
+	 */
+	@Override
+	public void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables) {
+		HttpClient httpClient = HttpClients.createDefault();
+		try {			
+			ObjectMapper objectMapper = new ObjectMapper();
+			String jacksonData = objectMapper.writeValueAsString(processVariables);
+			HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
+			StringEntity params = new StringEntity(jacksonData);
+			post.addHeader("content-type", "application/json");
+			post.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
+			post.setEntity(params);
+			httpClient.execute(post, new MyResponseHandler());
+			LOGGER.info("I sent the process to process user interface");
+		} catch(Exception e) {
+			LOGGER.severe(String.format("Exception while sending request %s to process user interface", (String)properties.get("camunda.process.url")));
+			return;
+		}		
+	}
+
+	
 }

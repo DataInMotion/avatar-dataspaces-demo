@@ -24,6 +24,7 @@ import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 import org.camunda.bpm.client.ExternalTaskClient;
+import org.camunda.bpm.client.ExternalTaskClientBuilder;
 import org.camunda.bpm.client.interceptor.ClientRequestContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -65,7 +66,7 @@ import de.avatar.status.StatusFactory;
 configurationPid = "CamundaQueryWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class CamundaQueryWorker implements OrchestratorWorker {
 	
-	@Reference
+	@Reference(target = "(serviceName=QueryForwardService)")
 	KeycloakService keycloakService;
 	
 	@Reference
@@ -105,7 +106,7 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 	 */
 	@Override
 	public void intercept(ClientRequestContext requestContext) {
-//		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
+		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
 	}
 
 	/* 
@@ -114,11 +115,17 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 	 */
 	@Override
 	public void handleTask() {
-		ExternalTaskClient client = ExternalTaskClient.create()
+		
+		ExternalTaskClientBuilder taskBuilder = ExternalTaskClient.create()
 				.baseUrl((String)properties.get("camunda.engine.url"))
-				.asyncResponseTimeout((Long)properties.get("camunda.polling.timeout") == null ? 10000 : (Long)properties.get("camunda.polling.timeout")) // long polling timeout
-				.addInterceptor(this)
-				.build();
+				.asyncResponseTimeout((Long)properties.get("camunda.polling.timeout") == null ? 10000 : (Long)properties.get("camunda.polling.timeout"));
+		
+		if("prod".equals((String) properties.get("camunda.worker.type"))) {
+			taskBuilder = taskBuilder.addInterceptor(this);
+		}
+		
+		ExternalTaskClient client = taskBuilder.build();
+		
 		client.
 		subscribe((String)properties.get("camunda.task.topic")).
 		lockDuration((Long)properties.get("camunda.task.lock.duration") == null ? 1000 : (Long)properties.get("camunda.task.lock.duration")).
@@ -191,17 +198,35 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 		sgConnQueryStatus.getStatusResult().setResponse(EcoreUtil.copy(endpointResponse));
 		sgConnQueryStatus.getMetadata().addAll(EcoreUtil.copyAll(endpointResponse.getMetadata()));
 		
-		Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
-		variables.put("variables", new HashMap<String, HashMap<String, Object>>());
-		variables.get("variables").put("sgConnQueryStatus", new HashMap<String, Object>());
-		variables.get("variables").get("sgConnQueryStatus").put("value", CamundaWorkerHelper.saveEObjectToString(sgConnQueryStatus, resourceSet).getBytes());
-		variables.get("variables").get("sgConnQueryStatus").put("type", "bytes");
-		variables.get("variables").put("endpointRes", new HashMap<String, Object>());
-		variables.get("variables").get("endpointRes").put("value", CamundaWorkerHelper.saveEObjectToString(endpointResponse, resourceSet).getBytes());
-		variables.get("variables").get("endpointRes").put("type", "bytes");
-		variables.get("variables").put("reqId", new HashMap<String, Object>());
-		variables.get("variables").get("reqId").put("value", endpointResponse.getRequest().getId());
-		statusCamundaProcessLauncher.launchProcess(variables);		
+		if(statusCamundaProcessLauncher.isLocal()) {
+			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
+			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
+			variables.get("variables").put("sgConnQueryStatus", new HashMap<String, Object>());
+			variables.get("variables").get("sgConnQueryStatus").put("value", CamundaWorkerHelper.saveEObjectToString(sgConnQueryStatus, resourceSet).getBytes());
+			variables.get("variables").get("sgConnQueryStatus").put("type", "bytes");
+			variables.get("variables").put("endpointRes", new HashMap<String, Object>());
+			variables.get("variables").get("endpointRes").put("value", CamundaWorkerHelper.saveEObjectToString(endpointResponse, resourceSet).getBytes());
+			variables.get("variables").get("endpointRes").put("type", "bytes");
+			variables.get("variables").put("reqId", new HashMap<String, Object>());
+			variables.get("variables").get("reqId").put("value", endpointResponse.getRequest().getId());
+			statusCamundaProcessLauncher.launchProcessToEngine(variables);		
+		} else {
+			Map<String, HashMap<String, Object>> variables = new HashMap<>();
+			variables.put("tenant", new HashMap<String, Object>());
+			variables.get("tenant").put("value", "TENANT_DIM");
+			variables.get("tenant").put("type", "String");
+			variables.put("sgConnQueryStatus", new HashMap<String, Object>());
+			variables.get("sgConnQueryStatus").put("value", CamundaWorkerHelper.saveEObjectToString(sgConnQueryStatus, resourceSet).getBytes());
+			variables.get("sgConnQueryStatus").put("type", "bytes");
+			variables.put("reqId", new HashMap<String, Object>());
+			variables.get("reqId").put("value", endpointResponse.getRequest().getId());
+			variables.get("reqId").put("type", "String");
+			variables.put("endpointRes", new HashMap<String, Object>());
+			variables.get("endpointRes").put("value", CamundaWorkerHelper.saveEObjectToString(endpointResponse, resourceSet).getBytes());
+			variables.get("endpointRes").put("type", "bytes");
+			statusCamundaProcessLauncher.launchProcessToProcessUserInterface(variables);
+		}
+		
 	}
 
 	private EndpointResponse doForwardQueryRequestToConnector(AvatarConnector c, QueryRequest request, String reqType) {

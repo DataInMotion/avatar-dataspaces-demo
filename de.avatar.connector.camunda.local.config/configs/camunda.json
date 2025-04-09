@@ -4,7 +4,8 @@
   "CamundaQueryWorker~request":
 	{
 		"camunda.worker.name": "forward-query",
-		"keycloakService.target": "(serviceName=QueryForwardService)",
+		"camunda.worker.type": "local",
+		"keycloakService.target": "(service.name=QueryForwardService)",
 		"camunda.engine.url": "http://localhost:8080/engine-rest",
 		"camunda.polling.timeout": 10000,
 		"camunda.task.topic": "forward-query",
@@ -13,7 +14,8 @@
 	"CamundaStatusWorker~status":
 	{
 		"camunda.worker.name": "update-status",
-		"keycloakService.target": "(serviceName=StatusUpdateService)",
+		"camunda.worker.type": "local",
+		"keycloakService.target": "(service.name=StatusUpdateService)",
 		"camunda.engine.url": "http://localhost:8080/engine-rest",
 		"camunda.polling.timeout": 10000,
 		"camunda.task.topic": "update-status",
@@ -22,13 +24,15 @@
 	"CamundaProcessLauncher~status":
 	{
 		"camunda.process.name": "update-status",
-		"keycloakService.target": "(serviceName=StatusUpdateService)",
+		"camunda.process.type": "local",
+		"keycloakService.target": "(service.name=StatusUpdateService)",
 		"camunda.process.url": "http://localhost:8080/engine-rest/process-definition/key/update-status/start"
 	},
 	"CamundaProcessLauncher~query":
 	{
 		"camunda.process.name": "forward-query",
-		"keycloakService.target": "(serviceName=QueryForwardService)",
+		"camunda.process.type": "local",
+		"keycloakService.target": "(service.name=QueryForwardService)",
 		"camunda.process.url": "http://localhost:8080/engine-rest/process-definition/key/forward-query/start"
 	}
 }
