@@ -91,9 +91,10 @@ pipeline  {
         }
 
         stage('Docker Avatar ISMA connector provider Image build'){
-            when {
+/*            when {
                 branch 'main'
             }
+*/
             steps  {
                 echo "I am building and publishing a docker image on branch: ${env.GIT_BRANCH}"
 
@@ -107,9 +108,10 @@ pipeline  {
             }
         }
         stage('Docker Avatar Other connector provider Image build'){
-            when {
+/*            when {
                 branch 'main'
             }
+*/
             steps  {
                 echo "I am building and publishing a docker image on branch: ${env.GIT_BRANCH}"
 
