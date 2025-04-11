@@ -2,7 +2,7 @@ pipeline  {
     agent any
 
     environment {                                                                                                                                                                              
-        JAVA_OPTS = "-Xms4048m -Xmx8g -XX:MaxMetaspaceSize=2048m -XX:+HeapDumpOnOutOfMemoryError -Dgosh.args=--nointeractive ${sh(script:'echo $JAVA_OPTS', returnStdout: true).trim()}"
+        JAVA_OPTS = "-Xms4048m -Xmx4048m -XX:MaxMetaspaceSize=2048m -XX:+HeapDumpOnOutOfMemoryError -Dgosh.args=--nointeractive ${sh(script:'echo $JAVA_OPTS', returnStdout: true).trim()}"
         VERSION = "${env.BUILD_ID}"
     }
     tools {
