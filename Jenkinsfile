@@ -65,11 +65,12 @@ pipeline  {
 
                 sh "./gradlew :de.avatar.connector.isma:resolve.isma_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "./gradlew :de.avatar.connector.other:resolve.other_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew :de.avatar.connector.whiteboard:resolve.consumer --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-//                sh "./gradlew :de.avatar.query.rest:resolve.launch --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+//                sh "./gradlew :de.avatar.connector.whiteboard:resolve.consumer --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+				sh "./gradlew :de.avatar.query.rest:resolve.base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew :de.avatar.query.rest:resolve.launch --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "./gradlew :de.avatar.connector.isma:export.isma_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
                 sh "./gradlew :de.avatar.connector.other:export.other_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
-                sh "./gradlew :de.avatar.connector.whiteboard:export.consumer --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
+//                sh "./gradlew :de.avatar.connector.whiteboard:export.consumer --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
                 sh "./gradlew :de.avatar.query.rest:export.launch --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
             }
         }
@@ -83,7 +84,7 @@ pipeline  {
 
                 sh "./gradlew prepareDockerISMA --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "./gradlew prepareDockerOther --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew prepareDockerWhiteboard --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+//                sh "./gradlew prepareDockerWhiteboard --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "./gradlew prepareDockerQuery --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
             }
 
@@ -121,7 +122,7 @@ pipeline  {
                             pushCredentialsId: 'dim-nexus'])
             }
         }
-        stage('Docker Avatar whiteboard connector Image build'){
+/*        stage('Docker Avatar whiteboard connector Image build'){
             when {
                 branch 'main'
             }
@@ -129,7 +130,7 @@ pipeline  {
                 echo "I am building and publishing a docker image on branch: ${env.GIT_BRANCH}"
 
                 step([$class: 'DockerBuilderPublisher',
-                      dockerFileDirectory: 'docker/whiteboard',
+                      dockerFileDirectlaunchory: 'docker/whiteboard',
                             cloud: 'docker',
                             tagsString: """devel.data-in-motion.biz:6000/scj/avatar-whiteboard:latest
                                         devel.data-in-motion.biz:6000/scj/avatar-whiteboard:0.1.0.${VERSION}""",
@@ -137,6 +138,7 @@ pipeline  {
                             pushCredentialsId: 'dim-nexus'])
             }
         }
+*/
         stage('Docker Avatar query rest Image build'){
 //            when {
 //                branch 'main'
