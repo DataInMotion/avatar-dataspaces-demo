@@ -1,0 +1,49 @@
+@startuml
+
+!theme bluegray
+skinparam actorStyle awesome
+
+title Query Request
+
+actor User as U
+participant QueryRest as RR
+participant DIMBackend as BE
+participant AvatarGenerator as AG
+participant Camunda as C
+participant ConnectorWhiteboard as WB
+collections Connectors as Cs
+collections DataProviders as DP
+
+autonumber
+U->RR: send dry run request \nthrough Query UI
+activate U
+activate RR
+RR->BE: forward the request
+activate BE
+BE->C: starts process "forward-query" \non Camunda
+BE->BE: starts pinging status service for updates
+activate C
+C->BE: assigns task "forward-query"\nto DIM Query Worker
+BE->WB: retrieve available connectors \nfrom Whiteboard
+activate WB
+BE->Cs: delegates query to each connector
+activate Cs
+Cs->DP: each connector sends the request\nto the corresponding data provider
+activate DP
+DP->Cs: each data provider sends the response\nto the corresponding connector
+deactivate DP
+Cs->BE: each connector sends the\nresponse to the backend
+deactivate Cs
+deactivate WB
+BE->C: starts process "update-status" on\nCamunda every time a connector responds
+C->BE: assigns task "update-status"\nto DIM Status Worker
+deactivate C
+BE->AG: if a connector has completed its operation \nsave the results in the AvatarGenerator
+activate AG
+BE->RR: if status has been updated in time\nsends response, otherwise sends\npending response (the user has\nthen to send a status request)
+deactivate BE
+RR->U: send response
+deactivate AG
+deactivate RR
+deactivate U
+@enduml
