@@ -11,10 +11,40 @@
 #     Data In Motion - initial API and implementation
 
 services:
+    avatar-isma-connector:
+        image: devel.data-in-motion.biz:6000/scj/avatar-isma-provider:latest
+		hostname: CONN01
+		networks:
+		  - avatar
+	avatar-other-connector:
+		image: devel.data-in-motion.biz:6000/scj/avatar-other-provider:latest
+		hostname: CONN02
+		networks:
+		  - avatar
+	avatar-query:
+		image: devel.data-in-motion.biz:6000/scj/avatar-query:latest
+		hostname: QBACKEND
+		env_file:
+	 	  - ./envs/query.env
+		ports:
+		  - "8089:8089"
+		networks:
+		  - avatar
+		  - nx-avatar-network
+	mongodb:
+	    image: mongo:4.2
+	    container_name: avatar-mongodb
+	    healthcheck:
+		    test: echo 'db.runCommand("ping").ok' | mongo localhost:27017 --quiet
+	        interval: 5s
+		    timeout: 5s
+		    retries: 3
+		    start_period: 5s
+		networks:
+		   - avatar
+	       
+networks:
     avatar:
-        image: scj/avatar-provider:latest
-        ports:
-          - "9033:9033"
-          - "9034-9034"
-
-
+        name: avatar
+	nx-avatar-network:
+		name: nx-avatar-network

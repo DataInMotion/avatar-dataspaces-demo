@@ -3,8 +3,6 @@
 #Avoid To have the default Jetty run at port 8080	
 -runproperties: \
 	org.osgi.service.http.port=-1,\
-	data=./data/,\
-	secrets/=./secrets/,\
 	org.eclipse.emf.common.util.URI.archiveSchemes="wsjar wszip jar zip"
 	
 -runrequires: \

@@ -8,10 +8,10 @@
 	},
 	"com.paremus.gossip.netty~DIM": 
   	{
-		"initial.peers": ["127.0.0.1:9033", "127.0.0.1:9035", "127.0.0.1:9032"],
-		"bind.address": "127.0.0.1",
-		"udp.port": 9035,
-		"tcp.port": 9036,
+		"initial.peers": ["CONN01:9032", "CONN02:9032", "QBACKEND:9032"],
+		"bind.address": "QBACKEND",
+		"udp.port": 9032,
+		"tcp.port": 9032,
 		"cluster.name": "DIMC"
 	},
 	"com.paremus.netty.tls": 
@@ -20,7 +20,7 @@
 	},
 	"com.paremus.dosgi.net":
 	{
-		"server.bind.address": "127.0.0.1",
+		"server.bind.address": "QBACKEND",
 		"allow.insecure.transports": true,
 		"server.protocols": "TCP;nodelay=true",
 		"nodelay": true
