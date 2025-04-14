@@ -7,7 +7,6 @@
 -runrequires.base: \
 	bnd.identity;id='de.avatar.connector.cleanup.config',\
 	bnd.identity;id='de.avatar.connector.rest.config',\
-	bnd.identity;id='de.avatar.connector.whiteboard.config',\
 	bnd.identity;id='de.avatar.query.service.config',\
 	bnd.identity;id='org.apache.felix.gogo.command',\
 	bnd.identity;id='org.apache.felix.gogo.shell',\
@@ -54,7 +53,6 @@
 	de.avatar.connector.model;version=snapshot,\
 	de.avatar.connector.rest.config;version=snapshot,\
 	de.avatar.connector.whiteboard;version=snapshot,\
-	de.avatar.connector.whiteboard.config;version=snapshot,\
 	de.avatar.connector.whiteboard.impl;version=snapshot,\
 	de.avatar.generator.api;version=snapshot,\
 	de.avatar.generator.impl;version=snapshot,\

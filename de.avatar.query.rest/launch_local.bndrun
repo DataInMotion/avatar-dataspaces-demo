@@ -9,7 +9,8 @@
 	
 -runrequires: \
 	bnd.identity;id='de.avatar.connector.camunda.local.config',\
-	bnd.identity;id='de.avatar.keycloak.local.config'
+	bnd.identity;id='de.avatar.keycloak.local.config',\
+	bnd.identity;id='de.avatar.connector.whiteboard.local.config'
 
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-17
@@ -43,7 +44,6 @@
 	de.avatar.connector.model;version=snapshot,\
 	de.avatar.connector.rest.config;version=snapshot,\
 	de.avatar.connector.whiteboard;version=snapshot,\
-	de.avatar.connector.whiteboard.config;version=snapshot,\
 	de.avatar.connector.whiteboard.impl;version=snapshot,\
 	de.avatar.generator.api;version=snapshot,\
 	de.avatar.generator.impl;version=snapshot,\
@@ -146,4 +146,5 @@
 	org.apache.httpcomponents.httpclient;version='[4.5.14,4.5.15)',\
 	org.apache.httpcomponents.httpcore;version='[4.4.16,4.4.17)',\
 	org.keycloak.authz.client;version='[26.0.4,26.0.5)',\
-	de.avatar.keycloak.local.config;version=snapshot
+	de.avatar.keycloak.local.config;version=snapshot,\
+	de.avatar.connector.whiteboard.local.config;version=snapshot

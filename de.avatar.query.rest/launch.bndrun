@@ -7,7 +7,8 @@
 	
 -runrequires: \
 	bnd.identity;id='de.avatar.connector.camunda.runtime.config',\
-	bnd.identity;id='de.avatar.keycloak.runtime.config'
+	bnd.identity;id='de.avatar.keycloak.runtime.config',\
+	bnd.identity;id='de.avatar.connector.whiteboard.runtime.config'
 
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-17
@@ -42,7 +43,6 @@
 	de.avatar.connector.model;version=snapshot,\
 	de.avatar.connector.rest.config;version=snapshot,\
 	de.avatar.connector.whiteboard;version=snapshot,\
-	de.avatar.connector.whiteboard.config;version=snapshot,\
 	de.avatar.connector.whiteboard.impl;version=snapshot,\
 	de.avatar.generator.api;version=snapshot,\
 	de.avatar.generator.impl;version=snapshot,\
@@ -145,4 +145,5 @@
 	org.paremus.netty.tls;version='[1.0.0,1.0.1)',\
 	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
 	slf4j.api;version='[1.7.30,1.7.31)',\
-	slf4j.simple;version='[1.7.30,1.7.31)'
+	slf4j.simple;version='[1.7.30,1.7.31)',\
+	de.avatar.connector.whiteboard.runtime.config;version=snapshot
