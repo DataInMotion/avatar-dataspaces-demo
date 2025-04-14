@@ -2,29 +2,21 @@
   ":configurator:resource-version": 1,
   
 	"OtherAvatarConnector~other": {
-		"connector.id": "isma_other",
-		"connector.name": "ISMA Other Connector",
-		"connector.version": 1,
 		
 		"endpoint.id.1": "rest_isma_other_dryrun",
 		"endpoint.name.1": "ISMA OTHER Rest Endpoint for Dry Run",
 		"endpoint.uri.1": "http://localhost:8091/other/rest/dryrun",
 		"endpoint.method.1": "POST",
-		"endpoint.mediatype.1": "application/json",
-		"endpoint.protocol.1": "HTTP_REST",	
 	
 		"endpoint.id.2": "rest_isma_other_request",
 		"endpoint.name.2": "ISMA OTHER Rest Endpoint for Request",
 		"endpoint.uri.2": "http://localhost:8091/other/rest/patient/query",
 		"endpoint.method.2": "POST",
-		"endpoint.mediatype.2": "application/json",
-		"endpoint.protocol.2": "HTTP_REST",
 		
 		"endpoint.id.3": "rest_isma_other_status",
 		"endpoint.name.3": "ISMA OTHER Rest Endpoint for Status",
 		"endpoint.uri.3": "http://localhost:8091/other/rest/status",
-		"endpoint.method.3": "GET",
-		"endpoint.protocol.3": "HTTP_REST"
+		"endpoint.method.3": "GET"		
 					
 	}
 }

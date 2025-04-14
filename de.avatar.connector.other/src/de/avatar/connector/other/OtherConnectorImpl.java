@@ -61,7 +61,7 @@ import de.avatar.model.connector.helper.ConnectorHelper;
 import de.avatar.query.Query;
 import de.avatar.status.QueryRequest;
 
-@Component(immediate = true, name="OtherConnector", property = {
+@Component(immediate = true, service = AvatarConnector.class, name="OtherConnector", property = {
 		"service.exported.configs=com.paremus.dosgi.net", 
 		"service.exported.interfaces=*", 
 		"com.paremus.dosgi.scope=global", 
@@ -113,8 +113,8 @@ public class OtherConnectorImpl implements AvatarConnector {
 			ep.setUri((String) properties.get("endpoint.uri."+i));
 			ep.setName((String) properties.getOrDefault("endpoint.name."+i, ep.getId()));
 			ep.setMethod((String) properties.getOrDefault("endpoint.method."+i, "GET"));
-			ep.setMediaType((String) properties.getOrDefault("endpoint.mediatype."+i, null));
-			ep.setProtocol(ProtocolType.valueOf((String)properties.getOrDefault("endpoint.protocol."+i, "HTTP_REST")));			
+			ep.setMediaType("application/json");
+			ep.setProtocol(ProtocolType.HTTP_REST);			
 			eps.add(ep);
 			i++;
 		}	
@@ -128,9 +128,9 @@ public class OtherConnectorImpl implements AvatarConnector {
 	@Override
 	public ConnectorInfo getInfo() {
 		ConnectorInfo info = connectorFactory.createConnectorInfo();
-		info.setId((String) properties.get("connector.id"));
-		info.setName((String) properties.get("connector.name"));
-		info.setVersion((short)(int)(long)properties.get("connector.version"));
+		info.setId("isma other");
+		info.setName("ISMA Other Connector");
+		info.setVersion((short)1);
 		ConnectorMetric metric = connectorFactory.createConnectorMetric();
 		metric.setStatus(StatusType.RUNNING);
 		metric.setTimestamp(Instant.now().toEpochMilli());

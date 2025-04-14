@@ -2,29 +2,21 @@
   ":configurator:resource-version": 1,
   
 	"HIMSAAvatarConnector~himsa": {
-		"connector.id": "isma_himsa",
-		"connector.name": "ISMA Himsa Connector",
-		"connector.version": 1,
 		
 		"endpoint.id.1": "rest_isma_himsa_dryrun",
 		"endpoint.name.1": "ISMA HIMSA Rest Endpoint for Dry Run",
 		"endpoint.uri.1": "http://localhost:8088/himsa/rest/dryrun",
 		"endpoint.method.1": "POST",
-		"endpoint.mediatype.1": "application/json",
-		"endpoint.protocol.1": "HTTP_REST",	
 	
 		"endpoint.id.2": "rest_isma_himsa_request",
 		"endpoint.name.2": "ISMA HIMSA Rest Endpoint for Request",
 		"endpoint.uri.2": "http://localhost:8088/himsa/rest/patient/query",
 		"endpoint.method.2": "POST",
-		"endpoint.mediatype.2": "application/json",
-		"endpoint.protocol.2": "HTTP_REST",
 		
 		"endpoint.id.3": "rest_isma_himsa_status",
 		"endpoint.name.3": "ISMA HIMSA Rest Endpoint for Status",
 		"endpoint.uri.3": "http://localhost:8088/himsa/rest/status",
-		"endpoint.method.3": "GET",
-		"endpoint.protocol.3": "HTTP_REST"
+		"endpoint.method.3": "GET"
 					
 	}
 }
