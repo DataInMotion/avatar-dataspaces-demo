@@ -1,50 +1,44 @@
-# Copyright (c) 2012 - 2024 Data In Motion and others.
-# All rights reserved. 
-# 
-# This program and the accompanying materials are made
-# available under the terms of the Eclipse Public License 2.0
-# which is available at https://www.eclipse.org/legal/epl-2.0/
-#
-# SPDX-License-Identifier: EPL-2.0
-# 
-# Contributors:
-#     Data In Motion - initial API and implementation
-
 services:
     avatar-isma-connector:
         image: devel.data-in-motion.biz:6000/scj/avatar-isma-provider:latest
-		hostname: CONN01
-		networks:
-		  - avatar
-	avatar-other-connector:
-		image: devel.data-in-motion.biz:6000/scj/avatar-other-provider:latest
-		hostname: CONN02
-		networks:
-		  - avatar
-	avatar-query:
-		image: devel.data-in-motion.biz:6000/scj/avatar-query:latest
-		hostname: QBACKEND
-		env_file:
-	 	  - ./envs/query.env
-		ports:
-		  - "8089:8089"
-		networks:
-		  - avatar
-		  - nx-avatar-network
-	mongodb:
-	    image: mongo:4.2
-	    container_name: avatar-mongodb
-	    healthcheck:
-		    test: echo 'db.runCommand("ping").ok' | mongo localhost:27017 --quiet
-	        interval: 5s
-		    timeout: 5s
-		    retries: 3
-		    start_period: 5s
-		networks:
-		   - avatar
-	       
+        hostname: CONN01
+          #        ports:
+          #          - 9032:9032/udp
+          #          - 9032:9032/tcp
+        networks:
+          - avatar
+    avatar-other-connector:
+        image: devel.data-in-motion.biz:6000/scj/avatar-other-provider:latest
+        hostname: CONN02
+          #        ports:
+          #          - 9033:9032/udp
+          #          - 9033:9032/tcp
+        networks:
+          - avatar
+    avatar-query:
+      #        image: devel.data-in-motion.biz:6000/scj/avatar-query:latest
+        image: devel.data-in-motion.biz:6000/scj/avatar-query:latest
+        hostname: QBACKEND
+        ports:
+          #          - 9034:9032/udp
+          #          - 9034:9032/tcp
+          - "8089:8089"
+        volumes:
+          - ./envs/:/opt/avatar/secrets/
+        networks:
+          - avatar
+            #          - nx-avatar-network
+    mongodb:
+        image: mongo:4.2
+        container_name: avatar-mongodb
+        healthcheck:
+            test: echo 'db.runCommand("ping").ok' | mongo localhost:27017 --quiet
+            interval: 5s
+            timeout: 5s
+            retries: 3
+            start_period: 5s
+        networks:
+           - avatar
+
 networks:
     avatar:
-        name: avatar
-	nx-avatar-network:
-		name: nx-avatar-network

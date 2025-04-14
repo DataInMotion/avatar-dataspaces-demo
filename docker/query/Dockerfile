@@ -25,7 +25,10 @@ RUN cd ${OPT_DIR}
 
 VOLUME ${HOME_DIR}
 
-EXPOSE 8080 8081 8082 8083 8084 8085 8089
+EXPOSE 8089 
+EXPOSE 9032/tcp 
+EXPOSE 9032/udp                                                                                                                                                                                                                                                                                                 
+
 WORKDIR ${OPT_DIR}
 USER ${USERNAME}
 
