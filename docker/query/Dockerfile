@@ -32,5 +32,5 @@ EXPOSE 9032/udp
 WORKDIR ${OPT_DIR}
 USER ${USERNAME}
 
-CMD ["java", "-Dgosh.args=--nointeractive", "-Dgecko.data.dir=/opt/avatar/runtime/data", "-Dgecko.conf.dir=/opt/avatar/runtime/etc", "-Dgecko.base.dir=/opt/avatar", "-Dgecko.log.dir=/opt/avatar/runtime/log", "-Dlogback.configurationFile=file:/opt/avatar/runtime/etc/logback.xml",  "-jar", "de.avatar.query.rest.jar"]
+CMD ["java", "-Dgosh.args=--noshutdown", "-Dgecko.data.dir=/opt/avatar/runtime/data", "-Dgecko.conf.dir=/opt/avatar/runtime/etc", "-Dgecko.base.dir=/opt/avatar", "-Dgecko.log.dir=/opt/avatar/runtime/log", "-Dlogback.configurationFile=file:/opt/avatar/runtime/etc/logback.xml",  "-jar", "de.avatar.query.rest.jar"]
 

@@ -2,26 +2,24 @@ services:
     avatar-isma-connector:
         image: devel.data-in-motion.biz:6000/scj/avatar-isma-provider:latest
         hostname: CONN01
-          #        ports:
-          #          - 9032:9032/udp
-          #          - 9032:9032/tcp
+        stdin_open: true
+        tty: true
         networks:
           - avatar
     avatar-other-connector:
         image: devel.data-in-motion.biz:6000/scj/avatar-other-provider:latest
         hostname: CONN02
-          #        ports:
-          #          - 9033:9032/udp
-          #          - 9033:9032/tcp
+        stdin_open: true
+        tty: true
         networks:
           - avatar
     avatar-query:
       #        image: devel.data-in-motion.biz:6000/scj/avatar-query:latest
         image: devel.data-in-motion.biz:6000/scj/avatar-query:latest
         hostname: QBACKEND
+        stdin_open: true
+        tty: true
         ports:
-          #          - 9034:9032/udp
-          #          - 9034:9032/tcp
           - "8089:8089"
         volumes:
           - ./envs/:/opt/avatar/secrets/
