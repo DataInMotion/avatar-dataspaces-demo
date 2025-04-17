@@ -3,3 +3,4 @@
 Require-Capability: \
 	osgi.extender;filter:='(osgi.extender=osgi.configurator)',\
 	osgi.implementation;filter:='(&(osgi.implementation=osgi.cm)(version>=1.6.0)(!(version>=2.0.0)))'
+-buildpath: org.apache.felix.configadmin.plugin.interpolation
