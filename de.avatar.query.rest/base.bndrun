@@ -5,6 +5,7 @@
 -resolve.effective: active;skip:="osgi.service"
 
 -runrequires.base: \
+    bnd.identity;id='org.apache.felix.configadmin.plugin.interpolation',\
 	bnd.identity;id='de.avatar.connector.cleanup.config',\
 	bnd.identity;id='de.avatar.connector.rest.config',\
 	bnd.identity;id='de.avatar.query.service.config',\

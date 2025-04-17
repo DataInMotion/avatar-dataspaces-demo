@@ -3,7 +3,8 @@
 #Avoid To have the default Jetty run at port 8080	
 -runproperties: \
 	org.osgi.service.http.port=-1,\
-	org.eclipse.emf.common.util.URI.archiveSchemes="wsjar wszip jar zip"
+	org.eclipse.emf.common.util.URI.archiveSchemes="wsjar wszip jar zip",\
+	org.apache.felix.configadmin.plugin.interpolation.secretsdir=/opt/avatar/secrets
 	
 
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'

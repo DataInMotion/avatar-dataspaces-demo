@@ -30,6 +30,7 @@ org.apache.felix:org.apache.felix.logback:1.0.6
 org.apache.felix:org.apache.felix.cm.json:2.0.0
 org.apache.johnzon:johnzon-core:1.2.3
 org.apache.felix:org.apache.felix.configadmin:1.9.26
+org.apache.felix:org.apache.felix.configadmin.plugin.interpolation:1.2.8
 
 
 # Eclipse parsson impl (needed since update for org.apache.felix.configurator and org.apache.felix.cm.json, otherwise json config are not parsed!)
