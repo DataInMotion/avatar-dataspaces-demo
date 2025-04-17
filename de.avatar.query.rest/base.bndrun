@@ -8,6 +8,9 @@
 	bnd.identity;id='de.avatar.connector.cleanup.config',\
 	bnd.identity;id='de.avatar.connector.rest.config',\
 	bnd.identity;id='de.avatar.query.service.config',\
+	bnd.identity;id='de.avatar.connector.camunda.runtime.config',\
+	bnd.identity;id='de.avatar.keycloak.runtime.config',\
+	bnd.identity;id='de.avatar.connector.whiteboard.runtime.config',\
 	bnd.identity;id='org.apache.felix.gogo.command',\
 	bnd.identity;id='org.apache.felix.gogo.shell',\
 	bnd.identity;id='de.avatar.connector.emf',\
