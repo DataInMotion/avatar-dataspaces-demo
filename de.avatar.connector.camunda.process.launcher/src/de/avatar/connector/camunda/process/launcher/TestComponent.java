@@ -34,7 +34,7 @@ public class TestComponent {
 	
 	private static final Logger LOGGER = Logger.getLogger(TestComponent.class.getName());
 	
-	@Reference(target = "(serviceName=QueryForwardService)", cardinality = ReferenceCardinality.MANDATORY)
+	@Reference(target = "(service.name=QueryForwardService)", cardinality = ReferenceCardinality.MANDATORY)
 	KeycloakService keycloakService;
 	
 	@Activate

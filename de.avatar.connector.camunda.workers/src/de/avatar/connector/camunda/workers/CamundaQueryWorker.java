@@ -66,7 +66,7 @@ import de.avatar.status.StatusFactory;
 configurationPid = "CamundaQueryWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class CamundaQueryWorker implements OrchestratorWorker {
 	
-	@Reference(target = "(serviceName=QueryForwardService)")
+	@Reference
 	KeycloakService keycloakService;
 	
 	@Reference

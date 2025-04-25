@@ -43,7 +43,7 @@ import de.avatar.status.SingleConnectorQueryStatus;
 configurationPid = "CamundaStatusWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class CamundaStatusWorker implements OrchestratorWorker {
 	
-	@Reference(target = "(serviceName=StatusUpdateService)")
+	@Reference
 	KeycloakService keycloakService;
 	
 	@Reference
