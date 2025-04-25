@@ -11,6 +11,7 @@
  */
 package de.avatar.connector.camunda.process.launcher;
 
+import java.util.Base64;
 import java.util.logging.Logger;
 
 import org.apache.hc.client5.http.classic.HttpClient;
@@ -50,7 +51,7 @@ public class TestComponent {
 		try {			
 			HttpGet request = new HttpGet(url);
 			request.addHeader("Content-Type", "application/json");
-			request.addHeader("Authorization","Bearer " + keycloakService.getAccessToken().getToken());
+			request.addHeader("Authorization","Bearer " + Base64.getEncoder().encodeToString(keycloakService.getAccessToken().getToken().getBytes()));
 			LOGGER.info(String.format("REQUEST: %s", request.toString()));
 			for(Header header : request.getHeaders()) {
 				LOGGER.info(String.format("HEADER: %s %s ", header.getName(), header.getValue()));

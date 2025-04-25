@@ -13,6 +13,7 @@
  */
 package de.avatar.connector.camunda.process.launcher;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -99,7 +100,7 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 			HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
 			StringEntity params = new StringEntity(jacksonData);
 			post.addHeader("Content-Type", "application/json");
-			post.addHeader("Authorization","Bearer " + keycloakService.getAccessToken().getToken());
+			post.addHeader("Authorization","Bearer " + Base64.getEncoder().encodeToString(keycloakService.getAccessToken().getToken().getBytes()));
 			post.setEntity(params);
 			httpClient.execute(post, new MyResponseHandler());
 			LOGGER.info("I sent the process to process user interface");

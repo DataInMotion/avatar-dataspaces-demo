@@ -11,6 +11,7 @@
  */
 package de.avatar.connector.camunda.workers;
 
+import java.util.Base64;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -76,7 +77,7 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 	 */
 	@Override
 	public void intercept(ClientRequestContext requestContext) {
-		requestContext.addHeader("Authorization","Bearer " + keycloakService.getAccessToken().getToken());
+		requestContext.addHeader("Authorization","Bearer " + Base64.getEncoder().encodeToString(keycloakService.getAccessToken().getToken().getBytes()));
 		requestContext.addHeader("Content-Type","application/json");
 	}
 
