@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.Header;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -50,6 +51,10 @@ public class TestComponent {
 			HttpGet request = new HttpGet(url);
 			request.addHeader("Content-Type", "application/json");
 			request.addHeader("Authorization","Bearer " + keycloakService.getAccessToken());
+			LOGGER.info(String.format("REQUEST: %s", request.toString()));
+			for(Header header : request.getHeaders()) {
+				LOGGER.info(String.format("HEADER: %s %s ", header.getName(), header.getValue()));
+			}			
 			httpClient.execute(request, new TestResponseHandler());
 			LOGGER.info("TestComponent sent request");
 		} catch(Exception e) {
