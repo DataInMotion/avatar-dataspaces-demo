@@ -19,6 +19,7 @@ import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 
 import de.avatar.connector.camunda.process.launcher.helper.TestResponseHandler;
 import de.avatar.keycloak.service.api.KeycloakService;
@@ -33,7 +34,7 @@ public class TestComponent {
 	
 	private static final Logger LOGGER = Logger.getLogger(TestComponent.class.getName());
 	
-	@Reference(target = "(serviceName=QueryForwardService)")
+	@Reference(target = "(serviceName=QueryForwardService)", cardinality = ReferenceCardinality.MANDATORY)
 	KeycloakService keycloakService;
 	
 	@Activate
