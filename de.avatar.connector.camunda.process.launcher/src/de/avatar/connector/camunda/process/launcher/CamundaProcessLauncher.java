@@ -98,8 +98,8 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 			String jacksonData = objectMapper.writeValueAsString(processVariables);
 			HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
 			StringEntity params = new StringEntity(jacksonData);
-			post.addHeader("content-type", "application/json");
-			post.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
+			post.addHeader("Content-Type", "application/json");
+			post.addHeader("Authorization","Bearer " + keycloakService.getAccessToken());
 			post.setEntity(params);
 			httpClient.execute(post, new MyResponseHandler());
 			LOGGER.info("I sent the process to process user interface");

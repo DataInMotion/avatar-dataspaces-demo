@@ -76,7 +76,8 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 	 */
 	@Override
 	public void intercept(ClientRequestContext requestContext) {
-		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
+		requestContext.addHeader("Authorization","Bearer " + keycloakService.getAccessToken());
+		requestContext.addHeader("Content-Type","application/json");
 	}
 
 	/* 

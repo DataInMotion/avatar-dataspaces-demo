@@ -106,7 +106,8 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 	 */
 	@Override
 	public void intercept(ClientRequestContext requestContext) {
-		requestContext.addHeader("Authorization","bearer " + keycloakService.getAccessToken());
+		requestContext.addHeader("Authorization","Bearer " + keycloakService.getAccessToken());
+		requestContext.addHeader("Content-Type","application/json");
 	}
 
 	/* 
@@ -115,6 +116,7 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 	 */
 	@Override
 	public void handleTask() {
+
 		
 		ExternalTaskClientBuilder taskBuilder = ExternalTaskClient.create()
 				.baseUrl((String)properties.get("camunda.engine.url"))
@@ -123,8 +125,8 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 		if("prod".equals((String) properties.get("camunda.worker.type"))) {
 			taskBuilder = taskBuilder.addInterceptor(this);
 		}
-		
 		ExternalTaskClient client = taskBuilder.build();
+		
 		
 		client.
 		subscribe((String)properties.get("camunda.task.topic")).
