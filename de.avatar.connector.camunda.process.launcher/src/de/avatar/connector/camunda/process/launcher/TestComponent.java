@@ -55,7 +55,7 @@ public class TestComponent {
 			String encodedToken = Base64.getEncoder().encodeToString(strToken.getBytes());
 			LOGGER.info(String.format("Token: %s", strToken));
 			LOGGER.info(String.format("Econded Token: %s", encodedToken));
-			request.addHeader("Authorization","Bearer " + strToken);
+			request.addHeader("Authorization","Bearer " + encodedToken);
 			LOGGER.info(String.format("REQUEST: %s", request.toString()));
 			for(Header header : request.getHeaders()) {
 				LOGGER.info(String.format("HEADER: %s %s ", header.getName(), header.getValue()));
