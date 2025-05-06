@@ -51,7 +51,11 @@ public class TestComponent {
 		try {			
 			HttpGet request = new HttpGet(url);
 			request.addHeader("Content-Type", "application/json");
-			request.addHeader("Authorization","Bearer " + Base64.getEncoder().encodeToString(keycloakService.getAccessToken().getToken().getBytes()));
+			String strToken = keycloakService.getAccessToken().getToken();
+			String encodedToken = Base64.getEncoder().encodeToString(strToken.getBytes());
+			LOGGER.info(String.format("Token: %s", strToken));
+			LOGGER.info(String.format("Econded Token: %s", encodedToken));
+			request.addHeader("Authorization","Bearer " + strToken);
 			LOGGER.info(String.format("REQUEST: %s", request.toString()));
 			for(Header header : request.getHeaders()) {
 				LOGGER.info(String.format("HEADER: %s %s ", header.getName(), header.getValue()));
