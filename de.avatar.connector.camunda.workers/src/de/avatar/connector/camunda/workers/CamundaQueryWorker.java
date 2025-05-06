@@ -138,32 +138,36 @@ public class CamundaQueryWorker implements OrchestratorWorker {
 			LOGGER.info(String.format("I got the query in CamundaQueryWorker %s", queryStr));
 
 			//send the query to all connectors that can handle it
-			try {
-				EObject obj = CamundaWorkerHelper.loadEObjectFromString(queryStr, resourceSet);
-				if(obj instanceof QueryRequest queryRequest) {
-					
-					List<AvatarConnector> availableConnectors = connectorWhiteboard.getAllConnectors().stream().filter(c -> canConnectorHandleQuery(c, queryRequest.getQuery())).toList();
-					int i = 1;
-					for(AvatarConnector c : availableConnectors) {
-						LOGGER.info(String.format("Sending request for connector"));
-						LOGGER.info(c.getInfo().getId());
-						EndpointResponse connectorResponse = doForwardQueryRequestToConnector(c, queryRequest, reqType);						
-						if(connectorResponse != null) {
-							LOGGER.info(String.format("Got an EndpointRes from connector for request %s", connectorResponse.getRequest().getId()));
-							connectorResponse.getMetadata().addAll(createConnectorResponseMetadata(c, connectorResponse, availableConnectors.size(), i, reqId));
-							i++;
-//							Update status - trigger status update process on camunda
-							launchStatusUpdateProcess(connectorResponse, c);
-						}
-					}					
-				}		
-			} catch(Exception e) {
-				LOGGER.severe("Something went worng while processing task forward-query");
-				e.printStackTrace();
-			} finally {
+			if(queryStr == null || queryStr.isEmpty()) {
+				LOGGER.warning(String.format("Cannot execute forward-query task because there is no query for request %s!", reqId));
 				externalTaskService.complete(externalTask);
-			}				
-			
+			} else {
+				try {
+					EObject obj = CamundaWorkerHelper.loadEObjectFromString(queryStr, resourceSet);
+					if(obj instanceof QueryRequest queryRequest) {
+						
+						List<AvatarConnector> availableConnectors = connectorWhiteboard.getAllConnectors().stream().filter(c -> canConnectorHandleQuery(c, queryRequest.getQuery())).toList();
+						int i = 1;
+						for(AvatarConnector c : availableConnectors) {
+							LOGGER.info(String.format("Sending request for connector"));
+							LOGGER.info(c.getInfo().getId());
+							EndpointResponse connectorResponse = doForwardQueryRequestToConnector(c, queryRequest, reqType);						
+							if(connectorResponse != null) {
+								LOGGER.info(String.format("Got an EndpointRes from connector for request %s", connectorResponse.getRequest().getId()));
+								connectorResponse.getMetadata().addAll(createConnectorResponseMetadata(c, connectorResponse, availableConnectors.size(), i, reqId));
+								i++;
+//								Update status - trigger status update process on camunda
+								launchStatusUpdateProcess(connectorResponse, c);
+							}
+						}					
+					}		
+				} catch(Exception e) {
+					LOGGER.severe("Something went worng while processing task forward-query");
+					e.printStackTrace();
+				} finally {
+					externalTaskService.complete(externalTask);
+				}	
+			}			
 		})
 		.open();
 	}
