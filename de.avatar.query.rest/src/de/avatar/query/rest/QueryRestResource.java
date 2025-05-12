@@ -41,6 +41,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.osgitech.rest.annotations.RequireJerseyServlet;
 
 /**
  * This REST resource is responsible for getting the request from the Query UI and forward them to the Whiteboard
@@ -49,6 +50,7 @@ import jakarta.ws.rs.core.Response;
  */
 @JakartarsResource
 @JakartarsName("query")
+@RequireJerseyServlet
 @Path("/")
 @Component(name = "QueryRestResource", service = QueryRestResource.class, enabled = true, scope = ServiceScope.PROTOTYPE)
 public class QueryRestResource {

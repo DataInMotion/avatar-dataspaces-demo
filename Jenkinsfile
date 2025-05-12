@@ -65,12 +65,9 @@ pipeline  {
 
                 sh "./gradlew :de.avatar.connector.isma:resolve.isma_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "./gradlew :de.avatar.connector.other:resolve.other_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-//                sh "./gradlew :de.avatar.connector.whiteboard:resolve.consumer --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
 				sh "./gradlew :de.avatar.query.rest:resolve.base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew :de.avatar.query.rest:resolve.launch --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "./gradlew :de.avatar.connector.isma:export.isma_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
                 sh "./gradlew :de.avatar.connector.other:export.other_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
-//                sh "./gradlew :de.avatar.connector.whiteboard:export.consumer --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
                 sh "./gradlew :de.avatar.query.rest:export.launch --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
             }
         }

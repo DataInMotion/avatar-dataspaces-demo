@@ -21,4 +21,5 @@ Private-Package: de.avatar.query.rest
 	org.gecko.emf.util.annotations,\
 	org.gecko.emf.util.model,\
 	de.avatar.query.backend,\
-	de.avatar.query.model
+	de.avatar.query.model,\
+	org.eclipse.osgitech.rest
