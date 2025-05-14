@@ -30,4 +30,6 @@ public @interface AvatarDataCleanupConfig {
 	
 	String removeOlderThanUnit() default "DAYS";
 	
+	String[] cleanupExtensions() default {};
+	
 }

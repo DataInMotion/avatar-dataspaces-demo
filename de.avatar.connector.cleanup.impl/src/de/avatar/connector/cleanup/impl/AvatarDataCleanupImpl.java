@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import org.osgi.service.component.annotations.Activate;
@@ -37,16 +38,18 @@ import de.avatar.connector.cleanup.api.api.AvatarDataCleanupConfig;
  * @author ilenia
  * @since Mar 20, 2025
  */
-@Component(immediate = true, name = "ResponseDataCleanup", configurationPid = "ResponseDataCleanup", configurationPolicy = ConfigurationPolicy.REQUIRE)
-public class ResponseDataCleanup implements AvatarDataCleanup {
+@Component(immediate = true, name = "AvatarDataCleanup", configurationPid = "AvatarDataCleanup", configurationPolicy = ConfigurationPolicy.REQUIRE)
+public class AvatarDataCleanupImpl implements AvatarDataCleanup {
 	
-	private final static Logger LOGGER = Logger.getLogger(ResponseDataCleanup.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(AvatarDataCleanupImpl.class.getName());
 	private AvatarDataCleanupConfig config;
 	private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+	private Predicate<Path> filter;
 	
 	@Activate
-	public ResponseDataCleanup(AvatarDataCleanupConfig config) {
+	public AvatarDataCleanupImpl(AvatarDataCleanupConfig config) {
 		this.config = config;
+		filter = createPredicate();
 		executor.scheduleAtFixedRate(this::run, config.cleanupDelay(), config.cleanupRate(), TimeUnit.valueOf(config.cleanupUnit()));
 	}
 	
@@ -68,7 +71,7 @@ public class ResponseDataCleanup implements AvatarDataCleanup {
 		List<Path> filesToBeRemoved = new LinkedList<>();
 		try {
 			Files.list(Path.of(System.getProperty(config.cleanupRootFolder()))).
-			filter(p -> p.getFileName().toString().endsWith(".json")).
+			filter(filter).
 			forEach(p -> {
 				try {
 					if(Files.readAttributes(p, BasicFileAttributes.class).lastModifiedTime().toInstant().isBefore(criticInstant)) {
@@ -81,6 +84,7 @@ public class ResponseDataCleanup implements AvatarDataCleanup {
 			if(filesToBeRemoved.isEmpty()) {
 				LOGGER.info("Nothing to cleanup for ResponseDataCleanup Service");
 			} else {
+				LOGGER.info(String.format("Removing %d files", filesToBeRemoved.size()));
 				filesToBeRemoved.forEach(p -> {
 					try {
 						Files.deleteIfExists(p);
@@ -92,5 +96,14 @@ public class ResponseDataCleanup implements AvatarDataCleanup {
 		} catch (IOException e) {
 			LOGGER.severe(String.format("IOException while executing ResponseDataCleanup job!"));
 		}
+	}
+	
+	private Predicate<Path> createPredicate() {
+//		Safe measure. If no file extension is specified we do not remove anything!
+		Predicate<Path> base = p -> false;
+		for(String extension : config.cleanupExtensions()) {
+			base = base.or(p -> p.getFileName().toString().endsWith(extension));
+		}
+		return base;
 	}
 }
