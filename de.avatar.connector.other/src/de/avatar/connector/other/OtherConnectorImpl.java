@@ -61,6 +61,7 @@ import de.avatar.model.connector.helper.ConnectorHelper;
 import de.avatar.query.Query;
 import de.avatar.status.QueryRequest;
 
+@Deprecated(since = "We will use EDC connectors and not these connectors")
 @Component(immediate = true, service = AvatarConnector.class, name="OtherConnector", property = {
 		"service.exported.configs=com.paremus.dosgi.net", 
 		"service.exported.interfaces=*", 

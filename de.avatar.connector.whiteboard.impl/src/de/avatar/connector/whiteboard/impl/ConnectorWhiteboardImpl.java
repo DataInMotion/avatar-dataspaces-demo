@@ -41,6 +41,7 @@ import de.avatar.model.connector.ModelInfo;
  * @author ilenia
  * @since Mar 18, 2025
  */
+@Deprecated(since = "This will not be necessary anymore because we are using EDC data space")
 @Component(immediate = true, name = "ConnectorWhiteboardImpl", service = ConnectorWhiteboard.class)
 public class ConnectorWhiteboardImpl implements ConnectorWhiteboard{
 	

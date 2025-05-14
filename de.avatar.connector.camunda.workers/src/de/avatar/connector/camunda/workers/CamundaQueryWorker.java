@@ -62,6 +62,7 @@ import de.avatar.status.StatusFactory;
  * @author ilenia
  * @since Mar 18, 2025
  */
+@Deprecated(since = "This is not needed anymore because the query will be forwarded directly to the dataspace")
 @Component(immediate = true, name = "CamundaQueryWorker", service = OrchestratorWorker.class,
 configurationPid = "CamundaQueryWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class CamundaQueryWorker implements OrchestratorWorker {
