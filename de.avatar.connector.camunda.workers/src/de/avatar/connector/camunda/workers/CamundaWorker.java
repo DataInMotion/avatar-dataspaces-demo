@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import org.camunda.bpm.client.ExternalTaskClient;
 import org.camunda.bpm.client.ExternalTaskClientBuilder;
 import org.camunda.bpm.client.interceptor.ClientRequestContext;
-import org.eclipse.emf.ecore.EObject;
+import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -27,24 +27,24 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 
+import de.avatar.connector.camunda.api.OrchestratorTaskCacheService;
 import de.avatar.connector.camunda.api.OrchestratorWorker;
-import de.avatar.connector.camunda.workers.helper.CamundaWorkerHelper;
-import de.avatar.connector.whiteboard.api.StatusService;
+import de.avatar.connector.camunda.workers.task.handlers.DoNothingTaskHandler;
+import de.avatar.connector.camunda.workers.task.handlers.ManualTerminationTaskHandler;
+import de.avatar.connector.camunda.workers.task.handlers.StatusUpdateTaskHandler;
 import de.avatar.keycloak.service.api.KeycloakService;
-import de.avatar.model.connector.EndpointResponse;
-import de.avatar.status.SingleConnectorQueryStatus;
+import de.avatar.query.backend.api.StatusService;
 
 /**
  * 
  * @author ilenia
  * @since Mar 18, 2025
  */
-@Component(immediate = true, name = "CamundaStatusWorker", service = OrchestratorWorker.class,
-configurationPid = "CamundaStatusWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
-public class CamundaStatusWorker implements OrchestratorWorker {
+@Component(service = OrchestratorWorker.class, configurationPid = "OrchestratorWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
+public class CamundaWorker  implements OrchestratorWorker {
 	
 	@Reference
-	KeycloakService keycloakService;
+	private KeycloakService keycloakService;
 	
 	@Reference
 	private ResourceSet resourceSet;
@@ -52,8 +52,11 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 	@Reference
 	StatusService statusService;
 	
+	@Reference(target="(component.name=ManualTerminationCacheTaskService)")
+	OrchestratorTaskCacheService cacheTaskService;
 	
-	private static final Logger LOGGER = Logger.getLogger(CamundaStatusWorker.class.getName());
+	
+	private static final Logger LOGGER = Logger.getLogger(CamundaWorker.class.getName());
 	
 	private ExecutorService executor = Executors.newSingleThreadExecutor();	
 	private Map<String, Object> properties;
@@ -69,7 +72,7 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 	public void deactivate() {
 		executor.shutdown();
 	}
-
+	
 	/* 
 	 * (non-Javadoc)
 	 * @see org.camunda.bpm.client.interceptor.ClientRequestInterceptor#intercept(org.camunda.bpm.client.interceptor.ClientRequestContext)
@@ -80,6 +83,7 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 		requestContext.addHeader("Content-Type","application/json");
 	}
 
+	
 	/* 
 	 * (non-Javadoc)
 	 * @see de.avatar.connector.camunda.api.OrchestratorWorker#handleTask()
@@ -99,26 +103,24 @@ public class CamundaStatusWorker implements OrchestratorWorker {
 		client.
 		subscribe((String)properties.get("camunda.task.topic")).
 		lockDuration((Long)properties.get("camunda.task.lock.duration") == null ? 1000 : (Long)properties.get("camunda.task.lock.duration")).
-		handler((externalTask, externalTaskService) -> {
-			String sgConnQueryStatusStr = new String((byte[]) externalTask.getVariable("sgConnQueryStatus"));
-			String endpointResStr = new String((byte[]) externalTask.getVariable("endpointRes"));
-			LOGGER.info(String.format("I got the  SingleConnectorQueryStatus in CamundaStatusWorker %s", sgConnQueryStatusStr));
-			LOGGER.info(String.format("I got the  EndpointResponse in CamundaStatusWorker %s", endpointResStr));
-			try {
-				EObject sgConnStatusObj = CamundaWorkerHelper.loadEObjectFromString(sgConnQueryStatusStr, resourceSet);
-				EObject endpointResObj = CamundaWorkerHelper.loadEObjectFromString(endpointResStr, resourceSet);
-				if(sgConnStatusObj instanceof SingleConnectorQueryStatus sgConnQueryStatus && endpointResObj instanceof EndpointResponse endpointResponse) {
-					statusService.updateStatus(endpointResponse, sgConnQueryStatus);
-				}
-			}
-			catch(Exception e) {
-				LOGGER.severe("Something went worng while processing task update-status");
-				e.printStackTrace();
-			} finally {
-				externalTaskService.complete(externalTask);
-			}				
-		})
-		.open();
+		handler(getTaskHandler()).
+		open();
 	}
-
+	
+	private ExternalTaskHandler getTaskHandler() {
+		String handlerType = (String) properties.getOrDefault("worker.task.handler.type", null);
+		if(handlerType == null) {
+			return new DoNothingTaskHandler();
+		} else {
+			switch(handlerType) {
+			case "STATUS_UPDATE":
+				return new StatusUpdateTaskHandler(statusService, resourceSet, cacheTaskService);
+			case "MANUAL_TERMINATION":
+				return new ManualTerminationTaskHandler(statusService, resourceSet, cacheTaskService);
+			default:
+				LOGGER.warning(String.format("No ExternalTaskHandler implemented for type %s", handlerType));
+				return new DoNothingTaskHandler();
+			}
+		}
+	}
 }

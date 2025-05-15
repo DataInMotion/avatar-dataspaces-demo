@@ -11,11 +11,11 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.avatar.connector.whiteboard.api;
+package de.avatar.query.backend.api;
 
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.status.QueryRequest;
-import de.avatar.status.QueryStatusResponse;
+import de.avatar.status.QueryResponse;
 import de.avatar.status.SingleConnectorQueryStatus;
 
 /**
@@ -31,10 +31,12 @@ public interface StatusService {
 	
 	void cacheRequest(QueryRequest request);
 			
-	void updateStatus(EndpointResponse endpointResponse);
+//	void updateStatus(EndpointResponse endpointResponse);
 	
-	void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus);
+	void updateStatus(QueryResponse queryResponse);
 	
-	QueryStatusResponse getStatusUpdate(String requestId);
+	void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus, String reqType, boolean isPartialUpdate);
+	
+	QueryResponse getStatusUpdate(String requestId);
 
 }

@@ -1,10 +1,5 @@
 {
    ":configurator:resource-version": 1,
-   "KeycloakService~forwardQuery": {
-   		"service.name": "QueryForwardService",
-   		"service.type": "prod",
-   		"configuration.file.path": "$[env:FORWARD_QUERY_SECRETS;default=$[prop:FORWARD_QUERY_SECRETS;default=/opt/avatar/secrets/config-query-forwarding-service.json]]"
-   },
    "KeycloakService~statusUpdate": {
    		"service.name": "StatusUpdateService",
    		"service.type": "prod",

@@ -10,12 +10,14 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	com.fasterxml.jackson.core.jackson-databind,\
 	com.fasterxml.jackson.core.jackson-core,\
 	de.avatar.connector.camunda.api;version=snapshot,\
-	de.avatar.connector.whiteboard,\
 	org.osgi.service.component,\
 	de.avatar.connector.api;version=snapshot,\
 	de.avatar.query.status.model,\
 	de.avatar.query.model;version=snapshot,\
 	org.gecko.emf.util.model,\
 	de.avatar.connector.model,\
-	de.avatar.metadata.model;version=snapshot
+	de.avatar.metadata.model;version=snapshot,\
+	de.avatar.query.backend;version=snapshot
+	
+-dsannotations-options: inherit
 	

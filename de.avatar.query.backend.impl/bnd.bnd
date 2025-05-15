@@ -5,11 +5,11 @@
 	de.avatar.query.backend;version=snapshot,\
 	de.avatar.query.status.model,\
 	de.avatar.connector.model,\
-	de.avatar.connector.whiteboard;version=snapshot,\
 	de.avatar.connector.camunda.api,\
 	org.osgi.service.component,\
 	org.osgi.util.promise,\
 	de.avatar.generator.api;version=snapshot,\
 	de.avatar.query.service.api,\
-	de.avatar.query.model
+	de.avatar.query.model,\
+	de.avatar.connector.cleanup.api
 	

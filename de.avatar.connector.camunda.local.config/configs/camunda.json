@@ -1,17 +1,18 @@
 {
   ":configurator:resource-version": 1,
   
-  "CamundaQueryWorker~request":
+  "OrchestratorWorker~termination":
 	{
-		"camunda.worker.name": "forward-query",
+		"camunda.worker.name": "manual-termination",
 		"camunda.worker.type": "local",
-		"keycloakService.target": "(service.name=QueryForwardService)",
+		"keycloakService.target": "(service.name=StatusUpdateService)",
 		"camunda.engine.url": "http://localhost:8080/engine-rest",
 		"camunda.polling.timeout": 10000,
-		"camunda.task.topic": "forward-query",
-		"camunda.task.lock.duration": 1000
+		"camunda.task.topic": "manual-termination",
+		"camunda.task.lock.duration": 1000,
+		"worker.task.handler.type": "MANUAL_TERMINATION"
 	},
-	"CamundaStatusWorker~status":
+	"OrchestratorWorker~status":
 	{
 		"camunda.worker.name": "update-status",
 		"camunda.worker.type": "local",
@@ -19,20 +20,14 @@
 		"camunda.engine.url": "http://localhost:8080/engine-rest",
 		"camunda.polling.timeout": 10000,
 		"camunda.task.topic": "update-status",
-		"camunda.task.lock.duration": 1000
-	},
-	"CamundaProcessLauncher~status":
-	{
-		"camunda.process.name": "update-status",
-		"camunda.process.type": "local",
-		"keycloakService.target": "(service.name=StatusUpdateService)",
-		"camunda.process.url": "http://localhost:8080/engine-rest/process-definition/key/update-status/start"
+		"camunda.task.lock.duration": 1000,
+		"worker.task.handler.type": "STATUS_UPDATE"
 	},
 	"CamundaProcessLauncher~query":
 	{
 		"camunda.process.name": "forward-query",
 		"camunda.process.type": "local",
-		"keycloakService.target": "(service.name=QueryForwardService)",
+		"keycloakService.target": "(service.name=StatusUpdateService)",
 		"camunda.process.url": "http://localhost:8080/engine-rest/process-definition/key/forward-query/start"
 	}
 }

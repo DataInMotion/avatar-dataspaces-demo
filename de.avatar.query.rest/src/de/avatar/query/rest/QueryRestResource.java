@@ -11,11 +11,9 @@
  */
 package de.avatar.query.rest;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.List;
 
+import org.eclipse.osgitech.rest.annotations.RequireJerseyServlet;
 import org.gecko.emf.json.constants.EMFJs;
 import org.gecko.emf.rest.annotations.EMFResourceOptions;
 import org.gecko.emf.rest.annotations.ResourceOption;
@@ -32,7 +30,6 @@ import de.avatar.query.Query;
 import de.avatar.query.backend.api.QueryBackendService;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
-import de.avatar.status.QueryStatusResponse;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -41,7 +38,6 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.eclipse.osgitech.rest.annotations.RequireJerseyServlet;
 
 /**
  * This REST resource is responsible for getting the request from the Query UI and forward them to the Whiteboard
@@ -70,25 +66,25 @@ public class QueryRestResource {
 		return "Hello ConnectorRestResource!";
 	}
 	
-	@GET
-	@Path("/connectors/modelinfo")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response modelInfo() {
-		List<ModelInfo> modelInfos = queryBEService.getConnectorsModelInfo();
-		org.gecko.emf.utilities.Response emfResponse = UtilitiesFactory.eINSTANCE.createResponse();
-		emfResponse.getData().addAll(modelInfos);
-		return Response.ok(emfResponse).build();
-	}
-	
-	@GET
-	@Path("/connectors/consentinfo")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response consentInfo() {
-		List<ConsentInfo> consentInfos = queryBEService.getConnectorsConsentInfo();
-		org.gecko.emf.utilities.Response emfResponse = UtilitiesFactory.eINSTANCE.createResponse();
-		emfResponse.getData().addAll(consentInfos);
-		return Response.ok(emfResponse).build();
-	}
+//	@GET
+//	@Path("/connectors/modelinfo")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Response modelInfo() {
+//		List<ModelInfo> modelInfos = queryBEService.getConnectorsModelInfo();
+//		org.gecko.emf.utilities.Response emfResponse = UtilitiesFactory.eINSTANCE.createResponse();
+//		emfResponse.getData().addAll(modelInfos);
+//		return Response.ok(emfResponse).build();
+//	}
+//	
+//	@GET
+//	@Path("/connectors/consentinfo")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Response consentInfo() {
+//		List<ConsentInfo> consentInfos = queryBEService.getConnectorsConsentInfo();
+//		org.gecko.emf.utilities.Response emfResponse = UtilitiesFactory.eINSTANCE.createResponse();
+//		emfResponse.getData().addAll(consentInfos);
+//		return Response.ok(emfResponse).build();
+//	}
 	
 
 	@POST
@@ -102,7 +98,7 @@ public class QueryRestResource {
 			return Response.ok(response).build();
 		} catch(Exception e) {
 			System.out.println("I got the Exception");
-			return Response.status(500, e.getMessage()).build();
+			return Response.status(400, e.getMessage()).build();
 		}		
 	}
 	
@@ -117,7 +113,7 @@ public class QueryRestResource {
 			QueryResponse response = queryBEService.executeQuery(request);
 			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {
-			return Response.status(500, e.getMessage()).build();
+			return Response.status(400, e.getMessage()).build();
 		}
 	}
 	
@@ -127,10 +123,36 @@ public class QueryRestResource {
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
 	public Response status(@PathParam("requestId") String requestId) {
 		try {
-			QueryStatusResponse response = queryBEService.executeStatusRequest(requestId);
+			QueryResponse response = queryBEService.executeStatusRequest(requestId);
 			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {			
-			return Response.status(500, e.getMessage()).build();
+			return Response.status(400, e.getMessage()).build();
+		}
+	}
+	
+	@GET
+	@Path("/cancel/{requestId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response cancel(@PathParam("requestId") String requestId) {
+		try {
+			QueryResponse response = queryBEService.cancelRequest(requestId);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {			
+			return Response.status(400, e.getMessage()).build();
+		}
+	}
+	
+	@GET
+	@Path("/interrupt/{requestId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response interrupt(@PathParam("requestId") String requestId) {
+		try {
+			QueryResponse response = queryBEService.interruptRequest(requestId);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {			
+			return Response.status(400, e.getMessage()).build();
 		}
 	}
 	
@@ -140,32 +162,32 @@ public class QueryRestResource {
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
 	public Response publicLink(@PathParam("requestId") String requestId) {
 		try {
-			queryBEService.generatePublicLinkForRequest(requestId);
-			return Response.ok("connector/rest/downloads/"+requestId).build();
+			QueryResponse response = queryBEService.publicLinkRequest(requestId);
+			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {			
-			return Response.status(500, e.getMessage()).build();
+			return Response.status(400, e.getMessage()).build();
 		}
 	}
 
-	@GET
-	@Path("/downloads/{requestId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
-	public Response download(@PathParam("requestId") String requestId) {
-		
-		File resultFile = queryBEService.downloadResponseData(requestId);
-		if(resultFile.exists()) {
-			try(InputStream is = new FileInputStream(resultFile)) {
-				return Response.ok(is.readAllBytes()).
-						header("Content-Disposition", "attachment; filename=".concat(requestId).concat(".zip")).
-						build();
-			} catch(Exception e) {
-				return Response.status(500, e.getMessage()).build();
-			}
-		} else {
-			return Response.noContent().build();
-		}
-	}
+//	@GET
+//	@Path("/downloads/{requestId}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+//	public Response download(@PathParam("requestId") String requestId) {
+//		
+//		File resultFile = queryBEService.downloadResponseData(requestId);
+//		if(resultFile.exists()) {
+//			try(InputStream is = new FileInputStream(resultFile)) {
+//				return Response.ok(is.readAllBytes()).
+//						header("Content-Disposition", "attachment; filename=".concat(requestId).concat(".zip")).
+//						build();
+//			} catch(Exception e) {
+//				return Response.status(500, e.getMessage()).build();
+//			}
+//		} else {
+//			return Response.noContent().build();
+//		}
+//	}
 	
 	@POST
 	@Path("/save-query")

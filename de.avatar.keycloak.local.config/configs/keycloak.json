@@ -1,9 +1,5 @@
 {
    ":configurator:resource-version": 1,
-   "KeycloakService~forwardQuery": {
-   		"service.name": "QueryForwardService",
-   		"service.type": "local"
-   },
    "KeycloakService~statusUpdate": {
    		"service.name": "StatusUpdateService",
    		"service.type": "local"

@@ -11,18 +11,15 @@
  */
 package de.avatar.query.backend.api;
 
-import java.io.File;
 import java.util.List;
-
 
 import org.osgi.annotation.versioning.ProviderType;
 
 import de.avatar.model.connector.ConsentInfo;
 import de.avatar.model.connector.ModelInfo;
+import de.avatar.query.Query;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
-import de.avatar.status.QueryStatusResponse;
-import de.avatar.query.Query;
 
 /**
  * Service responsible for communicating with the Query REST API 
@@ -32,19 +29,25 @@ import de.avatar.query.Query;
 @ProviderType
 public interface QueryBackendService{
 	
-	List<ModelInfo> getConnectorsModelInfo();
-	
-	List<ConsentInfo> getConnectorsConsentInfo();
+//	List<ModelInfo> getConnectorsModelInfo();
+//	
+//	List<ConsentInfo> getConnectorsConsentInfo();
 	
 	QueryResponse executeDryRun(QueryRequest queryRequest);
 	
 	QueryResponse executeQuery(QueryRequest queryRequest);
 	
-	QueryStatusResponse executeStatusRequest(String requestId);
-		
-	String generatePublicLinkForRequest(String requestId);
+	QueryResponse executeStatusRequest(String requestId);
 	
-	File downloadResponseData(String requestId);
+	QueryResponse cancelRequest(String requestId);
+	
+	QueryResponse interruptRequest(String requestId);
+	
+	QueryResponse publicLinkRequest(String requestId);
+		
+//	String generatePublicLinkForRequest(String requestId);
+	
+//	File downloadResponseData(String requestId);
 	
 	Query saveQuery(Query query);
 	

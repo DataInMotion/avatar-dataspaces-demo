@@ -39,12 +39,16 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="QueryStatusType">
-    <eLiterals name="SUCCESS"/>
-    <eLiterals name="ERROR" value="1"/>
-    <eLiterals name="NO_CONTENT" value="2"/>
+    <eLiterals name="QUERY_COMPLETED"/>
+    <eLiterals name="QUERY_ERROR" value="1"/>
+    <eLiterals name="QUERY_NO_CONTENT" value="2"/>
     <eLiterals name="TIMEOUT" value="3"/>
-    <eLiterals name="PENDING" value="4"/>
-    <eLiterals name="DRYRUN_SUCCESS" value="5"/>
+    <eLiterals name="QUERY_PENDING" value="4"/>
+    <eLiterals name="QUERY_DRYRUN_COMPLETED" value="5"/>
+    <eLiterals name="QUERY_CANCELED" value="6"/>
+    <eLiterals name="QUERY_INTERRUPTED" value="7"/>
+    <eLiterals name="DATA_ANONYMIZED_READY" value="8"/>
+    <eLiterals name="OPERATION_ERROR" value="9"/>
     <eLiterals name="OTHER" value="50"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DetailedQueryStatus">

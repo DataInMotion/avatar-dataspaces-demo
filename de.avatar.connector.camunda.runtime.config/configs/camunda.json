@@ -1,15 +1,16 @@
 {
   ":configurator:resource-version": 1,
   
-  "CamundaQueryWorker~request":
+  "CamundaQueryWorker~termination":
 	{
-		"camunda.worker.name": "forward-query",
+		"camunda.worker.name": "manual-termination",
 		"camunda.worker.type": "prod",
-		"keycloakService.target": "(service.name=QueryForwardService)",
+		"keycloakService.target": "(service.name=StatusUpdateService)",
 		"camunda.engine.url": "http://apisix-gateway:9080/api/camundainterface/engine-rest",
 		"camunda.polling.timeout": 10000,
-		"camunda.task.topic": "forward-query",
-		"camunda.task.lock.duration": 1000
+		"camunda.task.topic": "manual-termination",
+		"camunda.task.lock.duration": 1000,
+		"worker.task.handler.type": "MANUAL_TERMINATION"
 	},
 	"CamundaStatusWorker~status":
 	{
@@ -19,20 +20,14 @@
 		"camunda.engine.url": "http://apisix-gateway:9080/api/camundainterface/engine-rest",
 		"camunda.polling.timeout": 10000,
 		"camunda.task.topic": "update-status",
-		"camunda.task.lock.duration": 1000
-	},
-	"CamundaProcessLauncher~status":
-	{
-		"camunda.process.name": "update-status",
-		"camunda.process.type": "prod",
-		"keycloakService.target": "(service.name=StatusUpdateService)",
-		"camunda.process.url": "http://apisix-gateway:9080/api/processuserinterface/api/service/start?uuid=89efef30-01f8-4089-80f1-8999f4dd0bb6"
+		"camunda.task.lock.duration": 1000,
+		"worker.task.handler.type": "STATUS_UPDATE"
 	},
 	"CamundaProcessLauncher~query":
 	{
 		"camunda.process.name": "forward-query",
 		"camunda.process.type": "prod",
-		"keycloakService.target": "(service.name=QueryForwardService)",
+		"keycloakService.target": "(service.name=StatusUpdateService)",
 		"camunda.process.url": "http://apisix-gateway:9080/api/processuserinterface/api/service/start?uuid=3d00bd61-d977-405f-8586-40e762c28d79"
 	}
 }

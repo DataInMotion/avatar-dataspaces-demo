@@ -10,12 +10,16 @@
   <genPackages prefix="Status" basePackage="de.avatar" resource="XMI" disposableProviderFactory="true"
       ecorePackage="query-status.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query-status.ecore#//QueryStatusType">
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/SUCCESS"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/ERROR"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/NO_CONTENT"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_COMPLETED"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_ERROR"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_NO_CONTENT"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/TIMEOUT"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PENDING"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/DRYRUN_SUCCESS"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_PENDING"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_DRYRUN_COMPLETED"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_CANCELED"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_INTERRUPTED"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/DATA_ANONYMIZED_READY"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/OPERATION_ERROR"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/OTHER"/>
     </genEnums>
     <genClasses ecoreClass="query-status.ecore#//QueryRequest">

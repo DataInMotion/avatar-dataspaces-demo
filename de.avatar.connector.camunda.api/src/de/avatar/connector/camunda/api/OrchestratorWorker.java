@@ -22,6 +22,8 @@ import org.camunda.bpm.client.interceptor.ClientRequestInterceptor;
  */
 public interface OrchestratorWorker extends ClientRequestInterceptor{
 	
-	void handleTask();
+	public void handleTask();
+	
+	
 		
 }

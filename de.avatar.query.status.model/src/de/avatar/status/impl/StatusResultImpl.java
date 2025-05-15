@@ -72,7 +72,7 @@ public class StatusResultImpl extends MinimalEObjectImpl.Container implements St
 	 * @generated
 	 * @ordered
 	 */
-	protected static final QueryStatusType STATUS_EDEFAULT = QueryStatusType.SUCCESS;
+	protected static final QueryStatusType STATUS_EDEFAULT = QueryStatusType.QUERY_COMPLETED;
 
 	/**
 	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.

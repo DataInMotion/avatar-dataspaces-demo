@@ -1,4 +1,6 @@
 -library: enable-emf
 
 Bundle-Version: 1.0.0.SNAPSHOT
--buildpath: org.camunda.bpm.external.task.client
+-buildpath: \
+	org.camunda.bpm.external.task.client,\
+	de.avatar.query.status.model

@@ -14,6 +14,7 @@ package de.avatar.connector.camunda.workers.helper;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -34,6 +35,7 @@ import de.avatar.model.connector.ResponseResult;
 import de.avatar.status.ErrorStatusResult;
 import de.avatar.status.PendingStatusResult;
 import de.avatar.status.QueryRequest;
+import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.StatusFactory;
 import de.avatar.status.StatusResult;
@@ -90,15 +92,15 @@ public class CamundaWorkerHelper {
 	public static  QueryStatusType getQueryStatusType(ResponseCode code) {
 		switch(code) {
 		case ERROR:
-			return QueryStatusType.ERROR;
+			return QueryStatusType.QUERY_ERROR;
 		case NO_CONTENT:
-			return QueryStatusType.NO_CONTENT;
+			return QueryStatusType.QUERY_NO_CONTENT;
 		case OK:
-			return QueryStatusType.SUCCESS;
+			return QueryStatusType.QUERY_COMPLETED;
 		case DRYRUN_OK:
-			return QueryStatusType.DRYRUN_SUCCESS;
+			return QueryStatusType.QUERY_DRYRUN_COMPLETED;
 		case PENDING:
-			return QueryStatusType.PENDING;
+			return QueryStatusType.QUERY_PENDING;
 		case TIMEOUT:
 			return QueryStatusType.TIMEOUT;
 		case OTHER: default:
@@ -127,6 +129,15 @@ public class CamundaWorkerHelper {
 			return okRes;
 		}
 		return StatusFactory.eINSTANCE.createStatusResult();
+	}
+	
+	public static QueryResponse createQueryResponse(String reqId, QueryStatusType statusType, String msg) {
+		QueryResponse queryStatus = StatusFactory.eINSTANCE.createQueryResponse();
+		queryStatus.setRequestId(reqId);
+		queryStatus.setTimestamp(Instant.now().toEpochMilli());
+		queryStatus.setStatus(statusType);
+		queryStatus.setMessage(msg);
+		return queryStatus;
 	}
 
 }

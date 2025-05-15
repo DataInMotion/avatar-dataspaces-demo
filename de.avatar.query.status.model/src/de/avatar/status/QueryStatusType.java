@@ -33,34 +33,34 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public enum QueryStatusType implements Enumerator {
 	/**
-	 * The '<em><b>SUCCESS</b></em>' literal object.
+	 * The '<em><b>QUERY COMPLETED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SUCCESS_VALUE
+	 * @see #QUERY_COMPLETED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	SUCCESS(0, "SUCCESS", "SUCCESS"),
+	QUERY_COMPLETED(0, "QUERY_COMPLETED", "QUERY_COMPLETED"),
 
 	/**
-	 * The '<em><b>ERROR</b></em>' literal object.
+	 * The '<em><b>QUERY ERROR</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ERROR_VALUE
+	 * @see #QUERY_ERROR_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ERROR(1, "ERROR", "ERROR"),
+	QUERY_ERROR(1, "QUERY_ERROR", "QUERY_ERROR"),
 
 	/**
-	 * The '<em><b>NO CONTENT</b></em>' literal object.
+	 * The '<em><b>QUERY NO CONTENT</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NO_CONTENT_VALUE
+	 * @see #QUERY_NO_CONTENT_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NO_CONTENT(2, "NO_CONTENT", "NO_CONTENT"),
+	QUERY_NO_CONTENT(2, "QUERY_NO_CONTENT", "QUERY_NO_CONTENT"),
 
 	/**
 	 * The '<em><b>TIMEOUT</b></em>' literal object.
@@ -73,24 +73,64 @@ public enum QueryStatusType implements Enumerator {
 	TIMEOUT(3, "TIMEOUT", "TIMEOUT"),
 
 	/**
-	 * The '<em><b>PENDING</b></em>' literal object.
+	 * The '<em><b>QUERY PENDING</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PENDING_VALUE
+	 * @see #QUERY_PENDING_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PENDING(4, "PENDING", "PENDING"),
+	QUERY_PENDING(4, "QUERY_PENDING", "QUERY_PENDING"),
 
 	/**
-	 * The '<em><b>DRYRUN SUCCESS</b></em>' literal object.
+	 * The '<em><b>QUERY DRYRUN COMPLETED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #DRYRUN_SUCCESS_VALUE
+	 * @see #QUERY_DRYRUN_COMPLETED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	DRYRUN_SUCCESS(5, "DRYRUN_SUCCESS", "DRYRUN_SUCCESS"),
+	QUERY_DRYRUN_COMPLETED(5, "QUERY_DRYRUN_COMPLETED", "QUERY_DRYRUN_COMPLETED"),
+
+	/**
+	 * The '<em><b>QUERY CANCELED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUERY_CANCELED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	QUERY_CANCELED(6, "QUERY_CANCELED", "QUERY_CANCELED"),
+
+	/**
+	 * The '<em><b>QUERY INTERRUPTED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUERY_INTERRUPTED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	QUERY_INTERRUPTED(7, "QUERY_INTERRUPTED", "QUERY_INTERRUPTED"),
+
+	/**
+	 * The '<em><b>DATA ANONYMIZED READY</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DATA_ANONYMIZED_READY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DATA_ANONYMIZED_READY(8, "DATA_ANONYMIZED_READY", "DATA_ANONYMIZED_READY"),
+
+	/**
+	 * The '<em><b>OPERATION ERROR</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OPERATION_ERROR_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	OPERATION_ERROR(9, "OPERATION_ERROR", "OPERATION_ERROR"),
 
 	/**
 	 * The '<em><b>OTHER</b></em>' literal object.
@@ -103,37 +143,37 @@ public enum QueryStatusType implements Enumerator {
 	OTHER(50, "OTHER", "OTHER");
 
 	/**
-	 * The '<em><b>SUCCESS</b></em>' literal value.
+	 * The '<em><b>QUERY COMPLETED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SUCCESS
+	 * @see #QUERY_COMPLETED
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SUCCESS_VALUE = 0;
+	public static final int QUERY_COMPLETED_VALUE = 0;
 
 	/**
-	 * The '<em><b>ERROR</b></em>' literal value.
+	 * The '<em><b>QUERY ERROR</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ERROR
+	 * @see #QUERY_ERROR
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ERROR_VALUE = 1;
+	public static final int QUERY_ERROR_VALUE = 1;
 
 	/**
-	 * The '<em><b>NO CONTENT</b></em>' literal value.
+	 * The '<em><b>QUERY NO CONTENT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NO_CONTENT
+	 * @see #QUERY_NO_CONTENT
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NO_CONTENT_VALUE = 2;
+	public static final int QUERY_NO_CONTENT_VALUE = 2;
 
 	/**
 	 * The '<em><b>TIMEOUT</b></em>' literal value.
@@ -147,26 +187,70 @@ public enum QueryStatusType implements Enumerator {
 	public static final int TIMEOUT_VALUE = 3;
 
 	/**
-	 * The '<em><b>PENDING</b></em>' literal value.
+	 * The '<em><b>QUERY PENDING</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PENDING
+	 * @see #QUERY_PENDING
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PENDING_VALUE = 4;
+	public static final int QUERY_PENDING_VALUE = 4;
 
 	/**
-	 * The '<em><b>DRYRUN SUCCESS</b></em>' literal value.
+	 * The '<em><b>QUERY DRYRUN COMPLETED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #DRYRUN_SUCCESS
+	 * @see #QUERY_DRYRUN_COMPLETED
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DRYRUN_SUCCESS_VALUE = 5;
+	public static final int QUERY_DRYRUN_COMPLETED_VALUE = 5;
+
+	/**
+	 * The '<em><b>QUERY CANCELED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUERY_CANCELED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int QUERY_CANCELED_VALUE = 6;
+
+	/**
+	 * The '<em><b>QUERY INTERRUPTED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUERY_INTERRUPTED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int QUERY_INTERRUPTED_VALUE = 7;
+
+	/**
+	 * The '<em><b>DATA ANONYMIZED READY</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DATA_ANONYMIZED_READY
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DATA_ANONYMIZED_READY_VALUE = 8;
+
+	/**
+	 * The '<em><b>OPERATION ERROR</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OPERATION_ERROR
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int OPERATION_ERROR_VALUE = 9;
 
 	/**
 	 * The '<em><b>OTHER</b></em>' literal value.
@@ -187,12 +271,16 @@ public enum QueryStatusType implements Enumerator {
 	 */
 	private static final QueryStatusType[] VALUES_ARRAY =
 		new QueryStatusType[] {
-			SUCCESS,
-			ERROR,
-			NO_CONTENT,
+			QUERY_COMPLETED,
+			QUERY_ERROR,
+			QUERY_NO_CONTENT,
 			TIMEOUT,
-			PENDING,
-			DRYRUN_SUCCESS,
+			QUERY_PENDING,
+			QUERY_DRYRUN_COMPLETED,
+			QUERY_CANCELED,
+			QUERY_INTERRUPTED,
+			DATA_ANONYMIZED_READY,
+			OPERATION_ERROR,
 			OTHER,
 		};
 
@@ -250,12 +338,16 @@ public enum QueryStatusType implements Enumerator {
 	 */
 	public static QueryStatusType get(int value) {
 		switch (value) {
-			case SUCCESS_VALUE: return SUCCESS;
-			case ERROR_VALUE: return ERROR;
-			case NO_CONTENT_VALUE: return NO_CONTENT;
+			case QUERY_COMPLETED_VALUE: return QUERY_COMPLETED;
+			case QUERY_ERROR_VALUE: return QUERY_ERROR;
+			case QUERY_NO_CONTENT_VALUE: return QUERY_NO_CONTENT;
 			case TIMEOUT_VALUE: return TIMEOUT;
-			case PENDING_VALUE: return PENDING;
-			case DRYRUN_SUCCESS_VALUE: return DRYRUN_SUCCESS;
+			case QUERY_PENDING_VALUE: return QUERY_PENDING;
+			case QUERY_DRYRUN_COMPLETED_VALUE: return QUERY_DRYRUN_COMPLETED;
+			case QUERY_CANCELED_VALUE: return QUERY_CANCELED;
+			case QUERY_INTERRUPTED_VALUE: return QUERY_INTERRUPTED;
+			case DATA_ANONYMIZED_READY_VALUE: return DATA_ANONYMIZED_READY;
+			case OPERATION_ERROR_VALUE: return OPERATION_ERROR;
 			case OTHER_VALUE: return OTHER;
 		}
 		return null;
