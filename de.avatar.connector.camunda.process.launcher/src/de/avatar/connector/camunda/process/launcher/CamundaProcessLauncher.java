@@ -13,6 +13,7 @@
  */
 package de.avatar.connector.camunda.process.launcher;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -40,11 +41,11 @@ import de.avatar.keycloak.service.api.KeycloakService;
 @Component(immediate = true, name = "CamundaProcessLauncher", configurationPid = "CamundaProcessLauncher", 
 configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
-	
+
 	@Reference
 	KeycloakService keycloakService;
-	
-	
+
+
 	private static final Logger LOGGER = Logger.getLogger(CamundaProcessLauncher.class.getName());
 	private Map<String, Object> properties;
 
@@ -60,21 +61,16 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 	 * @see de.avatar.connector.whiteboard.api.OrchestratorProcessLauncher#launchProcess(java.util.Map)
 	 */
 	@Override
-	public void launchProcessToEngine(Map<String, HashMap<String, HashMap<String, Object>>> processVariables) {
+	public void launchProcessToEngine(Map<String, HashMap<String, HashMap<String, Object>>> processVariables) throws IOException{
 		HttpClient httpClient = HttpClients.createDefault();
-		try {			
-			ObjectMapper objectMapper = new ObjectMapper();
-			String jacksonData = objectMapper.writeValueAsString(processVariables);
-			HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
-			StringEntity params = new StringEntity(jacksonData);
-			post.addHeader("content-type", "application/json");
-			post.setEntity(params);
-			httpClient.execute(post, new MyResponseHandler());
-			LOGGER.info("I sent the process to camunda");
-		} catch(Exception e) {
-			LOGGER.severe(String.format("Exception while sending request %s to Orchestrator", (String)properties.get("camunda.process.url")));
-			return;
-		}		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jacksonData = objectMapper.writeValueAsString(processVariables);
+		HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
+		StringEntity params = new StringEntity(jacksonData);
+		post.addHeader("content-type", "application/json");
+		post.setEntity(params);
+		httpClient.execute(post, new MyResponseHandler());
+		LOGGER.info("I sent the process to camunda");
 	}
 
 	/* 
@@ -91,23 +87,16 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 	 * @see de.avatar.connector.camunda.api.OrchestratorProcessLauncher#launchProcessToProcessUserInterface(java.util.Map)
 	 */
 	@Override
-	public void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables) {
+	public void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables) throws IOException {
 		HttpClient httpClient = HttpClients.createDefault();
-		try {			
-			ObjectMapper objectMapper = new ObjectMapper();
-			String jacksonData = objectMapper.writeValueAsString(processVariables);
-			HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
-			StringEntity params = new StringEntity(jacksonData);
-			post.addHeader("Content-Type", "application/json");
-			post.addHeader("Authorization","Bearer " + keycloakService.getAccessToken().getToken());
-			post.setEntity(params);
-			httpClient.execute(post, new MyResponseHandler());
-			LOGGER.info("I sent the process to process user interface");
-		} catch(Exception e) {
-			LOGGER.severe(String.format("Exception while sending request %s to process user interface", (String)properties.get("camunda.process.url")));
-			return;
-		}		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jacksonData = objectMapper.writeValueAsString(processVariables);
+		HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
+		StringEntity params = new StringEntity(jacksonData);
+		post.addHeader("Content-Type", "application/json");
+		post.addHeader("Authorization","Bearer " + keycloakService.getAccessToken().getToken());
+		post.setEntity(params);
+		httpClient.execute(post, new MyResponseHandler());
+		LOGGER.info("I sent the process to process user interface");
 	}
-
-	
 }

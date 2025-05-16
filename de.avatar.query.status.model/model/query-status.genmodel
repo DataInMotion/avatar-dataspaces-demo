@@ -19,6 +19,7 @@
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_CANCELED"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_INTERRUPTED"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/DATA_ANONYMIZED_READY"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PUBLIC_LINK_AVAILABLE"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/OPERATION_ERROR"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/OTHER"/>
     </genEnums>

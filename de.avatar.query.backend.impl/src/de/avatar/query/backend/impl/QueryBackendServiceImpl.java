@@ -38,13 +38,12 @@ import de.avatar.connector.camunda.api.OrchestratorProcessLauncher;
 import de.avatar.connector.camunda.api.OrchestratorTaskCacheService;
 import de.avatar.query.Query;
 import de.avatar.query.backend.api.QueryBackendService;
+import de.avatar.query.backend.api.QueryStatusHelper;
 import de.avatar.query.backend.api.StatusService;
 import de.avatar.query.service.api.QueryService;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
-import de.avatar.status.QueryStatusResponse;
 import de.avatar.status.QueryStatusType;
-import de.avatar.status.StatusFactory;
 
 @Component(name = "QueryBackendService")
 public class QueryBackendServiceImpl implements QueryBackendService{
@@ -80,24 +79,6 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 
 	/* 
 	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#getConnectorsModelInfo()
-	 */
-//	@Override
-//	public List<ModelInfo> getConnectorsModelInfo() {
-//		return connectorWhiteboard.getModelInfoForAllConnectors();
-//	}
-//
-//	/* 
-//	 * (non-Javadoc)
-//	 * @see de.avatar.query.backend.api.QueryBackendService#getConnectorsConsentInfo()
-//	 */
-//	@Override
-//	public List<ConsentInfo> getConnectorsConsentInfo() {
-//		return connectorWhiteboard.getConsentInfoForAllConnectors();
-//	}
-
-	/* 
-	 * (non-Javadoc)
 	 * @see de.avatar.query.backend.api.QueryBackendService#executeDryRun(de.avatar.query.backend.api.QueryRequest)
 	 */
 	@Override
@@ -108,14 +89,21 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", reqId));
 			return statusService.getStatusUpdate(reqId);
 		}
-		sendQueryRequest(queryRequest, "dryrun", reqId);
-		
-//		here we just ping the status for updates
-		QueryResponse response = pingForStatus(reqId, true);
-		if(response == null) {
-			response = getBasicPendingResponse(reqId);
+		try {
+			sendQueryRequest(queryRequest, "dryrun", reqId);
+			
+//			here we just ping the status for updates
+			QueryResponse response = pingForStatus(reqId, true);
+			if(response == null) {
+				response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.QUERY_PENDING, "Request has been sent, but no updates from connectors arrived yet");
+			}
+			return response;	
+		} catch(IOException e) {
+			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
+			e.printStackTrace();
+			return QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
 		}
-		return response;	
+		
 	}
 
 	/* 
@@ -130,14 +118,20 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", reqId));
 			return statusService.getStatusUpdate(reqId);
 		}
-		sendQueryRequest(queryRequest, "request", reqId);		
-//		here we just ping the status for updates
-		QueryResponse response = pingForStatus(reqId, false);
-		if(response == null) {
-			response = getBasicPendingResponse(reqId);
+		try {
+			sendQueryRequest(queryRequest, "request", reqId);	
+//			here we just ping the status for updates
+			QueryResponse response = pingForStatus(reqId, false);
+			if(response == null) {
+				response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.QUERY_PENDING, "Request has been sent, but no updates from connectors arrived yet");
+			}
+			statusService.cacheRequest(queryRequest);
+			return response;
+		} catch(IOException e) {
+			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
+			e.printStackTrace();
+			return QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
 		}
-		statusService.cacheRequest(queryRequest);
-		return response;		
 	}
 	
 	/* 
@@ -145,30 +139,66 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	 * @see de.avatar.query.backend.api.QueryBackendService#executeStatusRequest(java.lang.String)
 	 */
 	@Override
-	public QueryResponse executeStatusRequest(String requestId) {
-		
-	
+	public QueryResponse executeStatusRequest(String requestId) {	
 		return statusService.getStatusUpdate(requestId);
 	}
 	
-//	/* 
-//	 * (non-Javadoc)
-//	 * @see de.avatar.query.backend.api.QueryBackendService#generatePublicLinkForRequest(java.lang.String)
-//	 */
-//	@Override
-//	public String generatePublicLinkForRequest(String requestId) {
-//		return avatarGenerator.generatePublicLinkForRequest(requestId);
-//	}
-	
-//	/* 
-//	 * (non-Javadoc)
-//	 * @see de.avatar.query.backend.api.QueryBackendService#downloadResponseData(java.lang.String)
-//	 */
-//	@Override
-//	public File downloadResponseData(String requestId) {
-//		return avatarGenerator.getAggregatedResponse(requestId);
-//	}
-	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#cancelRequest(java.lang.String)
+	 */
+	@Override
+	public QueryResponse cancelRequest(String requestId) {
+//		TODO
+//		if(statusService.getCachedRequest(requestId) == null) {
+//			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot cancel anything.", requestId));
+//			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot cancel anything.", requestId));
+//		}
+//		sendQueryRequest(null, "cancel", requestId);
+//		QueryResponse response = StatusFactory.eINSTANCE.createQueryResponse();
+//		response.setRequestId(requestId);
+//		response.setMessage("Cancel request has been forwarded");
+//		response.setTimestamp(Instant.now().toEpochMilli());
+//		response.setStatus(QueryStatusType.QUERY_CANCELED);
+//		return response;
+		return null;
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#publicLinkRequest(java.lang.String)
+	 */
+	@Override
+	public QueryResponse publicLinkRequest(String requestId) {
+		if(statusService.getCachedRequest(requestId) == null) {
+			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot request public link.", requestId));
+			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot request public link.", requestId));
+		}
+		return null;
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#interruptRequest(java.lang.String)
+	 */
+	@Override
+	public QueryResponse interruptRequest(String requestId) {
+		if(statusService.getCachedRequest(requestId) == null) {
+			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot interrupt anything.", requestId));
+			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot interrupt anything", requestId));
+		}
+		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
+		if(statusUpdate == null) {
+			LOGGER.severe(String.format("No status update available for request %s. Cannot continue.", requestId));
+			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot continue.", requestId));
+		}
+//		if the status is not QUERY_PENDING we cannot interrupt the request
+		if(!QueryStatusType.QUERY_PENDING.equals(statusUpdate.getStatus())) {
+			LOGGER.severe(String.format("Cannot interrupt request %s because all the connectors already replied.", requestId));
+			throw new IllegalArgumentException(String.format("Cannot interrupt request %s because all the connectors already replied.", requestId));
+		}
+		return cacheTaskService.completeTask(requestId);
+	}
 	
 	/* 
 	 * (non-Javadoc)
@@ -251,7 +281,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		}
 	}
 	
-	private void sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId) {
+	private void sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId) throws IOException{
 		
 		if(queryCamundaProcessLauncher.isLocal()) {
 			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
@@ -291,76 +321,4 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables);
 		}		
 	}
-	
-	private QueryStatusResponse getBasicPendingResponse(String requestId) {
-		QueryStatusResponse response = StatusFactory.eINSTANCE.createQueryStatusResponse();
-		response.setRequestId(requestId);
-		response.setStatus(QueryStatusType.QUERY_PENDING);
-		response.setTimestamp(Instant.now().toEpochMilli());
-		response.setMessage("Request has been sent, but no updates from connectors arrived yet");	
-		return response;
-	}
-
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#cancelRequest(java.lang.String)
-	 */
-	@Override
-	public QueryResponse cancelRequest(String requestId) {
-//		TODO
-//		if(statusService.getCachedRequest(requestId) == null) {
-//			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot cancel anything.", requestId));
-//			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot cancel anything.", requestId));
-//		}
-//		sendQueryRequest(null, "cancel", requestId);
-//		QueryResponse response = StatusFactory.eINSTANCE.createQueryResponse();
-//		response.setRequestId(requestId);
-//		response.setMessage("Cancel request has been forwarded");
-//		response.setTimestamp(Instant.now().toEpochMilli());
-//		response.setStatus(QueryStatusType.QUERY_CANCELED);
-//		return response;
-		return null;
-	}
-
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#publicLinkRequest(java.lang.String)
-	 */
-	@Override
-	public QueryResponse publicLinkRequest(String requestId) {
-		if(statusService.getCachedRequest(requestId) == null) {
-			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot request public link.", requestId));
-			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot request public link.", requestId));
-		}
-		return null;
-	}
-
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#interruptRequest(java.lang.String)
-	 */
-	@Override
-	public QueryResponse interruptRequest(String requestId) {
-		if(statusService.getCachedRequest(requestId) == null) {
-			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot interrupt anything.", requestId));
-			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot interrupt anything", requestId));
-		}
-		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
-		if(statusUpdate == null) {
-			LOGGER.severe(String.format("No status update available for request %s. Cannot continue.", requestId));
-			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot continue.", requestId));
-		}
-//		if the status is not QUERY_PENDING we cannot interrupt the request
-		if(!QueryStatusType.QUERY_PENDING.equals(statusUpdate.getStatus())) {
-			LOGGER.severe(String.format("Cannot interrupt request %s because all the connectors already replied.", requestId));
-			throw new IllegalArgumentException(String.format("Cannot interrupt request %s because all the connectors already replied.", requestId));
-		}
-		return cacheTaskService.completeTask(requestId);
-	}
-	
-	
-
-	
-
-	
 }

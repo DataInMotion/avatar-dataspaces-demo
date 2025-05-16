@@ -32,9 +32,8 @@ import org.osgi.service.component.annotations.Reference;
 
 import de.avatar.connector.cleanup.api.api.AvatarDataCleanup;
 import de.avatar.connector.cleanup.api.api.AvatarDataCleanupConfig;
-import de.avatar.query.backend.api.StatusService;
-import de.avatar.generator.api.api.AvatarGenerator;
 import de.avatar.model.connector.EndpointResponse;
+import de.avatar.query.backend.api.StatusService;
 import de.avatar.status.DetailedQueryStatus;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
@@ -55,8 +54,7 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 	@Reference
 	private ComponentServiceObjects<ResourceSet> rsFactory;
 
-	@Reference
-	AvatarGenerator avatarGenerator;
+	
 
 	private static final Logger LOGGER = Logger.getLogger(StatusServiceImpl.class.getName());	
 
@@ -104,27 +102,6 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 			cachedRequests.put(request.getRequestId(), request);
 		}
 	}
-
-//	/* 
-//	 * (non-Javadoc)
-//	 * @see de.avatar.connector.whiteboard.api.StatusService#updateStatus(de.avatar.model.connector.EndpointResponse)
-//	 */
-//	@Override
-//	public void updateStatus(EndpointResponse endpointResponse) {
-//		
-//		if(!cachedStatuses.containsKey(endpointResponse.getRequest().getId())) {
-//			cachedStatuses.put(endpointResponse.getRequest().getId(), StatusFactory.eINSTANCE.createQueryStatusResponse());
-//		}
-//		QueryResponse statusResponse = cachedStatuses.get(endpointResponse.getRequest().getId());
-//		statusResponse.setRequestId(endpointResponse.getRequest().getId());
-//		statusResponse.setTimestamp(Instant.now().toEpochMilli());		
-//		
-//		if(ResponseCode.OK.equals(endpointResponse.getCode())) {
-//			LOGGER.info(String.format("I am aggregating response for %s", endpointResponse.getRequest().getId()));
-//			avatarGenerator.aggregateResponse(endpointResponse);
-//		}
-//
-//	}
 	
 	/* 
 	 * (non-Javadoc)
@@ -182,62 +159,8 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 		if(isPartialUpdate) statusResponse.setStatus(QueryStatusType.QUERY_PENDING);
 		else if(reqType.equals("dryrun")) statusResponse.setStatus(QueryStatusType.QUERY_DRYRUN_COMPLETED);
 		else statusResponse.setStatus(QueryStatusType.QUERY_COMPLETED);
-		
-		
-//		TODO: This will not be called from here anymore!
-//		if(ResponseCode.OK.equals(endpointResponse.getCode())) {
-//			LOGGER.info(String.format("I am aggregating response for %s", endpointResponse.getRequest().getId()));
-//			avatarGenerator.aggregateResponse(endpointResponse);
-//		}		
-		
-//		TODO: this is already done at the level of the data provider now
-//		statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().forEach(scs -> {
-//			//				We do not want to display the full response result when the status is SUCCESS
-//			scs.getStatusResult().eUnset(StatusPackage.Literals.STATUS_RESULT__RESPONSE);
-//		});
 	}
 	
-
-	
-//	private void determineGlobalStatusType(EndpointResponse endpointResponse, QueryStatusResponse statusResponse) {
-//		QueryStatusType queryStatusType = QueryStatusType.SUCCESS;
-//		ResponseMetadata responseMetadata = endpointResponse.getMetadata().stream().filter(m -> m instanceof ResponseMetadata).map(m -> (ResponseMetadata)m).findAny().orElse(null);
-//		if(responseMetadata.getTotConnectorsPerRequest() != null) {
-//			int numConnForReq = responseMetadata.getTotConnectorsPerRequest();
-//			int numConnUpdates = statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().size();
-//			
-////			if all the connectors have a success --> SUCCESS
-////			if all the connectors have a dryrun_success --> DRYRUN_SUCCESS
-////			if at least one connector is pending --> PENDING
-////			if not all the connectors responded --> PENDING
-////			if there are no pending connectors and at least one has an error --> ERROR			
-//			if(numConnForReq > numConnUpdates) {
-//				queryStatusType = QueryStatusType.PENDING;
-//			} else {
-//				for(QueryStatusType connStatus : statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().stream().map(c -> c.getStatusResult().getStatus()).toList()) {
-//					if(QueryStatusType.PENDING.equals(connStatus)) {
-//						queryStatusType = QueryStatusType.PENDING;
-//						break;
-//					} else if(QueryStatusType.ERROR.equals(connStatus)) {
-//						queryStatusType = QueryStatusType.ERROR;
-//					}
-//				}
-//			}		
-//			if(QueryStatusType.SUCCESS.equals(queryStatusType) && (numConnForReq == numConnUpdates)) {
-//				if(QueryStatusType.SUCCESS.equals(statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().stream().map(c -> c.getStatusResult().getStatus()).findFirst().orElse(null))) {
-//					queryStatusType = QueryStatusType.SUCCESS;
-//				} else if(QueryStatusType.DRYRUN_SUCCESS.equals(statusResponse.getDetailedStatus().getSingleConnectorQueryStatus().stream().map(c -> c.getStatusResult().getStatus()).findFirst().orElse(null))) {
-//					queryStatusType = QueryStatusType.DRYRUN_SUCCESS;
-//				}
-//			}
-//		} else {
-//			LOGGER.severe(String.format("No metadata for tot.connectors.for.request: cannot determine global status, so setting to error"));
-//			queryStatusType = QueryStatusType.ERROR;
-//			statusResponse.setMessage(String.format("No metadata for tot.connectors.for.request: cannot determine global status, so setting to error"));
-//		}
-//		statusResponse.setStatus(queryStatusType);
-//	}
-
 	/* 
 	 * (non-Javadoc)
 	 * @see java.lang.Runnable#run()
@@ -255,7 +178,6 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 			removeIf(entry -> !cachedStatuses.containsKey(entry.getKey()));		
 		LOGGER.info(String.format("Finished StatusCleanup job! Final Status Map Size %d", cachedStatuses.size()));
 	}
-
 }
 
 

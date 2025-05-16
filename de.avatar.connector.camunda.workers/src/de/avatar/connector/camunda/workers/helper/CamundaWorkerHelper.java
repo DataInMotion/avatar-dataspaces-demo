@@ -14,7 +14,6 @@ package de.avatar.connector.camunda.workers.helper;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.time.Instant;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -35,7 +34,6 @@ import de.avatar.model.connector.ResponseResult;
 import de.avatar.status.ErrorStatusResult;
 import de.avatar.status.PendingStatusResult;
 import de.avatar.status.QueryRequest;
-import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.StatusFactory;
 import de.avatar.status.StatusResult;
@@ -131,13 +129,5 @@ public class CamundaWorkerHelper {
 		return StatusFactory.eINSTANCE.createStatusResult();
 	}
 	
-	public static QueryResponse createQueryResponse(String reqId, QueryStatusType statusType, String msg) {
-		QueryResponse queryStatus = StatusFactory.eINSTANCE.createQueryResponse();
-		queryStatus.setRequestId(reqId);
-		queryStatus.setTimestamp(Instant.now().toEpochMilli());
-		queryStatus.setStatus(statusType);
-		queryStatus.setMessage(msg);
-		return queryStatus;
-	}
-
+	
 }

@@ -659,6 +659,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_CANCELED);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_INTERRUPTED);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.DATA_ANONYMIZED_READY);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PUBLIC_LINK_AVAILABLE);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.OPERATION_ERROR);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.OTHER);
 

@@ -13,6 +13,7 @@
  */
 package de.avatar.connector.camunda.api;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,9 +24,9 @@ import java.util.Map;
  */
 public interface OrchestratorProcessLauncher {
 	
-	void launchProcessToEngine(Map<String, HashMap<String, HashMap<String, Object>>> processVariables);
+	void launchProcessToEngine(Map<String, HashMap<String, HashMap<String, Object>>> processVariables) throws IOException;
 	
-	void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables);
+	void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables) throws IOException;
 	
 	boolean isLocal();
 

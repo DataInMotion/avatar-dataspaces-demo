@@ -11,6 +11,5 @@
 -runee: JavaSE-17
 -runbundles.local: \
 	de.avatar.keycloak.local.config;version=snapshot,\
-	de.avatar.connector.camunda.local.config;version=snapshot,\
-	de.avatar.connector.whiteboard.local.config;version=snapshot
+	de.avatar.connector.camunda.local.config;version=snapshot
 -resolve: never

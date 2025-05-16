@@ -25,6 +25,7 @@ import de.avatar.connector.camunda.api.StatusUpdateType;
 import de.avatar.connector.camunda.workers.helper.CamundaWorkerHelper;
 import de.avatar.metadata.ConnectorMetadata;
 import de.avatar.model.connector.EndpointResponse;
+import de.avatar.query.backend.api.QueryStatusHelper;
 import de.avatar.query.backend.api.StatusService;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
@@ -56,7 +57,7 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 	public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
 		String reqId = externalTask.getVariable("reqId");
 		if(reqId == null) {
-			LOGGER.severe("Cannot update any status without reqId");
+			LOGGER.severe("Got a StatusUpdate task without reqId. Cannot do anything...");
 			externalTaskService.complete(externalTask);
 			return;
 		}
@@ -65,31 +66,37 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		String endpointResStr = null;
 		StatusUpdateType statusTypeEnum = StatusUpdateType.valueOf(statusType);
 		switch(statusTypeEnum) {
+		case SINGLE_CONNECTOR_QUERY_RESPONSE:
+			endpointResStr = new String((byte[]) externalTask.getVariable("endpointRes"));
+			doStatusUpdate(endpointResStr, reqId, reqType, true);				
+			break;
 		case ALL_CONNECTORS_QUERY_RESPONSE:
 			endpointResStr = new String((byte[]) externalTask.getVariable("endpointRes"));
 			doStatusUpdate(endpointResStr, reqId, reqType, false);		
 			taskCacheService.removeTask(reqId);
 			break;
-		case INTERRUPTED_REQUEST:
+		case INTERRUPTED_QUERY:
+			sendQueryStatus(reqId, QueryStatusType.QUERY_INTERRUPTED, "The query has been interrupted. We will continue with the data collected so far.");				
+			break;
+		case CANCEL_REQUEST:
 			sendQueryStatus(reqId, QueryStatusType.QUERY_CANCELED, "The query has been canceled.");				
 			break;
 		case ANONYMIZED_DATA_READY:
-			sendQueryStatus(reqId, QueryStatusType.DATA_ANONYMIZED_READY, "Data have been anonymized and a public link can be requested");
+			sendQueryStatus(reqId, QueryStatusType.DATA_ANONYMIZED_READY, "Data have been anonymized and a public link can be requested.");
 			break;
-		case SINGLE_CONNECTOR_QUERY_RESPONSE:
-			endpointResStr = new String((byte[]) externalTask.getVariable("endpointRes"));
-			doStatusUpdate(endpointResStr, reqId, reqType, true);				
+		case PUBLIC_LINK_AVAILABLE:
+			sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_AVAILABLE, "Public link available for data download.");
 			break;
 		default:
+			sendQueryStatus(reqId, QueryStatusType.OTHER, "Status update of type " + statusTypeEnum);
 			break;
-		
 		}
 		externalTaskService.complete(externalTask);
 		
 	}
 	
 	private void sendQueryStatus(String reqId, QueryStatusType statusType, String msg) {
-		QueryResponse queryStatus = CamundaWorkerHelper.createQueryResponse(reqId, statusType, msg);
+		QueryResponse queryStatus = QueryStatusHelper.createQueryResponse(reqId, statusType, msg);
 		statusService.updateStatus(queryStatus);		
 	}
 

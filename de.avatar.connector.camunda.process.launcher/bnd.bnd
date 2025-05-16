@@ -10,10 +10,6 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	com.fasterxml.jackson.core.jackson-databind,\
 	com.fasterxml.jackson.core.jackson-core,\
 	de.avatar.connector.camunda.api;version=snapshot,\
-	com.paremus.discovery.cluster,\
-	com.paremus.dosgi.topology.simple,\
-	com.paremus.dosgi.net;version='1.0.1',\
-	de.avatar.connector.whiteboard,\
 	org.osgi.service.component,\
 	de.avatar.connector.api;version=snapshot,\
 	de.avatar.query.status.model,\

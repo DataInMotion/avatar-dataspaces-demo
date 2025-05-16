@@ -48,8 +48,9 @@
     <eLiterals name="QUERY_CANCELED" value="6"/>
     <eLiterals name="QUERY_INTERRUPTED" value="7"/>
     <eLiterals name="DATA_ANONYMIZED_READY" value="8"/>
-    <eLiterals name="OPERATION_ERROR" value="9"/>
-    <eLiterals name="OTHER" value="50"/>
+    <eLiterals name="PUBLIC_LINK_AVAILABLE" value="9"/>
+    <eLiterals name="OPERATION_ERROR" value="10"/>
+    <eLiterals name="OTHER" value="100"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DetailedQueryStatus">
     <eStructuralFeatures xsi:type="ecore:EReference" name="singleConnectorQueryStatus"

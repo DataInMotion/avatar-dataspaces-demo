@@ -13,6 +13,5 @@
 -runee: JavaSE-17
 -runbundles.runtime: \
 	de.avatar.keycloak.runtime.config;version=snapshot,\
-	de.avatar.connector.camunda.runtime.config;version=snapshot,\
-	de.avatar.connector.whiteboard.runtime.config;version=snapshot
+	de.avatar.connector.camunda.runtime.config;version=snapshot
 -resolve: never

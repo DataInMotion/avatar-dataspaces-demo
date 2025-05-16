@@ -20,7 +20,7 @@ import org.camunda.bpm.client.task.ExternalTaskService;
 import org.osgi.service.component.annotations.Component;
 
 import de.avatar.connector.camunda.api.OrchestratorTaskCacheService;
-import de.avatar.connector.camunda.workers.helper.CamundaWorkerHelper;
+import de.avatar.query.backend.api.QueryStatusHelper;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
 
@@ -57,12 +57,12 @@ public class ManualTerminationCacheTaskService implements OrchestratorTaskCacheS
 	public QueryResponse completeTask(String reqId) {
 		if(!cachedTasksMap.containsKey(reqId)) {
 			LOGGER.severe(String.format("No ManualTermination task cached for request id %s", reqId));
-			return CamundaWorkerHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("No ManualTermination task cached for request id %s", reqId));
+			return QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("No ManualTermination task cached for request id %s", reqId));
 		}
 		Map<ExternalTask, ExternalTaskService> externalTaskPair = cachedTasksMap.get(reqId);
 		externalTaskPair.entrySet().forEach(e -> e.getValue().complete(e.getKey()));
 		removeTask(reqId);
-		return CamundaWorkerHelper.createQueryResponse(reqId, QueryStatusType.QUERY_INTERRUPTED, String.format("Request %s has been interrupted. Workflow will go on with data collected up to this moment.", reqId));
+		return QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.QUERY_INTERRUPTED, String.format("Request %s has been interrupted. Workflow will go on with data collected up to this moment.", reqId));
 	}
 
 	/* 

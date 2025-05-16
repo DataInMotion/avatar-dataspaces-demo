@@ -17,7 +17,6 @@ Private-Package: de.avatar.query.rest
 -buildpath: \
 	de.avatar.connector.model;version=snapshot,\
 	de.avatar.query.status.model;version=snapshot,\
-	de.avatar.generator.api;version=snapshot,\
 	org.gecko.emf.util.annotations,\
 	org.gecko.emf.util.model,\
 	de.avatar.query.backend,\
