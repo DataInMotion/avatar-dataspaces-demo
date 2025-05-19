@@ -15,6 +15,7 @@ package de.avatar.query.backend.impl;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
@@ -60,6 +61,10 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 
 	private Map<String, QueryRequest> cachedRequests = new ConcurrentHashMap<>();
 	private Map<String, QueryResponse> cachedStatuses = new ConcurrentHashMap<>();
+	
+	private Map<String, Map<String, QueryRequest>> cachedRequestsWithAuth = new ConcurrentHashMap<>();
+	private Map<String, Map<String, QueryResponse>> cachedStatusesWithAuth = new ConcurrentHashMap<>();
+	
 	private AvatarDataCleanupConfig cleanupConfig;
 	private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 	
@@ -177,6 +182,43 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 			entrySet().
 			removeIf(entry -> !cachedStatuses.containsKey(entry.getKey()));		
 		LOGGER.info(String.format("Finished StatusCleanup job! Final Status Map Size %d", cachedStatuses.size()));
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.StatusService#getCachedRequest(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public QueryRequest getCachedRequest(String requestId, String token) {
+		Map<String, QueryRequest> requestsForUser = cachedRequestsWithAuth.getOrDefault(token, null);
+		if(requestsForUser == null) return null;
+		return requestsForUser.getOrDefault(requestId, null);
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.StatusService#getStatusUpdate(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public QueryResponse getStatusUpdate(String requestId, String token) {
+		Map<String, QueryResponse> statusesForUser = cachedStatusesWithAuth.getOrDefault(token, null);
+		if(statusesForUser == null) return null;
+		return statusesForUser.getOrDefault(requestId, null);
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.StatusService#cacheRequest(de.avatar.status.QueryRequest, java.lang.String)
+	 */
+	@Override
+	public void cacheRequest(QueryRequest request, String token) {
+		
+		if(request.getRequestId() != null) {
+			if(!cachedRequestsWithAuth.containsKey(token)) {
+				cachedRequestsWithAuth.put(token, new HashMap<>());
+			}
+			cachedRequestsWithAuth.get(token).put(request.getRequestId(), request);
+		}		
 	}
 }
 

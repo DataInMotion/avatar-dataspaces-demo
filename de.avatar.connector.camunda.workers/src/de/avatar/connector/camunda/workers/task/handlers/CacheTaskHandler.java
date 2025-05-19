@@ -24,11 +24,11 @@ import de.avatar.query.backend.api.StatusService;
  * @author ilenia
  * @since May 15, 2025
  */
-public class ManualTerminationTaskHandler implements ExternalTaskHandler {
+public class CacheTaskHandler implements ExternalTaskHandler {
 	
 	private OrchestratorTaskCacheService taskCacheService;
 	
-	public ManualTerminationTaskHandler(StatusService statusService, ResourceSet resSet, OrchestratorTaskCacheService taskCacheService) {
+	public CacheTaskHandler(StatusService statusService, ResourceSet resSet, OrchestratorTaskCacheService taskCacheService) {
 		this.taskCacheService = taskCacheService;
 		
 	}

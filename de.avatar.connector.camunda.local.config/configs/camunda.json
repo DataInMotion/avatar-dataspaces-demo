@@ -1,7 +1,7 @@
 {
   ":configurator:resource-version": 1,
   
-  "OrchestratorWorker~termination":
+    "OrchestratorWorker~termination":
 	{
 		"camunda.worker.name": "manual-termination",
 		"camunda.worker.type": "local",
@@ -11,6 +11,17 @@
 		"camunda.task.topic": "manual-termination",
 		"camunda.task.lock.duration": 1000,
 		"worker.task.handler.type": "MANUAL_TERMINATION"
+	},
+	"OrchestratorWorker~link":
+	{
+		"camunda.worker.name": "link-request",
+		"camunda.worker.type": "local",
+		"keycloakService.target": "(service.name=StatusUpdateService)",
+		"camunda.engine.url": "http://localhost:8080/engine-rest",
+		"camunda.polling.timeout": 10000,
+		"camunda.task.topic": "link-request",
+		"camunda.task.lock.duration": 1000,
+		"worker.task.handler.type": "LINK_REQUEST"
 	},
 	"OrchestratorWorker~status":
 	{
@@ -29,5 +40,13 @@
 		"camunda.process.type": "local",
 		"keycloakService.target": "(service.name=StatusUpdateService)",
 		"camunda.process.url": "http://localhost:8080/engine-rest/process-definition/key/forward-query/start"
+	},
+	"OrchestratorTaskCacheService~termination": {
+		"task.status.type": "QUERY_INTERRUPTED",
+		"task.status.msg": "The query has been interrupted by the user"
+	},
+	"OrchestratorTaskCacheService~publiclink": {
+		"task.status.type": "PUBLIC_LINK_REQUEST",
+		"task.status.msg": "The user has responded to a public link request"
 	}
 }

@@ -11,8 +11,11 @@
  */
 package de.avatar.connector.camunda.api;
 
+import java.util.Map;
+
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
+
 import de.avatar.status.QueryResponse;
 
 /**
@@ -21,11 +24,17 @@ import de.avatar.status.QueryResponse;
  * @since May 15, 2025
  */
 public interface OrchestratorTaskCacheService {
-	
+
 	void cacheTask(ExternalTask externalTask, ExternalTaskService externalTaskService);
 	
 	QueryResponse completeTask(String taskId);
+
+	QueryResponse completeTask(String taskId, Map<String, Object> variables);
+
+	QueryResponse completeTask(String taskId, String token);
+
+	QueryResponse completeTask(String taskId, Map<String, Object> variables, String token);
 	
-	void removeTask(String taskId);
+	void removeTask(String taskId, String token);
 
 }

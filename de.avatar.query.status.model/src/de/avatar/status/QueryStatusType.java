@@ -123,6 +123,16 @@ public enum QueryStatusType implements Enumerator {
 	DATA_ANONYMIZED_READY(8, "DATA_ANONYMIZED_READY", "DATA_ANONYMIZED_READY"),
 
 	/**
+	 * The '<em><b>PUBLIC LINK REQUEST</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PUBLIC_LINK_REQUEST_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PUBLIC_LINK_REQUEST(9, "PUBLIC_LINK_REQUEST", "PUBLIC_LINK_REQUEST"),
+
+	/**
 	 * The '<em><b>PUBLIC LINK AVAILABLE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,7 +140,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PUBLIC_LINK_AVAILABLE(9, "PUBLIC_LINK_AVAILABLE", "PUBLIC_LINK_AVAILABLE"),
+	PUBLIC_LINK_AVAILABLE(10, "PUBLIC_LINK_AVAILABLE", "PUBLIC_LINK_AVAILABLE"),
 
 	/**
 	 * The '<em><b>OPERATION ERROR</b></em>' literal object.
@@ -140,7 +150,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	OPERATION_ERROR(10, "OPERATION_ERROR", "OPERATION_ERROR"),
+	OPERATION_ERROR(11, "OPERATION_ERROR", "OPERATION_ERROR"),
 
 	/**
 	 * The '<em><b>OTHER</b></em>' literal object.
@@ -252,6 +262,17 @@ public enum QueryStatusType implements Enumerator {
 	public static final int DATA_ANONYMIZED_READY_VALUE = 8;
 
 	/**
+	 * The '<em><b>PUBLIC LINK REQUEST</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PUBLIC_LINK_REQUEST
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PUBLIC_LINK_REQUEST_VALUE = 9;
+
+	/**
 	 * The '<em><b>PUBLIC LINK AVAILABLE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -260,7 +281,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PUBLIC_LINK_AVAILABLE_VALUE = 9;
+	public static final int PUBLIC_LINK_AVAILABLE_VALUE = 10;
 
 	/**
 	 * The '<em><b>OPERATION ERROR</b></em>' literal value.
@@ -271,7 +292,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int OPERATION_ERROR_VALUE = 10;
+	public static final int OPERATION_ERROR_VALUE = 11;
 
 	/**
 	 * The '<em><b>OTHER</b></em>' literal value.
@@ -301,6 +322,7 @@ public enum QueryStatusType implements Enumerator {
 			QUERY_CANCELED,
 			QUERY_INTERRUPTED,
 			DATA_ANONYMIZED_READY,
+			PUBLIC_LINK_REQUEST,
 			PUBLIC_LINK_AVAILABLE,
 			OPERATION_ERROR,
 			OTHER,
@@ -369,6 +391,7 @@ public enum QueryStatusType implements Enumerator {
 			case QUERY_CANCELED_VALUE: return QUERY_CANCELED;
 			case QUERY_INTERRUPTED_VALUE: return QUERY_INTERRUPTED;
 			case DATA_ANONYMIZED_READY_VALUE: return DATA_ANONYMIZED_READY;
+			case PUBLIC_LINK_REQUEST_VALUE: return PUBLIC_LINK_REQUEST;
 			case PUBLIC_LINK_AVAILABLE_VALUE: return PUBLIC_LINK_AVAILABLE;
 			case OPERATION_ERROR_VALUE: return OPERATION_ERROR;
 			case OTHER_VALUE: return OTHER;

@@ -99,4 +99,23 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 		httpClient.execute(post, new MyResponseHandler());
 		LOGGER.info("I sent the process to process user interface");
 	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.connector.camunda.api.OrchestratorProcessLauncher#launchProcessToProcessUserInterface(java.util.Map, java.lang.String)
+	 */
+	@Override
+	public void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables, String token) throws IOException {
+		HttpClient httpClient = HttpClients.createDefault();
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jacksonData = objectMapper.writeValueAsString(processVariables);
+		HttpPost post = new HttpPost((String)properties.get("camunda.process.url"));
+		StringEntity params = new StringEntity(jacksonData);
+		post.addHeader("Content-Type", "application/json");
+		post.addHeader("Authorization","Bearer " + token);
+		post.setEntity(params);
+		httpClient.execute(post, new MyResponseHandler());
+		LOGGER.info("I sent the process to process user interface");
+		
+	}
 }

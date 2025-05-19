@@ -28,6 +28,8 @@ public interface OrchestratorProcessLauncher {
 	
 	void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables) throws IOException;
 	
+	void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables, String token) throws IOException;
+	
 	boolean isLocal();
 
 }

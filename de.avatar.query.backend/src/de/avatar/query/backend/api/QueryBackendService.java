@@ -11,12 +11,8 @@
  */
 package de.avatar.query.backend.api;
 
-import java.util.List;
-
 import org.osgi.annotation.versioning.ProviderType;
 
-import de.avatar.model.connector.ConsentInfo;
-import de.avatar.model.connector.ModelInfo;
 import de.avatar.query.Query;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
@@ -35,15 +31,25 @@ public interface QueryBackendService{
 	
 	QueryResponse executeDryRun(QueryRequest queryRequest);
 	
+	QueryResponse executeDryRun(QueryRequest queryRequest, String token);
+	
 	QueryResponse executeQuery(QueryRequest queryRequest);
 	
+	QueryResponse executeQuery(QueryRequest queryRequest, String token);
+	
 	QueryResponse executeStatusRequest(String requestId);
+	
+	QueryResponse executeStatusRequest(String requestId, String token);
 	
 	QueryResponse cancelRequest(String requestId);
 	
 	QueryResponse interruptRequest(String requestId);
 	
-	QueryResponse publicLinkRequest(String requestId);
+	QueryResponse interruptRequest(String requestId, String token);
+	
+	QueryResponse publicLinkRequest(String requestId, boolean generate);
+	
+	QueryResponse publicLinkRequest(String requestId, boolean generate, String token);
 		
 //	String generatePublicLinkForRequest(String requestId);
 	

@@ -63,6 +63,7 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		}
 		String reqType = externalTask.getVariable("reqType");
 		String statusType = externalTask.getVariable("statusType");
+		String token = externalTask.getVariable("credentials");
 		String endpointResStr = null;
 		StatusUpdateType statusTypeEnum = StatusUpdateType.valueOf(statusType);
 		switch(statusTypeEnum) {
@@ -73,7 +74,7 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		case ALL_CONNECTORS_QUERY_RESPONSE:
 			endpointResStr = new String((byte[]) externalTask.getVariable("endpointRes"));
 			doStatusUpdate(endpointResStr, reqId, reqType, false);		
-			taskCacheService.removeTask(reqId);
+			taskCacheService.removeTask(reqId, token);
 			break;
 		case INTERRUPTED_QUERY:
 			sendQueryStatus(reqId, QueryStatusType.QUERY_INTERRUPTED, "The query has been interrupted. We will continue with the data collected so far.");				

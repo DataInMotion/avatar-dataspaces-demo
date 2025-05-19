@@ -29,7 +29,11 @@ public interface StatusService {
 	
 	QueryRequest getCachedRequest(String requestId);
 	
+	QueryRequest getCachedRequest(String requestId, String token);
+	
 	void cacheRequest(QueryRequest request);
+	
+	void cacheRequest(QueryRequest request, String token);
 			
 //	void updateStatus(EndpointResponse endpointResponse);
 	
@@ -38,5 +42,7 @@ public interface StatusService {
 	void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus, String reqType, boolean isPartialUpdate);
 	
 	QueryResponse getStatusUpdate(String requestId);
+	
+	QueryResponse getStatusUpdate(String requestId, String token);
 
 }

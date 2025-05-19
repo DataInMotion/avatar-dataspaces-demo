@@ -30,7 +30,7 @@ import org.osgi.service.component.annotations.Reference;
 import de.avatar.connector.camunda.api.OrchestratorTaskCacheService;
 import de.avatar.connector.camunda.api.OrchestratorWorker;
 import de.avatar.connector.camunda.workers.task.handlers.DoNothingTaskHandler;
-import de.avatar.connector.camunda.workers.task.handlers.ManualTerminationTaskHandler;
+import de.avatar.connector.camunda.workers.task.handlers.CacheTaskHandler;
 import de.avatar.connector.camunda.workers.task.handlers.StatusUpdateTaskHandler;
 import de.avatar.keycloak.service.api.KeycloakService;
 import de.avatar.query.backend.api.StatusService;
@@ -52,8 +52,11 @@ public class CamundaWorker  implements OrchestratorWorker {
 	@Reference
 	StatusService statusService;
 	
-	@Reference(target="(component.name=ManualTerminationCacheTaskService)")
-	OrchestratorTaskCacheService cacheTaskService;
+	@Reference(target="(task.status.type=QUERY_INTERRUPTED)")
+	OrchestratorTaskCacheService terminationCacheTaskService;
+	
+	@Reference(target="(task.status.type=PUBLIC_LINK_REQUEST)")
+	OrchestratorTaskCacheService linkCacheTaskService;
 	
 	
 	private static final Logger LOGGER = Logger.getLogger(CamundaWorker.class.getName());
@@ -114,9 +117,11 @@ public class CamundaWorker  implements OrchestratorWorker {
 		} else {
 			switch(handlerType) {
 			case "STATUS_UPDATE":
-				return new StatusUpdateTaskHandler(statusService, resourceSet, cacheTaskService);
+				return new StatusUpdateTaskHandler(statusService, resourceSet, terminationCacheTaskService);
 			case "MANUAL_TERMINATION":
-				return new ManualTerminationTaskHandler(statusService, resourceSet, cacheTaskService);
+				return new CacheTaskHandler(statusService, resourceSet, terminationCacheTaskService);
+			case "LINK_REQUEST":
+				return new CacheTaskHandler(statusService, resourceSet, linkCacheTaskService);
 			default:
 				LOGGER.warning(String.format("No ExternalTaskHandler implemented for type %s", handlerType));
 				return new DoNothingTaskHandler();
