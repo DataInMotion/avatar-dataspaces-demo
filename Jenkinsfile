@@ -61,13 +61,8 @@ pipeline  {
 //                branch 'main'
 //            }
             steps {
-                echo "I am building consumer and provider apps on branch: ${env.GIT_BRANCH}"
-
-                sh "./gradlew :de.avatar.connector.isma:resolve.isma_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew :de.avatar.connector.other:resolve.other_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                echo "I am building query backend app on branch: ${env.GIT_BRANCH}"
 				sh "./gradlew :de.avatar.query.rest:resolve.base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew :de.avatar.connector.isma:export.isma_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
-                sh "./gradlew :de.avatar.connector.other:export.other_provider --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"                                                        
                 sh "./gradlew :de.avatar.query.rest:export.launch --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
             }
         }
@@ -78,66 +73,12 @@ pipeline  {
 //            }
             steps  {
                 echo "I am preparing docker builds: ${env.GIT_BRANCH}"
-
-                sh "./gradlew prepareDockerISMA --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew prepareDockerOther --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-//                sh "./gradlew prepareDockerWhiteboard --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "./gradlew prepareDockerQuery --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
             }
 
         }
 
-        stage('Docker Avatar ISMA connector provider Image build'){
-/*            when {
-                branch 'main'
-            }
-*/
-            steps  {
-                echo "I am building and publishing a docker image on branch: ${env.GIT_BRANCH}"
 
-                step([$class: 'DockerBuilderPublisher',
-                      dockerFileDirectory: 'docker/isma',
-                            cloud: 'docker',
-                            tagsString: """devel.data-in-motion.biz:6000/scj/avatar-isma-provider:latest
-                                        devel.data-in-motion.biz:6000/scj/avatar-isma-provider:0.1.0.${VERSION}""",
-                            pushOnSuccess: true,
-                            pushCredentialsId: 'dim-nexus'])
-            }
-        }
-        stage('Docker Avatar Other connector provider Image build'){
-/*            when {
-                branch 'main'
-            }
-*/
-            steps  {
-                echo "I am building and publishing a docker image on branch: ${env.GIT_BRANCH}"
-
-                step([$class: 'DockerBuilderPublisher',
-                      dockerFileDirectory: 'docker/other',
-                            cloud: 'docker',
-                            tagsString: """devel.data-in-motion.biz:6000/scj/avatar-other-provider:latest
-                                        devel.data-in-motion.biz:6000/scj/avatar-other-provider:0.1.0.${VERSION}""",
-                            pushOnSuccess: true,
-                            pushCredentialsId: 'dim-nexus'])
-            }
-        }
-/*        stage('Docker Avatar whiteboard connector Image build'){
-            when {
-                branch 'main'
-            }
-            steps  {
-                echo "I am building and publishing a docker image on branch: ${env.GIT_BRANCH}"
-
-                step([$class: 'DockerBuilderPublisher',
-                      dockerFileDirectlaunchory: 'docker/whiteboard',
-                            cloud: 'docker',
-                            tagsString: """devel.data-in-motion.biz:6000/scj/avatar-whiteboard:latest
-                                        devel.data-in-motion.biz:6000/scj/avatar-whiteboard:0.1.0.${VERSION}""",
-                            pushOnSuccess: true,
-                            pushCredentialsId: 'dim-nexus'])
-            }
-        }
-*/
         stage('Docker Avatar query rest Image build'){
 //            when {
 //                branch 'main'
@@ -154,5 +95,5 @@ pipeline  {
                             pushCredentialsId: 'dim-nexus'])
             }
         }
-    }
+    
 }
