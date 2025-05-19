@@ -20,19 +20,6 @@ pipeline  {
                 sh "./gradlew clean build -x testOSGi --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"   
             }   
         }
-//        stage('Integration Tests') {
-//
-//            steps {
-//                 script {
-//                    echo "I am running integration tests on branch: ${env.GIT_BRANCH}"
-//                    try {
-//                        sh './gradlew testOSGi --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2 --no-daemon'
-//                    } finally {
-//                        junit testResults: '**/generated/test-reports/testOSGi/TEST-*.xml', skipPublishingChecks: true, allowEmptyResults: true
-//                    }
-//                }
-//            }
-//        }
 
         stage('Main branch release') {
             when { 
@@ -95,5 +82,5 @@ pipeline  {
                             pushCredentialsId: 'dim-nexus'])
             }
         }
-    
+    }
 }
