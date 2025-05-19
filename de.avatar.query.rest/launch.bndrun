@@ -4,7 +4,6 @@
 -runproperties: \
 	org.osgi.service.http.port=-1,\
 	org.eclipse.emf.common.util.URI.archiveSchemes="wsjar wszip jar zip",\
-	data=/opt/avatar/data/,\
 	felix.cm.config.plugins=org.apache.felix.configadmin.plugin.interpolation,\
 	org.apache.felix.configadmin.plugin.interpolation.secretsdir=/opt/avatar/secrets
 	
