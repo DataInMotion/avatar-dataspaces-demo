@@ -1,7 +1,7 @@
 {
   ":configurator:resource-version": 1,
   
-  "CamundaQueryWorker~termination":
+  "OrchestratorWorker~termination":
 	{
 		"camunda.worker.name": "manual-termination",
 		"camunda.worker.type": "prod",
@@ -34,7 +34,7 @@
 		"camunda.task.lock.duration": 1000,
 		"worker.task.handler.type": "PROCESS_CANCEL_REQUEST"
 	},
-	"CamundaStatusWorker~status":
+	"OrchestratorWorker~status":
 	{
 		"camunda.worker.name": "update-status",
 		"camunda.worker.type": "prod",
