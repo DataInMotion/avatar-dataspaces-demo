@@ -69,7 +69,7 @@ public class QueryResponseImpl extends MinimalEObjectImpl.Container implements Q
 	 * @generated
 	 * @ordered
 	 */
-	protected static final QueryStatusType STATUS_EDEFAULT = QueryStatusType.QUERY_COMPLETED;
+	protected static final QueryStatusType STATUS_EDEFAULT = QueryStatusType.QUERY_FORWARDING_STARTED;
 
 	/**
 	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.

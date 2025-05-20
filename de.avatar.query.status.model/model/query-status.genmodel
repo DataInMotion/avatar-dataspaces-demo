@@ -10,6 +10,7 @@
   <genPackages prefix="Status" basePackage="de.avatar" resource="XMI" disposableProviderFactory="true"
       ecorePackage="query-status.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query-status.ecore#//QueryStatusType">
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_FORWARDING_STARTED"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_COMPLETED"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_ERROR"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_NO_CONTENT"/>

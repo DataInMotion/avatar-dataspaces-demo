@@ -67,6 +67,9 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		String endpointResStr = null;
 		StatusUpdateType statusTypeEnum = StatusUpdateType.valueOf(statusType);
 		switch(statusTypeEnum) {
+		case QUERY_FORWARDING_STARTED:
+			sendQueryStatus(reqId, QueryStatusType.QUERY_FORWARDING_STARTED, "The query has been forwarded to the connectors.");				
+			break;
 		case SINGLE_CONNECTOR_QUERY_RESPONSE:
 			endpointResStr = new String((byte[]) externalTask.getVariable("endpointRes"));
 			doStatusUpdate(endpointResStr, reqId, reqType, true);				

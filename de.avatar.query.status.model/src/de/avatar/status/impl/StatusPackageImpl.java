@@ -650,6 +650,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 
 		// Initialize enums and add enum literals
 		initEEnum(queryStatusTypeEEnum, QueryStatusType.class, "QueryStatusType");
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_FORWARDING_STARTED);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_COMPLETED);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_ERROR);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_NO_CONTENT);

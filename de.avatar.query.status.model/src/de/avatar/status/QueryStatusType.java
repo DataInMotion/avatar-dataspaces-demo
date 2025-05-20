@@ -33,6 +33,16 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public enum QueryStatusType implements Enumerator {
 	/**
+	 * The '<em><b>QUERY FORWARDING STARTED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUERY_FORWARDING_STARTED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	QUERY_FORWARDING_STARTED(14, "QUERY_FORWARDING_STARTED", "QUERY_FORWARDING_STARTED"),
+
+	/**
 	 * The '<em><b>QUERY COMPLETED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -181,6 +191,17 @@ public enum QueryStatusType implements Enumerator {
 	 * @ordered
 	 */
 	OTHER(100, "OTHER", "OTHER");
+
+	/**
+	 * The '<em><b>QUERY FORWARDING STARTED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUERY_FORWARDING_STARTED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int QUERY_FORWARDING_STARTED_VALUE = 14;
 
 	/**
 	 * The '<em><b>QUERY COMPLETED</b></em>' literal value.
@@ -355,6 +376,7 @@ public enum QueryStatusType implements Enumerator {
 	 */
 	private static final QueryStatusType[] VALUES_ARRAY =
 		new QueryStatusType[] {
+			QUERY_FORWARDING_STARTED,
 			QUERY_COMPLETED,
 			QUERY_ERROR,
 			QUERY_NO_CONTENT,
@@ -426,6 +448,7 @@ public enum QueryStatusType implements Enumerator {
 	 */
 	public static QueryStatusType get(int value) {
 		switch (value) {
+			case QUERY_FORWARDING_STARTED_VALUE: return QUERY_FORWARDING_STARTED;
 			case QUERY_COMPLETED_VALUE: return QUERY_COMPLETED;
 			case QUERY_ERROR_VALUE: return QUERY_ERROR;
 			case QUERY_NO_CONTENT_VALUE: return QUERY_NO_CONTENT;

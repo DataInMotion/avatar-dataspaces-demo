@@ -39,6 +39,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="QueryStatusType">
+    <eLiterals name="QUERY_FORWARDING_STARTED" value="14"/>
     <eLiterals name="QUERY_COMPLETED"/>
     <eLiterals name="QUERY_ERROR" value="1"/>
     <eLiterals name="QUERY_NO_CONTENT" value="2"/>

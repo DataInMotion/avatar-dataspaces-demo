@@ -18,6 +18,7 @@ package de.avatar.connector.camunda.api;
  */
 public enum StatusUpdateType {
 	
+	QUERY_FORWARDING_STARTED,
 	SINGLE_CONNECTOR_QUERY_RESPONSE, 
 	ALL_CONNECTORS_QUERY_RESPONSE,
 	DATA_ANONYMIZED_READY,
