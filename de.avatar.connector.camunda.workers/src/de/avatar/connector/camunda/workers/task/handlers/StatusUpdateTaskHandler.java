@@ -71,11 +71,11 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 			sendQueryStatus(reqId, QueryStatusType.QUERY_FORWARDING_STARTED, "The query has been forwarded to the connectors.");				
 			break;
 		case SINGLE_CONNECTOR_QUERY_RESPONSE:
-			endpointResStr = new String((byte[]) externalTask.getVariable("endpointRes"));
+			endpointResStr = externalTask.getVariable("endpointRes");
 			doStatusUpdate(endpointResStr, reqId, reqType, true);				
 			break;
 		case ALL_CONNECTORS_QUERY_RESPONSE:
-			endpointResStr = new String((byte[]) externalTask.getVariable("endpointRes"));
+			endpointResStr = externalTask.getVariable("endpointRes");
 			doStatusUpdate(endpointResStr, reqId, reqType, false);		
 			taskCacheService.removeTask(reqId, token);
 			break;
@@ -111,7 +111,9 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 			return;
 		} else {
 			EObject endpointResObj = CamundaWorkerHelper.loadEObjectFromString(endpointResStr, resSet);
-			if(endpointResObj instanceof EndpointResponse endpointResponse) {
+			if(endpointResObj == null) {
+				sendQueryStatus(reqId, QueryStatusType.OPERATION_ERROR, "Something came back but it was not a EndpointResponse");	
+			} else if(endpointResObj instanceof EndpointResponse endpointResponse) {
 				statusService.updateStatus(endpointResponse, createSingleConnectorQueryStatus(endpointResponse), reqType, isPartial);
 			}
 		}
