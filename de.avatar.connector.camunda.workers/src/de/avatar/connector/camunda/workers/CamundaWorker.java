@@ -29,8 +29,9 @@ import org.osgi.service.component.annotations.Reference;
 
 import de.avatar.connector.camunda.api.OrchestratorTaskCacheService;
 import de.avatar.connector.camunda.api.OrchestratorWorker;
-import de.avatar.connector.camunda.workers.task.handlers.DoNothingTaskHandler;
+import de.avatar.connector.camunda.api.StatusUpdateType;
 import de.avatar.connector.camunda.workers.task.handlers.CacheTaskHandler;
+import de.avatar.connector.camunda.workers.task.handlers.DoNothingTaskHandler;
 import de.avatar.connector.camunda.workers.task.handlers.StatusUpdateTaskHandler;
 import de.avatar.keycloak.service.api.KeycloakService;
 import de.avatar.query.backend.api.StatusService;
@@ -52,11 +53,14 @@ public class CamundaWorker  implements OrchestratorWorker {
 	@Reference
 	StatusService statusService;
 	
-	@Reference(target="(task.status.type=QUERY_INTERRUPTED)")
+	@Reference(target="(task.status.type=QUERY_INTERRUPT_REQUEST)")
 	OrchestratorTaskCacheService terminationCacheTaskService;
 	
 	@Reference(target="(task.status.type=PUBLIC_LINK_REQUEST)")
 	OrchestratorTaskCacheService linkCacheTaskService;
+	
+	@Reference(target="(task.status.type=PROCESS_CANCEL_REQUEST)")
+	OrchestratorTaskCacheService cancelCacheTaskService;
 	
 	
 	private static final Logger LOGGER = Logger.getLogger(CamundaWorker.class.getName());
@@ -111,16 +115,18 @@ public class CamundaWorker  implements OrchestratorWorker {
 	}
 	
 	private ExternalTaskHandler getTaskHandler() {
-		String handlerType = (String) properties.getOrDefault("worker.task.handler.type", null);
+		StatusUpdateType handlerType = StatusUpdateType.valueOf((String) properties.getOrDefault("worker.task.handler.type", "OTHER"));
 		if(handlerType == null) {
 			return new DoNothingTaskHandler();
 		} else {
 			switch(handlerType) {
-			case "STATUS_UPDATE":
+			case STATUS_UPDATE:
 				return new StatusUpdateTaskHandler(statusService, resourceSet, terminationCacheTaskService);
-			case "MANUAL_TERMINATION":
+			case QUERY_INTERRUPT_REQUEST:
 				return new CacheTaskHandler(statusService, resourceSet, terminationCacheTaskService);
-			case "LINK_REQUEST":
+			case PUBLIC_LINK_REQUEST:
+				return new CacheTaskHandler(statusService, resourceSet, linkCacheTaskService);
+			case PROCESS_CANCEL_REQUEST:
 				return new CacheTaskHandler(statusService, resourceSet, linkCacheTaskService);
 			default:
 				LOGGER.warning(String.format("No ExternalTaskHandler implemented for type %s", handlerType));

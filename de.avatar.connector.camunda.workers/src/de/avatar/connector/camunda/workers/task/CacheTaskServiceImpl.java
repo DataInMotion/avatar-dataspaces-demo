@@ -135,9 +135,4 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 		if(token == null) cachedTasksMap.remove(taskId);	
 		else cachedTasksMapWithAuth.get(token).remove(taskId);		
 	}
-
-	
-	
-
-	
 }

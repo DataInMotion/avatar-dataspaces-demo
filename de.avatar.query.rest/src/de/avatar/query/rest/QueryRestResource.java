@@ -132,12 +132,46 @@ public class QueryRestResource {
 	}
 	
 	@GET
+	@Path("/status-with-auth/{requestId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response statusWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId) {
+		try {
+			String token = extractBearerToken(authorization);
+			if(token == null) {
+				return Response.status(Status.UNAUTHORIZED).build();
+			}
+			QueryResponse response = queryBEService.executeStatusRequest(requestId, token);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {			
+			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+		}
+	}
+	
+	@GET
 	@Path("/cancel/{requestId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
 	public Response cancel(@PathParam("requestId") String requestId) {
 		try {
 			QueryResponse response = queryBEService.cancelRequest(requestId);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {			
+			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+		}
+	}
+	
+	@GET
+	@Path("/cancel-with-auth/{requestId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response cancelWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId) {
+		try {
+			String token = extractBearerToken(authorization);
+			if(token == null) {
+				return Response.status(Status.UNAUTHORIZED).build();
+			}
+			QueryResponse response = queryBEService.cancelRequest(requestId, token);
 			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {			
 			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
@@ -158,12 +192,46 @@ public class QueryRestResource {
 	}
 	
 	@GET
-	@Path("public/link/{requestId}/{generate}")
+	@Path("/interrupt-with-auth/{requestId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response interruptWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId) {
+		try {
+			String token = extractBearerToken(authorization);
+			if(token == null) {
+				return Response.status(Status.UNAUTHORIZED).build();
+			}
+			QueryResponse response = queryBEService.interruptRequest(requestId, token);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {			
+			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+		}
+	}
+	
+	@GET
+	@Path("publiclink/{requestId}/{generate}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
 	public Response publicLink(@PathParam("requestId") String requestId, @PathParam("generare") boolean generate) {
 		try {
 			QueryResponse response = queryBEService.publicLinkRequest(requestId, generate);
+			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {			
+			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+		}
+	}
+	
+	@GET
+	@Path("publiclink-with-auth/{requestId}/{generate}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	public Response publicLinkWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId, @PathParam("generare") boolean generate) {
+		try {
+			String token = extractBearerToken(authorization);
+			if(token == null) {
+				return Response.status(Status.UNAUTHORIZED).build();
+			}
+			QueryResponse response = queryBEService.publicLinkRequest(requestId, generate, token);
 			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {			
 			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();

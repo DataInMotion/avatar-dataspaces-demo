@@ -45,12 +45,14 @@
     <eLiterals name="TIMEOUT" value="3"/>
     <eLiterals name="QUERY_PENDING" value="4"/>
     <eLiterals name="QUERY_DRYRUN_COMPLETED" value="5"/>
-    <eLiterals name="QUERY_CANCELED" value="6"/>
-    <eLiterals name="QUERY_INTERRUPTED" value="7"/>
-    <eLiterals name="DATA_ANONYMIZED_READY" value="8"/>
-    <eLiterals name="PUBLIC_LINK_REQUEST" value="9"/>
-    <eLiterals name="PUBLIC_LINK_AVAILABLE" value="10"/>
-    <eLiterals name="OPERATION_ERROR" value="11"/>
+    <eLiterals name="PROCESS_CANCEL_REQUEST" value="6"/>
+    <eLiterals name="PROCESS_CANCELED" value="7"/>
+    <eLiterals name="QUERY_INTERRUPT_REQUEST" value="8"/>
+    <eLiterals name="QUERY_INTERRUPTED" value="9"/>
+    <eLiterals name="DATA_ANONYMIZED_READY" value="10"/>
+    <eLiterals name="PUBLIC_LINK_REQUEST" value="11"/>
+    <eLiterals name="PUBLIC_LINK_AVAILABLE" value="12"/>
+    <eLiterals name="OPERATION_ERROR" value="13"/>
     <eLiterals name="OTHER" value="100"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DetailedQueryStatus">

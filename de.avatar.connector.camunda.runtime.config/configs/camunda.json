@@ -10,7 +10,29 @@
 		"camunda.polling.timeout": 10000,
 		"camunda.task.topic": "manual-termination",
 		"camunda.task.lock.duration": 1000,
-		"worker.task.handler.type": "MANUAL_TERMINATION"
+		"worker.task.handler.type": "QUERY_INTERRUPT_REQUEST"
+	},
+	"OrchestratorWorker~link":
+	{
+		"camunda.worker.name": "link-request",
+		"camunda.worker.type": "prod",
+		"keycloakService.target": "(service.name=StatusUpdateService)",
+		"camunda.engine.url": "http://apisix-gateway:9080/api/camundainterface/engine-rest",
+		"camunda.polling.timeout": 10000,
+		"camunda.task.topic": "link-request",
+		"camunda.task.lock.duration": 1000,
+		"worker.task.handler.type": "PUBLIC_LINK_REQUEST"
+	},
+	"OrchestratorWorker~cancel":
+	{
+		"camunda.worker.name": "cancel-request",
+		"camunda.worker.type": "prod",
+		"keycloakService.target": "(service.name=StatusUpdateService)",
+		"camunda.engine.url": "http://apisix-gateway:9080/api/camundainterface/engine-rest",
+		"camunda.polling.timeout": 10000,
+		"camunda.task.topic": "cancel-request",
+		"camunda.task.lock.duration": 1000,
+		"worker.task.handler.type": "PROCESS_CANCEL_REQUEST"
 	},
 	"CamundaStatusWorker~status":
 	{
@@ -29,5 +51,17 @@
 		"camunda.process.type": "prod",
 		"keycloakService.target": "(service.name=StatusUpdateService)",
 		"camunda.process.url": "http://apisix-gateway:9080/api/processuserinterface/api/service/start?uuid=3d00bd61-d977-405f-8586-40e762c28d79"
+	},
+	"OrchestratorTaskCacheService~termination": {
+		"task.status.type": "QUERY_INTERRUPT_REQUEST",
+		"task.status.msg": "The query has been interrupted by the user"
+	},
+	"OrchestratorTaskCacheService~publiclink": {
+		"task.status.type": "PUBLIC_LINK_REQUEST",
+		"task.status.msg": "The user has responded to a public link request"
+	},
+	"OrchestratorTaskCacheService~cancel": {
+		"task.status.type": "PROCESS_CANCEL_REQUEST",
+		"task.status.msg": "The user has terminated the whole process"
 	}
 }

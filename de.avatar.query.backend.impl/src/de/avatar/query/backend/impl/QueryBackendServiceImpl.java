@@ -58,6 +58,9 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 
 	@Reference(target="(task.status.type=PUBLIC_LINK_REQUEST)")
 	OrchestratorTaskCacheService linkCacheTaskService;
+	
+	@Reference(target="(task.status.type=PROCESS_CANCEL_REQUEST)")
+	OrchestratorTaskCacheService cancelCacheTaskService;
 
 	@Reference
 	QueryService queryService;
@@ -146,19 +149,16 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	 */
 	@Override
 	public QueryResponse cancelRequest(String requestId) {
-		//		TODO
-		//		if(statusService.getCachedRequest(requestId) == null) {
-		//			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot cancel anything.", requestId));
-		//			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot cancel anything.", requestId));
-		//		}
-		//		sendQueryRequest(null, "cancel", requestId);
-		//		QueryResponse response = StatusFactory.eINSTANCE.createQueryResponse();
-		//		response.setRequestId(requestId);
-		//		response.setMessage("Cancel request has been forwarded");
-		//		response.setTimestamp(Instant.now().toEpochMilli());
-		//		response.setStatus(QueryStatusType.QUERY_CANCELED);
-		//		return response;
-		return null;
+		if(statusService.getCachedRequest(requestId) == null) {
+			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+		}
+		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
+		if(statusUpdate == null) {
+			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
+		}		
+		return cancelCacheTaskService.completeTask(requestId);
 	}
 
 
@@ -169,13 +169,13 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	@Override
 	public QueryResponse publicLinkRequest(String requestId, boolean generateLink) {
 		if(statusService.getCachedRequest(requestId) == null) {
-			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot request public link.", requestId));
-			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot request public link.", requestId));
+			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
 		}
 		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
 		if(statusUpdate == null) {
-			LOGGER.severe(String.format("No status update available for request %s. Cannot continue.", requestId));
-			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot continue.", requestId));
+			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
 		}
 		//		if the status is not QUERY_PENDING we cannot interrupt the request
 		if(!QueryStatusType.DATA_ANONYMIZED_READY.equals(statusUpdate.getStatus())) {
@@ -194,13 +194,13 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	@Override
 	public QueryResponse interruptRequest(String requestId) {
 		if(statusService.getCachedRequest(requestId) == null) {
-			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot interrupt anything.", requestId));
-			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot interrupt anything", requestId));
+			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
 		}
 		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
 		if(statusUpdate == null) {
-			LOGGER.severe(String.format("No status update available for request %s. Cannot continue.", requestId));
-			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot continue.", requestId));
+			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
 		}
 		//		if the status is not QUERY_PENDING we cannot interrupt the request
 		if(!QueryStatusType.QUERY_PENDING.equals(statusUpdate.getStatus())) {
@@ -435,13 +435,13 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	@Override
 	public QueryResponse interruptRequest(String requestId, String token) {
 		if(statusService.getCachedRequest(requestId, token) == null) {
-			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot interrupt anything.", requestId));
-			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot interrupt anything", requestId));
+			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
 		}
 		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId, token);
 		if(statusUpdate == null) {
-			LOGGER.severe(String.format("No status update available for request %s. Cannot continue.", requestId));
-			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot continue.", requestId));
+			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
 		}
 		//		if the status is not QUERY_PENDING we cannot interrupt the request
 		if(!QueryStatusType.QUERY_PENDING.equals(statusUpdate.getStatus())) {
@@ -458,13 +458,13 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	@Override
 	public QueryResponse publicLinkRequest(String requestId, boolean generateLink, String token) {
 		if(statusService.getCachedRequest(requestId, token) == null) {
-			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot request public link.", requestId));
-			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot request public link.", requestId));
+			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
 		}
 		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId, token);
 		if(statusUpdate == null) {
-			LOGGER.severe(String.format("No status update available for request %s. Cannot continue.", requestId));
-			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot continue.", requestId));
+			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
 		}
 		//		if the status is not QUERY_PENDING we cannot interrupt the request
 		if(!QueryStatusType.DATA_ANONYMIZED_READY.equals(statusUpdate.getStatus())) {
@@ -474,5 +474,23 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		Map<String, Object> variables = new HashMap<>();
 		variables.put("generateLink", generateLink);
 		return linkCacheTaskService.completeTask(requestId, variables, token);
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#cancelRequest(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public QueryResponse cancelRequest(String requestId, String token) {
+		if(statusService.getCachedRequest(requestId, token) == null) {
+			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+		}
+		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId, token);
+		if(statusUpdate == null) {
+			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
+			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
+		}
+		return cancelCacheTaskService.completeTask(requestId, token);
 	}
 }

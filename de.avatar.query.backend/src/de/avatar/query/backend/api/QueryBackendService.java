@@ -43,6 +43,8 @@ public interface QueryBackendService{
 	
 	QueryResponse cancelRequest(String requestId);
 	
+	QueryResponse cancelRequest(String requestId, String token);
+	
 	QueryResponse interruptRequest(String requestId);
 	
 	QueryResponse interruptRequest(String requestId, String token);

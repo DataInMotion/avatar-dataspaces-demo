@@ -76,13 +76,13 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 			doStatusUpdate(endpointResStr, reqId, reqType, false);		
 			taskCacheService.removeTask(reqId, token);
 			break;
-		case INTERRUPTED_QUERY:
+		case QUERY_INTERRUPTED:
 			sendQueryStatus(reqId, QueryStatusType.QUERY_INTERRUPTED, "The query has been interrupted. We will continue with the data collected so far.");				
 			break;
-		case CANCEL_REQUEST:
-			sendQueryStatus(reqId, QueryStatusType.QUERY_CANCELED, "The query has been canceled.");				
+		case PROCESS_CANCELED:
+			sendQueryStatus(reqId, QueryStatusType.PROCESS_CANCELED, "The process has been canceled and no data will be retrieved.");				
 			break;
-		case ANONYMIZED_DATA_READY:
+		case DATA_ANONYMIZED_READY:
 			sendQueryStatus(reqId, QueryStatusType.DATA_ANONYMIZED_READY, "Data have been anonymized and a public link can be requested.");
 			break;
 		case PUBLIC_LINK_AVAILABLE:
