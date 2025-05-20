@@ -41,7 +41,7 @@ import de.avatar.query.backend.api.StatusService;
  * @author ilenia
  * @since Mar 18, 2025
  */
-@Component(service = OrchestratorWorker.class, configurationPid = "OrchestratorWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(immediate = true, service = OrchestratorWorker.class, configurationPid = "OrchestratorWorker", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class CamundaWorker  implements OrchestratorWorker {
 	
 	@Reference
