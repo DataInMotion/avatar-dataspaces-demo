@@ -132,7 +132,17 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 	 */
 	@Override
 	public void removeTask(String taskId, String token) {
-		if(token == null) cachedTasksMap.remove(taskId);	
-		else cachedTasksMapWithAuth.get(token).remove(taskId);		
+		if(token == null) {
+			if(cachedTasksMap.containsKey(taskId)) {
+				cachedTasksMap.remove(taskId);	
+			}			
+		}
+		else {
+			if(cachedTasksMapWithAuth.containsKey(token)) {
+				if(cachedTasksMapWithAuth.get(token).containsKey(taskId)) {
+					cachedTasksMapWithAuth.get(token).remove(taskId);	
+				}
+			}				
+		}
 	}
 }
