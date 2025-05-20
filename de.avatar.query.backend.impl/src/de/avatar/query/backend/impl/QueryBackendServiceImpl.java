@@ -53,7 +53,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	@Reference
 	StatusService statusService;
 
-	@Reference(target="(task.status.type=QUERY_INTERRUPTED)")
+	@Reference(target="(task.status.type=QUERY_INTERRUPT_REQUEST)")
 	OrchestratorTaskCacheService terminationCacheTaskService;
 
 	@Reference(target="(task.status.type=PUBLIC_LINK_REQUEST)")
