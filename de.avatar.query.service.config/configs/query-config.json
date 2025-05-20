@@ -4,7 +4,7 @@
  "EMFMongoRepositoryConfigurator~query": 
     {
         "mongo.instances": "query",
-        "query.baseUris": "mongodb://mongodb:27017",
+        "query.baseUris": "mongodb://mongodb-query:27017",
         "query.databases": "query",
         "query.query.repoType": "PROTOTYPE"
   	}
