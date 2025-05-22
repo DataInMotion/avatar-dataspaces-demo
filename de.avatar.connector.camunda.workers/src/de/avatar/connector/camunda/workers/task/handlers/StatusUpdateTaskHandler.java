@@ -85,8 +85,8 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		case PROCESS_CANCELED:
 			sendQueryStatus(reqId, QueryStatusType.PROCESS_CANCELED, "The process has been canceled and no data will be retrieved.");				
 			break;
-		case DATA_ANONYMIZED_READY:
-			sendQueryStatus(reqId, QueryStatusType.DATA_ANONYMIZED_READY, "Data have been anonymized and a public link can be requested.");
+		case ANONYMIZED_DATA_READY:
+			sendQueryStatus(reqId, QueryStatusType.ANONYMIZED_DATA_READY, "Data have been anonymized and a public link can be requested.");
 			break;
 		case PUBLIC_LINK_AVAILABLE:
 			sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_AVAILABLE, "Public link available for data download.");

@@ -94,7 +94,7 @@ public class AvatarDataCleanupImpl implements AvatarDataCleanup {
 				});
 			}
 		} catch (IOException e) {
-			LOGGER.severe(String.format("IOException while executing ResponseDataCleanup job!"));
+			LOGGER.severe(String.format("IOException while executing ResponseDataCleanup job: %s", e.getCause()));
 		}
 	}
 	

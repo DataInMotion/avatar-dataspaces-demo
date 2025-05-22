@@ -143,14 +143,14 @@ public enum QueryStatusType implements Enumerator {
 	QUERY_INTERRUPTED(9, "QUERY_INTERRUPTED", "QUERY_INTERRUPTED"),
 
 	/**
-	 * The '<em><b>DATA ANONYMIZED READY</b></em>' literal object.
+	 * The '<em><b>ANONYMIZED DATA READY</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #DATA_ANONYMIZED_READY_VALUE
+	 * @see #ANONYMIZED_DATA_READY_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	DATA_ANONYMIZED_READY(10, "DATA_ANONYMIZED_READY", "DATA_ANONYMIZED_READY"),
+	ANONYMIZED_DATA_READY(10, "ANONYMIZED_DATA_READY", "ANONYMIZED_DATA_READY"),
 
 	/**
 	 * The '<em><b>PUBLIC LINK REQUEST</b></em>' literal object.
@@ -314,15 +314,15 @@ public enum QueryStatusType implements Enumerator {
 	public static final int QUERY_INTERRUPTED_VALUE = 9;
 
 	/**
-	 * The '<em><b>DATA ANONYMIZED READY</b></em>' literal value.
+	 * The '<em><b>ANONYMIZED DATA READY</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #DATA_ANONYMIZED_READY
+	 * @see #ANONYMIZED_DATA_READY
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DATA_ANONYMIZED_READY_VALUE = 10;
+	public static final int ANONYMIZED_DATA_READY_VALUE = 10;
 
 	/**
 	 * The '<em><b>PUBLIC LINK REQUEST</b></em>' literal value.
@@ -387,7 +387,7 @@ public enum QueryStatusType implements Enumerator {
 			PROCESS_CANCELED,
 			QUERY_INTERRUPT_REQUEST,
 			QUERY_INTERRUPTED,
-			DATA_ANONYMIZED_READY,
+			ANONYMIZED_DATA_READY,
 			PUBLIC_LINK_REQUEST,
 			PUBLIC_LINK_AVAILABLE,
 			OPERATION_ERROR,
@@ -459,7 +459,7 @@ public enum QueryStatusType implements Enumerator {
 			case PROCESS_CANCELED_VALUE: return PROCESS_CANCELED;
 			case QUERY_INTERRUPT_REQUEST_VALUE: return QUERY_INTERRUPT_REQUEST;
 			case QUERY_INTERRUPTED_VALUE: return QUERY_INTERRUPTED;
-			case DATA_ANONYMIZED_READY_VALUE: return DATA_ANONYMIZED_READY;
+			case ANONYMIZED_DATA_READY_VALUE: return ANONYMIZED_DATA_READY;
 			case PUBLIC_LINK_REQUEST_VALUE: return PUBLIC_LINK_REQUEST;
 			case PUBLIC_LINK_AVAILABLE_VALUE: return PUBLIC_LINK_AVAILABLE;
 			case OPERATION_ERROR_VALUE: return OPERATION_ERROR;

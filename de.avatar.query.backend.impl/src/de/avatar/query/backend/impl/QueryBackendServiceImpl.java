@@ -178,7 +178,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
 		}
 		//		if the status is not QUERY_PENDING we cannot interrupt the request
-		if(!QueryStatusType.DATA_ANONYMIZED_READY.equals(statusUpdate.getStatus())) {
+		if(!QueryStatusType.ANONYMIZED_DATA_READY.equals(statusUpdate.getStatus())) {
 			LOGGER.severe(String.format("Cannot request public link for request %s because the status is %s.", requestId, statusUpdate.getStatus()));
 			throw new IllegalArgumentException(String.format("Cannot request public link for request %s because the status is %s.", requestId, statusUpdate.getStatus()));
 		}
@@ -467,7 +467,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
 		}
 		//		if the status is not QUERY_PENDING we cannot interrupt the request
-		if(!QueryStatusType.DATA_ANONYMIZED_READY.equals(statusUpdate.getStatus())) {
+		if(!QueryStatusType.ANONYMIZED_DATA_READY.equals(statusUpdate.getStatus())) {
 			LOGGER.severe(String.format("Cannot request public link for request %s because the status is %s.", requestId, statusUpdate.getStatus()));
 			throw new IllegalArgumentException(String.format("Cannot request public link for request %s because the status is %s.", requestId, statusUpdate.getStatus()));
 		}

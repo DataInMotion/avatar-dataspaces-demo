@@ -50,7 +50,7 @@
     <eLiterals name="PROCESS_CANCELED" value="7"/>
     <eLiterals name="QUERY_INTERRUPT_REQUEST" value="8"/>
     <eLiterals name="QUERY_INTERRUPTED" value="9"/>
-    <eLiterals name="DATA_ANONYMIZED_READY" value="10"/>
+    <eLiterals name="ANONYMIZED_DATA_READY" value="10"/>
     <eLiterals name="PUBLIC_LINK_REQUEST" value="11"/>
     <eLiterals name="PUBLIC_LINK_AVAILABLE" value="12"/>
     <eLiterals name="OPERATION_ERROR" value="13"/>
