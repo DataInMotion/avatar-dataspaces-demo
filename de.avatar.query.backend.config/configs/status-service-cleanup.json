@@ -2,9 +2,9 @@
   ":configurator:resource-version": 1,
   "StatusServiceCleanup": {
   	"cleanupDelay": 0,
-	"cleanupRate": 10,
+	"cleanupRate": 60,
 	"cleanupUnit": "MINUTES",
-	"removeOlderThan": 10, 
+	"removeOlderThan": 60, 
 	"removeOlderThanUnit": "MINUTES"
   } 
 }
