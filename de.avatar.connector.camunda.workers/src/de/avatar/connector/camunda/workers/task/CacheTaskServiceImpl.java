@@ -60,6 +60,11 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 		}
 		Map<ExternalTask, ExternalTaskService> externalTaskPair = cachedTasksMap.get(taskId);
 		externalTaskPair.entrySet().forEach(e -> {
+			String genLink = e.getKey().getVariable("generateLink");
+			LOGGER.info(String.format("Current generateLink variable for task %s is %s", taskId, genLink));
+			e.getValue().setVariables(e.getKey(), variables);	
+			genLink = e.getKey().getVariable("generateLink");
+			LOGGER.info(String.format("New generateLink variable for task %s is %s", taskId, genLink));
 			e.getValue().complete(e.getKey(), variables);	
 		});
 		removeTask(taskId, null);

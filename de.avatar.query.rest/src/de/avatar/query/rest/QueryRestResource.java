@@ -11,6 +11,8 @@
  */
 package de.avatar.query.rest;
 
+import java.util.logging.Logger;
+
 import org.eclipse.osgitech.rest.annotations.RequireJerseyServlet;
 import org.gecko.emf.json.constants.EMFJs;
 import org.gecko.emf.rest.annotations.EMFResourceOptions;
@@ -47,15 +49,11 @@ import jakarta.ws.rs.core.Response.Status;
 @Path("/")
 @Component(name = "QueryRestResource", service = QueryRestResource.class, enabled = true, scope = ServiceScope.PROTOTYPE)
 public class QueryRestResource {
+	
+	private static final Logger LOGGER = Logger.getLogger(QueryRestResource.class.getName());
 
 	@Reference
 	QueryBackendService queryBEService;
-	
-//	@Reference
-//	StatusService statusService;
-//	
-//	@Reference
-//	AvatarGenerator avatarGenerator;
 	
 	@GET
 	@Path("/hello")
@@ -214,6 +212,7 @@ public class QueryRestResource {
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
 	public Response publicLink(@PathParam("requestId") String requestId, @PathParam("generare") boolean generate) {
 		try {
+			LOGGER.info(String.format("Got publiclink request for id %s with generateLink %s", requestId, generate));
 			QueryResponse response = queryBEService.publicLinkRequest(requestId, generate);
 			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {			
