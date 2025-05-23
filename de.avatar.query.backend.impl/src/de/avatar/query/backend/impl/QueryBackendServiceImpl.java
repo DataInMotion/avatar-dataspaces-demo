@@ -13,16 +13,9 @@ package de.avatar.query.backend.impl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
@@ -89,20 +82,15 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", reqId));
 			return statusService.getStatusUpdate(reqId);
 		}
+		QueryResponse response;
 		try {
-			sendQueryRequest(queryRequest, "dryrun", reqId);
-
-			//			here we just ping the status for updates
-			QueryResponse response = pingForStatus(reqId, true, null);
-			if(response == null) {
-				response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.QUERY_PENDING, "Request has been sent, but no updates from connectors arrived yet");
-			}
-			return response;	
+			response = sendQueryRequest(queryRequest, "dryrun", reqId);
 		} catch(IOException e) {
 			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
 			e.printStackTrace();
-			return QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
+			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
 		}
+		return response;
 
 	}
 
@@ -118,20 +106,16 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", reqId));
 			return statusService.getStatusUpdate(reqId);
 		}
+		QueryResponse response;
 		try {
-			sendQueryRequest(queryRequest, "request", reqId);	
-			//			here we just ping the status for updates
-			QueryResponse response = pingForStatus(reqId, false, null);
-			if(response == null) {
-				response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.QUERY_PENDING, "Request has been sent, but no updates from connectors arrived yet");
-			}
+			response = sendQueryRequest(queryRequest, "request", reqId);	
 			statusService.cacheRequest(queryRequest);
-			return response;
 		} catch(IOException e) {
 			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
 			e.printStackTrace();
-			return QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
+			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
 		}
+		return response;
 	}
 
 	/* 
@@ -209,174 +193,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		}
 		return terminationCacheTaskService.completeTask(requestId);
 	}
-
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#saveQuery(de.avatar.query.backend.api.Query)
-	 */
-	@Override
-	public Query saveQuery(Query query) {
-		return queryService.saveQuery(query);
-	}
-
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#getQueryByName(java.lang.String)
-	 */
-	@Override
-	public Query getQueryByName(String queryName) {
-		return queryService.getQueryByName(queryName);
-	}
-
-	private QueryResponse pingForStatus(String requestId, boolean fromCache, String token) {
-		Long now = Instant.now().toEpochMilli();
-		for(int i = 0; i < 10; i ++) {
-			ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-			ScheduledFuture<QueryResponse> schedule = executor.schedule(new MyCheckStatusWork(requestId, token), 1, TimeUnit.SECONDS);
-			QueryResponse statusResponse;
-			try {
-				statusResponse = schedule.get();
-				if(statusResponse != null) {
-					if(!fromCache) {
-						if(statusResponse.getTimestamp() > now) {
-							return statusResponse;
-						}
-					} else {
-						return statusResponse;
-					}
-				}
-			} catch (InterruptedException | ExecutionException e) {
-				e.printStackTrace();
-			}
-			finally {
-				executor.shutdown();				
-			}
-		}
-		return null;
-	}
-
-	class MyCheckStatusWork implements Callable<QueryResponse> {
-
-		private String requestId;
-		private String token;
-
-		public MyCheckStatusWork(String requestId) {
-			this.requestId = requestId;			
-		}
-		
-		public MyCheckStatusWork(String requestId, String token) {
-			this.requestId = requestId;
-			this.token = token;			
-		}
-
-		/* 
-		 * (non-Javadoc)
-		 * @see java.util.concurrent.Callable#call()
-		 */
-		@Override
-		public QueryResponse call() throws Exception {
-			if(token == null) return statusService.getStatusUpdate(requestId);
-			else return statusService.getStatusUpdate(requestId, token);
-		}
-	}
-
-
-
-	private String saveEObjectToString(EObject obj) {
-		ResourceSet resSet = rsFactory.getService();
-		try {
-			Resource res = resSet.createResource(URI.createURI(UUID.randomUUID().toString().concat(".json")), "application/json");
-			res.getContents().add(obj);
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			res.save(baos, null);
-			return new String(baos.toByteArray());
-		} catch(IOException e) {
-			LOGGER.severe(String.format("IOException while converting EObject to String"));
-			return null;
-		} finally {
-			rsFactory.ungetService(resSet);
-		}
-	}
-
-	private void sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId) throws IOException{
-		Integer resCode;
-		if(queryCamundaProcessLauncher.isLocal()) {
-			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
-			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
-			if(queryRequest != null) {
-				variables.get("variables").put("query", new HashMap<String, Object>());
-				variables.get("variables").get("query").put("value", saveEObjectToString(queryRequest));
-				variables.get("variables").put("contentType", new HashMap<String, Object>());
-				variables.get("variables").get("contentType").put("value", queryRequest.getContentType());
-			}			
-			variables.get("variables").put("reqId", new HashMap<String, Object>());
-			variables.get("variables").get("reqId").put("value", reqId);
-			variables.get("variables").put("reqType", new HashMap<String, Object>());
-			variables.get("variables").get("reqType").put("value", reqType);
-			variables.get("variables").put("reqType", new HashMap<String, Object>());
-			variables.get("variables").get("reqType").put("value", reqType);
-			resCode = queryCamundaProcessLauncher.launchProcessToEngine(variables);		
-		} else {
-			Map<String, HashMap<String, Object>> variables = new HashMap<>();
-			variables.put("tenant", new HashMap<String, Object>());
-			variables.get("tenant").put("value", "TENANT_DIM");
-			variables.get("tenant").put("type", "String");
-			if(queryRequest != null) {
-				variables.put("query", new HashMap<String, Object>());
-				variables.get("query").put("value", saveEObjectToString(queryRequest));
-				variables.get("query").put("type", "String");
-				variables.put("contentType", new HashMap<String, Object>());
-				variables.get("contentType").put("value", queryRequest.getContentType());
-				variables.get("contentType").put("type", "String");
-			}	
-			variables.put("reqId", new HashMap<String, Object>());
-			variables.get("reqId").put("value", reqId);
-			variables.get("reqId").put("type", "String");
-			variables.put("reqType", new HashMap<String, Object>());
-			variables.get("reqType").put("value", reqType);
-			variables.get("reqType").put("type", "String");
-			resCode = queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables);			
-		}		
-		if(resCode == 200) {
-			LOGGER.info(String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
-			statusService.updateStatus(QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.REQUEST_PROCESS_STARTED, String.format("Request %s succesfully forwarded to camunda process user interface", reqId)));
-		} else {
-			LOGGER.warning(String.format("Error while sending request %s to camunda process user interface", reqId));
-			statusService.updateStatus(QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("Error while sending request %s to camunda process user interface", reqId)));
-		}
-	}
-
-	private void sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId, String token) throws IOException{
-
-		Map<String, HashMap<String, Object>> variables = new HashMap<>();
-		variables.put("tenant", new HashMap<String, Object>());
-		variables.get("tenant").put("value", "TENANT_DIM");
-		variables.get("tenant").put("type", "String");
-		if(queryRequest != null) {
-			variables.put("query", new HashMap<String, Object>());
-			variables.get("query").put("value", saveEObjectToString(queryRequest));
-			variables.get("query").put("type", "String");
-			variables.put("contentType", new HashMap<String, Object>());
-			variables.get("contentType").put("value", queryRequest.getContentType());
-			variables.get("contentType").put("type", "String");
-		}	
-		variables.put("reqId", new HashMap<String, Object>());
-		variables.get("reqId").put("value", reqId);
-		variables.get("reqId").put("type", "String");
-		variables.put("reqType", new HashMap<String, Object>());
-		variables.get("reqType").put("value", reqType);
-		variables.get("reqType").put("type", "String");
-		Integer resCode = queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables, token);
-		if(resCode == 200) {
-			LOGGER.info(String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
-			statusService.updateStatus(QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.REQUEST_PROCESS_STARTED, String.format("Request %s succesfully forwarded to camunda process user interface", reqId)));
-		} else {
-			LOGGER.warning(String.format("Error while sending request %s to camunda process user interface", reqId));
-			statusService.updateStatus(QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("Error while sending request %s to camunda process user interface", reqId)));
-		}
-	}
-
-
+	
 	/* 
 	 * (non-Javadoc)
 	 * @see de.avatar.query.backend.api.QueryBackendService#executeDryRun(de.avatar.status.QueryRequest, java.lang.String)
@@ -389,20 +206,15 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", reqId));
 			return statusService.getStatusUpdate(reqId, token);
 		}
+		QueryResponse response;
 		try {
-			sendQueryRequest(queryRequest, "dryrun", reqId, token);
-
-			//			here we just ping the status for updates
-			QueryResponse response = pingForStatus(reqId, true, token);
-			if(response == null) {
-				response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.QUERY_PENDING, "Request has been sent, but no updates from connectors arrived yet");
-			}
-			return response;	
+			response = sendQueryRequest(queryRequest, "dryrun", reqId, token);
 		} catch(IOException e) {
 			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
 			e.printStackTrace();
-			return QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
+			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
 		}
+		return response;
 	}
 
 	/* 
@@ -417,20 +229,16 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", reqId));
 			return statusService.getStatusUpdate(reqId, token);
 		}
+		QueryResponse response;
 		try {
-			sendQueryRequest(queryRequest, "request", reqId, token);	
-			//			here we just ping the status for updates
-			QueryResponse response = pingForStatus(reqId, false, token);
-			if(response == null) {
-				response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.QUERY_PENDING, "Request has been sent, but no updates from connectors arrived yet");
-			}
+			response = sendQueryRequest(queryRequest, "request", reqId, token);			
 			statusService.cacheRequest(queryRequest, token);
-			return response;
 		} catch(IOException e) {
 			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
 			e.printStackTrace();
-			return QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
+			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
 		}
+		return response;
 	}
 
 	/* 
@@ -507,4 +315,126 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		}
 		return cancelCacheTaskService.completeTask(requestId, token);
 	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#saveQuery(de.avatar.query.backend.api.Query)
+	 */
+	@Override
+	public Query saveQuery(Query query) {
+		return queryService.saveQuery(query);
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#getQueryByName(java.lang.String)
+	 */
+	@Override
+	public Query getQueryByName(String queryName) {
+		return queryService.getQueryByName(queryName);
+	}
+
+	private String saveEObjectToString(EObject obj) {
+		ResourceSet resSet = rsFactory.getService();
+		try {
+			Resource res = resSet.createResource(URI.createURI(UUID.randomUUID().toString().concat(".json")), "application/json");
+			res.getContents().add(obj);
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			res.save(baos, null);
+			return new String(baos.toByteArray());
+		} catch(IOException e) {
+			LOGGER.severe(String.format("IOException while converting EObject to String"));
+			return null;
+		} finally {
+			rsFactory.ungetService(resSet);
+		}
+	}
+
+	private QueryResponse sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId) throws IOException{
+		Integer resCode;
+		if(queryCamundaProcessLauncher.isLocal()) {
+			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
+			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
+			if(queryRequest != null) {
+				variables.get("variables").put("query", new HashMap<String, Object>());
+				variables.get("variables").get("query").put("value", saveEObjectToString(queryRequest));
+				variables.get("variables").put("contentType", new HashMap<String, Object>());
+				variables.get("variables").get("contentType").put("value", queryRequest.getContentType());
+			}			
+			variables.get("variables").put("reqId", new HashMap<String, Object>());
+			variables.get("variables").get("reqId").put("value", reqId);
+			variables.get("variables").put("reqType", new HashMap<String, Object>());
+			variables.get("variables").get("reqType").put("value", reqType);
+			variables.get("variables").put("reqType", new HashMap<String, Object>());
+			variables.get("variables").get("reqType").put("value", reqType);
+			resCode = queryCamundaProcessLauncher.launchProcessToEngine(variables);		
+		} else {
+			Map<String, HashMap<String, Object>> variables = new HashMap<>();
+			variables.put("tenant", new HashMap<String, Object>());
+			variables.get("tenant").put("value", "TENANT_DIM");
+			variables.get("tenant").put("type", "String");
+			if(queryRequest != null) {
+				variables.put("query", new HashMap<String, Object>());
+				variables.get("query").put("value", saveEObjectToString(queryRequest));
+				variables.get("query").put("type", "String");
+				variables.put("contentType", new HashMap<String, Object>());
+				variables.get("contentType").put("value", queryRequest.getContentType());
+				variables.get("contentType").put("type", "String");
+			}	
+			variables.put("reqId", new HashMap<String, Object>());
+			variables.get("reqId").put("value", reqId);
+			variables.get("reqId").put("type", "String");
+			variables.put("reqType", new HashMap<String, Object>());
+			variables.get("reqType").put("value", reqType);
+			variables.get("reqType").put("type", "String");
+			resCode = queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables);			
+		}		
+		QueryResponse response;
+		if(resCode == 200) {
+			LOGGER.info(String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
+			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.REQUEST_PROCESS_STARTED, String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
+		} else {
+			LOGGER.warning(String.format("Error while sending request %s to camunda process user interface", reqId));
+			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("Error while sending request %s to camunda process user interface", reqId));
+		}
+		statusService.updateStatus(response);
+		return response;
+	}
+
+	private QueryResponse sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId, String token) throws IOException{
+
+		Map<String, HashMap<String, Object>> variables = new HashMap<>();
+		variables.put("tenant", new HashMap<String, Object>());
+		variables.get("tenant").put("value", "TENANT_DIM");
+		variables.get("tenant").put("type", "String");
+		if(queryRequest != null) {
+			variables.put("query", new HashMap<String, Object>());
+			variables.get("query").put("value", saveEObjectToString(queryRequest));
+			variables.get("query").put("type", "String");
+			variables.put("contentType", new HashMap<String, Object>());
+			variables.get("contentType").put("value", queryRequest.getContentType());
+			variables.get("contentType").put("type", "String");
+		}	
+		variables.put("reqId", new HashMap<String, Object>());
+		variables.get("reqId").put("value", reqId);
+		variables.get("reqId").put("type", "String");
+		variables.put("reqType", new HashMap<String, Object>());
+		variables.get("reqType").put("value", reqType);
+		variables.get("reqType").put("type", "String");
+		QueryResponse response;
+		Integer resCode = queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables, token);
+		if(resCode == 200) {
+			LOGGER.info(String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
+			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.REQUEST_PROCESS_STARTED, String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
+		} else {
+			LOGGER.warning(String.format("Error while sending request %s to camunda process user interface", reqId));
+			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("Error while sending request %s to camunda process user interface", reqId));
+		}
+		statusService.updateStatus(response);
+		return response;
+	}
+	
+
+
+	
 }
