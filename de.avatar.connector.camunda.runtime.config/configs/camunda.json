@@ -50,7 +50,7 @@
 		"camunda.process.name": "forward-query",
 		"camunda.process.type": "prod",
 		"keycloakService.target": "(service.name=StatusUpdateService)",
-		"camunda.process.url": "http://apisix-gateway:9080/api/processuserinterface/api/service/start?uuid=fac464be-5ca5-41a3-8e7b-58feffd442ba"
+		"camunda.process.url": "http://apisix-gateway:9080/api/processuserinterface/api/service/start?uuid=6c958fc5-ab38-4c4e-b571-21c530f541bd"
 	},
 	"OrchestratorTaskCacheService~termination": {
 		"task.status.type": "QUERY_INTERRUPT_REQUEST",
