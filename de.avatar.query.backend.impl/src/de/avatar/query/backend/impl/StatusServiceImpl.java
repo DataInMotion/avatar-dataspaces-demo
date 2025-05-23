@@ -136,7 +136,7 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 	public void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus, String reqType, boolean isPartialUpdate) {
 		
 		LOGGER.info(String.format("I am updating the status for request %s", endpointResponse.getRequest().getId()));
-		String reqId = endpointResponse.getRequest().getId();
+		String reqId = endpointResponse.getSourceId();
 		if(!cachedStatuses.containsKey(reqId) || !(cachedStatuses.get(reqId) instanceof QueryStatusResponse)) {
 			QueryStatusResponse qsr = StatusFactory.eINSTANCE.createQueryStatusResponse();
 			qsr.setRequestId(reqId);
