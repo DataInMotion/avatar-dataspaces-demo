@@ -14,6 +14,7 @@ package de.avatar.connector.camunda.workers.task;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import org.camunda.bpm.client.task.ExternalTask;
@@ -36,8 +37,8 @@ import de.avatar.status.QueryStatusType;
 public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 
 	private static final Logger LOGGER = Logger.getLogger(CacheTaskServiceImpl.class.getName());
-	private Map<String, Map<ExternalTask, ExternalTaskService>> cachedTasksMap = new HashMap<>();
-	private Map<String,Map<String, Map<ExternalTask, ExternalTaskService>>> cachedTasksMapWithAuth = new HashMap<>();
+	private Map<String, Map<ExternalTask, ExternalTaskService>> cachedTasksMap = new ConcurrentHashMap<>();
+	private Map<String,Map<String, Map<ExternalTask, ExternalTaskService>>> cachedTasksMapWithAuth = new ConcurrentHashMap<>();
 	private QueryStatusType type;
 	private String msg;
 	
@@ -54,7 +55,7 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 	@Override
 	public QueryResponse completeTask(String taskId, Map<String, Object> variables) {
 		if(!cachedTasksMap.containsKey(taskId)) {
-			LOGGER.severe(String.format("No ManualTermination task cached for request id %s", taskId));
+			LOGGER.severe(String.format("No cached task of type %s for request id %s", type, taskId));
 			return QueryStatusHelper.createQueryResponse(taskId, QueryStatusType.OPERATION_ERROR, String.format("No cached task of type %s for request id %s", type, taskId));
 		}
 		Map<ExternalTask, ExternalTaskService> externalTaskPair = cachedTasksMap.get(taskId);
@@ -85,7 +86,9 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 			}
 			cachedTasksMapWithAuth.get(token).put(reqId, Map.of(externalTask, externalTaskService));
 		} else {
+			LOGGER.info(String.format("Caching task of type %s for request id %s", type, reqId));
 			cachedTasksMap.put(reqId, Map.of(externalTask, externalTaskService));
+			LOGGER.info(String.format("Total Cached tasks of type %s are %d", type, cachedTasksMap.size()));
 		}
 	}
 

@@ -127,7 +127,7 @@ public class CamundaWorker  implements OrchestratorWorker {
 			case PUBLIC_LINK_REQUEST:
 				return new CacheTaskHandler(statusService, resourceSet, linkCacheTaskService);
 			case PROCESS_CANCEL_REQUEST:
-				return new CacheTaskHandler(statusService, resourceSet, linkCacheTaskService);
+				return new CacheTaskHandler(statusService, resourceSet, cancelCacheTaskService);
 			default:
 				LOGGER.warning(String.format("No ExternalTaskHandler implemented for type %s", handlerType));
 				return new DoNothingTaskHandler();
