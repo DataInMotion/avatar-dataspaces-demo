@@ -90,7 +90,12 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 			sendQueryStatus(reqId, QueryStatusType.ANONYMIZED_DATA_READY, "Data have been anonymized and a public link can be requested.");
 			break;
 		case PUBLIC_LINK_AVAILABLE:
-			sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_AVAILABLE, "Public link available for data download.");
+			String publicUrl = externalTask.getVariable("publicUrl");
+			if(publicUrl == null) {
+				sendQueryStatus(reqId, QueryStatusType.OPERATION_ERROR, String.format("Public link should be available for request %s but no publicUrl variable has been found in the process", reqId));
+			} else {
+				sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_AVAILABLE, String.format("Public link available for data download at %s", publicUrl));
+			}			
 			break;
 		default:
 			sendQueryStatus(reqId, QueryStatusType.OTHER, "Status update of type " + statusTypeEnum);
