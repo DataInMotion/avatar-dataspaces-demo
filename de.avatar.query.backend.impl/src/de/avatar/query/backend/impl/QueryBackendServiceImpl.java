@@ -183,7 +183,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			throw new IllegalArgumentException(String.format("Cannot request public link for request %s because the status is %s.", requestId, statusUpdate.getStatus()));
 		}
 		Map<String, Object> variables = new HashMap<>();
-		variables.put("generateLink", generateLink);
+		variables.put("generateLink", String.valueOf(generateLink));
 		return linkCacheTaskService.completeTask(requestId, variables);
 	}
 
@@ -486,7 +486,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			throw new IllegalArgumentException(String.format("Cannot request public link for request %s because the status is %s.", requestId, statusUpdate.getStatus()));
 		}
 		Map<String, Object> variables = new HashMap<>();
-		variables.put("generateLink", generateLink);
+		variables.put("generateLink", String.valueOf(generateLink));
 		return linkCacheTaskService.completeTask(requestId, variables, token);
 	}
 

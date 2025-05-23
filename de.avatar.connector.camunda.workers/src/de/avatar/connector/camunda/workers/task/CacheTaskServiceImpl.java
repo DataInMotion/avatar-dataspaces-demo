@@ -41,13 +41,13 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 	private Map<String,Map<String, Map<ExternalTask, ExternalTaskService>>> cachedTasksMapWithAuth = new ConcurrentHashMap<>();
 	private QueryStatusType type;
 	private String msg;
-	
+
 	@Activate
 	public void activate(Map<String, Object> properties) {
 		type = QueryStatusType.valueOf((String) properties.getOrDefault("task.status.type", "OTHER"));
 		msg = (String) properties.getOrDefault("task.status.msg", "Manual operation triggered by the user");		
 	}
-	
+
 	/* 
 	 * (non-Javadoc)
 	 * @see de.avatar.connector.camunda.api.OrchestratorTaskCacheService#completeTask(java.lang.String, java.util.Map)
@@ -60,14 +60,13 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 		}
 		Map<ExternalTask, ExternalTaskService> externalTaskPair = cachedTasksMap.get(taskId);
 		externalTaskPair.entrySet().forEach(e -> {
-			e.getValue().setVariables(e.getKey(), variables);			
-			e.getValue().complete(e.getKey());
+			e.getValue().complete(e.getKey(), variables);	
 		});
 		removeTask(taskId, null);
-		
+
 		return QueryStatusHelper.createQueryResponse(taskId, type, msg);
 	}
-	
+
 	/* 
 	 * (non-Javadoc)
 	 * @see de.avatar.connector.camunda.api.OrchestratorTaskCacheService#cacheTask(org.camunda.bpm.client.task.ExternalTask, org.camunda.bpm.client.task.ExternalTaskService)
@@ -122,8 +121,7 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 		}
 		Map<ExternalTask, ExternalTaskService> externalTaskPair = cachedTasksMapWithAuth.get(token).get(taskId);
 		externalTaskPair.entrySet().forEach(e -> {
-			e.getValue().setVariables(e.getKey(), variables);			
-			e.getValue().complete(e.getKey());
+			e.getValue().complete(e.getKey(), variables);	
 		});
 		removeTask(taskId, token);		
 		return QueryStatusHelper.createQueryResponse(taskId, type, msg);
