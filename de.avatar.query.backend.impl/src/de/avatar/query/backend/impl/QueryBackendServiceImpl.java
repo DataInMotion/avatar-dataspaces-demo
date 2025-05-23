@@ -299,7 +299,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	}
 
 	private void sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId) throws IOException{
-
+		Integer resCode;
 		if(queryCamundaProcessLauncher.isLocal()) {
 			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
 			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
@@ -315,7 +315,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			variables.get("variables").get("reqType").put("value", reqType);
 			variables.get("variables").put("reqType", new HashMap<String, Object>());
 			variables.get("variables").get("reqType").put("value", reqType);
-			queryCamundaProcessLauncher.launchProcessToEngine(variables);		
+			resCode = queryCamundaProcessLauncher.launchProcessToEngine(variables);		
 		} else {
 			Map<String, HashMap<String, Object>> variables = new HashMap<>();
 			variables.put("tenant", new HashMap<String, Object>());
@@ -335,8 +335,15 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			variables.put("reqType", new HashMap<String, Object>());
 			variables.get("reqType").put("value", reqType);
 			variables.get("reqType").put("type", "String");
-			queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables);
+			resCode = queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables);			
 		}		
+		if(resCode == 200) {
+			LOGGER.info(String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
+			statusService.updateStatus(QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.REQUEST_PROCESS_STARTED, String.format("Request %s succesfully forwarded to camunda process user interface", reqId)));
+		} else {
+			LOGGER.warning(String.format("Error while sending request %s to camunda process user interface", reqId));
+			statusService.updateStatus(QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("Error while sending request %s to camunda process user interface", reqId)));
+		}
 	}
 
 	private void sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId, String token) throws IOException{
@@ -359,7 +366,14 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		variables.put("reqType", new HashMap<String, Object>());
 		variables.get("reqType").put("value", reqType);
 		variables.get("reqType").put("type", "String");
-		queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables, token);
+		Integer resCode = queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables, token);
+		if(resCode == 200) {
+			LOGGER.info(String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
+			statusService.updateStatus(QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.REQUEST_PROCESS_STARTED, String.format("Request %s succesfully forwarded to camunda process user interface", reqId)));
+		} else {
+			LOGGER.warning(String.format("Error while sending request %s to camunda process user interface", reqId));
+			statusService.updateStatus(QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("Error while sending request %s to camunda process user interface", reqId)));
+		}
 	}
 
 

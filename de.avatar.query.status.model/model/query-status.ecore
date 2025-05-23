@@ -39,21 +39,22 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="QueryStatusType">
-    <eLiterals name="QUERY_FORWARDING_STARTED" value="14"/>
-    <eLiterals name="QUERY_COMPLETED"/>
-    <eLiterals name="QUERY_ERROR" value="1"/>
-    <eLiterals name="QUERY_NO_CONTENT" value="2"/>
-    <eLiterals name="TIMEOUT" value="3"/>
+    <eLiterals name="REQUEST_PROCESS_STARTED"/>
+    <eLiterals name="QUERY_FORWARDING_STARTED" value="1"/>
+    <eLiterals name="QUERY_COMPLETED" value="2"/>
+    <eLiterals name="QUERY_DRYRUN_COMPLETED" value="3"/>
     <eLiterals name="QUERY_PENDING" value="4"/>
-    <eLiterals name="QUERY_DRYRUN_COMPLETED" value="5"/>
-    <eLiterals name="PROCESS_CANCEL_REQUEST" value="6"/>
-    <eLiterals name="PROCESS_CANCELED" value="7"/>
-    <eLiterals name="QUERY_INTERRUPT_REQUEST" value="8"/>
-    <eLiterals name="QUERY_INTERRUPTED" value="9"/>
-    <eLiterals name="ANONYMIZED_DATA_READY" value="10"/>
-    <eLiterals name="PUBLIC_LINK_REQUEST" value="11"/>
-    <eLiterals name="PUBLIC_LINK_AVAILABLE" value="12"/>
-    <eLiterals name="OPERATION_ERROR" value="13"/>
+    <eLiterals name="QUERY_NO_CONTENT" value="5"/>
+    <eLiterals name="QUERY_ERROR" value="6"/>
+    <eLiterals name="ANONYMIZED_DATA_READY" value="7"/>
+    <eLiterals name="PUBLIC_LINK_AVAILABLE" value="8"/>
+    <eLiterals name="PUBLIC_LINK_REQUEST" value="9"/>
+    <eLiterals name="QUERY_INTERRUPT_REQUEST" value="10"/>
+    <eLiterals name="QUERY_INTERRUPTED" value="11"/>
+    <eLiterals name="PROCESS_CANCEL_REQUEST" value="12"/>
+    <eLiterals name="PROCESS_CANCELED" value="13"/>
+    <eLiterals name="TIMEOUT" value="14"/>
+    <eLiterals name="OPERATION_ERROR" value="15"/>
     <eLiterals name="OTHER" value="100"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DetailedQueryStatus">

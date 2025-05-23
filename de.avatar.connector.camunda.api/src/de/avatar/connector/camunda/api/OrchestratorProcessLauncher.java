@@ -24,11 +24,11 @@ import java.util.Map;
  */
 public interface OrchestratorProcessLauncher {
 	
-	void launchProcessToEngine(Map<String, HashMap<String, HashMap<String, Object>>> processVariables) throws IOException;
+	Integer launchProcessToEngine(Map<String, HashMap<String, HashMap<String, Object>>> processVariables) throws IOException;
 	
-	void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables) throws IOException;
+	Integer launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables) throws IOException;
 	
-	void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables, String token) throws IOException;
+	Integer launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables, String token) throws IOException;
 	
 	boolean isLocal();
 

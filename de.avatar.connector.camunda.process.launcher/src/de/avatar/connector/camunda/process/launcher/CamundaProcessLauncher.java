@@ -61,7 +61,7 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 	 * @see de.avatar.connector.whiteboard.api.OrchestratorProcessLauncher#launchProcess(java.util.Map)
 	 */
 	@Override
-	public void launchProcessToEngine(Map<String, HashMap<String, HashMap<String, Object>>> processVariables) throws IOException{
+	public Integer launchProcessToEngine(Map<String, HashMap<String, HashMap<String, Object>>> processVariables) throws IOException{
 		HttpClient httpClient = HttpClients.createDefault();
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jacksonData = objectMapper.writeValueAsString(processVariables);
@@ -69,8 +69,7 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 		StringEntity params = new StringEntity(jacksonData);
 		post.addHeader("content-type", "application/json");
 		post.setEntity(params);
-		httpClient.execute(post, new MyResponseHandler());
-		LOGGER.info("I sent the process to camunda");
+		return httpClient.execute(post, new MyResponseHandler());
 	}
 
 	/* 
@@ -87,7 +86,7 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 	 * @see de.avatar.connector.camunda.api.OrchestratorProcessLauncher#launchProcessToProcessUserInterface(java.util.Map)
 	 */
 	@Override
-	public void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables) throws IOException {
+	public Integer launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables) throws IOException {
 		HttpClient httpClient = HttpClients.createDefault();
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jacksonData = objectMapper.writeValueAsString(processVariables);
@@ -96,8 +95,7 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 		post.addHeader("Content-Type", "application/json");
 		post.addHeader("Authorization","Bearer " + keycloakService.getAccessToken().getToken());
 		post.setEntity(params);
-		httpClient.execute(post, new MyResponseHandler());
-		LOGGER.info("I sent the process to process user interface");
+		return httpClient.execute(post, new MyResponseHandler());
 	}
 
 	/* 
@@ -105,7 +103,7 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 	 * @see de.avatar.connector.camunda.api.OrchestratorProcessLauncher#launchProcessToProcessUserInterface(java.util.Map, java.lang.String)
 	 */
 	@Override
-	public void launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables, String token) throws IOException {
+	public Integer launchProcessToProcessUserInterface(Map<String, HashMap<String, Object>> processVariables, String token) throws IOException {
 		HttpClient httpClient = HttpClients.createDefault();
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jacksonData = objectMapper.writeValueAsString(processVariables);
@@ -114,8 +112,6 @@ public class CamundaProcessLauncher implements OrchestratorProcessLauncher {
 		post.addHeader("Content-Type", "application/json");
 		post.addHeader("Authorization","Bearer " + token);
 		post.setEntity(params);
-		httpClient.execute(post, new MyResponseHandler());
-		LOGGER.info("I sent the process to process user interface");
-		
+		return httpClient.execute(post, new MyResponseHandler());
 	}
 }

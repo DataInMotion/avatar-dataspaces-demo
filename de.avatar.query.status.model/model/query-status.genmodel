@@ -10,20 +10,21 @@
   <genPackages prefix="Status" basePackage="de.avatar" resource="XMI" disposableProviderFactory="true"
       ecorePackage="query-status.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query-status.ecore#//QueryStatusType">
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/REQUEST_PROCESS_STARTED"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_FORWARDING_STARTED"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_COMPLETED"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_ERROR"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_NO_CONTENT"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/TIMEOUT"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_PENDING"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_DRYRUN_COMPLETED"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PROCESS_CANCEL_REQUEST"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PROCESS_CANCELED"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_PENDING"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_NO_CONTENT"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_ERROR"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/ANONYMIZED_DATA_READY"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PUBLIC_LINK_AVAILABLE"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PUBLIC_LINK_REQUEST"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_INTERRUPT_REQUEST"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_INTERRUPTED"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/ANONYMIZED_DATA_READY"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PUBLIC_LINK_REQUEST"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PUBLIC_LINK_AVAILABLE"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PROCESS_CANCEL_REQUEST"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PROCESS_CANCELED"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/TIMEOUT"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/OPERATION_ERROR"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/OTHER"/>
     </genEnums>

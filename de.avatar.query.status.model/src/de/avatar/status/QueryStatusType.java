@@ -33,6 +33,16 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public enum QueryStatusType implements Enumerator {
 	/**
+	 * The '<em><b>REQUEST PROCESS STARTED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REQUEST_PROCESS_STARTED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	REQUEST_PROCESS_STARTED(0, "REQUEST_PROCESS_STARTED", "REQUEST_PROCESS_STARTED"),
+
+	/**
 	 * The '<em><b>QUERY FORWARDING STARTED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40,7 +50,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	QUERY_FORWARDING_STARTED(14, "QUERY_FORWARDING_STARTED", "QUERY_FORWARDING_STARTED"),
+	QUERY_FORWARDING_STARTED(1, "QUERY_FORWARDING_STARTED", "QUERY_FORWARDING_STARTED"),
 
 	/**
 	 * The '<em><b>QUERY COMPLETED</b></em>' literal object.
@@ -50,37 +60,17 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	QUERY_COMPLETED(0, "QUERY_COMPLETED", "QUERY_COMPLETED"),
+	QUERY_COMPLETED(2, "QUERY_COMPLETED", "QUERY_COMPLETED"),
 
 	/**
-	 * The '<em><b>QUERY ERROR</b></em>' literal object.
+	 * The '<em><b>QUERY DRYRUN COMPLETED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #QUERY_ERROR_VALUE
+	 * @see #QUERY_DRYRUN_COMPLETED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	QUERY_ERROR(1, "QUERY_ERROR", "QUERY_ERROR"),
-
-	/**
-	 * The '<em><b>QUERY NO CONTENT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #QUERY_NO_CONTENT_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	QUERY_NO_CONTENT(2, "QUERY_NO_CONTENT", "QUERY_NO_CONTENT"),
-
-	/**
-	 * The '<em><b>TIMEOUT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #TIMEOUT_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	TIMEOUT(3, "TIMEOUT", "TIMEOUT"),
+	QUERY_DRYRUN_COMPLETED(3, "QUERY_DRYRUN_COMPLETED", "QUERY_DRYRUN_COMPLETED"),
 
 	/**
 	 * The '<em><b>QUERY PENDING</b></em>' literal object.
@@ -93,54 +83,24 @@ public enum QueryStatusType implements Enumerator {
 	QUERY_PENDING(4, "QUERY_PENDING", "QUERY_PENDING"),
 
 	/**
-	 * The '<em><b>QUERY DRYRUN COMPLETED</b></em>' literal object.
+	 * The '<em><b>QUERY NO CONTENT</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #QUERY_DRYRUN_COMPLETED_VALUE
+	 * @see #QUERY_NO_CONTENT_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	QUERY_DRYRUN_COMPLETED(5, "QUERY_DRYRUN_COMPLETED", "QUERY_DRYRUN_COMPLETED"),
+	QUERY_NO_CONTENT(5, "QUERY_NO_CONTENT", "QUERY_NO_CONTENT"),
 
 	/**
-	 * The '<em><b>PROCESS CANCEL REQUEST</b></em>' literal object.
+	 * The '<em><b>QUERY ERROR</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PROCESS_CANCEL_REQUEST_VALUE
+	 * @see #QUERY_ERROR_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PROCESS_CANCEL_REQUEST(6, "PROCESS_CANCEL_REQUEST", "PROCESS_CANCEL_REQUEST"),
-
-	/**
-	 * The '<em><b>PROCESS CANCELED</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PROCESS_CANCELED_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	PROCESS_CANCELED(7, "PROCESS_CANCELED", "PROCESS_CANCELED"),
-
-	/**
-	 * The '<em><b>QUERY INTERRUPT REQUEST</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #QUERY_INTERRUPT_REQUEST_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	QUERY_INTERRUPT_REQUEST(8, "QUERY_INTERRUPT_REQUEST", "QUERY_INTERRUPT_REQUEST"),
-
-	/**
-	 * The '<em><b>QUERY INTERRUPTED</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #QUERY_INTERRUPTED_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	QUERY_INTERRUPTED(9, "QUERY_INTERRUPTED", "QUERY_INTERRUPTED"),
+	QUERY_ERROR(6, "QUERY_ERROR", "QUERY_ERROR"),
 
 	/**
 	 * The '<em><b>ANONYMIZED DATA READY</b></em>' literal object.
@@ -150,17 +110,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ANONYMIZED_DATA_READY(10, "ANONYMIZED_DATA_READY", "ANONYMIZED_DATA_READY"),
-
-	/**
-	 * The '<em><b>PUBLIC LINK REQUEST</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PUBLIC_LINK_REQUEST_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	PUBLIC_LINK_REQUEST(11, "PUBLIC_LINK_REQUEST", "PUBLIC_LINK_REQUEST"),
+	ANONYMIZED_DATA_READY(7, "ANONYMIZED_DATA_READY", "ANONYMIZED_DATA_READY"),
 
 	/**
 	 * The '<em><b>PUBLIC LINK AVAILABLE</b></em>' literal object.
@@ -170,7 +120,67 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PUBLIC_LINK_AVAILABLE(12, "PUBLIC_LINK_AVAILABLE", "PUBLIC_LINK_AVAILABLE"),
+	PUBLIC_LINK_AVAILABLE(8, "PUBLIC_LINK_AVAILABLE", "PUBLIC_LINK_AVAILABLE"),
+
+	/**
+	 * The '<em><b>PUBLIC LINK REQUEST</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PUBLIC_LINK_REQUEST_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PUBLIC_LINK_REQUEST(9, "PUBLIC_LINK_REQUEST", "PUBLIC_LINK_REQUEST"),
+
+	/**
+	 * The '<em><b>QUERY INTERRUPT REQUEST</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUERY_INTERRUPT_REQUEST_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	QUERY_INTERRUPT_REQUEST(10, "QUERY_INTERRUPT_REQUEST", "QUERY_INTERRUPT_REQUEST"),
+
+	/**
+	 * The '<em><b>QUERY INTERRUPTED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUERY_INTERRUPTED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	QUERY_INTERRUPTED(11, "QUERY_INTERRUPTED", "QUERY_INTERRUPTED"),
+
+	/**
+	 * The '<em><b>PROCESS CANCEL REQUEST</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PROCESS_CANCEL_REQUEST_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PROCESS_CANCEL_REQUEST(12, "PROCESS_CANCEL_REQUEST", "PROCESS_CANCEL_REQUEST"),
+
+	/**
+	 * The '<em><b>PROCESS CANCELED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PROCESS_CANCELED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PROCESS_CANCELED(13, "PROCESS_CANCELED", "PROCESS_CANCELED"),
+
+	/**
+	 * The '<em><b>TIMEOUT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TIMEOUT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	TIMEOUT(14, "TIMEOUT", "TIMEOUT"),
 
 	/**
 	 * The '<em><b>OPERATION ERROR</b></em>' literal object.
@@ -180,7 +190,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	OPERATION_ERROR(13, "OPERATION_ERROR", "OPERATION_ERROR"),
+	OPERATION_ERROR(15, "OPERATION_ERROR", "OPERATION_ERROR"),
 
 	/**
 	 * The '<em><b>OTHER</b></em>' literal object.
@@ -193,6 +203,17 @@ public enum QueryStatusType implements Enumerator {
 	OTHER(100, "OTHER", "OTHER");
 
 	/**
+	 * The '<em><b>REQUEST PROCESS STARTED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REQUEST_PROCESS_STARTED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REQUEST_PROCESS_STARTED_VALUE = 0;
+
+	/**
 	 * The '<em><b>QUERY FORWARDING STARTED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -201,7 +222,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int QUERY_FORWARDING_STARTED_VALUE = 14;
+	public static final int QUERY_FORWARDING_STARTED_VALUE = 1;
 
 	/**
 	 * The '<em><b>QUERY COMPLETED</b></em>' literal value.
@@ -212,40 +233,18 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int QUERY_COMPLETED_VALUE = 0;
+	public static final int QUERY_COMPLETED_VALUE = 2;
 
 	/**
-	 * The '<em><b>QUERY ERROR</b></em>' literal value.
+	 * The '<em><b>QUERY DRYRUN COMPLETED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #QUERY_ERROR
+	 * @see #QUERY_DRYRUN_COMPLETED
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int QUERY_ERROR_VALUE = 1;
-
-	/**
-	 * The '<em><b>QUERY NO CONTENT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #QUERY_NO_CONTENT
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int QUERY_NO_CONTENT_VALUE = 2;
-
-	/**
-	 * The '<em><b>TIMEOUT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #TIMEOUT
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int TIMEOUT_VALUE = 3;
+	public static final int QUERY_DRYRUN_COMPLETED_VALUE = 3;
 
 	/**
 	 * The '<em><b>QUERY PENDING</b></em>' literal value.
@@ -259,59 +258,26 @@ public enum QueryStatusType implements Enumerator {
 	public static final int QUERY_PENDING_VALUE = 4;
 
 	/**
-	 * The '<em><b>QUERY DRYRUN COMPLETED</b></em>' literal value.
+	 * The '<em><b>QUERY NO CONTENT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #QUERY_DRYRUN_COMPLETED
+	 * @see #QUERY_NO_CONTENT
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int QUERY_DRYRUN_COMPLETED_VALUE = 5;
+	public static final int QUERY_NO_CONTENT_VALUE = 5;
 
 	/**
-	 * The '<em><b>PROCESS CANCEL REQUEST</b></em>' literal value.
+	 * The '<em><b>QUERY ERROR</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PROCESS_CANCEL_REQUEST
+	 * @see #QUERY_ERROR
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PROCESS_CANCEL_REQUEST_VALUE = 6;
-
-	/**
-	 * The '<em><b>PROCESS CANCELED</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PROCESS_CANCELED
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int PROCESS_CANCELED_VALUE = 7;
-
-	/**
-	 * The '<em><b>QUERY INTERRUPT REQUEST</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #QUERY_INTERRUPT_REQUEST
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int QUERY_INTERRUPT_REQUEST_VALUE = 8;
-
-	/**
-	 * The '<em><b>QUERY INTERRUPTED</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #QUERY_INTERRUPTED
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int QUERY_INTERRUPTED_VALUE = 9;
+	public static final int QUERY_ERROR_VALUE = 6;
 
 	/**
 	 * The '<em><b>ANONYMIZED DATA READY</b></em>' literal value.
@@ -322,18 +288,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ANONYMIZED_DATA_READY_VALUE = 10;
-
-	/**
-	 * The '<em><b>PUBLIC LINK REQUEST</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PUBLIC_LINK_REQUEST
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int PUBLIC_LINK_REQUEST_VALUE = 11;
+	public static final int ANONYMIZED_DATA_READY_VALUE = 7;
 
 	/**
 	 * The '<em><b>PUBLIC LINK AVAILABLE</b></em>' literal value.
@@ -344,7 +299,73 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PUBLIC_LINK_AVAILABLE_VALUE = 12;
+	public static final int PUBLIC_LINK_AVAILABLE_VALUE = 8;
+
+	/**
+	 * The '<em><b>PUBLIC LINK REQUEST</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PUBLIC_LINK_REQUEST
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PUBLIC_LINK_REQUEST_VALUE = 9;
+
+	/**
+	 * The '<em><b>QUERY INTERRUPT REQUEST</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUERY_INTERRUPT_REQUEST
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int QUERY_INTERRUPT_REQUEST_VALUE = 10;
+
+	/**
+	 * The '<em><b>QUERY INTERRUPTED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUERY_INTERRUPTED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int QUERY_INTERRUPTED_VALUE = 11;
+
+	/**
+	 * The '<em><b>PROCESS CANCEL REQUEST</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PROCESS_CANCEL_REQUEST
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROCESS_CANCEL_REQUEST_VALUE = 12;
+
+	/**
+	 * The '<em><b>PROCESS CANCELED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PROCESS_CANCELED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROCESS_CANCELED_VALUE = 13;
+
+	/**
+	 * The '<em><b>TIMEOUT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TIMEOUT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIMEOUT_VALUE = 14;
 
 	/**
 	 * The '<em><b>OPERATION ERROR</b></em>' literal value.
@@ -355,7 +376,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int OPERATION_ERROR_VALUE = 13;
+	public static final int OPERATION_ERROR_VALUE = 15;
 
 	/**
 	 * The '<em><b>OTHER</b></em>' literal value.
@@ -376,20 +397,21 @@ public enum QueryStatusType implements Enumerator {
 	 */
 	private static final QueryStatusType[] VALUES_ARRAY =
 		new QueryStatusType[] {
+			REQUEST_PROCESS_STARTED,
 			QUERY_FORWARDING_STARTED,
 			QUERY_COMPLETED,
-			QUERY_ERROR,
-			QUERY_NO_CONTENT,
-			TIMEOUT,
-			QUERY_PENDING,
 			QUERY_DRYRUN_COMPLETED,
-			PROCESS_CANCEL_REQUEST,
-			PROCESS_CANCELED,
+			QUERY_PENDING,
+			QUERY_NO_CONTENT,
+			QUERY_ERROR,
+			ANONYMIZED_DATA_READY,
+			PUBLIC_LINK_AVAILABLE,
+			PUBLIC_LINK_REQUEST,
 			QUERY_INTERRUPT_REQUEST,
 			QUERY_INTERRUPTED,
-			ANONYMIZED_DATA_READY,
-			PUBLIC_LINK_REQUEST,
-			PUBLIC_LINK_AVAILABLE,
+			PROCESS_CANCEL_REQUEST,
+			PROCESS_CANCELED,
+			TIMEOUT,
 			OPERATION_ERROR,
 			OTHER,
 		};
@@ -448,20 +470,21 @@ public enum QueryStatusType implements Enumerator {
 	 */
 	public static QueryStatusType get(int value) {
 		switch (value) {
+			case REQUEST_PROCESS_STARTED_VALUE: return REQUEST_PROCESS_STARTED;
 			case QUERY_FORWARDING_STARTED_VALUE: return QUERY_FORWARDING_STARTED;
 			case QUERY_COMPLETED_VALUE: return QUERY_COMPLETED;
-			case QUERY_ERROR_VALUE: return QUERY_ERROR;
-			case QUERY_NO_CONTENT_VALUE: return QUERY_NO_CONTENT;
-			case TIMEOUT_VALUE: return TIMEOUT;
-			case QUERY_PENDING_VALUE: return QUERY_PENDING;
 			case QUERY_DRYRUN_COMPLETED_VALUE: return QUERY_DRYRUN_COMPLETED;
-			case PROCESS_CANCEL_REQUEST_VALUE: return PROCESS_CANCEL_REQUEST;
-			case PROCESS_CANCELED_VALUE: return PROCESS_CANCELED;
+			case QUERY_PENDING_VALUE: return QUERY_PENDING;
+			case QUERY_NO_CONTENT_VALUE: return QUERY_NO_CONTENT;
+			case QUERY_ERROR_VALUE: return QUERY_ERROR;
+			case ANONYMIZED_DATA_READY_VALUE: return ANONYMIZED_DATA_READY;
+			case PUBLIC_LINK_AVAILABLE_VALUE: return PUBLIC_LINK_AVAILABLE;
+			case PUBLIC_LINK_REQUEST_VALUE: return PUBLIC_LINK_REQUEST;
 			case QUERY_INTERRUPT_REQUEST_VALUE: return QUERY_INTERRUPT_REQUEST;
 			case QUERY_INTERRUPTED_VALUE: return QUERY_INTERRUPTED;
-			case ANONYMIZED_DATA_READY_VALUE: return ANONYMIZED_DATA_READY;
-			case PUBLIC_LINK_REQUEST_VALUE: return PUBLIC_LINK_REQUEST;
-			case PUBLIC_LINK_AVAILABLE_VALUE: return PUBLIC_LINK_AVAILABLE;
+			case PROCESS_CANCEL_REQUEST_VALUE: return PROCESS_CANCEL_REQUEST;
+			case PROCESS_CANCELED_VALUE: return PROCESS_CANCELED;
+			case TIMEOUT_VALUE: return TIMEOUT;
 			case OPERATION_ERROR_VALUE: return OPERATION_ERROR;
 			case OTHER_VALUE: return OTHER;
 		}

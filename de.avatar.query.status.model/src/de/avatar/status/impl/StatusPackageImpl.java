@@ -650,20 +650,21 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 
 		// Initialize enums and add enum literals
 		initEEnum(queryStatusTypeEEnum, QueryStatusType.class, "QueryStatusType");
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.REQUEST_PROCESS_STARTED);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_FORWARDING_STARTED);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_COMPLETED);
-		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_ERROR);
-		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_NO_CONTENT);
-		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.TIMEOUT);
-		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_PENDING);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_DRYRUN_COMPLETED);
-		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PROCESS_CANCEL_REQUEST);
-		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PROCESS_CANCELED);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_PENDING);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_NO_CONTENT);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_ERROR);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.ANONYMIZED_DATA_READY);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PUBLIC_LINK_AVAILABLE);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PUBLIC_LINK_REQUEST);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_INTERRUPT_REQUEST);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.QUERY_INTERRUPTED);
-		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.ANONYMIZED_DATA_READY);
-		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PUBLIC_LINK_REQUEST);
-		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PUBLIC_LINK_AVAILABLE);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PROCESS_CANCEL_REQUEST);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.PROCESS_CANCELED);
+		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.TIMEOUT);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.OPERATION_ERROR);
 		addEEnumLiteral(queryStatusTypeEEnum, QueryStatusType.OTHER);
 
