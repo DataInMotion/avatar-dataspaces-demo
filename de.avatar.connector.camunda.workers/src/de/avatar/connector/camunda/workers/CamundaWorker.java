@@ -116,6 +116,7 @@ public class CamundaWorker  implements OrchestratorWorker {
 	
 	private ExternalTaskHandler getTaskHandler() {
 		StatusUpdateType handlerType = StatusUpdateType.valueOf((String) properties.getOrDefault("worker.task.handler.type", "OTHER"));
+		LOGGER.info(String.format("Worker got a task and it needs an hanlder of type %s", handlerType));
 		if(handlerType == null) {
 			return new DoNothingTaskHandler();
 		} else {

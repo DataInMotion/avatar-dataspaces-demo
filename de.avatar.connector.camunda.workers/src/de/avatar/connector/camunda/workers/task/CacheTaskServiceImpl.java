@@ -74,6 +74,7 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 	 */
 	@Override
 	public void cacheTask(ExternalTask externalTask, ExternalTaskService externalTaskService) {
+		LOGGER.info(String.format("Caching task of type %s", type));
 		String reqId = externalTask.getVariable("reqId");
 		String token = externalTask.getVariable("credentials");
 		if(reqId == null) {
