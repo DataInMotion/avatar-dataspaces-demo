@@ -210,7 +210,7 @@ public class QueryRestResource {
 	@Path("publiclink/{requestId}/{generate}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
-	public Response publicLink(@PathParam("requestId") String requestId, @PathParam("generare") boolean generate) {
+	public Response publicLink(@PathParam("requestId") String requestId, @PathParam("generate") boolean generate) {
 		try {
 			LOGGER.info(String.format("Got publiclink request for id %s with generateLink %s", requestId, generate));
 			QueryResponse response = queryBEService.publicLinkRequest(requestId, generate);
@@ -224,7 +224,7 @@ public class QueryRestResource {
 	@Path("publiclink-with-auth/{requestId}/{generate}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
-	public Response publicLinkWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId, @PathParam("generare") boolean generate) {
+	public Response publicLinkWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId, @PathParam("generate") boolean generate) {
 		try {
 			String token = extractBearerToken(authorization);
 			if(token == null) {
