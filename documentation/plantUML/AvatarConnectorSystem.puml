@@ -1,0 +1,93 @@
+@startuml
+
+!theme bluegray
+skinparam actorStyle awesome
+!pragma teoz true
+
+title Avatar Connector System
+
+actor User as U
+
+box "Query UI" #LightBlue
+participant QueryUI as UI
+end box
+
+box "Query Backend" #LightBlue
+participant RestResource as RR
+participant QueryBackend as QB
+end box
+
+
+box "Orchestrator" #LightGrey
+participant Orchestrator as O
+end box
+
+box "Data Space" #LightBlue
+participant NXConnector as NXC
+participant Connector1 as C1
+end box
+
+box "Data Provider 1" #LightBlue
+participant DataProvider as DP
+participant PreAnonymizationService as PAS
+participant DataQualityService as DQS
+end box
+
+box "Consent Manager" #LightBlue
+participant ConsentManager as CM
+end box
+
+box "MinIOAnonymization" #LightGrey
+participant AnonymizationAlgorithm as AS
+end box
+
+autonumber
+U->UI: send request
+activate U
+activate UI
+UI->RR: send request
+activate RR
+RR->QB: send request
+activate QB
+QB->O: forward request to camunda
+activate O
+QB->RR: send response (query has been sent)
+RR->UI: send response (query has been sent)
+deactivate RR
+UI->U: show response (query has been sent)
+deactivate U
+deactivate UI
+O->NXC: forward request to data space
+activate NXC
+NXC->C1: forward request to all interested connectors
+activate C1
+C1->DP: connector sends request \nto its data provider
+activate DP
+DP->DP: apply query 
+DP->CM: filter query result based on consent
+activate CM
+CM->DP: return filtered result
+deactivate CM
+DP->PAS: make pre anonymization \nand add metadata
+activate PAS
+PAS->DP: return pre anonymized data
+deactivate PAS
+DP->DQS: apply data quality on data \nand add metadata
+activate DQS
+DQS->DP: returned data
+deactivate DQS
+DP->C1: send response to connector \nand create asset in dataspace
+deactivate DP
+C1->NXC: respond to NX Connector
+deactivate C1
+NXC->O: tell orchestrator that a connector is done 
+O->QB: Orchestrator sends status update to backend
+deactivate NXC
+O->AS: sends anonymization task when all connectors replied
+activate AS
+AS->O: anonymized and save data in MinIO
+O->QB: Orchestrator sends status update to backend
+deactivate AS
+
+
+@enduml
