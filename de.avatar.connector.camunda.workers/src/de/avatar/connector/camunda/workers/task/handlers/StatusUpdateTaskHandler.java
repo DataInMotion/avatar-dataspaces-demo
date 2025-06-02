@@ -65,8 +65,14 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		String statusType = externalTask.getVariable("statusType");
 		String token = externalTask.getVariable("credentials");
 		String endpointResStr = null;
-		StatusUpdateType statusTypeEnum = StatusUpdateType.valueOf(statusType);
-		LOGGER.info(String.format("Got a status update of type %s for request %s", statusType, reqId));
+		StatusUpdateType statusTypeEnum = StatusUpdateType.OTHER;
+		try {
+			statusTypeEnum = StatusUpdateType.valueOf(statusType);
+			LOGGER.info(String.format("Got a status update of type %s for request %s", statusType, reqId));
+		} catch(IllegalArgumentException e) {
+			LOGGER.severe(String.format("Status Type %s not recognized for request %s", statusType, reqId));
+		}
+		
 		switch(statusTypeEnum) {
 		case QUERY_FORWARDING_STARTED:
 			sendQueryStatus(reqId, QueryStatusType.QUERY_FORWARDING_STARTED, "The query has been forwarded to the connectors.");				
@@ -101,7 +107,7 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 			sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_EXPIRED, String.format("Public link for request %s has expired. Please, ask for a new one if you want to be able to access the data.", reqId));	
 			break;
 		default:
-			sendQueryStatus(reqId, QueryStatusType.OTHER, "Status update of type " + statusTypeEnum);
+			sendQueryStatus(reqId, QueryStatusType.OTHER, "Status update of type " + statusType);
 			break;
 		}
 		externalTaskService.complete(externalTask);
