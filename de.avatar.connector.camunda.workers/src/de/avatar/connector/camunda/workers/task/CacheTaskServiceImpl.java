@@ -73,7 +73,6 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 	 */
 	@Override
 	public void cacheTask(ExternalTask externalTask, ExternalTaskService externalTaskService) {
-		LOGGER.info(String.format("Caching task of type %s and task id %s", type, externalTask.getId()));
 		String reqId = externalTask.getVariable("reqId");
 		String token = externalTask.getVariable("credentials");
 		if(reqId == null) {
@@ -86,9 +85,7 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 			}
 			cachedTasksMapWithAuth.get(token).put(reqId, Map.of(externalTask, externalTaskService));
 		}
-		LOGGER.info(String.format("Caching task of type %s for request id %s", type, reqId));
 		cachedTasksMap.put(reqId, Map.of(externalTask, externalTaskService));
-		LOGGER.info(String.format("Total Cached tasks of type %s are %d", type, cachedTasksMap.size()));
 	}
 
 	/* 

@@ -49,12 +49,13 @@
     <eLiterals name="ANONYMIZED_DATA_READY" value="7"/>
     <eLiterals name="PUBLIC_LINK_AVAILABLE" value="8"/>
     <eLiterals name="PUBLIC_LINK_REQUEST" value="9"/>
-    <eLiterals name="QUERY_INTERRUPT_REQUEST" value="10"/>
-    <eLiterals name="QUERY_INTERRUPTED" value="11"/>
-    <eLiterals name="PROCESS_CANCEL_REQUEST" value="12"/>
-    <eLiterals name="PROCESS_CANCELED" value="13"/>
-    <eLiterals name="TIMEOUT" value="14"/>
-    <eLiterals name="OPERATION_ERROR" value="15"/>
+    <eLiterals name="PUBLIC_LINK_EXPIRED" value="10"/>
+    <eLiterals name="QUERY_INTERRUPT_REQUEST" value="11"/>
+    <eLiterals name="QUERY_INTERRUPTED" value="12"/>
+    <eLiterals name="PROCESS_CANCEL_REQUEST" value="13"/>
+    <eLiterals name="PROCESS_CANCELED" value="14"/>
+    <eLiterals name="TIMEOUT" value="15"/>
+    <eLiterals name="OPERATION_ERROR" value="16"/>
     <eLiterals name="OTHER" value="100"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DetailedQueryStatus">

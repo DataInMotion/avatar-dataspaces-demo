@@ -97,6 +97,9 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 				sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_AVAILABLE, String.format("Public link available for data download at %s", publicUrl));
 			}			
 			break;
+		case PUBLIC_LINK_EXPIRED:
+			sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_EXPIRED, String.format("Public link for request %s has expired. Please, ask for a new one if you want to be able to access the data.", reqId));	
+			break;
 		default:
 			sendQueryStatus(reqId, QueryStatusType.OTHER, "Status update of type " + statusTypeEnum);
 			break;

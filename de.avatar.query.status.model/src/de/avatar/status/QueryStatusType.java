@@ -133,6 +133,16 @@ public enum QueryStatusType implements Enumerator {
 	PUBLIC_LINK_REQUEST(9, "PUBLIC_LINK_REQUEST", "PUBLIC_LINK_REQUEST"),
 
 	/**
+	 * The '<em><b>PUBLIC LINK EXPIRED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PUBLIC_LINK_EXPIRED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PUBLIC_LINK_EXPIRED(10, "PUBLIC_LINK_EXPIRED", "PUBLIC_LINK_EXPIRED"),
+
+	/**
 	 * The '<em><b>QUERY INTERRUPT REQUEST</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,7 +150,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	QUERY_INTERRUPT_REQUEST(10, "QUERY_INTERRUPT_REQUEST", "QUERY_INTERRUPT_REQUEST"),
+	QUERY_INTERRUPT_REQUEST(11, "QUERY_INTERRUPT_REQUEST", "QUERY_INTERRUPT_REQUEST"),
 
 	/**
 	 * The '<em><b>QUERY INTERRUPTED</b></em>' literal object.
@@ -150,7 +160,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	QUERY_INTERRUPTED(11, "QUERY_INTERRUPTED", "QUERY_INTERRUPTED"),
+	QUERY_INTERRUPTED(12, "QUERY_INTERRUPTED", "QUERY_INTERRUPTED"),
 
 	/**
 	 * The '<em><b>PROCESS CANCEL REQUEST</b></em>' literal object.
@@ -160,7 +170,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PROCESS_CANCEL_REQUEST(12, "PROCESS_CANCEL_REQUEST", "PROCESS_CANCEL_REQUEST"),
+	PROCESS_CANCEL_REQUEST(13, "PROCESS_CANCEL_REQUEST", "PROCESS_CANCEL_REQUEST"),
 
 	/**
 	 * The '<em><b>PROCESS CANCELED</b></em>' literal object.
@@ -170,7 +180,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PROCESS_CANCELED(13, "PROCESS_CANCELED", "PROCESS_CANCELED"),
+	PROCESS_CANCELED(14, "PROCESS_CANCELED", "PROCESS_CANCELED"),
 
 	/**
 	 * The '<em><b>TIMEOUT</b></em>' literal object.
@@ -180,7 +190,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	TIMEOUT(14, "TIMEOUT", "TIMEOUT"),
+	TIMEOUT(15, "TIMEOUT", "TIMEOUT"),
 
 	/**
 	 * The '<em><b>OPERATION ERROR</b></em>' literal object.
@@ -190,7 +200,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	OPERATION_ERROR(15, "OPERATION_ERROR", "OPERATION_ERROR"),
+	OPERATION_ERROR(16, "OPERATION_ERROR", "OPERATION_ERROR"),
 
 	/**
 	 * The '<em><b>OTHER</b></em>' literal object.
@@ -313,6 +323,17 @@ public enum QueryStatusType implements Enumerator {
 	public static final int PUBLIC_LINK_REQUEST_VALUE = 9;
 
 	/**
+	 * The '<em><b>PUBLIC LINK EXPIRED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PUBLIC_LINK_EXPIRED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PUBLIC_LINK_EXPIRED_VALUE = 10;
+
+	/**
 	 * The '<em><b>QUERY INTERRUPT REQUEST</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -321,7 +342,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int QUERY_INTERRUPT_REQUEST_VALUE = 10;
+	public static final int QUERY_INTERRUPT_REQUEST_VALUE = 11;
 
 	/**
 	 * The '<em><b>QUERY INTERRUPTED</b></em>' literal value.
@@ -332,7 +353,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int QUERY_INTERRUPTED_VALUE = 11;
+	public static final int QUERY_INTERRUPTED_VALUE = 12;
 
 	/**
 	 * The '<em><b>PROCESS CANCEL REQUEST</b></em>' literal value.
@@ -343,7 +364,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PROCESS_CANCEL_REQUEST_VALUE = 12;
+	public static final int PROCESS_CANCEL_REQUEST_VALUE = 13;
 
 	/**
 	 * The '<em><b>PROCESS CANCELED</b></em>' literal value.
@@ -354,7 +375,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PROCESS_CANCELED_VALUE = 13;
+	public static final int PROCESS_CANCELED_VALUE = 14;
 
 	/**
 	 * The '<em><b>TIMEOUT</b></em>' literal value.
@@ -365,7 +386,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TIMEOUT_VALUE = 14;
+	public static final int TIMEOUT_VALUE = 15;
 
 	/**
 	 * The '<em><b>OPERATION ERROR</b></em>' literal value.
@@ -376,7 +397,7 @@ public enum QueryStatusType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int OPERATION_ERROR_VALUE = 15;
+	public static final int OPERATION_ERROR_VALUE = 16;
 
 	/**
 	 * The '<em><b>OTHER</b></em>' literal value.
@@ -407,6 +428,7 @@ public enum QueryStatusType implements Enumerator {
 			ANONYMIZED_DATA_READY,
 			PUBLIC_LINK_AVAILABLE,
 			PUBLIC_LINK_REQUEST,
+			PUBLIC_LINK_EXPIRED,
 			QUERY_INTERRUPT_REQUEST,
 			QUERY_INTERRUPTED,
 			PROCESS_CANCEL_REQUEST,
@@ -480,6 +502,7 @@ public enum QueryStatusType implements Enumerator {
 			case ANONYMIZED_DATA_READY_VALUE: return ANONYMIZED_DATA_READY;
 			case PUBLIC_LINK_AVAILABLE_VALUE: return PUBLIC_LINK_AVAILABLE;
 			case PUBLIC_LINK_REQUEST_VALUE: return PUBLIC_LINK_REQUEST;
+			case PUBLIC_LINK_EXPIRED_VALUE: return PUBLIC_LINK_EXPIRED;
 			case QUERY_INTERRUPT_REQUEST_VALUE: return QUERY_INTERRUPT_REQUEST;
 			case QUERY_INTERRUPTED_VALUE: return QUERY_INTERRUPTED;
 			case PROCESS_CANCEL_REQUEST_VALUE: return PROCESS_CANCEL_REQUEST;
