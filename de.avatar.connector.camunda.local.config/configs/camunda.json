@@ -32,7 +32,7 @@
 		"camunda.polling.timeout": 10000,
 		"camunda.task.topic": "cancel-request",
 		"camunda.task.lock.duration": 1000,
-		"worker.task.handler.type": "PROCESS_CANCEL_REQUEST"
+		"worker.task.handler.type": "CANCEL_REQUEST"
 	},
 	"OrchestratorWorker~status":
 	{
@@ -61,7 +61,7 @@
 		"task.status.msg": "The user has responded to a public link request"
 	},
 	"OrchestratorTaskCacheService~cancel": {
-		"task.status.type": "PROCESS_CANCEL_REQUEST",
-		"task.status.msg": "The user has terminated the whole process"
+		"task.status.type": "CANCEL_REQUEST",
+		"task.status.msg": "The process has been canceld. Any previously produced data will be removed."
 	}
 }

@@ -23,8 +23,8 @@
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PUBLIC_LINK_EXPIRED"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_INTERRUPT_REQUEST"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/QUERY_INTERRUPTED"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PROCESS_CANCEL_REQUEST"/>
-      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/PROCESS_CANCELED"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/CANCEL_REQUEST"/>
+      <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/CANCELED"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/TIMEOUT"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/OPERATION_ERROR"/>
       <genEnumLiterals ecoreEnumLiteral="query-status.ecore#//QueryStatusType/OTHER"/>

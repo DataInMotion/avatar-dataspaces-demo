@@ -52,8 +52,8 @@
     <eLiterals name="PUBLIC_LINK_EXPIRED" value="10"/>
     <eLiterals name="QUERY_INTERRUPT_REQUEST" value="11"/>
     <eLiterals name="QUERY_INTERRUPTED" value="12"/>
-    <eLiterals name="PROCESS_CANCEL_REQUEST" value="13"/>
-    <eLiterals name="PROCESS_CANCELED" value="14"/>
+    <eLiterals name="CANCEL_REQUEST" value="13"/>
+    <eLiterals name="CANCELED" value="14"/>
     <eLiterals name="TIMEOUT" value="15"/>
     <eLiterals name="OPERATION_ERROR" value="16"/>
     <eLiterals name="OTHER" value="100"/>
