@@ -59,7 +59,7 @@ public class CamundaWorker  implements OrchestratorWorker {
 	@Reference(target="(task.status.type=PUBLIC_LINK_REQUEST)")
 	OrchestratorTaskCacheService linkCacheTaskService;
 	
-	@Reference(target="(task.status.type=PROCESS_CANCEL_REQUEST)")
+	@Reference(target="(task.status.type=CANCEL_REQUEST)")
 	OrchestratorTaskCacheService cancelCacheTaskService;
 	
 	
