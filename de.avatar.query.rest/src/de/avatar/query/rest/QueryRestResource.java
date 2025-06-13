@@ -72,7 +72,8 @@ public class QueryRestResource {
 	@Path("/dryrun")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response dryRun(QueryRequest request) {	
 		try {
 			QueryResponse response = queryBEService.executeDryRun(request);
@@ -88,7 +89,8 @@ public class QueryRestResource {
 	@Path("/query")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response query(QueryRequest request) {
 		try {
 			QueryResponse response = queryBEService.executeQuery(request);
@@ -102,7 +104,8 @@ public class QueryRestResource {
 	@Path("/query-with-auth")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response queryWithAuth(@HeaderParam("Authorization") String authorization, QueryRequest request) {
 		try {
 			String token = extractBearerToken(authorization);
@@ -119,7 +122,8 @@ public class QueryRestResource {
 	@GET
 	@Path("/status/{requestId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response status(@PathParam("requestId") String requestId) {
 		try {
 			QueryResponse response = queryBEService.executeStatusRequest(requestId);
@@ -132,7 +136,8 @@ public class QueryRestResource {
 	@GET
 	@Path("/status-with-auth/{requestId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response statusWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId) {
 		try {
 			String token = extractBearerToken(authorization);
@@ -149,7 +154,8 @@ public class QueryRestResource {
 	@GET
 	@Path("/cancel/{requestId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response cancel(@PathParam("requestId") String requestId) {
 		try {
 			QueryResponse response = queryBEService.cancelRequest(requestId);
@@ -162,7 +168,8 @@ public class QueryRestResource {
 	@GET
 	@Path("/cancel-with-auth/{requestId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response cancelWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId) {
 		try {
 			String token = extractBearerToken(authorization);
@@ -179,7 +186,8 @@ public class QueryRestResource {
 	@GET
 	@Path("/interrupt/{requestId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response interrupt(@PathParam("requestId") String requestId) {
 		try {
 			QueryResponse response = queryBEService.interruptRequest(requestId);
@@ -192,7 +200,8 @@ public class QueryRestResource {
 	@GET
 	@Path("/interrupt-with-auth/{requestId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response interruptWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId) {
 		try {
 			String token = extractBearerToken(authorization);
@@ -209,7 +218,8 @@ public class QueryRestResource {
 	@GET
 	@Path("publiclink/{requestId}/{generate}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response publicLink(@PathParam("requestId") String requestId, @PathParam("generate") boolean generate) {
 		try {
 			LOGGER.info(String.format("Got publiclink request for id %s with generateLink %s", requestId, generate));
@@ -223,7 +233,8 @@ public class QueryRestResource {
 	@GET
 	@Path("publiclink-with-auth/{requestId}/{generate}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response publicLinkWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId, @PathParam("generate") boolean generate) {
 		try {
 			String token = extractBearerToken(authorization);
@@ -241,7 +252,8 @@ public class QueryRestResource {
 	@Path("/save-query")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response saveQuery(Query query) {
 		try {
 			Query response = queryBEService.saveQuery(query);
@@ -254,7 +266,8 @@ public class QueryRestResource {
 	@GET
 	@Path("/get-query/{queryName}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class)})
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	public Response getQuery(@PathParam("queryName") String queryName) {
 		try {
 			Query response = queryBEService.getQueryByName(queryName);
