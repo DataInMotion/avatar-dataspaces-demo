@@ -17,6 +17,7 @@ import org.eclipse.osgitech.rest.annotations.RequireJerseyServlet;
 import org.gecko.emf.json.constants.EMFJs;
 import org.gecko.emf.rest.annotations.EMFResourceOptions;
 import org.gecko.emf.rest.annotations.ResourceOption;
+import org.gecko.emf.rest.annotations.json.EMFJSONConfig;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
@@ -74,7 +75,7 @@ public class QueryRestResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
 			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response dryRun(QueryRequest request) {	
+	public Response dryRun(@EMFJSONConfig(typeFieldName = "_type")QueryRequest request) {	
 		try {
 			QueryResponse response = queryBEService.executeDryRun(request);
 			return Response.ok(response).build();
@@ -91,7 +92,7 @@ public class QueryRestResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
 			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response query(QueryRequest request) {
+	public Response query(@EMFJSONConfig(typeFieldName = "_type") QueryRequest request) {
 		try {
 			QueryResponse response = queryBEService.executeQuery(request);
 			return Response.ok(response).build();
@@ -106,7 +107,7 @@ public class QueryRestResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
 			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response queryWithAuth(@HeaderParam("Authorization") String authorization, QueryRequest request) {
+	public Response queryWithAuth(@HeaderParam("Authorization") String authorization, @EMFJSONConfig(typeFieldName = "_type") QueryRequest request) {
 		try {
 			String token = extractBearerToken(authorization);
 			if(token == null) {
@@ -254,7 +255,7 @@ public class QueryRestResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
 			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response saveQuery(Query query) {
+	public Response saveQuery(@EMFJSONConfig(typeFieldName = "_type") Query query) {
 		try {
 			Query response = queryBEService.saveQuery(query);
 			return Response.ok(response).build();
