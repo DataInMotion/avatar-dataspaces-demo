@@ -361,6 +361,8 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 				variables.get("variables").get("query").put("value", saveEObjectToString(queryRequest));
 				variables.get("variables").put("contentType", new HashMap<String, Object>());
 				variables.get("variables").get("contentType").put("value", queryRequest.getContentType());
+				variables.get("variables").put("dataType", new HashMap<String, Object>());
+				variables.get("variables").get("dataType").put("value", "himsa-hearing");
 			}			
 			variables.get("variables").put("reqId", new HashMap<String, Object>());
 			variables.get("variables").get("reqId").put("value", reqId);
@@ -381,6 +383,9 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 				variables.put("contentType", new HashMap<String, Object>());
 				variables.get("contentType").put("value", queryRequest.getContentType());
 				variables.get("contentType").put("type", "String");
+				variables.put("dataType", new HashMap<String, Object>());
+				variables.get("dataType").put("value", "himsa-hearing");
+				variables.get("dataType").put("type", "String");
 			}	
 			variables.put("reqId", new HashMap<String, Object>());
 			variables.get("reqId").put("value", reqId);
@@ -415,6 +420,9 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			variables.put("contentType", new HashMap<String, Object>());
 			variables.get("contentType").put("value", queryRequest.getContentType());
 			variables.get("contentType").put("type", "String");
+			variables.put("dataType", new HashMap<String, Object>());
+			variables.get("dataType").put("value", "himsa-hearing");
+			variables.get("dataType").put("type", "String");
 		}	
 		variables.put("reqId", new HashMap<String, Object>());
 		variables.get("reqId").put("value", reqId);
