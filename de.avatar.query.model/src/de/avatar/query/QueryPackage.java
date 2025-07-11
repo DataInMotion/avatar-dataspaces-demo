@@ -96,7 +96,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int QUERY__SUBJECT = 0;
 
 	/**
-	 * The feature id for the '<em><b>From</b></em>' reference list.
+	 * The feature id for the '<em><b>From</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2488,10 +2488,10 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getQuery_Subject();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.avatar.query.Query#getFrom <em>From</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.avatar.query.Query#getFrom <em>From</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>From</em>'.
+	 * @return the meta object for the containment reference list '<em>From</em>'.
 	 * @see de.avatar.query.Query#getFrom()
 	 * @see #getQuery()
 	 * @generated
@@ -3268,7 +3268,7 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EReference QUERY__SUBJECT = eINSTANCE.getQuery_Subject();
 
 		/**
-		 * The meta object literal for the '<em><b>From</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>From</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

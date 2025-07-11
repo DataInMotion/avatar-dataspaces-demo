@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.gecko.emf.utilities.FeaturePath;
@@ -74,7 +73,7 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	protected EList<QSubject> subject;
 
 	/**
-	 * The cached value of the '{@link #getFrom() <em>From</em>}' reference list.
+	 * The cached value of the '{@link #getFrom() <em>From</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFrom()
@@ -273,7 +272,7 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 	@Override
 	public EList<QObject> getFrom() {
 		if (from == null) {
-			from = new EObjectResolvingEList<QObject>(QObject.class, this, QueryPackage.QUERY__FROM);
+			from = new EObjectContainmentEList<QObject>(QObject.class, this, QueryPackage.QUERY__FROM);
 		}
 		return from;
 	}
@@ -465,6 +464,8 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query {
 		switch (featureID) {
 			case QueryPackage.QUERY__SUBJECT:
 				return ((InternalEList<?>)getSubject()).basicRemove(otherEnd, msgs);
+			case QueryPackage.QUERY__FROM:
+				return ((InternalEList<?>)getFrom()).basicRemove(otherEnd, msgs);
 			case QueryPackage.QUERY__WHERE:
 				return ((InternalEList<?>)getWhere()).basicRemove(otherEnd, msgs);
 			case QueryPackage.QUERY__GROUP_BY:

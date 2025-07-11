@@ -65,16 +65,16 @@ public interface Query extends EObject {
 	EList<QSubject> getSubject();
 
 	/**
-	 * Returns the value of the '<em><b>From</b></em>' reference list.
+	 * Returns the value of the '<em><b>From</b></em>' containment reference list.
 	 * The list contents are of type {@link de.avatar.query.QObject}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If we have an include Query, which is default, the FROM values can be calculated out of the set of all FeaturePath's from the subjects. If no Subject is given, the FROM must be set, because we have a SELECT * query, theat needs a FROM. The same applies to excluded queries. In this case we also need a FROM to be able to apply the exclusion from the subjects feature paths's
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>From</em>' reference list.
+	 * @return the value of the '<em>From</em>' containment reference list.
 	 * @see de.avatar.query.QueryPackage#getQuery_From()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<QObject> getFrom();
