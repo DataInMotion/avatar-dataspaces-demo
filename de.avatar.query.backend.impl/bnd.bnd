@@ -10,5 +10,6 @@
 	org.osgi.util.promise,\
 	de.avatar.query.service.api,\
 	de.avatar.query.model,\
-	de.avatar.connector.cleanup.api
+	de.avatar.connector.cleanup.api,\
+	org.gecko.emf.json
 	

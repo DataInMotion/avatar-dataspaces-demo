@@ -37,6 +37,7 @@ import de.avatar.query.service.api.QueryService;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
+import org.gecko.emf.json.constants.EMFJs;
 
 @Component(name = "QueryBackendService")
 public class QueryBackendServiceImpl implements QueryBackendService{
@@ -341,7 +342,9 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			Resource res = resSet.createResource(URI.createURI(UUID.randomUUID().toString().concat(".json")), "application/json");
 			res.getContents().add(obj);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			res.save(baos, null);
+			Map<String, Object> options = new HashMap<>();
+			options.put(EMFJs.OPTION_TYPE_FIELD, "_type");
+			res.save(baos, options);
 			return new String(baos.toByteArray());
 		} catch(IOException e) {
 			LOGGER.severe(String.format("IOException while converting EObject to String"));
