@@ -13,6 +13,7 @@ package de.avatar.connector.camunda.workers.task.handlers;
 
 import java.util.logging.Logger;
 
+import org.camunda.bpm.client.exception.EngineException;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.camunda.bpm.client.task.ExternalTaskService;
@@ -113,7 +114,12 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 			sendQueryStatus(reqId, QueryStatusType.OTHER, "Status update of type " + statusType);
 			break;
 		}
-		externalTaskService.complete(externalTask);
+		try {
+			externalTaskService.complete(externalTask);
+		} catch(EngineException e) {
+			LOGGER.warning("EngineException in complete task for status update worker");
+		}
+		
 		
 	}
 	
