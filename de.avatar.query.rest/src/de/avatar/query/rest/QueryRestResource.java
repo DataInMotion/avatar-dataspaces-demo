@@ -113,7 +113,7 @@ public class QueryRestResource {
 			if(token == null) {
 				return Response.status(Status.UNAUTHORIZED).build();
 			}
-			QueryResponse response = queryBEService.executeQuery(request);
+			QueryResponse response = queryBEService.executeQuery(request, token);
 			return Response.ok(response).build();
 		} catch(IllegalArgumentException e) {
 			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
