@@ -220,6 +220,7 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 				cachedRequestsWithAuth.put(token, new HashMap<>());
 			}
 			cachedRequestsWithAuth.get(token).put(request.getRequestId(), request);
+			LOGGER.info("Cached request with id " + request.getRequestId() + " " + cachedRequestsWithAuth.get(token).size());
 		}		
 	}
 
@@ -230,6 +231,7 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 	@Override
 	public List<String> getCachedRequestIds(String token) {
 		if(!cachedRequestsWithAuth.containsKey(token)) return Collections.emptyList();
+		LOGGER.info("Cached request for user are " + cachedRequestsWithAuth.get(token).size());
 		return cachedRequestsWithAuth.get(token).keySet().stream().toList();
 	}
 }

@@ -234,7 +234,7 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		}
 		QueryResponse response;
 		try {
-			response = sendQueryRequest(queryRequest, "request", reqId, token);			
+			response = sendQueryRequest(queryRequest, "request", reqId, token);
 			statusService.cacheRequest(queryRequest, token);
 		} catch(IOException e) {
 			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
