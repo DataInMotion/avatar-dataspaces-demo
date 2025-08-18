@@ -11,6 +11,7 @@
  */
 package de.avatar.query.rest;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.eclipse.osgitech.rest.annotations.RequireJerseyServlet;
@@ -244,6 +245,21 @@ public class QueryRestResource {
 			}
 			QueryResponse response = queryBEService.publicLinkRequest(requestId, generate, token);
 			return Response.ok(response).build();
+		} catch(IllegalArgumentException e) {			
+			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+		}
+	}
+	
+	@GET
+	@Path("queries")	
+	public Response queriesForUser(@HeaderParam("Authorization") String authorization) {
+		try {
+			String token = extractBearerToken(authorization);
+			if(token == null) {
+				return Response.status(Status.UNAUTHORIZED).build();
+			}
+			List<String> queryIds = queryBEService.getQueryIdsForUser(token);
+			return Response.ok(queryIds).build();
 		} catch(IllegalArgumentException e) {			
 			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
 		}

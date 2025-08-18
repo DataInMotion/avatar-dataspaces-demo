@@ -15,7 +15,9 @@ package de.avatar.query.backend.impl;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
@@ -219,6 +221,16 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 			}
 			cachedRequestsWithAuth.get(token).put(request.getRequestId(), request);
 		}		
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.StatusService#getCachedRequestIds(java.lang.String)
+	 */
+	@Override
+	public List<String> getCachedRequestIds(String token) {
+		if(!cachedRequestsWithAuth.containsKey(token)) return Collections.emptyList();
+		return cachedRequestsWithAuth.get(token).keySet().stream().toList();
 	}
 }
 

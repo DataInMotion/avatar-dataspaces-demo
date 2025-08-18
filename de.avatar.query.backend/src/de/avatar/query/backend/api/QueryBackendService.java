@@ -11,6 +11,8 @@
  */
 package de.avatar.query.backend.api;
 
+import java.util.List;
+
 import org.osgi.annotation.versioning.ProviderType;
 
 import de.avatar.query.Query;
@@ -60,5 +62,7 @@ public interface QueryBackendService{
 	Query saveQuery(Query query);
 	
 	Query getQueryByName(String queryName);
+	
+	List<String> getQueryIdsForUser(String token);
 
 }

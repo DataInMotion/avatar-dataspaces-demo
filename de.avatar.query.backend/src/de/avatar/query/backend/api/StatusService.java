@@ -13,6 +13,8 @@
  */
 package de.avatar.query.backend.api;
 
+import java.util.List;
+
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
@@ -44,5 +46,7 @@ public interface StatusService {
 	QueryResponse getStatusUpdate(String requestId);
 	
 	QueryResponse getStatusUpdate(String requestId, String token);
+	
+	List<String> getCachedRequestIds(String token);
 
 }

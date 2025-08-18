@@ -14,6 +14,7 @@ package de.avatar.query.backend.impl;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -22,6 +23,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.gecko.emf.json.constants.EMFJs;
 import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -37,7 +39,6 @@ import de.avatar.query.service.api.QueryService;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
-import org.gecko.emf.json.constants.EMFJs;
 
 @Component(name = "QueryBackendService")
 public class QueryBackendServiceImpl implements QueryBackendService{
@@ -444,6 +445,15 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		}
 		statusService.updateStatus(response);
 		return response;
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#getQueryIdsForUser(java.lang.String)
+	 */
+	@Override
+	public List<String> getQueryIdsForUser(String token) {
+		return statusService.getCachedRequestIds(token);
 	}
 	
 
