@@ -19,6 +19,7 @@ import org.gecko.emf.json.constants.EMFJs;
 import org.gecko.emf.rest.annotations.EMFResourceOptions;
 import org.gecko.emf.rest.annotations.ResourceOption;
 import org.gecko.emf.rest.annotations.json.EMFJSONConfig;
+import org.gecko.emf.utilities.UtilitiesFactory;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
@@ -29,6 +30,7 @@ import de.avatar.query.Query;
 import de.avatar.query.backend.api.QueryBackendService;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
+import de.avatar.status.StatusFactory;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.HeaderParam;
@@ -251,6 +253,9 @@ public class QueryRestResource {
 	}
 	
 	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
 	@Path("queries")	
 	public Response queriesForUser(@HeaderParam("Authorization") String authorization) {
 		try {
@@ -259,7 +264,14 @@ public class QueryRestResource {
 				return Response.status(Status.UNAUTHORIZED).build();
 			}
 			List<String> queryIds = queryBEService.getQueryIdsForUser(token);
-			return Response.ok(queryIds).build();
+			org.gecko.emf.utilities.Response result = UtilitiesFactory.eINSTANCE.createResponse();
+			queryIds.forEach(id -> {
+				QueryResponse response = StatusFactory.eINSTANCE.createQueryResponse();
+				response.setRequestId(id);
+				result.getData().add(response);
+			});
+			result.setResultSize(queryIds.size());
+			return Response.ok(result).build();
 		} catch(IllegalArgumentException e) {			
 			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
 		}
