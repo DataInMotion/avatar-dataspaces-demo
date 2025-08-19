@@ -296,7 +296,7 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 			qsr.setRequestId(reqId);
 			cachedStatusesWithAuth.get(userId).put(reqId, qsr);
 		}
-		QueryStatusResponse statusResponse = (QueryStatusResponse) cachedStatuses.get(reqId);
+		QueryStatusResponse statusResponse = (QueryStatusResponse) cachedStatusesWithAuth.get(reqId);
 		statusResponse.setTimestamp(Instant.now().toEpochMilli());
 		DetailedQueryStatus detailedStatus = statusResponse.getDetailedStatus();
 		if(detailedStatus == null) {
