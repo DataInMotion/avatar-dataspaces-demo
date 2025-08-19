@@ -86,8 +86,7 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 			doStatusUpdate(endpointResStr, reqId, reqType, true, token);
 			break;
 		case ALL_CONNECTORS_QUERY_RESPONSE:
-			endpointResStr = externalTask.getVariable("endpointRes");
-			doStatusUpdate(endpointResStr, reqId, reqType, false, token);
+			sendQueryStatus(reqId, QueryStatusType.QUERY_COMPLETED, "All connectors replied have executed the query.", token);
 			taskCacheService.removeTask(reqId, token);
 			break;
 		case QUERY_INTERRUPTED:

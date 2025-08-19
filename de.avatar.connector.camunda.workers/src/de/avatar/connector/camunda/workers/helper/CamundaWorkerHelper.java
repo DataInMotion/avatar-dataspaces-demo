@@ -49,6 +49,7 @@ public class CamundaWorkerHelper {
 	private static final Logger LOGGER = Logger.getLogger(CamundaWorkerHelper.class.getName());
 	
 	public static EObject loadEObjectFromString(String value,  ResourceSet resSet) {
+		LOGGER.info(String.format("Trying to deserialize: \n %s", value));
 		if(value == null) return null;
 		try {
 			Resource res = resSet.createResource(URI.createURI(UUID.randomUUID().toString()), "application/json");
