@@ -41,7 +41,11 @@ public interface StatusService {
 	
 	void updateStatus(QueryResponse queryResponse);
 	
+	void updateStatus(QueryResponse queryResponse, String token);
+	
 	void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus, String reqType, boolean isPartialUpdate);
+	
+	void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus, String reqType, boolean isPartialUpdate, String token);
 	
 	QueryResponse getStatusUpdate(String requestId);
 	

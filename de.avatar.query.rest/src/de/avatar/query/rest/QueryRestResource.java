@@ -311,5 +311,4 @@ public class QueryRestResource {
 		if(!authorizationHeader.startsWith("Bearer")) return null;
 		return authorizationHeader.replaceFirst("Bearer ", "");
 	}
-
 }

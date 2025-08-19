@@ -65,6 +65,9 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		String reqType = externalTask.getVariable("reqType");
 		String statusType = externalTask.getVariable("statusType");
 		String token = externalTask.getVariable("credentials");
+		if(token == null) {
+			System.out.println("Token is null");
+		}
 		String endpointResStr = null;
 		StatusUpdateType statusTypeEnum = StatusUpdateType.OTHER;
 		try {
@@ -76,42 +79,42 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		
 		switch(statusTypeEnum) {
 		case QUERY_FORWARDING_STARTED:
-			sendQueryStatus(reqId, QueryStatusType.QUERY_FORWARDING_STARTED, "The query has been forwarded to the connectors.");				
+			sendQueryStatus(reqId, QueryStatusType.QUERY_FORWARDING_STARTED, "The query has been forwarded to the connectors.", token);
 			break;
 		case SINGLE_CONNECTOR_QUERY_RESPONSE:
 			endpointResStr = externalTask.getVariable("endpointRes");
-			doStatusUpdate(endpointResStr, reqId, reqType, true);				
+			doStatusUpdate(endpointResStr, reqId, reqType, true, token);
 			break;
 		case ALL_CONNECTORS_QUERY_RESPONSE:
 			endpointResStr = externalTask.getVariable("endpointRes");
-			doStatusUpdate(endpointResStr, reqId, reqType, false);		
+			doStatusUpdate(endpointResStr, reqId, reqType, false, token);
 			taskCacheService.removeTask(reqId, token);
 			break;
 		case QUERY_INTERRUPTED:
-			sendQueryStatus(reqId, QueryStatusType.QUERY_INTERRUPTED, "The query has been interrupted. We will continue with the data collected so far.");				
+			sendQueryStatus(reqId, QueryStatusType.QUERY_INTERRUPTED, "The query has been interrupted. We will continue with the data collected so far.", token);
 			break;
 		case CANCELED:
-			sendQueryStatus(reqId, QueryStatusType.CANCELED, "The process has been canceled and no data is available anymore.");				
+			sendQueryStatus(reqId, QueryStatusType.CANCELED, "The process has been canceled and no data is available anymore.", token);
 			break;
 		case CANCEL_REQUEST:
-			sendQueryStatus(reqId, QueryStatusType.CANCEL_REQUEST, "A cancel request has been sent. The process will be canceled and no data will be retrieved.");				
+			sendQueryStatus(reqId, QueryStatusType.CANCEL_REQUEST, "A cancel request has been sent. The process will be canceled and no data will be retrieved.", token);
 			break;
 		case ANONYMIZED_DATA_READY:
-			sendQueryStatus(reqId, QueryStatusType.ANONYMIZED_DATA_READY, "Data have been anonymized and a public link can be requested.");
+			sendQueryStatus(reqId, QueryStatusType.ANONYMIZED_DATA_READY, "Data have been anonymized and a public link can be requested.", token);
 			break;
 		case PUBLIC_LINK_AVAILABLE:
 			String publicUrl = externalTask.getVariable("publicUrl");
 			if(publicUrl == null) {
-				sendQueryStatus(reqId, QueryStatusType.OPERATION_ERROR, String.format("Public link should be available for request %s but no publicUrl variable has been found in the process", reqId));
+				sendQueryStatus(reqId, QueryStatusType.OPERATION_ERROR, String.format("Public link should be available for request %s but no publicUrl variable has been found in the process", reqId), token);
 			} else {
-				sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_AVAILABLE, String.format("Public link available for data download at %s", publicUrl));
+				sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_AVAILABLE, String.format("Public link available for data download at %s", publicUrl), token);
 			}			
 			break;
 		case PUBLIC_LINK_EXPIRED:
-			sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_EXPIRED, String.format("Public link for request %s has expired. Please, ask for a new one if you want to be able to access the data.", reqId));	
+			sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_EXPIRED, String.format("Public link for request %s has expired. Please, ask for a new one if you want to be able to access the data.", reqId), token);	
 			break;
 		default:
-			sendQueryStatus(reqId, QueryStatusType.OTHER, "Status update of type " + statusType);
+			sendQueryStatus(reqId, QueryStatusType.OTHER, "Status update of type " + statusType, token);
 			break;
 		}
 		try {
@@ -123,12 +126,13 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		
 	}
 	
-	private void sendQueryStatus(String reqId, QueryStatusType statusType, String msg) {
+	private void sendQueryStatus(String reqId, QueryStatusType statusType, String msg, String token) {
 		QueryResponse queryStatus = QueryStatusHelper.createQueryResponse(reqId, statusType, msg);
-		statusService.updateStatus(queryStatus);		
+		if(token == null) statusService.updateStatus(queryStatus);
+		else statusService.updateStatus(queryStatus, token);
 	}
 
-	private void doStatusUpdate(String endpointResStr, String reqId, String reqType, boolean isPartial) {
+	private void doStatusUpdate(String endpointResStr, String reqId, String reqType, boolean isPartial, String token) {
 		if(endpointResStr == null) {
 			LOGGER.severe(String.format("No variable endpointRes was found for status update on request %s.\n"
 					+ "One must be sent when status type is %s", reqId, "SINGLE_CONNECTOR_QUERY_RESPONSE"));
@@ -136,9 +140,10 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		} else {
 			EObject endpointResObj = CamundaWorkerHelper.loadEObjectFromString(endpointResStr, resSet);
 			if(endpointResObj == null) {
-				sendQueryStatus(reqId, QueryStatusType.OPERATION_ERROR, "Something came back but it was not a EndpointResponse");	
+				sendQueryStatus(reqId, QueryStatusType.OPERATION_ERROR, "Something came back but it was not a EndpointResponse", token);	
 			} else if(endpointResObj instanceof EndpointResponse endpointResponse) {
-				statusService.updateStatus(endpointResponse, createSingleConnectorQueryStatus(endpointResponse), reqType, isPartial);
+				if(token == null) statusService.updateStatus(endpointResponse, createSingleConnectorQueryStatus(endpointResponse), reqType, isPartial);
+				else statusService.updateStatus(endpointResponse, createSingleConnectorQueryStatus(endpointResponse), reqType, isPartial, token);
 			}
 		}
 	}

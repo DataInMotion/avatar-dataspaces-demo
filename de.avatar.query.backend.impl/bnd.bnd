@@ -11,5 +11,6 @@
 	de.avatar.query.service.api,\
 	de.avatar.query.model,\
 	de.avatar.connector.cleanup.api,\
-	org.gecko.emf.json
+	org.gecko.emf.json,\
+	com.mobi.bundles.java-jwt
 	

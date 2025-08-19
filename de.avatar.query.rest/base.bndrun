@@ -128,5 +128,6 @@
 	org.gecko.emf.osgi.component.minimal;version='[6.2.0,6.2.1)',\
 	org.osgi.service.cm;version='[1.6.1,1.6.2)',\
 	org.osgi.util.function;version='[1.2.0,1.2.1)',\
-	slf4j.api;version='[1.7.30,1.7.31)'
+	slf4j.api;version='[1.7.30,1.7.31)',\
+	com.mobi.bundles.java-jwt;version='[3.8.0,3.8.1)'
 -runblacklist: bnd.identity;id='org.eclipse.osgitech.rest.jetty'

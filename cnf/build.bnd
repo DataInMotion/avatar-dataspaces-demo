@@ -46,6 +46,17 @@ javac.target: 17
         readOnly=true; \
         poll.time=-1; \
         name="Central"
+        
+-plugin.Inovex: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+        snapshotUrl="https://oss.sonatype.org/content/repositories/snapshots/"; \
+        releaseUrl=https://nexus.inovexcorp.com/nexus/content/repositories/public-maven-prod-hosted/; \
+        index=${.}/ext/inovex.maven; \
+        readOnly=true; \
+        poll.time=-1; \
+        name="Inovex"
+        
+        
 
 -plugin.Local: \
 	aQute.bnd.deployer.repository.LocalIndexedRepo; \

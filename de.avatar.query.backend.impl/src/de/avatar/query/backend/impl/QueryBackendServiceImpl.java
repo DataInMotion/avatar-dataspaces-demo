@@ -336,6 +336,16 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	public Query getQueryByName(String queryName) {
 		return queryService.getQueryByName(queryName);
 	}
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#getQueryIdsForUser(java.lang.String)
+	 */
+	@Override
+	public List<String> getQueryIdsForUser(String token) {
+		return statusService.getCachedRequestIds(token);
+	}
+	
 
 	private String saveEObjectToString(EObject obj) {
 		ResourceSet resSet = rsFactory.getService();
@@ -443,18 +453,12 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 			LOGGER.warning(String.format("Error while sending request %s to camunda process user interface", reqId));
 			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("Error while sending request %s to camunda process user interface", reqId));
 		}
-		statusService.updateStatus(response);
+		statusService.updateStatus(response, token);
 		return response;
 	}
+	
+	
 
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#getQueryIdsForUser(java.lang.String)
-	 */
-	@Override
-	public List<String> getQueryIdsForUser(String token) {
-		return statusService.getCachedRequestIds(token);
-	}
 	
 
 

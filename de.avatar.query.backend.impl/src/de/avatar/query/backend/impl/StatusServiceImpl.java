@@ -33,6 +33,9 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
+
 import de.avatar.connector.cleanup.api.api.AvatarDataCleanup;
 import de.avatar.connector.cleanup.api.api.AvatarDataCleanupConfig;
 import de.avatar.model.connector.EndpointResponse;
@@ -126,7 +129,7 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 	 */
 	@Override
 	public QueryResponse getStatusUpdate(String requestId) {		
-		return cachedStatuses.getOrDefault(requestId, null);
+		return cachedStatuses.getOrDefault(requestId, createErrorResponse(requestId, String.format("No cached status for request %s", requestId)));
 	}
 
 	
@@ -192,7 +195,12 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 	 */
 	@Override
 	public QueryRequest getCachedRequest(String requestId, String token) {
-		Map<String, QueryRequest> requestsForUser = cachedRequestsWithAuth.getOrDefault(token, null);
+		String userId = extractUserIdFromToken(token);
+		if(userId == null) {
+			LOGGER.severe(String.format("Cannot get cached request %s because userId from token is null", requestId));
+			return null;
+		}
+		Map<String, QueryRequest> requestsForUser = cachedRequestsWithAuth.getOrDefault(userId, null);
 		if(requestsForUser == null) return null;
 		return requestsForUser.getOrDefault(requestId, null);
 	}
@@ -203,9 +211,14 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 	 */
 	@Override
 	public QueryResponse getStatusUpdate(String requestId, String token) {
-		Map<String, QueryResponse> statusesForUser = cachedStatusesWithAuth.getOrDefault(token, null);
-		if(statusesForUser == null) return null;
-		return statusesForUser.getOrDefault(requestId, null);
+		String userId = extractUserIdFromToken(token);
+		if(userId == null) {
+			LOGGER.severe(String.format("Cannot get status for request %s because userId from token is null", requestId));
+			return createErrorResponse(requestId, String.format("Cannot get status for request %s because userId from token is null", requestId));
+		}
+		Map<String, QueryResponse> statusesForUser = cachedStatusesWithAuth.getOrDefault(userId, null);
+		if(statusesForUser == null) return createErrorResponse(requestId, String.format("No cached status for request %s", requestId));
+		return statusesForUser.getOrDefault(requestId, createErrorResponse(requestId, String.format("No cached status for request %s", requestId)));
 	}
 
 	/* 
@@ -214,14 +227,21 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 	 */
 	@Override
 	public void cacheRequest(QueryRequest request, String token) {
-		
 		if(request.getRequestId() != null) {
-			if(!cachedRequestsWithAuth.containsKey(token)) {
-				cachedRequestsWithAuth.put(token, new HashMap<>());
+			String userId = extractUserIdFromToken(token);
+			if(userId == null) {
+				LOGGER.severe(String.format("userId from token is null. Cannot cache request %s", request.getRequestId()));
+				return;
+			}		
+			if(!cachedRequestsWithAuth.containsKey(userId)) {
+				cachedRequestsWithAuth.put(userId, new HashMap<>());
 			}
-			cachedRequestsWithAuth.get(token).put(request.getRequestId(), request);
-			LOGGER.info("Cached request with id " + request.getRequestId() + " " + cachedRequestsWithAuth.get(token).size());
-		}		
+			cachedRequestsWithAuth.get(userId).put(request.getRequestId(), request);
+			LOGGER.info("Cached request with id " + request.getRequestId() + " " + cachedRequestsWithAuth.get(userId).size());
+		} else {
+			LOGGER.severe(String.format("Cannot cache request with null id!"));
+			return;
+		}
 	}
 
 	/* 
@@ -230,10 +250,93 @@ public class StatusServiceImpl implements StatusService, AvatarDataCleanup{
 	 */
 	@Override
 	public List<String> getCachedRequestIds(String token) {
-		if(!cachedRequestsWithAuth.containsKey(token)) return Collections.emptyList();
-		LOGGER.info("Cached request for user are " + cachedRequestsWithAuth.get(token).size());
-		return cachedRequestsWithAuth.get(token).keySet().stream().toList();
+		String userId = extractUserIdFromToken(token);
+		if(userId == null) {
+			LOGGER.severe("Cannot retrieve queries for user because userId from token is null");
+			return Collections.emptyList();
+		}
+		if(!cachedRequestsWithAuth.containsKey(userId)) return Collections.emptyList();
+		LOGGER.info("Cached request for user are " + cachedRequestsWithAuth.get(userId).size());
+		return cachedRequestsWithAuth.get(userId).keySet().stream().toList();
 	}
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.StatusService#updateStatus(de.avatar.status.QueryResponse, java.lang.String)
+	 */
+	@Override
+	public void updateStatus(QueryResponse queryResponse, String token) {
+		String userId = extractUserIdFromToken(token);
+		if(userId == null) {
+			LOGGER.severe(String.format("Cannot update status for request %s for user because userId is not found in token", queryResponse.getRequestId()));
+			return;
+		}
+		if(!cachedStatusesWithAuth.containsKey(userId)) cachedStatusesWithAuth.put(userId, new HashMap<>());
+		cachedStatusesWithAuth.get(userId).put(queryResponse.getRequestId(), queryResponse);		
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.StatusService#updateStatus(de.avatar.model.connector.EndpointResponse, de.avatar.status.SingleConnectorQueryStatus, java.lang.String, boolean, java.lang.String)
+	 */
+	@Override
+	public void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus,
+			String reqType, boolean isPartialUpdate, String token) {
+		String userId = extractUserIdFromToken(token);
+		if(userId == null) {
+			LOGGER.severe(String.format("Cannot update status for request %s for user because userId is not found in token", endpointResponse.getSourceId()));
+			return;
+		}
+		
+		LOGGER.info(String.format("I am updating the status for user for request %s", endpointResponse.getSourceId()));
+		String reqId = endpointResponse.getSourceId();
+		if(!cachedStatusesWithAuth.containsKey(userId)) cachedStatusesWithAuth.put(userId, new HashMap<>());
+		if(!cachedStatusesWithAuth.get(userId).containsKey(reqId) || !(cachedStatusesWithAuth.get(userId).get(reqId) instanceof QueryStatusResponse)) {
+			QueryStatusResponse qsr = StatusFactory.eINSTANCE.createQueryStatusResponse();
+			qsr.setRequestId(reqId);
+			cachedStatusesWithAuth.get(userId).put(reqId, qsr);
+		}
+		QueryStatusResponse statusResponse = (QueryStatusResponse) cachedStatuses.get(reqId);
+		statusResponse.setTimestamp(Instant.now().toEpochMilli());
+		DetailedQueryStatus detailedStatus = statusResponse.getDetailedStatus();
+		if(detailedStatus == null) {
+			detailedStatus = StatusFactory.eINSTANCE.createDetailedQueryStatus();
+			statusResponse.setDetailedStatus(detailedStatus);
+		} else {
+//			check if a sgConnStatus for the same connector already exists and if so we replace it with the new one
+			SingleConnectorQueryStatus oldConnStatus = detailedStatus.getSingleConnectorQueryStatus().
+				stream().
+				filter(scqs -> scqs.getConnectorId().equals(sgConnQueryStatus.getConnectorId())).
+				findAny().
+				orElse(null);
+			if(oldConnStatus != null) {
+				detailedStatus.getSingleConnectorQueryStatus().remove(oldConnStatus);
+			}
+		}
+		detailedStatus.getSingleConnectorQueryStatus().add(sgConnQueryStatus);
+		
+		if(isPartialUpdate) statusResponse.setStatus(QueryStatusType.QUERY_PENDING);
+		else if(reqType.equals("dryrun")) statusResponse.setStatus(QueryStatusType.QUERY_DRYRUN_COMPLETED);
+		else statusResponse.setStatus(QueryStatusType.QUERY_COMPLETED);
+		
+	}
+	
+	private String extractUserIdFromToken(String token) {
+		DecodedJWT decodedJWT = JWT.decode(token);
+		// Get claims from the payload
+	    String userId = decodedJWT.getClaim("sub").asString();
+	    return userId;
+	}
+	
+	private QueryResponse createErrorResponse(String requestId, String msg) {
+		QueryStatusResponse response = StatusFactory.eINSTANCE.createQueryStatusResponse();
+		response.setRequestId(requestId);
+		response.setStatus(QueryStatusType.OPERATION_ERROR);
+		response.setMessage(msg);
+		return response;
+	}
+
+	
 }
 
 
