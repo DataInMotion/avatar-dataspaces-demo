@@ -14,6 +14,8 @@ package de.avatar.connector.camunda.workers.helper;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -38,6 +40,7 @@ import de.avatar.status.QueryStatusType;
 import de.avatar.status.StatusFactory;
 import de.avatar.status.StatusResult;
 import de.avatar.status.SuccessStatusResult;
+import org.gecko.emf.json.constants.EMFJs;
 
 /**
  * 
@@ -53,7 +56,9 @@ public class CamundaWorkerHelper {
 		if(value == null) return null;
 		try {
 			Resource res = resSet.createResource(URI.createURI(UUID.randomUUID().toString()), "application/json");
-			res.load(new ByteArrayInputStream(value.getBytes()), null);
+			Map<String, Object> options = new HashMap<>();
+			options.put(EMFJs.OPTION_TYPE_FIELD, "_type");
+			res.load(new ByteArrayInputStream(value.getBytes()), options);
 			if(res.getContents() != null && !res.getContents().isEmpty()) {
 				EObject obj = res.getContents().get(0);
 				return obj;

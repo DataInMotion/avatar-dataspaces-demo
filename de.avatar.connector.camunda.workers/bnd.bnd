@@ -17,7 +17,8 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	org.gecko.emf.util.model,\
 	de.avatar.connector.model,\
 	de.avatar.metadata.model;version=snapshot,\
-	de.avatar.query.backend;version=snapshot
+	de.avatar.query.backend;version=snapshot,\
+	org.gecko.emf.json
 	
 -dsannotations-options: inherit
 	
