@@ -128,8 +128,8 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 	
 	private void sendQueryStatus(String reqId, QueryStatusType statusType, String msg, String token) {
 		QueryResponse queryStatus = QueryStatusHelper.createQueryResponse(reqId, statusType, msg);
-		if(token == null) statusService.updateStatus(queryStatus);
-		else statusService.updateStatus(queryStatus, token);
+		if(token != null) statusService.updateStatus(queryStatus, token);
+		statusService.updateStatus(queryStatus);
 	}
 
 	private void doStatusUpdate(String endpointResStr, String reqId, String reqType, boolean isPartial, String token) {
@@ -142,8 +142,8 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 			if(endpointResObj == null) {
 				sendQueryStatus(reqId, QueryStatusType.OPERATION_ERROR, "Something came back but it was not a EndpointResponse", token);	
 			} else if(endpointResObj instanceof EndpointResponse endpointResponse) {
-				if(token == null) statusService.updateStatus(endpointResponse, createSingleConnectorQueryStatus(endpointResponse), reqType, isPartial);
-				else statusService.updateStatus(endpointResponse, createSingleConnectorQueryStatus(endpointResponse), reqType, isPartial, token);
+				if(token != null) statusService.updateStatus(endpointResponse, createSingleConnectorQueryStatus(endpointResponse), reqType, isPartial, token);
+				statusService.updateStatus(endpointResponse, createSingleConnectorQueryStatus(endpointResponse), reqType, isPartial);
 			}
 		}
 	}
