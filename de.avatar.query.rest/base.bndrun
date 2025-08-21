@@ -22,8 +22,7 @@
 	bnd.identity;id='org.gecko.emf.json',\
 	bnd.identity;id='slf4j.simple',\
 	bnd.identity;id='de.avatar.query.rest',\
-	bnd.identity;id='org.apache.commons.commons-codec',\
-	bnd.identity;id='de.avatar.query.backend.config'
+	bnd.identity;id='org.apache.commons.commons-codec'
 -runbundles: \
 	com.fasterxml.jackson.core.jackson-annotations;version='[2.18.3,2.18.4)',\
 	com.fasterxml.jackson.core.jackson-core;version='[2.18.3,2.18.4)',\
@@ -124,10 +123,11 @@
 	org.keycloak.authz.client;version='[26.0.4,26.0.5)',\
 	org.apache.felix.configadmin.plugin.interpolation;version='[1.2.8,1.2.9)',\
 	org.eclipse.osgitech.rest.servlet.whiteboard;version='[1.2.3,1.2.4)',\
-	de.avatar.query.backend.config;version=snapshot,\
 	org.gecko.emf.osgi.component.minimal;version='[6.2.0,6.2.1)',\
 	org.osgi.service.cm;version='[1.6.1,1.6.2)',\
 	org.osgi.util.function;version='[1.2.0,1.2.1)',\
 	slf4j.api;version='[1.7.30,1.7.31)',\
-	com.mobi.bundles.java-jwt;version='[3.8.0,3.8.1)'
+	com.mobi.bundles.java-jwt;version='[3.8.0,3.8.1)',\
+	biz.aQute.api.scheduler;version='[1.11.0,1.11.1)',\
+	biz.aQute.scheduler.basic.provider;version='[1.11.0,1.11.1)'
 -runblacklist: bnd.identity;id='org.eclipse.osgitech.rest.jetty'

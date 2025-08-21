@@ -241,9 +241,9 @@ commons-codec:commons-codec:1.18.0
 
 
 
-
-
-
+#Chron job
+biz.aQute:biz.aQute.api.scheduler:1.11.0-SNAPSHOT
+biz.aQute:biz.aQute.scheduler.basic.provider:1.11.0-SNAPSHOT
 
 
 

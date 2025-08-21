@@ -12,5 +12,6 @@
 	de.avatar.query.model,\
 	de.avatar.connector.cleanup.api,\
 	org.gecko.emf.json,\
-	com.mobi.bundles.java-jwt
+	com.mobi.bundles.java-jwt,\
+	biz.aQute.api.scheduler
 	
