@@ -13,5 +13,5 @@
 	de.avatar.connector.cleanup.api,\
 	org.gecko.emf.json,\
 	com.mobi.bundles.java-jwt,\
-	biz.aQute.api.scheduler
+	biz.aQute.api.scheduler;version=latest
 	
