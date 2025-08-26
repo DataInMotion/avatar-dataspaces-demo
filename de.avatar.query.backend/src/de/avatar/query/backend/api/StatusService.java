@@ -27,27 +27,27 @@ import de.avatar.status.SingleConnectorQueryStatus;
  */
 public interface StatusService {
 	
-	boolean isRequestCached(QueryRequest request);
+	boolean isRequestCached(QueryRequest request, String token);
 	
-	QueryRequest getCachedRequest(String requestId);
+//	QueryRequest getCachedRequest(String requestId);
 	
 	QueryRequest getCachedRequest(String requestId, String token);
 	
-	void cacheRequest(QueryRequest request);
+//	void cacheRequest(QueryRequest request);
 	
 	void cacheRequest(QueryRequest request, String token);
 			
 //	void updateStatus(EndpointResponse endpointResponse);
 	
-	void updateStatus(QueryResponse queryResponse);
+//	void updateStatus(QueryResponse queryResponse);
 	
 	void updateStatus(QueryResponse queryResponse, String token);
 	
-	void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus, String reqType, boolean isPartialUpdate);
+//	void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus, String reqType, boolean isPartialUpdate);
 	
 	void updateStatus(EndpointResponse endpointResponse, SingleConnectorQueryStatus sgConnQueryStatus, String reqType, boolean isPartialUpdate, String token);
 	
-	QueryResponse getStatusUpdate(String requestId);
+//	QueryResponse getStatusUpdate(String requestId);
 	
 	QueryResponse getStatusUpdate(String requestId, String token);
 	

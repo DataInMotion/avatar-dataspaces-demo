@@ -72,37 +72,37 @@ public class QueryRestResource {
 		return Response.ok(extractBearerToken(authorization)).build();
 	}
 	
-	@POST
-	@Path("/dryrun")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
-			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response dryRun(@EMFJSONConfig(typeFieldName = "_type")QueryRequest request) {	
-		try {
-			QueryResponse response = queryBEService.executeDryRun(request);
-			return Response.ok(response).build();
-		} catch(Exception e) {
-			System.out.println("I got the Exception");
-			return Response.status(400, e.getMessage()).build();
-		}		
-	}
-	
-	
-	@POST
-	@Path("/query")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
-			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response query(@EMFJSONConfig(typeFieldName = "_type") QueryRequest request) {
-		try {
-			QueryResponse response = queryBEService.executeQuery(request);
-			return Response.ok(response).build();
-		} catch(IllegalArgumentException e) {
-			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
-		}
-	}
+//	@POST
+//	@Path("/dryrun")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+//			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
+//	public Response dryRun(@EMFJSONConfig(typeFieldName = "_type")QueryRequest request) {	
+//		try {
+//			QueryResponse response = queryBEService.executeDryRun(request);
+//			return Response.ok(response).build();
+//		} catch(Exception e) {
+//			System.out.println("I got the Exception");
+//			return Response.status(400, e.getMessage()).build();
+//		}		
+//	}
+//	
+//	
+//	@POST
+//	@Path("/query")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+//			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
+//	public Response query(@EMFJSONConfig(typeFieldName = "_type") QueryRequest request) {
+//		try {
+//			QueryResponse response = queryBEService.executeQuery(request);
+//			return Response.ok(response).build();
+//		} catch(IllegalArgumentException e) {
+//			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+//		}
+//	}
 	
 	@POST
 	@Path("/query-with-auth")
@@ -123,19 +123,19 @@ public class QueryRestResource {
 		}
 	}
 	
-	@GET
-	@Path("/status/{requestId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
-			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response status(@PathParam("requestId") String requestId) {
-		try {
-			QueryResponse response = queryBEService.executeStatusRequest(requestId);
-			return Response.ok(response).build();
-		} catch(IllegalArgumentException e) {			
-			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
-		}
-	}
+//	@GET
+//	@Path("/status/{requestId}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+//			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
+//	public Response status(@PathParam("requestId") String requestId) {
+//		try {
+//			QueryResponse response = queryBEService.executeStatusRequest(requestId);
+//			return Response.ok(response).build();
+//		} catch(IllegalArgumentException e) {			
+//			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+//		}
+//	}
 	
 	@GET
 	@Path("/status-with-auth/{requestId}")
@@ -155,19 +155,19 @@ public class QueryRestResource {
 		}
 	}
 	
-	@GET
-	@Path("/cancel/{requestId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
-			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response cancel(@PathParam("requestId") String requestId) {
-		try {
-			QueryResponse response = queryBEService.cancelRequest(requestId);
-			return Response.ok(response).build();
-		} catch(IllegalArgumentException e) {			
-			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
-		}
-	}
+//	@GET
+//	@Path("/cancel/{requestId}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+//			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
+//	public Response cancel(@PathParam("requestId") String requestId) {
+//		try {
+//			QueryResponse response = queryBEService.cancelRequest(requestId);
+//			return Response.ok(response).build();
+//		} catch(IllegalArgumentException e) {			
+//			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+//		}
+//	}
 	
 	@GET
 	@Path("/cancel-with-auth/{requestId}")
@@ -187,19 +187,19 @@ public class QueryRestResource {
 		}
 	}
 	
-	@GET
-	@Path("/interrupt/{requestId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
-			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response interrupt(@PathParam("requestId") String requestId) {
-		try {
-			QueryResponse response = queryBEService.interruptRequest(requestId);
-			return Response.ok(response).build();
-		} catch(IllegalArgumentException e) {			
-			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
-		}
-	}
+//	@GET
+//	@Path("/interrupt/{requestId}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+//			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
+//	public Response interrupt(@PathParam("requestId") String requestId) {
+//		try {
+//			QueryResponse response = queryBEService.interruptRequest(requestId);
+//			return Response.ok(response).build();
+//		} catch(IllegalArgumentException e) {			
+//			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+//		}
+//	}
 	
 	@GET
 	@Path("/interrupt-with-auth/{requestId}")
@@ -219,20 +219,20 @@ public class QueryRestResource {
 		}
 	}
 	
-	@GET
-	@Path("publiclink/{requestId}/{generate}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
-			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response publicLink(@PathParam("requestId") String requestId, @PathParam("generate") boolean generate) {
-		try {
-			LOGGER.info(String.format("Got publiclink request for id %s with generateLink %s", requestId, generate));
-			QueryResponse response = queryBEService.publicLinkRequest(requestId, generate);
-			return Response.ok(response).build();
-		} catch(IllegalArgumentException e) {			
-			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
-		}
-	}
+//	@GET
+//	@Path("publiclink/{requestId}/{generate}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+//			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
+//	public Response publicLink(@PathParam("requestId") String requestId, @PathParam("generate") boolean generate) {
+//		try {
+//			LOGGER.info(String.format("Got publiclink request for id %s with generateLink %s", requestId, generate));
+//			QueryResponse response = queryBEService.publicLinkRequest(requestId, generate);
+//			return Response.ok(response).build();
+//		} catch(IllegalArgumentException e) {			
+//			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+//		}
+//	}
 	
 	@GET
 	@Path("publiclink-with-auth/{requestId}/{generate}")

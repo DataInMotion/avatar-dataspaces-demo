@@ -31,27 +31,27 @@ public interface QueryBackendService{
 //	
 //	List<ConsentInfo> getConnectorsConsentInfo();
 	
-	QueryResponse executeDryRun(QueryRequest queryRequest);
+//	QueryResponse executeDryRun(QueryRequest queryRequest);
 	
 	QueryResponse executeDryRun(QueryRequest queryRequest, String token);
 	
-	QueryResponse executeQuery(QueryRequest queryRequest);
+//	QueryResponse executeQuery(QueryRequest queryRequest);
 	
 	QueryResponse executeQuery(QueryRequest queryRequest, String token);
 	
-	QueryResponse executeStatusRequest(String requestId);
+//	QueryResponse executeStatusRequest(String requestId);
 	
 	QueryResponse executeStatusRequest(String requestId, String token);
 	
-	QueryResponse cancelRequest(String requestId);
+//	QueryResponse cancelRequest(String requestId);
 	
 	QueryResponse cancelRequest(String requestId, String token);
 	
-	QueryResponse interruptRequest(String requestId);
+//	QueryResponse interruptRequest(String requestId);
 	
 	QueryResponse interruptRequest(String requestId, String token);
 	
-	QueryResponse publicLinkRequest(String requestId, boolean generate);
+//	QueryResponse publicLinkRequest(String requestId, boolean generate);
 	
 	QueryResponse publicLinkRequest(String requestId, boolean generate, String token);
 		

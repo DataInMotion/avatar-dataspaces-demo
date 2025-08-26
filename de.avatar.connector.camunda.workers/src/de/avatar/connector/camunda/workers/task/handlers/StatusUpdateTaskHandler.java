@@ -66,7 +66,9 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		String statusType = externalTask.getVariable("statusType");
 		String token = externalTask.getVariable("credentials");
 		if(token == null) {
-			System.out.println("Token is null");
+			LOGGER.severe(String.format("Token is null for request %s", reqId));
+		} else {
+			LOGGER.info(String.format("Token from status update for request id %s is \n%s", reqId, token));
 		}
 		String endpointResStr = null;
 		StatusUpdateType statusTypeEnum = StatusUpdateType.OTHER;
@@ -128,7 +130,7 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 	private void sendQueryStatus(String reqId, QueryStatusType statusType, String msg, String token) {
 		QueryResponse queryStatus = QueryStatusHelper.createQueryResponse(reqId, statusType, msg);
 		if(token != null) statusService.updateStatus(queryStatus, token);
-		statusService.updateStatus(queryStatus);
+		else LOGGER.severe(String.format("Cannot update status for request %s because no token was in the response", reqId));
 	}
 
 	private void doStatusUpdate(String endpointResStr, String reqId, String reqType, boolean isPartial, String token) {
@@ -142,7 +144,7 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 				sendQueryStatus(reqId, QueryStatusType.OPERATION_ERROR, "Something came back but it was not a EndpointResponse", token);	
 			} else if(endpointResObj instanceof EndpointResponse endpointResponse) {
 				if(token != null) statusService.updateStatus(endpointResponse, createSingleConnectorQueryStatus(endpointResponse), reqType, isPartial, token);
-				statusService.updateStatus(endpointResponse, createSingleConnectorQueryStatus(endpointResponse), reqType, isPartial);
+				else LOGGER.severe(String.format("Cannot update status for request %s because no token was in the response", reqId));
 			}
 		}
 	}

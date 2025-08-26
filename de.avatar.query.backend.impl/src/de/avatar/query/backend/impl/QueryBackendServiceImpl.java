@@ -76,126 +76,126 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 	 * (non-Javadoc)
 	 * @see de.avatar.query.backend.api.QueryBackendService#executeDryRun(de.avatar.query.backend.api.QueryRequest)
 	 */
-	@Override
-	public QueryResponse executeDryRun(QueryRequest queryRequest) {
-		String reqId = queryRequest.getRequestId();
-		//		what if you send a dry run for a request that already exists? You should get back the status if it's already available
-		if(statusService.getCachedRequest(reqId) != null) {
-			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", reqId));
-			return statusService.getStatusUpdate(reqId);
-		}
-		QueryResponse response;
-		try {
-			response = sendQueryRequest(queryRequest, "dryrun", reqId);
-		} catch(IOException e) {
-			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
-			e.printStackTrace();
-			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
-		}
-		return response;
-
-	}
-
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#executeQuery(de.avatar.query.backend.api.QueryRequest)
-	 */
-	@Override
-	public QueryResponse executeQuery(QueryRequest queryRequest) {
-		String reqId = queryRequest.getRequestId();
-		//		what if you send a query for a request that already exists? You should get back the status if it's already available
-		if(statusService.getCachedRequest(reqId) != null) {
-			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", reqId));
-			return statusService.getStatusUpdate(reqId);
-		}
-		QueryResponse response;
-		try {
-			response = sendQueryRequest(queryRequest, "request", reqId);	
-			statusService.cacheRequest(queryRequest);
-		} catch(IOException e) {
-			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
-			e.printStackTrace();
-			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
-		}
-		return response;
-	}
-
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#executeStatusRequest(java.lang.String)
-	 */
-	@Override
-	public QueryResponse executeStatusRequest(String requestId) {	
-		return statusService.getStatusUpdate(requestId);
-	}
-
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#cancelRequest(java.lang.String)
-	 */
-	@Override
-	public QueryResponse cancelRequest(String requestId) {
-		if(statusService.getCachedRequest(requestId) == null) {
-			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
-			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
-		}
-		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
-		if(statusUpdate == null) {
-			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
-			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
-		}		
-		return cancelCacheTaskService.completeTask(requestId);
-	}
-
-
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#publicLinkRequest(java.lang.String, boolean)
-	 */
-	@Override
-	public QueryResponse publicLinkRequest(String requestId, boolean generateLink) {
-		if(statusService.getCachedRequest(requestId) == null) {
-			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
-			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
-		}
-		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
-		if(statusUpdate == null) {
-			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
-			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
-		}
-		//		if the status is not ANONYMIZED_DATA_READY or PUBLIC_LINK_EXPIRED then we cannot ask for a public link
-		if(!QueryStatusType.ANONYMIZED_DATA_READY.equals(statusUpdate.getStatus()) && !QueryStatusType.PUBLIC_LINK_EXPIRED.equals(statusUpdate.getStatus())) {
-			LOGGER.severe(String.format("Cannot request public link for request %s because the status is %s.", requestId, statusUpdate.getStatus()));
-			throw new IllegalArgumentException(String.format("Cannot request public link for request %s because the status is %s.", requestId, statusUpdate.getStatus()));
-		}
-		Map<String, Object> variables = new HashMap<>();
-		LOGGER.info(String.format("Setting generateLink %s for request %s", String.valueOf(generateLink), requestId));
-		variables.put("generateLink", String.valueOf(generateLink));
-		return linkCacheTaskService.completeTask(requestId, variables);
-	}
-
-	/* 
-	 * (non-Javadoc)
-	 * @see de.avatar.query.backend.api.QueryBackendService#interruptRequest(java.lang.String)
-	 */
-	@Override
-	public QueryResponse interruptRequest(String requestId) {
-		if(statusService.getCachedRequest(requestId) == null) {
-			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
-			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
-		}
-		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
-		if(statusUpdate == null) {
-			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
-			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
-		}
-		//		if the status is not QUERY_PENDING we cannot interrupt the request
-		if(!QueryStatusType.QUERY_PENDING.equals(statusUpdate.getStatus())) {
-			LOGGER.severe(String.format("Cannot interrupt request %s because all the connectors already replied.", requestId));
-			throw new IllegalArgumentException(String.format("Cannot interrupt request %s because all the connectors already replied.", requestId));
-		}
-		return terminationCacheTaskService.completeTask(requestId);
-	}
+//	@Override
+//	public QueryResponse executeDryRun(QueryRequest queryRequest) {
+//		String reqId = queryRequest.getRequestId();
+//		//		what if you send a dry run for a request that already exists? You should get back the status if it's already available
+//		if(statusService.getCachedRequest(reqId) != null) {
+//			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", reqId));
+//			return statusService.getStatusUpdate(reqId);
+//		}
+//		QueryResponse response;
+//		try {
+//			response = sendQueryRequest(queryRequest, "dryrun", reqId);
+//		} catch(IOException e) {
+//			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
+//			e.printStackTrace();
+//			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
+//		}
+//		return response;
+//
+//	}
+//
+//	/* 
+//	 * (non-Javadoc)
+//	 * @see de.avatar.query.backend.api.QueryBackendService#executeQuery(de.avatar.query.backend.api.QueryRequest)
+//	 */
+//	@Override
+//	public QueryResponse executeQuery(QueryRequest queryRequest) {
+//		String reqId = queryRequest.getRequestId();
+//		//		what if you send a query for a request that already exists? You should get back the status if it's already available
+//		if(statusService.getCachedRequest(reqId) != null) {
+//			LOGGER.warning(String.format("A request with the id %s already exists. Giving back its chaced status", reqId));
+//			return statusService.getStatusUpdate(reqId);
+//		}
+//		QueryResponse response;
+//		try {
+//			response = sendQueryRequest(queryRequest, "request", reqId);	
+//			statusService.cacheRequest(queryRequest);
+//		} catch(IOException e) {
+//			LOGGER.severe(String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
+//			e.printStackTrace();
+//			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("IOException while forwarding request %s to orchestrator: %s", reqId, e.getMessage()));
+//		}
+//		return response;
+//	}
+//
+//	/* 
+//	 * (non-Javadoc)
+//	 * @see de.avatar.query.backend.api.QueryBackendService#executeStatusRequest(java.lang.String)
+//	 */
+//	@Override
+//	public QueryResponse executeStatusRequest(String requestId) {	
+//		return statusService.getStatusUpdate(requestId);
+//	}
+//
+//	/* 
+//	 * (non-Javadoc)
+//	 * @see de.avatar.query.backend.api.QueryBackendService#cancelRequest(java.lang.String)
+//	 */
+//	@Override
+//	public QueryResponse cancelRequest(String requestId) {
+//		if(statusService.getCachedRequest(requestId) == null) {
+//			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+//			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+//		}
+//		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
+//		if(statusUpdate == null) {
+//			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
+//			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
+//		}		
+//		return cancelCacheTaskService.completeTask(requestId);
+//	}
+//
+//
+//	/* 
+//	 * (non-Javadoc)
+//	 * @see de.avatar.query.backend.api.QueryBackendService#publicLinkRequest(java.lang.String, boolean)
+//	 */
+//	@Override
+//	public QueryResponse publicLinkRequest(String requestId, boolean generateLink) {
+//		if(statusService.getCachedRequest(requestId) == null) {
+//			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+//			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+//		}
+//		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
+//		if(statusUpdate == null) {
+//			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
+//			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
+//		}
+//		//		if the status is not ANONYMIZED_DATA_READY or PUBLIC_LINK_EXPIRED then we cannot ask for a public link
+//		if(!QueryStatusType.ANONYMIZED_DATA_READY.equals(statusUpdate.getStatus()) && !QueryStatusType.PUBLIC_LINK_EXPIRED.equals(statusUpdate.getStatus())) {
+//			LOGGER.severe(String.format("Cannot request public link for request %s because the status is %s.", requestId, statusUpdate.getStatus()));
+//			throw new IllegalArgumentException(String.format("Cannot request public link for request %s because the status is %s.", requestId, statusUpdate.getStatus()));
+//		}
+//		Map<String, Object> variables = new HashMap<>();
+//		LOGGER.info(String.format("Setting generateLink %s for request %s", String.valueOf(generateLink), requestId));
+//		variables.put("generateLink", String.valueOf(generateLink));
+//		return linkCacheTaskService.completeTask(requestId, variables);
+//	}
+//
+//	/* 
+//	 * (non-Javadoc)
+//	 * @see de.avatar.query.backend.api.QueryBackendService#interruptRequest(java.lang.String)
+//	 */
+//	@Override
+//	public QueryResponse interruptRequest(String requestId) {
+//		if(statusService.getCachedRequest(requestId) == null) {
+//			LOGGER.severe(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+//			throw new IllegalArgumentException(String.format("A request with the id %s does not exist. Cannot proceed.", requestId));
+//		}
+//		QueryResponse statusUpdate = statusService.getStatusUpdate(requestId);
+//		if(statusUpdate == null) {
+//			LOGGER.severe(String.format("No status update available for request %s. Cannot proceed.", requestId));
+//			throw new IllegalArgumentException(String.format("No status update available for request %s. Cannot proceed.", requestId));
+//		}
+//		//		if the status is not QUERY_PENDING we cannot interrupt the request
+//		if(!QueryStatusType.QUERY_PENDING.equals(statusUpdate.getStatus())) {
+//			LOGGER.severe(String.format("Cannot interrupt request %s because all the connectors already replied.", requestId));
+//			throw new IllegalArgumentException(String.format("Cannot interrupt request %s because all the connectors already replied.", requestId));
+//		}
+//		return terminationCacheTaskService.completeTask(requestId);
+//	}
 	
 	/* 
 	 * (non-Javadoc)
@@ -365,61 +365,61 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		}
 	}
 
-	private QueryResponse sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId) throws IOException{
-		Integer resCode;
-		if(queryCamundaProcessLauncher.isLocal()) {
-			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
-			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
-			if(queryRequest != null) {
-				variables.get("variables").put("query", new HashMap<String, Object>());
-				variables.get("variables").get("query").put("value", saveEObjectToString(queryRequest));
-				variables.get("variables").put("contentType", new HashMap<String, Object>());
-				variables.get("variables").get("contentType").put("value", queryRequest.getContentType());
-				variables.get("variables").put("dataType", new HashMap<String, Object>());
-				variables.get("variables").get("dataType").put("value", "isma-hearing");
-			}			
-			variables.get("variables").put("reqId", new HashMap<String, Object>());
-			variables.get("variables").get("reqId").put("value", reqId);
-			variables.get("variables").put("reqType", new HashMap<String, Object>());
-			variables.get("variables").get("reqType").put("value", reqType);
-			variables.get("variables").put("reqType", new HashMap<String, Object>());
-			variables.get("variables").get("reqType").put("value", reqType);
-			resCode = queryCamundaProcessLauncher.launchProcessToEngine(variables);		
-		} else {
-			Map<String, HashMap<String, Object>> variables = new HashMap<>();
-			variables.put("tenant", new HashMap<String, Object>());
-			variables.get("tenant").put("value", "TENANT_DIM");
-			variables.get("tenant").put("type", "String");
-			if(queryRequest != null) {
-				variables.put("query", new HashMap<String, Object>());
-				variables.get("query").put("value", saveEObjectToString(queryRequest));
-				variables.get("query").put("type", "String");
-				variables.put("contentType", new HashMap<String, Object>());
-				variables.get("contentType").put("value", queryRequest.getContentType());
-				variables.get("contentType").put("type", "String");
-				variables.put("dataType", new HashMap<String, Object>());
-				variables.get("dataType").put("value", "isma-hearing");
-				variables.get("dataType").put("type", "String");
-			}	
-			variables.put("reqId", new HashMap<String, Object>());
-			variables.get("reqId").put("value", reqId);
-			variables.get("reqId").put("type", "String");
-			variables.put("reqType", new HashMap<String, Object>());
-			variables.get("reqType").put("value", reqType);
-			variables.get("reqType").put("type", "String");
-			resCode = queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables);			
-		}		
-		QueryResponse response;
-		if(resCode == 200) {
-			LOGGER.info(String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
-			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.REQUEST_PROCESS_STARTED, String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
-		} else {
-			LOGGER.warning(String.format("Error while sending request %s to camunda process user interface", reqId));
-			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("Error while sending request %s to camunda process user interface", reqId));
-		}
-		statusService.updateStatus(response);
-		return response;
-	}
+//	private QueryResponse sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId) throws IOException{
+//		Integer resCode;
+//		if(queryCamundaProcessLauncher.isLocal()) {
+//			Map<String, HashMap<String, HashMap<String, Object>>> variables = new HashMap<>();
+//			variables.put("variables", new HashMap<String, HashMap<String, Object>>());
+//			if(queryRequest != null) {
+//				variables.get("variables").put("query", new HashMap<String, Object>());
+//				variables.get("variables").get("query").put("value", saveEObjectToString(queryRequest));
+//				variables.get("variables").put("contentType", new HashMap<String, Object>());
+//				variables.get("variables").get("contentType").put("value", queryRequest.getContentType());
+//				variables.get("variables").put("dataType", new HashMap<String, Object>());
+//				variables.get("variables").get("dataType").put("value", "isma-hearing");
+//			}			
+//			variables.get("variables").put("reqId", new HashMap<String, Object>());
+//			variables.get("variables").get("reqId").put("value", reqId);
+//			variables.get("variables").put("reqType", new HashMap<String, Object>());
+//			variables.get("variables").get("reqType").put("value", reqType);
+//			variables.get("variables").put("reqType", new HashMap<String, Object>());
+//			variables.get("variables").get("reqType").put("value", reqType);
+//			resCode = queryCamundaProcessLauncher.launchProcessToEngine(variables);		
+//		} else {
+//			Map<String, HashMap<String, Object>> variables = new HashMap<>();
+//			variables.put("tenant", new HashMap<String, Object>());
+//			variables.get("tenant").put("value", "TENANT_DIM");
+//			variables.get("tenant").put("type", "String");
+//			if(queryRequest != null) {
+//				variables.put("query", new HashMap<String, Object>());
+//				variables.get("query").put("value", saveEObjectToString(queryRequest));
+//				variables.get("query").put("type", "String");
+//				variables.put("contentType", new HashMap<String, Object>());
+//				variables.get("contentType").put("value", queryRequest.getContentType());
+//				variables.get("contentType").put("type", "String");
+//				variables.put("dataType", new HashMap<String, Object>());
+//				variables.get("dataType").put("value", "isma-hearing");
+//				variables.get("dataType").put("type", "String");
+//			}	
+//			variables.put("reqId", new HashMap<String, Object>());
+//			variables.get("reqId").put("value", reqId);
+//			variables.get("reqId").put("type", "String");
+//			variables.put("reqType", new HashMap<String, Object>());
+//			variables.get("reqType").put("value", reqType);
+//			variables.get("reqType").put("type", "String");
+//			resCode = queryCamundaProcessLauncher.launchProcessToProcessUserInterface(variables);			
+//		}		
+//		QueryResponse response;
+//		if(resCode == 200) {
+//			LOGGER.info(String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
+//			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.REQUEST_PROCESS_STARTED, String.format("Request %s succesfully forwarded to camunda process user interface", reqId));
+//		} else {
+//			LOGGER.warning(String.format("Error while sending request %s to camunda process user interface", reqId));
+//			response = QueryStatusHelper.createQueryResponse(reqId, QueryStatusType.OPERATION_ERROR, String.format("Error while sending request %s to camunda process user interface", reqId));
+//		}
+//		statusService.updateStatus(response);
+//		return response;
+//	}
 
 	private QueryResponse sendQueryRequest(QueryRequest queryRequest, String reqType, String reqId, String token) throws IOException{
 
