@@ -22,6 +22,7 @@ import de.avatar.query.QueryPackage;
 import de.avatar.status.DetailedQueryStatus;
 import de.avatar.status.ErrorStatusResult;
 import de.avatar.status.PendingStatusResult;
+import de.avatar.status.QueryLinkResponse;
 import de.avatar.status.QueryRequest;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusResponse;
@@ -112,6 +113,13 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 	 * @generated
 	 */
 	private EClass errorStatusResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass queryLinkResponseEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -493,6 +501,26 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getQueryLinkResponse() {
+		return queryLinkResponseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getQueryLinkResponse_DownloadLink() {
+		return (EAttribute)queryLinkResponseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getQueryStatusType() {
 		return queryStatusTypeEEnum;
 	}
@@ -565,6 +593,9 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		errorStatusResultEClass = createEClass(ERROR_STATUS_RESULT);
 		createEAttribute(errorStatusResultEClass, ERROR_STATUS_RESULT__ERROR_MESSAGE);
 
+		queryLinkResponseEClass = createEClass(QUERY_LINK_RESPONSE);
+		createEAttribute(queryLinkResponseEClass, QUERY_LINK_RESPONSE__DOWNLOAD_LINK);
+
 		// Create enums
 		queryStatusTypeEEnum = createEEnum(QUERY_STATUS_TYPE);
 	}
@@ -607,6 +638,7 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 		successStatusResultEClass.getESuperTypes().add(this.getStatusResult());
 		pendingStatusResultEClass.getESuperTypes().add(this.getStatusResult());
 		errorStatusResultEClass.getESuperTypes().add(this.getStatusResult());
+		queryLinkResponseEClass.getESuperTypes().add(this.getQueryResponse());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(queryRequestEClass, QueryRequest.class, "QueryRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -647,6 +679,9 @@ public class StatusPackageImpl extends EPackageImpl implements StatusPackage {
 
 		initEClass(errorStatusResultEClass, ErrorStatusResult.class, "ErrorStatusResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getErrorStatusResult_ErrorMessage(), theEcorePackage.getEString(), "errorMessage", null, 0, 1, ErrorStatusResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(queryLinkResponseEClass, QueryLinkResponse.class, "QueryLinkResponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getQueryLinkResponse_DownloadLink(), ecorePackage.getEString(), "downloadLink", null, 0, 1, QueryLinkResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(queryStatusTypeEEnum, QueryStatusType.class, "QueryStatusType");

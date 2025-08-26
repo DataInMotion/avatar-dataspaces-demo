@@ -117,6 +117,15 @@ public interface StatusFactory extends EFactory {
 	ErrorStatusResult createErrorStatusResult();
 
 	/**
+	 * Returns a new object of class '<em>Query Link Response</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Query Link Response</em>'.
+	 * @generated
+	 */
+	QueryLinkResponse createQueryLinkResponse();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

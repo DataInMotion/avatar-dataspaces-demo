@@ -77,6 +77,7 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 			case StatusPackage.SUCCESS_STATUS_RESULT: return createSuccessStatusResult();
 			case StatusPackage.PENDING_STATUS_RESULT: return createPendingStatusResult();
 			case StatusPackage.ERROR_STATUS_RESULT: return createErrorStatusResult();
+			case StatusPackage.QUERY_LINK_RESPONSE: return createQueryLinkResponse();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -209,6 +210,17 @@ public class StatusFactoryImpl extends EFactoryImpl implements StatusFactory {
 	public ErrorStatusResult createErrorStatusResult() {
 		ErrorStatusResultImpl errorStatusResult = new ErrorStatusResultImpl();
 		return errorStatusResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public QueryLinkResponse createQueryLinkResponse() {
+		QueryLinkResponseImpl queryLinkResponse = new QueryLinkResponseImpl();
+		return queryLinkResponse;
 	}
 
 	/**

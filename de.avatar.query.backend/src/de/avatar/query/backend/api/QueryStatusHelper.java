@@ -13,6 +13,7 @@ package de.avatar.query.backend.api;
 
 import java.time.Instant;
 
+import de.avatar.status.QueryLinkResponse;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.StatusFactory;
@@ -31,6 +32,16 @@ public class QueryStatusHelper {
 		queryStatus.setStatus(statusType);
 		queryStatus.setMessage(msg);
 		return queryStatus;
+	}
+	
+	public static QueryLinkResponse createQueryLinkResponse(String reqId, String link) {
+		QueryLinkResponse linkResponse = StatusFactory.eINSTANCE.createQueryLinkResponse();
+		linkResponse.setRequestId(reqId);
+		linkResponse.setTimestamp(Instant.now().toEpochMilli());
+		linkResponse.setDownloadLink(link);
+		linkResponse.setStatus(QueryStatusType.PUBLIC_LINK_AVAILABLE);
+		linkResponse.setMessage("Public link available for data download");
+		return linkResponse;
 	}
 
 

@@ -634,6 +634,79 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	int ERROR_STATUS_RESULT_OPERATION_COUNT = STATUS_RESULT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.avatar.status.impl.QueryLinkResponseImpl <em>Query Link Response</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.avatar.status.impl.QueryLinkResponseImpl
+	 * @see de.avatar.status.impl.StatusPackageImpl#getQueryLinkResponse()
+	 * @generated
+	 */
+	int QUERY_LINK_RESPONSE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Request Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_LINK_RESPONSE__REQUEST_ID = QUERY_RESPONSE__REQUEST_ID;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_LINK_RESPONSE__STATUS = QUERY_RESPONSE__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_LINK_RESPONSE__TIMESTAMP = QUERY_RESPONSE__TIMESTAMP;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_LINK_RESPONSE__MESSAGE = QUERY_RESPONSE__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Download Link</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_LINK_RESPONSE__DOWNLOAD_LINK = QUERY_RESPONSE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Query Link Response</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_LINK_RESPONSE_FEATURE_COUNT = QUERY_RESPONSE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Query Link Response</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_LINK_RESPONSE_OPERATION_COUNT = QUERY_RESPONSE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.avatar.status.QueryStatusType <em>Query Status Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -641,7 +714,7 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see de.avatar.status.impl.StatusPackageImpl#getQueryStatusType()
 	 * @generated
 	 */
-	int QUERY_STATUS_TYPE = 9;
+	int QUERY_STATUS_TYPE = 10;
 
 
 	/**
@@ -966,6 +1039,27 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getErrorStatusResult_ErrorMessage();
 
 	/**
+	 * Returns the meta object for class '{@link de.avatar.status.QueryLinkResponse <em>Query Link Response</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Query Link Response</em>'.
+	 * @see de.avatar.status.QueryLinkResponse
+	 * @generated
+	 */
+	EClass getQueryLinkResponse();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.avatar.status.QueryLinkResponse#getDownloadLink <em>Download Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Download Link</em>'.
+	 * @see de.avatar.status.QueryLinkResponse#getDownloadLink()
+	 * @see #getQueryLinkResponse()
+	 * @generated
+	 */
+	EAttribute getQueryLinkResponse_DownloadLink();
+
+	/**
 	 * Returns the meta object for enum '{@link de.avatar.status.QueryStatusType <em>Query Status Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1255,6 +1349,24 @@ public interface StatusPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute ERROR_STATUS_RESULT__ERROR_MESSAGE = eINSTANCE.getErrorStatusResult_ErrorMessage();
+
+		/**
+		 * The meta object literal for the '{@link de.avatar.status.impl.QueryLinkResponseImpl <em>Query Link Response</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.avatar.status.impl.QueryLinkResponseImpl
+		 * @see de.avatar.status.impl.StatusPackageImpl#getQueryLinkResponse()
+		 * @generated
+		 */
+		EClass QUERY_LINK_RESPONSE = eINSTANCE.getQueryLinkResponse();
+
+		/**
+		 * The meta object literal for the '<em><b>Download Link</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUERY_LINK_RESPONSE__DOWNLOAD_LINK = eINSTANCE.getQueryLinkResponse_DownloadLink();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.status.QueryStatusType <em>Query Status Type</em>}' enum.

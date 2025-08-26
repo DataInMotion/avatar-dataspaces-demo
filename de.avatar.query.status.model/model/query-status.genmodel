@@ -68,5 +68,8 @@
     <genClasses ecoreClass="query-status.ecore#//ErrorStatusResult">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//ErrorStatusResult/errorMessage"/>
     </genClasses>
+    <genClasses ecoreClass="query-status.ecore#//QueryLinkResponse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query-status.ecore#//QueryLinkResponse/downloadLink"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

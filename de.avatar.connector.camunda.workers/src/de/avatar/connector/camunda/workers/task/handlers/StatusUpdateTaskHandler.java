@@ -28,6 +28,7 @@ import de.avatar.metadata.ConnectorMetadata;
 import de.avatar.model.connector.EndpointResponse;
 import de.avatar.query.backend.api.QueryStatusHelper;
 import de.avatar.query.backend.api.StatusService;
+import de.avatar.status.QueryLinkResponse;
 import de.avatar.status.QueryResponse;
 import de.avatar.status.QueryStatusType;
 import de.avatar.status.SingleConnectorQueryStatus;
@@ -108,7 +109,7 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 			if(publicUrl == null) {
 				sendQueryStatus(reqId, QueryStatusType.OPERATION_ERROR, String.format("Public link should be available for request %s but no publicUrl variable has been found in the process", reqId), token);
 			} else {
-				sendQueryStatus(reqId, QueryStatusType.PUBLIC_LINK_AVAILABLE, String.format("Public link available for data download at %s", publicUrl), token);
+				sendQueryLinkResponse(reqId, publicUrl, token);
 			}			
 			break;
 		case PUBLIC_LINK_EXPIRED:
@@ -123,8 +124,12 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		} catch(EngineException e) {
 			LOGGER.warning("EngineException in complete task for status update worker");
 		}
-		
-		
+	}
+	
+	private void sendQueryLinkResponse(String reqId, String link, String token) {
+		QueryLinkResponse response = QueryStatusHelper.createQueryLinkResponse(reqId, link);
+		if(token != null) statusService.updateStatus(response, token);
+		else LOGGER.severe(String.format("Cannot update status for request %s because no token was in the response", reqId));
 	}
 	
 	private void sendQueryStatus(String reqId, QueryStatusType statusType, String msg, String token) {
