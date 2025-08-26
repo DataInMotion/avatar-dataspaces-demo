@@ -135,8 +135,7 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 		externalTaskPair.entrySet().forEach(e -> {
 			e.getValue().complete(e.getKey(), variables);	
 		});
-		removeTask(taskId, userId);		
-		LOGGER.info(String.format("Removed cached task %s for user", taskId));
+		removeTask(taskId, token);				
 		return QueryStatusHelper.createQueryResponse(taskId, type, msg);
 	}
 
@@ -145,16 +144,17 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 	 * @see de.avatar.connector.camunda.api.OrchestratorTaskCacheService#removeTask(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void removeTask(String taskId, String userId) {
+	public void removeTask(String taskId, String token) {
+		String userId = extractUserIdFromToken(token);
 		if(userId == null) {
-			if(cachedTasksMap.containsKey(taskId)) {
-				cachedTasksMap.remove(taskId);	
-			}			
-		}
+			LOGGER.severe(String.format("Cannot remove task %s because we could not extract userId from token", taskId));
+			return;
+		}		
 		else {
 			if(cachedTasksMapWithAuth.containsKey(userId)) {
 				if(cachedTasksMapWithAuth.get(userId).containsKey(taskId)) {
 					cachedTasksMapWithAuth.get(userId).remove(taskId);	
+					LOGGER.info(String.format("Removed cached task %s for user", taskId));
 				}
 			}				
 		}
