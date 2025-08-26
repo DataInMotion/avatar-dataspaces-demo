@@ -23,6 +23,9 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
+
 import de.avatar.connector.camunda.api.OrchestratorTaskCacheService;
 import de.avatar.query.backend.api.QueryStatusHelper;
 import de.avatar.status.QueryResponse;
@@ -80,10 +83,17 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 			return;
 		}
 		if(token != null) {
-			if(!cachedTasksMapWithAuth.containsKey(token)) {
-				cachedTasksMapWithAuth.put(token, new HashMap<>());
+			String userId = extractUserIdFromToken(token);
+			if(userId == null) {
+				LOGGER.severe(String.format("Cannot cache task with id %s because we could not extract userId from token", reqId));
+				return;
 			}
-			cachedTasksMapWithAuth.get(token).put(reqId, Map.of(externalTask, externalTaskService));
+			
+			if(!cachedTasksMapWithAuth.containsKey(userId)) {
+				cachedTasksMapWithAuth.put(userId, new HashMap<>());
+			}
+			cachedTasksMapWithAuth.get(userId).put(reqId, Map.of(externalTask, externalTaskService));
+			LOGGER.info(String.format("Cached task %s for user", reqId));
 		}
 		cachedTasksMap.put(reqId, Map.of(externalTask, externalTaskService));
 	}
@@ -112,15 +122,21 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 	 */
 	@Override
 	public QueryResponse completeTask(String taskId, Map<String, Object> variables, String token) {
-		if(!cachedTasksMapWithAuth.containsKey(token) || !cachedTasksMapWithAuth.get(token).containsKey(taskId)) {
+		String userId = extractUserIdFromToken(token);
+		if(userId == null) {
+			LOGGER.severe(String.format("Cannot complete task %s because we could not extract userId from token", taskId));
+			return QueryStatusHelper.createQueryResponse(taskId, QueryStatusType.OPERATION_ERROR, String.format("Cannot complete task %s because we could not extract userId from token", taskId));
+		}
+		if(!cachedTasksMapWithAuth.containsKey(userId) || !cachedTasksMapWithAuth.get(userId).containsKey(taskId)) {
 			LOGGER.severe(String.format("No cached task of type %s for request id %s associated with user", type, taskId));
 			return QueryStatusHelper.createQueryResponse(taskId, QueryStatusType.OPERATION_ERROR, String.format("No cached task of type %s for request id %s associated with user", type, taskId));
 		}
-		Map<ExternalTask, ExternalTaskService> externalTaskPair = cachedTasksMapWithAuth.get(token).get(taskId);
+		Map<ExternalTask, ExternalTaskService> externalTaskPair = cachedTasksMapWithAuth.get(userId).get(taskId);
 		externalTaskPair.entrySet().forEach(e -> {
 			e.getValue().complete(e.getKey(), variables);	
 		});
-		removeTask(taskId, token);		
+		removeTask(taskId, userId);		
+		LOGGER.info(String.format("Removed cached task %s for user", taskId));
 		return QueryStatusHelper.createQueryResponse(taskId, type, msg);
 	}
 
@@ -129,18 +145,25 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 	 * @see de.avatar.connector.camunda.api.OrchestratorTaskCacheService#removeTask(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void removeTask(String taskId, String token) {
-		if(token == null) {
+	public void removeTask(String taskId, String userId) {
+		if(userId == null) {
 			if(cachedTasksMap.containsKey(taskId)) {
 				cachedTasksMap.remove(taskId);	
 			}			
 		}
 		else {
-			if(cachedTasksMapWithAuth.containsKey(token)) {
-				if(cachedTasksMapWithAuth.get(token).containsKey(taskId)) {
-					cachedTasksMapWithAuth.get(token).remove(taskId);	
+			if(cachedTasksMapWithAuth.containsKey(userId)) {
+				if(cachedTasksMapWithAuth.get(userId).containsKey(taskId)) {
+					cachedTasksMapWithAuth.get(userId).remove(taskId);	
 				}
 			}				
 		}
+	}
+	
+	private String extractUserIdFromToken(String token) {
+		DecodedJWT decodedJWT = JWT.decode(token);
+		// Get claims from the payload
+		String userId = decodedJWT.getClaim("sub").asString();
+		return userId;
 	}
 }
