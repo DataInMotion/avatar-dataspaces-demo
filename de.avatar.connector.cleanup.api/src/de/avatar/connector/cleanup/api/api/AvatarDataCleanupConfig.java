@@ -18,13 +18,15 @@ package de.avatar.connector.cleanup.api.api;
  */
 public @interface AvatarDataCleanupConfig {
 	
+	String jobName() default "Cleanup Job";
+	
 	String cleanupRootFolder();
 	
-	long cleanupDelay() default 0;
-	
-	long cleanupRate() default 1;
-	
-	String cleanupUnit() default "DAYS";
+//	long cleanupDelay() default 0;
+//	
+//	long cleanupRate() default 1;
+//	
+//	String cleanupUnit() default "DAYS";
 	
 	long removeOlderThan() default 1;
 	

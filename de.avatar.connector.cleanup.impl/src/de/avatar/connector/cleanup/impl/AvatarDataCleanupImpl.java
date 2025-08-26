@@ -19,18 +19,16 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
-import org.osgi.service.component.annotations.Deactivate;
 
-import de.avatar.connector.cleanup.api.api.AvatarDataCleanup;
+import biz.aQute.scheduler.api.Constants;
+import biz.aQute.scheduler.api.CronExpression;
+import biz.aQute.scheduler.api.CronJob;
 import de.avatar.connector.cleanup.api.api.AvatarDataCleanupConfig;
 
 /**
@@ -38,34 +36,35 @@ import de.avatar.connector.cleanup.api.api.AvatarDataCleanupConfig;
  * @author ilenia
  * @since Mar 20, 2025
  */
-@Component(immediate = true, name = "AvatarDataCleanup", configurationPid = "AvatarDataCleanup", configurationPolicy = ConfigurationPolicy.REQUIRE)
-public class AvatarDataCleanupImpl implements AvatarDataCleanup {
+@CronExpression(name = "AvatarDataCleanup", cron = { Constants.CRON_EXPRESSION_DAILY,
+		Constants.CRON_EXPRESSION_REBOOT })
+@Component(name = "AvatarDataCleanup", configurationPid = "AvatarDataCleanup", configurationPolicy = ConfigurationPolicy.REQUIRE)
+public class AvatarDataCleanupImpl implements  CronJob {
 	
 	private final static Logger LOGGER = Logger.getLogger(AvatarDataCleanupImpl.class.getName());
 	private AvatarDataCleanupConfig config;
-	private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+//	private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 	private Predicate<Path> filter;
 	
 	@Activate
 	public AvatarDataCleanupImpl(AvatarDataCleanupConfig config) {
 		this.config = config;
 		filter = createPredicate();
-		executor.scheduleAtFixedRate(this::run, config.cleanupDelay(), config.cleanupRate(), TimeUnit.valueOf(config.cleanupUnit()));
+//		executor.scheduleAtFixedRate(this::run, config.cleanupDelay(), config.cleanupRate(), TimeUnit.valueOf(config.cleanupUnit()));
 	}
 	
-	@Deactivate
-	public void deactivate() {
-		executor.shutdown();
-	}
-	
+//	@Deactivate
+//	public void deactivate() {
+//		executor.shutdown();
+//	}
 	
 	/* 
 	 * (non-Javadoc)
-	 * @see java.lang.Runnable#run()
+	 * @see biz.aQute.scheduler.api.CronJob#run()
 	 */
 	@Override
 	public void run() {
-		LOGGER.info(String.format("Starting ResponseDataCleanup job!"));
+		LOGGER.info(String.format("[%s] Starting", config.jobName()));
 		Instant now = Instant.now();
 		Instant criticInstant = now.minus(config.removeOlderThan(), ChronoUnit.valueOf(config.removeOlderThanUnit()));
 		List<Path> filesToBeRemoved = new LinkedList<>();
@@ -78,23 +77,23 @@ public class AvatarDataCleanupImpl implements AvatarDataCleanup {
 						filesToBeRemoved.add(p);
 					}
 				} catch(IOException e) {
-					LOGGER.warning(String.format("IOException while trying to get modified time of file %s", p.toString()));
+					LOGGER.warning(String.format("[%s] IOException while trying to get modified time of file %s",config.jobName(), p.toString()));
 				}				
 			});
 			if(filesToBeRemoved.isEmpty()) {
-				LOGGER.info("Nothing to cleanup for ResponseDataCleanup Service");
+				LOGGER.info(String.format("[%s] Nothing to cleanup", config.jobName()));
 			} else {
-				LOGGER.info(String.format("Removing %d files", filesToBeRemoved.size()));
+				LOGGER.info(String.format("[%s] Removing %d files", config.jobName(), filesToBeRemoved.size()));
 				filesToBeRemoved.forEach(p -> {
 					try {
 						Files.deleteIfExists(p);
 					} catch (IOException e) {
-						LOGGER.warning(String.format("IOException while trying to remove file %s", p.toString()));
+						LOGGER.warning(String.format("[%s] IOException while trying to remove file %s", config.jobName(), p.toString()));
 					}
 				});
 			}
 		} catch (IOException e) {
-			LOGGER.severe(String.format("IOException while executing ResponseDataCleanup job: %s", e.getCause()));
+			LOGGER.severe(String.format("[%s] IOException while executing: %s", config.jobName(), e.getCause()));
 		}
 	}
 	

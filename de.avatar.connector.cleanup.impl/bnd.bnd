@@ -1,2 +1,4 @@
 -library: enable-emf
--buildpath: de.avatar.connector.cleanup.api;version=snapshot
+-buildpath: \
+	de.avatar.connector.cleanup.api;version=snapshot,\
+	biz.aQute.api.scheduler
