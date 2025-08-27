@@ -27,7 +27,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.QObject#getEClass <em>EClass</em>}</li>
+ *   <li>{@link de.avatar.query.QObject#getRootEClass <em>Root EClass</em>}</li>
  * </ul>
  *
  * @see de.avatar.query.QueryPackage#getQObject()
@@ -37,25 +37,25 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface QObject extends EObject {
 	/**
-	 * Returns the value of the '<em><b>EClass</b></em>' reference.
+	 * Returns the value of the '<em><b>Root EClass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>EClass</em>' reference.
-	 * @see #setEClass(EClass)
-	 * @see de.avatar.query.QueryPackage#getQObject_EClass()
+	 * @return the value of the '<em>Root EClass</em>' reference.
+	 * @see #setRootEClass(EClass)
+	 * @see de.avatar.query.QueryPackage#getQObject_RootEClass()
 	 * @model
 	 * @generated
 	 */
-	EClass getEClass();
+	EClass getRootEClass();
 
 	/**
-	 * Sets the value of the '{@link de.avatar.query.QObject#getEClass <em>EClass</em>}' reference.
+	 * Sets the value of the '{@link de.avatar.query.QObject#getRootEClass <em>Root EClass</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>EClass</em>' reference.
-	 * @see #getEClass()
+	 * @param value the new value of the '<em>Root EClass</em>' reference.
+	 * @see #getRootEClass()
 	 * @generated
 	 */
-	void setEClass(EClass value);
+	void setRootEClass(EClass value);
 
 } // QObject

@@ -32,21 +32,21 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.avatar.query.impl.QObjectImpl#getEClass <em>EClass</em>}</li>
+ *   <li>{@link de.avatar.query.impl.QObjectImpl#getRootEClass <em>Root EClass</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class QObjectImpl extends MinimalEObjectImpl.Container implements QObject {
 	/**
-	 * The cached value of the '{@link #getEClass() <em>EClass</em>}' reference.
+	 * The cached value of the '{@link #getRootEClass() <em>Root EClass</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEClass()
+	 * @see #getRootEClass()
 	 * @generated
 	 * @ordered
 	 */
-	protected EClass eClass;
+	protected EClass rootEClass;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,16 +73,16 @@ public class QObjectImpl extends MinimalEObjectImpl.Container implements QObject
 	 * @generated
 	 */
 	@Override
-	public EClass getEClass() {
-		if (eClass != null && eClass.eIsProxy()) {
-			InternalEObject oldEClass = (InternalEObject)eClass;
-			eClass = (EClass)eResolveProxy(oldEClass);
-			if (eClass != oldEClass) {
+	public EClass getRootEClass() {
+		if (rootEClass != null && rootEClass.eIsProxy()) {
+			InternalEObject oldRootEClass = (InternalEObject)rootEClass;
+			rootEClass = (EClass)eResolveProxy(oldRootEClass);
+			if (rootEClass != oldRootEClass) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QueryPackage.QOBJECT__ECLASS, oldEClass, eClass));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QueryPackage.QOBJECT__ROOT_ECLASS, oldRootEClass, rootEClass));
 			}
 		}
-		return eClass;
+		return rootEClass;
 	}
 
 	/**
@@ -90,8 +90,8 @@ public class QObjectImpl extends MinimalEObjectImpl.Container implements QObject
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass basicGetEClass() {
-		return eClass;
+	public EClass basicGetRootEClass() {
+		return rootEClass;
 	}
 
 	/**
@@ -100,11 +100,11 @@ public class QObjectImpl extends MinimalEObjectImpl.Container implements QObject
 	 * @generated
 	 */
 	@Override
-	public void setEClass(EClass newEClass) {
-		EClass oldEClass = eClass;
-		eClass = newEClass;
+	public void setRootEClass(EClass newRootEClass) {
+		EClass oldRootEClass = rootEClass;
+		rootEClass = newRootEClass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.QOBJECT__ECLASS, oldEClass, eClass));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.QOBJECT__ROOT_ECLASS, oldRootEClass, rootEClass));
 	}
 
 	/**
@@ -115,9 +115,9 @@ public class QObjectImpl extends MinimalEObjectImpl.Container implements QObject
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QueryPackage.QOBJECT__ECLASS:
-				if (resolve) return getEClass();
-				return basicGetEClass();
+			case QueryPackage.QOBJECT__ROOT_ECLASS:
+				if (resolve) return getRootEClass();
+				return basicGetRootEClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -130,8 +130,8 @@ public class QObjectImpl extends MinimalEObjectImpl.Container implements QObject
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QueryPackage.QOBJECT__ECLASS:
-				setEClass((EClass)newValue);
+			case QueryPackage.QOBJECT__ROOT_ECLASS:
+				setRootEClass((EClass)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -145,8 +145,8 @@ public class QObjectImpl extends MinimalEObjectImpl.Container implements QObject
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QueryPackage.QOBJECT__ECLASS:
-				setEClass((EClass)null);
+			case QueryPackage.QOBJECT__ROOT_ECLASS:
+				setRootEClass((EClass)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -160,8 +160,8 @@ public class QObjectImpl extends MinimalEObjectImpl.Container implements QObject
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QueryPackage.QOBJECT__ECLASS:
-				return eClass != null;
+			case QueryPackage.QOBJECT__ROOT_ECLASS:
+				return rootEClass != null;
 		}
 		return super.eIsSet(featureID);
 	}

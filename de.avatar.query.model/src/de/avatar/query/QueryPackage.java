@@ -214,13 +214,13 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	int QOBJECT = 1;
 
 	/**
-	 * The feature id for the '<em><b>EClass</b></em>' reference.
+	 * The feature id for the '<em><b>Root EClass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QOBJECT__ECLASS = 0;
+	int QOBJECT__ROOT_ECLASS = 0;
 
 	/**
 	 * The number of structural features of the '<em>QObject</em>' class.
@@ -2608,15 +2608,15 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getQObject();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.avatar.query.QObject#getEClass <em>EClass</em>}'.
+	 * Returns the meta object for the reference '{@link de.avatar.query.QObject#getRootEClass <em>Root EClass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>EClass</em>'.
-	 * @see de.avatar.query.QObject#getEClass()
+	 * @return the meta object for the reference '<em>Root EClass</em>'.
+	 * @see de.avatar.query.QObject#getRootEClass()
 	 * @see #getQObject()
 	 * @generated
 	 */
-	EReference getQObject_EClass();
+	EReference getQObject_RootEClass();
 
 	/**
 	 * Returns the meta object for class '{@link de.avatar.query.QSubject <em>QSubject</em>}'.
@@ -3358,12 +3358,12 @@ public interface QueryPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass QOBJECT = eINSTANCE.getQObject();
 
 		/**
-		 * The meta object literal for the '<em><b>EClass</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Root EClass</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference QOBJECT__ECLASS = eINSTANCE.getQObject_EClass();
+		EReference QOBJECT__ROOT_ECLASS = eINSTANCE.getQObject_RootEClass();
 
 		/**
 		 * The meta object literal for the '{@link de.avatar.query.impl.QSubjectImpl <em>QSubject</em>}' class.

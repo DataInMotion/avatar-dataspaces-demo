@@ -553,7 +553,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getQObject_EClass() {
+	public EReference getQObject_RootEClass() {
 		return (EReference)qObjectEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1190,7 +1190,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		createEAttribute(queryEClass, QUERY__NAME);
 
 		qObjectEClass = createEClass(QOBJECT);
-		createEReference(qObjectEClass, QOBJECT__ECLASS);
+		createEReference(qObjectEClass, QOBJECT__ROOT_ECLASS);
 
 		qSubjectEClass = createEClass(QSUBJECT);
 		createEReference(qSubjectEClass, QSUBJECT__FEATURE_PATH);
@@ -1368,7 +1368,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEAttribute(getQuery_Name(), ecorePackage.getEString(), "name", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(qObjectEClass, QObject.class, "QObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getQObject_EClass(), ecorePackage.getEClass(), null, "eClass", null, 0, 1, QObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQObject_RootEClass(), ecorePackage.getEClass(), null, "rootEClass", null, 0, 1, QObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(qSubjectEClass, QSubject.class, "QSubject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getQSubject_FeaturePath(), theUtilitiesPackage.getFeaturePath(), null, "featurePath", null, 1, 1, QSubject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
