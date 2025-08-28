@@ -93,7 +93,6 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 				cachedTasksMapWithAuth.put(userId, new HashMap<>());
 			}
 			cachedTasksMapWithAuth.get(userId).put(reqId, Map.of(externalTask, externalTaskService));
-			LOGGER.info(String.format("Cached task %s for user", reqId));
 		}
 		cachedTasksMap.put(reqId, Map.of(externalTask, externalTaskService));
 	}
