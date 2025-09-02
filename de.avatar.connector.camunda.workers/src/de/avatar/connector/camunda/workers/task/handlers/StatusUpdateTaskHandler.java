@@ -123,6 +123,7 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 			externalTaskService.complete(externalTask);
 		} catch(EngineException e) {
 			LOGGER.warning("EngineException in complete task for status update worker");
+			e.printStackTrace();
 		}
 	}
 	
