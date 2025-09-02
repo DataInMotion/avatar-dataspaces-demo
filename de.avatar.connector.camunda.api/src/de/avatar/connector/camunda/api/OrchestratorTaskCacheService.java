@@ -27,9 +27,9 @@ public interface OrchestratorTaskCacheService {
 
 	void cacheTask(ExternalTask externalTask, ExternalTaskService externalTaskService);
 	
-	QueryResponse completeTask(String taskId);
-
-	QueryResponse completeTask(String taskId, Map<String, Object> variables);
+//	QueryResponse completeTask(String taskId);
+//
+//	QueryResponse completeTask(String taskId, Map<String, Object> variables);
 
 	QueryResponse completeTask(String taskId, String token);
 

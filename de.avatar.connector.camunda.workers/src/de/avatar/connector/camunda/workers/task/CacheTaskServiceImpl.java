@@ -55,20 +55,20 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 	 * (non-Javadoc)
 	 * @see de.avatar.connector.camunda.api.OrchestratorTaskCacheService#completeTask(java.lang.String, java.util.Map)
 	 */
-	@Override
-	public QueryResponse completeTask(String taskId, Map<String, Object> variables) {
-		if(!cachedTasksMap.containsKey(taskId)) {
-			LOGGER.severe(String.format("No cached task of type %s for request id %s", type, taskId));
-			return QueryStatusHelper.createQueryResponse(taskId, QueryStatusType.OPERATION_ERROR, String.format("No cached task of type %s for request id %s", type, taskId));
-		}
-		Map<ExternalTask, ExternalTaskService> externalTaskPair = cachedTasksMap.get(taskId);
-		externalTaskPair.entrySet().forEach(e -> {			
-			e.getValue().complete(e.getKey(), variables);	
-		});
-		removeTask(taskId, null);
-
-		return QueryStatusHelper.createQueryResponse(taskId, type, msg);
-	}
+//	@Override
+//	public QueryResponse completeTask(String taskId, Map<String, Object> variables) {
+//		if(!cachedTasksMap.containsKey(taskId)) {
+//			LOGGER.severe(String.format("No cached task of type %s for request id %s", type, taskId));
+//			return QueryStatusHelper.createQueryResponse(taskId, QueryStatusType.OPERATION_ERROR, String.format("No cached task of type %s for request id %s", type, taskId));
+//		}
+//		Map<ExternalTask, ExternalTaskService> externalTaskPair = cachedTasksMap.get(taskId);
+//		externalTaskPair.entrySet().forEach(e -> {			
+//			e.getValue().complete(e.getKey(), variables);	
+//		});
+//		removeTask(taskId, null);
+//
+//		return QueryStatusHelper.createQueryResponse(taskId, type, msg);
+//	}
 
 	/* 
 	 * (non-Javadoc)
@@ -101,10 +101,10 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 	 * (non-Javadoc)
 	 * @see de.avatar.connector.camunda.api.OrchestratorTaskCacheService#completeTask(java.lang.String)
 	 */
-	@Override
-	public QueryResponse completeTask(String reqId) {
-		return completeTask(reqId, Collections.emptyMap());
-	}
+//	@Override
+//	public QueryResponse completeTask(String reqId) {
+//		return completeTask(reqId, Collections.emptyMap());
+//	}
 
 	/* 
 	 * (non-Javadoc)
@@ -153,7 +153,7 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 			if(cachedTasksMapWithAuth.containsKey(userId)) {
 				if(cachedTasksMapWithAuth.get(userId).containsKey(taskId)) {
 					cachedTasksMapWithAuth.get(userId).remove(taskId);	
-					LOGGER.info(String.format("Removed cached task %s for user", taskId));
+					LOGGER.info(String.format("Removed cached request with id %s for user for type %s", taskId, type));
 				}
 			}				
 		}
