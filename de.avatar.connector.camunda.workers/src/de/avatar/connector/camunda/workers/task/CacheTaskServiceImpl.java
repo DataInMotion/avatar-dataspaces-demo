@@ -40,7 +40,7 @@ import de.avatar.status.QueryStatusType;
 public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 
 	private static final Logger LOGGER = Logger.getLogger(CacheTaskServiceImpl.class.getName());
-	private Map<String, Map<ExternalTask, ExternalTaskService>> cachedTasksMap = new ConcurrentHashMap<>();
+//	private Map<String, Map<ExternalTask, ExternalTaskService>> cachedTasksMap = new ConcurrentHashMap<>();
 	private Map<String,Map<String, Map<ExternalTask, ExternalTaskService>>> cachedTasksMapWithAuth = new ConcurrentHashMap<>();
 	private QueryStatusType type;
 	private String msg;
@@ -93,8 +93,9 @@ public class CacheTaskServiceImpl implements OrchestratorTaskCacheService {
 				cachedTasksMapWithAuth.put(userId, new HashMap<>());
 			}
 			cachedTasksMapWithAuth.get(userId).put(reqId, Map.of(externalTask, externalTaskService));
+			LOGGER.info(String.format("Caching task for request id %s and type %s", reqId, type));
 		}
-		cachedTasksMap.put(reqId, Map.of(externalTask, externalTaskService));
+//		cachedTasksMap.put(reqId, Map.of(externalTask, externalTaskService));
 	}
 
 	/* 

@@ -68,9 +68,10 @@ public class StatusUpdateTaskHandler implements ExternalTaskHandler {
 		String token = externalTask.getVariable("credentials");
 		if(token == null) {
 			LOGGER.severe(String.format("Token is null for request %s", reqId));
-		} else {
-			LOGGER.info(String.format("Token from status update for request id %s is \n%s", reqId, token));
-		}
+		} 
+//		else {
+//			LOGGER.info(String.format("Token from status update for request id %s is \n%s", reqId, token));
+//		}
 		String endpointResStr = null;
 		StatusUpdateType statusTypeEnum = StatusUpdateType.OTHER;
 		try {
