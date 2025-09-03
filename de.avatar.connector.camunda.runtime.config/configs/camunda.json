@@ -23,17 +23,6 @@
 		"camunda.task.lock.duration": 1000,
 		"worker.task.handler.type": "PUBLIC_LINK_REQUEST"
 	},
-	"OrchestratorWorker~cancel":
-	{
-		"camunda.worker.name": "cancel-request",
-		"camunda.worker.type": "prod",
-		"keycloakService.target": "(service.name=StatusUpdateService)",
-		"camunda.engine.url": "http://apisix-gateway:9080/api/camundainterface/engine-rest",
-		"camunda.polling.timeout": 10000,
-		"camunda.task.topic": "cancel-request",
-		"camunda.task.lock.duration": 1000,
-		"worker.task.handler.type": "CANCEL_REQUEST"
-	},
 	"OrchestratorWorker~status":
 	{
 		"camunda.worker.name": "update-status",

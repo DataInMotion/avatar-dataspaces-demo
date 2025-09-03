@@ -169,23 +169,23 @@ public class QueryRestResource {
 //		}
 //	}
 	
-	@GET
-	@Path("/cancel-with-auth/{requestId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
-			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
-	public Response cancelWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId) {
-		try {
-			String token = extractBearerToken(authorization);
-			if(token == null) {
-				return Response.status(Status.UNAUTHORIZED).build();
-			}
-			QueryResponse response = queryBEService.cancelRequest(requestId, token);
-			return Response.ok(response).build();
-		} catch(IllegalArgumentException e) {			
-			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
-		}
-	}
+//	@GET
+//	@Path("/cancel-with-auth/{requestId}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@EMFResourceOptions(options= {@ResourceOption(key = EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, value = "true", valueType = Boolean.class), 
+//			@ResourceOption(key = EMFJs.OPTION_TYPE_FIELD, value = "_type")})
+//	public Response cancelWithAuth(@HeaderParam("Authorization") String authorization, @PathParam("requestId") String requestId) {
+//		try {
+//			String token = extractBearerToken(authorization);
+//			if(token == null) {
+//				return Response.status(Status.UNAUTHORIZED).build();
+//			}
+//			QueryResponse response = queryBEService.cancelRequest(requestId, token);
+//			return Response.ok(response).build();
+//		} catch(IllegalArgumentException e) {			
+//			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
+//		}
+//	}
 	
 //	@GET
 //	@Path("/interrupt/{requestId}")
