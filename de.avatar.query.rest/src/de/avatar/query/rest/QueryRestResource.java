@@ -263,14 +263,10 @@ public class QueryRestResource {
 			if(token == null) {
 				return Response.status(Status.UNAUTHORIZED).build();
 			}
-			List<String> queryIds = queryBEService.getQueryIdsForUser(token);
+			List<QueryResponse> statuses = queryBEService.getQueryStatusesForUser(token);
 			org.gecko.emf.utilities.Response result = UtilitiesFactory.eINSTANCE.createResponse();
-			queryIds.forEach(id -> {
-				QueryResponse response = StatusFactory.eINSTANCE.createQueryResponse();
-				response.setRequestId(id);
-				result.getData().add(response);
-			});
-			result.setResultSize(queryIds.size());
+			result.getData().addAll(statuses);
+			result.setResultSize(statuses.size());
 			return Response.ok(result).build();
 		} catch(IllegalArgumentException e) {			
 			return Response.status(Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();

@@ -64,5 +64,7 @@ public interface QueryBackendService{
 	Query getQueryByName(String queryName);
 	
 	List<String> getQueryIdsForUser(String token);
+	
+	List<QueryResponse> getQueryStatusesForUser(String token);
 
 }

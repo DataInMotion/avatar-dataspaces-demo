@@ -52,5 +52,7 @@ public interface StatusService {
 	QueryResponse getStatusUpdate(String requestId, String token);
 	
 	List<String> getCachedRequestIds(String token);
+	
+	List<QueryResponse> getCachedStatuses(String token);
 
 }

@@ -346,6 +346,15 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		return statusService.getCachedRequestIds(token);
 	}
 	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.QueryBackendService#getQueryStatusesForUser(java.lang.String)
+	 */
+	@Override
+	public List<QueryResponse> getQueryStatusesForUser(String token) {
+		return statusService.getCachedStatuses(token);
+	}
+	
 
 	private String saveEObjectToString(EObject obj) {
 		ResourceSet resSet = rsFactory.getService();
@@ -456,6 +465,8 @@ public class QueryBackendServiceImpl implements QueryBackendService{
 		statusService.updateStatus(response, token);
 		return response;
 	}
+
+	
 	
 	
 

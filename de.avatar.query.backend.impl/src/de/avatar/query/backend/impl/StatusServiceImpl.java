@@ -282,6 +282,22 @@ public class StatusServiceImpl implements StatusService, CronJob{
 		LOGGER.info("Cached request for user are " + cachedRequestsWithAuth.get(userId).size());
 		return cachedRequestsWithAuth.get(userId).keySet().stream().toList();
 	}
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.avatar.query.backend.api.StatusService#getCachedStatuses(java.lang.String)
+	 */
+	@Override
+	public List<QueryResponse> getCachedStatuses(String token) {
+		String userId = extractUserIdFromToken(token);
+		if(userId == null) {
+			LOGGER.severe("Cannot retrieve queries for user because userId from token is null");
+			return Collections.emptyList();
+		}
+		if(!cachedStatusesWithAuth.containsKey(userId)) return Collections.emptyList();
+		LOGGER.info("Cached request for user are " + cachedStatusesWithAuth.get(userId).size());
+		return cachedStatusesWithAuth.get(userId).values().stream().toList();
+	}
 
 	/* 
 	 * (non-Javadoc)
@@ -358,6 +374,8 @@ public class StatusServiceImpl implements StatusService, CronJob{
 		response.setMessage(msg);
 		return response;
 	}
+
+	
 
 
 }
